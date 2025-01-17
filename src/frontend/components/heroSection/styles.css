@@ -1,0 +1,4 @@
+.heroSection{}
+.heroSection .container{top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.heroSection .img_div{height: 90vh;}
+.heroSection .common_heading{line-height: 60px;}

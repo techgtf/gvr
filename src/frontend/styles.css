@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face {font-family: "midland-luxury-medium";font-display: swap;src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Regular.otf");}
+@font-face {font-family: "midland-luxury-Bold";font-display: swap;src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Medium.otf");}
+/* Reset CSS */
+*, *::before,*::after {box-sizing: border-box;margin: 0;padding: 0; line-height: 25px; font-size: 16px; font-family: "Poppins", serif;}
+html, body {height: 100%;margin: 0;padding: 0;font-size: 100%;line-height: 1.5;text-rendering: optimizeLegibility;}
+body { font-family: "Poppins", serif;}
+img,picture,video,canvas,svg {display: block;max-width: 100%;}
+button,input,select,textarea {font-family: inherit;font-size: inherit; border: 0; outline: 0;}
+a {text-decoration: none;}
+ul,ol {list-style: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+blockquote,q {quotes: none;}
+blockquote::before,blockquote::after,q::before,q::after {content: '';}
+:focus {outline: none;}
+::-webkit-scrollbar{width:0}
+img{max-width: 100%;}
+#root .container{max-width: 90%;}
+/* end reset csss */
+:root{--black:#000000; --white:#ffffff; --primary:#33638B; --secondary:#33638B; --green:"#6cb641"}
+/* common Css */
+.midlandfontmedium{font-family: "midland-luxury-medium";}
+.midlandfontbold{font-family: "midland-luxury-Bold";}
+
+.common_heading{font-size: 18px; letter-spacing: 4px;}
+/*end common Css */
