@@ -1,24 +1,21 @@
 import { Suspense } from "react";
-// import { BASE_ROOT } from "../../config";
+import { BASE_ROOT } from "../../config";
+// import Home from "../frontend/pages/Home"
 import Loader from "../Loader/loader";
 import Layout from "../frontend/Layout";
-import Home from "../frontend/pages/Home";
 import PageNotFound from "../frontend/PageNotFound/PageNotFound";
-import "../frontend/main.css"
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// import "../frontend/styles.css"
 
-export const UserRoutes = [
+export const AdminRoutes = [
     {
-        // path: `${BASE_ROOT}`,
+        path: `${BASE_ROOT}/admin`,
         children: [
             {
                 path: "",
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout>
-                            <Home />
+                            <h1>Admin</h1>
                         </Layout>
                     </Suspense>
                 ),

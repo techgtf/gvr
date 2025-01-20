@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as CONFIG from '../../../../config';
 import './styles.css';
 
@@ -12,9 +11,9 @@ export default function Hero({
     return (
         <div className="heroSection relative">
             {/* Background Image */}
-            <div className="img_div">
+            <div className="img_div lg:h-[82vh]">
                 <img
-                    className="lg:h-[90vh] h-auto w-full object-cover"
+                    className="lg:h-[82vh] h-auto w-full object-cover"
                     src={imageUrl || `${CONFIG.ASSET_IMAGE_URL}frontend/images/home/hero.webp`}
                     alt="Hero Section"
                 />

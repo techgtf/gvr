@@ -2,7 +2,7 @@
 @font-face {font-family: "midland-luxury-medium";font-display: swap;src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Regular.otf");}
 @font-face {font-family: "midland-luxury-Bold";font-display: swap;src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Medium.otf");}
 /* Reset CSS */
-*, *::before,*::after {box-sizing: border-box;margin: 0;padding: 0; line-height: 25px; font-size: 16px; font-family: "Poppins", serif;}
+*, *::before,*::after {box-sizing: border-box;margin: 0;padding: 0; line-height: 28px; font-size: 15px; font-family: "Poppins", serif;}
 html, body {height: 100%;margin: 0;padding: 0;font-size: 100%;line-height: 1.5;text-rendering: optimizeLegibility;}
 body { font-family: "Poppins", serif;}
 img,picture,video,canvas,svg {display: block;max-width: 100%;}
@@ -21,6 +21,13 @@ img{max-width: 100%;}
 /* common Css */
 .midlandfontmedium{font-family: "midland-luxury-medium";}
 .midlandfontbold{font-family: "midland-luxury-Bold";}
+.fontItalic{font-style: italic;}
 
 .common_heading{font-size: 18px; letter-spacing: 4px;}
+.common_pera{font-size: 15px; letter-spacing: 1px;}
+.common_btn{font-size: 20px; letter-spacing: 1px; display: flex; align-items: center; gap: 0 5px;}
+.common_btn svg{font-size: 26px;}
+.waterMarkDiv{position: relative;}
+.waterMarkDiv .bg_text{letter-spacing: 1px;}
+.sectionHeading{font-size: 18px; font-weight: 500;}
 /*end common Css */
