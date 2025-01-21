@@ -17,7 +17,7 @@ blockquote::before,blockquote::after,q::before,q::after {content: '';}
 img{max-width: 100%;}
 #root .container{max-width: 90%;}
 /* end reset csss */
-:root{--black:#000000; --white:#ffffff; --primary:#33638B; --secondary:#33638B; --green:"#6cb641"}
+:root{--black:#000000; --gray:rgba(0, 0, 0, 0.67); --white:#ffffff; --primary:#33638B; --secondary:#33638B; --green:"#6cb641"}
 /* common Css */
 .midlandfontmedium{font-family: "midland-luxury-medium";}
 .midlandfontbold{font-family: "midland-luxury-Bold";}
@@ -29,5 +29,7 @@ img{max-width: 100%;}
 .common_btn svg{font-size: 26px;}
 .waterMarkDiv{position: relative;}
 .waterMarkDiv .bg_text{letter-spacing: 1px;}
-.sectionHeading{font-size: 18px; font-weight: 500;}
+.sectionHeading{font-size: 16px; font-weight: 500;}
+.fullBtn{background: var(--primary); padding: 10px 25px;}
+.fullBtn .line{display: inline-block; width: 20px; height: 2px; background: var(--white);}
 /*end common Css */

@@ -21,7 +21,7 @@ export default function WaterMarkHeading({
 
         )
       }
-      <TagName className="sectionHeading uppercase tracking-[4px]">{sectionHeading}</TagName>
+      <TagName className="sectionHeading midlandfontmedium uppercase tracking-[3px]">{sectionHeading}</TagName>
     </div>
   )
 }
