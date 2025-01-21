@@ -4,10 +4,14 @@ import BlogCard from './BlogCard'
 import WaterMarkHeading from "../waterMarkHeading"
 import "./blog.css"
 import FullBtn from '../fullBtn'
+import { useImageReveal } from '../useImageReveal';
+
 
 export default function BlogSection() {
+    useImageReveal(".reveal")
+    
     return (
-        <div className='blogSection'>
+        <div className='blogSection reveal'>
             <div className='max-w-[90%] m-auto'>
                 <div className='flexbox flex flex-wrap justify-between'>
                     <div className='left-side lg:w-[40%] w-full lg:pr-[25px]'>

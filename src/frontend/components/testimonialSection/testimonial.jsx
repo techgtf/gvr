@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import * as CONFIG from "../../../../config"
 import FullBtn from '../fullBtn';
+import { useImageReveal } from '../useImageReveal';
 
 export default function Testimonial() {
     const slidesData = [
@@ -46,10 +47,21 @@ export default function Testimonial() {
         },
     ]
 
+    useImageReveal(".reveal")
+
+    const animationConfig = { // passing animation as prop for WaterMarkHeading
+        // from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 },
+        from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
+    };
+
     return (
-        <div className='testimonialSection'>
+        <div className='testimonialSection reveal'>
             <div className='max-w-[95%] m-auto relative'>
-                <WaterMarkHeading textWaterMark='Our testimonial' sectionHeading='Our testimonial' />
+                <WaterMarkHeading
+                    textWaterMark='Our testimonial'
+                    sectionHeading='Our testimonial'
+                    animationConfig={animationConfig}
+                />
                 <Swiper
                     pagination={{
                         type: 'fraction',

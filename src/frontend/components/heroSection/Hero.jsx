@@ -1,6 +1,7 @@
 import React from 'react';
 import * as CONFIG from '../../../../config';
 import './styles.css';
+import { useTextAnimation } from '../useTextAnimation';
 
 export default function Hero({
     imageUrl,
@@ -8,23 +9,42 @@ export default function Hero({
     containerClasses = '',
     headingClasses = ''
 }) {
+
+    const textRef = useTextAnimation(
+        { from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 } },
+        []
+    );
     return (
         <div className="heroSection relative">
             {/* Background Image */}
-            <div className="img_div lg:h-[82vh]">
+            {/* <div className="img_div lg:h-[82vh]">
                 <img
                     className="lg:h-[82vh] h-auto w-full object-cover"
                     src={imageUrl || `${CONFIG.ASSET_IMAGE_URL}frontend/images/home/hero.webp`}
                     alt="Hero Section"
                 />
+            </div> */}
+            <div className='hero_vdo_div'
+            // style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
+            >
+                <video
+                    className=' min-h-svh'
+                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                    autoPlay
+                    loop
+                    muted
+                ></video>
             </div>
 
             {/* Content Overlay */}
-            <div className={`container text-center absolute z-1 text-white ${containerClasses}`}>
-                <h1 className={`common_heading midlandfontmedium uppercase lg:max-w-[470px] m-auto lg:tracking-[4px] tracking-[2px] ${headingClasses}`}>
+            {/* <div className={`container text-center absolute z-1 text-white ${containerClasses}`}>
+                <h1
+                    ref={textRef}
+                    data-speed="clamp(0.7)"
+                    className={`common_heading midlandfontmedium uppercase lg:max-w-[470px] m-auto lg:tracking-[4px] tracking-[2px] ${headingClasses}`}>
                     {heading || 'Curating the Finest in Luxury Real Estate'}
                 </h1>
-            </div>
+            </div> */}
         </div>
     );
 }

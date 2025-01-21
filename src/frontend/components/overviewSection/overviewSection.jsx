@@ -8,9 +8,12 @@ import { BsArrowUpRight } from "react-icons/bs";
 
 
 export default function OverviewSection() {
+
     return (
-        <div className='overview_section'>
-            <div className='headingWrap max-w-[706px] m-auto text-center'>
+        <div className='overview_section'
+            // data-speed="clamp(.9)"
+        >
+            <div className='headingWrap max-w-[619px] m-auto text-center'>
                 <CommonHeading HeadingText='ELEVATING THE BEAUTY & BUSINESS OF REAL ESTATE' />
             </div>
             <div className='content max-w-[85%] m-auto lg:mt-[50px] lg:mb-[50px] text-center'>

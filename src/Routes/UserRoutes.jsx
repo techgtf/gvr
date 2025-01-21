@@ -14,7 +14,7 @@ export const UserRoutes = [
         // path: `${BASE_ROOT}`,
         children: [
             {
-                path: "",
+                path: "/",
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout>

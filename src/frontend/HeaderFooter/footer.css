@@ -1,0 +1,5 @@
+.footermain{background: var(--primary);}
+
+/* footerLinks */
+.footerLinks{height: 0; visibility: hidden;}
+.footerLinks.active{height: auto; visibility: visible; transition: all 0.5s ease-in-out;}

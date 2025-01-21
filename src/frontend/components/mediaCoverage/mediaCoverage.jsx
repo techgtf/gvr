@@ -2,6 +2,7 @@ import React from 'react'
 import "./mediaCoverage.css"
 import WaterMarkHeading from '../waterMarkHeading'
 import * as CONFIG from '../../../../config'
+import { useImageReveal } from '../useImageReveal'
 
 export default function MediaCoverage() {
     const mediaData = [
@@ -26,11 +27,14 @@ export default function MediaCoverage() {
             imgSrc: 'breaking-news.png',
         }
     ]
+
+    useImageReveal(".reveal")
+
     return (
-        <div className='mediaCoverageSection bg-[#EFF5FA] py-16 text-center'>
+        <div className='mediaCoverageSection bg-[#EFF5FA] py-16 text-center reveal'>
             <WaterMarkHeading sectionHeading='Our media coverage' />
-            <div className='max-w-[90%] m-auto lg:pt-14 pt-7'>
-                <div className="flexbox flex flex-wrap justify-center lg:gap-x-10 gap-x-5 items-center">
+            <div className='max-w-[90%] m-auto lg:pt-20 pt-7'>
+                <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-7 items-center">
                     {mediaData && (
                         mediaData.map((item, index) =>
                             <div className='box' key={index}><img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`} alt="sky news" /></div>
