@@ -55,8 +55,8 @@ export default function Testimonial() {
     };
 
     return (
-        <div className='testimonialSection reveal'>
-            <div className='max-w-[95%] m-auto relative'>
+        <div className='testimonialSection'>
+            <div className='max-w-[90%] m-auto relative'>
                 <WaterMarkHeading
                     textWaterMark='Our testimonial'
                     sectionHeading='Our testimonial'
@@ -81,7 +81,7 @@ export default function Testimonial() {
                     {slidesData && slidesData.map((item, index) =>
                         <SwiperSlide key={index}>
                             <div className='flex_div flex flex-wrap justify-between'>
-                                <div className='posterSide relative lg:w-[45%] w-full'>
+                                <div className='posterSide relative lg:w-[45%] w-full reveal'>
                                     <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt="" />
                                     <button className='playbtn absolute top-[50%] left-[50%] z-[1]'>
                                         <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='h-[44px]' alt="playbtn" />

@@ -5,13 +5,22 @@ import CommonPera from '../commonPera';
 import CommonBtn from '../commonBtn';
 import { Link } from 'react-router-dom';
 import { BsArrowUpRight } from "react-icons/bs";
+import { useTextAnimation } from '../useTextAnimation';
+
 
 
 export default function OverviewSection() {
 
+
+    const sectionRef = useTextAnimation(
+        { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
+        []
+    );
+
     return (
         <div className='overview_section'
             // data-speed="clamp(.9)"
+            ref={sectionRef}
         >
             <div className='headingWrap max-w-[619px] m-auto text-center'>
                 <CommonHeading HeadingText='ELEVATING THE BEAUTY & BUSINESS OF REAL ESTATE' />

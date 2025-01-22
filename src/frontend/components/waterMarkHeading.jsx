@@ -21,10 +21,9 @@ export default function WaterMarkHeading({
               <span key={index} className='bg_text text-[4vw] uppercase midlandfontmedium'>{str}</span>
             ))}
           </div>
-
         )
       }
-      <TagName ref={textRef} className="sectionHeading midlandfontmedium uppercase tracking-[3px]">{sectionHeading}</TagName>
+      <TagName ref={textRef} className="sectionHeading midlandfontmedium uppercase">{sectionHeading}</TagName>
     </div>
   )
 }

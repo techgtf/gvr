@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as CONFIG from '../../../../config';
 import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
+import Loader from "../../../Loader/loader";
 
 export default function Hero({
     imageUrl,
@@ -14,6 +15,12 @@ export default function Hero({
         { from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 } },
         []
     );
+
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+    console.log(isVideoLoaded);
+
+
     return (
         <div className="heroSection relative">
             {/* Background Image */}
@@ -27,12 +34,16 @@ export default function Hero({
             <div className='hero_vdo_div'
             // style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
             >
+                {!isVideoLoaded && (
+                    <Loader />
+                )}                
                 <video
                     className=' min-h-svh'
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
                     autoPlay
                     loop
                     muted
+                    onLoadedData={() => setIsVideoLoaded(true)}
                 ></video>
             </div>
 

@@ -28,10 +28,10 @@ export default function MediaCoverage() {
         }
     ]
 
-    useImageReveal(".reveal")
+    // useImageReveal(".reveal")
 
     return (
-        <div className='mediaCoverageSection bg-[#EFF5FA] py-16 text-center reveal'>
+        <div className='mediaCoverageSection bg-[#EFF5FA] py-16 text-center'>
             <WaterMarkHeading sectionHeading='Our media coverage' />
             <div className='max-w-[90%] m-auto lg:pt-20 pt-7'>
                 <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-7 items-center">

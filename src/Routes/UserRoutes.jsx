@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-// import { BASE_ROOT } from "../../config";
+import { BASE_ROOT } from "../../config";
 import Loader from "../Loader/loader";
 import Layout from "../frontend/Layout";
 import Home from "../frontend/pages/Home";
@@ -14,7 +14,7 @@ export const UserRoutes = [
         // path: `${BASE_ROOT}`,
         children: [
             {
-                path: "/",
+                path: `${BASE_ROOT}`,
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout>

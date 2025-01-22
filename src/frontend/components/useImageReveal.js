@@ -18,7 +18,7 @@ export function useImageReveal(selector) {
                     trigger: container,
                     start: window.innerWidth <= 768 ? 'top bottom' : 'top bottom',
                     toggleClass: { targets: container, className: 'active' },
-                    // once: true, // Trigger only once
+                    once: true, // Trigger only once
                 });
 
                 // Store the ScrollTrigger instance in ref for cleanup
