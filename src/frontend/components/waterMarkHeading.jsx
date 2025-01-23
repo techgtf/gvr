@@ -16,7 +16,7 @@ export default function WaterMarkHeading({
     <div className={`waterMarkDiv relative ${className}`}>
       {textWaterMark &&
         (
-          <div className='water_mark_flex flex justify-between w-full absolute opacity-[.03]'>
+          <div className='water_mark_flex flex justify-between w-full absolute opacity-[0.015]'>
             {bgTextArr.map((str, index) => (
               <span key={index} className='bg_text text-[4vw] uppercase midlandfontmedium'>{str}</span>
             ))}

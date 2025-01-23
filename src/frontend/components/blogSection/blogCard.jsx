@@ -30,8 +30,8 @@ export default function blogCard() {
                         <div className='blog_card_in reveal' key={index}>
                             <Link className="blog_card_link block" to={`${data.link}`}>
                                 <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/${data.imgSrc}`} alt={`${data.name}`} />
-                                <p className='name text-[#0061AB] tracking-[2px] mt-5 lg:pr-12'>{data.name}</p>
-                                <div className='type uppercase text-right text-[#00000094] lg:mt-[-15px] tracking-[1px]'> {data.date} | {data.type}</div>
+                                <p className='name text-[#0061AB] mt-5 lg:pr-2 midlandfontmedium tracking-[2px]'>{data.name}</p>
+                                <div className='type uppercase text-right text-[#2b2b2b94] lg:mt-[-18px] tracking-[1px]'> {data.date} | {data.type}</div>
                             </Link>
                         </div>
                     )

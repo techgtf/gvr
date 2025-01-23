@@ -1,5 +1,5 @@
 .overview_section{padding-top: 80px;}
-.overview_section .content{padding: 35px 179px; border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);}
+.overview_section .content{padding: 35px 179px; border-top: 1px solid #b1b1b1; border-bottom: 1px solid #b1b1b1;}
 .overview_section .common_heading{line-height: 50px;}
 .overview_section .common_pera{font-size: 14px; line-height: 36px;}
 .overview_section .common_btn{justify-content: center;}

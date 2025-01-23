@@ -27,9 +27,9 @@ export default function InSightLinks() {
             {latestNews && (
                 latestNews.slice(0, 2).map((data, index) =>
                     <Link className='blog_insight_link_box block mt-8' key={index} to={data.link}>
-                        <p className='name text-[#0061AB] tracking-[2px]'>{data.name}</p>
-                        <div className='type lg:mt-4 mt-2 uppercase'>{data.type}</div>
-                        <div className='date uppercase border-b border-gray-400 text-right text-[14px]'>{data.date}</div>
+                        <p className='name text-[#0061AB] midlandfontmedium tracking-[3px]'>{data.name}</p>
+                        <div className='type lg:mt-7 mt-2 mb-2 uppercase tracking-[2px] text-[#2b2b2b94]'>{data.type}</div>
+                        <div className='date uppercase border-b border-gray-300 text-right text-[14px] pb-1 tracking-[1px] text-[#2b2b2b94]'>{data.date}</div>
                     </Link>
                 )
             )}

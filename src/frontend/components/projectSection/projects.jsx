@@ -52,13 +52,13 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                            className="img w-full h-[100%] lg:max-h-[460px] object-cover"
+                            className="img w-full h-[100%] lg:max-h-[550px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />
                         <figcaption
                             // data-speed="clamp(0.9)"
-                            className="uppercase tracking-[2px] text-white text-center absolute bottom-[52px] left-0 right-0 z-[1] text-sm lg:text-base px-2"
+                            className="uppercase type tracking-[4px] text-white text-center absolute bottom-[52px] left-0 right-0 z-[1] px-2"
                         >
                             {item.type}
                         </figcaption>

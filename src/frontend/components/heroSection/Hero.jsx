@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as CONFIG from '../../../../config';
 import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
@@ -18,7 +18,19 @@ export default function Hero({
 
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
-    console.log(isVideoLoaded);
+    // Prevent scrolling while video is not loaded
+    useEffect(() => {
+        if (!isVideoLoaded) {
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+        } else {
+            document.body.style.overflow = ''; // Enable scrolling
+        }
+
+        // Cleanup function to reset the style
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isVideoLoaded]);
 
 
     return (
@@ -34,16 +46,16 @@ export default function Hero({
             <div className='hero_vdo_div'
             // style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
             >
-                {!isVideoLoaded && (
-                    <Loader />
-                )}                
+                {!isVideoLoaded && <Loader />}
                 <video
-                    className=' min-h-svh'
+                    className="min-h-svh"
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
                     autoPlay
+                    playsInline
                     loop
                     muted
                     onLoadedData={() => setIsVideoLoaded(true)}
+                    preload="auto"
                 ></video>
             </div>
 

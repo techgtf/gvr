@@ -58,8 +58,8 @@ export default function Testimonial() {
         <div className='testimonialSection'>
             <div className='max-w-[90%] m-auto relative'>
                 <WaterMarkHeading
-                    textWaterMark='Our testimonial'
-                    sectionHeading='Our testimonial'
+                    textWaterMark='Our testimonials'
+                    sectionHeading='Our testimonials'
                     animationConfig={animationConfig}
                 />
                 <Swiper

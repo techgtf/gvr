@@ -1,2 +1,4 @@
 .blogSection{padding: 70px 0;}
 .blogSection .heading-right{font-size: 10px;}
+.blog_card_in .name, .blog_insight_box .name{ line-height: 37px; font-size: 10px;}
+.blog_insight_box .type{font-size: 16px; }

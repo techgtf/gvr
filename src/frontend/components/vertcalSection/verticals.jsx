@@ -3,7 +3,7 @@ import "./verticals.css"
 import WaterMarkHeading from '../waterMarkHeading'
 import { Link } from 'react-router-dom'
 import * as CONFIG from '../../../../config';
-import { BsBoxArrowUpRight } from "react-icons/bs";
+import { GoArrowUpRight } from "react-icons/go";
 import { useImageReveal } from '../useImageReveal';
 
 export default function Verticals() {
@@ -42,9 +42,9 @@ export default function Verticals() {
                             <div className='boxes reveal relative lg:w-[47%] w-full' key={index}>
                                 <Link to={item.link} className='relative block'>
                                     <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
-                                    <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><BsBoxArrowUpRight /></span>
+                                    <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><GoArrowUpRight /></span>
                                 </Link>
-                                <span className='title block pt-8 pb-5 text-[20px]'>{item.title}</span>
+                                <span className='title block pt-8 pb-5 text-[20px] uppercase tracking-[3px]'>{item.title}</span>
                                 <p className='desc'>{item.description}</p>
                             </div>
                         )
