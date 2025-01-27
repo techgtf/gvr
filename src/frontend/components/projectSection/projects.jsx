@@ -52,7 +52,7 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                            className="img w-full xs:h-[100%] xs:max-h-[350px] 2xl:max-h-[550px] xl:max-h-[472px] object-cover"
+                            className="img w-full 2xl:max-h-[750px] xl:max-h-[472px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />

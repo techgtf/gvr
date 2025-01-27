@@ -1,234 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-<<<<<<< HEAD
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@font-face {
-  font-family: "midland-luxury-medium";
-  font-display: swap;
-  src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Regular.otf");
-}
-@font-face {
-  font-family: "midland-luxury-Bold";
-  font-display: swap;
-  src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Medium.otf");
-}
-
-@font-face {
-  font-family: "Optima";
-  src: url("./assets/fonts/optima/OptimaMedium.ttf") format("truetype"),
-    url("./assets/fonts/Optima_Italic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Reset CSS */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  line-height: 28px;
-  font-size: 15px;
-  font-family: "Poppins", serif;
-}
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
-}
-body {
-  font-family: "Poppins", serif;
-}
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  border: 0;
-  outline: 0;
-}
-a {
-  text-decoration: none;
-}
-ul,
-ol {
-  list-style: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote::before,
-blockquote::after,
-q::before,
-q::after {
-  content: "";
-}
-:focus {
-  outline: none;
-}
-::-webkit-scrollbar {
-  width: 0;
-}
-img {
-  max-width: 100%;
-}
-#root .container {
-  max-width: 90%;
-}
-/* end reset csss */
-:root {
-  --black: #000000;
-  --gray: rgba(0, 0, 0, 0.67);
-  --white: #ffffff;
-  --primary: #33638b;
-  --secondary: #33638b;
-  --green: "#6cb641";
-}
-
-/* common Css */
-
-.poppins-thin {
-  font-family: "Poppins", serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.poppins-extralight {
-  font-family: "Poppins", serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.poppins-light {
-  font-family: "Poppins", serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.poppins-regular {
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.poppins-medium {
-  font-family: "Poppins", serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.poppins-bold {
-  font-family: "Poppins", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.poppins-extrabold {
-  font-family: "Poppins", serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.poppins-black {
-  font-family: "Poppins", serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.poppins-thin-italic {
-  font-family: "Poppins", serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.poppins-black-italic {
-  font-family: "Poppins", serif;
-  font-weight: 900;
-  font-style: italic;
-}
-
-.midlandfontmedium {
-  font-family: "midland-luxury-medium";
-}
-.midlandfontbold {
-  font-family: "midland-luxury-Bold";
-}
-.fontItalic {
-  font-style: italic;
-}
-
-.optimafont {
-  font-family: "Optima";
-}
-
-=======
 @font-face {
   font-family: "midland-luxury-medium";
   font-display: swap;
@@ -333,7 +103,6 @@ img {
   font-style: italic;
 }
 
->>>>>>> origin/khushi
 .common_heading {
   font-size: 12px;
   letter-spacing: 4px;
@@ -355,11 +124,6 @@ img {
 .waterMarkDiv {
   position: relative;
 }
-<<<<<<< HEAD
-.waterMarkDiv .bg_text {
-  letter-spacing: 1px;
-}
-=======
 .about .waterMarkDiv .bg_text {
   font-size: 4vw;
 }
@@ -373,7 +137,6 @@ img {
 .waterMarkDiv.vertical .bg_text {
   letter-spacing: -20px;
 }
->>>>>>> origin/khushi
 .sectionHeading {
   font-size: 12px;
   font-weight: 500;
@@ -403,9 +166,6 @@ img {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   transform: translate(0, 0);
 }
-<<<<<<< HEAD
-/*end common Css */
-=======
 
 /* Add this in your global CSS */
 .writing-vertical-rl {
@@ -415,4 +175,3 @@ img {
 
 /*end common Css */
 
->>>>>>> origin/khushi

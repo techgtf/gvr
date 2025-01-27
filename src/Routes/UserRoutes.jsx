@@ -27,14 +27,16 @@ export const UserRoutes = [
                 ),
             },
             {
-                path: `about-us`,
+                path: `${BASE_ROOT}/about-us`,
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout>
                             <Aboutus />
                         </Layout>
                     </Suspense>
-                ),
+                )
+            },
+            {
                 path: `${BASE_ROOT}/microsite`,
                 element: (
                     <Suspense fallback={<Loader />}>
@@ -43,7 +45,7 @@ export const UserRoutes = [
                             <MicrositeMenu />
                         </Layout>
                     </Suspense>
-                ),  
+                ),
             },
             {
                 path: "*",
@@ -55,5 +57,5 @@ export const UserRoutes = [
             },
         ]
     }
-    
+
 ];
