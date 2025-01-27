@@ -67,9 +67,9 @@ export default function Testimonial() {
                         type: 'fraction',
                         renderFraction: (currentClass, totalClass) => {
                             return `                                
-                                <span class="custom-current ${currentClass}"></span>
-                                <span class="custom-divider"></span>
-                                <span class="custom-total ${totalClass}"></span>                                
+                                <span className="custom-current ${currentClass}"></span>
+                                <span className="custom-divider"></span>
+                                <span className="custom-total ${totalClass}"></span>                                
                             `;
                         },
                     }}

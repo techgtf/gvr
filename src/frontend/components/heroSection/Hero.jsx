@@ -46,9 +46,10 @@ export default function Hero({
                 />
             </div> */}
             <div className='hero_vdo_div'
-            // style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
+            style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
             >
                 {/* {!isVideoLoaded && <Loader />} */}
+                {/* {!isVideoLoaded && <Loader />}
                 <video
                     className="min-h-svh"
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
@@ -58,7 +59,17 @@ export default function Hero({
                     muted
                     // onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                ></video>
+                ></video> */}
+                <video
+                    className="min-h-svh"
+                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                    autoPlay
+                    playsInline
+                    loop
+                    muted
+                    // onLoadedData={() => setIsVideoLoaded(true)}
+                    preload="auto"
+                ></video> 
             </div>
 
             {/* Content Overlay */}

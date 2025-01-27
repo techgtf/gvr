@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+<<<<<<< HEAD
 
     extend: {
       colors: {
@@ -21,6 +22,13 @@ export default {
       '3xl': '1536px', // 2X extra large screens
     },
 
+=======
+    extend: {
+      writingMode: {
+        'vertical-rl': 'vertical-rl',
+      },
+    },
+>>>>>>> origin/khushi
   },
   plugins: [],
 }

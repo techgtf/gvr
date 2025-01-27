@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+<<<<<<< HEAD
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @font-face {
@@ -227,6 +228,112 @@ img {
   font-family: "Optima";
 }
 
+=======
+@font-face {
+  font-family: "midland-luxury-medium";
+  font-display: swap;
+  src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Regular.otf");
+}
+@font-face {
+  font-family: "midland-luxury-Bold";
+  font-display: swap;
+  src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Medium.otf");
+}
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 28px;
+  font-size: 14px;
+  font-family: "Poppins", serif;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+body {
+  font-family: "Poppins", serif;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  outline: 0;
+}
+a {
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+}
+:focus {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 0;
+}
+img {
+  max-width: 100%;
+}
+#root .container {
+  max-width: 90%;
+}
+/* end reset csss */
+:root {
+  --black: #000000;
+  --gray: rgba(0, 0, 0, 0.67);
+  --white: #ffffff;
+  --primary: #33638b;
+  --secondary: #33638b;
+  --green: "#6cb641";
+}
+/* common Css */
+.midlandfontmedium {
+  font-family: "midland-luxury-medium";
+}
+.midlandfontbold {
+  font-family: "midland-luxury-Bold";
+}
+.fontItalic {
+  font-style: italic;
+}
+
+>>>>>>> origin/khushi
 .common_heading {
   font-size: 12px;
   letter-spacing: 4px;
@@ -248,9 +355,25 @@ img {
 .waterMarkDiv {
   position: relative;
 }
+<<<<<<< HEAD
 .waterMarkDiv .bg_text {
   letter-spacing: 1px;
 }
+=======
+.about .waterMarkDiv .bg_text {
+  font-size: 4vw;
+}
+.plans .waterMarkDiv .bg_text {
+  font-size: 2vw;
+  rotate: 180deg;
+}
+.waterMarkDiv .bg_text {
+  letter-spacing: 1px;
+}
+.waterMarkDiv.vertical .bg_text {
+  letter-spacing: -20px;
+}
+>>>>>>> origin/khushi
 .sectionHeading {
   font-size: 12px;
   font-weight: 500;
@@ -280,4 +403,16 @@ img {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   transform: translate(0, 0);
 }
+<<<<<<< HEAD
 /*end common Css */
+=======
+
+/* Add this in your global CSS */
+.writing-vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/*end common Css */
+
+>>>>>>> origin/khushi
