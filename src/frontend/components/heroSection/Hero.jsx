@@ -16,21 +16,21 @@ export default function Hero({
         []
     );
 
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    // const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     // Prevent scrolling while video is not loaded
-    useEffect(() => {
-        if (!isVideoLoaded) {
-            document.body.style.overflow = 'hidden'; // Disable scrolling
-        } else {
-            document.body.style.overflow = ''; // Enable scrolling
-        }
+    // useEffect(() => {
+    //     if (!isVideoLoaded) {
+    //         document.body.style.overflow = 'hidden'; // Disable scrolling
+    //     } else {
+    //         document.body.style.overflow = ''; // Enable scrolling
+    //     }
 
-        // Cleanup function to reset the style
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [isVideoLoaded]);
+    //     // Cleanup function to reset the style
+    //     return () => {
+    //         document.body.style.overflow = '';
+    //     };
+    // }, [isVideoLoaded]);
 
 
     return (
@@ -44,9 +44,9 @@ export default function Hero({
                 />
             </div> */}
             <div className='hero_vdo_div'
-            // style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
+            style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
             >
-                {!isVideoLoaded && <Loader />}
+                {/* {!isVideoLoaded && <Loader />}
                 <video
                     className="min-h-svh"
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
@@ -56,7 +56,17 @@ export default function Hero({
                     muted
                     onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                ></video>
+                ></video> */}
+                <video
+                    className="min-h-svh"
+                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                    autoPlay
+                    playsInline
+                    loop
+                    muted
+                    // onLoadedData={() => setIsVideoLoaded(true)}
+                    preload="auto"
+                ></video> 
             </div>
 
             {/* Content Overlay */}

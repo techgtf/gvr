@@ -15,7 +15,8 @@ export default function BlogSection() {
                     <div className='left-side lg:w-[40%] w-full lg:pr-[25px]'>
                         <WaterMarkHeading sectionHeading='Discover Insights' />
                         <InSightLinks />
-                        <FullBtn link='bloglist' text='explore more' />
+                        <FullBtn link='#' text='explore more' />
+                        
                     </div>
                     <div className='right-side lg:w-[48%] w-full lg:pl-20'>
                         <h5 className='heading-right midlandfontmedium tracking-[4px]'>Latest Blog</h5>

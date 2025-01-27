@@ -1,61 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import "./header.css"
-import { Link } from 'react-router-dom'
-import { BASE_ROOT } from '../../../config'
-import * as CONFIG from '../../../config'
+import React, { useEffect, useState } from 'react';
+import "./header.css";
+import { Link } from 'react-router-dom';
+import { BASE_ROOT } from '../../../config';
+import * as CONFIG from '../../../config';
 
 export default function Header() {
-  const [isActive, setIsActive] = useState(false)
+  const [isFixed, setIsFixed] = useState(false);
+  const [prevScrollY, setPrevScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the scroll position is greater than or equal to 100vh
-      if (window.scrollY >= window.innerHeight) {
-        setIsActive(true);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY === 0) {
+        setIsFixed(false);
       } else {
-        setIsActive(false);
+        if (currentScrollY < prevScrollY && currentScrollY >= 100) {
+          setIsFixed(true);
+        } else if (currentScrollY > prevScrollY) {
+          setIsFixed(false);
+        }
       }
+
+      setPrevScrollY(currentScrollY); 
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup the event listener on unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prevScrollY]); 
 
   return (
-    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""}`}>
-      <div className='max-w-[90%] m-auto'>
+    <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-10`}>
+      <div className='max-w-[95%] m-auto'>
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>
-
-            {isActive ? (
-              <img className='logo-colred lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`} alt="logo" />
-            ) : (
-              <img className='logo-white lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`} alt="logo" />
-            )}
-
+            <img
+              className={`lg:h-[80px] ${isFixed ? "logo-colored" : "logo-white"}  sm:w-full`} 
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
+              alt="logo"
+            />
           </Link>
           <button className='menuBtn'>
-            {isActive ? (
-              <img
-                className='whiteIcon'
-                alt='menu'
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`}
-              />
-            ) : (
-              <img
-                className='colredIcon'
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`}
-                alt='menu'
-              />
-            )}
+            <img
+              className={`lg:h-[40px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`} 
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed ? '1' : ''}.png`}
+              alt='menu'
+            />
           </button>
         </div>
       </div>
     </header>
-  )
+  );
 }

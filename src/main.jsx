@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import { UserRoutes } from './Routes/UserRoutes.jsx';
 import { AdminRoutes } from './Routes/AdminRoutes.jsx';
+import ContextProvider from './frontend/context/context.jsx';
+import CustomPortal from './frontend/components/customPortal.jsx'
+import PricelistForm from './frontend/components/microsite/PriceListForm.jsx';
 // import { BASE_ROOT } from '../config.js';
 
 const router = createBrowserRouter([
@@ -16,6 +19,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider >
+      <RouterProvider router={router} />
+      <CustomPortal>
+        <PricelistForm />
+      </CustomPortal>
+    </ContextProvider>
   </StrictMode>,
 )

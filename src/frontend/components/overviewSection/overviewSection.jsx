@@ -26,7 +26,7 @@ export default function OverviewSection() {
                 <CommonHeading HeadingText='ELEVATING THE BEAUTY & BUSINESS OF REAL ESTATE' />
             </div>
             <div className='content max-w-[85%] m-auto lg:mt-[50px] lg:mb-[50px] text-center'>
-                <CommonPera PeraClass='fontItalic' PeraText='The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.' />
+                <CommonPera PeraclassName='fontItalic' PeraText='The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.' />
             </div>
             <CommonBtn to={""} TagName={Link} target='_blank'>Know More <BsArrowUpRight /> </CommonBtn>
         </div>
