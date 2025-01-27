@@ -24,7 +24,7 @@ export default function OverviewSection({heading,paragraph}) {
             <div className='headingWrap max-w-[79%] m-auto text-center'>
                 <CommonHeading HeadingText={heading} />
             </div>
-            <div className='content max-w-[85%] !px-[0px] m-auto lg:mt-[50px] lg:mb-[50px] text-center'>
+            <div className='content max-w-[85%] m-auto lg:mt-[50px] lg:mb-[50px] text-center'>
                 <CommonPera PeraClass='fontItalic' PeraText={paragraph} />
             </div>
             <CommonBtn to={""} TagName={Link} target='_blank'>Know More <BsArrowUpRight /> </CommonBtn>

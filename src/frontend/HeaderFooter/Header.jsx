@@ -7,33 +7,28 @@ import * as CONFIG from '../../../config'
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const location = useLocation();
-  const[aboutus,setAboutUsPage]= useState(false);
+  const [aboutus, setAboutUsPage] = useState(false);
   useEffect(() => {
-    if(location.pathname === '/about-us')setIsActive(true); setAboutUsPage(true)
-    // const handleScroll = () => {
-    //   // Check if the scroll position is greater than or equal to 100vh
-    //   if (window.scrollY >= window.innerHeight) {
-    //     setIsActive(true);
-    //   } else {
-    //     setIsActive(false);
-    //   }
-    // };
-
-    // // Add scroll event listener
-    // window.addEventListener('scroll', handleScroll);
-
-    // // Cleanup the event listener on unmount
-    // return () => {
-    //   window.removeEventListener('scroll', handleScroll);
-    // };
+    // if (location.pathname === '/about-us') setIsActive(true); setAboutUsPage(true)
+    const handleScroll = () => {
+      if (window.scrollY >= 70) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  
+
 
 
 
   return (
-    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""} ${aboutus? '!bg-transparent !border-b-[0px]':''}`}>
+    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""} ${aboutus ? '!bg-transparent !border-b-[0px]' : ''}`}>
       <div className='max-w-[90%] m-auto'>
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>

@@ -25,7 +25,7 @@ export default function Footer() {
           <Link to={`${CONFIG.BASE_ROOT}`}>
             <img className='lg:h-[101px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`} alt="logo" />
           </Link>
-          <ul className='w-[52%] flex justify-between uppercase tracking-[1px]'>
+          <ul className='w-[51%] flex justify-between uppercase tracking-[1px]'>
             <li> <Link to={'#'} className='text-[16px]'>our projects</Link> </li>
             <li> <Link to={'#'} className='text-[16px]'>media centre</Link> </li>
             <li> <Link to={'#'} className='text-[16px]'>Our Profile</Link> </li>
