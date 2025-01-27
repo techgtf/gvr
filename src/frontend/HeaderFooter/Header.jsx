@@ -1,33 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import "./header.css"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { BASE_ROOT } from '../../../config'
 import * as CONFIG from '../../../config'
 
 export default function Header() {
-  const [isActive, setIsActive] = useState(false)
-
+  const [isActive, setIsActive] = useState(false);
+  const location = useLocation();
+  const[aboutus,setAboutUsPage]= useState(false);
   useEffect(() => {
-    const handleScroll = () => {
-      // Check if the scroll position is greater than or equal to 100vh
-      if (window.scrollY >= window.innerHeight) {
-        setIsActive(true);
-      } else {
-        setIsActive(false);
-      }
-    };
+    if(location.pathname === '/about-us')setIsActive(true); setAboutUsPage(true)
+    // const handleScroll = () => {
+    //   // Check if the scroll position is greater than or equal to 100vh
+    //   if (window.scrollY >= window.innerHeight) {
+    //     setIsActive(true);
+    //   } else {
+    //     setIsActive(false);
+    //   }
+    // };
 
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    // // Add scroll event listener
+    // window.addEventListener('scroll', handleScroll);
 
-    // Cleanup the event listener on unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // // Cleanup the event listener on unmount
+    // return () => {
+    //   window.removeEventListener('scroll', handleScroll);
+    // };
   }, []);
 
+  
+
+
+
   return (
-    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""}`}>
+    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""} ${aboutus? '!bg-transparent !border-b-[0px]':''}`}>
       <div className='max-w-[90%] m-auto'>
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>

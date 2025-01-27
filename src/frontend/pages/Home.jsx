@@ -10,8 +10,8 @@ const BlogSection = lazy(() => import('../components/BlogSection/BlogSection'))
 export default function Home() {
     return (
         <>
-            <Hero />
-            <OverviewSection />
+            <Hero  />
+            <OverviewSection heading={'ELEVATING THE BEAUTY & BUSINESS OF REAL ESTATE'} paragraph={'The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.'} />
             <Projects />
             <Verticals />
             <Testimonial />

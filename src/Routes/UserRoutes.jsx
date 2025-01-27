@@ -8,6 +8,7 @@ import "../frontend/main.css"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import Aboutus from "../frontend/pages/AboutUs";
 
 export const UserRoutes = [
     {
@@ -19,6 +20,16 @@ export const UserRoutes = [
                     <Suspense fallback={<Loader />}>
                         <Layout>
                             <Home />
+                        </Layout>
+                    </Suspense>
+                ),
+            },
+            {
+                path: `about-us`,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <Layout>
+                            <Aboutus />
                         </Layout>
                     </Suspense>
                 ),
