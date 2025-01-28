@@ -1,5 +1,6 @@
 import React, { lazy, useEffect, useRef } from 'react'
 import PriceList from '../components/microsite/PriceList'
+import React, { lazy } from 'react'
 const Hero = lazy(() => import('../components/heroSection/hero'))
 const OverviewSection = lazy(() => import('../components/overviewSection/overviewSection'))
 const Projects = lazy(() => import('../components/projectSection/Projects'))

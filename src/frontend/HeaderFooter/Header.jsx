@@ -32,28 +32,18 @@ export default function Header() {
       <div className='max-w-[90%] m-auto'>
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>
-
-            {isActive ? (
-              <img className='logo-colred lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`} alt="logo" />
-            ) : (
-              <img className='logo-white lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`} alt="logo" />
-            )}
-
+            <img
+              className={`lg:h-[60px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  sm:w-full`} 
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
+              alt="logo"
+            />
           </Link>
           <button className='menuBtn'>
-            {isActive ? (
-              <img
-                className='whiteIcon'
-                alt='menu'
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`}
-              />
-            ) : (
-              <img
-                className='colredIcon'
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`}
-                alt='menu'
-              />
-            )}
+            <img
+              className={`lg:h-[35px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`} 
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed ? '1' : ''}.png`}
+              alt='menu'
+            />
           </button>
         </div>
       </div>

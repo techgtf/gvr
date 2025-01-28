@@ -14,7 +14,7 @@ function HeroSection() {
     <>
       <section className="relative  heroSection h-[80vh]" id="overview">
         <div
-          className="hero_vdo_div h-screen bg-cover !bg-center"
+          className="hero_vdo_div h-screen !bg-cover !bg-center bg-no-repeat"
           style={{
             background: `url(assets/frontend/images/microsite/hero.jpg)`,
           }}
@@ -29,7 +29,7 @@ function HeroSection() {
         </div>
       </section>
 
-      <section ref={bannerDetailsRef}>
+      <section className="banner_details bg-white relative w-full " ref={bannerDetailsRef}>
         <BannerDetails />
       </section>
     </>

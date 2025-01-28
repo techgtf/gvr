@@ -4,4 +4,21 @@
     0% {-webkit-transform: translateY(-100%);transform: translateY(-100%);}
     100% {-webkit-transform: translateY(0);transform: translateY(0);}
 }
+.app_header.active {
+  background: var(--white);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  animation: slide-down 0.9s;
+}
 
+@keyframes slide-down {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+/* .app_header.active .logo-colred , .app_header.active .colredIcon{display: block;} */

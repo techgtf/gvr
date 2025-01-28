@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import slide1 from "/assets/frontend/images/microsite/amentities/slider/slide1.png";
@@ -59,8 +59,20 @@ function Slider() {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        slidesPerView={4}
+        loop={true}
+        slidesPerView={1} // Default to 1 slide per view
         spaceBetween={5}
+        breakpoints={{
+          640: {
+            slidesPerView: 1, // Mobile devices
+          },
+          768: {
+            slidesPerView: 2, // Tablets
+          },
+          1024: {
+            slidesPerView: 4, // Laptops and larger screens
+          },
+        }}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -81,8 +93,8 @@ function Slider() {
             >
               <img
                 src={item.image}
-                alt={item.alt}
-                className="!w-[350px] !h-[300px] object-cover cursor-pointer"
+                alt={item.alt}  
+                className="!w-[350px] !h-[200px] !object-cover cursor-pointer"
               />
             </Lightbox>
           </SwiperSlide>

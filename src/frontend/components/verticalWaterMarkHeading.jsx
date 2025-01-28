@@ -1,35 +1,55 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTextAnimation } from './useTextAnimation';
+import gsap from 'gsap';
 
 function verticalWaterMarkHeading({
-    TagName = 'p', // Heading tag (e.g., h1 - h6)
-    className = '', // Additional classes for the container
-    textWaterMark = '', // Background text
-    sectionHeading = '', // Section heading
-    animationConfig = {}, // Accept animation config as a prop
+    TagName = 'p',
+    className = '',
+    textWaterMark = '',
+    sectionHeading = '',
+    animationConfig = {},
 }) {
-    const bgTextArr = textWaterMark.split(''); // Create array directly in render
+    const bgTextArr = textWaterMark.split(''); 
     const textRef = useTextAnimation(animationConfig);
+
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const elements = sectionRef.current.querySelectorAll('.bg_text');
+
+        gsap.fromTo(
+            elements,
+            { opacity: 0, y: 80 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: animationConfig.stagger || 0.1,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                },
+            }
+        );
+    }, []);
 
     return (
         <div>
-            <div className={`waterMarkDiv vertical relative ${className}`}>
+            <div ref={sectionRef} className={`waterMarkDiv vertical relative ${className}`}>
                 {textWaterMark && (
-                    <div className="water_mark_flex flex flex-col h-full absolute opacity-[0.025] justify-center">
+                    <div className="water_mark_flex flex flex-col h-full absolute opacity-[0.040] justify-center">
                         {bgTextArr.map((str, index) => (
                             <span
                                 key={index}
-                                className="bg_text  uppercase font-medium midlandfontmedium -rotate-90 writing-vertical-rl text-center "
+                                className="bg_text uppercase font-medium midlandfontmedium -rotate-90 writing-vertical-rl text-center"
                             >
                                 {str}
                             </span>
                         ))}
                     </div>
                 )}
-                <TagName
-                    ref={textRef}
-                    className="sectionHeading uppercase font-medium"
-                >
+                <TagName ref={textRef} className="sectionHeading uppercase font-medium">
                     {sectionHeading}
                 </TagName>
             </div>

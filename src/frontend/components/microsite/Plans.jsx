@@ -6,6 +6,7 @@ import WaterMarkHeading from "../verticalWaterMarkHeading";
 import gsap from "gsap";
 import ImageOverlay from "../ImageOverlay";
 import CommonHeading from "../commonHeading";
+import { useImageReveal } from "../useImageReveal";
 
 function Plans() {
   const [activeUnit, setActiveUnit] = useState("unit1");
@@ -54,34 +55,37 @@ function Plans() {
     setActiveUnit(unit);
   };
 
+  const animationConfig2 = {
+    stagger: 0.1, // Normal animation order for another instance
+  };
+
+  useImageReveal(".reveal")
+
   return (
-    <section className="plans bg-[#EFF5FA] px-10 py-20  relative" id="plan">
+    <section className="plans bg-[#EFF5FA] px-5 md:px-12 py-5 md:py-14  relative" id="plan">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="master_plan">
           <CommonHeading HeadingText="master plan" />
 
-          <div className="master_plan_img bg-white p-10 flex justify-center w-[70%] mt-14">
+          <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-14 reveal">
             <ImageOverlay
               imageUrl={master_plan_img}
               altText="master plan image"
             />
           </div>
         </div>
-        <div className="absolute h-full flex items-center justify-center left-[45%] bottom-0">
+        <div className="absolute h-full flex items-center justify-center md:left-[45%] bottom-0">
           <WaterMarkHeading
             textWaterMark="FLOOR PLANS"
-            animationConfig={{
-              from: { x: -100, opacity: 0 },
-              to: { x: 0, opacity: 1, duration: 1 },
-            }}
+            animationConfig={animationConfig2}
             className="flex flex-col items-start justify-center text-[2vw]  "
           />
         </div>
-        <div className="floor_plans mt-10 sm:m-0 ps-20">
-          <div className="flex justify-between items-center">
+        <div className="floor_plans mt-10 sm:m-0 md:ps-20">
+          <div className="md:flex justify-between items-center">
             <CommonHeading HeadingText="floor plans" />
 
-            <div className="flex gap-5">
+            <div className="flex gap-2 md:gap-5 mt-4 md:mt-0">
               <button
                 className={`px-6 py-1 ${
                   activeUnit === "unit1"
@@ -109,15 +113,15 @@ function Plans() {
             {unitData[activeUnit].map((plan, index) => (
               <div
                 key={index}
-                className="unit bg-white p-5 flex justify-between mt-8"
+                className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover"
               >
                 <img
                   src={plan.image}
                   alt={`plan ${index + 1}`}
-                  className="w-[30%]"
+                  className="w-full md:w-[30%]"
                 />
-                <div className="flex flex-col justify-between">
-                  <h5 className="font-semibold">{plan.type}</h5>
+                <div className="flex flex-col justify-between mt-2 pr-24 tracking-wider uppercase md:mt-0">
+                  <h5 className="font-semibold  text-[16px]">{plan.type}</h5>
                   <p>Carpet Area : {plan.carpetArea}</p>
                   <p>Balcony Area : {plan.balconyArea} </p>
                   <p>Total Super Area : {plan.totalArea}</p>
