@@ -11,6 +11,7 @@ import Slider from "./Slider/Slider";
 import CommonHeading from "../commonHeading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeIn from "../Animations/FadeIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,9 @@ function Amentities() {
         <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
           <div className="sm:col-span-3 col-span-12">
             <div className="about_heading">
+            <FadeIn duration={2} delay={0.5}> 
               <CommonHeading HeadingText="amentities" />
+              </FadeIn>
             </div>
           </div>
           <div className="sm:col-span-9 col-span-12">

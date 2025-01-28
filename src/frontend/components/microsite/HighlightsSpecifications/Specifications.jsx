@@ -7,15 +7,17 @@ import mansory3 from "/assets/frontend/images/microsite/specifications/mansory3.
 import parquet2 from "/assets/frontend/images/microsite/specifications/parquet2.png";
 import door from "/assets/frontend/images/microsite/specifications/door.png";
 import roller from "/assets/frontend/images/microsite/specifications/roller.png";
+import FadeIn from '../../Animations/FadeIn';
+import CommonHeading from '../../commonHeading';
 
 function Specifications() {
   return (
     <>
         <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
             <div className="about_desc">
-              <h2 className="uppercase midlandfontmedium text-[0.875em] tracking-[4px]">
-                specifications
-              </h2>
+            <FadeIn duration={2} delay={0.6}>
+            <CommonHeading HeadingText="specifications" />
+          </FadeIn>
               <div className="grid grid-cols-12 mt-14 h-[350px] overflow-y-scroll pr-5">
                 <div className="col-span-12 md:col-span-6">
                   <div className="master">

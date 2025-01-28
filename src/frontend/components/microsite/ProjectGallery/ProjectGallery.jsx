@@ -8,6 +8,8 @@ import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
 import gsap from "gsap";
 import CommonHeading from "../../commonHeading";
+import SlideIn from "../../Animations/SlideIn";
+import FadeIn from "../../Animations/FadeIn";
 
 function ProjectGallery() {
   const [activeTab, setActiveTab] = useState("actual");
@@ -42,9 +44,11 @@ function ProjectGallery() {
     <section className="project_gallery  flex items-center px-5 md:px-12 py-5 md:py-14 bg-[#EFF5FA]" id="gallery">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="project_gallery_content">
+        <FadeIn duration={2} delay={0.5}> 
             <CommonHeading HeadingText="Project Gallery" />        
-
+            </FadeIn>
           <div className="flex items-center pt-10 project_gallery_tabs">
+          <SlideIn duration={0.8} delay={0.2}>
             <h4
               className={`mr-4 uppercase mt-14 cursor-pointer ${
                 activeTab === "actual" ? "text-primary" : "text-gray-500"
@@ -53,12 +57,14 @@ function ProjectGallery() {
             >
               Project Actual Images
             </h4>
+            </SlideIn>
             {activeTab === "actual" && (
               <div className="flex-1 border-t mt-14 mr-4 border-gray-300"></div>
             )}
           </div>
 
           <div className="flex items-center project_gallery_tabs">
+          <SlideIn duration={0.8} delay={0.3}>
             <h4
               className={`mr-4 uppercase mt-10 cursor-pointer ${
                 activeTab === "render" ? "text-primary" : "text-gray-500"
@@ -67,6 +73,7 @@ function ProjectGallery() {
             >
               Project Render Images
             </h4>
+            </SlideIn>
             {activeTab === "render" && (
               <div className="flex-1 border-t mt-10 mr-4 border-gray-300"></div>
             )}

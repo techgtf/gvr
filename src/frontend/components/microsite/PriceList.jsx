@@ -4,6 +4,7 @@ import PriceListForm from "./PriceListForm";
 import { Context } from "../../context/context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeIn from "../Animations/FadeIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,14 +58,13 @@ function PriceList() {
         id="pricelist"
       >
         <div className="headingWrap max-w-[619px] m-auto text-center">
-          <CommonHeading HeadingText="PRICE LIST" />
+          <FadeIn duration={2} delay={0.5}>
+            <CommonHeading HeadingText="PRICE LIST" />
+          </FadeIn>
         </div>
 
         {/* Desktop view */}
-        <div
-          className="hidden md:block table w-full mt-10"
-          ref={tableRef}
-        >
+        <div className="hidden md:block table w-full mt-10" ref={tableRef}>
           {priceListData.map((item, i) => (
             <div
               key={i}
@@ -97,9 +97,9 @@ function PriceList() {
           {priceListData.map((item, i) => (
             <div key={i} className="row_1 py-5">
               <div className="flex justify-center ">
-                  <p className="bg-[#aac1d34a] rounded-full px-4 py-1">
-                    DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal.
-                  </p>
+                <p className="bg-[#aac1d34a] rounded-full px-4 py-1">
+                  DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal.
+                </p>
               </div>
               <div className="grid grid-cols-3 border-b border-gray-300 py-3">
                 <div className="md:flex text-center justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">

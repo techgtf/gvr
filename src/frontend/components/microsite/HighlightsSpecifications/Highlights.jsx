@@ -1,13 +1,15 @@
 import React from "react";
+import FadeIn from "../../Animations/FadeIn";
+import CommonHeading from "../../commonHeading";
 
 function Highlights() {
   return (
     <>
       <div className="col-span-4">
         <div className="about_heading">
-          <h2 className="uppercase midlandfontmedium text-[0.875em] tracking-[4px]">
-            highlights
-          </h2>
+          <FadeIn duration={2} delay={0.5}>
+            <CommonHeading HeadingText="highlights" />
+          </FadeIn>
           <ol className="pt-14">
             <li className="flex gap-3 items-start py-2">
               <div className="num bg-[#749CBE] rounded-full text-white w-6 h-6 leading-6 text-center flex-shrink-0">
