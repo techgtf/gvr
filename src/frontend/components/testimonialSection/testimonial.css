@@ -6,11 +6,19 @@
 .testimonialSwiper .custom-divider{display: block; background: #00000047; width: 83%; height: 2px;}
 .testimonialSwiper .swiper-pagination-fraction span{font-size: 20px;}
 .testimonialSwiper .swiper-button-prev, .testimonialSwiper .swiper-button-next{bottom: 30%; top: inherit; background: var(--secondary); height: 37px; width: 37px; border-radius: 100px;}
-.testimonialSwiper .swiper-button-prev{left: 2%;}
+.testimonialSwiper .swiper-button-prev{left: 2% !important;}
 .testimonialSwiper .swiper-button-next{left: 40%;}
-.testimonialSwiper .swiper-button-next:after, .testimonialSwiper .swiper-button-prev:after{font-size: 15px; color: var(--white);}
+.testimonialSwiper .swiper-button-next:after, .testimonialSwiper .swiper-button-prev:after{font-size: 15px; color: var(--white) !important;}
 .testimonialSwiper .borderline{height: 1px; background: rgba(0, 0, 0, 0.2); margin-left: -30px; margin-top: 13.6%;}
 .testimonialSwiper .desc{color: var(--secondary); font-size: 17px; line-height: 47px;}
 .testimonialSwiper .name{color: var(--gray); font-size: 20px; margin-top: 43px; margin-bottom: 90px;}
 .testimonialSwiper .name::after{content: ''; position: absolute; right: 0; background: url(/assets/frontend/images/icons/quotes.png);width: 68px;height: 55px;}
 .testimonialSwiper .name .line{height: 2px; width: 70px; background-color: rgb(0 0 0 / 28%);}
+
+.testimonialSwiper .swiper-button-next,
+.testimonialSwiper .swiper-button-prev {
+  display: flex !important;
+}
+
+.testimonialSwiper .swiper-button-next:after{content: 'next' !important;}
+.testimonialSwiper .swiper-button-prev:after{content: "prev" !important;}
