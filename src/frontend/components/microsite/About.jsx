@@ -29,7 +29,7 @@ function About() {
       <div className="grid grid-cols-12">
         <div className="col-span-12 md:col-span-4">
           <div className="about_heading">
-            <FadeIn duration={2} delay={0.3}>
+            <FadeIn duration={2} delay={0.7}>
             <CommonHeading HeadingText="about us" />
             </FadeIn>
           </div>
