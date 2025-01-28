@@ -27,7 +27,7 @@ export const UserRoutes = [
                 ),
             },
             {
-                path: `${BASE_ROOT}/about-us`,
+                path: `${BASE_ROOT}about-us`,
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout >
@@ -37,7 +37,7 @@ export const UserRoutes = [
                 )
             },
             {
-                path: `${BASE_ROOT}/microsite`,
+                path: `${BASE_ROOT}microsite`,
                 element: (
                     <Suspense fallback={<Loader />}>
                         <Layout>

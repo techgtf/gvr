@@ -61,14 +61,14 @@ const OurVerticals = () => {
             </div>
           </div>
           <img
-            src="/assets/frontend/images/aboutus/verticals/vertical-1.jpg"
+            src="assets/frontend/images/aboutus/verticals/vertical-1.jpg"
             alt="vertical-1"
             className="basis-[32%] h-[480px]"
           />
         </div>
         <div className="flex items-center justify-between mt-[4rem] flex-wrap">
           <img
-            src="/assets/frontend/images/aboutus/verticals/vertical-2.jpg"
+            src="assets/frontend/images/aboutus/verticals/vertical-2.jpg"
             alt="vertical-1"
             className="basis-[32%] h-[480px]"
           />

@@ -142,22 +142,22 @@ const OurJourney = () => {
         </div>
         <div className="basis-[50%] border-l-[1px] border-l-solid border-l-[#B1B1B1] h-[400px] relative flex flex-wrap justify-center">
           <img
-            src="/assets/frontend/images/aboutus/ourJourney/1.jpg"
+            src="assets/frontend/images/aboutus/ourJourney/1.jpg"
             alt="1.jpg"
             className="w-[200px] h-[150px] absolute top-0 z-[1] left-[25%]"
           />
           <img
-            src="/assets/frontend/images/aboutus/ourJourney/2.jpg"
+            src="assets/frontend/images/aboutus/ourJourney/2.jpg"
             alt="2.jpg"
             className="w-[200px] right-[10%] top-[16%] h-[150px] absolute z-[2]"
           />
           <img
-            src="/assets/frontend/images/aboutus/ourJourney/3.jpg"
+            src="assets/frontend/images/aboutus/ourJourney/3.jpg"
             alt="3.jpg"
             className="w-[200px] h-[150px] top-[25%] left-[8%] absolute z-[2]"
           />
           <img
-            src="/assets/frontend/images/aboutus/ourJourney/4.jpg"
+            src="assets/frontend/images/aboutus/ourJourney/4.jpg"
             alt="4.jpg"
             className="w-[200px] h-[150px] absolute bottom-[15%] right-[33%] z-[3]"
           />
@@ -185,7 +185,7 @@ const OurJourney = () => {
                   <div className="w-60 inline-block">
                     <figure className="border relative border-solid border-[#B1B1B1] z-10 w-32 h-32 flex justify-center items-center rounded-full">
                       <img
-                        src="/assets/frontend/images/aboutus/ourJourney/timeline.png"
+                        src="assets/frontend/images/aboutus/ourJourney/timeline.png"
                         alt="timeline"
                       />
                       <figcaption
@@ -204,14 +204,14 @@ const OurJourney = () => {
 
         <div className="swiper-button-prev">
           <img
-            src="/assets/frontend/images/icons/left_arrow.png"
+            src="assets/frontend/images/icons/left_arrow.png"
             alt="Previous"
             style={{ cursor: "pointer" }}
           />
         </div>
         <div className="swiper-button-next">
           <img
-            src="/assets/frontend/images/icons/right_arrow.png"
+            src="assets/frontend/images/icons/right_arrow.png"
             alt="Next"
             style={{ cursor: "pointer" }}
           />

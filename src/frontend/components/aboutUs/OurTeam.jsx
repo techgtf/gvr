@@ -13,7 +13,7 @@ const OurTeam = () => {
           <div className=" w-[248px] h-[265px] flex items-end justify-center relative bg-[#EFF5FA]">
             <img
               className="w-[100%] h-[150px]  inline-block object-contain"
-              src="/assets/frontend/images/aboutus/team/team-1.png"
+              src="assets/frontend/images/aboutus/team/team-1.png"
               alt="team-1"
             />
             <div className="top-[0.75rem] right-[0.75rem] z-[-99]  w-[248px] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.jpg)]"></div>
@@ -22,7 +22,7 @@ const OurTeam = () => {
           <div className="w-[248px] h-[265px] flex items-end justify-center bg-[#EFF5FA]">
             <img
               className="w-[160px] h-[165px] inline-block object-contain"
-              src="/assets/frontend/images/aboutus/team/team-2.png"
+              src="assets/frontend/images/aboutus/team/team-2.png"
               alt="team-2"
             />
           </div>
@@ -35,7 +35,7 @@ const OurTeam = () => {
             >
               <img
                 className="w-[215px] h-[260px] object-cover inline-block"
-                src="/assets/frontend/images/aboutus/team/team-3.png"
+                src="assets/frontend/images/aboutus/team/team-3.png"
                 alt="team-3"
               />
             </div>
@@ -50,7 +50,7 @@ const OurTeam = () => {
           <div className="w-[248px] h-[265px] object-contain flex items-end justify-center bg-[#EFF5FA]">
             <img
               className="w-[235px] h-[165px] object-contain inline-block"
-              src="/assets/frontend/images/aboutus/team/team-4.png"
+              src="assets/frontend/images/aboutus/team/team-4.png"
               alt="team-4"
             />
           </div>

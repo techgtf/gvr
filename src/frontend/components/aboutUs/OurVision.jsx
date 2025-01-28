@@ -4,7 +4,7 @@ const OurVision = () => {
       <div className="flex justify-between items-center py-[6.5rem] flex-wrap max-w-[85%]">
         <img
           className="w-[350px] h-[350px]"
-          src="/assets/frontend/images/aboutus/vision_and_mission.jpg"
+          src="assets/frontend/images/aboutus/vision_and_mission.jpg"
           alt="vision_and_mission"
         />
         <div className="basis-[60%]">
