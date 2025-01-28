@@ -16,7 +16,7 @@ const ImageOverlay = ({ imageUrl, altText }) => {
         src={imageUrl}
         alt={altText}
         onClick={() => setIsOpen(true)}
-        className="cursor-pointer max-w-full h-auto"
+        className="cursor-pointer w-full h-auto"
       />
       <Overlay configs={configs} isOpen={isOpen} closeOverlay={closeOverlay}>
         <div className="relative">

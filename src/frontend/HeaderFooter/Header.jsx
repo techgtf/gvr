@@ -37,14 +37,14 @@ export default function Header() {
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>
             <img
-              className={`lg:h-[80px] ${isFixed ? "logo-colored" : "logo-white"}  sm:w-full`} 
+              className={`lg:h-[60px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  sm:w-full`} 
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
               alt="logo"
             />
           </Link>
           <button className='menuBtn'>
             <img
-              className={`lg:h-[40px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`} 
+              className={`lg:h-[35px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`} 
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed ? '1' : ''}.png`}
               alt='menu'
             />

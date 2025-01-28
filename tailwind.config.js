@@ -9,6 +9,14 @@ export default {
       writingMode: {
         'vertical-rl': 'vertical-rl',
       },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1200px',
+        '2xl': '1330px',
+        '3xl': '1480px',
+      },
     },
   },
   plugins: [],

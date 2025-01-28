@@ -39,7 +39,7 @@ function ProjectGallery() {
   const imageData = activeTab === "actual" ? actualImages : renderImages;
 
   return (
-    <section className="project_gallery  flex items-center px-10 py-20 bg-[#EFF5FA]" id="gallery">
+    <section className="project_gallery  flex items-center px-5 md:px-12 py-5 md:py-14 bg-[#EFF5FA]" id="gallery">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="project_gallery_content">
             <CommonHeading HeadingText="Project Gallery" />        
@@ -93,6 +93,7 @@ function ProjectGallery() {
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
+            loop={true}
             slidesPerView={1}
             spaceBetween={30}
             modules={[Navigation]}

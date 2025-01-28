@@ -12,6 +12,7 @@ import "./microsite.css";
 import gsap from "gsap";
 import ImageOverlay from "../ImageOverlay";
 import CommonHeading from "../commonHeading";
+import { useImageReveal } from "../useImageReveal";
 
 function LocationAdvantage() {
   const [activeTab, setActiveTab] = useState("drive");
@@ -81,27 +82,28 @@ function LocationAdvantage() {
     );
   };
 
+  useImageReveal(".reveal")
+
   return (
-    <section className="advantage px-10 py-20  flex items-center" id="advantage">
+    <section className="advantage px-5 md:px-12 py-5 md:py-14  flex items-center" id="advantage">
       <div className="grid sm:grid-cols-2 grid-cols-1">
-        <div className="brief border-r-2 border-gray-200">
+        <div className="brief md:border-r-2 border-gray-200">
           <CommonHeading HeadingText="location advantage" />
 
-          <div className="location_map py-10">
+          <div className="location_map py-10 reveal w-[80%]">
             <ImageOverlay
               imageUrl={loaction}
               altText="Location"
-              className="w-[70%]"
             />
           </div>
-          <p className="w-96">
+          <p className="md:w-96 reveal">
             Discover homes strategically placed in thriving neighborhoods,
             offering seamless access to key hubs, schools, and lifestyle
             conveniences.
           </p>
         </div>
 
-        <div className="route ps-10 mt-10 sm:m-0">
+        <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button className={`drive flex gap-3 items-center ${ activeTab === "drive" ? "text-black" : "text-gray-300" }`} onClick={() => handleTabClick("drive")} >
               <img src={activeTab === "drive" ? driveActive : drive} alt="drive icon" className="w-8" /> DRIVE</button>
@@ -116,12 +118,12 @@ function LocationAdvantage() {
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
 
-          <ul className="w-full overflow-y-scroll h-[400px] pr-20">
+          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20">
             {(activeTab === "drive" ? driveData : walkData).map(
               (item, index) => (
                 <li
                   key={index}
-                  className="locationTab flex justify-between border-b border-gray-200 py-5"
+                  className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5"
                 >
                   <div className="icon">
                     <img src={item.image} alt="" />
