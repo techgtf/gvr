@@ -30,7 +30,7 @@ export const UserRoutes = [
                 path: `${BASE_ROOT}/about-us`,
                 element: (
                     <Suspense fallback={<Loader />}>
-                        <Layout>
+                        <Layout >
                             <Aboutus />
                         </Layout>
                     </Suspense>

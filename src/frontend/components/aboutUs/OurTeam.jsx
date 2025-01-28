@@ -5,13 +5,12 @@ const OurTeam = () => {
         <h3 className="sectionHeading tracking-[5px] text-[black] midlandfontmedium">
           OUR TEAM
         </h3>
-        <p className="text-black absolute top-[5%] left-[29%] w-[250px] poppins-regular">
+        <p className="text-black absolute top-[5%] text-[12px] left-[26%] w-[250px] poppins-regular">
           Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+          1500s.
         </p>
-        <div className=" flex justify-between mt-[16.5rem] ">
-          <div className=" w-[248px] h-[265px] flex items-end  justify-center relative bg-[#EFF5FA]">
+        <div className=" flex justify-between mt-[7.5rem] ">
+          <div className=" w-[248px] h-[265px] flex items-end justify-center relative bg-[#EFF5FA]">
             <img
               className="w-[100%] h-[150px]  inline-block object-contain"
               src="/assets/frontend/images/aboutus/team/team-1.png"
@@ -40,10 +39,10 @@ const OurTeam = () => {
                 alt="team-3"
               />
             </div>
-            <p className="midlandfontmedium basis-[100%] text-black font-[13px] my-[0.65rem]  tracking-[2px]">
+            <p className="midlandfontmedium basis-[100%] text-black text-[10px] mt-[0.65rem]  tracking-[2px]">
               Amit Goel
             </p>
-            <p className="basis-[100%] text-primary text-[16px] ">
+            <p className="basis-[100%] text-primary text-[12px] ">
               FUND MANAGER
             </p>
           </div>

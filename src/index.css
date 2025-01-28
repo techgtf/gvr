@@ -3,3 +3,42 @@
 @tailwind utilities;
 
 /* only tailwind */
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: "" !important;
+  color: black !important;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  content: "" !important;
+  color: black !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Adjust according to your image size */
+  height: 40px; /* Adjust according to your image size */
+}
+
+.swiper-button-prev img,
+.swiper-button-next img {
+  width: 100%; /* Make the image fill the button */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  left: -4% !important; /* Positioning */
+}
+
+.swiper-button-next {
+  top: 50%;
+  position: absolute;
+  right: -3% !important; /* Positioning */
+}

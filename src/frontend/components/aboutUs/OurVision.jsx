@@ -1,13 +1,13 @@
 const OurVision = () => {
   return (
     <div className="bg-[#33638B] my-[3.5rem]  text-white flex justify-center">
-      <div className="flex justify-between items-center py-[3.5rem] flex-wrap max-w-[85%]">
+      <div className="flex justify-between items-center py-[6.5rem] flex-wrap max-w-[85%]">
         <img
-          className="w-[300px] h-[300px]"
+          className="w-[350px] h-[350px]"
           src="/assets/frontend/images/aboutus/vision_and_mission.jpg"
           alt="vision_and_mission"
         />
-        <div className="basis-[65%]">
+        <div className="basis-[60%]">
           <div className="mb-[2rem]">
             <h3 className="midlandfontmedium text-[11px] tracking-[2px]">
               Our Vision
