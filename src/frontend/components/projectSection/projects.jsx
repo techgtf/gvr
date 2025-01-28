@@ -34,7 +34,7 @@ export default function Projects() {
     ]
 
     return (
-        <div className='projectSection lg:pt-[137px] pt-[100px] text-center'>
+        <div className='projectSection 2xl:pt-[137px] lg:pt-[100px] pt-[100px] text-center'>
             <WaterMarkHeading
                 textWaterMark={"Explore Properties"}
                 sectionHeading={"Explore Properties"}
@@ -52,7 +52,7 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                            className="img w-full 2xl:max-h-[750px] xl:max-h-[472px] object-cover"
+                             className="img w-full xl:h-[470px] 2xl:h-[550px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />

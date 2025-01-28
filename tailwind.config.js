@@ -12,15 +12,13 @@ export default {
       },
     },
     screens: {
-      'xs': '480px',  // Extra small screens
-      'sm': '640px',  // Small screens
-      'md': '768px',  // Medium screens
-      'lg': '1024px', // Large screens
-      'xl': '1300px', // min laptop
-      '2xl': '1340px', // mac book
-      '3xl': '1536px', // 2X extra large screens
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1300px',
+      '2xl': '1400px',
+      '3xl': '1480px',
     },
-
     extend: {
       writingMode: {
         'vertical-rl': 'vertical-rl',

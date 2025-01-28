@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import * as CONFIG from '../../../../config';
 import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
@@ -18,22 +19,35 @@ export default function Hero({
         []
     );
 
-    // const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const clipRef = useRef(null);
+    const videoRef = useRef(null);
 
-    // Prevent scrolling while video is not loaded
-    // useEffect(() => {
-    //     if (!isVideoLoaded) {
-    //         document.body.style.overflow = 'hidden'; // Disable scrolling
-    //     } else {
-    //         document.body.style.overflow = ''; // Enable scrolling
-    //     }
 
-    //     // Cleanup function to reset the style
-    //     return () => {
-    //         document.body.style.overflow = '';
-    //     };
-    // }, [isVideoLoaded]);
+    // Handle body overflow based on video load state
+    useEffect(() => {
+        if (!isVideoLoaded) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        // Cleanup
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isVideoLoaded]);
 
+    // Trigger GSAP animation once video is loaded
+    useEffect(() => {
+        if (isVideoLoaded) {
+            gsap.set(clipRef.current, { clipPath: "circle(45% at 50% 50%)" });
+            gsap.to(clipRef.current, {
+                clipPath: "circle(100% at 50% 50%)",
+                duration: 3,
+                ease: "power2.out",
+            });
+        }
+    }, [isVideoLoaded]);
 
     return (
         <div className="heroSection relative">
@@ -45,31 +59,29 @@ export default function Hero({
                     alt="Hero Section"
                 />
             </div> */}
-            <div className='hero_vdo_div'
-            style={{ background: `url(assets/frontend/images/home/hero.webp)` }}
+
+            {!isVideoLoaded && <Loader />}
+
+            <div className='hero_vdo_div relative w-full'
+                ref={clipRef}
+            // style={{ height: "100vh", overflow: "hidden" }}
             >
-                {/* {!isVideoLoaded && <Loader />} */}
-                {/* {!isVideoLoaded && <Loader />}
+
+
                 <video
-                    className="min-h-svh"
+                    ref={videoRef}
+                    // className="min-h-svh"
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
                     autoPlay
                     playsInline
                     loop
                     muted
-                    // onLoadedData={() => setIsVideoLoaded(true)}
+                    onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                ></video> */}
-                <video
-                    className="min-h-svh"
-                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-                    autoPlay
-                    playsInline
-                    loop
-                    muted
-                    // onLoadedData={() => setIsVideoLoaded(true)}
-                    preload="auto"
-                ></video> 
+                    className="h-[100vh] w-full object-cover"
+                ></video>
+
+
             </div>
 
             {/* Content Overlay */}

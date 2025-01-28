@@ -16,7 +16,7 @@ export function useImageReveal(selector) {
             revealContainers.forEach((container) => {
                 const trigger = ScrollTrigger.create({
                     trigger: container,
-                    start: window.innerWidth <= 768 ? 'top bottom' : 'top bottom',
+                    start: window.innerWidth <= 768 ? 'top bottom' : 'top 90%',
                     toggleClass: { targets: container, className: 'active' },
                     once: true, // Trigger only once
                 });

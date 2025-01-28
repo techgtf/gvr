@@ -55,7 +55,7 @@ export default function Testimonial() {
     };
 
     return (
-        <div className='testimonialSection'>
+        <div className='testimonialSection 2xl:pt-[120px] 2xl:pb-[120px] xl:pt-[80px] xl:pb-[80px]'>
             <div className='max-w-[90%] m-auto relative'>
                 <WaterMarkHeading
                     textWaterMark='Our testimonials'
@@ -76,7 +76,7 @@ export default function Testimonial() {
                     loop={true}
                     navigation={true}
                     modules={[Pagination, Navigation]}
-                    className="testimonialSwiper lg:mt-32 mt-6"
+                    className="testimonialSwiper 2xl:mt-32 xl:mt-24 mt-6"
                 >
                     {slidesData && slidesData.map((item, index) =>
                         <SwiperSlide key={index}>
@@ -99,6 +99,6 @@ export default function Testimonial() {
                 </Swiper>
 
             </div>
-        </div>
+        </div >
     )
 }

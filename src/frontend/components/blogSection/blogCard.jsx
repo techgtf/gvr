@@ -23,7 +23,7 @@ export default function blogCard() {
     useImageReveal(".reveal")
 
     return (
-        <div className='blog_card lg:mt-12'>
+        <div className='blog_card 2xl:mt-12 xl:mt-10'>
             {
                 latestNews && (
                     latestNews.slice(0, 1).map((data, index) =>

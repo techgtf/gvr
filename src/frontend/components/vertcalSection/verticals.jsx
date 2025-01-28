@@ -30,13 +30,13 @@ export default function Verticals() {
     ]
 
     return (
-        <div className='verticalSection bg-[#EFF5FA] lg:pt-[80px] lg:pb-[80px] pt-[40px] pb-[40px] text-center'>
+        <div className='verticalSection bg-[#EFF5FA] 2xl:pt-[80px] 2xl:pb-[80px] xl:pt-[40px] xl:pb-[40px] text-center'>
             <div className='section_in max-w-[80%] m-auto'>
                 <WaterMarkHeading
                     sectionHeading='Other verticals'
                     animationConfig={animationConfig}
                 />
-                <div className='flex_div flex justify-between flex-wrap mt-[70px]'>
+                <div className='flex_div flex justify-between flex-wrap 2xl:mt-[70px] xl:mt-[40px]'>
                     {verticalData && (
                         verticalData.map((item, index) =>
                             <div className='boxes reveal relative lg:w-[47%] w-full' key={index}>
@@ -44,7 +44,7 @@ export default function Verticals() {
                                     <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
                                     <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><GoArrowUpRight /></span>
                                 </Link>
-                                <span className='title block pt-8 pb-5 text-[20px] uppercase tracking-[3px]'>{item.title}</span>
+                                <span className='title block pt-6 pb-3 text-[20px] uppercase tracking-[3px]'>{item.title}</span>
                                 <p className='desc'>{item.description}</p>
                             </div>
                         )
