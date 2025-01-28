@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import "./header.css"
-import { Link, useLocation } from 'react-router-dom'
-import { BASE_ROOT } from '../../../config'
-import * as CONFIG from '../../../config'
+import React, { useEffect, useState } from "react";
+import "./header.css";
+import { Link, useLocation } from "react-router-dom";
+import { BASE_ROOT } from "../../../config";
+import * as CONFIG from "../../../config";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const location = useLocation();
-  const[aboutus,setAboutUsPage]= useState(false);
+  const [aboutus, setAboutUsPage] = useState(false);
+
   useEffect(() => {
-    if(location.pathname === '/about-us')setIsActive(true); setAboutUsPage(true)
+    if (location.pathname === "/about-us") setIsActive(true);
+    setAboutUsPage(true);
     // const handleScroll = () => {
     //   // Check if the scroll position is greater than or equal to 100vh
     //   if (window.scrollY >= window.innerHeight) {
@@ -28,40 +30,46 @@ export default function Header() {
     // };
   }, []);
 
-  
-
-
-
   return (
-    <header className={`app_header fixed top-0 left-0 ring-0 w-full ${isActive ? "active" : ""} ${aboutus? '!bg-transparent !border-b-[0px]':''}`}>
-      <div className='max-w-[90%] m-auto'>
-        <div className='flex justify-between'>
+    <header
+      className={`app_header fixed top-0 left-0 ring-0 w-full ${
+        isActive ? "active" : ""
+      } ${aboutus ? "!bg-transparent !border-b-[0px]" : ""}`}
+    >
+      <div className="max-w-[90%] m-auto">
+        <div className="flex justify-between">
           <Link to={`${BASE_ROOT}`}>
-
-            {isActive ? (
-              <img className='logo-colred lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`} alt="logo" />
-            ) : (
-              <img className='logo-white lg:h-[70px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`} alt="logo" />
-            )}
-
-          </Link>
-          <button className='menuBtn'>
             {isActive ? (
               <img
-                className='whiteIcon'
-                alt='menu'
+                className="logo-colred lg:h-[70px]"
+                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`}
+                alt="logo"
+              />
+            ) : (
+              <img
+                className="logo-white lg:h-[70px]"
+                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`}
+                alt="logo"
+              />
+            )}
+          </Link>
+          <button className="menuBtn">
+            {isActive ? (
+              <img
+                className="whiteIcon"
+                alt="menu"
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`}
               />
             ) : (
               <img
-                className='colredIcon'
+                className="colredIcon"
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`}
-                alt='menu'
+                alt="menu"
               />
             )}
           </button>
         </div>
       </div>
     </header>
-  )
+  );
 }

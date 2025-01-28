@@ -11,7 +11,7 @@ export default {
           primary: '#33638B', 
         },
       },
-   
+      
   },
   plugins: [],
 }

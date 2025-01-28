@@ -28,7 +28,7 @@ export const UserRoutes = [
                 path: `about-us`,
                 element: (
                     <Suspense fallback={<Loader />}>
-                        <Layout>
+                        <Layout >
                             <Aboutus />
                         </Layout>
                     </Suspense>
