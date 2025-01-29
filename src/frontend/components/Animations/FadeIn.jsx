@@ -39,4 +39,4 @@ function FadeIn({ children, duration = 1, delay = 0 }) {
   )
 }
 
-export default FadeIn
+export default FadeIn;

@@ -5,9 +5,9 @@ import SlideIn from "../Animations/SlideIn";
 function BannerDetails() {
   return (
     <>
-        <div className="md:flex block justify-between items-center px-5 md:px-12 py-5 md:py-14">
+        <div className="md:flex block justify-between items-center px-5 md:px-12 py-5 md:py-8">
           <div className="name_place">
-          <SlideIn duration={1} > 
+          <SlideIn duration={1}  delay={0.3}> 
             <CommonHeading HeadingText="SHARANAM" />
             <p className="place uppercase pt-2">sector 107, noida</p>
             </SlideIn>

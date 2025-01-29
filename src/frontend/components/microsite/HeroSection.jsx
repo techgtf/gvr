@@ -24,7 +24,7 @@ function HeroSection() {
           >
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div
-              className="scroll_down cursor-pointer text-[8px] z-10 midlandfontmedium !tracking-[10px] text-white absolute bottom-10 flex justify-center w-full"
+              className="scroll_down cursor-pointer text-[7px] z-10 midlandfontmedium !tracking-[9px] text-white absolute bottom-10 flex justify-center w-full"
               onClick={scrollToBannerDetails}
             >
               SCROLL DOWN

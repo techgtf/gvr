@@ -82,7 +82,7 @@ export default function Testimonial() {
                         <SwiperSlide key={index}>
                             <div className='flex_div flex flex-wrap justify-between'>
                                 <div className='posterSide relative lg:w-[45%] w-full reveal'>
-                                    <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt="" />
+                                    <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt="Testimonial" />
                                     <button className='playbtn absolute top-[50%] left-[50%] z-[1]'>
                                         <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='h-[44px]' alt="playbtn" />
                                     </button>

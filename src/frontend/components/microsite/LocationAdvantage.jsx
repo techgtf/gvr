@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import loaction from "/assets/frontend/images/microsite/location/location.png";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
@@ -94,6 +94,26 @@ function LocationAdvantage() {
     },
   ];
 
+  const locationRef = useRef([]);
+
+  useEffect(() => {
+    gsap.fromTo(
+      locationRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: locationRef.current,
+          start: "top 90%",
+          end: "bottom 20%",
+        },
+      }
+    );
+  }, []);
+
   useImageReveal(".reveal");
 
   return (
@@ -162,15 +182,15 @@ function LocationAdvantage() {
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
 
-          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20">
+          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" >
             {(activeTab === "drive" ? driveData : walkData).map(
               (item, index) => (
                 <li
                   key={index}
                   className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5"
-                >
+                  ref={(el) => (locationRef.current[index] = el)}>
                   <div className="icon">
-                    <img src={item.image} alt="" />
+                    <img src={item.image} alt="Icon" />
                   </div>
                   <div className="text w-72">
                     <p>{item.text}</p>

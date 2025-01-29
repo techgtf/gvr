@@ -37,7 +37,7 @@ export default function Header() {
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>
             <img
-              className={`lg:h-[60px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  sm:w-full`} 
+              className={`lg:h-[65px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  lg:w-full`} 
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
               alt="logo"
             />

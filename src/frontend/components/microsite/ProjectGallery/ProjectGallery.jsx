@@ -9,7 +9,10 @@ import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
 import gsap from "gsap";
 import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function ProjectGallery() {
   const [activeTab, setActiveTab] = useState("actual");
@@ -38,10 +41,32 @@ function ProjectGallery() {
     }
   }, []);
 
+const projectRef = useRef();
+  
+
+  useEffect(()=>{
+    gsap.fromTo(".gallery_images", 
+      {
+        opacity : 0,
+        y : 50
+      }, {
+        opacity : 1,
+        y : 0,
+        duration : 1.7,
+        stagger : 1,
+        scrollTrigger: {
+          trigger: projectRef.current,
+          start: "top 80%",
+          // end: "bottom 20%",
+        },
+      }
+    )
+  }, [])
+
   const imageData = activeTab === "actual" ? actualImages : renderImages;
 
   return (
-    <section className="project_gallery  flex items-center px-5 md:px-12 py-5 md:py-14 bg-[#EFF5FA]" id="gallery">
+    <section ref={projectRef} className="project_gallery  flex items-center px-5 md:px-12 py-5 md:py-14 bg-[#EFF5FA]" id="gallery">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="project_gallery_content">
         <FadeIn duration={2} delay={0.5}> 
@@ -80,7 +105,7 @@ function ProjectGallery() {
           </div>
         </div>
 
-        <div className="slider">
+        <div className="slider" >
           <div className="nav_buttons flex justify-end gap-5 py-5">
             <button
               ref={prevRef}
