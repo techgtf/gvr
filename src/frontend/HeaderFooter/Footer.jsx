@@ -14,12 +14,21 @@ export default function Footer() {
     <>
     <section id="mainfooter">
     <footer className='footermain bg-slate-700 text-center text-white py-8 relative'>
+<<<<<<< HEAD
       <button className='toggelButton absolute left-0 right-0 top-[-28px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full p-[8px]'
         onClick={() => {
           setToggelLinks(!toggelLinks);
         }}>
         <span className='icon h-[35px] w-[35px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
           {toggelLinks ? <LiaAngleUpSolid className='text-[14px]' /> : <LiaAngleDownSolid className='text-[14px]' />}
+=======
+      <button className='toggelButton absolute left-0 right-0 top-[-25px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full p-2'
+        onClick={() => {
+          setToggelLinks(!toggelLinks);
+        }}>
+        <span className='icon lg:h-[30px] lg:w-[30px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
+          {toggelLinks ? <LiaAngleUpSolid className='lg:text-xl' /> : <LiaAngleDownSolid className='lg:text-xl' />}
+>>>>>>> origin/khushi
         </span>
       </button>
       <div className='footer_container max-w-[95%] m-auto'>

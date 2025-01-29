@@ -34,3 +34,16 @@
 .lightbox-container img {
   box-shadow: none !important;
 }
+#cursor {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #000000bd;
+  position: fixed;
+  font-size: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  z-index: 9;
+}
