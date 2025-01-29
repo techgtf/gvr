@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @font-face {
   font-family: "midland-luxury-medium";
   font-display: swap;
   src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Regular.otf");
 }
+
 @font-face {
   font-family: "midland-luxury-Bold";
   font-display: swap;
   src: url("/assets/frontend/fonts/midland-luxury/regular/MidlandLuxury-Medium.otf");
 }
+
 /* Reset CSS */
 *,
 *::before,
@@ -21,6 +24,7 @@
   font-family: "Poppins", serif;
   letter-spacing: 0.5px;
 }
+
 html,
 body {
   position: relative;
@@ -35,6 +39,7 @@ body {
 body {
   font-family: "Poppins", serif;
 }
+
 img,
 picture,
 video,
@@ -43,6 +48,7 @@ svg {
   display: block;
   max-width: 100%;
 }
+
 button,
 input,
 select,
@@ -52,39 +58,49 @@ textarea {
   border: 0;
   outline: 0;
 }
+
 a {
   text-decoration: none;
 }
+
 ul,
 ol {
   list-style: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote::before,
 blockquote::after,
 q::before,
 q::after {
   content: "";
 }
+
 :focus {
   outline: none;
 }
+
 ::-webkit-scrollbar {
   width: 0;
 }
+
 img {
   max-width: 100%;
 }
+
 #root .container {
   max-width: 90%;
 }
+
 /* end reset csss */
 :root {
   --black: #000000;
@@ -99,9 +115,11 @@ img {
 .midlandfontmedium {
   font-family: "midland-luxury-medium";
 }
+
 .midlandfontbold {
   font-family: "midland-luxury-Bold";
 }
+
 .fontItalic {
   font-style: italic;
 }
@@ -110,10 +128,12 @@ img {
   font-size: 12px;
   letter-spacing: 4px;
 }
+
 .common_pera {
-  font-size: 14px;
-  line-height: 30px;
+  font-size: 12px;
+  line-height: 25px;
 }
+
 .common_btn {
   font-size: 16px;
   letter-spacing: 1px;
@@ -121,38 +141,47 @@ img {
   align-items: center;
   gap: 0 12px;
 }
+
 .common_btn svg {
   font-size: 20px;
 }
+
 .waterMarkDiv {
   position: relative;
 }
+
 .about .waterMarkDiv .bg_text {
   font-size: 3.5vw;
 }
+
 .plans .waterMarkDiv .bg_text {
   font-size: 2vw;
   rotate: 180deg;
 }
+
 .waterMarkDiv .bg_text {
   letter-spacing: 1px;
 }
+
 .waterMarkDiv.vertical .bg_text {
   letter-spacing: -20px;
 }
+
 .sectionHeading {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 4px;
   word-spacing: 8px;
 }
+
 .fullBtn {
   background: var(--primary);
   padding: 10px 25px;
 }
+
 .fullBtn .line {
   display: inline-block;
-  width: 20px;
+  width: 16px;
   height: 2px;
   background: var(--white);
 }
@@ -165,9 +194,52 @@ img {
   clip-path: polygon(0 0, 20% 0, 21% 100%, 0% 100%);
   transition: all 1.2s ease-in-out;
 }
+
 .reveal.active {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   transform: translate(0, 0);
+}
+
+.reveal_fade .reveal {
+  clip-path: unset;
+}
+
+.reveal_fade .reveal.active {
+  clip-path: unset;
+}
+
+.reveal_fade .reveal::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  opacity: 1;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  transition: all 1s ease-in-out;
+}
+
+.reveal_fade .reveal.active:before {
+  height: 0;
+}
+
+.reveal_cut_effect .reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 11%, 0 10%);
+}
+
+.reveal_cut_effect .reveal.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.reveal_cut_effect_1 .reveal {
+  clip-path: polygon(0 71%, 100% 71%, 100% 100%, 0% 100%);
+}
+
+.reveal_cut_effect_1 .reveal.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 /* Add this in your global CSS */
@@ -177,4 +249,3 @@ img {
 }
 
 /*end common Css */
-
