@@ -86,13 +86,13 @@ function ProjectGallery() {
               ref={prevRef}
               className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
             >
-              <LuChevronLeft className="w-8 h-8 border-2 border-gray-500 rounded-full" />
+              <LuChevronLeft className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
             </button>
             <button
               ref={nextRef}
               className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
             >
-              <LuChevronRight className="w-8 h-8 border-2 border-gray-500 rounded-full" />
+              <LuChevronRight className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
             </button>
           </div>
 

@@ -32,6 +32,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+*{
+  cursor: none;
+}
 body {
   font-family: "Poppins", serif;
 }

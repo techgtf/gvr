@@ -33,7 +33,11 @@ function MicrositeMenu() {
 
             if (id === "mainfooter") {
               setIsFooterActive(true);
-            } else {
+            } else if(id === "overview") {
+              setIsFooterActive(true);
+            }
+            
+            else {
               setIsFooterActive(false);
             }
           }

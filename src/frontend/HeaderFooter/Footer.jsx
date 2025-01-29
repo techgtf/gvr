@@ -14,12 +14,12 @@ export default function Footer() {
     <>
     <section id="mainfooter">
     <footer className='footermain bg-slate-700 text-center text-white py-8 relative'>
-      <button className='toggelButton absolute left-0 right-0 top-[-35px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full p-2'
+      <button className='toggelButton absolute left-0 right-0 top-[-25px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full p-2'
         onClick={() => {
           setToggelLinks(!toggelLinks);
         }}>
-        <span className='icon lg:h-[43px] lg:w-[43px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
-          {toggelLinks ? <LiaAngleUpSolid className='lg:text-2xl' /> : <LiaAngleDownSolid className='lg:text-2xl' />}
+        <span className='icon lg:h-[30px] lg:w-[30px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
+          {toggelLinks ? <LiaAngleUpSolid className='lg:text-xl' /> : <LiaAngleDownSolid className='lg:text-xl' />}
         </span>
       </button>
       <div className='footer_container max-w-[95%] m-auto'>

@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import MicrositeMenu from "./components/microsite/MicrositeMenu";
 import { useLocation } from "react-router-dom";
+import CustomCursor from "./components/CustomCursor";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function Layout({ children }) {
@@ -27,6 +28,7 @@ function Layout({ children }) {
 
   return (
     <>
+    <CustomCursor/>
       <Header />
       {/* <ContextProvider> */}
       {location.pathname === "/microsite" && <MicrositeMenu />}
