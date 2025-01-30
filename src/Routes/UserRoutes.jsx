@@ -18,30 +18,30 @@ export const UserRoutes = [
       {
         path: `${BASE_ROOT}`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <Home />
-            </Layout>
-          </Suspense>
+          // <Suspense fallback={<Loader />}>
+          <Layout>
+            <Home />
+          </Layout>
+          // </Suspense>
         ),
       },
       {
-        path: `${BASE_ROOT}/microsite`,
+        path: `${BASE_ROOT}microsite`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <Microsite />
-              <MicrositeMenu />
-            </Layout>
-          </Suspense>
+          // <Suspense fallback={<Loader />}>
+          <Layout>
+            <Microsite />
+            <MicrositeMenu />
+          </Layout>
+          // </Suspense>
         ),
       },
       {
         path: "*",
         element: (
-          <Suspense fallback={<Loader />}>
-            <PageNotFound />
-          </Suspense>
+          // <Suspense fallback={<Loader />}>
+          <PageNotFound />
+          // </Suspense>
         ),
       },
     ],
