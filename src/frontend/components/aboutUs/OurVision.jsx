@@ -1,18 +1,22 @@
+import { useImageReveal } from "../useImageReveal";
+
 const OurVision = () => {
+  useImageReveal(".reveal");
+
   return (
     <div className="bg-[#33638B] my-[3.5rem]  text-white flex justify-center">
-      <div className="flex justify-between items-center py-[6.5rem] flex-wrap max-w-[85%]">
+      <div className="flex justify-between items-center py-[4.5rem] flex-wrap max-w-[85%]">
         <img
-          className="w-[350px] h-[350px]"
+          className="w-[350px] h-[350px] reveal"
           src="assets/frontend/images/aboutus/vision_and_mission.jpg"
           alt="vision_and_mission"
         />
         <div className="basis-[60%]">
-          <div className="mb-[2rem]">
+          <div className="mb-[3.5rem]">
             <h3 className="midlandfontmedium text-[11px] tracking-[2px]">
               Our Vision
             </h3>
-            <p className="text-[13px] mt-[1rem] poppins-regular">
+            <p className="text-[13px] mt-[1rem] poppins-regular font-[300]">
               Our vision is to set new industry standards by delivering
               unparalleled quality through continuous innovation. We aspire to
               create unique, customer-focused solutions that redefine
@@ -23,7 +27,7 @@ const OurVision = () => {
             <h3 className="midlandfontmedium text-[11px] tracking-[2px]">
               Our Mission
             </h3>
-            <p className="text-[13px] mt-[1rem] poppins-regular">
+            <p className="text-[13px] mt-[1rem] poppins-regular font-[300]">
               Our mission is to drive national progress and enrich lives by
               delivering world-class infrastructure and financial services. We
               are committed to building a future where innovation meets

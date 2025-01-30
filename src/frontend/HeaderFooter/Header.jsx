@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./header.css";
-import { Link } from 'react-router-dom';
-import { BASE_ROOT } from '../../../config';
-import * as CONFIG from '../../../config';
-import { Context } from '../context/Context';
+import { Link, useLocation } from "react-router-dom";
+import { BASE_ROOT } from "../../../config";
+import * as CONFIG from "../../../config";
 
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
-  const { isLoading } = useContext(Context);
-
+  const location = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -27,28 +25,48 @@ export default function Header() {
       setPrevScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollY]);
-
+  console.log(location, "dddd");
   return (
-    <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full ${isLoading ? 'z-0' : 'z-10'}`}>
-      <div className='max-w-[95%] m-auto'>
-        <div className='flex justify-between'>
+    <header
+      className={`app_header ${
+        isFixed ? "fixed active" : "relative"
+      } top-0 left-0 ring-0 w-full !z-10`}
+    >
+      <div className="max-w-[95%] m-auto">
+        <div className="flex justify-between">
           <Link to={`${BASE_ROOT}`}>
             <img
-              className={`lg:h-[65px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  lg:w-full`}
-              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
+              className={`lg:h-[60px] ${
+                isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "logo-colored"
+                  : "logo-white"
+              } w-[40%]  sm:w-full`}
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${
+                isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "-colored"
+                  : ""
+              }.png`}
               alt="logo"
             />
           </Link>
-          <button className='menuBtn'>
+          <button className="menuBtn">
             <img
-              className={`lg:h-[35px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`}
-              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed ? '1' : ''}.png`}
-              alt='menu'
+              className={`lg:h-[35px] ${
+                isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "whiteIcon"
+                  : "colredIcon"
+              }`}
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${
+                isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "1"
+                  : ""
+              }.png`}
+              alt="menu"
             />
           </button>
         </div>

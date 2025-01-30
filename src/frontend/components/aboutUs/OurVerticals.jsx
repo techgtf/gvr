@@ -2,6 +2,7 @@ import WaterMarkHeading from "../waterMarkHeading";
 import CommonBtn from "../commonBtn";
 import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
+import { useImageReveal } from "../useImageReveal";
 
 const OurVerticals = () => {
   const animationConfig = {
@@ -10,6 +11,7 @@ const OurVerticals = () => {
     from: { x: -100, opacity: 0 },
     to: { x: 0, opacity: 1, duration: 1 },
   };
+  useImageReveal(".reveal");
   return (
     <>
       <div className="max-w-[90%] m-auto relative mb-[5rem]">
@@ -63,14 +65,14 @@ const OurVerticals = () => {
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-1.jpg"
             alt="vertical-1"
-            className="basis-[32%] h-[480px]"
+            className="basis-[32%] reveal h-[480px]"
           />
         </div>
         <div className="flex items-center justify-between mt-[4rem] flex-wrap">
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-2.jpg"
             alt="vertical-1"
-            className="basis-[32%] h-[480px]"
+            className="basis-[32%] reveal h-[480px]"
           />
           <div className="basis-[60%] pr-[7rem]">
             <h2 className="sectionHeading text-left tracking-[4px] !text-[16px] midlandfontmedium text-primary">
