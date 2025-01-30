@@ -4,95 +4,34 @@ import * as CONFIG from "../../config";
 
 const Loader = () => {
     const [percent, setPercent] = useState(0);
-    const [loadingComplete, setLoadingComplete] = useState(false);
     const percentRef = useRef(null);
 
-    // Function to track media loading progress
-    const trackMediaLoading = () => {
-        const images = Array.from(document.images);
-        const videos = Array.from(document.getElementsByTagName('video'));
-        const totalMedia = images.length + videos.length;
-        let loadedMedia = 0;
 
-        const updateProgress = () => {
-            const progress = Math.ceil((loadedMedia / totalMedia) * 100);
-            setPercent(progress);
-
-            if (loadedMedia === totalMedia) {
-                setLoadingComplete(true);
-            }
-        };
-
-        const handleImageLoad = () => {
-            loadedMedia += 1;
-            updateProgress();
-        };
-
-        const handleVideoLoad = () => {
-            loadedMedia += 1;
-            updateProgress();
-        };
-
-        // Attach load event handlers to images and videos
-        images.forEach((image) => {
-            image.onload = handleImageLoad;
-            if (image.complete) handleImageLoad(); // Check if already loaded
-        });
-
-        videos.forEach((video) => {
-            video.onloadeddata = handleVideoLoad;
-            if (video.readyState === 4) handleVideoLoad(); // Check if already loaded
-        });
-
-        // Cleanup function to remove event listeners
-        return () => {
-            images.forEach((image) => {
-                image.onload = null;
-            });
-            videos.forEach((video) => {
-                video.onloadeddata = null;
-            });
-        };
-    };
 
     useEffect(() => {
-        const cleanup = trackMediaLoading();
-
-        return () => {
-            cleanup(); // Cleanup on unmount
-        };
-    }, []);
-
-    useEffect(() => {
-        if (loadingComplete) return;
-
         const interval = setInterval(() => {
             setPercent((prevPercent) => Math.min(prevPercent + 1, 100));
             if (percent >= 100) clearInterval(interval);
-        }, 50);
+        }, 100);
 
         return () => clearInterval(interval); // Cleanup on unmount
-    }, [loadingComplete, percent]);
+    }, [percent]);
 
     return (
-        <>
-            {!loadingComplete && (
-                <div
-                    role="status"
-                    aria-live="polite"
-                    className="loader flex h-screen w-full fixed top-0 left-0 flex-col items-center justify-center bg-white text-white z-[9999]"
-                >
-                    <div className="loader_in w-full relative h-full text-center place-content-center" style={{ display: 'grid', background: "rgb(239 245 250)" }}>
-                        <h3 className="midlandfontmedium tracking-[4px] text-black">
-                            Loading Luxury Properties...
-                        </h3>
-                        <h3 ref={percentRef} className="midlandfontmedium tracking-[4px] text-black mt-5">
-                            {percent}%
-                        </h3>
-                    </div>
-                </div>
-            )}
-        </>
+        <div
+            role="status"
+            aria-live="polite"
+            className="loader flex h-screen w-full fixed top-0 left-0 flex-col items-center justify-center bg-white text-white z-[9999]"
+        >
+            <div className="loader_in w-full relative h-full text-center place-content-center" style={{ display: 'grid', background: "rgb(239 245 250)" }}>
+                <h3 className="midlandfontmedium tracking-[4px] text-black">
+                    Loading Luxury Properties...
+                </h3>
+                <h3 ref={percentRef} className="midlandfontmedium tracking-[4px] text-black mt-5">
+                    {percent}%
+                </h3>
+            </div>
+        </div>
     );
 };
 
