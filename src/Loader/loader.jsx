@@ -21,7 +21,7 @@ const Loader = () => {
         <div
             role="status"
             aria-live="polite"
-            className="loader flex h-screen w-full fixed top-0 left-0 flex-col items-center justify-center bg-white text-white z-[9999]"
+            className="loader flex h-screen w-full fixed top-0 left-0 flex-col items-center justify-center bg-white text-white !z-[999]"
         >
             <div className="loader_in w-full relative h-full text-center place-content-center" style={{ display: 'grid', background: "rgb(239 245 250)" }}>
                 <h3 className="midlandfontmedium tracking-[4px] text-black">
