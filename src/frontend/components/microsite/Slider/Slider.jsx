@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from 'swiper/modules';
 import {Fullscreen, Zoom} from 'yet-another-react-lightbox/plugins'
 import slide1 from "/assets/frontend/images/microsite/amentities/slider/slide1.png";
 import slide2 from "/assets/frontend/images/microsite/amentities/slider/slide2.png";
@@ -54,48 +54,52 @@ function Slider() {
           ref={prevRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronLeft className="w-8 h-8 border-2 border-gray-500 rounded-full" />
+          <LuChevronLeft className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
         <button
           ref={nextRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronRight className="w-8 h-8 border-2 border-gray-500 rounded-full" />
+          <LuChevronRight className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
       </div>
 
       {/* Swiper Slider */}
       <Swiper
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        loop={true}
-        slidesPerView={1} // Default to 1 slide per view
-        spaceBetween={5}
-        breakpoints={{
-          640: {
-            slidesPerView: 1, // Mobile devices
-          },
-          768: {
-            slidesPerView: 2, // Tablets
-          },
-          1024: {
-            slidesPerView: 4, // Laptops and larger screens
-          },
-        }}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
+  onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  loop={true}
+  autoplay={{
+    delay: 1000,
+    disableOnInteraction: false,
+  }}
+  slidesPerView={1}
+  spaceBetween={5}
+  breakpoints={{
+    640: {
+      slidesPerView: 1, // Mobile devices
+    },
+    768: {
+      slidesPerView: 2, // Tablets
+    },
+    1024: {
+      slidesPerView: 4, // Laptops and larger screens
+    },
+  }}
+  navigation={{
+    prevEl: prevRef.current,
+    nextEl: nextRef.current,
+  }}
+  modules={[Autoplay, Navigation]}
+  className="mySwiper"
+>
         {amentitiesImages.map((item, index) => (
           <SwiperSlide key={index}>
             <img
               src={item.image}
               alt={item.alt}
-              className="!w-[350px] !h-[200px] !object-cover cursor-pointer"
+              className="!w-[350px] !h-[250px] !object-cover cursor-pointer"
               onClick={() => openLightbox(index)} // Trigger lightbox on image click
             />
           </SwiperSlide>

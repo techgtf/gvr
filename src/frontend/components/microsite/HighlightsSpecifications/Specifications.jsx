@@ -1,111 +1,109 @@
-import React from 'react'
-import mansory from "/assets/frontend/images/microsite/specifications/mansory.png";
-import parquet from "/assets/frontend/images/microsite/specifications/parquet.png";
-import mansory1 from "/assets/frontend/images/microsite/specifications/mansory1.png";
-import mansory2 from "/assets/frontend/images/microsite/specifications/mansory2.png";
-import mansory3 from "/assets/frontend/images/microsite/specifications/mansory3.png";
-import parquet2 from "/assets/frontend/images/microsite/specifications/parquet2.png";
-import door from "/assets/frontend/images/microsite/specifications/door.png";
-import roller from "/assets/frontend/images/microsite/specifications/roller.png";
-import FadeIn from '../../Animations/FadeIn';
-import CommonHeading from '../../commonHeading';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeIn from "../../Animations/FadeIn";
+import CommonHeading from "../../commonHeading";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const specifications = [
+  {
+    title: "Master Bedroom(s)",
+    items: [
+      {
+        image: "/assets/frontend/images/microsite/specifications/mansory.png",
+        description:
+          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
+      },
+      {
+        image: "/assets/frontend/images/microsite/specifications/parquet.png",
+        description:
+          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
+      },
+    ],
+  },
+  {
+    title: "Modular Kitchen",
+    items: [
+      {
+        image: "/assets/frontend/images/microsite/specifications/mansory2.png",
+        description:
+          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
+      },
+      {
+        image: "/assets/frontend/images/microsite/specifications/mansory3.png",
+        description: "Fixtures: High Quality Branded CP Fittings",
+      },
+    ],
+  },
+  {
+    title: "Living/Dining Room",
+    items: [
+      {
+        image: "/assets/frontend/images/microsite/specifications/mansory1.png",
+        description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint",
+      },
+      {
+        image: "/assets/frontend/images/microsite/specifications/parquet2.png",
+        description: "Floors: High Quality Vitrified Tile",
+      },
+      {
+        image: "/assets/frontend/images/microsite/specifications/door.png",
+        description: "Floors: High Quality Vitrified Tile",
+      },
+      {
+        image: "/assets/frontend/images/microsite/specifications/roller.png",
+        description: "Floors: High Quality Vitrified Tile",
+      },
+    ],
+  },
+];
 
 function Specifications() {
+  const specificationRefs = useRef([]);
+
+  useEffect(() => {
+    gsap.fromTo(
+      specificationRefs.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: specificationRefs.current,
+          start: "top 90%",
+          end: "bottom 20%",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <>
-        <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
-            <div className="about_desc">
-            <FadeIn duration={2} delay={0.6}>
-            <CommonHeading HeadingText="specifications" />
-          </FadeIn>
-              <div className="grid grid-cols-12 mt-14 h-[350px] overflow-y-scroll pr-5">
-                <div className="col-span-12 md:col-span-6">
-                  <div className="master">
-                    <h4 className="font-semibold">Master Bedroom(s)</h4>
-
-                    <div className="flex gap-3 py-5">
-                      <div className="icon">
-                        <img src={mansory} alt="mansory" className='h-[80%]' />
-                      </div>
-                      <p className=" w-60">
-                        Walls : Gypsum Plaster/ Level Plast on RCC With Emulsion
-                        Paint
-                      </p>
-                    </div>
-                    <div className="flex gap-3 py-5">
-                      <div className="icon">
-                        <img src={parquet} alt="parquet" className='h-[80%]' />
-                      </div>
-                      <p className=" w-60">
-                        Walls : Gypsum Plaster/ Level Plast on RCC With Emulsion
-                        Paint
-                      </p>
-                    </div>
+    <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
+      <div className="about_desc">
+      <FadeIn duration={2} delay={0.5}>
+          <CommonHeading HeadingText="Specifications" />
+        </FadeIn>
+        <div className="grid grid-cols-12 mt-14 h-[350px] overflow-y-scroll pr-5">
+          {specifications.map((spec, index) => (
+            <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)} >
+              <h4 className="font-semibold">{spec.title}</h4>
+              {spec.items.map((item, itemIndex) => (
+                <div key={itemIndex} className="flex gap-3 py-5">
+                  <div className="icon">
+                    <img src={item.image} alt={item.description} className="h-[80%]" />
                   </div>
-                  <div className="modular_kitchen mt-10">
-                    <h4 className="font-semibold">Modular Kitchen</h4>
-
-                    <div className="flex gap-3 py-5">
-                      <div className="icon">
-                        <img src={mansory2} alt="mansory 2" className='h-[80%]' />
-                      </div>
-                      <p className=" w-60">
-                        Walls : Gypsum Plaster/ Level Plast on RCC With Emulsion
-                        Paint
-                      </p>
-                    </div>
-                    <div className="flex gap-3 py-5">
-                      <div className="icon">
-                        <img src={mansory3} alt="mansory 3" className='h-[80%]' />
-                      </div>
-                      <p className=" w-60">
-                        Fixtures : High Quality Branded CP Fittings
-                      </p>
-                    </div>
-                  </div>
+                  <p className="w-60">{item.description}</p>
                 </div>
-                <div className="col-span-12 md:col-span-6 ">
-                  <h4 className="font-semibold">Living/Dinning Room</h4>
-                  <div className="flex gap-3 py-5">
-                    <div className="icon">
-                      <img src={mansory1} alt="mansory 1" className='h-[80%]' />
-                    </div>
-                    <p className=" w-60">
-                      Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint
-                    </p>
-                  </div>
-                  <div className="flex gap-3 py-5">
-                    <div className="icon">
-                      <img src={parquet2} alt="parquet 2" className='h-[80%]' />
-                    </div>
-                    <p className=" w-60">
-                      Floors : High Quality Vitrified Tile
-                    </p>
-                  </div>
-                  <div className="flex gap-3 py-5">
-                    <div className="icon">
-                      <img src={door} alt="door" className='h-[80%]' />
-                    </div>
-                    <p className=" w-60">
-                      Floors : High Quality Vitrified Tile
-                    </p>
-                  </div>
-                 
-
-                  <div className="flex gap-3 py-5">
-                    <div className="icon">
-                      <img src={roller} alt="roller" className='h-[80%]' />
-                    </div>
-                    <p className=" w-60">
-                      Floors : High Quality Vitrified Tile
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-    </>
-  )
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Specifications
+export default Specifications;

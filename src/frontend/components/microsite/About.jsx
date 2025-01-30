@@ -5,11 +5,13 @@ import CommonHeading from "../commonHeading";
 import { useImageReveal } from "../useImageReveal";
 import SlideIn from "../Animations/SlideIn";
 import FadeIn from "../Animations/FadeIn";
+import ZoomOut from "../Animations/ZoomOut";
 
 function About() {
   const reverseText = (text) => {
     return text.split("").reverse().join("");
   };
+
   const animationConfig1 = {
     stagger: -0.1, // Reverse animation order for one instance
   };
@@ -30,12 +32,12 @@ function About() {
         <div className="col-span-12 md:col-span-4">
           <div className="about_heading">
             <FadeIn duration={2} delay={0.7}>
-            <CommonHeading HeadingText="about us" />
+              <CommonHeading HeadingText="about us" />
             </FadeIn>
           </div>
         </div>
         <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
-          <div className="about_desc ">
+          <div className="about_desc">
             <SlideIn duration={0.8} delay={0.2}>
               <p className="text-justify">
                 Great Value presents a new stature of luxury residential
@@ -50,8 +52,13 @@ function About() {
                 destination for your family.
               </p>
             </SlideIn>
-
-            <img src={aboutImg} alt="About Us" className="pt-4 reveal" />
+            <div className="relative  w-full">
+              <div className="hero_vdo_div  w-[96] !bg-cover mt-4 !bg-center bg-no-repeat overflow-hidden">
+                <ZoomOut initialScale={1.5} duration={2}>
+                  <img src={aboutImg} alt="" className="object-cover" />
+                </ZoomOut>
+              </div>
+            </div>
           </div>
         </div>
       </div>

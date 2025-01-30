@@ -12,16 +12,18 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
   
       gsap.fromTo(
         element,
-        { y: 100, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration,
           delay,
+          stagger: 1,
           scrollTrigger: {
             trigger: element,
             start: 'top 90%', 
             end: 'bottom 20%', 
+            
           },
         }
       );
