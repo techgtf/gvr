@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
+import About from "../frontend/pages/Aboutus";
 
 export const UserRoutes = [
   {
@@ -32,6 +33,16 @@ export const UserRoutes = [
             <Layout>
               <Microsite />
               <MicrositeMenu />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}about-us`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <About />
             </Layout>
           </Suspense>
         ),

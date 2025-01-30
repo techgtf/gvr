@@ -10,7 +10,7 @@ const Loader = () => {
     const interval = setInterval(() => {
       setPercent((prevPercent) => Math.min(prevPercent + 1, 100));
       if (percent >= 100) clearInterval(interval);
-    }, 550);
+    }, 250);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [percent]);

@@ -21,39 +21,36 @@ export default function Hero({
     );
 
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-    const clipRef = useRef(null);
-    const videoRef = useRef(null);
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.scrollIntoView({ behavior: "smooth" });
-        }
-    }, [])
+
+    console.log(isVideoLoaded);
+
 
 
 
     return (
         <div className="heroSection relative z-0">
             {/* Background Image */}
-            {/* {!isVideoLoaded &&
+            {!isVideoLoaded &&
                 <div className="img_div lg:h-[82vh]">
                     <img
                         className="lg:h-[82vh] h-auto w-full object-cover"
-                        src={imageUrl || `${CONFIG.ASSET_IMAGE_URL}frontend/images/home/hero.webp`}
+                        src={imageUrl || `assets/frontend/images/home/hero.jpg`}
                         alt="Hero Section"
                     />
+                    <h3>Loading Video...</h3>
                 </div>
-            } */}
+            }
+
 
 
             <div className='hero_vdo_div h-[80vh] relative w-full]'
-                style={{ background: "url(assets/frontend/images/home/hero.webp)" }}
+                style={{ background: "url(assets/frontend/images/home/hero.jpg)" }}
             >
 
                 <LoadAnimation />
 
                 {/* <ZoomOut initialScale={1.5} duration={4}> */}
                 <video
-                    ref={videoRef}
                     // className="min-h-svh"
                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
                     autoPlay

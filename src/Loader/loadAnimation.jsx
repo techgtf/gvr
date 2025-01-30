@@ -10,7 +10,7 @@ export default function LoadAnimation() {
 
         gsap.to(loaderPanes, {
             height: "0%",
-            duration: 2,
+            duration: 1,
             ease: "power2.out",
             delay: 0.5,
             stagger: 0.2,

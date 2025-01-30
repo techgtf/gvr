@@ -34,7 +34,7 @@ export default function Projects() {
     ]
 
     return (
-        <div className='projectSection reveal_cut_effect 2xl:pt-[30px] lg:pt-[30px] text-center'>
+        <div className='projectSection reveal_cut_effect 2xl:pt-[56px] lg:pt-[30px] text-center'>
             <WaterMarkHeading
                 textWaterMark={"Explore Properties"}
                 sectionHeading={"Explore Properties"}
