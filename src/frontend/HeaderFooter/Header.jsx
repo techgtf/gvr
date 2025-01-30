@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "./header.css";
 import { Link } from 'react-router-dom';
 import { BASE_ROOT } from '../../../config';
 import * as CONFIG from '../../../config';
+import { Context } from '../context/Context';
 
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const { isLoading } = useContext(Context);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,12 +34,12 @@ export default function Header() {
   }, [prevScrollY]);
 
   return (
-    <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-10`}>
+    <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full ${isLoading ? 'z-0' : 'z-10'}`}>
       <div className='max-w-[95%] m-auto'>
         <div className='flex justify-between'>
           <Link to={`${BASE_ROOT}`}>
             <img
-              className={`lg:h-[65px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  lg:w-full`} 
+              className={`lg:h-[65px] ${isFixed ? "logo-colored" : "logo-white"} w-[40%]  lg:w-full`}
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed ? '-colored' : ''}.png`}
               alt="logo"
             />

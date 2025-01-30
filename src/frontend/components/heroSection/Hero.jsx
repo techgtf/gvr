@@ -32,7 +32,7 @@ export default function Hero({
 
 
     return (
-        <div className="heroSection relative">
+        <div className="heroSection relative z-0">
             {/* Background Image */}
             {/* {!isVideoLoaded &&
                 <div className="img_div lg:h-[82vh]">

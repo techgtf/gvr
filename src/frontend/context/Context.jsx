@@ -4,6 +4,7 @@ export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openEnquiryForm = () => {
     setShowEnquiryForm(true);
@@ -14,7 +15,7 @@ const ContextProvider = ({ children }) => {
   };
 
   return (
-    <Context.Provider value={{ showEnquiryForm, openEnquiryForm, closeEnquiryForm }}>
+    <Context.Provider value={{ showEnquiryForm, openEnquiryForm, closeEnquiryForm, isLoading, setIsLoading }}>
       {children}
     </Context.Provider>
   );
