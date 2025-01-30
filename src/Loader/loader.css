@@ -20,3 +20,24 @@
         opacity: 0.9;
     }
 }
+
+.loader {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loader-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+}
+
+.content-hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}

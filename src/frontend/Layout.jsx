@@ -7,10 +7,14 @@ import ScrollSmoother from "gsap/ScrollSmoother";
 import MicrositeMenu from "./components/microsite/MicrositeMenu";
 import { useLocation } from "react-router-dom";
 import CustomCursor from "./components/CustomCursor";
+import Loader from "../Loader/loader";
+import useMediaLoaded from "./components/useMediaLoaded";
+import "../Loader/loader.css";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function Layout({ children }) {
   const location = useLocation();
+  const mediaLoaded = useMediaLoaded();
 
   useEffect(() => {
     const smoother = ScrollSmoother.create({
@@ -28,17 +32,20 @@ function Layout({ children }) {
 
   return (
     <>
-    <CustomCursor/>
-      <Header />
-      {/* <ContextProvider> */}
-      {location.pathname === "/microsite" && <MicrositeMenu />}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          {children}
-          <Footer />
+      <div className={mediaLoaded ? "loader-hidden" : "loader"}>
+        <Loader />
+      </div>
+      <div className={mediaLoaded ? "content-visible" : "content-hidden"}>
+        <CustomCursor />
+        <Header />
+        {location.pathname === "/microsite" && <MicrositeMenu />}
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            {children}
+            <Footer />
+          </div>
         </div>
       </div>
-      {/* </ContextProvider> */}
     </>
   );
 }
