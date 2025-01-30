@@ -7,7 +7,6 @@ import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from './FooterBottom';
 
-
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
   return (
