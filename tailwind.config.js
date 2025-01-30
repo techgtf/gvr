@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#33638B',
+      },
       writingMode: {
         'vertical-rl': 'vertical-rl',
       },
@@ -21,3 +24,4 @@ export default {
   },
   plugins: [],
 }
+

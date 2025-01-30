@@ -30,21 +30,21 @@ export default function Verticals() {
     ]
 
     return (
-        <div className='verticalSection bg-[#EFF5FA] lg:pt-[80px] lg:pb-[80px] pt-[40px] pb-[40px] text-center'>
+        <div className='verticalSection reveal_cut_effect bg-[#EFF5FA] md:px-12 py-5 md:py-14 text-center'>
             <div className='section_in max-w-[80%] m-auto'>
                 <WaterMarkHeading
                     sectionHeading='Other verticals'
                     animationConfig={animationConfig}
                 />
-                <div className='flex_div flex justify-between flex-wrap mt-[70px]'>
+                <div className='flex_div flex justify-between flex-wrap mt-14'>
                     {verticalData && (
                         verticalData.map((item, index) =>
                             <div className='boxes reveal relative lg:w-[47%] w-full' key={index}>
                                 <Link to={item.link} className='relative block'>
-                                    <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
+                                    <img className='lg:h-[300px] h-[300px] w-full object-cover' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
                                     <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><GoArrowUpRight /></span>
                                 </Link>
-                                <span className='title block pt-8 pb-5 text-[20px] uppercase tracking-[3px]'>{item.title}</span>
+                                <span className='title block pt-6 pb-3 text-[18px] uppercase tracking-[3px]'>{item.title}</span>
                                 <p className='desc'>{item.description}</p>
                             </div>
                         )

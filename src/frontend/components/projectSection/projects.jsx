@@ -34,16 +34,16 @@ export default function Projects() {
     ]
 
     return (
-        <div className='projectSection lg:pt-[137px] pt-[100px] text-center'>
+        <div className='projectSection reveal_cut_effect 2xl:pt-[30px] lg:pt-[30px] text-center'>
             <WaterMarkHeading
                 textWaterMark={"Explore Properties"}
                 sectionHeading={"Explore Properties"}
                 animationConfig={animationConfig}
             />
-            <div className="flex_projects flex flex-wrap justify-center lg:pt-[70px] pt-[30px] lg:gap-[0] gap-[10px]">
+            <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[10px] reveal">
                 {projectData && projectData.map((item, index) => (
                     <div
-                        className="boxes reveal relative w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-8px)] xl:w-[calc(33.33%)]"
+                        className="boxes relative w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-8px)] xl:w-[calc(33.33%)]"
                         key={index}
                     >
                         <Link
@@ -52,7 +52,7 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                            className="img w-full h-[100%] lg:max-h-[550px] object-cover"
+                             className="img w-full xl:h-[470px] 2xl:h-[520px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />

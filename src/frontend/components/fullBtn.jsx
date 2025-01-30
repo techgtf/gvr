@@ -7,7 +7,7 @@ export default function FullBtn({
 }) {
     return (
         <div className='fullBtn text-white w-fit flex items-center gap-3'>
-            <Link className='link tracking-[2px] uppercase text-[16px]' to={link}>{text || 'click'}</Link>
+            <Link className='link tracking-[2px] uppercase text-[12px]' to={link}>{text || 'click'}</Link>
             <span className='line'></span>
             {/* {children} */}
         </div>

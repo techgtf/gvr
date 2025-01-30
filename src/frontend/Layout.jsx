@@ -32,6 +32,7 @@ function Layout({ children }) {
 
   return (
     <>
+<<<<<<< HEAD
       <div className={mediaLoaded ? "loader-hidden" : "loader"}>
         <Loader />
       </div>
@@ -44,6 +45,16 @@ function Layout({ children }) {
             {children}
             <Footer />
           </div>
+=======
+    <CustomCursor/>
+      {/* <ContextProvider> */}
+      <Header />
+      {location.pathname === "/microsite" && <MicrositeMenu />}
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          {children}
+          <Footer />
+>>>>>>> 6d5d146323632dbcdd9ce459a833972c127f3f86
         </div>
       </div>
     </>

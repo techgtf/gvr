@@ -22,14 +22,14 @@ export default function Header() {
         }
       }
 
-      setPrevScrollY(currentScrollY); 
+      setPrevScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollY]); 
+  }, [prevScrollY]);
 
   return (
     <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-10`}>
@@ -44,7 +44,7 @@ export default function Header() {
           </Link>
           <button className='menuBtn'>
             <img
-              className={`lg:h-[35px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`} 
+              className={`lg:h-[35px] ${isFixed ? 'whiteIcon' : 'colredIcon'}`}
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed ? '1' : ''}.png`}
               alt='menu'
             />

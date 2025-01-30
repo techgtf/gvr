@@ -1,8 +1,5 @@
-.app_header {
-  color: var(--white);
-  padding-top: 30px;
-  transition: all 0.2s ease-in-out;
-}
+.app_header{z-index: 9; color: var(--white); padding-top: 20px; transition: all 0.2s ease-in-out;}
+
 .app_header.active {
   background: var(--white);
   padding-top: 10px;
@@ -20,4 +17,3 @@
     transform: translateY(0);
   }
 }
-/* .app_header.active .logo-colred , .app_header.active .colredIcon{display: block;} */
