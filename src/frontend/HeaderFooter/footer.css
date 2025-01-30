@@ -1,5 +1,5 @@
 .footermain{background: var(--primary);}
 
 /* footerLinks */
-.footerLinks{height: 0; visibility: hidden;}
+.footerLinks{height: 0; visibility: hidden; border-top: 1px solid rgb(250 250 250 / 34%);}
 .footerLinks.active{height: auto; visibility: visible; transition: all 0.5s ease-in-out;}
