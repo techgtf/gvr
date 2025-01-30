@@ -13,7 +13,7 @@ function About() {
   };
 
   const animationConfig1 = {
-    stagger: -0.1, // Reverse animation order for one instance
+    stagger: -0.1,
   };
 
   useImageReveal(".reveal");

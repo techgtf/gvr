@@ -1,4 +1,3 @@
-// HeroSection.js
 import React, { useRef } from "react";
 import BannerDetails from "./BannerDetails";
 import ZoomOut from "../Animations/ZoomOut";
