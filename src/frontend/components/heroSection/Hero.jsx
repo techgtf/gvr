@@ -3,8 +3,8 @@ import { gsap } from "gsap";
 import * as CONFIG from '../../../../config';
 import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
-import Loader from "../../../Loader/loader";
-import { useImageReveal } from "../useImageReveal";
+import ZoomOut from "../Animations/ZoomOut";
+import LoadAnimation from "../../../Loader/loadAnimation";
 
 export default function Hero({
     videoUrl,
@@ -23,54 +23,35 @@ export default function Hero({
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const clipRef = useRef(null);
     const videoRef = useRef(null);
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [])
 
-    useImageReveal(".reveal")
 
-
-    // Handle body overflow based on video load state
-    // useEffect(() => {
-    //     if (!isVideoLoaded) {
-    //         document.body.style.overflow = "hidden";
-    //     } else {
-    //         document.body.style.overflow = "auto";
-    //     }
-    //     // Cleanup
-    //     return () => {
-    //         document.body.style.overflow = "auto";
-    //     };
-    // }, [isVideoLoaded]);
-
-    // Trigger GSAP animation once video is loaded
-    // useEffect(() => {
-    //     if (isVideoLoaded) {
-    //         gsap.set(clipRef.current, { clipPath: "circle(45% at 50% 50%)" });
-    //         gsap.to(clipRef.current, {
-    //             clipPath: "circle(100% at 50% 50%)",
-    //             duration: 3,
-    //             ease: "power2.out",
-    //         });
-    //     }
-    // }, [isVideoLoaded]);
 
     return (
-        <div className="heroSection reveal_cut_effect_1 relative">
+        <div className="heroSection relative">
             {/* Background Image */}
-            {/* <div className="img_div lg:h-[82vh]">
-                <img
-                    className="lg:h-[82vh] h-auto w-full object-cover"
-                    src={imageUrl || `${CONFIG.ASSET_IMAGE_URL}frontend/images/home/hero.webp`}
-                    alt="Hero Section"
-                />
-            </div> */}
+            {/* {!isVideoLoaded &&
+                <div className="img_div lg:h-[82vh]">
+                    <img
+                        className="lg:h-[82vh] h-auto w-full object-cover"
+                        src={imageUrl || `${CONFIG.ASSET_IMAGE_URL}frontend/images/home/hero.webp`}
+                        alt="Hero Section"
+                    />
+                </div>
+            } */}
 
-            {!isVideoLoaded && <Loader />}
 
-            <div className='hero_vdo_div relative w-full reveal'
-                ref={clipRef}
-            // style={{ height: "100vh", overflow: "hidden" }}
+            <div className='hero_vdo_div h-[80vh] relative w-full]'
+                style={{ background: "url(assets/frontend/images/home/hero.webp)" }}
             >
 
+                <LoadAnimation />
 
+                {/* <ZoomOut initialScale={1.5} duration={4}> */}
                 <video
                     ref={videoRef}
                     // className="min-h-svh"
@@ -81,8 +62,9 @@ export default function Hero({
                     muted
                     onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                    className="h-[100vh] w-full object-cover"
+                    className="h-[80vh] w-full object-cover"
                 ></video>
+                {/* </ZoomOut> */}
 
 
             </div>

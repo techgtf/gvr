@@ -11,15 +11,15 @@ import { useTextAnimation } from '../useTextAnimation';
 
 export default function OverviewSection({ heading, paragraph }) {
 
-    const sectionRef = useTextAnimation(
-        { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
-        []
-    );
+    // const sectionRef = useTextAnimation(
+    //     { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
+    //     []
+    // );
 
     return (
         <div className='overview_section px-5 md:px-12 py-5 md:py-14'
             // data-speed="clamp(.9)"
-            ref={sectionRef}
+            // ref={sectionRef}
         >
             <div className='headingWrap max-w-[79%] m-auto text-center'>
                 <CommonHeading HeadingText={heading} />

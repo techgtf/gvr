@@ -11,12 +11,12 @@ const specifications = [
     title: "Master Bedroom(s)",
     items: [
       {
-        image: "/assets/frontend/images/microsite/specifications/mansory.png",
+        image: "assets/frontend/images/microsite/specifications/mansory.png",
         description:
           "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
       },
       {
-        image: "/assets/frontend/images/microsite/specifications/parquet.png",
+        image: "assets/frontend/images/microsite/specifications/parquet.png",
         description:
           "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
       },
@@ -26,12 +26,12 @@ const specifications = [
     title: "Modular Kitchen",
     items: [
       {
-        image: "/assets/frontend/images/microsite/specifications/mansory2.png",
+        image: "assets/frontend/images/microsite/specifications/mansory2.png",
         description:
           "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
       },
       {
-        image: "/assets/frontend/images/microsite/specifications/mansory3.png",
+        image: "assets/frontend/images/microsite/specifications/mansory3.png",
         description: "Fixtures: High Quality Branded CP Fittings",
       },
     ],
@@ -40,19 +40,19 @@ const specifications = [
     title: "Living/Dining Room",
     items: [
       {
-        image: "/assets/frontend/images/microsite/specifications/mansory1.png",
+        image: "assets/frontend/images/microsite/specifications/mansory1.png",
         description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint",
       },
       {
-        image: "/assets/frontend/images/microsite/specifications/parquet2.png",
+        image: "assets/frontend/images/microsite/specifications/parquet2.png",
         description: "Floors: High Quality Vitrified Tile",
       },
       {
-        image: "/assets/frontend/images/microsite/specifications/door.png",
+        image: "assets/frontend/images/microsite/specifications/door.png",
         description: "Floors: High Quality Vitrified Tile",
       },
       {
-        image: "/assets/frontend/images/microsite/specifications/roller.png",
+        image: "assets/frontend/images/microsite/specifications/roller.png",
         description: "Floors: High Quality Vitrified Tile",
       },
     ],
