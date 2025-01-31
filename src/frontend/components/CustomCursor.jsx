@@ -20,7 +20,7 @@ function CustomCursor() {
     };
   }, []);
 
-  return <div id="cursor" ref={cursorRef}></div>;
+  return <div id="cursor" className='hidden md:block' ref={cursorRef}></div>;
 }
 
 export default CustomCursor;

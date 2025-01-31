@@ -49,18 +49,18 @@ function Slider() {
   return (
     <div>
       {/* Navigation Buttons */}
-      <div className="nav_buttons flex gap-5 py-5 px-10">
+      <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-start">
         <button
           ref={prevRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronLeft className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+          <LuChevronLeft className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
         <button
           ref={nextRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronRight className="w-8 h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+          <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
       </div>
 
@@ -99,14 +99,13 @@ function Slider() {
             <img
               src={item.image}
               alt={item.alt}
-              className="!w-[350px] !h-[250px] !object-cover cursor-pointer"
-              onClick={() => openLightbox(index)} // Trigger lightbox on image click
+              className=" w-full md:!w-[350px] !h-[250px] !object-cover cursor-pointer"
+              onClick={() => openLightbox(index)} 
             />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Lightbox Component */}
       {open && (
         <Lightbox
         open={open}
@@ -121,7 +120,7 @@ function Slider() {
           src: item.image,
           title: item.alt,
         }))}
-        zoom={{maxZoomPixelRatio: 2}}  // Adjust the zoom factor here
+        zoom={{maxZoomPixelRatio: 2}} 
         plugins={[Fullscreen, Zoom]}
       />
       

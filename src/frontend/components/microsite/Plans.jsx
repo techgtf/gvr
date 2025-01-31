@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/plan1.png";
-import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/plan2.png";
+import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/2B-R-plan-img.png";
+import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/2B-RS.png";
 import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
 import WaterMarkHeading from "../verticalWaterMarkHeading";
 import CommonHeading from "../commonHeading";
@@ -82,7 +82,7 @@ function Plans() {
   return (
     <section
       ref={sectionRef}
-      className="plans bg-[#EFF5FA] px-5 md:px-12 py-5 md:py-14 relative"
+      className="plans bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14 relative"
       id="plan"
     >
       <div className="grid lg:grid-cols-2 grid-cols-1">
@@ -91,7 +91,7 @@ function Plans() {
             <CommonHeading HeadingText="master plan" />
           </FadeIn>
           <div
-            className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-14 reveal"
+            className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 reveal"
             onClick={() => setOpen(true)}
           >
             <img
@@ -107,14 +107,14 @@ function Plans() {
             className="flex flex-col items-start justify-center text-[2vw]"
           />
         </div>
-        <div className="floor_plans mt-10 lg:m-0 lg:ps-20">
+        <div className="floor_plans mt-12 lg:m-0 lg:ps-20">
           <div className="md:flex justify-between items-center">
             <FadeIn duration={2} delay={0.6}>
               <CommonHeading HeadingText="floor plans" />
             </FadeIn>
-            <div className="flex gap-2 md:gap-5 mt-4 md:mt-0">
+            <div className="flex gap-2 md:gap- py-4 mt-4 md:mt-0">
               <button
-                className={`px-6 py-1 ${
+                className={`px-6 py-1 text-[14px] ${
                   activeUnit === "unit1"
                     ? "bg-[#33638B] text-white"
                     : "bg-transparent border border-black"
@@ -124,7 +124,7 @@ function Plans() {
                 UNIT 1
               </button>
               <button
-                className={`px-6 py-1 ${
+                className={`px-6 py-1 text-[14px] ${
                   activeUnit === "unit2"
                     ? "bg-[#33638B] text-white"
                     : "bg-transparent border border-black"
@@ -144,11 +144,11 @@ function Plans() {
                 <img
                   src={plan.image}
                   alt={`plan ${index + 1}`}
-                  className="w-full md:w-[30%] cursor-pointer"
+                  className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                   onClick={() => setOpen(true)}
                 />
-                <div className="flex flex-col justify-between mt-2 pr-24 tracking-wider uppercase md:mt-0">
-                  <h5 className="font-semibold text-[16px]">{plan.type}</h5>
+                <div className="flex flex-col justify-between mt-5 pr-24 tracking-wider uppercase md:mt-0">
+                  <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
                   <p>Carpet Area : {plan.carpetArea}</p>
                   <p>Balcony Area : {plan.balconyArea}</p>
                   <p>Total Super Area : {plan.totalArea}</p>

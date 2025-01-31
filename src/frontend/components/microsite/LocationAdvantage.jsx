@@ -118,7 +118,7 @@ function LocationAdvantage() {
 
   return (
     <section
-      className="advantage px-5 md:px-12 py-5 md:py-14  flex items-center"
+      className="advantage px-5 md:px-12 py-10 md:py-14  flex items-center"
       id="advantage"
     >
       <div className="grid sm:grid-cols-2 grid-cols-1">
@@ -148,7 +148,7 @@ function LocationAdvantage() {
         <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button
-              className={`drive flex gap-3 items-center ${
+              className={`drive flex gap-3 text-[16px] items-center  ${
                 activeTab === "drive" ? "text-black" : "text-gray-300"
               }`}
               onClick={() => handleTabClick("drive")}
@@ -161,7 +161,7 @@ function LocationAdvantage() {
               DRIVE
             </button>
             <button
-              className={`walk flex gap-3 items-center ${
+              className={`walk flex gap-3 text-[16px] items-center ${
                 activeTab === "walk" ? "text-black" : "text-gray-300"
               }`}
               onClick={() => handleTabClick("walk")}

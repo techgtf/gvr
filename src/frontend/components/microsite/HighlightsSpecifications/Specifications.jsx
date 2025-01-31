@@ -86,7 +86,7 @@ function Specifications() {
       <FadeIn duration={2} delay={0.5}>
           <CommonHeading HeadingText="Specifications" />
         </FadeIn>
-        <div className="grid grid-cols-12 mt-14 h-[350px] overflow-y-scroll pr-5">
+        <div className="grid grid-cols-12 mt-8 h-[350px] overflow-y-scroll pr-5">
           {specifications.map((spec, index) => (
             <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)} >
               <h4 className="font-semibold">{spec.title}</h4>

@@ -42,7 +42,7 @@ function Highlights() {
         <FadeIn duration={2} delay={0.5}>
           <CommonHeading HeadingText="Highlights" />
         </FadeIn>
-        <ol className="pt-14" ref={listRef}>
+        <ol className="pt-8" ref={listRef}>
           {highlights.map((highlight, index) => (
             <li key={index} className="flex gap-3 items-start py-2">
               <div className="num bg-[#749CBE] rounded-full text-white w-6 h-6 leading-6 text-center flex-shrink-0">

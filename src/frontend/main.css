@@ -129,6 +129,7 @@ img {
 .common_heading {
   font-size: 12px;
   letter-spacing: 4px;
+  line-height: 3;
 }
 
 .common_pera {
@@ -248,6 +249,24 @@ img {
 .writing-vertical-rl {
   writing-mode: vertical-rl;
   text-orientation: upright;
+}
+
+
+/* mobile  */
+
+@media only screen and (max-width: 600px) {
+  *{
+    cursor: block !important;  
+  }
+
+  *,
+*::before,
+*::after { 
+  line-height: 22px;  
+}
+.common_heading {
+  font-size: 10px;
+}
 }
 
 /*end common Css */

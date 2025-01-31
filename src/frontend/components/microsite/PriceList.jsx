@@ -54,7 +54,7 @@ function PriceList() {
   return (
     <>
       <section
-        className="bg-[#EFF5FA] relative sm:px-32 px-5 py-5 md:py-14 flex flex-col justify-center"
+        className="bg-[#EFF5FA] relative sm:px-32 px-5 py-10 md:py-14 flex flex-col justify-center"
         id="pricelist"
       >
         <div className="headingWrap max-w-[619px] m-auto text-center">
@@ -95,27 +95,28 @@ function PriceList() {
         {/* Mobile view */}
         <div className="block md:hidden table w-full mt-10">
           {priceListData.map((item, i) => (
-            <div key={i} className="row_1 py-5">
+            <div key={i} className="row_1 py-0 md:py-5">
               <div className="flex justify-center ">
-                <p className="bg-[#aac1d34a] rounded-full px-4 py-1">
+                {/* <p className="bg-[#aac1d34a] rounded-full px-4 py-1">
                   DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal.
-                </p>
+                </p> */}
               </div>
               <div className="grid grid-cols-3 border-b border-gray-300 py-3">
-                <div className="md:flex text-center justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
-                  <p className="text-[17px]">{item.area}</p>
+                <div className="flex justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
+                  <p className="">{item.area}</p>
+                  <button className="bg-white px-3">MORE</button>
                 </div>
-                <div className="md:flex text-center justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
-                  <p className="text-[17px]">{item.size}</p>
+                <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
+                  <p className="">{item.size}</p>
                 </div>
-                <div className="md:flex text-center justify-center sm:gap-10 gap-3 items-center font-semibold">
-                  <p className="text-[17px]">{item.price}</p>
+                <div className="flex text-center justify-center sm:gap-10 gap-3 items-center font-semibold">
+                  <p className="">{item.price}</p>
                 </div>
               </div>
-              <div className="justify-end flex py-3">
-                <div className="w-full flex text-end justify-end sm:gap-10 gap-3 items-center">
+              <div className="justify-center flex py-3">
+                <div className="w-full flex text-center justify-center sm:gap-10 gap-3 items-center">
                   <div
-                    className="bg-transparent text-[17px] tracking-wide text-[#33638B] uppercase"
+                    className="bg-transparent  tracking-wide text-[#33638B] uppercase"
                     onClick={openEnquiryForm}
                   >
                     inquire now

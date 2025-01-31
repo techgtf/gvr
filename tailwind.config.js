@@ -13,7 +13,7 @@ export default {
         'vertical-rl': 'vertical-rl',
       },
       screens: {
-        'sm': '640px',
+      'sm': '640px',
         'md': '768px',
         'lg': '1024px',
         'xl': '1200px',
