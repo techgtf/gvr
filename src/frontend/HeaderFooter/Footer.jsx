@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./footer.css"
 import FooterLinks from './FooterLinks'
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import * as CONFIG from '../../../config'
 import { Link } from 'react-router-dom'
 import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from './FooterBottom';
 
+gsap.registerPlugin(ScrollToPlugin);
+
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
+
+  useEffect(() => {
+    if (toggelLinks) {
+      gsap.to(window, {
+        scrollTo: { y: document.body.scrollHeight, autoKill: false },
+        duration: 1,
+        ease: "power2.inOut",
+      });
+    }
+  }, [toggelLinks]);
+
   return (
     <>
       <section id="mainfooter">

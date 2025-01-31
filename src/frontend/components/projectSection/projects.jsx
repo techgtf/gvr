@@ -9,9 +9,13 @@ import { useImageReveal } from '../useImageReveal';
 export default function Projects() {
 
     const animationConfig = { // passing animation as prop for WaterMarkHeading
-        // from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 },
-        from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
+        stagger: -0.1,
     };
+
+    const reverseText = (text) => {
+        return text.split("").reverse().join("");
+    };
+
 
     useImageReveal(".reveal")
 
@@ -34,9 +38,11 @@ export default function Projects() {
     ]
 
     return (
-        <div className='projectSection reveal_cut_effect 2xl:pt-[56px] lg:pt-[30px] text-center'>
+        <div className='projectSection reveal_cut_effect 2xl:pt-[120px] lg:pt-[80px] text-center'>
             <WaterMarkHeading
-                textWaterMark={"Explore Properties"}
+                // textWaterMark={"Explore Properties"}
+                textWaterMark={reverseText("Explore Properties")}
+
                 sectionHeading={"Explore Properties"}
                 animationConfig={animationConfig}
             />
@@ -52,7 +58,7 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                             className="img w-full xl:h-[470px] 2xl:h-[520px] object-cover"
+                            className="img w-full xl:h-[470px] 2xl:h-[520px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />

@@ -22,7 +22,7 @@ export default function Hero({
 
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
-    console.log(isVideoLoaded);
+    // console.log(isVideoLoaded);
 
 
 
@@ -30,7 +30,7 @@ export default function Hero({
     return (
         <div className="heroSection relative z-0">
             {/* Background Image */}
-            {!isVideoLoaded &&
+            {/* {!isVideoLoaded &&
                 <div className="img_div lg:h-[82vh]">
                     <img
                         className="lg:h-[82vh] h-auto w-full object-cover"
@@ -39,12 +39,12 @@ export default function Hero({
                     />
                     <h3>Loading Video...</h3>
                 </div>
-            }
+            } */}
 
 
 
-            <div className='hero_vdo_div h-[80vh] relative w-full]'
-                style={{ background: "url(assets/frontend/images/home/hero.jpg)" }}
+            <div className='hero_vdo_div h-[80vh] relative w-full] bg-cover'
+                style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
             >
 
                 <LoadAnimation />

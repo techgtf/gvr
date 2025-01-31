@@ -51,7 +51,7 @@ function Layout({ children }) {
       )}
 
       {/* Main Content */}
-      <Header />
+      {/* <Header /> */}
       {location.pathname === "/microsite" && <MicrositeMenu />}
       <div id="smooth-wrapper">
         <div id="smooth-content">

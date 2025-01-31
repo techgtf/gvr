@@ -30,7 +30,7 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollY]);
-  console.log(location, "dddd");
+  
   return (
     <header
       className={`app_header ${

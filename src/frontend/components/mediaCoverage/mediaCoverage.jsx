@@ -3,6 +3,7 @@ import "./mediaCoverage.css"
 import WaterMarkHeading from '../waterMarkHeading'
 import * as CONFIG from '../../../../config'
 import { useImageReveal } from '../useImageReveal'
+import SlideIn from '../Animations/SlideIn'
 
 export default function MediaCoverage() {
     const mediaData = [
@@ -31,17 +32,19 @@ export default function MediaCoverage() {
     // useImageReveal(".reveal")
 
     return (
-        <div className='mediaCoverageSection bg-[#EFF5FA] py-16 text-center'>
-            <WaterMarkHeading sectionHeading='Our media coverage' />
-            <div className='max-w-[90%] m-auto lg:pt-20 pt-7'>
-                <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-7 items-center">
-                    {mediaData && (
-                        mediaData.map((item, index) =>
-                            <div className='box' key={index}><img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`} alt="sky news" /></div>
-                        )
-                    )}
+        <div className='mediaCoverageSection bg-[#EFF5FA] py-20 text-center'>
+            <SlideIn duration={2} delay={0.5}>
+                <WaterMarkHeading sectionHeading='Our media coverage' />
+                <div className='max-w-[90%] m-auto lg:pt-24 pt-7'>
+                    <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-7 items-center">
+                        {mediaData && (
+                            mediaData.map((item, index) =>
+                                <div className='box' key={index}><img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`} alt="sky news" /></div>
+                            )
+                        )}
+                    </div>
                 </div>
-            </div>
+            </SlideIn>
         </div>
     )
 }
