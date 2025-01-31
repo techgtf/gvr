@@ -158,52 +158,52 @@ const OurJourney = () => {
     []
   );
   return (
-    <div className="xl:max-w-[100%] xl:mb-[4rem] xl:px-[5rem] xl:py-[5rem] xl:bg-[#EFF5FA]">
-      <h3 className="sectionHeading xl:tracking-[5px] xl:text-[black] midlandfontmedium">
+    <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
+      <h3 className="sectionHeading tracking-[5px] text-[black] midlandfontmedium">
         OUR JOURNEY
       </h3>
-      <div className="xl:flex xl:justify-between xl:items-center xl:flex-wrap">
+      <div className="flex justify-between items-center flex-wrap">
         {selectedProjectIndex == 4 ||
         selectedProjectIndex == 9 ||
         selectedProjectIndex == 11 ||
         selectedProjectIndex == 12 ? (
           <Swiper
             spaceBetween={120}
-            slidesPerView={1}
+            slidesPerView={5}
             modules={[Navigation]}
             navigation={{
               nextEl: ".inner-swiper-button-next",
               prevEl: ".inner-swiper-button-prev",
             }}
             loop={true}
-            className="xl:relative xl:basis-[50%]"
+            className="relative basis-[50%]"
           >
-            <div className="inner-swiper-button-prev xl:absolute xl:z-[99] xl:top-[50%] xl:left-0">
+            <div className="inner-swiper-button-prev absolute z-[99] top-[50%] left-0">
               <img
                 src="assets/frontend/images/icons/left_arrow.png"
                 alt="Previous"
                 style={{ cursor: "pointer" }}
-                className="xl:w-[15px] xl:h-[15px]"
+                className="w-[15px] h-[15px]"
               />
             </div>
-            <div className="inner-swiper-button-next xl:z-[99] xl:absolute xl:top-[50%] xl:right-[12px]">
+            <div className="inner-swiper-button-next z-[99] absolute top-[50%] right-[12px]">
               <img
                 src="assets/frontend/images/icons/right_arrow.png"
                 alt="Next"
-                className="xl:w-[15px] xl:h-[15px]"
+                className="w-[15px] h-[15px]"
                 style={{ cursor: "pointer" }}
               />
             </div>
             {projects[selectedProjectIndex].project.map((proj, index) => (
-              <SwiperSlide key={index}>
-                <div className="xl:text-center xl:px-[2.5rem]" ref={sectionRef}>
-                  <h4 className="midlandfontbold xl:pt-[1px] xl:!text-[18px] xl:mb-[2rem] sectionHeading xl:tracking-[8px] xl:text-primary">
+              <SwiperSlide key={index} className="">
+                <div className="text-center px-[2.5rem]" ref={sectionRef}>
+                  <h4 className="midlandfontbold pt-[1px] !text-[18px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
                     {proj.year}
                   </h4>
-                  <p className="midlandfontmedium xl:text-primary xl:tracking-[4px] xl:!text-[13px] xl:mb-[1.3rem]">
+                  <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
                     {proj.category}
                   </p>
-                  <p className="xl:mt-[1.3rem] xl:text-[13px] font-italic poppins-regular xl:leading-[22px] xl:tracking-[1px]">
+                  <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
                     {proj.description}
                   </p>
                 </div>
@@ -212,78 +212,90 @@ const OurJourney = () => {
           </Swiper>
         ) : (
           <div
-            className="xl:basis-[50%] xl:text-center xl:px-[2.5rem]"
+            className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
             ref={sectionRef}
           >
-            <h4 className="midlandfontbold xl:!text-[18px] xl:mb-[2rem] sectionHeading xl:tracking-[8px] xl:text-primary">
+            <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
               {projects[selectedProjectIndex].year}
             </h4>
-            <p className="midlandfontmedium xl:text-primary xl:tracking-[4px] xl:!text-[13px] xl:mb-[1.3rem]">
+            <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
               {projects[selectedProjectIndex].category}
             </p>
-            <p className="xl:mt-[1.3rem] xl:text-[13px] font-italic poppins-regular xl:leading-[22px] xl:tracking-[1px]">
+            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
               {projects[selectedProjectIndex].description}
             </p>
           </div>
         )}
 
-        <div className="xl:basis-[50%] xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] xl:h-[400px] xl:relative xl:flex xl:flex-wrap xl:justify-center">
+        <div className="basis-[50%] hidden xl:inline-block border-l-[1px] border-l-solid border-l-[#B1B1B1] h-[400px] relative flex flex-wrap justify-center">
           <img
             src="assets/frontend/images/aboutus/ourJourney/1.jpg"
             alt="1.jpg"
-            className="xl:w-[200px] xl:h-[150px] xl:absolute xl:top-0 xl:z-[1] xl:left-[25%]"
+            className="w-[200px] h-[150px] absolute top-0 z-[1] left-[25%]"
           />
           <img
             src="assets/frontend/images/aboutus/ourJourney/2.jpg"
             alt="2.jpg"
-            className="xl:w-[200px] xl:right-[17%] xl:top-[16%] xl:h-[150px] xl:absolute xl:z-[2]"
+            className="w-[200px] right-[17%] top-[16%] h-[150px] absolute z-[2]"
           />
           <img
             src="assets/frontend/images/aboutus/ourJourney/3.jpg"
             alt="3.jpg"
-            className="xl:w-[200px] xl:h-[150px] xl:top-[25%] xl:left-[8%] xl:absolute xl:z-[2]"
+            className="w-[200px] h-[150px] top-[25%] left-[8%] absolute z-[2]"
           />
           <img
             src="assets/frontend/images/aboutus/ourJourney/4.jpg"
             alt="4.jpg"
-            className="xl:w-[200px] xl:h-[150px] xl:absolute xl:bottom-[15%] xl:right-[33%] xl:z-[3]"
+            className="w-[200px] h-[150px] absolute bottom-[15%] right-[33%] z-[3]"
           />
         </div>
       </div>
-      <div className="xl:relative">
+      <div className="relative mt-[3rem]">
         <Swiper
-          spaceBetween={120}
-          slidesPerView={5}
+          // spaceBetween={120}
+          // slidesPerView={5}
+
+          breakpoints={{
+            300: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
           modules={[Navigation]}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
           loop={true}
-          className="xl:relative"
+          className="relative"
         >
-          <div className="xl:absolute xl:left-[10%] xl:top-[50%] xl:h-[1px] xl:w-[85%] xl:bg-[#B1B1B1]" />
+          <div className="absolute left-[10%] top-[50%] h-[1px] w-[85%] bg-[#B1B1B1]" />
 
           {projects.map((project, index) => (
-            <SwiperSlide key={project.year}>
+            <SwiperSlide key={project.year} className="">
               <div
-                className="xl:w-60 xl:inline-block xl:cursor-pointer"
+                className="xl:w-60  inline-block cursor-pointer"
                 onClick={() => setSelectedProjectIndex(index)}
               >
                 <figure
-                  className={`xl:border xl:relative xl:border-solid xl:border-[#B1B1B1] xl:z-10 xl:w-32 xl:h-32 xl:flex xl:justify-center xl:items-center xl:rounded-full ${
+                  className={`border relative border-solid border-[#B1B1B1] z-10 xl:w-32 xl:h-32 w-[3.5rem] h-[3.5rem] flex justify-center items-center rounded-full ${
                     selectedProjectIndex == index &&
-                    "xl:border-primary xl:border-[3px]"
+                    "border-primary border-[3px]"
                   }`}
                 >
                   <img
                     src="assets/frontend/images/aboutus/ourJourney/timeline.png"
                     alt="timeline"
                   />
-                  <figcaption
-                    className="xl:text-primary xl:font-medium xl:absolute xl:top-7 xl:right-[-40%]"
-                    style={{ fontSize: "15px" }}
-                  >
+                  <figcaption className="text-primary font-medium xl:text-[15px] text-[11px] right-[-60%] top-[11px] absolute top-7 right-[-40%]">
                     {index == 4 || index == 9 || index == 11 || index == 12
                       ? project.project[0].year
                       : project.year}
@@ -294,14 +306,14 @@ const OurJourney = () => {
           ))}
         </Swiper>
 
-        <div className="swiper-button-prev">
+        <div className="swiper-button-prev xl:!left-[-4%] absolute !top-[50%] !left-[-9%]">
           <img
             src="assets/frontend/images/icons/left_arrow.png"
             alt="Previous"
             style={{ cursor: "pointer" }}
           />
         </div>
-        <div className="swiper-button-next">
+        <div className="swiper-button-next xl:!right-[-4%] absolute !top-[50%] !right-[-9%]">
           <img
             src="assets/frontend/images/icons/right_arrow.png"
             alt="Next"

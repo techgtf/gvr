@@ -14,106 +14,106 @@ const OurVerticals = () => {
   useImageReveal(".reveal");
   return (
     <>
-      <div className="xl:max-w-[90%] xl:m-auto zl:relative xl:mb-[5rem]">
+      <div className="max-w-[90%] m-auto relative mb-[5rem]">
         <WaterMarkHeading
           textWaterMark="Our Verticals"
           sectionHeading="Our Verticals"
           animationConfig={animationConfig}
         />
-        <div className="xl:flex xl:items-center xl:justify-between xl:mt-[4rem] xl:flex-wrap">
-          <div className="xl:basis-[60%] xl:pl-[7rem]">
-            <h2 className="sectionHeading xl:text-center xl:tracking-[4px] xl:text-right  xl:!text-[16px] midlandfontmedium xl:text-primary">
+        <div className="flex items-center justify-between md:flex-row flex-col-reverse mt-[4rem] flex-wrap">
+          <div className="basis-[100%] xl:basis-[60%] xl:pl-[7rem] mt-[2rem]">
+            <h2 className="sectionHeading text-center tracking-[4px] xl:text-right  !text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
-            <p className="xl:my-[1rem] xl:text-[14px]">
+            <p className="my-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
             </p>
-            <p className="xl:mb-[1rem] xl:text-[14px]">
+            <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
             </p>
             <div>
-              <div className="xl:flex xl:justify-between xl:xl:items-start xl:flex-wrap xl:my-[2.5rem]">
-                <h3 className="sectionHeading xl:h-[112px] xl:border-r-[1px] xl:basis-[29%] xl:border-r-[#00000080] xl:text-center xl:tracking-[4px] !text-[17px] xl:midlandfontmedium xl:text-primary">
+              <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
+                <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   5 CR
-                  <span className="xl:block xl:text-center xl:text-[8px] xl:tracking-[0.5px]">
+                  <span className="block text-center text-[8px] tracking-[0.5px]">
                     Lorem Ipsum
                   </span>
                 </h3>
-                <div className="xl:basis-[65%]">
-                  <p className="xl:text-[12px]">
+                <div className="basis-[65%]">
+                  <p className="text-[12px]">
                     Lorem Ipsum has been the industry's standard dummy text ever
                     since the 1500s.
                   </p>
-                  <p className="xl:text-[12px]">
+                  <p className="text-[12px]">
                     Lorem Ipsum has been the industry's standard dummy text ever
                     since the 1500s.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="xl:flex xl:justify-center xl:mt-[1rem] xl:w-[92%]">
+            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
               <CommonBtn to={""} TagName={Link} target="_blank">
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div>
+            </div> */}
           </div>
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-1.jpg"
             alt="vertical-1"
-            className="xl:basis-[32%] reveal xl:h-[480px]"
+            className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
         </div>
-        <div className="xl:flex xl:items-center xl:justify-between xl:mt-[4rem] xl:flex-wrap">
+        <div className="flex items-center justify-between xl:mt-[4rem] mt-[3rem] flex-wrap">
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-2.jpg"
             alt="vertical-1"
-            className="xl:basis-[32%] reveal xl:h-[480px]"
+            className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
-          <div className="xl:basis-[60%] xl:pr-[7rem]">
-            <h2 className="sectionHeading xl:text-left xl:tracking-[4px] xl:!text-[16px] midlandfontmedium xl:text-primary">
+          <div className="xl:basis-[60%] xl:pr-[7rem] basis-[100%]">
+            <h2 className="sectionHeading xl:text-left mt-[2rem] text-center  tracking-[4px] !text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
-            <p className="xl:my-[1rem] xl:text-[14px]">
+            <p className="my-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
             </p>
-            <p className="xl:mb-[1rem] xl:text-[14px]">
+            <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
             </p>
             <div>
-              <div className="xl:flex xl:justify-between xl:items-start xl:flex-wrap xl:my-[2.5rem]">
-                <h3 className="sectionHeading xl:h-[112px] xl:border-r-[1px] xl:basis-[29%] xl:border-r-[#00000080] xl:text-center xl:tracking-[4px] xl:!text-[17px] midlandfontmedium xl:text-primary">
+              <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
+                <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   2 CR
-                  <span className="xl:block xl:text-center xl:text-[8px] xl:tracking-[0.5px]">
+                  <span className="block text-center text-[8px] tracking-[0.5px]">
                     Lorem Ipsum
                   </span>
                 </h3>
-                <div className="xl:basis-[65%]">
-                  <p className="xl:text-[12px]">
+                <div className="basis-[65%]">
+                  <p className="text-[12px]">
                     Lorem Ipsum has been the industry's standard dummy text ever
                     since the 1500s.
                   </p>
-                  <p className="xl:text-[12px]">
+                  <p className="text-[12px]">
                     Lorem Ipsum has been the industry's standard dummy text ever
                     since the 1500s.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="xl:flex xl:justify-center xl:mt-[1rem] xl:w-[92%]">
+            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
               <CommonBtn to={""} TagName={Link} target="_blank">
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

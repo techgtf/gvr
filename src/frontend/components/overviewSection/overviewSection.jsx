@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useTextAnimation } from "../useTextAnimation";
 
-export default function OverviewSection({ heading, paragraph }) {
+export default function OverviewSection({ heading, paragraph, showKnowMore }) {
   const sectionRef = useTextAnimation(
     { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
     []
@@ -32,9 +32,11 @@ export default function OverviewSection({ heading, paragraph }) {
           PeraText={paragraph}
         />
       </div>
-      <CommonBtn to={""} TagName={Link} className="mt-[3rem]" target="_blank">
-        Know More <BsArrowUpRight />{" "}
-      </CommonBtn>
+      {showKnowMore && (
+        <CommonBtn to={""} TagName={Link} className="mt-[3rem]" target="_blank">
+          Know More <BsArrowUpRight />{" "}
+        </CommonBtn>
+      )}
     </div>
   );
 }

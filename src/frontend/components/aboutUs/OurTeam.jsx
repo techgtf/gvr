@@ -77,12 +77,12 @@ const OurTeam = () => {
   };
 
   return (
-    <div className="xl:max-w-[100%] xl:relative xl:flex xl:justify-center xl:px-[3rem] xl:pb-[5rem]">
-      <div className="xl:my-[0.5rem] xl:w-[100%] xl:text-white xl:relative">
-        <h3 className="sectionHeading xl:tracking-[5px] xl:text-[black] midlandfontmedium">
+    <div className="max-w-[100%] relative flex justify-center xl:px-[3rem] px-[2.5rem]  pb-[3.5rem]">
+      <div className="my-[0.5rem] w-[100%] text-white relative">
+        <h3 className="sectionHeading tracking-[5px] text-[black] midlandfontmedium">
           OUR TEAM
         </h3>
-        <p className="xl:text-black xl:absolute xl:top-[5%] xl:text-[12px] xl:left-[26%] xl:w-[250px] poppins-regular">
+        <p className="text-black absolute xl:top-[5%] top-[8%] text-[12px] left-[26%] w-[250px]  poppins-regular">
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s.
         </p>
@@ -90,36 +90,36 @@ const OurTeam = () => {
         <div>
           <div
             onClick={handlePrev}
-            className="inner-team-swiper-button-prev xl:!block xl:absolute xl:z-[99] xl:top-[50%] xl:left-[-3%]"
+            className="inner-team-swiper-button-prev !block absolute z-[99] xl:top-[50%] top-[59%] left-[-3%]"
           >
             <img
               src="assets/frontend/images/icons/left_arrow.png"
               alt="Previous"
               style={{ cursor: "pointer" }}
-              className="xl:w-[15px] xl:h-[15px]"
+              className="w-[15px] h-[15px]"
             />
           </div>
           <div
             onClick={handleNext}
-            className="inner-team-swiper-button-next xl:!block xl:z-[99] xl:absolute xl:top-[50%] xl:right-[-3%]"
+            className="inner-team-swiper-button-next !block z-[99] absolute xl:top-[50%] top-[59%] right-[-3%]"
           >
             <img
               src="assets/frontend/images/icons/right_arrow.png"
               alt="Next"
-              className="xl:w-[15px] xl:h-[15px]"
+              className="w-[15px] h-[15px]"
               style={{ cursor: "pointer" }}
             />
           </div>
-          <div className="xl:flex xl:justify-between xl:overflow-hidden xl:pt-[150px] xl:pb-[1rem] xl:mt-[2rem] no-scrollbar no-wrap">
+          <div className="flex justify-between overflow-hidden xl:pt-[150px] pt-[120px] pb-[1rem] mt-[2rem] no-scrollbar no-wrap">
             {allProfile.map((profile, index) => {
               let design =
-                "xl:min-w-[270px] xl:h-[265px] xl:!mt-[-0.75rem] xl:mr-[2rem] xl:flex xl:items-end xl:justify-center xl:relative xl:bg-[#EFF5FA]";
+                "min-w-[270px] h-[265px] xl:!mt-[-0.75rem] ml-[2.5rem] mr-[4rem] xl:!ml-[1.75rem] xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]";
               let active =
-                "xl:min-w-[270px] xl:h-[340px] xl:flex xl:items-end xl:mr-[2rem] xl:flex-wrap xl:justify-center xl:mt-[-5.35rem] xl:bg-[#EFF5FA]";
+                "min-w-[270px] h-[340px] flex items-end mr-[2rem] flex-wrap justify-center mt-[-5.35rem] bg-[#EFF5FA]";
               let activeProfile =
-                "xl:w-[215px] xl:h-[260px] xl:mt-[5rem] xl:object-cover xl:inline-block";
+                "w-[215px] h-[260px] mt-[5rem] object-cover inline-block";
               let inActiveProfile =
-                "xl:w-[100%] xl:h-[150px] xl:inline-block xl:object-contain";
+                "w-[100%] h-[150px] inline-block object-contain";
               return (
                 <div key={index}>
                   <div
@@ -140,15 +140,15 @@ const OurTeam = () => {
                     />
 
                     {index == 0 && (
-                      <div className="xl:top-[0.75rem] xl:right-[0.75rem] xl:ml-[-1rem] xl:z-[-99] xl:w-[100%] xl:absolute xl:h-[265px] xl:bg-[url(/assets/frontend/images/aboutus/team/blue-bg.jpg)]"></div>
+                      <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.jpg)]"></div>
                     )}
                   </div>
-                  <div className="xl:flex xl:justify-between xl:w-[85%] xl:mt-[1rem]">
+                  <div className="flex justify-between w-[85%] mt-[2rem] xl:mt-[1rem] ml-[0.75rem]">
                     <div>
-                      <p className="midlandfontmedium xl:basis-[100%] xl:text-black xl:text-[10px] xl:tracking-[2px]">
+                      <p className="midlandfontmedium basis-[100%] text-black text-[10px] tracking-[2px]">
                         {profile.name}
                       </p>
-                      <p className="xl:basis-[100%] xl:text-primary xl:text-[12px]">
+                      <p className="basis-[100%] text-primary text-[12px]">
                         {profile.position}
                       </p>
                     </div>
@@ -156,7 +156,7 @@ const OurTeam = () => {
                       <img
                         src="assets/frontend/images/icons/plus.png"
                         alt="plus-icon"
-                        className="xl:h-[14px] xl:w-[14px] xl:inline-block"
+                        className="h-[14px] w-[14px] inline-block"
                       />
                     </div>
                   </div>
