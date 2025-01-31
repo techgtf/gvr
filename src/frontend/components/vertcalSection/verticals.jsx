@@ -32,13 +32,13 @@ export default function Verticals() {
     ]
 
     return (
-        <div className='verticalSection bg-[#EFF5FA] 2xl:py-[85px] lg:pt-[80px] text-center'>
-            <div className='section_in max-w-[80%] m-auto'>
+        <div className='verticalSection bg-[#EFF5FA] 2xl:py-[85px] xl:py-[75px] py-[50px] text-center'>
+            <div className='section_in 2xl:max-w-[80%] m-auto max-w-[100%]'>
                 <WaterMarkHeading
                     sectionHeading='Other verticals'
                     animationConfig={animationConfig}
                 />
-                <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14'>
+                <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[30px] xl:gap-0 gap-[44px]'>
                     {verticalData && (
                         verticalData.map((item, index) =>
                             <div className='boxes relative lg:w-[47%] w-full' key={index}>

@@ -46,7 +46,7 @@ export default function Projects() {
                 sectionHeading={"Explore Properties"}
                 animationConfig={animationConfig}
             />
-            <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[10px] reveal">
+            <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] reveal">
                 {projectData && projectData.map((item, index) => (
                     <div
                         className="boxes relative w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-8px)] xl:w-[calc(33.33%)]"
@@ -58,13 +58,13 @@ export default function Projects() {
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img
-                            className="img w-full xl:h-[470px] 2xl:h-[520px] object-cover"
+                            className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
                             alt={item.type || 'Project image'}
                         />
                         <figcaption
                             // data-speed="clamp(0.9)"
-                            className="uppercase type tracking-[4px] text-white text-center absolute bottom-[52px] left-0 right-0 z-[1] px-2"
+                            className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[30px] left-0 right-0 z-[1] px-2"
                         >
                             {item.type}
                         </figcaption>

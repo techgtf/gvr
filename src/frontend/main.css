@@ -36,9 +36,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-*{
+* {
   cursor: none;
 }
+
 body {
   font-family: "Poppins", serif;
 }
@@ -126,6 +127,7 @@ img {
 .fontItalic {
   font-style: italic;
 }
+
 .common_heading {
   font-size: 12px;
   letter-spacing: 4px;
@@ -179,15 +181,8 @@ img {
 
 .fullBtn {
   background: var(--primary);
-  padding: 10px 25px;
 }
 
-.fullBtn .line {
-  display: inline-block;
-  width: 16px;
-  height: 2px;
-  background: var(--white);
-}
 
 /* .reveal{position: relative;}
 .reveal::before {position: absolute;content: "";height: 100%;width: 100%;background: #000; opacity: 1; left: 0; bottom: 0;z-index: 1;transition: all 1s ease-in-out;}
@@ -255,18 +250,22 @@ img {
 /* mobile  */
 
 @media only screen and (max-width: 600px) {
-  *{
-    cursor: block !important;  
+  * {
+    cursor: block !important;
   }
 
   *,
-*::before,
-*::after { 
-  line-height: 22px;  
-}
-.common_heading {
-  font-size: 10px;
-}
+  *::before,
+  *::after {
+    line-height: 22px;
+  }
+  .sectionHeading {
+    font-size: 10px;
+  }
+
+  .common_heading {
+    font-size: 10px;
+  }
 }
 
 /*end common Css */

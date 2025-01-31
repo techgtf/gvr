@@ -16,7 +16,7 @@ export default function OverviewSection({ heading, paragraph }) {
 
   return (
     <div
-      className="overview_section 2xl:pt-[80px] xl:pt-[70px] pt-[30px] lg:pb-0 pb-[20px] lg:mb-0 mb-[30px]"
+      className="overview_section 2xl:pt-[80px] xl:pt-[70px] pt-[30px] lg:pb-0 pb-[30px] lg:mb-0 mb-[50px]"
     // data-speed="clamp(.9)"
     // ref={sectionRef}
     >

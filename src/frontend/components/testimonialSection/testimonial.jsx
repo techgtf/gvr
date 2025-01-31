@@ -84,7 +84,7 @@ export default function Testimonial() {
 
 
     return (
-        <div ref={testimonialRef} className="testimonialSection">
+        <div ref={testimonialRef} className="testimonialSection lg:pt-[120px] lg:pb-[90px] pt-[50px] pb-[50px]">
             <div className="max-w-[90%] mx-auto relative">
                 <WaterMarkHeading
                     textWaterMark='Our testimonials'
@@ -112,13 +112,13 @@ export default function Testimonial() {
                                     <div className='posterSide relative lg:w-[45%] w-full'>
                                         <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.name}`} />
                                         <button className='playbtn absolute top-[50%] left-[50%] z-[1]'>
-                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='h-[44px]' alt="playbtn" />
+                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='lg:h-[44px] h-[30px]' alt="playbtn" />
                                         </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
-                                    <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11'>
-                                        <p className='desc text-[20] tracking-[2px]'>{item.desc}</p>
-                                        <div className='name relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
+                                    <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
+                                        <p className='desc lg:text-[17px] text-[14px] tracking-[2px]'>{item.desc}</p>
+                                        <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
                                             <small className='line'></small> {item.name}
                                         </div>
                                         <FullBtn text='Watch More' link='testimonials' />
