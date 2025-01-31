@@ -1,6 +1,3 @@
-.overview_section {
-  padding-top: 80px;
-}
 
 .homepage .overview_section .content {
   padding: 35px 179px;
@@ -23,4 +20,9 @@
 
 .overview_section .common_btn {
   justify-content: center;
+}
+@media (max-width:767px) {
+  .homepage .overview_section{ border-bottom: 1px solid #b1b1b1;}
+  .homepage .overview_section .content{padding: 20px 15px;}
+  .overview_section .content{border: 0;}
 }

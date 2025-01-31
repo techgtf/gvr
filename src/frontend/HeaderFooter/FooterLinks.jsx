@@ -11,9 +11,9 @@ export default function FooterLinks({
                 <ul className='links_ul uppercase text-white xl:w-[16%] w-full'>
                     <li>
                         <div className='heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5'>residential </div>
-                        <Link className='block mb-4' to={`#`}>gv homes</Link>
-                        <Link className='block mb-4' to={`#`}>SHARNAM</Link>
-                        <Link className='block mb-4' to={`#`}>ANANDAM</Link>
+                        <Link className='block mb-4' to={`microsite`}>gv homes</Link>
+                        <Link className='block mb-4' to={`microsite`}>SHARNAM</Link>
+                        <Link className='block mb-4' to={`microsite`}>ANANDAM</Link>
                     </li>
                 </ul>
                 <ul className='links_ul uppercase text-white xl:w-[16%] w-full'>

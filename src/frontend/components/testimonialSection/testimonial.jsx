@@ -58,40 +58,40 @@ export default function Testimonial() {
     const testimonialRef = useRef(null);
     const swiperContainerRef = useRef(null);
 
-    useEffect(() => {
-        const sections = gsap.utils.toArray('.panel');
-        // const sections = gsap.utils.toArray('.panel:not(.swiper-slide)');
+    // useEffect(() => {
+    //     const sections = gsap.utils.toArray('.panel');
+    //     // const sections = gsap.utils.toArray('.panel:not(.swiper-slide)');
 
-        const animation = gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: 'none',
-            scrollTrigger: {
-                trigger: testimonialRef.current,
-                pin: true,
-                start: "top top",
-                end: `+=${sections.length * window.innerWidth}`,
-                scrub: 1,
-                // snap: 1 / (sections.length - 1),
-            },
-        });
+    //     const animation = gsap.to(sections, {
+    //         xPercent: -100 * (sections.length - 1),
+    //         ease: 'none',
+    //         scrollTrigger: {
+    //             trigger: testimonialRef.current,
+    //             pin: true,
+    //             start: "top 10%",
+    //             end: `+=${sections.length * window.innerWidth}`,
+    //             scrub: 1,
+    //             // snap: 1 / (sections.length - 1),
+    //         },
+    //     });
 
-        ScrollTrigger.refresh();
+    //     ScrollTrigger.refresh();
 
-        return () => {
-            animation.scrollTrigger.kill();
-        };
-    }, []);
+    //     return () => {
+    //         animation.scrollTrigger.kill();
+    //     };
+    // }, []);
 
 
     return (
         <div ref={testimonialRef} className="testimonialSection">
-            <div className="max-w-[90%] mx-auto relative reveal">
+            <div className="max-w-[90%] mx-auto relative">
                 <WaterMarkHeading
                     textWaterMark='Our testimonials'
                     sectionHeading='Our testimonials'
-                    // animationConfig={animationConfig}
+                    animationConfig={animationConfig}
                 />
-                <div ref={swiperContainerRef} className="swiper-container">
+                <div ref={swiperContainerRef} className="swiper-container reveal">
                     <Swiper
                         pagination={{
                             type: 'fraction',
@@ -116,7 +116,7 @@ export default function Testimonial() {
                                         </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
-                                    <div className='content_div flex flex-col lg:w-[38%] w-full lg:pl-6 lg:pt-6'>
+                                    <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11'>
                                         <p className='desc text-[20] tracking-[2px]'>{item.desc}</p>
                                         <div className='name relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
                                             <small className='line'></small> {item.name}
