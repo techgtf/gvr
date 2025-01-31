@@ -8,7 +8,7 @@ const OurVision = () => {
   useImageReveal(".reveal");
 
   return (
-    <div className="bg-[#33638B] my-[3.5rem] text-white flex justify-center">
+    <div className="bg-[#33638B] lg:my-[3.5rem] text-white flex justify-center">
       <div className="flex justify-between items-center py-[4.5rem] flex-wrap max-w-[85%]">
         <img
           className="w-[350px] h-[350px] reveal w-[100%] object-contain"
