@@ -28,7 +28,7 @@ function Layout({ children }) {
 
   return (
     <>
-    <CustomCursor/>
+      <CustomCursor />
       <Header />
       {/* <ContextProvider> */}
       {location.pathname === "/microsite" && <MicrositeMenu />}

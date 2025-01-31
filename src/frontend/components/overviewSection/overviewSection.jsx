@@ -15,21 +15,24 @@ export default function OverviewSection({ heading, paragraph }) {
 
   return (
     <div
-      className="overview_section"
+      className="overview_section md:!pt-[40px]"
       // data-speed="clamp(.9)"
       ref={sectionRef}
     >
-      <div className="headingWrap max-w-[79%] m-auto text-center">
-        <CommonHeading HeadingText={heading} />
+      <div className="headingWrap max-w-[79%]   m-auto text-center">
+        <CommonHeading
+          HeadingText={heading}
+          HeadingClass="md:!leading-[38px] md:!text-[10px] md:mb-[1rem]"
+        />
       </div>
       <div className="content max-w-[85%] m-auto lg:mt-[50px] lg:mb-[50px] text-center">
         <CommonPera
-          PeraclassName="fontItalic"
+          PeraclassName="fontItalic md:!leading-[28px]"
           //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
           PeraText={paragraph}
         />
       </div>
-      <CommonBtn to={""} TagName={Link} target="_blank">
+      <CommonBtn to={""} TagName={Link} className="mt-[3rem]" target="_blank">
         Know More <BsArrowUpRight />{" "}
       </CommonBtn>
     </div>

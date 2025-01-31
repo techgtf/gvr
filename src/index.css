@@ -42,3 +42,7 @@
   position: absolute;
   right: -4% !important; /* Positioning */
 }
+
+header {
+  visibility: hidden;
+}
