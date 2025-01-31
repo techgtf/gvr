@@ -31,14 +31,18 @@
   height: auto; /* Maintain aspect ratio */
 }
 
-.swiper-button-prev {
+/* .swiper-button-prev {
   position: absolute;
   top: 50%;
-  left: -4% !important; /* Positioning */
+  left: -4% !important; 
 }
 
 .swiper-button-next {
   top: 50%;
   position: absolute;
-  right: -4% !important; /* Positioning */
+  right: -4% !important;
+} */
+
+header {
+  visibility: hidden;
 }

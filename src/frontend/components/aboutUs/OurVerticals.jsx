@@ -20,9 +20,9 @@ const OurVerticals = () => {
           sectionHeading="Our Verticals"
           animationConfig={animationConfig}
         />
-        <div className="flex items-center justify-between mt-[4rem] flex-wrap">
-          <div className="basis-[60%] pl-[7rem]">
-            <h2 className="sectionHeading text-center tracking-[4px] text-right  !text-[16px] midlandfontmedium text-primary">
+        <div className="flex items-center justify-between md:flex-row flex-col-reverse mt-[4rem] flex-wrap">
+          <div className="basis-[100%] xl:basis-[60%] xl:pl-[7rem] mt-[2rem]">
+            <h2 className="sectionHeading text-center tracking-[4px] xl:text-right  !text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
             <p className="my-[1rem] text-[14px]">
@@ -55,27 +55,27 @@ const OurVerticals = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center mt-[1rem] w-[92%]">
+            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
               <CommonBtn to={""} TagName={Link} target="_blank">
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div>
+            </div> */}
           </div>
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-1.jpg"
             alt="vertical-1"
-            className="basis-[32%] reveal h-[480px]"
+            className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
         </div>
-        <div className="flex items-center justify-between mt-[4rem] flex-wrap">
+        <div className="flex items-center justify-between xl:mt-[4rem] mt-[3rem] flex-wrap">
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-2.jpg"
             alt="vertical-1"
-            className="basis-[32%] reveal h-[480px]"
+            className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
-          <div className="basis-[60%] pr-[7rem]">
-            <h2 className="sectionHeading text-left tracking-[4px] !text-[16px] midlandfontmedium text-primary">
+          <div className="xl:basis-[60%] xl:pr-[7rem] basis-[100%]">
+            <h2 className="sectionHeading xl:text-left mt-[2rem] text-center  tracking-[4px] !text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
             <p className="my-[1rem] text-[14px]">
@@ -108,12 +108,12 @@ const OurVerticals = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center mt-[1rem] w-[92%]">
+            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
               <CommonBtn to={""} TagName={Link} target="_blank">
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

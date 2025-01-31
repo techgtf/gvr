@@ -1,18 +1,25 @@
 import { useImageReveal } from "../useImageReveal";
-
+import { useTextAnimation } from "../useTextAnimation";
 const OurVision = () => {
+  const sectionRef = useTextAnimation({
+    from: { y: 100, opacity: 0 },
+    to: { y: 0, opacity: 1, duration: 1 },
+  });
   useImageReveal(".reveal");
 
   return (
-    <div className="bg-[#33638B] my-[3.5rem]  text-white flex justify-center">
+    <div className="bg-[#33638B] my-[3.5rem] text-white flex justify-center">
       <div className="flex justify-between items-center py-[4.5rem] flex-wrap max-w-[85%]">
         <img
-          className="w-[350px] h-[350px] reveal"
+          className="w-[350px] h-[350px] reveal w-[100%] object-contain"
           src="assets/frontend/images/aboutus/vision_and_mission.jpg"
           alt="vision_and_mission"
         />
-        <div className="basis-[60%]">
-          <div className="mb-[3.5rem]">
+        <div
+          className="xl:basis-[60%] basis-[100%] mt-[1.5rem]"
+          ref={sectionRef}
+        >
+          <div className="xl:mb-[3.5rem]  mb-[2rem]">
             <h3 className="midlandfontmedium text-[11px] tracking-[2px]">
               Our Vision
             </h3>
