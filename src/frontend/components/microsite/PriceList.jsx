@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import CommonHeading from "../commonHeading";
 import PriceListForm from "./PriceListForm";
 import { Context } from "../../context/context";
@@ -10,23 +10,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 function PriceList() {
   const { showEnquiryForm, openEnquiryForm } = useContext(Context);
+  const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
 
   const priceListData = [
     {
       area: "2 BHK",
+      more: "DD/ 2 BR/Kitchen/2 Toilets/Bal.",
       size: "1139 sq.ft",
       price: "₹ 74 Lacs*",
     },
     {
       area: "3 BHK",
-      size: "1139 sq.ft",
-      price: "₹ 74 Lacs*",
+      more: "DD/ 3 BR/Kitchen/3 Toilets/Bal.",
+      size: "1647 sq.ft",
+      price: "₹ 1.07 Cr*",
     },
     {
       area: "4 BHK",
-      size: "1139 sq.ft",
-      price: "₹ 74 Lacs*",
+      more: "DD/ 4 BR/ Study / Kitchen/ 4 Toilets/ Bal.",
+      size: "2283 sq.ft",
+      price: "₹ 1.48 Cr*",
     },
   ];
 
@@ -51,6 +55,12 @@ function PriceList() {
     );
   }, []);
 
+  const handleTooltipToggle = (index) => {
+    setVisibleTooltipIndex((prevIndex) =>
+      prevIndex === index ? null : index
+    );
+  };
+
   return (
     <>
       <section
@@ -70,9 +80,19 @@ function PriceList() {
               key={i}
               className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400"
             >
-              <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
+              <div className="flex justify-center relative sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                 <p>{item.area}</p>
-                <button className="bg-white px-6">MORE</button>
+                <button
+                  className="bg-white px-6"
+                  onClick={() => handleTooltipToggle(i)}
+                >
+                  MORE
+                </button>
+                {visibleTooltipIndex === i && (
+                  <div className="tooltip absolute w-full text-center rounded-md -left-[10px] -top-[65px] bg-black text-white p-2">
+                    {item.more}
+                  </div>
+                )}
               </div>
               <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                 <p>{item.size}</p>
@@ -96,15 +116,21 @@ function PriceList() {
         <div className="block md:hidden table w-full mt-10">
           {priceListData.map((item, i) => (
             <div key={i} className="row_1 py-0 md:py-5">
-              <div className="flex justify-center ">
-                {/* <p className="bg-[#aac1d34a] rounded-full px-4 py-1">
-                  DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal.
-                </p> */}
-              </div>
+              <div className="flex justify-center "></div>
               <div className="grid grid-cols-3 border-b border-gray-300 py-3">
-                <div className="flex justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
+                <div className="flex relative justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
                   <p className="">{item.area}</p>
-                  <button className="bg-white px-3">MORE</button>
+                  <button
+                    className="bg-white px-3"
+                    onClick={() => handleTooltipToggle(i)}
+                  >
+                    MORE
+                  </button>
+                  {visibleTooltipIndex === i && (
+                  <div className="tooltip w-[400px] absolute w-full text-center rounded-md -left-[10px] -top-[65px] bg-black text-white p-2">
+                    {item.more}
+                  </div>
+                )}
                 </div>
                 <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                   <p className="">{item.size}</p>
