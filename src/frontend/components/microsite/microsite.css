@@ -48,6 +48,7 @@
   z-index: 9;
   display: block;
 }
+
 /* mobile  */
 
 @media only screen and (max-width: 600px) {

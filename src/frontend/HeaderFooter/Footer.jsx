@@ -19,7 +19,7 @@ export default function Footer() {
       gsap.to(window, {
         scrollTo: { y: document.body.scrollHeight, autoKill: false },
         duration: 1,
-        ease: "power2.inOut",
+        // ease: "power2.inOut",
       });
     }
   }, [toggelLinks]);
@@ -37,11 +37,11 @@ export default function Footer() {
             </span>
           </button>
           <div className='footer_container max-w-[95%] m-auto'>
-            <div className='flexbox flex flex-wrap items-center justify-between pb-8'>
-              <Link to={`${CONFIG.BASE_ROOT}`}>
+            <div className='block md:flex justify-between items-center pb-8'>
+              <Link to={`${CONFIG.BASE_ROOT}`} className='flex justify-center md:block'>
                 <img className='h-[65px]' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`} alt="logo" />
               </Link>
-              <ul className='w-[37%] flex justify-between uppercase tracking-[1px]'>
+              <ul className='flex justify-between gap-4 mt-4 md:mt-0 uppercase tracking-[1px]'>
                 <li> <Link to={'#'} className='text-[14px]'>our projects</Link> </li>
                 <li> <Link to={'#'} className='text-[14px]'>media centre</Link> </li>
                 <li> <Link to={'#'} className='text-[14px]'>Our Profile</Link> </li>
