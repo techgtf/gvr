@@ -6,24 +6,25 @@ import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
-import {Fullscreen, Zoom} from 'yet-another-react-lightbox/plugins'
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
-import Lightbox from "yet-another-react-lightbox";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ProjectGallery() {
   const [activeTab, setActiveTab] = useState("actual");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [open, setOpen] = useState(false);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
+  const projectRef = useRef();
 
   const actualImages = [gallery1, gallery2, gallery3, gallery4];
   const renderImages = [gallery4, gallery3, gallery2, gallery1];
@@ -46,54 +47,51 @@ function ProjectGallery() {
     }
   }, []);
 
-const projectRef = useRef();
-  
-
-  useEffect(()=>{
-    gsap.fromTo(".gallery_images", 
+  useEffect(() => {
+    gsap.fromTo(
+      ".gallery_images",
+      { opacity: 0, y: 50 },
       {
-        opacity : 0,
-        y : 50
-      }, {
-        opacity : 1,
-        y : 0,
-        duration : 1.7,
-        stagger : 1,
+        opacity: 1,
+        y: 0,
+        duration: 1.7,
+        stagger: 1,
         scrollTrigger: {
           trigger: projectRef.current,
           start: "top 80%",
-          // end: "bottom 20%",
         },
       }
-    )
-  }, [])
+    );
+  }, []);
 
-    // Open lightbox on image click
-    const openLightbox = (index) => {
-      setCurrentIndex(index);
-      setSelectedImage(actualImages[index].image); // Set the clicked image as selected
-      setOpen(true);
-    };
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
+    setOpen(true);
+  };
 
   const imageData = activeTab === "actual" ? actualImages : renderImages;
 
   return (
-    <section ref={projectRef} className="project_gallery pb-20  flex items-center px-5 md:px-12 py-10 md:py-14 bg-[#EFF5FA]" id="gallery">
+    <section
+      ref={projectRef}
+      className="project_gallery pb-20 flex items-center px-5 md:px-12 py-10 md:py-14 bg-[#EFF5FA]"
+      id="gallery"
+    >
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="project_gallery_content">
-        <FadeIn duration={2} delay={0.5}> 
-            <CommonHeading HeadingText="Project Gallery" />        
-            </FadeIn>
+          <FadeIn duration={2} delay={0.5}>
+            <CommonHeading HeadingText="Project Gallery" />
+          </FadeIn>
           <div className="flex items-center pt-8 project_gallery_tabs">
-          <SlideIn duration={0.8} delay={0.2}>
-            <h4
-              className={`mr-4 uppercase mt-14 cursor-pointer ${
-                activeTab === "actual" ? "text-primary" : "text-gray-500"
-              }`}
-              onClick={() => handleTabClick("actual")}
-            >
-              Project Actual Images
-            </h4>
+            <SlideIn duration={0.8} delay={0.2}>
+              <h4
+                className={`mr-4 uppercase mt-14 cursor-pointer ${
+                  activeTab === "actual" ? "text-primary" : "text-gray-500"
+                }`}
+                onClick={() => handleTabClick("actual")}
+              >
+                Project Actual Images
+              </h4>
             </SlideIn>
             {activeTab === "actual" && (
               <div className="flex-1 border-t mt-14 mr-4 border-gray-300"></div>
@@ -101,15 +99,15 @@ const projectRef = useRef();
           </div>
 
           <div className="flex items-center project_gallery_tabs">
-          <SlideIn duration={0.8} delay={0.3}>
-            <h4
-              className={`mr-4 uppercase mt-10 cursor-pointer ${
-                activeTab === "render" ? "text-primary" : "text-gray-500"
-              }`}
-              onClick={() => handleTabClick("render")}
-            >
-              Project Render Images
-            </h4>
+            <SlideIn duration={0.8} delay={0.3}>
+              <h4
+                className={`mr-4 uppercase mt-10 cursor-pointer ${
+                  activeTab === "render" ? "text-primary" : "text-gray-500"
+                }`}
+                onClick={() => handleTabClick("render")}
+              >
+                Project Render Images
+              </h4>
             </SlideIn>
             {activeTab === "render" && (
               <div className="flex-1 border-t mt-10 mr-4 border-gray-300"></div>
@@ -117,7 +115,7 @@ const projectRef = useRef();
           </div>
         </div>
 
-        <div className="slider" >
+        <div className="slider">
           <div className="nav_buttons flex justify-end gap-5 py-5">
             <button
               ref={prevRef}
@@ -151,7 +149,7 @@ const projectRef = useRef();
                     src={image}
                     alt={`slide ${index + 1}`}
                     className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)} 
+                    onClick={() => openLightbox(index)}
                   />
                 ))}
               </div>
@@ -164,7 +162,7 @@ const projectRef = useRef();
                     src={image}
                     alt={`slide ${index + 1}`}
                     className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)} 
+                    onClick={() => openLightbox(index)}
                   />
                 ))}
               </div>
@@ -173,22 +171,13 @@ const projectRef = useRef();
         </div>
 
         {open && (
-        <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        index={currentIndex}
-        slides={actualImages.map((item) => ({
-          src: item.image,
-          title: item.alt,
-          description: "Click to open in full view",
-        }))}
-        thumbs={actualImages.map((item) => ({
-          src: item.image,
-          title: item.alt,
-        }))}
-        zoom={{maxZoomPixelRatio: 2}} 
-        plugins={[Fullscreen, Zoom]}
-      />
+          <Lightbox
+            open={open}
+            close={() => setOpen(false)}
+            index={currentIndex}
+            slides={imageData.map((src) => ({ src }))}
+            plugins={[Fullscreen, Zoom]}
+          />
       
       )}
       </div>
