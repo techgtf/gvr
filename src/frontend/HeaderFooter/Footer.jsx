@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <>
       <section id="mainfooter">
-        <footer className='footermain bg-slate-700 text-center text-white pt-8 relative'>
+        <footer className='footermain bg-slate-700 text-center text-white pt-10 relative'>
           <button className='toggelButton absolute left-0 right-0 top-[-28px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full p-[8px]'
             onClick={() => {
               setToggelLinks(!toggelLinks);

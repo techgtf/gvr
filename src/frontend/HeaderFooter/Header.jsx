@@ -54,18 +54,18 @@ export default function Header() {
               alt="logo"
             />
           </Link>
-          <button className="menuBtn">
+          <button className="menuBtn flex justify-end items-center">
             <img
               className={`lg:h-[35px] ${
                 isFixed || location.pathname === `${BASE_ROOT}about-us`
-                  ? "whiteIcon"
-                  : "colredIcon"
-              }`}
+                  ? "whiteIcon w-[30%]"
+                  : "colredIcon w-[80%]"
+              }   sm:w-full`}
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${
                 isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "1"
                   : ""
-              }.png`}
+              }.png `}
               alt="menu"
             />
           </button>

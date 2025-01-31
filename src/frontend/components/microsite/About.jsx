@@ -19,7 +19,7 @@ function About() {
   useImageReveal(".reveal");
 
   return (
-    <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-5 md:py-14">
+    <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14">
       <div className="absolute h-full flex items-center left-20 bottom-0">
         <WaterMarkHeading
           textWaterMark={reverseText("ABOUT US")}
@@ -37,9 +37,9 @@ function About() {
           </div>
         </div>
         <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
-          <div className="about_desc">
+          <div className="about_desc  ">
             <SlideIn duration={0.8} delay={0.2}>
-              <p className="text-justify">
+              <p className="text-justify ">
                 Great Value presents a new stature of luxury residential
                 apartments at SHARANAM. Located in sector 107, Noida, these
                 stunning apartments comprise of 16 exclusive towers with 2, 3
@@ -53,7 +53,7 @@ function About() {
               </p>
             </SlideIn>
             <div className="relative  w-full">
-              <div className="hero_vdo_div  w-[96] !bg-cover mt-4 !bg-center bg-no-repeat overflow-hidden">
+              <div className="hero_vdo_div  w-[96] !bg-cover mt-7 md:mt-4 !bg-center bg-no-repeat overflow-hidden">
                 <ZoomOut initialScale={1.5} duration={2}>
                   <img src={aboutImg} alt="About Image" className="object-cover" />
                 </ZoomOut>

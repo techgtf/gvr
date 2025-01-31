@@ -8,14 +8,14 @@ function PricelistForm() {
   if (!showEnquiryForm) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 max-h-[100vh] flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-100 max-h-[100vh] flex items-center justify-center z-50">
       <div className="w-[90%] md:w-[60%] mx-auto bg-[#EFF5FA] shadow-lg rounded-md">
         {/* Header Section */}
-        <div className="flex justify-between items-center p-6">
+        <div className="flex justify-between items-center p-6 ">
           <CommonHeading HeadingText="Have questions? Ask away!" />
 
           <button aria-label="Close enquiry form">
-            <SlClose className="text-2xl" onClick={closeEnquiryForm} />
+            <SlClose className="text-4xl md:text-2xl" onClick={closeEnquiryForm} />
           </button>
         </div>
 
