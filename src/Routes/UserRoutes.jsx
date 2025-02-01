@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
+import EmiCalculator from "../frontend/pages/emiCalculator";
 
 export const UserRoutes = [
   {
@@ -43,6 +44,16 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <About />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}emi-calculator`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <EmiCalculator />
             </Layout>
           </Suspense>
         ),
