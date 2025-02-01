@@ -13,7 +13,7 @@ function NavDropdown({setDropdown}) {
                 opacity: 0
             }, {
                 y: 0,
-                opacity: 1,
+                opacity: 0.9,
                 duration: 1,
             });
     }, []);

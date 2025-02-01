@@ -49,7 +49,7 @@ export default function Header() {
               className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                 ? "logo-colored"
                 : "logo-white"
-                } w-[50%]  sm:w-full`}
+                } w-[50%]  sm:w-[70%]`}
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed || location.pathname === `${BASE_ROOT}about-us`
                 ? "-colored"
                 : ""

@@ -12,7 +12,7 @@ function SideMenu({ setOpenSidebar }) {
                 opacity: 0
             }, {
                 x: 0,
-                opacity: 1,
+                opacity: 0.9,
                 duration: 1,
             });
     }, []);
