@@ -15,7 +15,7 @@ const OurTeam = () => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           OUR TEAM
         </h3>
-        <p className="text-black absolute xl:top-[5%] top-[8%] text-[12px] left-[26%] w-[250px] poppins-regular">
+        <p className="text-black absolute xl:top-[5%] top-[8%] text-[12px] xl:left-[30%] left-[7%] w-[250px] poppins-regular">
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s.
         </p>
@@ -44,7 +44,7 @@ const OurTeam = () => {
             />
           </div>
 
-          <div className="flex justify-between overflow-hidden xl:pt-[150px] pt-[80px] pb-[1rem] mt-[2rem] no-scrollbar no-wrap">
+          <div className="flex justify-between overflow-hidden xl:pt-[70px] pt-[80px] pb-[1rem] mt-[2rem] no-scrollbar no-wrap">
             {allProfile.map((profile, index) => {
               const isActive = index === 2;
               const isDesign = index === 0;
@@ -52,24 +52,22 @@ const OurTeam = () => {
                 <div key={index}>
                   <div
                     onClick={() => handleImageClick(index)}
-                    className={`min-w-[240px] ${
-                      isActive
-                        ? "h-[340px] mt-[-5.35rem]"
-                        : "h-[265px] xl:!mt-[-0.75rem]"
-                    } ml-[2.5rem] mr-[4rem] xl:mr-[1rem] flex items-end justify-center relative bg-[#EFF5FA]
+                    className={`min-w-[240px] 
+                      "h-[265px] xl:!mt-[-0.75rem]"
+                     ml-[2.5rem] mr-[4rem] xl:mr-[1rem] flex items-end justify-center relative bg-[#EFF5FA]
                     
                     ${
                       isDesign &&
-                      "xl:min-w-[270px] min-w-[290px] h-[265px] xl:!mt-[-0.75rem] ml-[2.5rem] mr-[4rem] xl:mr-[1rem] xl:!ml-[1.75rem] xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]"
+                      "xl:min-w-[270px] min-w-[290px] h-[265px] ml-[2.5rem] mr-[4rem] xl:mr-[1rem] xl:!ml-[1.75rem] xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]"
                     }
                     `}
                   >
                     <img
-                      className={`${
-                        isActive
-                          ? "w-[215px] h-[260px] mt-[5rem] object-cover"
-                          : "w-full h-[150px] object-contain"
-                      }`}
+                      className={`${"w-[215px] h-[200px] mt-[5rem] "}`}
+                      style={{
+                        objectFit:
+                          profile.image === "team-1.png" ? "cover" : "contain",
+                      }}
                       src={`assets/frontend/images/aboutus/team/${profile.image}`}
                       alt={profile.name}
                     />
@@ -79,8 +77,8 @@ const OurTeam = () => {
                   </div>
                   <div
                     className={`flex justify-between  mt-[2rem] xl:mt-[1rem] ml-[0.75rem] xl:pr-[1rem] ${
-                      !isDesign && "xl:ml-[2.5rem]"
-                    }`}
+                      !isDesign && "xl:ml-[2.5rem] "
+                    } ${isDesign && "xl:!mt-[2rem]"}`}
                   >
                     <div>
                       <p className="midlandfontmedium text-black text-[10px] tracking-[2px]">
