@@ -3,7 +3,7 @@
 
 
 .app_header.active {
-  background: var(--white);
+  background: #EFF5FA;
   padding-top: 10px;
   padding-bottom: 10px;
   animation: slide-down 0.9s;
