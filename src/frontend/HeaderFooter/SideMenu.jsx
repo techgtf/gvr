@@ -30,7 +30,7 @@ function SideMenu({ setOpenSidebar }) {
 
     return (
         <>
-            <div className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-[30%] h-screen px-10">
+            <div className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-full sm:w-[30%] h-screen px-10">
                 <div className="flex flex-col relative items-center gap-5 justify-evenly h-full">
                     <div className="absolute top-10 right-3">
                         <SlClose onClick={handleClose} className="cursor-pointer text-3xl text-[#00000094]" />

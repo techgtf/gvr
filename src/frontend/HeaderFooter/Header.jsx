@@ -9,10 +9,32 @@ import NavDropdown from "./NavDropdown";
 
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
-  const [openSidebar, setOpenSidebar] = useState(false)
-  const [dropdown, setDropdown] = useState(false)
+  const [openSidebar, setOpenSidebar] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
   const location = useLocation();
+
+  // Toggle function to manage both menu states
+  const handleToggleSidebar = () => {
+    // If sidebar is open, close it and open the dropdown
+    if (!openSidebar) {
+      setOpenSidebar(true);
+      setDropdown(false); // Close dropdown when sidebar opens
+    } else {
+      setOpenSidebar(false); // Close sidebar
+    }
+  };
+
+  const handleToggleDropdown = () => {
+    // If dropdown is open, close it and open the sidebar
+    if (!dropdown) {
+      setDropdown(true);
+      setOpenSidebar(false); // Close sidebar when dropdown opens
+    } else {
+      setDropdown(false); // Close dropdown
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -45,7 +67,6 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <Link to={`${BASE_ROOT}`}>
             <img
-              // {/* chnaged by bp  */}
               className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                 ? "logo-colored"
                 : "logo-white"
@@ -58,11 +79,11 @@ export default function Header() {
             />
           </Link>
           <div className="right_nav flex justify-between items-center gap-10">
-            <div className={`nav_items uppercase ${isFixed || location.pathname === `${BASE_ROOT}about-us` ? "text-black" : "text-white"}`}>
+            <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}about-us` ? "text-black" : "text-white"}`}>
               <ul className="flex justify-evenly gap-10 items-center">
-                <li onClick={() => setDropdown(true)} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">residential <IoChevronDown className="text-xl" /></li>
-                <li onClick={() => setDropdown(true)} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">commercial <IoChevronDown className="text-xl" /></li>
-                <li onClick={() => setDropdown(true)} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">esg <IoChevronDown className="text-xl" /></li>
+                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">residential <IoChevronDown className="text-xl" /></li>
+                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">commercial <IoChevronDown className="text-xl" /></li>
+                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">esg <IoChevronDown className="text-xl" /></li>
               </ul>
             </div>
             <button className="menuBtn flex justify-end items-center">
@@ -75,7 +96,7 @@ export default function Header() {
                   ? "1"
                   : ""
                   }.png `}
-                alt="menu" onClick={() => setOpenSidebar(true)}
+                alt="menu" onClick={handleToggleSidebar}
               />
             </button>
           </div>
@@ -83,7 +104,6 @@ export default function Header() {
       </div>
       {openSidebar ? <SideMenu setOpenSidebar={setOpenSidebar} /> : ""}
       {dropdown ? <NavDropdown setDropdown={setDropdown} /> : ""}
-
     </header>
   );
 }
