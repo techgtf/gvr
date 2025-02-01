@@ -8,7 +8,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { useTextAnimation } from "../useTextAnimation";
 import SlideIn from "../Animations/SlideIn";
 
-export default function OverviewSection({ heading, paragraph, showKnowMore }) {
+
+export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink }) {
   // const sectionRef = useTextAnimation(
   //   { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
   //   []
@@ -16,7 +17,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore }) {
 
   return (
     <div
-      className="overview_section 2xl:pt-[80px] xl:pt-[70px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+      className="overview_section 2xl:pt-[50px] xl:pt-[50px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
     // data-speed="clamp(.9)"
     // ref={sectionRef}
     >
@@ -33,7 +34,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore }) {
         </div>
         {
           showKnowMore && (
-            <CommonBtn to={""} TagName={Link} target="_blank">
+            <CommonBtn to={pageLink} TagName={Link} target="_blank">
               Know More <BsArrowUpRight />{" "}
             </CommonBtn>
           )

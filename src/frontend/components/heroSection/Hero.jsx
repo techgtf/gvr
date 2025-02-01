@@ -43,7 +43,7 @@ export default function Hero({
 
 
 
-            <div className='hero_vdo_div h-[80vh] relative w-full] bg-cover'
+            <div className='hero_vdo_div lg:h-[100vh] h-[75vh] relative w-full] bg-cover'
                 style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
             >
 
@@ -59,7 +59,7 @@ export default function Hero({
                     muted
                     onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                    className="h-[80vh] w-full object-cover"
+                    className="lg:h-[100vh] h-[75vh] w-full object-cover"
                 ></video>
                 {/* </ZoomOut> */}
 
