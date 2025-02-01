@@ -7,17 +7,19 @@ import { AdminRoutes } from "./Routes/AdminRoutes.jsx";
 import ContextProvider from "./frontend/context/context.jsx";
 import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
-// import { BASE_ROOT } from '../config.js';
+import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ContextProvider>
-      <RouterProvider router={router} />
-      <CustomPortal>
-        <PricelistForm />
-      </CustomPortal>
-    </ContextProvider>
+    <TeamProvider>
+      <ContextProvider>
+        <RouterProvider router={router} />
+        <CustomPortal>
+          <PricelistForm />
+        </CustomPortal>
+      </ContextProvider>
+    </TeamProvider>
   </StrictMode>
 );
