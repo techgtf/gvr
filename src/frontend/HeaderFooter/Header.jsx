@@ -40,11 +40,11 @@ export default function Header() {
         <div className="flex justify-between">
           <Link to={`${BASE_ROOT}`}>
             <img
-              // lg:h-[60px]
+              // {/* chnaged by bp  */}
               className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "logo-colored"
                   : "logo-white"
-                } w-[40%]  sm:w-full`}
+                } w-[50%]  sm:w-full`}
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "-colored"
                   : ""
@@ -52,7 +52,22 @@ export default function Header() {
               alt="logo"
             />
           </Link>
+          {/* chnaged by bp  */}
           <button className="menuBtn flex justify-end items-center">
+            <img
+              className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "whiteIcon "
+                  : "colredIcon"
+                }   sm:w-full`}
+              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed || location.pathname === `${BASE_ROOT}about-us`
+                  ? "1"
+                  : ""
+                }.png `}
+              alt="menu"
+            />
+          </button>
+          
+          {/* <button className="menuBtn flex justify-end items-center">
             <img
               className={`lg:h-[35px] ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "whiteIcon w-[30%]"
@@ -64,7 +79,7 @@ export default function Header() {
                 }.png `}
               alt="menu"
             />
-          </button>
+          </button> */}
         </div>
       </div>
     </header>
