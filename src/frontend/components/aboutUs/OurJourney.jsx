@@ -250,7 +250,7 @@ const OurJourney = () => {
           />
         </div>
       </div>
-      <div className="relative mt-[3rem]">
+      <div className="relative mt-[3rem] xl:mt-[-1rem]">
         <Swiper
           // spaceBetween={120}
           // slidesPerView={5}
