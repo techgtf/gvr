@@ -26,15 +26,19 @@ const OurVerticals = () => {
               GV FINANCE
             </h2>
             <p className="my-[1rem] text-[14px]">
+              GV Finance delivers tailored financial solutions that empower
+              businesses and individuals to optimize cash flow, secure
+              investments, and scale with confidence. From structured lending to
+              wealth management, we simplify finance, offering intelligent
+              strategies to drive financial stability and long-term success. Our
+              goal is to transform capital into confidence, enabling sustainable
+              growth.
+            </p>
+            {/* <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
-            </p>
-            <p className="mb-[1rem] text-[14px]">
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book.
-            </p>
+            </p> */}
             <div>
               <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
                 <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
@@ -76,18 +80,21 @@ const OurVerticals = () => {
           />
           <div className="xl:basis-[60%] xl:pr-[7rem] basis-[100%]">
             <h2 className="sectionHeading xl:text-left mt-[2rem] text-center  tracking-[4px] !text-[16px] midlandfontmedium text-primary">
-              GV FINANCE
+              GV CAPITAL
             </h2>
             <p className="my-[1rem] text-[14px]">
+              GV Capital fuels high-potential businesses with strategic
+              investments, empowering visionary entrepreneurs to scale and
+              innovate. Beyond funding, we provide deep industry insights,
+              mentorship, and long-term partnerships to drive sustainable
+              growth. Our focus is on businesses that create meaningful impact,
+              leveraging smart capital to unlock potential and shape the future.
+            </p>
+            {/* <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
-            </p>
-            <p className="mb-[1rem] text-[14px]">
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book.
-            </p>
+            </p> */}
             <div>
               <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
                 <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">

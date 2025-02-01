@@ -169,16 +169,16 @@ const OurJourney = () => {
         selectedProjectIndex == 12 ? (
           <Swiper
             spaceBetween={120}
-            slidesPerView={5}
+            slidesPerView={1}
             modules={[Navigation]}
             navigation={{
               nextEl: ".inner-swiper-button-next",
               prevEl: ".inner-swiper-button-prev",
             }}
             loop={true}
-            className="relative basis-[50%]"
+            className="relative xl:basis-[50%] basis-[100%]"
           >
-            <div className="inner-swiper-button-prev absolute z-[99] top-[50%] left-0">
+            <div className="inner-swiper-button-prev !inline-block absolute z-[99] top-[50%] left-0">
               <img
                 src="assets/frontend/images/icons/left_arrow.png"
                 alt="Previous"
@@ -186,7 +186,7 @@ const OurJourney = () => {
                 className="w-[15px] h-[15px]"
               />
             </div>
-            <div className="inner-swiper-button-next z-[99] absolute top-[50%] right-[12px]">
+            <div className="inner-swiper-button-next z-[99] !inline-block absolute top-[50%] right-[12px]">
               <img
                 src="assets/frontend/images/icons/right_arrow.png"
                 alt="Next"
@@ -196,8 +196,22 @@ const OurJourney = () => {
             </div>
             {projects[selectedProjectIndex].project.map((proj, index) => (
               <SwiperSlide key={index} className="">
-                <div className="text-center px-[2.5rem]" ref={sectionRef}>
-                  <h4 className="midlandfontbold pt-[1px] !text-[18px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
+                {/* <div className="text-center px-[2.5rem]" ref={sectionRef}>
+                  <h4 className="midlandfontbold pt-[1px] xl:!text-[18px] text-[16px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
+                    {proj.year}
+                  </h4>
+                  <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
+                    {proj.category}
+                  </p>
+                  <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+                    {proj.description}
+                  </p>
+                </div> */}
+                <div
+                  className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
+                  ref={sectionRef}
+                >
+                  <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
                     {proj.year}
                   </h4>
                   <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
@@ -322,165 +336,6 @@ const OurJourney = () => {
         </div>
       </div>
     </div>
-    // <div className="max-w-[100%] mb-[4rem] px-[5rem]  py-[5rem] bg-[#EFF5FA]">
-    //   <h3 className="sectionHeading tracking-[5px] text-[black] midlandfontmedium">
-    //     OUR JOURNEY
-    //   </h3>
-    //   <div className="flex justify-between items-center flex-wrap ">
-    //     {selectedProjectIndex == 4 ||
-    //     selectedProjectIndex == 9 ||
-    //     selectedProjectIndex == 11 ||
-    //     selectedProjectIndex == 12 ? (
-    //       <Swiper
-    //         spaceBetween={120}
-    //         slidesPerView={1}
-    //         onSwiper={(swiper) => console.log(swiper)}
-    //         modules={[Navigation]}
-    //         navigation={{
-    //           nextEl: ".inner-swiper-button-next",
-    //           prevEl: ".inner-swiper-button-prev",
-    //         }}
-    //         loop={true}
-    //         className="relative basis-[50%]"
-    //       >
-    //         <div className="inner-swiper-button-prev absolute z-[99] top-[50%] left-0">
-    //           <img
-    //             src="assets/frontend/images/icons/left_arrow.png "
-    //             alt="Previous"
-    //             style={{ cursor: "pointer" }}
-    //             className="w-[15px] h-[15px]"
-    //           />
-    //         </div>
-    //         <div className="inner-swiper-button-next z-[99]  absolute top-[50%] right-[12px]">
-    //           <img
-    //             src="assets/frontend/images/icons/right_arrow.png"
-    //             alt="Next"
-    //             className="w-[15px] h-[15px]"
-    //             style={{ cursor: "pointer" }}
-    //           />
-    //         </div>
-    //         {projects[selectedProjectIndex].project.map((proj, index) => {
-    //           return (
-    //             <SwiperSlide key={index}>
-    //               <div className="text-center px-[2.5rem]" ref={sectionRef}>
-    //                 <h4 className="midlandfontbold pt-[1px] !text-[18px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
-    //                   {proj.year}
-    //                 </h4>
-    //                 <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-    //                   {proj.category}
-    //                 </p>
-    //                 {/* <span className="border-b-[2px] border-b-[#33638B] tracking-[4px] px-[10px] pb-[10px]">
-    //                    ALIGARH
-    //                   </span> */}
-    //                 <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-    //                   {proj.description}
-    //                 </p>
-    //               </div>
-    //             </SwiperSlide>
-    //           );
-    //         })}
-    //       </Swiper>
-    //     ) : (
-    //       <div className="basis-[50%] text-center px-[2.5rem]" ref={sectionRef}>
-    //         <h4 className="midlandfontbold !text-[18px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
-    //           {projects[selectedProjectIndex].year}
-    //         </h4>
-    //         <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-    //           {projects[selectedProjectIndex].category}
-    //         </p>
-
-    //         <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-    //           {projects[selectedProjectIndex].description}
-    //         </p>
-    //       </div>
-    //     )}
-
-    //     <div className="basis-[50%] border-l-[1px] border-l-solid border-l-[#B1B1B1] h-[400px] relative flex flex-wrap justify-center">
-    //       <img
-    //         src="assets/frontend/images/aboutus/ourJourney/1.jpg"
-    //         alt="1.jpg"
-    //         className="w-[200px] h-[150px] absolute top-0 z-[1] left-[25%]"
-    //       />
-    //       <img
-    //         src="assets/frontend/images/aboutus/ourJourney/2.jpg"
-    //         alt="2.jpg"
-    //         className="w-[200px] right-[17%] top-[16%] h-[150px] absolute z-[2]"
-    //       />
-    //       <img
-    //         src="assets/frontend/images/aboutus/ourJourney/3.jpg"
-    //         alt="3.jpg"
-    //         className="w-[200px] h-[150px] top-[25%] left-[8%] absolute z-[2]"
-    //       />
-    //       <img
-    //         src="assets/frontend/images/aboutus/ourJourney/4.jpg"
-    //         alt="4.jpg"
-    //         className="w-[200px] h-[150px] absolute bottom-[15%] right-[33%] z-[3]"
-    //       />
-    //     </div>
-    //   </div>
-    //   <div className="relative">
-    //     <Swiper
-    //       spaceBetween={120}
-    //       slidesPerView={5}
-    //       onSwiper={(swiper) => console.log(swiper)}
-    //       modules={[Navigation]}
-    //       navigation={{
-    //         nextEl: ".swiper-button-next",
-    //         prevEl: ".swiper-button-prev",
-    //       }}
-    //       loop={true}
-    //       className="relative"
-    //     >
-    //       <div className="absolute left-[10%] top-[50%] h-[1px] w-[85%] bg-[#B1B1B1]" />
-
-    //       {projects.map((project, index) => {
-    //         return (
-    //           <SwiperSlide key={project.year}>
-    //             <div
-    //               className="w-60 inline-block cursor-pointer"
-    //               onClick={() => setSelectedProjectIndex(index)}
-    //             >
-    //               <figure
-    //                 className={`border relative border-solid border-[#B1B1B1] z-10 w-32 h-32 flex justify-center items-center rounded-full ${
-    //                   selectedProjectIndex == index &&
-    //                   "border-primary border-[3px]"
-    //                 }`}
-    //               >
-    //                 <img
-    //                   src="assets/frontend/images/aboutus/ourJourney/timeline.png"
-    //                   alt="timeline"
-    //                 />
-    //                 <figcaption
-    //                   className="text-primary font-medium absolute top-7 right-[-40%]"
-    //                   style={{ fontSize: "15px" }}
-    //                 >
-    //                   {index == 4 || index == 9 || index == 11 || index == 12
-    //                     ? project.project[0].year
-    //                     : project.year}
-    //                 </figcaption>
-    //               </figure>
-    //             </div>
-    //           </SwiperSlide>
-    //         );
-    //       })}
-    //     </Swiper>
-
-    //     <div className="swiper-button-prev">
-    //       <img
-    //         src="assets/frontend/images/icons/left_arrow.png"
-    //         alt="Previous"
-    //         style={{ cursor: "pointer" }}
-    //       />
-    //     </div>
-    //     <div className="swiper-button-next">
-    //       <img
-    //         src="assets/frontend/images/icons/right_arrow.png"
-    //         alt="Next"
-    //         style={{ cursor: "pointer" }}
-    //       />
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
