@@ -1,3 +1,4 @@
+.heroSection::after{content: ''; position: absolute; top: 0; height: 210px; width: 100%;background:linear-gradient(180deg, #000000cc 0%, rgba(255, 255, 255, 0.00) 100%)}
 .heroSection .container{top: 50%; left: 50%; transform: translate(-50%, -50%);}
 .heroSection .common_heading{line-height: 60px;}
 .hero_vdo_div{width: 100%;background-color: #fff;}

@@ -29,7 +29,7 @@ export default function LoadAnimation() {
     }, []);
 
     return (
-        <div className="LoadAnimation flex h-screen w-full fixed top-0 left-0 flex-col items-center justify-center">
+        <div className="fixed top-0 z-10 LoadAnimation flex h-screen w-full flex-col items-center justify-center">
             <div className="loader_in w-full relative h-full flex flex-wrap text-center">
                 <div className="preloader_pane justify-center items-end" style={{ display: "grid" }}>
                     <h3 className="midlandfontmedium tracking-[4px] text-black relative top-[-25px]">

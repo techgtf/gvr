@@ -15,44 +15,26 @@ export default function Hero({
     headingClasses = ''
 }) {
 
-    const textRef = useTextAnimation(
-        { from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 } },
-        []
-    );
+    // const textRef = useTextAnimation(
+    //     { from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 } },
+    //     []
+    // );
 
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-    // console.log(isVideoLoaded);
-
-
-
 
     return (
         <div className="heroSection relative z-0">
             {/* Background Image */}
-            {/* {!isVideoLoaded &&
-                <div className="img_div lg:h-[82vh]">
-                    <img
-                        className="lg:h-[82vh] h-auto w-full object-cover"
-                        src={imageUrl || `assets/frontend/images/home/hero.jpg`}
-                        alt="Hero Section"
-                    />
-                    <h3>Loading Video...</h3>
-                </div>
-            } */}
-
-
 
             <div className='hero_vdo_div lg:h-[100vh] h-[75vh] relative w-full] bg-cover'
                 style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
             >
-
                 <LoadAnimation />
-
                 {/* <ZoomOut initialScale={1.5} duration={4}> */}
                 <video
                     // className="min-h-svh"
-                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                    // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                    src={`https://res.cloudinary.com/dx3l6id8r/video/upload/v1738561546/herovdo_gd2h16.mp4`}
                     autoPlay
                     playsInline
                     loop

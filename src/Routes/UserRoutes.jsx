@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
 import EmiCalculator from "../frontend/pages/emiCalculator";
+import Residential from "../frontend/pages/residential";
 
 export const UserRoutes = [
   {
@@ -34,6 +35,16 @@ export const UserRoutes = [
             <Layout>
               <Microsite />
               <MicrositeMenu />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}residential`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Residential />
             </Layout>
           </Suspense>
         ),
