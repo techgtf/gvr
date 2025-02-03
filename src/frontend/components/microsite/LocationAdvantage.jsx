@@ -5,6 +5,10 @@ import driveActive from "/assets/frontend/images/microsite/location/driveActive.
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
 import education from "/assets/frontend/images/microsite/location/driveIcons/education.png";
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png";
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.png";
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png";
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png";
 import junction from "/assets/frontend/images/microsite/location/driveIcons/junction.png";
 import golfing from "/assets/frontend/images/microsite/location/driveIcons/golfing.png";
 import hospital from "/assets/frontend/images/microsite/location/driveIcons/hospital.png";
@@ -52,22 +56,22 @@ function LocationAdvantage() {
 
   const walkData = [
     {
-      image: education,
+      image: mall,
       text: "Starling Edge Mall, Fern Residency",
       time: "5 min",
     },
     {
-      image: junction,
+      image: school,
       text: "Pathway School Noida",
       time: "10 min",
     },
     {
-      image: golfing,
+      image: musicschool,
       text: "Mayoor School of Music",
       time: "15 min",
     },
     {
-      image: hospital,
+      image: buildings,
       text: "Oasis Noida",
       time: "20 min",
     },   

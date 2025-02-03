@@ -58,7 +58,7 @@ function MicrositeMenu() {
 
   return (
     <section
-      className={`microsite_menu bg-[#EFF5FA] px-10 py-3 w-full z-10 ${
+      className={`microsite_menu hidden sm:block bg-[#EFF5FA] px-10 py-3 w-full z-10 ${
         isFooterActive ? "hidden" : "fixed bottom-0 left-0"
       }`}
     >
