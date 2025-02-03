@@ -10,51 +10,24 @@ const specifications = [
   {
     title: "Master Bedroom(s)",
     items: [
-      {
-        image: "assets/frontend/images/microsite/specifications/mansory.png",
-        description:
-          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
-      },
-      {
-        image: "assets/frontend/images/microsite/specifications/parquet.png",
-        description:
-          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
-      },
+      { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+      { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
     ],
   },
   {
     title: "Modular Kitchen",
     items: [
-      {
-        image: "assets/frontend/images/microsite/specifications/mansory2.png",
-        description:
-          "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint",
-      },
-      {
-        image: "assets/frontend/images/microsite/specifications/mansory3.png",
-        description: "Fixtures: High Quality Branded CP Fittings",
-      },
+      { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+      { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High Quality Branded CP Fittings" },
     ],
   },
   {
     title: "Living/Dining Room",
     items: [
-      {
-        image: "assets/frontend/images/microsite/specifications/mansory1.png",
-        description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint",
-      },
-      {
-        image: "assets/frontend/images/microsite/specifications/parquet2.png",
-        description: "Floors: High Quality Vitrified Tile",
-      },
-      {
-        image: "assets/frontend/images/microsite/specifications/door.png",
-        description: "Floors: High Quality Vitrified Tile",
-      },
-      {
-        image: "assets/frontend/images/microsite/specifications/roller.png",
-        description: "Floors: High Quality Vitrified Tile",
-      },
+      { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
+      { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
+      { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
+      { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
     ],
   },
 ];
@@ -83,12 +56,12 @@ function Specifications() {
   return (
     <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
       <div className="about_desc">
-      <FadeIn duration={2} delay={0.5}>
+        <FadeIn duration={2} delay={0.5}>
           <CommonHeading HeadingText="Specifications" />
         </FadeIn>
-        <div className="grid grid-cols-12 mt-8 h-[350px] overflow-y-scroll pr-5">
+        <div className="grid grid-cols-12 mt-8 overflow-y-auto h-[350px] pr-5 specifications-scroll-container">
           {specifications.map((spec, index) => (
-            <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)} >
+            <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)}>
               <h4 className="font-semibold">{spec.title}</h4>
               {spec.items.map((item, itemIndex) => (
                 <div key={itemIndex} className="flex gap-3 py-5">

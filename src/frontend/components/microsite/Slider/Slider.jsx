@@ -3,9 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from 'swiper/modules';
 import {Fullscreen, Zoom} from 'yet-another-react-lightbox/plugins'
 import slide1 from "/assets/frontend/images/microsite/amentities/slider/slide1.png";
-import slide2 from "/assets/frontend/images/microsite/amentities/slider/slide2.png";
-import slide3 from "/assets/frontend/images/microsite/amentities/slider/slide3.png";
-import slide4 from "/assets/frontend/images/microsite/amentities/slider/slide4.png";
+import slide2 from "/assets/frontend/images/microsite/amentities/slider/slide2.jpg";
+import slide3 from "/assets/frontend/images/microsite/amentities/slider/slide3.jpg";
+import slide4 from "/assets/frontend/images/microsite/amentities/slider/slide4.jpg";
+import slide5 from "/assets/frontend/images/microsite/amentities/slider/slide5.jpg";
+import slide6 from "/assets/frontend/images/microsite/amentities/slider/slide6.jpg";
+import slide7 from "/assets/frontend/images/microsite/amentities/slider/slide7.jpg";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import Lightbox from "yet-another-react-lightbox"; // Import the new lightbox package
 import "yet-another-react-lightbox/styles.css"; // Import lightbox styles
@@ -26,7 +29,9 @@ function Slider() {
     { image: slide2, alt: "Slide 2" },
     { image: slide3, alt: "Slide 3" },
     { image: slide4, alt: "Slide 4" },
-    { image: slide1, alt: "Slide 5" },
+    { image: slide5, alt: "Slide 5" },
+    { image: slide6, alt: "Slide 6" },
+    { image: slide7, alt: "Slide 7" },
   ];
 
   useEffect(() => {

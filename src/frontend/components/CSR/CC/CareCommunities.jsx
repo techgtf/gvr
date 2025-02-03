@@ -21,8 +21,9 @@ function CareCommunities() {
                 </SlideIn>
                 <p className="font-semibold w-full text-center">Through impactful camps, they extend care with:</p>
                 <Camps/>
-
+                <SlideIn duration={0.8} delay={0.2}> 
                 <p className="font-semibold w-full text-center mt-10">Their Education Centres further empower communities, fostering brighter futures for all.</p>
+                </SlideIn>
 
             </section>
         </>
