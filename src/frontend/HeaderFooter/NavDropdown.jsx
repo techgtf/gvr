@@ -1,21 +1,35 @@
-import React, { useEffect } from 'react'
-import CommonHeading from '../components/commonHeading'
-import { Link } from 'react-router-dom'
-import { SlClose } from 'react-icons/sl'
+import React, { useEffect, useRef } from 'react';
+import CommonHeading from '../components/commonHeading';
+import { Link } from 'react-router-dom';
+import { SlClose } from 'react-icons/sl';
 import gsap from 'gsap';
 
-function NavDropdown({setDropdown, setActiveItem}) {
+function NavDropdown({ setDropdown, setActiveItem }) {
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
-        gsap.fromTo(".nav_dropdown", 
+        gsap.fromTo(
+            ".nav_dropdown", 
             {
                 y: -100,
                 opacity: 0
-            }, {
+            }, 
+            {
                 y: 0,
                 opacity: 0.9,
                 duration: 1,
-            });
+            }
+        );
+
+        const handleClick = () => {
+            handleClose();
+        };
+
+        document.addEventListener('mousedown', handleClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+        };
     }, []);
 
     const handleClose = () => {
@@ -25,13 +39,13 @@ function NavDropdown({setDropdown, setActiveItem}) {
             duration: 0.8,
             onComplete: () => {
                 setDropdown(false);  
-                setActiveItem(null);  // Reset active item when dropdown closes
+                setActiveItem(null);  
             }
         });
     };
 
     return (
-        <div className="nav_dropdown fixed top-[73px] left-0 h-[50vh] w-full bg-[#EFF5FA] text-black opacity-95 p-10">
+        <div ref={dropdownRef} className="nav_dropdown fixed top-[73px] left-0 h-[50vh] w-full bg-[#EFF5FA] text-black opacity-95 p-10">
             <div className="relative h-full">
                 <ul className='flex justify-evenly items-center h-full'>
                     <li>
@@ -59,7 +73,7 @@ function NavDropdown({setDropdown, setActiveItem}) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default NavDropdown
+export default NavDropdown;
