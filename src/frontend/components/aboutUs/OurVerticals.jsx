@@ -25,7 +25,12 @@ const OurVerticals = () => {
             <h2 className="sectionHeading text-center tracking-[4px] xl:text-right  !text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
-            <p className="my-[1rem] text-[14px]">
+            <p
+              className="my-[1rem] 
+            
+            text-[13px]  poppins-regular text-black font-[300]
+            "
+            >
               GV Finance delivers tailored financial solutions that empower
               businesses and individuals to optimize cash flow, secure
               investments, and scale with confidence. From structured lending to
@@ -48,7 +53,7 @@ const OurVerticals = () => {
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px]">
+                  <p className="text-[12px] poppins-regular">
                     GV Finance delivers tailored financial solutions that
                     empower businesses and individuals to optimize cash flow,
                     secure investments.
@@ -84,7 +89,7 @@ const OurVerticals = () => {
             <h2 className="sectionHeading xl:text-left mt-[2rem] text-center  tracking-[4px] !text-[16px] midlandfontmedium text-primary">
               GV CAPITAL
             </h2>
-            <p className="my-[1rem] text-[14px]">
+            <p className="my-[1rem] text-[13px] mt-[1rem] poppins-regular text-black font-[300]">
               GV Capital fuels high-potential businesses with strategic
               investments, empowering visionary entrepreneurs to scale and
               innovate. Beyond funding, we provide deep industry insights,
@@ -106,7 +111,7 @@ const OurVerticals = () => {
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px]">
+                  <p className="text-[12px] poppins-regular">
                     GV Capital fuels high-potential businesses with strategic
                     investments.
                   </p>
