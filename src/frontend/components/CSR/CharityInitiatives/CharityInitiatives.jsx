@@ -39,12 +39,12 @@ function CharityInitiatives() {
                     <CommonHeading HeadingText="Great Value Charitable Initiatives: Educating & Empowering" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mt-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-20">
                     <Initiatives />
                     <InitiativesDesc />
                 </div>
 
-                <div className="charity-images grid grid-cols-12 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-32">
+                <div className="charity-images grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-16 md:mt-32">
                     {images && images.map((item, i) => (
                         <img key={i} src={item} alt={`Charity Image ${i + 1}`} />
                     ))}
