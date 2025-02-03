@@ -38,14 +38,14 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: #000000bd;
+  background-color: #000;
   position: fixed;
-  font-size: 4px;
+  font-size: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  z-index: 999;
+  z-index: 999999;
   display: block;
 }
 

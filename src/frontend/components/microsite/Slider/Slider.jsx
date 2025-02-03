@@ -54,13 +54,13 @@ function Slider() {
           ref={prevRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronLeft className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+          <LuChevronLeft className="w-[30px] cursor-pointer md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
         <button
           ref={nextRef}
           className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
         >
-          <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+          <LuChevronRight className="w-[30px] cursor-pointer md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
         </button>
       </div>
 

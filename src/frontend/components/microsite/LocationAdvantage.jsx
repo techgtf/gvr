@@ -53,29 +53,24 @@ function LocationAdvantage() {
   const walkData = [
     {
       image: education,
-      text: "Amity university , botanic garden of india republic",
-      time: "15 min",
+      text: "Starling Edge Mall, Fern Residency",
+      time: "5 min",
     },
     {
       image: junction,
-      text: "Greater noida expressway, worlds of wonder",
-      time: "20 min",
+      text: "Pathway School Noida",
+      time: "10 min",
     },
     {
       image: golfing,
-      text: "Noida golf course, sandal suites by lemon tree hotels",
-      time: "25 min",
+      text: "Mayoor School of Music",
+      time: "15 min",
     },
     {
       image: hospital,
-      text: "Yatharth super specialty hospital, max super speciality hospital",
-      time: "35 min",
-    },
-    {
-      image: hospital,
-      text: "Yatharth super specialty hospital, max super speciality hospital",
-      time: "35 min",
-    },
+      text: "Oasis Noida",
+      time: "20 min",
+    },   
   ];
 
   const handleTabClick = (tab) => {
@@ -148,7 +143,7 @@ function LocationAdvantage() {
         <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button
-              className={`drive flex gap-3 text-[16px] items-center  ${
+              className={`drive cursor-pointer flex gap-3 text-[16px] items-center  ${
                 activeTab === "drive" ? "text-black" : "text-gray-300"
               }`}
               onClick={() => handleTabClick("drive")}
@@ -156,12 +151,12 @@ function LocationAdvantage() {
               <img
                 src={activeTab === "drive" ? driveActive : drive}
                 alt="drive icon"
-                className="w-8"
+                className="w-8 cursor-pointer"
               />{" "}
               DRIVE
             </button>
             <button
-              className={`walk flex gap-3 text-[16px] items-center ${
+              className={`walk cursor-pointer flex gap-3 text-[16px] items-center ${
                 activeTab === "walk" ? "text-black" : "text-gray-300"
               }`}
               onClick={() => handleTabClick("walk")}
@@ -169,7 +164,7 @@ function LocationAdvantage() {
               <img
                 src={activeTab === "walk" ? walkActive : walk}
                 alt="walk icon"
-                className="w-8"
+                className="w-8 cursor-pointer"
               />{" "}
               WALK
             </button>

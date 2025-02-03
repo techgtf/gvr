@@ -14,6 +14,7 @@ import About from "../frontend/pages/Aboutus";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
+import Csr from "../frontend/pages/Csr";
 
 export const UserRoutes = [
   {
@@ -77,6 +78,16 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <EmiCalculator />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}csr`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Csr />
             </Layout>
           </Suspense>
         ),
