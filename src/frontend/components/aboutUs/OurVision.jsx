@@ -16,7 +16,7 @@ const OurVision = () => {
           alt="vision_and_mission"
         />
         <div
-          className="xl:basis-[60%] basis-[100%] mt-[1.5rem]"
+          className="xl:basis-[60%] basis-[100%] xl:mt-0 mt-[1.5rem]"
           ref={sectionRef}
         >
           <div className="xl:mb-[3.5rem]  mb-[2rem]">

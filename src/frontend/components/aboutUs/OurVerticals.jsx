@@ -43,19 +43,21 @@ const OurVerticals = () => {
               <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
                 <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   5 CR
-                  <span className="block text-center text-[8px] tracking-[0.5px]">
-                    Lorem Ipsum
+                  <span className="block text-right mr-[1rem] text-[8px] tracking-[0.5px]">
+                    Ownwards
                   </span>
                 </h3>
                 <div className="basis-[65%]">
                   <p className="text-[12px]">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
+                    GV Finance delivers tailored financial solutions that
+                    empower businesses and individuals to optimize cash flow,
+                    secure investments.
                   </p>
-                  <p className="text-[12px]">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
+                  {/* <p className="text-[12px]">
+                    GV Finance delivers tailored financial solutions that
+                    empower businesses and individuals to optimize cash flow,
+                    secure investments.
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -99,19 +101,18 @@ const OurVerticals = () => {
               <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
                 <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   2 CR
-                  <span className="block text-center text-[8px] tracking-[0.5px]">
-                    Lorem Ipsum
+                  <span className="block mr-[1rem] text-right text-[8px] tracking-[0.5px]">
+                    Ownwards
                   </span>
                 </h3>
                 <div className="basis-[65%]">
                   <p className="text-[12px]">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
+                    GV Capital fuels high-potential businesses with strategic
+                    investments.
                   </p>
-                  <p className="text-[12px]">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
+                  {/* <p className="text-[12px]">
+                    Empowering visionary entrepreneurs to scale and innovate.
+                  </p> */}
                 </div>
               </div>
             </div>
