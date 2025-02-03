@@ -9,6 +9,7 @@ const OurJourney = () => {
     {
       year: 1970,
       category: "Glassware",
+      timelineImg: "timeline.png",
       description:
         "Ventured into glassware manufacturing, marking the foundation of the journey.",
     },
@@ -16,18 +17,22 @@ const OurJourney = () => {
     {
       year: 1990,
       category: "Plastic & Packaging",
+      timelineImg: "timeline.png",
       description:
         "Expanded into plastic and packaging solutions to diversify offerings.",
     },
     {
       year: 2001,
       category: "Food Processing",
+      timelineImg: "timeline.png",
       description:
         "Entered the food processing industry, leveraging innovation and quality.",
     },
     {
       year: 2008,
       category: "Jharkhand Bhawan",
+      timelineImg: "2008.jpg",
+
       description:
         "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
     },
@@ -35,6 +40,7 @@ const OurJourney = () => {
       project: [
         {
           year: 2009,
+          timelineImg: "2009.jpg",
           category: "Great Value Mall",
           description:
             "Revolutionized retail in Aligarh with cutting-edge concepts and immersive experiences.",
@@ -42,6 +48,7 @@ const OurJourney = () => {
         {
           year: 2009,
           category: "Real Estate",
+          timelineImg: "2009.jpg",
           description:
             "Diversified into real estate development to create impactful spaces.",
         },
@@ -49,6 +56,7 @@ const OurJourney = () => {
     },
     {
       year: 2010,
+      timelineImg: "2010.jpg",
       category: "Great Value Sharanam",
       description:
         "A luxurious residential project spread across 16 acres, featuring 16 towers with world-class amenities.",
@@ -56,17 +64,20 @@ const OurJourney = () => {
     {
       year: 2011,
       category: "1000 Trees",
+      timelineImg: "timeline.png",
       description:
         "An eco-conscious residential project promoting sustainability by integrating nature into modern living.",
     },
     {
       year: 2012,
       category: "Commercial Complex",
+      timelineImg: "timeline.png",
       description:
         "A premium office complex in South Delhi, blending functional design with luxury.",
     },
     {
       year: 2018,
+      timelineImg: "timeline.png",
       category: "Residential Floors",
       description:
         "Elegant G+3 residential units in South Delhi, combining sophistication with premium finishes.",
@@ -75,6 +86,7 @@ const OurJourney = () => {
     {
       project: [
         {
+          timelineImg: "2019.JPG",
           year: 2019,
           category: "Distressed Asset Reconstruction",
           description:
@@ -108,6 +120,7 @@ const OurJourney = () => {
     },
     {
       year: 2020,
+      timelineImg: "timeline.png",
       category: "Moser Baer Solar Ltd",
       description:
         "Secured 33 acres of industrial land, paving the way for redevelopment and optimization.",
@@ -117,6 +130,7 @@ const OurJourney = () => {
       project: [
         {
           year: 2022,
+          timelineImg: "timeline.png",
           category: "Office Property",
           description:
             "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
@@ -132,6 +146,7 @@ const OurJourney = () => {
     {
       project: [
         {
+          timelineImg: "2023.png",
           year: 2023,
           category: "Alternative Investment Fund (AIF)",
           description:
@@ -139,6 +154,7 @@ const OurJourney = () => {
         },
         {
           year: 2023,
+          timelineImg: "2023.png",
           category: "Hindon River Mill Ltd",
           description:
             "Acquired 48.26 acres for an upscale villa complex in a prime location.",
@@ -147,6 +163,7 @@ const OurJourney = () => {
     },
     {
       year: 2024,
+      timelineImg: "timeline.png",
       category: "Great Value Ekanam",
       description:
         "Upcoming high-end luxury residential project over 4 acres with world-class amenities and modern architecture.",
@@ -167,63 +184,31 @@ const OurJourney = () => {
         selectedProjectIndex == 9 ||
         selectedProjectIndex == 11 ||
         selectedProjectIndex == 12 ? (
-          <Swiper
-            spaceBetween={120}
-            slidesPerView={1}
-            modules={[Navigation]}
-            navigation={{
-              nextEl: ".inner-swiper-button-next",
-              prevEl: ".inner-swiper-button-prev",
-            }}
-            loop={true}
-            className="relative xl:basis-[50%] basis-[100%]"
-          >
-            <div className="inner-swiper-button-prev !inline-block absolute z-[99] top-[50%] left-0">
-              <img
-                src="assets/frontend/images/icons/left_arrow.png"
-                alt="Previous"
-                style={{ cursor: "pointer" }}
-                className="w-[15px] h-[15px]"
-              />
-            </div>
-            <div className="inner-swiper-button-next z-[99] !inline-block absolute top-[50%] right-[12px]">
-              <img
-                src="assets/frontend/images/icons/right_arrow.png"
-                alt="Next"
-                className="w-[15px] h-[15px]"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-            {projects[selectedProjectIndex].project.map((proj, index) => (
-              <SwiperSlide key={index} className="">
-                {/* <div className="text-center px-[2.5rem]" ref={sectionRef}>
-                  <h4 className="midlandfontbold pt-[1px] xl:!text-[18px] text-[16px] mb-[2rem] sectionHeading tracking-[8px] text-primary">
-                    {proj.year}
-                  </h4>
-                  <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-                    {proj.category}
-                  </p>
-                  <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-                    {proj.description}
-                  </p>
-                </div> */}
+          <div className="relative xl:basis-[48%] xl:my-[2rem]  mb-[0rem] pt-[2rem] xl:pt-[0rem] overflow-y-scroll xl:max-h-[300px] no-scrollbar basis-[100%]">
+            {projects[selectedProjectIndex].project.map((proj, index) => {
+              return (
                 <div
-                  className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
+                  className={
+                    "xl:basis-[50%] no-scrollbar border-b-[1px] border-b-solid border-b-[#ddd] mr-[16px] pb-[10px] mb-[20px] basis-[100%] justify-between flex flex-wrap text-center "
+                  }
                   ref={sectionRef}
                 >
-                  <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
-                    {proj.year}
-                  </h4>
-                  <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-                    {proj.category}
-                  </p>
-                  <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+                  <div className="basis-[40%] text-left">
+                    <h4 className="midlandfontbold mb-[10px] xl:!text-[11px] text-[16px] sectionHeading tracking-[8px] text-primary">
+                      {proj.year}
+                    </h4>
+                    <p className=" text-primary tracking-[2px] leading-[20px] !text-[12px] ">
+                      {proj.category}
+                    </p>
+                  </div>
+
+                  <p className="basis-[55%] common_pera text-left !leading-[21px]">
                     {proj.description}
                   </p>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              );
+            })}
+          </div>
         ) : (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
@@ -300,16 +285,21 @@ const OurJourney = () => {
                 onClick={() => setSelectedProjectIndex(index)}
               >
                 <figure
-                  className={`border relative border-solid border-[#B1B1B1] z-10 xl:w-32 xl:h-32 w-[3.5rem] h-[3.5rem] flex justify-center items-center rounded-full ${
+                  className={`border relative border-solid border-[#B1B1B1] z-10 xl:w-32 xl:h-32 w-[4rem] h-[4rem] flex justify-center items-center rounded-full ${
                     selectedProjectIndex == index &&
-                    "border-primary border-[3px]"
+                    "border-primary xl:border-[3px] border-[2px]"
                   }`}
                 >
                   <img
-                    src="assets/frontend/images/aboutus/ourJourney/timeline.png"
+                    src={`assets/frontend/images/aboutus/ourJourney/${
+                      index === 4 || index === 9 || index === 11 || index === 12
+                        ? project.project[0].timelineImg
+                        : project.timelineImg
+                    }`}
                     alt="timeline"
+                    className="xl:w-[7.5rem] xl:h-[7.5rem] w-[3.5rem] h-[3.5rem] rounded-full"
                   />
-                  <figcaption className="text-primary font-medium xl:text-[15px] text-[11px] right-[-60%] top-[11px] absolute top-7 right-[-40%]">
+                  <figcaption className="text-primary font-medium xl:text-[15px] text-[11px] xl:right-[-60%] right-[-70%]  top-[11px] absolute top-7 right-[-40%]">
                     {index == 4 || index == 9 || index == 11 || index == 12
                       ? project.project[0].year
                       : project.year}

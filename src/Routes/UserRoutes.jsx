@@ -13,6 +13,7 @@ import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
+import ContactUs from "../frontend/pages/Contactus";
 
 export const UserRoutes = [
   {
@@ -40,7 +41,18 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}residential`,
+        path: `${BASE_ROOT}contact-us`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <ContactUs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+
+      {
+        path: `${BASE_ROOT}Residential`,
         element: (
           <Suspense fallback={<Loader />}>
             <Layout>
