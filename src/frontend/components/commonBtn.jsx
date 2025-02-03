@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useScrollToTop from './useScrollToTop';
 
 export default function CommonBtn({
     TagName = 'button', // Default to 'button'
@@ -13,6 +14,8 @@ export default function CommonBtn({
 }) {
     const isReactRouterLink = TagName === Link; // Check if it's React Router's Link
     const isAnchor = TagName === 'a'; // Check if it's an anchor tag
+
+    const scrollToTop = useScrollToTop();
 
     return (
         <TagName

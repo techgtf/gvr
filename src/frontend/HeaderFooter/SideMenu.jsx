@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import React, { useEffect } from 'react'
 import { SlClose } from 'react-icons/sl'
 import { Link } from 'react-router-dom'
+import { BASE_ROOT } from '../../../config';
 
 function SideMenu({ setOpenSidebar }) {
 
@@ -39,8 +40,8 @@ function SideMenu({ setOpenSidebar }) {
                         <li>
                             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">our profile</div>
                             <div className="title_links flex justify-evenly uppercase text-[#0e69ae] py-3 ">
-                                <Link className="text-[14px] tracking-[2px]">about us </Link>/ 
-                                <Link className="text-[14px] tracking-[2px]">csr</Link> / 
+                                <Link to={`${BASE_ROOT}about-us`} className="text-[14px] tracking-[2px]">about us </Link>/ 
+                                <Link to={`${BASE_ROOT}csr`} className="text-[14px] tracking-[2px]">csr</Link> / 
                                 <Link className="text-[14px] tracking-[2px]">our verticals</Link>
                             </div>
                         </li>
@@ -53,7 +54,7 @@ function SideMenu({ setOpenSidebar }) {
                         <li>
                             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">find us</div>
                             <div className="title_links uppercase text-[#0e69ae] py-3 ">
-                                <Link className="text-[14px] tracking-[2px]">contact us </Link>
+                                <Link to={`${BASE_ROOT}contact-us`} className="text-[14px] tracking-[2px]">contact us </Link>
                             </div>
                         </li>
                     </ul>

@@ -4,10 +4,12 @@ import FooterLinks from './FooterLinks'
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import * as CONFIG from '../../../config'
+import { BASE_ROOT } from '../../../config'
 import { Link } from 'react-router-dom'
 import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from './FooterBottom';
+import useScrollToTop from '../components/useScrollToTop';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -45,7 +47,12 @@ export default function Footer() {
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>our projects</Link> </li>
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>media centre</Link> </li>
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>Our Profile</Link> </li>
-                <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>contact</Link> </li>
+                <li> <Link
+                  to={`${CONFIG.BASE_ROOT}contact-us`}
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className='xl:text-[14px] text-[12px]'>contact</Link> </li>
               </ul>
             </div>
           </div>

@@ -26,7 +26,7 @@ export default function Hero({
         <div className="heroSection relative z-0">
             {/* Background Image */}
 
-            <div className='hero_vdo_div lg:h-[100vh] h-[75vh] relative w-full] bg-cover'
+            <div className='hero_vdo_div lg:h-[80vh] h-[75vh] relative w-full] bg-cover'
                 style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
             >
                 <LoadAnimation />
@@ -34,14 +34,14 @@ export default function Hero({
                 <video
                     // className="min-h-svh"
                     // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-                    src={`https://res.cloudinary.com/dx3l6id8r/video/upload/v1738561546/herovdo_gd2h16.mp4`}
+                    src={`https://res.cloudinary.com/dx3l6id8r/video/upload/v1738587559/herovdo_wpbnv6.mp4`}
                     autoPlay
                     playsInline
                     loop
                     muted
                     onLoadedData={() => setIsVideoLoaded(true)}
                     preload="auto"
-                    className="lg:h-[100vh] h-[75vh] w-full object-cover"
+                    className="lg:h-[80vh] h-[75vh] w-full object-cover"
                 ></video>
                 {/* </ZoomOut> */}
 
