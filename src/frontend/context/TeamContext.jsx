@@ -4,13 +4,6 @@ import ReactDOM from "react-dom";
 const profiles = [
   {
     isModalOpen: false,
-    image: "team-1.png",
-    name: "Manoj Agarwal",
-    position: "Chairman & MD, GV Group",
-    bio: "Mr. Manoj Agarwal stands as the cornerstone of the Great Value Group, steering its transformation from a modest glassware enterprise to a diverse and thriving conglomerate over the past three decades. With a keen business instinct and an unwavering vision, he has led the Group to remarkable success across multiple industries. After completing his education in Bangalore, Mr. Agarwal joined the family business, which became the foundation for his entrepreneurial journey. He seized an opportunity to venture into food processing for the Uttar Pradesh Government, establishing a stable and successful foothold in the food industry. Building on this success, he expanded into real estate, acquiring assets that have led to the development of prominent projects, enriching the lives of countless buyers. Driven by his motto of adding value to people’s lives, Mr. Agarwal ensures that his efforts have a positive impact, both directly and indirectly. Committed to social responsibility, he dedicates 10% of his personal income to extensive CSR initiatives and welfare activities across India. He is actively involved with organizations such as Divya Prem Seva Mission and Bhaurav Devras Seva Nyas. Additionally, he has independently established five dispensaries and a primary school in Delhi NCR, underscoring his commitment to community development.Mr. Manoj Agarwal’s journey is a testament to visionary leadership, innovation, and a deep sense of responsibility toward society.",
-  },
-  {
-    isModalOpen: false,
     image: "team-2.png",
     name: "Payas Agarwal",
     position: "Director",
@@ -25,11 +18,19 @@ const profiles = [
   },
   {
     isModalOpen: false,
+    image: "team-1.png",
+    name: "Manoj Agarwal",
+    position: "Chairman & MD, GV Group",
+    bio: "Mr. Manoj Agarwal stands as the cornerstone of the Great Value Group, steering its transformation from a modest glassware enterprise to a diverse and thriving conglomerate over the past three decades. With a keen business instinct and an unwavering vision, he has led the Group to remarkable success across multiple industries. After completing his education in Bangalore, Mr. Agarwal joined the family business, which became the foundation for his entrepreneurial journey. He seized an opportunity to venture into food processing for the Uttar Pradesh Government, establishing a stable and successful foothold in the food industry. Building on this success, he expanded into real estate, acquiring assets that have led to the development of prominent projects, enriching the lives of countless buyers. Driven by his motto of adding value to people’s lives, Mr. Agarwal ensures that his efforts have a positive impact, both directly and indirectly. Committed to social responsibility, he dedicates 10% of his personal income to extensive CSR initiatives and welfare activities across India. He is actively involved with organizations such as Divya Prem Seva Mission and Bhaurav Devras Seva Nyas. Additionally, he has independently established five dispensaries and a primary school in Delhi NCR, underscoring his commitment to community development.Mr. Manoj Agarwal’s journey is a testament to visionary leadership, innovation, and a deep sense of responsibility toward society.",
+  },
+  {
+    isModalOpen: false,
     image: "team-4.png",
     name: "Goldie Kapoor",
     position: "Sales and Marketing Head",
     bio: "Goldie is a seasoned and dedicated professional in the group with over 23 years of expertise in residential sales, retail, warehousing, and industrial leasing alongside significant experience in evaluating and analyzing stressed asset investments. A result-driven individual with a proven history of identifying opportunities and delivering strategies that optimize financial growth and operational efficiency.",
   },
+
   {
     isModalOpen: false,
     image: "team-5.png",

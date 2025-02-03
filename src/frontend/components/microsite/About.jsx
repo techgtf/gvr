@@ -55,7 +55,11 @@ function About() {
             <div className="relative  w-full">
               <div className="hero_vdo_div  w-[96] !bg-cover mt-7 md:mt-4 !bg-center bg-no-repeat overflow-hidden">
                 <ZoomOut initialScale={1.5} duration={2}>
-                  <img src={aboutImg} alt="About Image" className="object-cover" />
+                  <img
+                    src={aboutImg}
+                    alt="About Image"
+                    className="object-cover"
+                  />
                 </ZoomOut>
               </div>
             </div>

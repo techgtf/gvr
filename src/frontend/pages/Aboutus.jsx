@@ -14,11 +14,15 @@ const OurVerticalsSection = lazy(() =>
 const OurJourneySection = lazy(() =>
   import("../components/aboutUs/OurJourney")
 );
-
+import * as CONFIG from "../../../config";
 const Aboutus = () => {
   return (
     <>
-      <HeroSectionAboutUs />
+      <HeroSectionAboutUs
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
+        heading={"ABOUT US"}
+        breadCrumb={"HOME - ABOUT US"}
+      />
       <OverviewSection
         heading={
           "Great Value Industries: Shaping Excellence Across Industries – From Quality Packaging to Premium Living,"
