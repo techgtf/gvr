@@ -50,7 +50,7 @@ function Camps() {
     }, []);
 
     return (
-        <div ref={sectionRef} className="grid grid-cols-3 gap-5 max-w-[95%] mx-auto pt-20">
+        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[95%] mx-auto pt-20">
             {campsData && campsData.map((item, i) => <div key={i} className="camp">
                 <div className="overflow-hidden">
                     <ZoomOut initialScale={1.5} duration={2}>
