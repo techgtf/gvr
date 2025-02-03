@@ -34,7 +34,8 @@ const OurTeam = () => {
 
       <div
         onClick={handlePrev}
-        className="inner-team-swiper-button-prev xl:!hidden !block absolute z-[99] xl:top-[50%] top-[59%] left-[1%]"
+        style={{ cursor: "pointer" }}
+        className="inner-team-swiper-button-prev xl:!hidden !cursor-pointer !block absolute z-[99] xl:top-[50%] top-[59%] left-[1%]"
       >
         <img
           src="assets/frontend/images/icons/left_arrow.png"
@@ -45,7 +46,8 @@ const OurTeam = () => {
       </div>
       <div
         onClick={handleNext}
-        className="inner-team-swiper-button-next xl:!hidden !block z-[99] absolute xl:top-[50%] top-[59%] right-[1%]"
+        style={{ cursor: "pointer" }}
+        className="inner-team-swiper-button-next xl:!hidden !cursor-pointer !block z-[99] absolute xl:top-[50%] top-[59%] right-[1%]"
       >
         <img
           src="assets/frontend/images/icons/right_arrow.png"
@@ -97,7 +99,7 @@ const OurTeam = () => {
                         className="w-[15px] h-[15px]"
                       /> */}
 
-                      <IoIosArrowDropleft className="w-[25px] h-[25px]" />
+                      <IoIosArrowDropleft className="w-[25px] h-[25px] cursor-pointer" />
                     </div>
                     <div
                       onClick={handleNext}
@@ -109,7 +111,7 @@ const OurTeam = () => {
                         className="w-[20px] h-[20px]"
                         style={{ cursor: "pointer" }}
                       /> */}
-                      <IoIosArrowDropright className="w-[25px] h-[25px]" />
+                      <IoIosArrowDropright className="w-[25px] h-[25px] cursor-pointer" />
                     </div>{" "}
                   </>
                 ) : (
