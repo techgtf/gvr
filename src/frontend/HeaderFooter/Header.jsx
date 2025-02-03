@@ -79,7 +79,7 @@ export default function Header() {
             />
           </Link>
           <div className="right_nav flex justify-between items-center gap-10">
-            <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}about-us` ? "text-black" : "text-white"}`}>
+          <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
               <ul className="flex justify-evenly gap-10 items-center">
                 <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">residential <IoChevronDown className="text-xl" /></li>
                 <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">commercial <IoChevronDown className="text-xl" /></li>
@@ -91,7 +91,7 @@ export default function Header() {
                 className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "whiteIcon "
                   : "colredIcon"
-                  }   sm:w-full`}
+                  }   w-[80%]`}
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "1"
                   : ""
