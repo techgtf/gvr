@@ -111,8 +111,8 @@ export default function Testimonial() {
                                 <div className='flex_div flex flex-wrap justify-between'>
                                     <div className='posterSide relative lg:w-[45%] w-full'>
                                         <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.name}`} />
-                                        <button className='playbtn absolute top-[50%] left-[50%] z-[1]'>
-                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='lg:h-[44px] h-[30px]' alt="playbtn" />
+                                        <button className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'>
+                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='cursor-pointer lg:h-[44px] h-[30px]' alt="playbtn" />
                                         </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>

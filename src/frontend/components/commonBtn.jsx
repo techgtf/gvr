@@ -16,7 +16,7 @@ export default function CommonBtn({
 
     return (
         <TagName
-            className={`common_btn uppercase ${className}`}
+            className={`common_btn uppercase cursor-pointer ${className}`}
             onClick={!isReactRouterLink && !isAnchor ? onClick : undefined} // Attach only if not Link or a
             to={isReactRouterLink ? to : undefined} // Attach to for Link
             target={isAnchor ? target : undefined} // Attach target for anchor

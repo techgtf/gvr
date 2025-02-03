@@ -23,6 +23,7 @@
   justify-content: center;
   width: 40px; /* Adjust according to your image size */
   height: 40px; /* Adjust according to your image size */
+  cursor: pointer;
 }
 
 .swiper-button-prev img,
@@ -30,6 +31,7 @@
   width: 100%; /* Make the image fill the button */
   height: auto; /* Maintain aspect ratio */
 }
+a{cursor: pointer;}
 
 /* .swiper-button-prev {
   position: absolute;

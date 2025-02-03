@@ -46,7 +46,7 @@ export default function Projects() {
                 sectionHeading={"Explore Properties"}
                 animationConfig={animationConfig}
             />
-            <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px]">
+            <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] lg:px-0 px-4">
                 {projectData && projectData.map((item, index) => (
                     <div
                         className="boxes reveal relative w-full md:w-[calc(50%-8px)] lg:w-[calc(33.333%-8px)] xl:w-[calc(33.33%)]"
@@ -54,7 +54,7 @@ export default function Projects() {
                     >
                         <Link
                             to={item.Link || '#'}
-                            className="block absolute left-0 right-0 top-0 bottom-0 z-[2]"
+                            className="block absolute cursor-pointer left-0 right-0 top-0 bottom-0 z-[2]"
                             aria-label={`Go to ${item.type || 'project'}`}
                         />
                         <img

@@ -32,8 +32,8 @@ export default function Footer() {
             onClick={() => {
               setToggelLinks(!toggelLinks);
             }}>
-            <span className='icon lg:h-[35px] lg:w-[35px] h-[28px] w-[28px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
-              {toggelLinks ? <LiaAngleUpSolid className='lg:text-[14px] text-[12px]' /> : <LiaAngleDownSolid className='lg:text-[14px] text-[12px]' />}
+            <span className='icon cursor-pointer lg:h-[35px] lg:w-[35px] h-[28px] w-[28px] border border-[#3f3f3f] rounded-full flex justify-center items-center'>
+              {toggelLinks ? <LiaAngleUpSolid className='cursor-pointer lg:text-[14px] text-[12px]' /> : <LiaAngleDownSolid className='cursor-pointer lg:text-[14px] text-[12px]' />}
             </span>
           </button>
           <div className='footer_container max-w-[95%] m-auto'>

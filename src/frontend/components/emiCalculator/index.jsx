@@ -3,6 +3,8 @@ import "./styles.css"
 import * as CONFIG from "../../../../config";
 import { Pie } from "react-chartjs-2";
 import "chart.js/auto";
+import { MdOutlineCurrencyRupee } from "react-icons/md";
+
 
 export default function Index() {
     const [loanAmount, setLoanAmount] = useState(100000);
@@ -35,18 +37,18 @@ export default function Index() {
     };
 
     return (
-        <div className="emiCalculator py-[80px]">
+        <div className="emiCalculator lg:py-[80px] py-[30px]">
             <div className="xl:max-w-[85%] max-w-[100%] m-auto px-[15px]">
                 <div className="flex flex-wrap justify-between">
                     <div className="left_side lg:w-[37%]">
-                        <div className="bg-[#EFF5FA] p-[25px] rounded-[5px] lg:mb-[15px] mb-[25px]">
-                            <div className="flex justify-between items-center mb-4">
-                                <label className="block midlandfontmedium tracking-[4px] uppercase text-[8px]">Loan Amount</label>
+                        <div className="bg-[#EFF5FA] lg:px-[25px] lg:py-[25px] px-[15px] py-[10px] rounded-[5px] lg:mb-[15px] mb-[10px]">
+                            <div className="flex justify-between items-center lg:mb-3 mb-1">
+                                <label className="block lg:tracking-[4px] tracking-[2px] uppercase lg:text-[16px] text-[12px]">Loan Amount</label>
                                 <input
                                     type="number"
                                     value={loanAmount}
                                     onChange={(e) => setLoanAmount(Number(e.target.value))}
-                                    className="w-[35%] type_num p-2 border midlandfontmedium text-[8px] tracking-[4px]"
+                                    className="w-[35%] type_num lg:p-2 p-1 border rounded lg:text-[17px] text-[14px] lg:tracking-[4px] tracking-[2px]"
                                 />
                             </div>
                             <input
@@ -58,14 +60,14 @@ export default function Index() {
                                 className="w-full progress"
                             />
                         </div>
-                        <div className="bg-[#EFF5FA] p-[25px] rounded-[5px] lg:mb-[15px] mb-[25px]">
-                            <div className="flex justify-between items-center mb-4">
-                                <label className="block midlandfontmedium tracking-[4px] uppercase text-[8px]">Interest Rate (%)</label>
+                        <div className="bg-[#EFF5FA] lg:p-[25px] p-[15px] rounded-[5px] lg:mb-[15px] mb-[10px]">
+                            <div className="flex justify-between items-center lg:mb-3 mb-1">
+                                <label className="block lg:tracking-[4px] tracking-[2px] uppercase lg:text-[16px] text-[12px]">Interest Rate (%)</label>
                                 <input
                                     type="number"
                                     value={interestRate}
                                     onChange={(e) => setInterestRate(Number(e.target.value))}
-                                    className="w-[35%] type_num p-2 border midlandfontmedium text-[8px] tracking-[4px]"
+                                    className="w-[35%] type_num lg:p-2 p-1 border rounded lg:text-[17px] text-[14px] lg:tracking-[4px] tracking-[2px]"
                                 />
                             </div>
                             <input
@@ -78,14 +80,14 @@ export default function Index() {
                                 className="w-full progress"
                             />
                         </div>
-                        <div className="bg-[#EFF5FA] p-[25px] rounded-[5px]">
-                            <div className="flex justify-between items-center mb-4">
-                                <label className="block midlandfontmedium tracking-[4px] uppercase text-[8px]">Term (Years)</label>
+                        <div className="bg-[#EFF5FA] lg:p-[25px] p-[15px] rounded-[5px]">
+                            <div className="flex justify-between items-center lg:mb-3 mb-1">
+                                <label className="block lg:tracking-[4px] tracking-[2px] uppercase lg:text-[16px] text-[12px]">Term (Years)</label>
                                 <input
                                     type="number"
                                     value={term}
                                     onChange={(e) => setTerm(Number(e.target.value))}
-                                    className="w-[35%] type_num p-2 border midlandfontmedium text-[8px] tracking-[4px]"
+                                    className="w-[35%] type_num lg:p-2 p-1 border rounded lg:text-[17px] text-[14px] lg:tracking-[4px] tracking-[2px]"
                                 />
                             </div>
                             <input
@@ -99,40 +101,31 @@ export default function Index() {
                         </div>
                     </div>
 
-                    <div className="right_side lg:w-[56%]">
-                        <div className="grid lg:grid-cols-2 grid-cols-1 h-full text-center lg:gap-[10%]">
-                            <div className="bg-[#91a2af1c] py-8 rounded-[5px] border border-[#91A2AF00] total_div flex flex-col justify-between">
-                                <div className="box p-2">
-                                    <span className="uppercase block text-[14px] text-[#33638b]">emi/month</span>
-                                    <span className="midlandfontmedium text-[10px] mt-2 flex justify-center items-center gap-[8px] tracking-[4px]">
-                                        <img
-                                            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/rupee.png`}
-                                            className="w-5"
-                                            alt="inr"
-                                        /> {emi}</span>
+                    <div className="right_side lg:w-[56%] w-full lg:mt-0 mt-5 lg:border-0 border border-[#e7e7e7] rounded-lg lg:pb-0 pb-4">
+                        <div className="grid lg:grid-cols-2 h-full text-center lg:gap-[10%]">
+                            <div className="lg:bg-[#91a2af1c] lg:py-8 py-3 rounded-[5px] border border-[#91A2AF00] total_div flex flex-col justify-between">
+                                <div className="box lg:py-2 lg:px-0 px-5 lg:mb-0 mb-2 lg:block flex justify-between">
+                                    <span className="uppercase block lg:text-[14px] text-[12px] text-[#33638b]">emi/month</span>
+                                    <span className="lg:mt-[10px] mt-[4px] flex justify-center items-center gap-[5px] lg:text-[21px] text-[14px] lg:tracking-[2px] tracking-[1px] lg:text-black text-[#8f8f8f]">
+                                        <MdOutlineCurrencyRupee className="lg:text-[21px] text-[15px]" />
+                                        {emi}</span>
                                 </div>
-                                <div className="box p-2">
-                                    <span className="uppercase block text-[14px] text-[#33638b]">Total Interest Payable</span>
-                                    <span className="midlandfontmedium text-[10px] mt-2 flex justify-center items-center gap-[8px] tracking-[4px]">
-                                        <img
-                                            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/rupee.png`}
-                                            className="w-5"
-                                            alt="inr"
-                                        />{totalInterest}</span>
+                                <div className="box lg:py-2 lg:px-0 px-5 lg:mb-0 mb-2 lg:block flex justify-between">
+                                    <span className="uppercase block lg:text-[14px] text-[12px] text-[#33638b]">Total Interest Payable</span>
+                                    <span className="lg:mt-[10px] mt-[4px] flex justify-center items-center gap-[5px] lg:text-[21px] text-[14px] lg:tracking-[2px] tracking-[1px] lg:text-black text-[#8f8f8f]">
+                                        <MdOutlineCurrencyRupee className="lg:text-[21px] text-[15px]" />
+                                        {totalInterest}</span>
                                 </div>
-                                <div className="box p-2">
-                                    <span className="uppercase block text-[14px] text-[#33638b]">Total of Payments</span>
-                                    <span className="midlandfontmedium text-[10px] mt-2 flex justify-center items-center gap-[8px] tracking-[4px]">
-                                        <img
-                                            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/rupee.png`}
-                                            className="w-5"
-                                            alt="inr"
-                                        />{totalPayment}</span>
+                                <div className="box lg:py-2 lg:px-0 px-5 lg:mb-0 mb-2 lg:block flex justify-between">
+                                    <span className="uppercase block lg:text-[14px] text-[12px] text-[#33638b]">Total of Payments</span>
+                                    <span className="lg:mt-[10px] mt-[4px] flex justify-center items-center gap-[5px] lg:text-[21px] text-[14px] lg:tracking-[2px] tracking-[1px] lg:text-black text-[#8f8f8f]">
+                                        <MdOutlineCurrencyRupee className="lg:text-[21px] text-[15px]" />
+                                        {totalPayment}</span>
                                 </div>
                             </div>
-                            {/* <div className="grid items-start place-content-center">
+                            <div className="grid items-start place-content-center">
                                 <Pie data={pieData} />
-                            </div> */}
+                            </div>
                         </div>
 
                     </div>

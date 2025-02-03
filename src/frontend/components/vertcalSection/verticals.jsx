@@ -38,15 +38,15 @@ export default function Verticals() {
                     sectionHeading='Other verticals'
                     animationConfig={animationConfig}
                 />
-                <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[30px] xl:gap-0 gap-[44px]'>
+                <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[30px] xl:gap-0 gap-[44px] lg:px-0 px-4'>
                     {verticalData && (
                         verticalData.map((item, index) =>
                             <div className='boxes relative lg:w-[47%] w-full' key={index}>
-                                <Link to={item.link} className='relative block overflow-hidden'>
+                                <Link to={item.link} className='relative block overflow-hidden cursor-pointer'>
                                     <ZoomOut initialScale={1.5} duration={2}>
-                                        <img className='lg:h-[300px] h-[300px] w-full object-cover' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
+                                        <img className='lg:h-[300px] h-[300px] cursor-pointer w-full object-cover' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} alt={`${item.imgSrc}`} />
                                     </ZoomOut>
-                                    <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><GoArrowUpRight /></span>
+                                    <span className='link_arrow absolute bottom-[15px] right-[15px] text-white'><GoArrowUpRight className='cursor-pointer' /></span>
                                 </Link>
                                 <SlideIn duration={2} delay={0.5}>
                                     <span className='title block pt-6 pb-3 text-[18px] uppercase tracking-[3px]'>{item.title}</span>
