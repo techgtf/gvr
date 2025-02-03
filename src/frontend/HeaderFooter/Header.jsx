@@ -91,7 +91,7 @@ export default function Header() {
                 className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "whiteIcon "
                   : "colredIcon"
-                  }   sm:w-full`}
+                  }   w-[80%]`}
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed || location.pathname === `${BASE_ROOT}about-us`
                   ? "1"
                   : ""
