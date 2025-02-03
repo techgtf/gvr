@@ -249,7 +249,7 @@ const OurJourney = () => {
           />
         </div>
       </div>
-      <div className="relative mt-[3rem] xl:mt-[-1rem]">
+      <div className="relative mt-[3rem] xl:mt-[0rem]">
         <Swiper
           // spaceBetween={120}
           // slidesPerView={5}
@@ -265,7 +265,11 @@ const OurJourney = () => {
             },
             1024: {
               slidesPerView: 5,
-              spaceBetween: 50,
+              spaceBetween: 120,
+            },
+            1330: {
+              slidesPerView: 5,
+              spaceBetween: 150,
             },
           }}
           modules={[Navigation]}

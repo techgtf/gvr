@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { TeamContext } from "../../context/TeamContext";
 import TeamModal from "../teamModal/TeamModal";
+import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 
 const OurTeam = () => {
   const { allProfile, handleNext, handlePrev, handleImageClick, handleBio } =
@@ -33,7 +34,7 @@ const OurTeam = () => {
 
       <div
         onClick={handlePrev}
-        className="inner-team-swiper-button-prev !block absolute z-[99] xl:top-[50%] top-[59%] left-[1%]"
+        className="inner-team-swiper-button-prev xl:!hidden !block absolute z-[99] xl:top-[50%] top-[59%] left-[1%]"
       >
         <img
           src="assets/frontend/images/icons/left_arrow.png"
@@ -44,7 +45,7 @@ const OurTeam = () => {
       </div>
       <div
         onClick={handleNext}
-        className="inner-team-swiper-button-next !block z-[99] absolute xl:top-[50%] top-[59%] right-[1%]"
+        className="inner-team-swiper-button-next xl:!hidden !block z-[99] absolute xl:top-[50%] top-[59%] right-[1%]"
       >
         <img
           src="assets/frontend/images/icons/right_arrow.png"
@@ -54,13 +55,12 @@ const OurTeam = () => {
         />
       </div>
 
-      <div className="flex justify-between overflow-hidden xl:pt-[80px] pt-[10px] pb-[1rem] xl:mt-[2rem] no-scrollbar no-wrap no-scrollbar">
+      <div className="flex justify-between overflow-hidden xl:pt-[120px] pt-[10px] pb-[1rem] xl:mt-[2rem] no-scrollbar no-wrap no-scrollbar">
         {allProfile.map((profile, index) => {
-          // min-w-[311px]
           let design =
-            "xl:min-w-[270px] xs:min-w-[339px] min-w-[311px] h-[265px] xl:!mt-[-0.75rem]  mr-[4rem]  xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]";
+            "xl:min-w-[270px] 2xl:min-w-[315px] xs:min-w-[339px] min-w-[311px] h-[265px] xl:!mt-[-0.75rem]  mr-[4rem]  xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]";
           let active =
-            "min-w-[270px] h-[340px] flex items-end mr-[2rem] flex-wrap justify-center mt-[-5.35rem] bg-[#EFF5FA]";
+            "min-w-[270px] h-[340px] flex items-end mr-[2rem] relative flex-wrap justify-center mt-[-5.35rem] bg-[#EFF5FA]";
           let activeProfile =
             "w-[215px] h-[260px] mt-[5rem] object-cover inline-block";
           let inActiveProfile =
@@ -84,12 +84,44 @@ const OurTeam = () => {
                   alt={profile.name}
                 />
 
+                {index == 2 ? (
+                  <>
+                    <div
+                      onClick={handlePrev}
+                      className="inner-team-swiper-button-prev !hidden xl:!block absolute z-[99] xl:top-[-8%] xl:right-[12%]"
+                    >
+                      {/* <img
+                        src="assets/frontend/images/icons/left_arrow.png"
+                        alt="Previous"
+                        style={{ cursor: "pointer" }}
+                        className="w-[15px] h-[15px]"
+                      /> */}
+
+                      <IoIosArrowDropleft className="w-[25px] h-[25px]" />
+                    </div>
+                    <div
+                      onClick={handleNext}
+                      className="inner-team-swiper-button-next !hidden xl:!block z-[99] absolute xl:top-[-8%] xl:right-[2%]"
+                    >
+                      {/* <img
+                        src="assets/frontend/images/icons/right_arrow.png"
+                        alt="Next"
+                        className="w-[20px] h-[20px]"
+                        style={{ cursor: "pointer" }}
+                      /> */}
+                      <IoIosArrowDropright className="w-[25px] h-[25px]" />
+                    </div>{" "}
+                  </>
+                ) : (
+                  ""
+                )}
+
                 {index == 0 && (
                   <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.jpg)]"></div>
                 )}
               </div>
               {index == 2 || isMobile ? (
-                <div className="flex justify-between xl:w-[85%] w-[70%] mt-[2rem] xl:mt-[1rem] xl:ml-[0.75rem]">
+                <div className="flex justify-between xl:w-[85%]  w-[70%] mt-[2rem] xl:mt-[1rem] xl:ml-[0.75rem]">
                   <div>
                     <p className="midlandfontmedium basis-[100%] text-black text-[10px] tracking-[2px]">
                       {profile.name}
