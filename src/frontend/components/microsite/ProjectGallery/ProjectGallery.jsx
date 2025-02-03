@@ -6,6 +6,7 @@ import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
+import render from "/assets/frontend/images/microsite/gallery/render.jpg";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
@@ -27,7 +28,7 @@ function ProjectGallery() {
   const projectRef = useRef();
 
   const actualImages = [gallery1, gallery2, gallery3, gallery4];
-  const renderImages = [gallery4, gallery3, gallery2, gallery1];
+  const renderImages = [render, render, render, render];
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -121,13 +122,13 @@ function ProjectGallery() {
               ref={prevRef}
               className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
             >
-              <LuChevronLeft className="w-[30px] md:w-8 h-[30px] opacity-80 md:h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
+              <LuChevronLeft className="w-[30px] cursor-pointer md:w-8 h-[30px] opacity-80 md:h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
             </button>
             <button
               ref={nextRef}
               className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
             >
-              <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
+              <LuChevronRight className="w-[30px] cursor-pointer md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
             </button>
           </div>
 

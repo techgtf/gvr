@@ -37,6 +37,8 @@ function Layout({ children }) {
       smoother.kill();
     };
   }, []);
+  console.log(location);
+  
 
   return (
     <>

@@ -8,7 +8,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { useTextAnimation } from "../useTextAnimation";
 import SlideIn from "../Animations/SlideIn";
 
-
+  
 export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink }) {
   // const sectionRef = useTextAnimation(
   //   { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },

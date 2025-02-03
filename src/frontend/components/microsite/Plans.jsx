@@ -15,6 +15,7 @@ function Plans() {
   const [open, setOpen] = useState(false);
   const [activeUnit, setActiveUnit] = useState("unit1");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
 
   const sectionRef = useRef(null);
 
@@ -53,6 +54,13 @@ function Plans() {
     ],
   };
 
+  const masterplan = [
+    {
+      image: master_plan_img,
+      alt: "master plan",
+    },
+  ];
+
   useEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".unit");
 
@@ -79,6 +87,17 @@ function Plans() {
 
   useImageReveal(".reveal");
 
+  const openLightbox = (index, isMasterPlan = false) => {
+    setCurrentIndex(index); // Set the current index for the lightbox
+    setOpen(true); // Open the lightbox
+    if (isMasterPlan) {
+      setIsMasterPlanOpen(true); // Set the master plan as open
+    } else {
+      setIsMasterPlanOpen(false); // Set the floor plans as open
+      setActiveUnit("unit1"); // Default activeUnit (can be 'unit1' or 'unit2')
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -92,7 +111,7 @@ function Plans() {
           </FadeIn>
           <div
             className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 reveal"
-            onClick={() => setOpen(true)}
+            onClick={() => openLightbox(0, true)} // Open master plan lightbox
           >
             <img
               src={master_plan_img}
@@ -114,21 +133,19 @@ function Plans() {
             </FadeIn>
             <div className="flex gap-2 md:gap- py-4 mt-4 md:mt-0">
               <button
-                className={`px-6 py-1 text-[14px] ${
-                  activeUnit === "unit1"
+                className={`px-6 py-1 text-[14px] ${activeUnit === "unit1"
                     ? "bg-[#33638B] text-white"
                     : "bg-transparent border border-black"
-                }`}
+                  }`}
                 onClick={() => handleUnitChange("unit1")}
               >
                 UNIT 1
               </button>
               <button
-                className={`px-6 py-1 text-[14px] ${
-                  activeUnit === "unit2"
+                className={`px-6 py-1 text-[14px] ${activeUnit === "unit2"
                     ? "bg-[#33638B] text-white"
                     : "bg-transparent border border-black"
-                }`}
+                  }`}
                 onClick={() => handleUnitChange("unit2")}
               >
                 UNIT 2
@@ -145,7 +162,7 @@ function Plans() {
                   src={plan.image}
                   alt={`plan ${index + 1}`}
                   className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
-                  onClick={() => setOpen(true)}
+                  onClick={() => openLightbox(index)} // Open floor plan lightbox
                 />
                 <div className="flex flex-col justify-between mt-5 pr-24 tracking-wider uppercase md:mt-0">
                   <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
@@ -159,19 +176,40 @@ function Plans() {
         </div>
       </div>
 
-      {open && (
+      {/* Master Plan Lightbox */}
+      {open && isMasterPlanOpen && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          index={currentIndex}
+          slides={masterplan.map((item) => ({
+            src: item.image,
+            title: item.alt,
+            description: "Click to open in full view",
+          }))}
+          thumbs={masterplan.map((item) => ({
+            src: item.image,
+            title: item.alt,
+          }))}
+          zoom={{ maxZoomPixelRatio: 2 }}
+          plugins={[Fullscreen, Zoom]}
+        />
+      )}
+
+      {/* Floor Plan Lightbox */}
+      {open && !isMasterPlanOpen && (
         <Lightbox
           open={open}
           close={() => setOpen(false)}
           index={currentIndex}
           slides={unitData[activeUnit].map((item) => ({
             src: item.image,
-            title: item.alt,
+            title: item.type,
             description: "Click to open in full view",
           }))}
           thumbs={unitData[activeUnit].map((item) => ({
             src: item.image,
-            title: item.alt,
+            title: item.type,
           }))}
           zoom={{ maxZoomPixelRatio: 2 }}
           plugins={[Fullscreen, Zoom]}

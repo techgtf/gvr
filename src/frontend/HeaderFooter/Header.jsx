@@ -3,7 +3,7 @@ import "./header.css";
 import { Link, useLocation } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
 import * as CONFIG from "../../../config";
-import { IoChevronDown } from "react-icons/io5";
+import { BsChevronDown } from "react-icons/bs";
 import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
 
@@ -12,27 +12,25 @@ export default function Header() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const [activeItem, setActiveItem] = useState(null);
   const location = useLocation();
 
-  // Toggle function to manage both menu states
   const handleToggleSidebar = () => {
-    // If sidebar is open, close it and open the dropdown
     if (!openSidebar) {
       setOpenSidebar(true);
-      setDropdown(false); // Close dropdown when sidebar opens
+      setDropdown(false);
     } else {
-      setOpenSidebar(false); // Close sidebar
+      setOpenSidebar(false);
     }
   };
 
-  const handleToggleDropdown = () => {
-    // If dropdown is open, close it and open the sidebar
+  const handleToggleDropdown = (item) => {
     if (!dropdown) {
       setDropdown(true);
-      setOpenSidebar(false); // Close sidebar when dropdown opens
-    } else {
-      setDropdown(false); // Close dropdown
+      setOpenSidebar(false);
     }
+
+    setActiveItem(item);
   };
 
   useEffect(() => {
@@ -58,52 +56,65 @@ export default function Header() {
     };
   }, [prevScrollY]);
 
+  const navItems = ["residential", "commercial", "esg"];
+
   return (
-    <header
-      className={`app_header  ${isFixed ? "fixed active" : "relative"
-        } top-0 left-0 ring-0 w-full !z-10`}
-    >
+    <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-20 ${activeItem ? "bg-[#EFF5FA]" : ""}`}>
       <div className="max-w-[95%] m-auto">
         <div className="flex justify-between items-center">
           <Link to={`${BASE_ROOT}`}>
             <img
-              className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
-                ? "logo-colored"
-                : "logo-white"
-                } w-[50%]  sm:w-[70%]`}
-              src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo${isFixed || location.pathname === `${BASE_ROOT}about-us`
-                ? "-colored"
-                : ""
-                }.png`}
+              className="w-[50%] sm:w-[70%] cursor-pointer"
+              src={
+                isFixed || activeItem
+                  ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`
+                  : 
+                  location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`
+                    ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`
+                    :
+                    `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`
+              }
+
+
               alt="logo"
             />
           </Link>
           <div className="right_nav flex justify-between items-center gap-10">
-          <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
-              <ul className="flex justify-evenly gap-10 items-center">
-                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">residential <IoChevronDown className="text-xl" /></li>
-                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">commercial <IoChevronDown className="text-xl" /></li>
-                <li onClick={handleToggleDropdown} className="flex gap-3 items-center tracking-[4px] text-[14px] font-[200]">esg <IoChevronDown className="text-xl" /></li>
+            <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
+              <ul className="flex justify-evenly gap-8 items-center">
+                {navItems && navItems.map((item, i) => (
+                  <li
+                    key={i}
+                    onClick={() => handleToggleDropdown(item)}
+                    className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[200] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                  >
+                    {item} <BsChevronDown className="text-[14px] font-[200]" />
+                  </li>
+                ))}
               </ul>
             </div>
             <button className="menuBtn flex justify-end items-center">
               <img
-                className={` ${isFixed || location.pathname === `${BASE_ROOT}about-us`
-                  ? "whiteIcon "
-                  : "colredIcon"
-                  }   w-[80%]`}
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu${isFixed || location.pathname === `${BASE_ROOT}about-us`
-                  ? "1"
-                  : ""
-                  }.png `}
-                alt="menu" onClick={handleToggleSidebar}
+                className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
+                src={
+                  isFixed || activeItem
+                    ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                    :
+                    location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`
+                    ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
+                    : 
+                    `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                }
+                
+                alt="menu"
+                onClick={handleToggleSidebar}
               />
             </button>
           </div>
         </div>
       </div>
       {openSidebar ? <SideMenu setOpenSidebar={setOpenSidebar} /> : ""}
-      {dropdown ? <NavDropdown setDropdown={setDropdown} /> : ""}
+      {dropdown ? <NavDropdown setDropdown={setDropdown} setActiveItem={setActiveItem} /> : ""}
     </header>
   );
 }
