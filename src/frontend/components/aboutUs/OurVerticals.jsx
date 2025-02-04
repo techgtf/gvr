@@ -22,14 +22,13 @@ const OurVerticals = () => {
         />
         <div className="flex items-center justify-between md:flex-row flex-col-reverse mt-[4rem] flex-wrap">
           <div className="basis-[100%] xl:basis-[60%] xl:pl-[7rem] mt-[2rem]">
-            <h2 className="sectionHeading text-center tracking-[4px] xl:text-right  !text-[16px] midlandfontmedium text-primary">
+            <h2 className="sectionHeading text-center tracking-[4px] xl:text-right text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
               GV FINANCE
             </h2>
             <p
               className="my-[1rem] 
-            
-            text-[13px]  poppins-regular text-black font-[300]
-            "
+            text-justify
+            text-[13px] xl:!mt-[2.7rem] poppins-regular text-black font-[300]"
             >
               GV Finance delivers tailored financial solutions that empower
               businesses and individuals to optimize cash flow, secure
@@ -45,15 +44,15 @@ const OurVerticals = () => {
               scrambled it to make a type specimen book.
             </p> */}
             <div>
-              <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
-                <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
+              <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
+                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   5 CR
-                  <span className="block text-right mr-[1rem] text-[8px] tracking-[0.5px]">
+                  <span className="block text-right xl:mr-[2.45rem] mr-[1.2rem] text-[10px] tracking-[0.5px]">
                     Ownwards
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px] poppins-regular">
+                  <p className="text-[12px] text-justify  poppins-regular">
                     GV Finance delivers tailored financial solutions that
                     empower businesses and individuals to optimize cash flow,
                     secure investments.
@@ -86,10 +85,10 @@ const OurVerticals = () => {
             className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
           <div className="xl:basis-[60%] xl:pr-[7rem] basis-[100%]">
-            <h2 className="sectionHeading xl:text-left mt-[2rem] text-center  tracking-[4px] !text-[16px] midlandfontmedium text-primary">
+            <h2 className="sectionHeading xl:text-left mt-[2rem]  text-[14px] text-center  tracking-[4px] xl:!text-[16px] midlandfontmedium text-primary">
               GV CAPITAL
             </h2>
-            <p className="my-[1rem] text-[13px] mt-[1rem] poppins-regular text-black font-[300]">
+            <p className="my-[1rem] text-justify text-[13px] !mt-[2.7rem] poppins-regular text-black font-[300]">
               GV Capital fuels high-potential businesses with strategic
               investments, empowering visionary entrepreneurs to scale and
               innovate. Beyond funding, we provide deep industry insights,
@@ -103,15 +102,15 @@ const OurVerticals = () => {
               scrambled it to make a type specimen book.
             </p> */}
             <div>
-              <div className="flex justify-between items-start flex-wrap my-[2.5rem]">
-                <h3 className="sectionHeading h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
+              <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
+                <h3 className="sectionHeading  flex flex-col justify-center border-opacity-[0.5] h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
                   2 CR
-                  <span className="block mr-[1rem] text-right text-[8px] tracking-[0.5px]">
+                  <span className="block xl:mr-[2.45rem] mr-[1.2rem] text-right text-[10px] tracking-[0.5px]">
                     Ownwards
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px] poppins-regular">
+                  <p className="text-[12px] text-justify poppins-regular">
                     GV Capital fuels high-potential businesses with strategic
                     investments.
                   </p>

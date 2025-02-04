@@ -60,7 +60,10 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
     // ref={sectionRef}
     >
       <div className="headingWrap lg:max-w-[79%] max-w-[95%] m-auto text-center">
-        <CommonHeading HeadingText={heading} />
+        <CommonHeading
+          HeadingText={heading}
+          HeadingClass="xl:text-center text-left"
+        />
       </div>
       {/* <SlideIn duration={2} delay={0.5}> */}
       <div className="wrap_content relative overflow-hidden m-auto lg:max-w-[85%] w-[100%]">
