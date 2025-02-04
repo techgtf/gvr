@@ -6,7 +6,7 @@ function Address() {
     return text.split("").reverse().join("");
   };
   return (
-    <section className="plans bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14 relative">
+    <section className="plans bg-[#EFF5FA] px-5 md:px-12 mt-[30px] xl:mt-[0px] py-10 md:py-14 relative">
       <div className="flex justify-between flex-wrap">
         <div className="xl:basis-[35%] basis-[100%] item-center self-center">
           <div className="bg-white p-[20px] mb-[30px] text-center">
