@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "#33638B",
+        'black-rgba': 'rgba(0 0 0 / 10%)',
       },
       writingMode: {
         "vertical-rl": "vertical-rl",

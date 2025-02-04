@@ -1,11 +1,12 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef } from 'react';
 import { SlClose } from 'react-icons/sl';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BASE_ROOT } from '../../../config';
 
 function SideMenu({ setOpenSidebar }) {
     const sideMenuRef = useRef(null);
+    const navigate = useNavigate(); // Using useNavigate for programmatic navigation
 
     useEffect(() => {
         gsap.fromTo(
@@ -31,9 +32,17 @@ function SideMenu({ setOpenSidebar }) {
             opacity: 0,
             duration: 1,
             onComplete: () => {
-                setOpenSidebar(false);
+                setOpenSidebar(false); // Close the sidebar after animation completes
             }
         });
+    };
+
+    const handleLinkClick = (path) => {
+        console.log(`Navigating to: ${path}`);  // Make sure this shows the correct path for csr
+        handleClose();  // Close the sidebar
+        setTimeout(() => {
+            navigate(path);  // Programmatically navigate
+        }, 1000);  // Delay navigation to match the animation
     };
 
     return (
@@ -45,22 +54,49 @@ function SideMenu({ setOpenSidebar }) {
                 <ul className="w-full flex flex-col gap-10">
                     <li>
                         <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">our profile</div>
-                        <div className="title_links flex justify-evenly uppercase text-[#0e69ae] py-3 ">
-                            <Link to={`${BASE_ROOT}about-us`} className="text-[14px] tracking-[2px] cursor-pointer">about us </Link>/
-                            <Link to={`${BASE_ROOT}csr`} className="text-[14px] tracking-[2px] cursor-pointer">csr</Link> /
-                            <Link className="text-[14px] tracking-[2px] cursor-pointer">our verticals</Link>
+                        <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                about us
+                            </span>
+                            /
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}csr`)} 
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                our CSR
+                            </span>
+                            /
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)} 
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                our verticals
+                            </span>
                         </div>
                     </li>
                     <li>
                         <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">career</div>
-                        <div className="title_links uppercase text-[#0e69ae] py-3 ">
-                            <Link className="text-[14px] tracking-[2px] cursor-pointer">all job openings</Link>
+                        <div className="title_links uppercase text-[#0e69ae] py-3">
+                            <span
+                                onClick={() => handleLinkClick("#")}
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                all job openings
+                            </span>
                         </div>
                     </li>
                     <li>
                         <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">find us</div>
-                        <div className="title_links uppercase text-[#0e69ae] py-3 ">
-                            <Link to={`${BASE_ROOT}contact-us`} className="text-[14px] tracking-[2px] cursor-pointer">contact us </Link>
+                        <div className="title_links uppercase text-[#0e69ae] py-3">
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                contact us
+                            </span>
                         </div>
                     </li>
                 </ul>
