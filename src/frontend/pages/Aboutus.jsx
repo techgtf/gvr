@@ -34,7 +34,7 @@ const Aboutus = () => {
             HeadingText={
               "Great Value Industries: Shaping Excellence Across Industries – From Quality Packaging to Premium Living,"
             }
-            HeadingClass="xl:text-center text-left"
+            HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
           />
         </div>
         <SlideIn duration={2} delay={0.5}>
