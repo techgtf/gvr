@@ -1,6 +1,7 @@
 const HeroSectionAboutUs = ({ img, heading, breadCrumb }) => {
   return (
-    <div className="relative">
+    <div className="relative uppercase">
+
       <img
         src={img}
         alt="about"
