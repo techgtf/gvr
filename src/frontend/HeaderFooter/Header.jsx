@@ -6,6 +6,7 @@ import * as CONFIG from "../../../config";
 import { BsChevronDown } from "react-icons/bs";
 import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
+import { CiMenuFries } from "react-icons/ci";
 
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
@@ -86,14 +87,15 @@ export default function Header() {
                   <li
                     key={i}
                     onClick={() => handleToggleDropdown(item)}
-                    className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[200] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                    className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
                   >
-                    {item} <BsChevronDown className="text-[14px] font-[200]" />
+                    {item} <BsChevronDown className="text-[14px] font-[300]" />
                   </li>
                 ))}
               </ul>
             </div>
             <button className="menuBtn flex justify-end items-center">
+            {/* <CiMenuFries className="text-black text-3xl" /> */}
               <img
                 className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
                 src={
