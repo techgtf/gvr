@@ -17,27 +17,28 @@ export default function OverviewSection({ heading, paragraph, showKnowMore }) {
   return (
     <div
       className="overview_section 2xl:pt-[80px] xl:pt-[70px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
-    // data-speed="clamp(.9)"
-    // ref={sectionRef}
+      // data-speed="clamp(.9)"
+      // ref={sectionRef}
     >
       <div className="headingWrap lg:max-w-[79%] max-w-[95%] m-auto text-center">
-        <CommonHeading HeadingText={heading} />
+        <CommonHeading
+          HeadingText={heading}
+          HeadingClass="xl:text-center text-left"
+        />
       </div>
       <SlideIn duration={2} delay={0.5}>
         <div className="content lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px] lg:mb-[50px] mb-[20px] text-center">
           <CommonPera
-            PeraclassName="fontItalic"
+            PeraClass="fontItalic text-justify xl:text-center"
             //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
             PeraText={paragraph}
           />
         </div>
-        {
-          showKnowMore && (
-            <CommonBtn to={""} TagName={Link} target="_blank">
-              Know More <BsArrowUpRight />{" "}
-            </CommonBtn>
-          )
-        }
+        {showKnowMore && (
+          <CommonBtn to={""} TagName={Link} target="_blank">
+            Know More <BsArrowUpRight />{" "}
+          </CommonBtn>
+        )}
       </SlideIn>
     </div>
   );

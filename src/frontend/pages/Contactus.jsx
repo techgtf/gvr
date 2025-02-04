@@ -1,8 +1,12 @@
 import React, { lazy } from "react";
 import * as CONFIG from "../../../config";
-import Address from "../components/contactUs/address";
+
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
+);
+const AddressSection = lazy(() => import("../components/contactUs/address"));
+const EnquiryFormSection = lazy(() =>
+  import("../components/contactUs/enquiryForm")
 );
 
 const ContactUs = () => {
@@ -13,7 +17,8 @@ const ContactUs = () => {
         heading={"CONTACT US"}
         breadCrumb={"HOME - CONTACT US"}
       />
-      <Address />
+      <AddressSection />
+      <EnquiryFormSection />
     </>
   );
 };

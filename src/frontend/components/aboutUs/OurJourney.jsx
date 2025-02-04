@@ -172,11 +172,11 @@ const OurJourney = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(2); // State to hold the selected project
   const sectionRef = useTextAnimation(
     { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
-    []
+    [selectedProjectIndex]
   );
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
-      <h3 className="sectionHeading tracking-[5px] text-[black] midlandfontmedium">
+      <h3 className="sectionHeading text-center xl:text-left tracking-[5px] text-[black] midlandfontmedium">
         OUR JOURNEY
       </h3>
       <div className="flex justify-between items-center flex-wrap">
@@ -226,7 +226,7 @@ const OurJourney = () => {
           </div>
         )}
 
-        <div className="basis-[50%] hidden xl:inline-block border-l-[1px] border-l-solid border-l-[#B1B1B1] h-[400px] relative flex flex-wrap justify-center">
+        <div className="basis-[50%] hidden xl:inline-block border-l-[1px] border-l-solid border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center">
           <img
             src="assets/frontend/images/aboutus/ourJourney/1.jpg"
             alt="1.jpg"
@@ -235,7 +235,7 @@ const OurJourney = () => {
           <img
             src="assets/frontend/images/aboutus/ourJourney/2.jpg"
             alt="2.jpg"
-            className="w-[200px] right-[17%] top-[16%] h-[150px] absolute z-[2]"
+            className="w-[200px] right-[13%] top-[16%] h-[150px] absolute z-[2]"
           />
           <img
             src="assets/frontend/images/aboutus/ourJourney/3.jpg"
@@ -280,7 +280,7 @@ const OurJourney = () => {
           loop={true}
           className="relative"
         >
-          <div className="absolute left-[10%] top-[50%] h-[1px] w-[85%] bg-[#B1B1B1]" />
+          <div className="absolute opacity-[0.5] left-[10%] top-[50%] h-[1px] w-[85%] bg-[#B1B1B1]" />
 
           {projects.map((project, index) => (
             <SwiperSlide key={project.year} className="">
@@ -289,9 +289,9 @@ const OurJourney = () => {
                 onClick={() => setSelectedProjectIndex(index)}
               >
                 <figure
-                  className={`border relative border-solid border-[#B1B1B1] z-10 xl:w-32 xl:h-32 w-[4rem] h-[4rem] flex justify-center items-center rounded-full ${
+                  className={`border relative bg-[#EFF5FA] border-solid border-[#B1B1B1] z-10 xl:w-32 xl:h-32 w-[4rem] h-[4rem] flex justify-center items-center rounded-full ${
                     selectedProjectIndex == index &&
-                    "border-primary xl:border-[3px] border-[2px]"
+                    "border-primary xl:border-[1.5px] border-[1px]"
                   }`}
                 >
                   <img
