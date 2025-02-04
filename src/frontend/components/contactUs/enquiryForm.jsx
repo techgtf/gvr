@@ -2,7 +2,7 @@ const EnquiryForm = () => {
   return (
     <section className="plans  px-5 md:px-12 py-10 md:py-14 flex flex-wrap justify-between">
       {" "}
-      <h3 className="text-primary basis-[100%] mb-[50px] midlandfontmedium text-[12px] tracking-[5px]">
+      <h3 className="text-primary basis-[100%] mb-[50px] midlandfontmedium xl:text-[12px] text-[10px] tracking-[5px]">
         GET IN TOUCH WITH US
       </h3>
       <div className="xl:basis-[50%] basis-[100%]">
@@ -14,7 +14,7 @@ const EnquiryForm = () => {
             <input
               type="text"
               style={{ borderBottom: "1px solid rgb(0, 0, 0)" }}
-              className="w-full  border-b border-gray-200 bg-transparent"
+              className="w-full  border-b border-gray-200 bg-transparent rounded-none"
             />
           </div>
           <div className="flex justify-between items-center  mb-[15px] flex-wrap">
@@ -26,7 +26,7 @@ const EnquiryForm = () => {
               <input
                 type="text"
                 style={{ borderBottom: "1px solid rgb(0, 0, 0)" }}
-                className="w-full  border-b border-gray-200 bg-transparent"
+                className="w-full rounded-none border-b border-gray-200 bg-transparent"
               />
             </div>
             <div className="relative basis-[45%]">
@@ -36,7 +36,7 @@ const EnquiryForm = () => {
               <input
                 type="text"
                 style={{ borderBottom: "1px solid rgb(0, 0, 0)" }}
-                className="w-full  border-b border-gray-200 bg-transparent"
+                className="w-full rounded-none  border-b border-gray-200 bg-transparent"
               />
             </div>
           </div>
@@ -48,7 +48,7 @@ const EnquiryForm = () => {
             <input
               type="text"
               style={{ borderBottom: "1px solid rgb(0, 0, 0)" }}
-              className="w-full  border-b border-gray-200 bg-transparent"
+              className="w-full rounded-none border-b border-gray-200 bg-transparent"
             />
           </div>
         </form>

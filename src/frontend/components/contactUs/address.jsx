@@ -10,18 +10,18 @@ function Address() {
       <div className="flex justify-between flex-wrap">
         <div className="xl:basis-[35%] basis-[100%] item-center self-center">
           <div className="bg-white p-[20px] mb-[30px] text-center">
-            <p className="midlandfontmedium uppercase mb-[1rem]  tracking-[4px] text-[10px]">
+            <p className="midlandfontmedium uppercase mb-[1rem]  tracking-[4px] text-[8px] xl:text-[10px]">
               Corporate Office
             </p>
-            <p className="poppins-regular uppercase text-[14px] tracking-[2px] font-[300]">
+            <p className="poppins-regular uppercase xl:text-[14px] tracking-[2px] font-[300] text-[12px]">
               DSC - 319, DLF South Court, Saket New Delhi - 110017
             </p>
           </div>
           <div className="bg-white p-[20px] text-center">
-            <p className="midlandfontmedium mb-[1rem] uppercase tracking-[4px] text-[10px]">
+            <p className="midlandfontmedium mb-[1rem] uppercase tracking-[4px] xl:text-[10px] text-[8px]">
               Noida Site Office
             </p>
-            <p className="poppins-regular text-[14px] uppercase tracking-[2px] font-[300]">
+            <p className="poppins-regular xl:text-[14px] uppercase tracking-[2px] text-[12px] font-[300]">
               GreatValue Projects India Ltd. GH-02, Sec- 107 Noida, U.P.
             </p>
           </div>
