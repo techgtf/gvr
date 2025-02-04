@@ -5,7 +5,6 @@ export default function CommonHeading({
   HeadingClass = "",
   HeadingText = "",
 }) {
-  console.log(HeadingClass, "This");
   return (
     <TagName
       className={`common_heading midlandfontmedium uppercase ${HeadingClass} `}

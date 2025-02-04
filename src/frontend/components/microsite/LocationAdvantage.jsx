@@ -1,17 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import loaction from "/assets/frontend/images/microsite/location/location.png";
-import drive from "/assets/frontend/images/microsite/location/drive.png";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
-import walk from "/assets/frontend/images/microsite/location/walk.png";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-import education from "/assets/frontend/images/microsite/location/driveIcons/education.png";
-import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png";
-import school from "/assets/frontend/images/microsite/location/walkIcons/school.png";
-import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png";
-import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png";
-import junction from "/assets/frontend/images/microsite/location/driveIcons/junction.png";
-import golfing from "/assets/frontend/images/microsite/location/driveIcons/golfing.png";
-import hospital from "/assets/frontend/images/microsite/location/driveIcons/hospital.png";
+import React, { useState, useEffect, useRef } from "react";
 import "./microsite.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import Lightbox from "yet-another-react-lightbox";
@@ -22,60 +9,20 @@ import { useImageReveal } from "../useImageReveal";
 import SlideIn from "../Animations/SlideIn";
 import FadeIn from "../Animations/FadeIn";
 
-function LocationAdvantage() {
+function LocationAdvantage({
+  locationImage,
+  driveData,
+  walkData,
+  driveTabIcon,
+  driveTabActiveIcon,
+  walkTabIcon,
+  walkTabActiveIcon,
+  lightboxImages,
+}) {
   const [activeTab, setActiveTab] = useState("drive");
   const [open, setOpen] = useState(false);
-
-  const driveData = [
-    {
-      image: education,
-      text: "Amity university , botanic garden of india republic",
-      time: "10 min",
-    },
-    {
-      image: junction,
-      text: "Greater noida expressway, worlds of wonder",
-      time: "15 min",
-    },
-    {
-      image: golfing,
-      text: "Noida golf course, sandal suites by lemon tree hotels",
-      time: "20 min",
-    },
-    {
-      image: hospital,
-      text: "Yatharth super specialty hospital, max super speciality hospital",
-      time: "30 min",
-    },
-    {
-      image: hospital,
-      text: "Yatharth super specialty hospital, max super speciality hospital",
-      time: "30 min",
-    },
-  ];
-
-  const walkData = [
-    {
-      image: mall,
-      text: "Starling Edge Mall, Fern Residency",
-      time: "5 min",
-    },
-    {
-      image: school,
-      text: "Pathway School Noida",
-      time: "10 min",
-    },
-    {
-      image: musicschool,
-      text: "Mayoor School of Music",
-      time: "15 min",
-    },
-    {
-      image: buildings,
-      text: "Oasis Noida",
-      time: "20 min",
-    },   
-  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const locationRef = useRef([]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -85,15 +32,6 @@ function LocationAdvantage() {
       { opacity: 1, x: 0, duration: 0.5, stagger: 0.1 }
     );
   };
-
-  const locationmap = [
-    {
-      image: loaction,
-      alt: "Image Location",
-    },
-  ];
-
-  const locationRef = useRef([]);
 
   useEffect(() => {
     gsap.fromTo(
@@ -115,31 +53,33 @@ function LocationAdvantage() {
 
   useImageReveal(".reveal");
 
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
+    setOpen(true);
+    document.body.classList.add("lightbox-open");
+  };
+
+  const closeLightbox = () => {
+    setOpen(false);
+    document.body.classList.remove("lightbox-open");
+  };
+
   return (
-    <section
-      className="advantage px-5 md:px-12 py-10 md:py-14  flex items-center"
-      id="advantage"
-    >
+    <section className="advantage px-5 md:px-12 py-10 md:py-14 flex items-center" id="advantage">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="brief md:border-r-2 border-gray-200">
           <FadeIn duration={2} delay={0.5}>
-            <CommonHeading HeadingText="location advantage" />
+            <CommonHeading HeadingText="Location Advantage" />
           </FadeIn>
           <div
             className="location_map py-10 reveal w-[80%]"
-            onClick={() => setOpen(true)}
+            onClick={() => openLightbox(0)} // Opening the lightbox with index 0
           >
-            <img
-              src={loaction}
-              alt="Location"
-              className="cursor-pointer w-full"
-            />
+            <img src={locationImage} alt="Location" className="cursor-pointer w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
-            <p className="md:w-96 ">
-              Discover homes strategically placed in thriving neighborhoods,
-              offering seamless access to key hubs, schools, and lifestyle
-              conveniences.
+            <p className="md:w-96">
+              Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences.
             </p>
           </SlideIn>
         </div>
@@ -147,73 +87,60 @@ function LocationAdvantage() {
         <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button
-              className={`drive cursor-pointer flex gap-3 text-[16px] items-center  ${
-                activeTab === "drive" ? "text-black" : "text-gray-300"
-              }`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "drive" ? "text-black" : "text-gray-300"}`}
               onClick={() => handleTabClick("drive")}
             >
-              <img
-                src={activeTab === "drive" ? driveActive : drive}
-                alt="drive icon"
-                className="w-8 cursor-pointer"
-              />{" "}
+              <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8 cursor-pointer" />
               DRIVE
             </button>
             <button
-              className={`walk cursor-pointer flex gap-3 text-[16px] items-center ${
-                activeTab === "walk" ? "text-black" : "text-gray-300"
-              }`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "walk" ? "text-black" : "text-gray-300"}`}
               onClick={() => handleTabClick("walk")}
             >
-              <img
-                src={activeTab === "walk" ? walkActive : walk}
-                alt="walk icon"
-                className="w-8 cursor-pointer"
-              />{" "}
+              <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8 cursor-pointer" />
               WALK
             </button>
           </div>
 
           <div className="flex items-center py-10">
-            <span className="mr-4">
-              {activeTab === "drive" ? "BY DRIVE" : "BY WALK"}
-            </span>
+            <span className="mr-4">{activeTab === "drive" ? "BY DRIVE" : "BY WALK"}</span>
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
 
-          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" >
-            {(activeTab === "drive" ? driveData : walkData).map(
-              (item, index) => (
-                <li
-                  key={index}
-                  className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5"
-                  ref={(el) => (locationRef.current[index] = el)}>
-                  <div className="icon">
-                    <img src={item.image} alt="Icon" />
-                  </div>
-                  <div className="text w-72">
-                    <p>{item.text}</p>
-                  </div>
-                  <div className="time">
-                    <p>{item.time}</p>
-                  </div>
-                </li>
-              )
-            )}
+          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20">
+            {(activeTab === "drive" ? driveData : walkData).map((item, index) => (
+              <li
+                key={index}
+                className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5"
+                ref={(el) => (locationRef.current[index] = el)}
+              >
+                <div className="icon">
+                  <img src={item.image} alt="Icon" />
+                </div>
+                <div className="text w-72">
+                  <p>{item.text}</p>
+                </div>
+                <div className="time">
+                  <p>{item.time}</p>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
+
       {open && (
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
-          slides={locationmap.map((item) => ({
+          close={closeLightbox}
+          slides={lightboxImages.map((item) => ({
             src: item.image,
             title: item.alt,
             description: "Click to open in full view",
           }))}
-          index={0}
+          index={currentIndex} // Using current index here
           plugins={[Fullscreen, Zoom]}
+          zoom={true}
         />
       )}
     </section>

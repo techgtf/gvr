@@ -15,6 +15,8 @@ import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
+import ErrorBoundary from "../frontend/components/ErrorBoundary";
+import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 
 export const UserRoutes = [
   {
@@ -23,53 +25,74 @@ export const UserRoutes = [
       {
         path: `${BASE_ROOT}`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <Home />
-            </Layout>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Home />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
         path: `${BASE_ROOT}microsite`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <Microsite />
-              <MicrositeMenu />
-            </Layout>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Microsite />
+                <MicrositeMenu />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}anandam`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <AnandamMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
         path: `${BASE_ROOT}contact-us`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <ContactUs />
-            </Layout>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ContactUs />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
-
       {
         path: `${BASE_ROOT}Residential`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <Residential />
-            </Layout>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Residential />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
         path: `${BASE_ROOT}about-us`,
         element: (
-          <Suspense fallback={<Loader />}>
-            <Layout>
-              <About />
-            </Layout>
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <About />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
       {
@@ -103,3 +126,4 @@ export const UserRoutes = [
     ],
   },
 ];
+

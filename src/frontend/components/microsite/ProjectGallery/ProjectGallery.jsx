@@ -6,7 +6,9 @@ import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
-import render from "/assets/frontend/images/microsite/gallery/render.jpg";
+import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
+import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.jpg";
+import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
@@ -28,7 +30,7 @@ function ProjectGallery() {
   const projectRef = useRef();
 
   const actualImages = [gallery1, gallery2, gallery3, gallery4];
-  const renderImages = [render, render, render, render];
+  const renderImages = [renderGallery1, renderGallery2, renderGallery3, renderGallery1];
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -68,6 +70,12 @@ function ProjectGallery() {
   const openLightbox = (index) => {
     setCurrentIndex(index);
     setOpen(true);
+    document.body.classList.add('lightbox-open');
+  };
+
+  const closeLightbox = () => {
+    setOpen(false);
+    document.body.classList.remove('lightbox-open');  // Remove class to hide cursor
   };
 
   const imageData = activeTab === "actual" ? actualImages : renderImages;
@@ -86,9 +94,8 @@ function ProjectGallery() {
           <div className="flex items-center pt-8 project_gallery_tabs">
             <SlideIn duration={0.8} delay={0.2}>
               <h4
-                className={`mr-4 uppercase mt-14 cursor-pointer ${
-                  activeTab === "actual" ? "text-primary" : "text-gray-500"
-                }`}
+                className={`mr-4 uppercase mt-14 cursor-pointer ${activeTab === "actual" ? "text-primary" : "text-gray-500"
+                  }`}
                 onClick={() => handleTabClick("actual")}
               >
                 Project Actual Images
@@ -102,9 +109,8 @@ function ProjectGallery() {
           <div className="flex items-center project_gallery_tabs">
             <SlideIn duration={0.8} delay={0.3}>
               <h4
-                className={`mr-4 uppercase mt-10 cursor-pointer ${
-                  activeTab === "render" ? "text-primary" : "text-gray-500"
-                }`}
+                className={`mr-4 uppercase mt-10 cursor-pointer ${activeTab === "render" ? "text-primary" : "text-gray-500"
+                  }`}
                 onClick={() => handleTabClick("render")}
               >
                 Project Render Images
@@ -174,13 +180,12 @@ function ProjectGallery() {
         {open && (
           <Lightbox
             open={open}
-            close={() => setOpen(false)}
+            close={closeLightbox}
             index={currentIndex}
             slides={imageData.map((src) => ({ src }))}
             plugins={[Fullscreen, Zoom]}
           />
-      
-      )}
+        )}
       </div>
     </section>
   );
