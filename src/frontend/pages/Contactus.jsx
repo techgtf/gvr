@@ -16,6 +16,7 @@ const ContactUs = () => {
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/contact_us.png`}
         heading={"CONTACT US"}
         breadCrumb={"HOME - CONTACT US"}
+        extraClassesImg={"objectRight"}
       />
       <AddressSection />
       <EnquiryFormSection />

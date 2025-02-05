@@ -62,7 +62,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
       <div className="headingWrap lg:max-w-[79%] max-w-[95%] m-auto text-center">
         <CommonHeading
           HeadingText={heading}
-          HeadingClass="xl:text-center text-left"
+          // HeadingClass="xl:text-center text-left"
         />
       </div>
       {/* <SlideIn duration={2} delay={0.5}> */}

@@ -20,6 +20,7 @@ const Career = () => {
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.png`}
         heading={"CAREER"}
         breadCrumb={"HOME - CAREER"}
+        extraClassesImg={"objectRight"}
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"

@@ -2,7 +2,6 @@ import React, { lazy } from "react";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
-
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
@@ -23,6 +22,7 @@ const Aboutus = () => {
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
         heading={"ABOUT US"}
         breadCrumb={"HOME - ABOUT US"}
+        extraClassesImg={"objectRight"}
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
