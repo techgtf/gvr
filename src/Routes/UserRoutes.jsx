@@ -19,7 +19,7 @@ import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
-import AreaConverter from "../frontend/pages/AreaConverter";
+import Career from "../frontend/pages/Career";
 
 export const UserRoutes = [
   {
@@ -69,6 +69,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <ContactUs />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}career`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Career />
               </Layout>
             </Suspense>
           </ErrorBoundary>
@@ -159,4 +171,3 @@ export const UserRoutes = [
     ],
   },
 ];
-
