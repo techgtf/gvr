@@ -4,7 +4,7 @@ import SlideIn from "./Animations/SlideIn";
 
 
 const CommonAccordion = ({ data, extraClass }) => {
-    const [openIndex, setOpenIndex] = useState(0); // First accordion is open by default
+    const [openIndex, setOpenIndex] = useState(null); // First accordion is open by default
     const contentRefs = useRef([]); // Store refs for content divs
 
     const toggleAccordion = (index) => {
