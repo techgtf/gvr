@@ -13,7 +13,7 @@ const CommonAccordion = ({ data, extraClass }) => {
 
 
     return (
-        <div className={`w-full max-w-[1119px] mx-auto lg:p-0 p-[15px] ${extraClass}`}>
+        <div className={`w-full max-w-[1000px] mx-auto lg:p-0 p-[15px] ${extraClass}`}>
             <SlideIn duration={2} delay={0.7}>
                 {data && (
                     data.map((item, index) => (

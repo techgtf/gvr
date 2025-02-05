@@ -19,6 +19,7 @@ import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
+import AreaConverter from "../frontend/pages/AreaConverter";
 
 export const UserRoutes = [
   {
@@ -133,6 +134,16 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <NriCorner />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}area-converter`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <AreaConverter />
             </Layout>
           </Suspense>
         ),
