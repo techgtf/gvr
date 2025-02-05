@@ -20,6 +20,7 @@ import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
+import AreaConverter from "../frontend/pages/AreaConverter";
 
 export const UserRoutes = [
   {
