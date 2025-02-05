@@ -17,6 +17,8 @@ import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
+import TaxBenifits from "../frontend/pages/TaxBenifits";
+import NriCorner from "../frontend/pages/NriCorner";
 
 export const UserRoutes = [
   {
@@ -111,6 +113,26 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <Csr />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}tax-benefits`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <TaxBenifits />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}nri-corner`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <NriCorner />
             </Layout>
           </Suspense>
         ),
