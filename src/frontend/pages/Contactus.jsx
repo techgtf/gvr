@@ -4,7 +4,7 @@ import * as CONFIG from "../../../config";
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
-const AddressSection = lazy(() => import("../components/contactUs/address"));
+const AddressSection = lazy(() => import("../components/contactUs/Address"));
 const EnquiryFormSection = lazy(() =>
   import("../components/contactUs/enquiryForm")
 );
