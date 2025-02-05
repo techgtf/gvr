@@ -4,7 +4,7 @@ const WorkCulture = () => {
   return (
     <section className="lg:max-w-[79%] max-w-[85%] py-[50px] mb-[40px] max-w-[100%] m-auto">
       <h3 className="sectionHeading border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
-        OUR TEAM
+        Work Culture
       </h3>
       <div className="flex  flex-wrap justify-between ">
         <div className="text-justify text-[#333333AB] xl:basis-[29%] basis-[100%] text-[15px] font-[500]">

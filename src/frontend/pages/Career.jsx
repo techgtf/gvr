@@ -47,7 +47,8 @@ const Career = () => {
               PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "Here Ambition Fuels Growth and Success"
+                // "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
               }
             />
           </div>
