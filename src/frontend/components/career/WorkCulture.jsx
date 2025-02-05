@@ -32,12 +32,12 @@ const WorkCulture = () => {
             <img
               src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-2.png`}
               alt="img-2"
-              className="h-[160px]  w-[47%] object-cover"
+              className="h-[160px] 2xl:[147px] xl:w-[100%] w-[47%] object-cover"
             />
             <img
               src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-3.png`}
               alt="img-3"
-              className="h-[160px] w-[47%] object-cover"
+              className="h-[160px] 2xl:h-[150px] w-[47%] xl:w-[100%] object-cover"
             />
           </div>
         </div>
