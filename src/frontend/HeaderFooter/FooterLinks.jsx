@@ -66,7 +66,7 @@ export default function FooterLinks({
                                 <Link
                                     onClick={scrollToTop}
                                     className='block mb-4'
-                                    to={`#`}>Blogs</Link>
+                                    to={`${BASE_ROOT}blogs`}>Blogs</Link>
                                 <Link
                                     onClick={scrollToTop}
                                     className='block mb-4'

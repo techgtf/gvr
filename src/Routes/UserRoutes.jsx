@@ -15,6 +15,8 @@ import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
+import Blogs from "../frontend/pages/Blogs";
+import BlogDetails from "../frontend/pages/BlogDetails";
 
 export const UserRoutes = [
   {
@@ -68,6 +70,26 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <About />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blogs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Blogs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blog/:id`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <BlogDetails />
             </Layout>
           </Suspense>
         ),
