@@ -26,6 +26,7 @@ import Blogs from "../frontend/pages/Blogs";
 import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
+import ThankYou from "../frontend/pages/ThankYou";
 
 export const UserRoutes = [
   {
@@ -56,6 +57,19 @@ export const UserRoutes = [
           </ErrorBoundary>
         ),
       },
+      {
+        path: `${BASE_ROOT}thank-you`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ThankYou />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      ,
       {
         path: `${BASE_ROOT}anandam`,
         element: (
