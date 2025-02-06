@@ -21,6 +21,7 @@ import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
 import AreaConverter from "../frontend/pages/AreaConverter";
+import HomeLoan from "../frontend/pages/HomeLoan";
 
 export const UserRoutes = [
   {
@@ -157,6 +158,16 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <AreaConverter />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}home-loan`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <HomeLoan />
             </Layout>
           </Suspense>
         ),
