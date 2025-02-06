@@ -25,6 +25,7 @@ import HomeLoan from "../frontend/pages/HomeLoan";
 import Blogs from "../frontend/pages/Blogs";
 import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
+import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 
 export const UserRoutes = [
   {
@@ -201,6 +202,16 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <Faqs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <PropertyInvestment />
             </Layout>
           </Suspense>
         ),
