@@ -78,7 +78,7 @@ const Index = ({ data }) => {
               onClick={() => navigate(`${BASE_ROOT}blog/${currentId + 1}`)}
               disabled={!hasNextBlog}
               className={`mt-5 ml-auto px-4 py-2 text-[16px] uppercase ${
-                hasNextBlog ? "" : "text-gray-700"
+                hasNextBlog ? "" : "text-gray-400"
               }`}
             >
               Next
