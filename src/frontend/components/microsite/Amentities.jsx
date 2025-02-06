@@ -4,7 +4,6 @@ import CommonHeading from "../commonHeading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
-
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
 import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.png";

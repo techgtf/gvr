@@ -109,11 +109,12 @@ function Plans({ masterPlanData, unitData }) {
                     className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                     onClick={() => openLightbox(index)}
                   />
-                  <div className="flex flex-col justify-between mt-5 pr-24 tracking-wider uppercase md:mt-0">
+                  <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
                     <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
                     <p>Carpet Area: {plan.carpetArea}</p>
                     <p>Balcony Area: {plan.balconyArea}</p>
                     <p>Total Super Area: {plan.totalArea}</p>
+                    <p>Built Up Area: {plan.buildArea}</p>
                   </div>
                 </div>
               ))}

@@ -17,6 +17,7 @@ import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
+import GvHomesMicrosite from "../frontend/pages/GvHomesMicrosite";
 
 export const UserRoutes = [
   {
@@ -54,6 +55,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <AnandamMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}gv-homes`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <GvHomesMicrosite />
               </Layout>
             </Suspense>
           </ErrorBoundary>
