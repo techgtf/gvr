@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from './FooterBottom';
-import useScrollToTop from '../components/useScrollToTop';
+import ScrollToTop from '../components/ScrollToTop';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -21,13 +21,23 @@ export default function Footer() {
       gsap.to(window, {
         scrollTo: { y: document.body.scrollHeight, autoKill: false },
         duration: 1,
-        // ease: "power2.inOut",
       });
     }
   }, [toggelLinks]);
 
+  const handleLinkClick = (e, path) => {
+    e.preventDefault(); // Prevent default link behavior temporarily
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    setTimeout(() => {
+      // After smooth scroll, navigate to the path
+      window.location.href = path; // Use window.location.href to change location directly
+    }, 600); // Delay to ensure scroll is completed before navigation
+  };
+
   return (
     <>
+      <ScrollToTop/>
       <section id="mainfooter">
         <footer className='footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative'>
           <button className='toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px]'
@@ -47,12 +57,15 @@ export default function Footer() {
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>our projects</Link> </li>
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>media centre</Link> </li>
                 <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>Our Profile</Link> </li>
-                <li> <Link
-                  to={`${CONFIG.BASE_ROOT}contact-us`}
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className='xl:text-[14px] text-[12px]'>contact</Link> </li>
+                <li> 
+                  <Link
+                    to={`${CONFIG.BASE_ROOT}contact-us`}
+                    onClick={(e) => handleLinkClick(e, `${CONFIG.BASE_ROOT}contact-us`)} 
+                    className='xl:text-[14px] text-[12px]'
+                  >
+                    contact
+                  </Link> 
+                </li>
               </ul>
             </div>
           </div>

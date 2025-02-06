@@ -1,0 +1,2 @@
+.residential_page .project_box:nth-child(even) .img_side{display: grid; justify-content: end;}
+.residential_page .project_box:nth-child(even) .content_side{padding-left: 0;}

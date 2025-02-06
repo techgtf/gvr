@@ -24,17 +24,17 @@ function Initiatives() {
 
     return (
         <div className="initiatives ">
-            <div className="grid grid-cols-2 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                 {initiatives && initiatives.map((item, i) => <div key={i} className="initiative bg-[#EFF5FA] p-8">
                     <div className="icon p-3 border border-[#33638B] inline-block">
                         <img src={item.icon} alt="Icon" />
                     </div>
                     <SlideIn duration={0.8} delay={0.2}> 
-                    <p className="mt-5 ">{item.desc}
+                    <p className="mt-5 text-justify">{item.desc}
                     </p>
                     </SlideIn>
                 </div>)}
-                <div className="initiative bg-[#EFF5FA] p-8 flex justify-center items-center">
+                <div className="initiative h-[250px] md:h-auto bg-[#EFF5FA] p-8 flex justify-center items-center">
                     <CommonBtn target="_blank">
                         Know <br /> More <BsArrowUpRight />
                     </CommonBtn>

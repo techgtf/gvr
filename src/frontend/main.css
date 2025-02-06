@@ -40,6 +40,10 @@ body {
   cursor: none;
 }
 
+body.lightbox-open * {
+  cursor: auto;
+}
+
 body {
   font-family: "Poppins", serif;
 }
@@ -136,7 +140,8 @@ img {
 
 .common_pera {
   font-size: 12px;
-  line-height: 25px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
 }
 
 .common_btn {
@@ -250,6 +255,10 @@ img {
 /* mobile  */
 
 @media only screen and (max-width: 600px) {
+  .objectRight {
+    object-position: right;
+  }
+
   * {
     cursor: block !important;
   }
@@ -259,6 +268,7 @@ img {
   *::after {
     line-height: 22px;
   }
+
   .sectionHeading {
     font-size: 10px;
   }

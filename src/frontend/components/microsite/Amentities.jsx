@@ -1,4 +1,10 @@
 import React, { useEffect, useRef } from "react";
+import Slider from "./Slider/Slider";
+import CommonHeading from "../commonHeading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FadeIn from "../Animations/FadeIn";
+
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
 import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.png";
@@ -7,33 +13,27 @@ import library from "/assets/frontend/images/microsite/amentities/icons/library.
 import basketballBall from "/assets/frontend/images/microsite/amentities/icons/basketballBall.png";
 import runningTrack from "/assets/frontend/images/microsite/amentities/icons/running-track.png";
 import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
-import Slider from "./Slider/Slider";
-import CommonHeading from "../commonHeading";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FadeIn from "../Animations/FadeIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Amentities() {
+function Amentities({ AmentitiesData = [
+  { name: "swimming pool", image: swimmingPool },
+  { name: "Yoga & Aerobics hall", image: yoga },
+  { name: "Gymnasium", image: gymnasium },
+  { name: "Mini home theater", image: theater },
+  { name: "Library", image: library },
+  { name: "Basketball", image: basketballBall },
+  { name: "Jogging Track", image: runningTrack },
+  { name: "park", image: park },
+], 
+headingText = "Amentities" }) {
   const sectionRef = useRef(null);
-
-  const AmentitiesData = [
-    { name: "swimming pool", image: swimmingPool },
-    { name: "Yoga & Aerobics hall", image: yoga },
-    { name: "Gymnasium", image: gymnasium },
-    { name: "Mini home theater", image: theater },
-    { name: "Library", image: library },
-    { name: "Basketball", image: basketballBall },
-    { name: "Jogging Track", image: runningTrack },
-    { name: "park", image: park },
-  ];
 
   useEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
     gsap.fromTo(
-      elements, 
+      elements,
       { opacity: 0, x: 50 },
       {
         opacity: 1,
@@ -49,43 +49,41 @@ function Amentities() {
   }, []);
 
   return (
-    <>
-      <section
-        className="amentities relative py-10 md:py-14"
-        id="amentities"
-        ref={sectionRef}
-      >
-        <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
-          <div className="sm:col-span-3 col-span-12">
-            <div className="about_heading text-center md:text-start">
-            <FadeIn duration={2} delay={0.5}> 
-              <CommonHeading HeadingText="amentities" />
-              </FadeIn>
-            </div>
+    <section
+      className="amentities relative py-10 md:py-14"
+      id="amentities"
+      ref={sectionRef}
+    >
+      <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
+        <div className="sm:col-span-3 col-span-12">
+          <div className="about_heading text-center md:text-start">
+            <FadeIn duration={2} delay={0.5}>
+              <CommonHeading HeadingText={headingText} />
+            </FadeIn>
           </div>
-          <div className="sm:col-span-9 col-span-12">
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-4">
-              {AmentitiesData.map((item, i) => (
-                <div
-                  key={i}
-                  className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
-                >
-                  <div className="icon">
-                    <img src={item.image} alt={item.name} className="w-[2.5rem]" />
-                  </div>
-                  <div className="text uppercase text-center md:text-start">
-                    <p>{item.name}</p>
-                  </div>
+        </div>
+        <div className="sm:col-span-9 col-span-12">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-4">
+            {AmentitiesData.map((item, i) => (
+              <div
+                key={i}
+                className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
+              >
+                <div className="icon">
+                  <img src={item.image} alt={item.name} className="w-[2.5rem]" />
                 </div>
-              ))}
-            </div>
+                <div className="text uppercase text-center md:text-start">
+                  <p>{item.name}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="pt-5 relative">
-          <Slider />
-        </div>
-      </section>
-    </>
+      </div>
+      <div className="pt-5 relative">
+        <Slider />
+      </div>
+    </section>
   );
 }
 

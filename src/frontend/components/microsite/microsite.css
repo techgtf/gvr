@@ -23,6 +23,7 @@
   background: #555;
 }
 
+
 .lightbox-container img {
   width: 100% !important;
   height: auto !important;
@@ -31,9 +32,17 @@
   width: 60% !important;
   height: auto !important;
 }
+.lightbox-container{
+  background-color: #555 !important;
+}
 .lightbox-container img {
   box-shadow: none !important;
 }
+
+body.lightbox-open #cursor {
+display: none;
+}
+
 #cursor {
   width: 5px;
   height: 5px;

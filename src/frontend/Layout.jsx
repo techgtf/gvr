@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Header from "../frontend/HeaderFooter/Header";
-import Footer from "../frontend/HeaderFooter/Footer";
+import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
+import { useEffect, useState } from "react";
+import Header from "../frontend/HeaderFooter/Header";
+import Footer from "../frontend/HeaderFooter/Footer";
 import MicrositeMenu from "./components/microsite/MicrositeMenu";
-import { useLocation } from "react-router-dom";
 import CustomCursor from "./components/CustomCursor";
 import Loader from "../Loader/loader";
 import useMediaLoaded from "./components/useMediaLoaded";
@@ -33,12 +33,14 @@ function Layout({ children }) {
       effects: true,
       smoothTouch: 1.4,
     });
-
+  
+    console.log("ScrollSmoother created");
+  
     return () => {
+      console.log("ScrollSmoother destroyed");
       smoother.kill();
     };
-  }, []);
-  console.log(location);
+  }, [location.pathname]);
   
 
   return (
@@ -55,7 +57,7 @@ function Layout({ children }) {
 
       {/* Main Content */}
       <Header />
-      {location.pathname ===  `${BASE_ROOT}microsite` && <MicrositeMenu />}
+      {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
       <div id="smooth-wrapper">
         <div id="smooth-content">
           {children}
@@ -65,6 +67,5 @@ function Layout({ children }) {
     </>
   );
 }
-
 
 export default Layout;
