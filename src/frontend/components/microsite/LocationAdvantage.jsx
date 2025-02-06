@@ -18,6 +18,7 @@ function LocationAdvantage({
   walkTabIcon,
   walkTabActiveIcon,
   lightboxImages,
+  description
 }) {
   const [activeTab, setActiveTab] = useState("drive");
   const [open, setOpen] = useState(false);
@@ -79,7 +80,7 @@ function LocationAdvantage({
           </div>
           <SlideIn duration={0.8} delay={0.2}>
             <p className="md:w-96">
-              Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences.
+            {description}
             </p>
           </SlideIn>
         </div>

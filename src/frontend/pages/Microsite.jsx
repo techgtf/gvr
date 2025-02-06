@@ -69,57 +69,62 @@ function Microsite() {
 
   const highlightsData = [
     "3 sides open corner plot",
-    "Fully developed lush green landscape with sculptural mound",
-    "Exclusive Musical Fountain",
-    "All green facing apartments",
-    "Well crafted layouts to ensure sufficient natural light",
-    "Cross ventilation throughout the day",
-    "RFID security for vehicle entry",
-    "Grand entrance lobby in each tower",
+    "Proposed Metro station in Sector-108",
+    "Fully inhabited residential area.",
+    "Schools, Hospitals, Malls etc. nearby On 70m wide & straight road from Kalindi Kunj, Situated alone of the most prime location of Noida.",
+    "In close vicinity to Delhi (15 min. drive to DND & Kalandi Kunj)",
+    "Close to Noida Expressway & Yamuna Expressway.",
+    "Easy access to Metro Station, connecting to metro network all around NCR.",
   ];
-  
-  const specificationsData = [
-    {
-        title: "Master Bedroom(s)",
-        items: [
-            { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-            { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-        ],
-    },
-    {
-        title: "Modular Kitchen",
-        items: [
-            { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
-            { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
-        ],
-    },
-    {
-        title: "Living/Dining Room",
-        items: [
-            { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
-            { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
-            { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
-            { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
-        ],
-    },
-];
 
-const customPriceListData = [
-  {
-      area: "1 BHK",
-      more: "Living room/Kitchen/1 Toilet/Balcony",
-      size: "850 sq.ft",
-      price: "₹ 45 Lacs*",
-  },
-  {
-      area: "2 BHK ",
-      more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-      size: "1250 sq.ft",
-      price: "₹ 80 Lacs*",
-  },
-];
+  //   const specificationsData = [
+  //     {
+  //         title: "Master Bedroom(s)",
+  //         items: [
+  //             { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+  //             { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+  //         ],
+  //     },
+  //     {
+  //         title: "Modular Kitchen",
+  //         items: [
+  //             { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
+  //             { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
+  //         ],
+  //     },
+  //     {
+  //         title: "Living/Dining Room",
+  //         items: [
+  //             { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
+  //             { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
+  //             { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
+  //             { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
+  //         ],
+  //     },
+  // ];
 
-  
+  const customPriceListData = [
+    {
+      area: "2 BHK",
+      more: "DD/ 2 BR/ KITCHEN/ 2 TOILETS/ BAL.",
+      size: "1139 sq.ft",
+      price: "₹ 74 Lacs*",
+    },
+    {
+      area: "3 BHK ",
+      more: "DD/ 3 BR/ KITCHEN/ 3 TOILETS/ BAL.",
+      size: "1647 sq.ft",
+      price: "₹ 1.07 CR*",
+    },
+    {
+      area: "4 BHK ",
+      more: "DD/ 4 BR/ STUDY/ KITCHEN/ 4 TOILETS/ BAL.",
+      size: "2283 sq.ft",
+      price: "₹ 1.48 CR*",
+    },
+  ];
+
+
 
   return (
     <>
@@ -127,37 +132,39 @@ const customPriceListData = [
       <About />
       <Amentities />
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
-      <HighlightsSpecifications 
-        highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />} 
-        specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />} 
+      <HighlightsSpecifications
+        highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
+        specificationsComponent={() => <Specifications title="Specifications" specifications={[]} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
       />
+
 
       <Plans masterPlanData={masterPlanData} unitData={unitData} />;
       <LocationAdvantage
-                locationImage={loaction}
-                driveData={[
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/education.png', text: 'Amity university , botanic garden of india republic', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/junction.png', text: 'Greater noida expressway, worlds of wonder', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/golfing.png', text: 'Noida golf course, sandal suites by lemon tree hotels', time: '20 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/hospital.png', text: 'Yatharth super specialty hospital, max super speciality hospital', time: '30 min' },
-                ]}
-                walkData={[
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Mayoor School of Music', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Oasis Noida', time: '20 min' },
-                ]}
-                driveTabIcon={drive}
-                driveTabActiveIcon={driveActive}
-                walkTabIcon={walk}
-                walkTabActiveIcon={walkActive}
-                lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-            />
+        locationImage={loaction}
+        driveData={[
+          { image: 'assets/frontend/images/microsite/location/driveIcons/education.png', text: 'Amity university , botanic garden of india republic', time: '10 min' },
+          { image: 'assets/frontend/images/microsite/location/driveIcons/junction.png', text: 'Greater noida expressway, worlds of wonder', time: '15 min' },
+          { image: 'assets/frontend/images/microsite/location/driveIcons/golfing.png', text: 'Noida golf course, sandal suites by lemon tree hotels', time: '20 min' },
+          { image: 'assets/frontend/images/microsite/location/driveIcons/hospital.png', text: 'Yatharth super specialty hospital, max super speciality hospital', time: '30 min' },
+        ]}
+        walkData={[
+          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Mayoor School of Music', time: '15 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Oasis Noida', time: '20 min' },
+        ]}
+        driveTabIcon={drive}
+        driveTabActiveIcon={driveActive}
+        walkTabIcon={walk}
+        walkTabActiveIcon={walkActive}
+        lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
+        description="  Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences."
+      />
 
 
       <ProjectGallery
         actualImages={[gallery1, gallery2, gallery3, gallery4]}
-        renderImages={[renderGallery1, renderGallery2, renderGallery3, renderGallery1]}
+        renderImages={[ renderGallery2]}
       />
     </>
   );

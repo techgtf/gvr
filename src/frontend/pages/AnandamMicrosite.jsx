@@ -55,16 +55,22 @@ function AnandamMicrosite() {
 
     const customPriceListData = [
         {
-            area: "1 BHK",
-            more: "Living room/Kitchen/1 Toilet/Balcony",
-            size: "850 sq.ft",
-            price: "₹ 45 Lacs*",
+            area: "2 BHK",
+            more: "DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal. ",
+            size: "1350 Sq. Ft",
+            price: "₹ 86.13 Lacs*",
         },
         {
-            area: "2 BHK ",
-            more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-            size: "1250 sq.ft",
-            price: "₹ 80 Lacs*",
+            area: "3 BHK ",
+            more: "DD/ 3 BR/Kitchen/3 Toilets/Bal.",
+            size: "1700 Sq. Ft",
+            price: "₹ 1.08 CR*",
+        },
+        {
+            area: "3 BHK + STUDY",
+            more: "DD/ 3 BR/Study / Kitchen/4 Toilets/Bal.",
+            size: "1840 Sq. Ft",
+            price: "₹ 1.17 CR*",
         },
     ];
 
@@ -123,31 +129,31 @@ function AnandamMicrosite() {
 
     // Specifications data 
 
-    const specificationsData = [
-        // {
-        //     title: "Master Bedroom(s)",
-        //     items: [
-        //         { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-        //         { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-        //     ],
-        // },
-        // {
-        //     title: "Modular Kitchen",
-        //     items: [
-        //         { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
-        //         { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
-        //     ],
-        // },
-        // {
-        //     title: "Living/Dining Room",
-        //     items: [
-        //         { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
-        //         { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
-        //         { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
-        //         { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
-        //     ],
-        // },
-    ];
+    // const specificationsData = [
+    //     {
+    //         title: "Master Bedroom(s)",
+    //         items: [
+    //             { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+    //             { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
+    //         ],
+    //     },
+    //     {
+    //         title: "Modular Kitchen",
+    //         items: [
+    //             { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
+    //             { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
+    //         ],
+    //     },
+    //     {
+    //         title: "Living/Dining Room",
+    //         items: [
+    //             { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
+    //             { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
+    //             { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
+    //             { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
+    //         ],
+    //     },
+    // ];
 
     return (
         <>
@@ -159,8 +165,8 @@ function AnandamMicrosite() {
                 duration={2}
                 bannerDetailsProps={{
                     heading: "ANANDAM",
-                    location: "Downtown, New York",
-                    description: "1, 2 & 3 BHK Modern Apartments",
+                    location: "sector 107, noida",
+                    description: "2 & 3 BHK LUXURY RESIDENTIAL APARTMENTS",
                   }}
             />
 
@@ -178,7 +184,7 @@ function AnandamMicrosite() {
             <PriceList priceListData={customPriceListData} headingText="Our Price List" />
             <HighlightsSpecifications
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-                specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
+                specificationsComponent={() => <Specifications title="Specifications" specifications altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
             />
 
             <Plans masterPlanData={masterPlanData} unitData={unitData} />;
@@ -201,11 +207,12 @@ function AnandamMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
+                description="A well-connected haven in Noida’s prime locale, where every necessity is just around the corner, and every journey feels effortless."
             />
 
             <ProjectGallery
                 actualImages={[gallery1, gallery2, gallery3, gallery4]}
-                renderImages={[renderGallery1, renderGallery2, renderGallery3, renderGallery1]}
+                renderImages={[renderGallery1, renderGallery1]}
             />
         </>
     )

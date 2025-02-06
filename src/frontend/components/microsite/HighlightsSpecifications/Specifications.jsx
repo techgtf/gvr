@@ -6,7 +6,7 @@ import CommonHeading from "../../commonHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Specifications({ title = "Specifications", specifications = [] }) {
+function Specifications({ title = "Specifications", specifications = [], altImage }) {
   const specificationRefs = useRef([]);
 
   useEffect(() => {
@@ -33,21 +33,33 @@ function Specifications({ title = "Specifications", specifications = [] }) {
         <FadeIn duration={2} delay={0.5}>
           <CommonHeading HeadingText={title} />
         </FadeIn>
-        <div className="grid grid-cols-12 mt-8 overflow-y-auto h-[350px] pr-5 specifications-scroll-container">
-          {specifications.map((spec, index) => (
-            <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)}>
-              <h4 className="font-semibold">{spec.title}</h4>
-              {spec.items.map((item, itemIndex) => (
-                <div key={itemIndex} className="flex gap-3 py-5">
-                  <div className="icon">
-                    <img src={item.image} alt={item.description} className="h-[80%]" />
+        <div
+          className="grid grid-cols-12 mt-8 overflow-y-auto h-[350px] pr-5 specifications-scroll-container"
+          style={{
+            backgroundImage: specifications && specifications.length > 0 ? "none" : `url(${altImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {specifications && specifications.length > 0 &&
+            specifications.map((spec, index) => (
+              <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)}>
+                <h4 className="font-semibold">{spec.title}</h4>
+                {spec.items?.map((item, itemIndex) => (
+                  <div key={itemIndex} className="flex gap-3 py-5">
+                    <div className="icon">
+                      <img src={item.image} alt={item.description || "Specification image"} className="h-[80%]" />
+                    </div>
+                    <p className="w-60">{item.description}</p>
                   </div>
-                  <p className="w-60">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          ))}
+                ))}
+              </div>
+            ))
+          }
         </div>
+
+
       </div>
     </div>
   );

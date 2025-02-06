@@ -110,47 +110,82 @@ function GvHomesMicrosite() {
         // Highlishts data 
     
         const highlightsData = [
-            "3 sides open corner plot",
-            "Proposed Metro station in Sector-108",
-            "Fully inhabited residential area.",
-            "Schools, Hospitals, Malls etc. nearby On 70m wide & straight road from Kalindi Kunj, Situated alone of the most prime location of Noida.",
-            "In close vicinity to Delhi (15 min. drive to DND & Kalandi Kunj)",
-            "Close to Noida Expressway & Yamuna Expressway.",
-            "Easy access to Metro Station, connecting to metro network all around NCR.",
+            "Situated in 31 Uday Park, New Delhi, offering unmatched connectivity and prestige.",
+            "Italian marble flooring, false ceilings, and designer finishes for a sophisticated ambiance.",
+            "Built with high-quality materials ensuring safety and durability.",
+            "Italian-style kitchen with stainless steel accessories, chimney, and geyser.",
+            "High-end fittings, toughened glass partitions, and geysers in all bathrooms.",
         ];
     
         // Specifications data 
     
         const specificationsData = [
-            // {
-            //     title: "Master Bedroom(s)",
-            //     items: [
-            //         { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-            //         { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-            //     ],
-            // },
-            // {
-            //     title: "Modular Kitchen",
-            //     items: [
-            //         { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
-            //         { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
-            //     ],
-            // },
-            // {
-            //     title: "Living/Dining Room",
-            //     items: [
-            //         { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
-            //         { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
-            //         { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
-            //         { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
-            //     ],
-            // },
+            {
+                title: "Structure",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/structure.png", description: " Earthquake-resistant design with high-quality materials." },
+                ],
+            },
+            {
+                title: "Flooring",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/flooring.png", description: "Italian marble in living, dining, bedrooms & kitchens." },
+                ],
+            },
+            {
+                title: "Walls & Paint",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/walls-paints.png", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
+                ],
+            },
+            {
+                title: "Woodwork",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/woodworking.png", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
+                ],
+            },
+            {
+                title: "Bathrooms",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/bathroom.png", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
+                ],
+            },
+            {
+                title: "Kitchen",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/kitchen.png", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
+                ],
+            },
+            {
+                title: "Water Supply",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/water-pipe.png", description: "24/7 provision with underground & rooftop tanks." },
+                ],
+            },
+            {
+                title: "Electrical",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/electricity.png", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
+                ],
+            },
+            {
+                title: "Special Features",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/features.png", description: "Spacious balconies, landscaped basement, modern façade." },
+                ],
+            },
+            {
+                title: "Customization",
+                items: [
+                    { image: "assets/frontend/images/microsite/anandam/specifications/customization.png", description: "Buyer preferences accommodated with flexible designs." },
+                ],
+            },
         ];
 
   return (
     <>
     <HeroSection
-        backgroundImage="assets/frontend/images/microsite/anandam/hero/hero.jpg"
+        backgroundImage="assets/frontend/images/microsite/gv/hero/hero.jpg"
         scrollText="SCROLL DOWN"
         sectionId="overview"
         initialScale={1.5}
@@ -163,7 +198,7 @@ function GvHomesMicrosite() {
     />
 
     <About
-        imageSrc="assets/frontend/images/microsite/anandam/about/about.jpg"
+        imageSrc="assets/frontend/images/microsite/gv/about/about.jpg"
         headingText="ABOUT"
         descriptionText="GV HOMEZ, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
         reverseWatermark={true}
@@ -199,11 +234,12 @@ function GvHomesMicrosite() {
         walkTabIcon={walk}
         walkTabActiveIcon={walkActive}
         lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
+        description="A well-connected haven in Noida’s prime locale, where every necessity is just around the corner, and every journey feels effortless."
     />
 
     <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4]}
-        renderImages={[renderGallery1, renderGallery2, renderGallery3, renderGallery1]}
+        actualImages={[renderGallery3]}
+        renderImages={[renderGallery3]}
     />
 </>
   )
