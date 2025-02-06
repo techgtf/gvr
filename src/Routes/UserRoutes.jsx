@@ -22,6 +22,8 @@ import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
 import AreaConverter from "../frontend/pages/AreaConverter";
 import HomeLoan from "../frontend/pages/HomeLoan";
+import Blogs from "../frontend/pages/Blogs";
+import BlogDetails from "../frontend/pages/BlogDetails";
 
 export const UserRoutes = [
   {
@@ -110,6 +112,26 @@ export const UserRoutes = [
               </Layout>
             </Suspense>
           </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blogs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Blogs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blog/:id`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <BlogDetails />
+            </Layout>
+          </Suspense>
         ),
       },
       {
