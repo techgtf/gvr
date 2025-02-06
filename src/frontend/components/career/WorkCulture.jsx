@@ -3,7 +3,7 @@ import * as CONFIG from "../../../../config";
 const WorkCulture = () => {
   return (
     <section className="lg:max-w-[79%] max-w-[85%] py-[50px] mb-[40px] max-w-[100%] m-auto">
-      <h3 className="sectionHeading border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
+      <h3 className="sectionHeading uppercase border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
         Work Culture
       </h3>
       <div className="flex  flex-wrap justify-between ">

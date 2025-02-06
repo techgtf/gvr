@@ -20,6 +20,7 @@ import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
+import ThankYou from "../frontend/pages/ThankYou";
 
 export const UserRoutes = [
   {
@@ -50,6 +51,19 @@ export const UserRoutes = [
           </ErrorBoundary>
         ),
       },
+      {
+        path: `${BASE_ROOT}thank-you`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ThankYou />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      ,
       {
         path: `${BASE_ROOT}anandam`,
         element: (
