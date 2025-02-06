@@ -1,4 +1,4 @@
-import React, { lazy }  from 'react'
+import React, { lazy } from 'react'
 import * as CONFIG from "../../../config";
 import Index from '../components/blogs/Index';
 import { Link } from 'react-router-dom';
@@ -10,13 +10,15 @@ const HeroSectionAboutUs = lazy(() =>
 const Blogs = () => {
   return (
     <>
-    <HeroSectionAboutUs
+      <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.png`}
         heading={"BLOGS"}
-        />
-        <div className='bg-[#EFF5FA]'>
-        <BlogList/>
-        </div>
+        breadCrumb={"Home  -  BLOGS"}
+        extraClassesImg={"objectRight"}
+      />
+      <div className='bg-[#EFF5FA]'>
+        <BlogList />
+      </div>
     </>
   )
 }
