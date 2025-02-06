@@ -69,7 +69,7 @@ const BlogList = () => {
       <div className="lg:col-span-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.map((data, index) => (
-            <div className={`col-span-1 mt-[45px] ${index < 2 ? 'mt-0' : ''}`} key={index}>
+            <div className={`col-span-1 mt-[45px] ${index < 2 ? 'mt-[0px]' : ''}`} key={index}>
               <Link to={`${BASE_ROOT}blog/${data.id}`} key={data.id}>
                 <BlogCard data={data} index={index} />
               </Link>

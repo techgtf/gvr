@@ -28,7 +28,7 @@ const latestBlog = [
 ];
 
 const Index = ({ data }) => {
-  const { title, imgSrc, date, pera1, pera2, pera3, id } = data;
+  const { title, imgSrc, date, pera, id } = data;
   const navigate = useNavigate();
   const currentId = parseInt(id);
 
@@ -59,12 +59,19 @@ const Index = ({ data }) => {
             HeadingClass="mb-4 mt-4 text-[#143C5E] capitalize"
           />
 
-          <p className="opacity-70">{pera1}</p>
-          <Divider className="mt-[50px] mb-[50px]" />
-          <p className="opacity-70">{pera2}</p>
-          <p className="opacity-70">{pera3}</p>
+          {pera?.length > 0 && (
+            <>
+              <p className="opacity-70">{pera[0]}</p>
+              <Divider className="mt-[50px] mb-[50px]" />
+              {pera.slice(1).map((paragraph, index) => (
+                <p key={index} className="opacity-70">
+                  {paragraph}
+                </p>
+              ))}
+            </>
+          )}
 
-          {/* ✅ Fixed: Conditionally disable "Next" button */}
+          {/*  Fixed: Conditionally disable "Next" button */}
           <div className="flex justify-between">
             {/* Other content */}
             <button
@@ -114,3 +121,6 @@ const Index = ({ data }) => {
 };
 
 export default Index;
+
+
+// 
