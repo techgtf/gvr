@@ -46,14 +46,14 @@ const Index = ({ data }) => {
           />
         </FadeIn>
         <div className="DetailsCard bg-[#EFF5FA] lg:p-[45px] p-[20px]">
-          <div className="ImageContain relative pt-[15px] pl-[15px]">
+          <div className="ImageContain relative md:pt-[15px] md:pl-[15px] p-0">
             <img
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/blog_img_1.png`}
               alt="Blog Image"
               className="relative w-full h-full object-contain z-[2]"
             />
           </div>
-          <p className="BlogDate mt-5 text-[#6B6B6B]">{date}</p>
+          <p className="BlogDate mt-5 text-[#6B6B6B] ">{date}</p>
           <CommonHeading
             HeadingText={title}
             HeadingClass="mb-4 mt-4 text-[#143C5E] capitalize"
@@ -61,10 +61,10 @@ const Index = ({ data }) => {
 
           {pera?.length > 0 && (
             <>
-              <p className="opacity-70">{pera[0]}</p>
-              <Divider className="mt-[50px] mb-[50px]" />
+              <p className="opacity-70 text-justify">{pera[0]}</p>
+              <Divider className="md:mt-[50px] md:mb-[50px] mt-[20px] mb-[20px]" />
               {pera.slice(1).map((paragraph, index) => (
-                <p key={index} className="opacity-70">
+                <p key={index} className="opacity-70 text-justify">
                   {paragraph}
                 </p>
               ))}
@@ -77,7 +77,7 @@ const Index = ({ data }) => {
             <button
               onClick={() => navigate(`${BASE_ROOT}blog/${currentId + 1}`)}
               disabled={!hasNextBlog}
-              className={`mt-5 ml-auto px-4 py-2 text-[16px] uppercase ${
+              className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${
                 hasNextBlog ? "" : "text-gray-400"
               }`}
             >
@@ -99,15 +99,15 @@ const Index = ({ data }) => {
           {latestBlog.map((item, index) => (
             <li
               key={index}
-              className="mt-3 mb-[50px] last:mb-0 pb-3 border-b border-solid border-[#33638B66] first:mt-0 last:mb-0"
+              className="mt-3 md:mb-[50px] mb-[30px] last:mb-0 pb-3 border-b border-solid border-[#33638B66] first:mt-0 last:mb-0"
             >
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                 <div className="ListCard">
-                  <h4 className="ListHeading text-[#000] font-poppins text-[16px] font-normal leading-[24px] tracking-[0.4px] capitalize">
+                  <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px]  font-normal md:leading-[24px] leading-[20px] tracking-[0.4px] capitalize">
                     {item.title}
                   </h4>
-                  <p className="mt-3 mb-3 opacity-70"> {item.desc} </p>
-                  <CommonBtn TagName={Link}>
+                  <p className="mt-2 mb-2 opacity-70 text-justify"> {item.desc} </p>
+                  <CommonBtn TagName={Link} className="text-[14px]">
                     Know more <MdArrowOutward />
                   </CommonBtn>
                 </div>
