@@ -15,7 +15,15 @@ const ContextProvider = ({ children }) => {
   };
 
   return (
-    <Context.Provider value={{ showEnquiryForm, openEnquiryForm, closeEnquiryForm, isLoading, setIsLoading }}>
+    <Context.Provider
+      value={{
+        showEnquiryForm,
+        openEnquiryForm,
+        closeEnquiryForm,
+        isLoading,
+        setIsLoading,
+      }}
+    >
       {children}
     </Context.Provider>
   );

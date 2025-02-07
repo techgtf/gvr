@@ -18,6 +18,16 @@ import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import GvHomesMicrosite from "../frontend/pages/GvHomesMicrosite";
+import TaxBenifits from "../frontend/pages/TaxBenifits";
+import NriCorner from "../frontend/pages/NriCorner";
+import Career from "../frontend/pages/Career";
+import AreaConverter from "../frontend/pages/AreaConverter";
+import HomeLoan from "../frontend/pages/HomeLoan";
+import Blogs from "../frontend/pages/Blogs";
+import BlogDetails from "../frontend/pages/BlogDetails";
+import Faqs from "../frontend/pages/Faqs";
+import PropertyInvestment from "../frontend/pages/PropertyInvestment";
+import ThankYou from "../frontend/pages/ThankYou";
 
 export const UserRoutes = [
   {
@@ -48,6 +58,19 @@ export const UserRoutes = [
           </ErrorBoundary>
         ),
       },
+      {
+        path: `${BASE_ROOT}thank-you`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ThankYou />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      ,
       {
         path: `${BASE_ROOT}anandam`,
         element: (
@@ -85,6 +108,18 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}career`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Career />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}Residential`,
         element: (
           <ErrorBoundary>
@@ -109,6 +144,26 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}blogs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Blogs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blog/:id`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <BlogDetails />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
         path: `${BASE_ROOT}emi-calculator`,
         element: (
           <Suspense fallback={<Loader />}>
@@ -129,6 +184,66 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}tax-benefits`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <TaxBenifits />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}nri-corner`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <NriCorner />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}area-converter`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <AreaConverter />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}home-loan`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <HomeLoan />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}Faqs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Faqs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <PropertyInvestment />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
         path: "*",
         element: (
           <Suspense fallback={<Loader />}>
@@ -139,4 +254,3 @@ export const UserRoutes = [
     ],
   },
 ];
-

@@ -37,11 +37,11 @@ body {
 }
 
 * {
-  cursor: none; 
+  cursor: none;
 }
 
 body.lightbox-open * {
-  cursor: auto; 
+  cursor: auto;
 }
 
 body {
@@ -255,6 +255,10 @@ img {
 /* mobile  */
 
 @media only screen and (max-width: 600px) {
+  .objectRight {
+    object-position: right;
+  }
+
   * {
     cursor: block !important;
   }
@@ -264,12 +268,16 @@ img {
   *::after {
     line-height: 22px;
   }
+
   .sectionHeading {
     font-size: 10px;
   }
 
   .common_heading {
     font-size: 10px;
+  }
+  .common_btn, .common_btn svg{
+    font-size: 14px;
   }
 }
 
