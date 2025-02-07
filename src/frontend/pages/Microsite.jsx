@@ -10,6 +10,8 @@ import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGaller
 import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
 import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/2B-R-plan-img.png";
 import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/2B-RS.png";
+import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/3B+R-floorplan-img.png";
+import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/3BRS.png";
 import loaction from "/assets/frontend/images/microsite/location/location.png";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
@@ -41,14 +43,16 @@ function Microsite() {
         totalArea: "1139 Sq.Ft.",
       },
       {
-        image: plan2,
-        type: "TypeB: 2B/R+S",
-        carpetArea: "873 Sq.Ft.",
-        balconyArea: "81 Sq.Ft.",
-        totalArea: "1295 Sq.Ft.",
+        image: plan3,
+        type: "TypeC: 3B+R",
+        carpetArea: "1080 Sq. Ft.",
+        balconyArea: "145 Sq. Ft.",
+        totalArea: "1647 Sq. Ft.",
       },
+    
     ],
     unit2: [
+      
       {
         image: plan2,
         type: "TypeB: 2B/R+S",
@@ -57,11 +61,11 @@ function Microsite() {
         totalArea: "1295 Sq.Ft.",
       },
       {
-        image: plan1,
-        type: "TypeA: 2B/R",
-        carpetArea: "752 Sq.Ft.",
-        balconyArea: "69 Sq.Ft.",
-        totalArea: "1139 Sq.Ft.",
+        image: plan4,
+        type: "Type D: 3B/R+S",
+        carpetArea: "1186 Sq. Ft.",
+        balconyArea: "145 Sq. Ft.",
+        totalArea: "1791 Sq. Ft.",
       },
     ],
   };
@@ -124,13 +128,23 @@ function Microsite() {
     },
   ];
 
+  const images = [
+    { image: "assets/frontend/images/microsite/amentities/slider/slide1.png", alt: "Beautiful Scenery 1" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide2.jpg", alt: "Beautiful Scenery 2" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide3.jpg", alt: "Beautiful Scenery 3" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide4.jpg", alt: "Beautiful Scenery 4" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide5.jpg", alt: "Beautiful Scenery 5" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide6.jpg", alt: "Beautiful Scenery 6" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide7.jpg", alt: "Beautiful Scenery 7" },
+  ];
+
 
 
   return (
     <>
       <HeroSection />
       <About />
-      <Amentities />
+      <Amentities images={images}  />
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
       <HighlightsSpecifications
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}

@@ -155,6 +155,16 @@ function AnandamMicrosite() {
     //     },
     // ];
 
+    const images = [
+        { image: "assets/frontend/images/microsite/amentities/slider/slide1.png", alt: "Beautiful Scenery 1" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide2.jpg", alt: "Beautiful Scenery 2" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide3.jpg", alt: "Beautiful Scenery 3" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide4.jpg", alt: "Beautiful Scenery 4" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide5.jpg", alt: "Beautiful Scenery 5" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide6.jpg", alt: "Beautiful Scenery 6" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide7.jpg", alt: "Beautiful Scenery 7" },
+      ];
+
     return (
         <>
             <HeroSection
@@ -180,8 +190,9 @@ function AnandamMicrosite() {
             <Amentities
                 AmentitiesData={customAmentitiesData}
                 headingText="Amenities"
+                images={images}
             />
-            <PriceList priceListData={customPriceListData} headingText="Our Price List" />
+            <PriceList priceListData={customPriceListData} headingText="Price List" />
             <HighlightsSpecifications
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}

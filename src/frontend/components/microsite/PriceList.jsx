@@ -54,7 +54,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
         {/* Desktop view */}
         <div className="hidden md:block table w-full mt-10" ref={tableRef}>
-          {priceListData.map((item, i) => (
+          {priceListData && priceListData.length > 0 ? priceListData.map((item, i) => (
             <div
               key={i}
               className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400"
@@ -88,12 +88,12 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                 </button>
               </div>
             </div>
-          ))}
+          )) : <div className="text-xl py-4 border-t-2 border-b-2 border-gray-500 text-center">COMING SOON </div>}
         </div>
 
         {/* Mobile view */}
         <div className="block md:hidden table w-full mt-10">
-          {priceListData.map((item, i) => (
+          {priceListData && priceListData.length > 0 ? priceListData.map((item, i) => (
             <div key={i} className="row_1 py-0 md:py-5">
               <div className="flex justify-center "></div>
               <div className="grid grid-cols-3 border-b border-gray-300 py-3">
@@ -129,7 +129,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                 </div>
               </div>
             </div>
-          ))}
+          )) : <div className="text-xl py-4 border-t-2 border-b-2 border-gray-500 text-center">COMING SOON </div>}
         </div>
       </section>
       {showEnquiryForm && <PriceListForm />}

@@ -45,12 +45,18 @@ function Plans({ masterPlanData, unitData }) {
   const openLightbox = (index, isMasterPlan = false) => {
     setCurrentIndex(index);
     setOpen(true);
+    document.body.classList.add("lightbox-open");
     
     if (isMasterPlan) {
       setIsMasterPlanOpen(true);
     } else {
       setIsMasterPlanOpen(false);
     }
+  };
+
+  const closeLightbox = () => {
+    setOpen(false);
+    document.body.classList.remove("lightbox-open");
   };
 
   return (
@@ -147,7 +153,7 @@ function Plans({ masterPlanData, unitData }) {
       {open && !isMasterPlanOpen && (
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
+          close={closeLightbox}
           index={currentIndex}
           slides={unitData[activeUnit].map((item) => ({
             src: item.image,

@@ -28,6 +28,7 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 
 export const UserRoutes = [
   {
@@ -78,6 +79,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <AnandamMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}vilasa`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <VilasaMicrosite />
               </Layout>
             </Suspense>
           </ErrorBoundary>
