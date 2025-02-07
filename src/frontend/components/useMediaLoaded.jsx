@@ -6,7 +6,7 @@ const useMediaLoaded = () => {
   useEffect(() => {
     const mediaElements = document.querySelectorAll("img");
     console.log(mediaElements);
-    
+
     if (mediaElements.length === 0) {
       setMediaLoaded(true);
       return;

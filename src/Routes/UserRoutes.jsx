@@ -21,6 +21,7 @@ import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
 import ThankYou from "../frontend/pages/ThankYou";
+import CommercialProjects from "../frontend/pages/CommercialProjects";
 
 export const UserRoutes = [
   {
@@ -46,6 +47,18 @@ export const UserRoutes = [
               <Layout>
                 <Microsite />
                 <MicrositeMenu />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}commercial-projects`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <CommercialProjects />
               </Layout>
             </Suspense>
           </ErrorBoundary>
