@@ -21,7 +21,6 @@ const Aboutus = () => {
       <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
         heading={"ABOUT US"}
-        breadCrumb={"HOME - ABOUT US"}
         extraClassesImg={"objectRight"}
       />
       <div

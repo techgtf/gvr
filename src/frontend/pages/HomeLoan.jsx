@@ -10,7 +10,6 @@ export default function HomeLoan() {
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home-loan/banner.webp`}
                 heading={"Home Loan"}
-                breadCrumb={"Home  -  Home Loan"}
                 extraClassesImg={"objectRight"}
             />
             <HomeLoanIndex />

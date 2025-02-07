@@ -10,7 +10,6 @@ export default function NriCorner() {
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/nri-corner/nri-banner.webp`}
                 heading={"NRI Corner"}
-                breadCrumb={"Home  -  NRI Corner"}
                 extraClassesImg={"objectRight"}
             />
             <NriCornerIndex />

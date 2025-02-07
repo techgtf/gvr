@@ -37,7 +37,6 @@ export default function Residential() {
       <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/projects/residential/banner.jpg`}
         heading={"Residential Projects"}
-        breadCrumb={"HOME - Residential Projects"}
       />
       <ProjectBox projectsData={projectsData} />
     </div>

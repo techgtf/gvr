@@ -62,7 +62,8 @@ const BlogDetails = () => {
       <HeroSectionAboutUs
           img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.png`}
           heading={"BLOG DETAILS"}
-          breadCrumb={"HOME - BLOG DETAILS"}
+          parentLink={"blogs"}
+          parentTitle={"BLOGS"}
           extraClassesImg={"objectRight"}
           />
           <Index data={blog}/>

@@ -36,7 +36,7 @@ const Index = ({ data }) => {
   const hasNextBlog = latestBlog.some((blog) => blog.id === currentId + 1);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:mt-[98px] lg:mb-[98px] mt-[50px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
       {/* Left side card */}
       <div className="lg:col-span-8">
         {/* <FadeIn duration={2} delay={0.6}>
