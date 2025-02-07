@@ -13,6 +13,8 @@ const Blogs = () => {
     <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.png`}
         heading={"BLOGS"}
+        breadCrumb={"HOME - BLOGS"}
+        extraClassesImg={"objectRight"}
         />
         <div className='bg-[#EFF5FA]'>
         <BlogList/>
