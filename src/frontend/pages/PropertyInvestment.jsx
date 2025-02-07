@@ -41,7 +41,7 @@ const ProperyInvestment = () => {
           Real Estate Investment In India
         </h2>
         <div className="relative">
-          <p className="absolute top-[30px] xl:left-[13%] left-[8%] bg-[#EFF5FA] xl:px-[60px] px-[30px] py-[20px] w-[85%] text-center tracking-[4px] font-[300]">
+          <p className="absolute top-[30px] xl:left-[7.5%] left-[8%] bg-[#EFF5FA] xl:px-[60px] px-[30px] py-[20px] w-[85%] text-center tracking-[4px] font-[300]">
             The Delhi National Capital Region (NCR) has been a focal point for
             real estate investments, with Noida standing out as a prime
             destination due to its strategic location, infrastructure
