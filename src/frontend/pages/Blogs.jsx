@@ -1,4 +1,4 @@
-import React, { lazy }  from 'react'
+import React, { lazy } from 'react'
 import * as CONFIG from "../../../config";
 import BlogList from '../components/blogs/blogList';
 const HeroSectionAboutUs = lazy(() =>
@@ -7,7 +7,7 @@ const HeroSectionAboutUs = lazy(() =>
 const Blogs = () => {
   return (
     <>
-    <HeroSectionAboutUs
+      <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.png`}
         heading={"BLOGS"}
         extraClassesImg={"objectRight"}

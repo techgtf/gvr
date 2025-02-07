@@ -46,7 +46,7 @@ export default function FooterLinks({ toggelLinks }) {
                                     <Link className='block mb-4' to={`${BASE_ROOT}home-loan`}>Home Loans</Link>
                                     <Link className='block mb-4' to={`${BASE_ROOT}tax-benefits`}>Tax Benefits</Link>
                                     <Link className='block mb-4' to={`${BASE_ROOT}area-converter`}>Area Converter</Link>
-                                    <Link className='block mb-4' to={`${BASE_ROOT}property-investment-`}>Property Investment</Link>
+                                    <Link className='block mb-4' to={`${BASE_ROOT}property-investment`}>Property Investment</Link>
                                 </div>
 
                                 <div>
