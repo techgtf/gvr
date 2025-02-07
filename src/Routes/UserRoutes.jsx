@@ -22,6 +22,7 @@ import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
 import ThankYou from "../frontend/pages/ThankYou";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
+import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 
 export const UserRoutes = [
   {
@@ -47,6 +48,18 @@ export const UserRoutes = [
               <Layout>
                 <Microsite />
                 <MicrositeMenu />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ProperyInvestment />
               </Layout>
             </Suspense>
           </ErrorBoundary>
