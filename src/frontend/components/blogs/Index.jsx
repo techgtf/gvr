@@ -36,28 +36,29 @@ const Index = ({ data }) => {
   const hasNextBlog = latestBlog.some((blog) => blog.id === currentId + 1);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:mt-[98px] lg:mb-[98px] mt-[50px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:mt-[98px] lg:mb-[98px] mt-[50px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
       {/* Left side card */}
       <div className="lg:col-span-8">
-        <FadeIn duration={2} delay={0.6}>
+        {/* <FadeIn duration={2} delay={0.6}>
           <CommonHeading
             HeadingText="Blog Details"
             HeadingClass="mb-4 text-[#143C5E]"
           />
-        </FadeIn>
+        </FadeIn> */}
         <div className="DetailsCard bg-[#EFF5FA] lg:p-[45px] p-[20px]">
-          <div className="ImageContain relative md:pt-[15px] md:pl-[15px] p-0">
+          <div className="ImageContain relative md:pt-[10px] md:pl-[10px] sm:h-auto h-[215px]  p-0">
             <img
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/blog_img_1.png`}
               alt="Blog Image"
-              className="relative w-full h-full object-contain z-[2]"
+              className="relative w-full h-full sm:object-contain object-cover z-[2]"
             />
           </div>
-          <p className="BlogDate mt-5 text-[#6B6B6B] ">{date}</p>
-          <CommonHeading
+          <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
+          <h4 className=" md:mb-[50px]  mb-[20px] mt-4 text-[16px] text-[#143C5E] capitalize">{title}</h4>
+          {/* <CommonHeading
             HeadingText={title}
             HeadingClass="mb-4 mt-4 text-[#143C5E] capitalize"
-          />
+          /> */}
 
           {pera?.length > 0 && (
             <>
@@ -92,27 +93,31 @@ const Index = ({ data }) => {
         <FadeIn duration={2} delay={0.6}>
           <CommonHeading
             HeadingText="Latest Blogs"
-            HeadingClass="mb-4 text-[#143C5E]"
+            HeadingClass="mb-4 text-[#143C5E] text-[11px]"
           />
         </FadeIn>
+        <Divider className=" md:mb-[50px] mt-[20px] mb-[20px]" />
         <ul>
           {latestBlog.map((item, index) => (
+            <>
             <li
               key={index}
-              className="mt-3 md:mb-[50px] mb-[30px] last:mb-0 pb-3 border-b border-solid border-[#33638B66] first:mt-0 last:mb-0"
+              className="mt-3  last:mb-0  first:mt-0 last:mb-0"
             >
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                 <div className="ListCard">
-                  <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px]  font-normal md:leading-[24px] leading-[20px] tracking-[0.4px] capitalize">
+                  <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
                     {item.title}
                   </h4>
-                  <p className="mt-2 mb-2 opacity-70 text-justify"> {item.desc} </p>
+                  <p className="mt-[20px] mb-[20px] opacity-70 text-justify"> {item.desc} </p>
                   <CommonBtn TagName={Link} className="text-[14px]">
                     Know more <MdArrowOutward />
                   </CommonBtn>
                 </div>
               </Link>
             </li>
+              <Divider className="md:mt-[30px] md:mb-[50px] mt-[20px] mb-[20px]" />
+              </>
           ))}
         </ul>
       </div>
