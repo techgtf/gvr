@@ -20,6 +20,12 @@ import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
+import AreaConverter from "../frontend/pages/AreaConverter";
+import HomeLoan from "../frontend/pages/HomeLoan";
+import Blogs from "../frontend/pages/Blogs";
+import BlogDetails from "../frontend/pages/BlogDetails";
+import Faqs from "../frontend/pages/Faqs";
+import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
@@ -151,6 +157,26 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}blogs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Blogs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}blog/:id`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <BlogDetails />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
         path: `${BASE_ROOT}emi-calculator`,
         element: (
           <Suspense fallback={<Loader />}>
@@ -186,6 +212,46 @@ export const UserRoutes = [
           <Suspense fallback={<Loader />}>
             <Layout>
               <NriCorner />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}area-converter`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <AreaConverter />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}home-loan`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <HomeLoan />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}Faqs`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <Faqs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Layout>
+              <PropertyInvestment />
             </Layout>
           </Suspense>
         ),

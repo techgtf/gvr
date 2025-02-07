@@ -5,11 +5,10 @@ import SlideIn from "../Animations/SlideIn";
 import ZoomOut from "../Animations/ZoomOut";
 
 export default function PageOverview() {
-    console.log(CONFIG.ASSET_IMAGE_URL);
 
     return (
         <div className='page_overview'>
-            <div className='wrapper lg:max-w-[95%] px-[15px] w-full m-auto lg:mb-[70px] mb-[20px]'>
+            <div className='wrapper lg:max-w-[95%] lg:px-0 px-[15px] w-full m-auto lg:mb-[70px] mb-[20px]'>
                 <SlideIn duration={2} delay={0.7}>
                     <p className='text-justify'>Did you know that tax benefits can be availed after the construction of the house as the interest repaid during construction cannot be claimed as Pre-EMI interest on the apartment loan? Read more about the various ways you can save tax on your apartment loan below.</p>
                 </SlideIn>

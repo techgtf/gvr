@@ -26,7 +26,7 @@ export default function ProjectBox({ projectsData }) {
                 projectsData && (
                     projectsData.map((data, index) =>
                         <div
-                            className='project_box reveal_cut_effect flex flex-wrap justify-between lg:even:flex-row-reverse lg:even:pl-[40px] lg:even:pr-[0] lg:pr-[40px] lg:pt-[80px] lg:mb-0 mb-[30px] lg:px-[0] lg:py-[0] px-[18px] py-[18px] bg-white'
+                            className='project_box reveal_cut_effect flex flex-wrap justify-between lg:even:flex-row-reverse lg:even:pl-[40px] lg:even:pr-[0] lg:pr-[40px] lg:pt-[80px] lg:mb-0 mb-[30px] lg:px-[0] lg:py-[0] px-[18px] py-[18px] lg:bg-transparent bg-white'
                             key={index}>
                             <div className='img_side overflow-hidden lg:w-[62%] w-full reveal'>
                                 {/* <ZoomOut initialScale={1.5} duration={2}> */}

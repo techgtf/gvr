@@ -276,6 +276,9 @@ img {
   .common_heading {
     font-size: 10px;
   }
+  .common_btn, .common_btn svg{
+    font-size: 14px;
+  }
 }
 
 /*end common Css */
