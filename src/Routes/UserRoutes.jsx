@@ -29,6 +29,8 @@ import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
 import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
+import CommercialProjects from "../frontend/pages/CommercialProjects";
+import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 
 export const UserRoutes = [
   {
@@ -54,6 +56,30 @@ export const UserRoutes = [
               <Layout>
                 <Microsite />
                 <MicrositeMenu />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ProperyInvestment />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}commercial-projects`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <CommercialProjects />
               </Layout>
             </Suspense>
           </ErrorBoundary>
