@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useContext, useRef, useEffect, useState, useLayoutEffect } from "react";
 import CommonHeading from "../commonHeading";
 import PriceListForm from "./PriceListForm";
 import { Context } from "../../context/context";
@@ -15,7 +15,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
   const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tableElements = tableRef.current.querySelectorAll(".row_1");
 
     gsap.fromTo(

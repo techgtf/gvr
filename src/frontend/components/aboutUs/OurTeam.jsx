@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState, useRef, useLayoutEffect } from "react";
 import { TeamContext } from "../../context/TeamContext";
 import TeamModal from "../teamModal/TeamModal";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
@@ -21,7 +21,7 @@ const OurTeam = () => {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Specific animation for index === 2
     if (specialImageRef.current) {
       gsap.fromTo(

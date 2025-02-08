@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import "./styles.css";
 import CommonHeading from "../commonHeading";
 import CommonPera from "../commonPera";
@@ -21,7 +21,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
   const contentRef = useRef(null);
   const containerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5 }) => {
   const elementRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = elementRef.current;
 
     // Create the GSAP context for scoped selector and cleanup

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Specifications({ title = "Specifications", specifications = [], altImage }) {
   const specificationRefs = useRef([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       specificationRefs.current,
       { opacity: 0, y: 50 },

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,7 +13,7 @@ function HighlightsSpecifications({
   start = "top -5%",  
   endOffset = "30%",
 }) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const specifications = document.querySelector(".specifications-scroll-container");
 
     if (specifications) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
@@ -41,7 +41,7 @@ function ProjectGallery({ actualImages, renderImages }) {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       ".gallery_images",
       { opacity: 0, y: 50 },

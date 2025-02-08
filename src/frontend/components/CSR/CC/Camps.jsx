@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import eye from "/assets/frontend/images/csr/camps/eye.jpg";
 import donation from "/assets/frontend/images/csr/camps/blood-donation.jpg";
 import dental from "/assets/frontend/images/csr/camps/dental.jpg";
@@ -29,7 +29,7 @@ function Camps() {
     ]
     const sectionRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const elements = sectionRef.current.querySelectorAll(".content");
 
         gsap.fromTo(

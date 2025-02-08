@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import FadeIn from "../../Animations/FadeIn";
 import CommonHeading from "../../commonHeading";
@@ -6,7 +6,7 @@ import CommonHeading from "../../commonHeading";
 function Highlights({ title = "Highlights", highlights = [] }) {
   const listRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (listRef.current) {
       const listItems = listRef.current.children;
       gsap.fromTo(

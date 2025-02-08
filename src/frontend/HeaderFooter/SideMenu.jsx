@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { SlClose } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
@@ -8,7 +8,7 @@ function SideMenu({ setOpenSidebar }) {
   const sideMenuRef = useRef(null);
   const navigate = useNavigate(); // Using useNavigate for programmatic navigation
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       ".sidemenu",
       { x: 100, opacity: 0 },

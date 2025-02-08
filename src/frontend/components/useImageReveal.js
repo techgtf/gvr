@@ -1,5 +1,5 @@
 // hooks/useImageReveal.js
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function useImageReveal(selector) {
     const scrollTriggersRef = useRef([]); // Use ref to persist scroll triggers across renders
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const revealContainers = document.querySelectorAll(selector);
 
         // Ensure to avoid setting up multiple ScrollTriggers unnecessarily

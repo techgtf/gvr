@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const SlideIn = ({ children, duration = 1, delay = 0 }) => {
   const elementRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = elementRef.current;
 
     gsap.fromTo(

@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 import "./loader.css"
 
 
 export default function LoadAnimation() {
-    useEffect(() => {
+    useLayoutEffect(() => {
         const loaderPanes = document.querySelectorAll(".preloader_pane");
 
         gsap.to(loaderPanes, {

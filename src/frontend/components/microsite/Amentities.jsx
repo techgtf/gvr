@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import Slider from "./Slider/Slider";
 import CommonHeading from "../commonHeading";
 import gsap from "gsap";
@@ -33,7 +33,7 @@ function Amentities({
 }) {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
     gsap.fromTo(

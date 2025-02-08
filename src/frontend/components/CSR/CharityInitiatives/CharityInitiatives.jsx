@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CommonHeading from '../../commonHeading';
@@ -14,7 +14,7 @@ function CharityInitiatives() {
         education, education2, education, education2
     ];
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.fromTo(
             ".charity-images img",
             { opacity: 0, y: 50 },

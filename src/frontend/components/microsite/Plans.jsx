@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import WaterMarkHeading from "../verticalWaterMarkHeading";
 import CommonHeading from "../commonHeading";
 import { useImageReveal } from "../useImageReveal";
@@ -16,7 +16,7 @@ function Plans({ masterPlanData, unitData }) {
 
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".unit");
 
     gsap.fromTo(

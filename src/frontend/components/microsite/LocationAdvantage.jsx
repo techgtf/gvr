@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import "./microsite.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import Lightbox from "yet-another-react-lightbox";
@@ -34,7 +34,7 @@ function LocationAdvantage({
     );
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       locationRef.current,
       { opacity: 0, y: 50 },

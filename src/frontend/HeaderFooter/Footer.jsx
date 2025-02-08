@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import "./footer.css"
 import FooterLinks from './FooterLinks'
 import gsap from 'gsap';
@@ -24,7 +24,7 @@ export default function Footer() {
     }
   }, [toggelLinks]); // Update height when toggling
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (toggelLinks && footerHeight > 0) {
       gsap.to(window, {
         scrollTo: { y: document.body.scrollHeight, autoKill: false },
