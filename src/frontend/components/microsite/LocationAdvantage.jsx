@@ -35,7 +35,7 @@ function LocationAdvantage({
   };
 
   useEffect(() => {
-    gsap.fromTo(
+    let animation2 = gsap.fromTo(
       locationRef.current,
       { opacity: 0, y: 50 },
       {
@@ -50,6 +50,10 @@ function LocationAdvantage({
         },
       }
     );
+
+    return () => {
+      animation2.kill();
+    };
   }, []);
 
   useImageReveal(".reveal");

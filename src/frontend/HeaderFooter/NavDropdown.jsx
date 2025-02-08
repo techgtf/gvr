@@ -10,7 +10,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
     const navigate = useNavigate();
     
     useEffect(() => {
-        gsap.fromTo(
+        let animation1 = gsap.fromTo(
             ".nav_dropdown", 
             {
                 y: -100,
@@ -30,6 +30,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
         document.addEventListener('mousedown', handleClick);
 
         return () => {
+            animation1.kill();
             document.removeEventListener('mousedown', handleClick);
         };
     }, []);

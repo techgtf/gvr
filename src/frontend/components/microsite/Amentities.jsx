@@ -36,7 +36,7 @@ function Amentities({
   useEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       elements,
       { opacity: 0, x: 50 },
       {
@@ -50,6 +50,10 @@ function Amentities({
         },
       }
     );
+
+    return()=>{
+      animation.kill();
+    }
   }, []);
 
   return (

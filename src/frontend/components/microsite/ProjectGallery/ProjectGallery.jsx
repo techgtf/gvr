@@ -42,7 +42,7 @@ function ProjectGallery({ actualImages, renderImages }) {
   }, []);
 
   useEffect(() => {
-    gsap.fromTo(
+    let animation1 = gsap.fromTo(
       ".gallery_images",
       { opacity: 0, y: 50 },
       {
@@ -56,6 +56,10 @@ function ProjectGallery({ actualImages, renderImages }) {
         },
       }
     );
+
+    return () => {
+      animation1.kill();
+    }
   }, []);
 
   const openLightbox = (index) => {

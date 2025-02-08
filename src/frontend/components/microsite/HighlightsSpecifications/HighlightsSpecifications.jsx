@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 function HighlightsSpecifications({
   highlightsComponent: Highlights,
   specificationsComponent: Specifications,
@@ -17,7 +15,9 @@ function HighlightsSpecifications({
     const specifications = document.querySelector(".specifications-scroll-container");
 
     if (specifications) {
-      ScrollTrigger.create({
+      gsap.registerPlugin(ScrollTrigger);
+      
+      let firstTrigger = ScrollTrigger.create({
         trigger: "#highlightsSpecifications",
         start,
         endTrigger: specifications,
@@ -28,13 +28,19 @@ function HighlightsSpecifications({
         markers,
       });
 
-      ScrollTrigger.create({
+      let secondTrigger = ScrollTrigger.create({
         trigger: ".specifications-scroll-container",
         start: "top top",
         end: `+=${endOffset}`,
         scrub,
         markers,
       });
+
+      return()=>{
+        firstTrigger.kill();
+        secondTrigger.kill();
+        ScrollTrigger.refresh();
+      }
     }
   }, [pin, scrub, markers, start, endOffset]);
 
