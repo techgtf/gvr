@@ -90,9 +90,9 @@ function Plans({ masterPlanData, unitData }) {
         {unitData && (
           <div className="floor_plans mt-12 lg:m-0 lg:ps-20">
             <div className="md:flex justify-between items-center">
-              <FadeIn duration={2} delay={0.6}>
+             {unitData[activeUnit] && unitData[activeUnit].length > 0 ? <FadeIn duration={2} delay={0.6}>
                 <CommonHeading HeadingText="Floor Plans" />
-              </FadeIn>
+              </FadeIn> : ""}
               <div className="flex gap-2 md:gap- py-4 mt-4 md:mt-0">
                 {Object.keys(unitData).map((unit) => (
                   <button
