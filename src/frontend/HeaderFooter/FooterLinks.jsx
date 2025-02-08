@@ -25,7 +25,7 @@ export default function FooterLinks({ toggelLinks }) {
           <ul className="links_ul uppercase text-white w-full col-span-2">
             <li>
               <div className="heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5">Commercial</div>
-              <Link className="block mb-4" to={`${BASE_ROOT}commercial`}>All Commercial</Link>
+              <Link className="block mb-4" to={`${BASE_ROOT}commercial-projects`}>All Commercial</Link>
             </li>
           </ul>
 

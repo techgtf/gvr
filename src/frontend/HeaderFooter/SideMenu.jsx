@@ -75,7 +75,7 @@ function SideMenu({ setOpenSidebar }) {
               </span>
               /
               <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}commercial`)}
+                onClick={() => handleLinkClick(`${BASE_ROOT}commercial-projects`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
               >
                 All Commercial
