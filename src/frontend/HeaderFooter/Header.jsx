@@ -56,7 +56,20 @@ export default function Header() {
     };
   }, [handleScroll]);
 
-  const navItems = ["residential", "commercial"];
+  // "residential", "commercial"
+  const navItems = [
+    {
+      name:'Residential',
+      link:null,
+      hasMenus:true,
+    },
+    {
+      name:'Commercial',
+      link:'Residential',
+      hasMenus:false,
+    },
+    
+  ];
 
   const getLogoSrc = () => {
     if (isFixed || activeItem) {
@@ -82,15 +95,25 @@ export default function Header() {
             <div className="right_nav flex justify-between items-center gap-10">
               <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
                 <ul className="flex justify-evenly gap-8 items-center">
-                  {navItems.map((item, i) => (
-                    <li
-                      key={i}
-                      onClick={() => handleToggleDropdown(item)}
-                      className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
-                    >
-                      {item} <BsChevronDown className="text-[14px] font-[300]" />
-                    </li>
-                  ))}
+                  {navItems.map((item, i) => {
+                    return item.hasMenus ? (
+                      <li
+                        key={i}
+                        onClick={() => handleToggleDropdown(item.name)}
+                        className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                      >
+                        {item.name} <BsChevronDown className="text-[14px] font-[300]" />
+                      </li>
+                    ) : (
+                      <li
+                        key={i}
+                        className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                      >
+                        <Link className="gap-3 tracking-[3px] text-[13px] font-[300]" to={`${BASE_ROOT}${item.link}`}>{item.name}</Link>
+                      </li>
+                    )
+                    
+                  })}
                 </ul>
               </div>
               <button className="menuBtn flex justify-end items-center" onClick={handleToggleSidebar}>

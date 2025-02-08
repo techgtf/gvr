@@ -85,23 +85,23 @@ const BlogList = () => {
       </div>
       <div className="lg:col-span-4">
         <SearchField searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-        <h4 className="ListTitle mt-5 text-[14px] font-normal leading-[33px] tracking-[3px] flex items-center">
+        <h4 className="ListTitle mt-5 mb-1 text-[14px] font-normal leading-[33px] tracking-[3px] flex items-center">
             Latest Blog
         </h4>
 
-        <ul>
+        <ul className="blogs_list_content">
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((item, index) => (
-            <li key={index} className="mt-5">
+            <li key={index} className="py-3 border-b-[1px] border-b-[#ccc]">
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
-                <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-light lg:leading-[29px] leading-[25px]">
+                <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-normal md:font-light leading-[20px] md:leading-[25px] lg:leading-[29px]">
                   {" "}
                   {item.title?.length > 100
                     ? `${item.title.slice(0, 90)}...`
                     : item.title}{" "}
                 </p>
                 <div
-                  className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] ${
+                  className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] mt-2 ${
                     item?.length > 100
                       ? "lg:mt-[-18px] mt-[-20px]"
                       : "lg:mt-[5px]"

@@ -34,7 +34,8 @@ export default function Hero({
                 <video
                     // className="min-h-svh"
                     // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-                    src={`https://res.cloudinary.com/dx3l6id8r/video/upload/v1738587559/herovdo_wpbnv6.mp4`}
+                    // https://res.cloudinary.com/dx3l6id8r/video/upload/v1738997400/gvr-700x1000_mz5mdz.mp4
+                    src={window.innerWidth > 767 ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1738587559/herovdo_wpbnv6.mp4` : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1738997863/gvr-700x1000_3_soolob.mp4`}
                     autoPlay
                     playsInline
                     loop

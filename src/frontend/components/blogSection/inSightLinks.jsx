@@ -9,19 +9,19 @@ export default function InSightLinks() {
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
             link: "#",
-            type: 'News',
+            type: 'Blog',
             date: '24 july 2024'
         },
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
             link: "#",
-            type: 'News',
+            type: 'Blog',
             date: '24 july 2024'
         },
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
             link: "#",
-            type: 'News',
+            type: 'Blog',
             date: '24 july 2024'
         },
     ]
