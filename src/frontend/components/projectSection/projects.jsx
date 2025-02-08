@@ -23,17 +23,17 @@ export default function Projects() {
         {
             type: 'residential',
             imgSrc: 'residential.jpg',
-            Link: "#1"
+            Link: `${CONFIG.BASE_ROOT}residential`
         },
         {
             type: 'commercial',
             imgSrc: 'commercial.jpg',
-            Link: "#2"
+            Link: `${CONFIG.BASE_ROOT}commercial-projects`
         },
         {
             type: 'Latest Property',
             imgSrc: 'latest.jpg',
-            Link: "#3"
+            Link: `${CONFIG.BASE_ROOT}vilasa`
         },
     ]
 

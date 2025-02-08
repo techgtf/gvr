@@ -5,6 +5,7 @@ import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
 import ZoomOut from "../Animations/ZoomOut";
 import LoadAnimation from "../../../Loader/loadAnimation";
+import ScrollToTop from "../ScrollToTop";
 
 export default function Hero({
     videoUrl,
@@ -23,6 +24,8 @@ export default function Hero({
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     return (
+        <>
+        <ScrollToTop/>
         <div className="heroSection relative z-0">
             {/* Background Image */}
 
@@ -58,5 +61,6 @@ export default function Hero({
                 </h1>
             </div> */}
         </div>
+        </>
     );
 }

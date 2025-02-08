@@ -26,19 +26,33 @@ function Layout({ children }) {
   }, [mediaLoaded]);
 
   useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.5,
-      effects: true,
-      smoothTouch: 1.4,
-    });
+    let smoother = ScrollSmoother.get();
   
-    console.log("ScrollSmoother created");
+    if (!smoother) {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.5,
+        effects: true,
+        smoothTouch: 1.4,
+      });
+      console.log("ScrollSmoother initialized");
+    }
   
     return () => {
-      console.log("ScrollSmoother destroyed");
-      smoother.kill();
+      console.log("Cleaning up ScrollSmoother...");
+      
+      if (smoother) {
+        smoother.kill();
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      }
+  
+      // Ensure DOM elements exist before modifying them
+      const wrapper = document.getElementById("smooth-wrapper");
+      const content = document.getElementById("smooth-content");
+  
+      if (wrapper) wrapper.removeAttribute("style");
+      if (content) content.removeAttribute("style");
     };
   }, [location.pathname]);
   

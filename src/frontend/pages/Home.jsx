@@ -7,6 +7,7 @@ const Testimonial = lazy(() => import('../components/testimonialSection/testimon
 const MediaCoverage = lazy(() => import('../components/MediaCoverage/MediaCoverage'))
 const BlogSection = lazy(() => import('../components/BlogSection/BlogSection'))
 import { BASE_ROOT } from '../../../config'
+import ScrollToTop from '../components/ScrollToTop'
 
 
 
@@ -14,7 +15,9 @@ export default function Home() {
 
 
     return (
+
         <div className='homepage'>
+            <ScrollToTop/>
             <Hero />
 
             <OverviewSection
