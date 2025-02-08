@@ -17,6 +17,7 @@ import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
+import GvHomesMicrosite from "../frontend/pages/GvHomesMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
@@ -27,6 +28,7 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 
 export const UserRoutes = [
   {
@@ -77,6 +79,30 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <AnandamMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}vilasa`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <VilasaMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}gv-homes`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <GvHomesMicrosite />
               </Layout>
             </Suspense>
           </ErrorBoundary>
@@ -161,7 +187,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}csr`,
+        path: `${BASE_ROOT}esg`,
         element: (
           <Suspense fallback={<Loader />}>
             <Layout>

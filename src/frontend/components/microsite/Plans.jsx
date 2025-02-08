@@ -45,12 +45,18 @@ function Plans({ masterPlanData, unitData }) {
   const openLightbox = (index, isMasterPlan = false) => {
     setCurrentIndex(index);
     setOpen(true);
+    document.body.classList.add("lightbox-open");
     
     if (isMasterPlan) {
       setIsMasterPlanOpen(true);
     } else {
       setIsMasterPlanOpen(false);
     }
+  };
+
+  const closeLightbox = () => {
+    setOpen(false);
+    document.body.classList.remove("lightbox-open");
   };
 
   return (
@@ -101,7 +107,7 @@ function Plans({ masterPlanData, unitData }) {
             </div>
 
             <div className="slider">
-              {unitData[activeUnit].map((plan, index) => (
+              {unitData[activeUnit] && unitData[activeUnit].length > 0 ? unitData[activeUnit].map((plan, index) => (
                 <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                   <img
                     src={plan.image}
@@ -109,14 +115,15 @@ function Plans({ masterPlanData, unitData }) {
                     className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                     onClick={() => openLightbox(index)}
                   />
-                  <div className="flex flex-col justify-between mt-5 pr-24 tracking-wider uppercase md:mt-0">
+                  <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
                     <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
                     <p>Carpet Area: {plan.carpetArea}</p>
                     <p>Balcony Area: {plan.balconyArea}</p>
                     <p>Total Super Area: {plan.totalArea}</p>
+                    <p>Built Up Area: {plan.buildArea}</p>
                   </div>
                 </div>
-              ))}
+              )) : <div><img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.jpg" alt="ALt Image"/></div>}
             </div>
           </div>
         )}
@@ -146,7 +153,7 @@ function Plans({ masterPlanData, unitData }) {
       {open && !isMasterPlanOpen && (
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
+          close={closeLightbox}
           index={currentIndex}
           slides={unitData[activeUnit].map((item) => ({
             src: item.image,

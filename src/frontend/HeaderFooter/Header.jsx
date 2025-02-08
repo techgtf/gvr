@@ -63,11 +63,11 @@ export default function Header() {
       return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
     }
 
-    if (location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`) {
-      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
+    if (location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator`) {
+      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
     }
 
-    return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+    return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
   };
 
   return (
@@ -80,7 +80,7 @@ export default function Header() {
               <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="logo" />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
-              <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
+              <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator` ? "text-black" : "text-white"}`}>
                 <ul className="flex justify-evenly gap-8 items-center">
                   {navItems.map((item, i) => (
                     <li
@@ -99,9 +99,9 @@ export default function Header() {
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
-                      : location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`
-                      ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
-                      : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                      : location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator`
+                      ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                      : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
                   }
                   alt="menu"
                 />

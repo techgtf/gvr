@@ -2,13 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
-import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
-import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
-import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
-import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.jpg";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
@@ -18,9 +11,10 @@ import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
 import FadeIn from "../../Animations/FadeIn";
 
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectGallery() {
+function ProjectGallery({ actualImages, renderImages }) {
   const [activeTab, setActiveTab] = useState("actual");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
@@ -28,9 +22,6 @@ function ProjectGallery() {
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
   const projectRef = useRef();
-
-  const actualImages = [gallery1, gallery2, gallery3, gallery4];
-  const renderImages = [renderGallery1, renderGallery2, renderGallery3, renderGallery1];
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -75,7 +66,7 @@ function ProjectGallery() {
 
   const closeLightbox = () => {
     setOpen(false);
-    document.body.classList.remove('lightbox-open');  // Remove class to hide cursor
+    document.body.classList.remove('lightbox-open');
   };
 
   const imageData = activeTab === "actual" ? actualImages : renderImages;
@@ -148,7 +139,26 @@ function ProjectGallery() {
             modules={[Navigation]}
             className="mySwiper gallery_images"
           >
-            <SwiperSlide>
+            {Array.from({ length: Math.ceil(imageData.length / 4) }).map((_, slideIndex) => (
+              <SwiperSlide key={slideIndex}>
+                <div className="grid grid-cols-2 gap-4">
+                  {imageData
+                    .slice(slideIndex * 4, slideIndex * 4 + 4) // Only take 4 images per slide
+                    .map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`slide ${slideIndex * 4 + index + 1}`}
+                        className="w-[300px] h-[200px] object-cover"
+                        onClick={() => openLightbox(slideIndex * 4 + index)}
+                      />
+                    ))}
+                </div>
+              </SwiperSlide>
+            ))}
+
+
+            {/* <SwiperSlide>
               <div className="grid grid-cols-2 gap-4">
                 {imageData.map((image, index) => (
                   <img
@@ -160,20 +170,7 @@ function ProjectGallery() {
                   />
                 ))}
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="grid grid-cols-2 gap-4">
-                {imageData.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`slide ${index + 1}`}
-                    className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </div>
 
@@ -182,7 +179,7 @@ function ProjectGallery() {
             open={open}
             close={closeLightbox}
             index={currentIndex}
-            slides={imageData.map((src) => ({ src }))}
+            slides={imageData.map((src) => ({ src }))}  // Use dynamic imageData
             plugins={[Fullscreen, Zoom]}
           />
         )}

@@ -63,7 +63,7 @@ function SideMenu({ setOpenSidebar }) {
                             </span>
                             /
                             <span
-                                onClick={() => handleLinkClick(`${BASE_ROOT}csr`)} 
+                                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)} 
                                 className="text-[14px] tracking-[2px] cursor-pointer"
                             >
                                 our CSR
