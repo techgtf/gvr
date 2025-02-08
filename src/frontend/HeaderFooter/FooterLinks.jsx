@@ -20,15 +20,15 @@ export default function FooterLinks({ toggelLinks }) {
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
                         <li>
                             <div className='heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5'>commercial</div>
-                            <Link className='block mb-4' to={`#`}>project name</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}commercial`}>All Projects</Link>
                         </li>
                     </ul>
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
                         <li>
                             <div className='heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5'>our Profile</div>
                             <Link className='block mb-4' to={`${BASE_ROOT}about-us`}>about us</Link>
-                            <Link className='block mb-4' to={`${BASE_ROOT}esg`}>csr</Link>
-                            <Link className='block mb-4' to={`#`}>our verticals</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}csr`}>csr</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}about-us`}>our verticals</Link>
                         </li>
                     </ul>
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
@@ -52,9 +52,9 @@ export default function FooterLinks({ toggelLinks }) {
                                 <div>
                                     <Link className='block mb-4' to={`${BASE_ROOT}nri-corner`}>Nri Corner</Link>
                                     <Link className='block mb-4' to={`${BASE_ROOT}nri-investor`}>Nri Investors</Link>
-                                    <Link className='block mb-4' to={`${BASE_ROOT}nri-investor`}>Nri Investors</Link>
+                                    {/* <Link className='block mb-4' to={`${BASE_ROOT}nri-investor`}>Nri Investors</Link> */}
                                     <Link className='block mb-4' to={`${BASE_ROOT}emi-calculator`}>Emi Calculator</Link>
-                                    <Link className='block mb-4' to={`#`}>FAQ</Link>
+                                    <Link className='block mb-4' to={`${BASE_ROOT}faqs`}>FAQ</Link>
                                 </div>
                             </div>
                         </li>

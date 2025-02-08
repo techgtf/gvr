@@ -53,6 +53,31 @@ function SideMenu({ setOpenSidebar }) {
                 </div>
                 <ul className="w-full flex flex-col gap-10">
                     <li>
+                        <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">our Projects</div>
+                        <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}residential`)}
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                All Residential
+                            </span>
+                            /
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}commercial`)} 
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                All Commercial
+                            </span>
+                            /
+                            <span
+                                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)} 
+                                className="text-[14px] tracking-[2px] cursor-pointer"
+                            >
+                                ESG
+                            </span>
+                        </div>
+                    </li>
+                    <li>
                         <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">our profile</div>
                         <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
                             <span

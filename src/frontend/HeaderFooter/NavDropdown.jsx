@@ -95,6 +95,15 @@ function NavDropdown({ setDropdown, setActiveItem }) {
                             <p className="place uppercase pt-2 cursor-pointer">uday park, new delhi</p>
                         </span>
                     </li>
+                    <li>
+                        <span
+                            onClick={() => handleLinkClick(`${BASE_ROOT}microsite`)}
+                            className="cursor-pointer"
+                        >
+                            <CommonHeading HeadingText="Vilasa" />
+                            <p className="place uppercase pt-2 cursor-pointer">uday park, new delhi</p>
+                        </span>
+                    </li>
                 </ul>
 
                 <div className="absolute bottom-0 left-[50%]">
