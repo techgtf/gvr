@@ -79,7 +79,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
                     </li>
                     <li>
                         <span
-                            onClick={() => handleLinkClick(`${BASE_ROOT}microsite`)}
+                            onClick={() => handleLinkClick(`${BASE_ROOT}anandam`)}
                             className="cursor-pointer"
                         >
                             <CommonHeading HeadingText="ANANDAM" />
@@ -88,7 +88,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
                     </li>
                     <li>
                         <span
-                            onClick={() => handleLinkClick(`${BASE_ROOT}microsite`)}
+                            onClick={() => handleLinkClick(`${BASE_ROOT}gv-homes`)}
                             className="cursor-pointer"
                         >
                             <CommonHeading HeadingText="GV HOMEZ" />
@@ -97,7 +97,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
                     </li>
                     <li>
                         <span
-                            onClick={() => handleLinkClick(`${BASE_ROOT}microsite`)}
+                            onClick={() => handleLinkClick(`${BASE_ROOT}vilasa`)}
                             className="cursor-pointer"
                         >
                             <CommonHeading HeadingText="Vilasa" />
