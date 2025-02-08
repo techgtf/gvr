@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./footer.css"
 import FooterLinks from './FooterLinks'
 import gsap from 'gsap';
@@ -15,18 +15,23 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef(null);
 
   useEffect(() => {
-    if (toggelLinks) {
-      setTimeout(() => {
-        gsap.to(window, {
-          scrollTo: { y: document.body.scrollHeight, autoKill: false },
-          duration: 1,
-        });
-      }, 50)
-      
+    if (footerRef.current) {
+      setFooterHeight(footerRef.current.scrollHeight);
     }
-  }, [toggelLinks]);
+  }, [toggelLinks]); // Update height when toggling
+
+  useEffect(() => {
+    if (toggelLinks && footerHeight > 0) {
+      gsap.to(window, {
+        scrollTo: { y: document.body.scrollHeight, autoKill: false },
+        duration: 1,
+      });
+    }
+  }, [footerHeight]);
 
   const handleLinkClick = (e, path) => {
     e.preventDefault(); // Prevent default link behavior temporarily
@@ -42,7 +47,7 @@ export default function Footer() {
     <>
       <ScrollToTop/>
       <section id="mainfooter">
-        <footer className='footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative'>
+        <footer ref={footerRef} className='footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative'>
           <button className='toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px]'
             onClick={() => {
               setToggelLinks(!toggelLinks);
