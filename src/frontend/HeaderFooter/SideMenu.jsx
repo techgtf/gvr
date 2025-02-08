@@ -68,18 +68,12 @@ function SideMenu({ setOpenSidebar }) {
                             >
                                 All Commercial
                             </span>
-                            /
-                            <span
-                                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)} 
-                                className="text-[14px] tracking-[2px] cursor-pointer"
-                            >
-                                ESG
-                            </span>
+                          
                         </div>
                     </li>
                     <li>
                         <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">our profile</div>
-                        <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+                        <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
                             <span
                                 onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
                                 className="text-[14px] tracking-[2px] cursor-pointer"
@@ -93,13 +87,7 @@ function SideMenu({ setOpenSidebar }) {
                             >
                                 our ESG
                             </span>
-                            /
-                            <span
-                                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)} 
-                                className="text-[14px] tracking-[2px] cursor-pointer"
-                            >
-                                our verticals
-                            </span>
+                          
                         </div>
                     </li>
                     <li>

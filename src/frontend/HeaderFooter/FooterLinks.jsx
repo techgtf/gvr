@@ -15,20 +15,20 @@ export default function FooterLinks({ toggelLinks }) {
                             <Link className='block mb-4' to={`${BASE_ROOT}microsite`}>gv homes</Link>
                             <Link className='block mb-4' to={`${BASE_ROOT}microsite`}>SHARNAM</Link>
                             <Link className='block mb-4' to={`${BASE_ROOT}microsite`}>ANANDAM</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}residential`}>ALL RESIDENTIAL</Link>
                         </li>
                     </ul>
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
                         <li>
                             <div className='heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5'>commercial</div>
-                            <Link className='block mb-4' to={`${BASE_ROOT}commercial`}>All Projects</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}commercial`}>All commercial</Link>
                         </li>
                     </ul>
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
                         <li>
                             <div className='heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5'>our Profile</div>
                             <Link className='block mb-4' to={`${BASE_ROOT}about-us`}>about us</Link>
-                            <Link className='block mb-4' to={`${BASE_ROOT}csr`}>csr</Link>
-                            <Link className='block mb-4' to={`${BASE_ROOT}about-us`}>our verticals</Link>
+                            <Link className='block mb-4' to={`${BASE_ROOT}esg`}>esg</Link>
                         </li>
                     </ul>
                     <ul className='links_ul uppercase text-white w-full col-span-2'>
