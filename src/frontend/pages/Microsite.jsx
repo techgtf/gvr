@@ -8,10 +8,10 @@ import Plans from "../components/microsite/Plans";
 import LocationAdvantage from "../components/microsite/LocationAdvantage";
 import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGallery";
 import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
-import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/2B-R-plan-img.png";
-import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/2B-RS.png";
-import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/3B+R-floorplan-img.png";
-import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/3BRS.png";
+import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-1.png";
+import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.png";
+import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.png";
+import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.png";
 import loaction from "/assets/frontend/images/microsite/location/location.png";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
@@ -81,31 +81,56 @@ function Microsite() {
     "Easy access to Metro Station, connecting to metro network all around NCR.",
   ];
 
-  //   const specificationsData = [
-  //     {
-  //         title: "Master Bedroom(s)",
-  //         items: [
-  //             { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-  //             { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-  //         ],
-  //     },
-  //     {
-  //         title: "Modular Kitchen",
-  //         items: [
-  //             { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
-  //             { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
-  //         ],
-  //     },
-  //     {
-  //         title: "Living/Dining Room",
-  //         items: [
-  //             { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
-  //             { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
-  //             { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
-  //             { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
-  //         ],
-  //     },
-  // ];
+    const specificationsData = [
+      {
+          title: "Structure",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/structure.png", description: "RCC frame structure ensuring durability and earthquake resistance." },            
+          ],
+      },
+      {
+          title: "Flooring",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/flooring.png", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
+          ],
+      },
+      {
+          title: "Wall Finishes",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/wall.png", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
+          ],
+      },
+      {
+          title: "Doors & Windows",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/door.png", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
+          ],
+      },
+      {
+          title: "Kitchen",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/kitchen.png", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
+          ],
+      },
+      {
+          title: "Toilets",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/toilet.png", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
+          ],
+      },
+      {
+          title: "Electrical",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/electrical.png", description: "Concealed copper wiring with modular switches and power backup." },             
+          ],
+      },
+      {
+          title: "Security",
+          items: [
+              { image: "assets/frontend/images/microsite/specifications/security.png", description: "CCTV surveillance and intercom system for enhanced safety." },             
+          ],
+      },
+  ];
 
   const customPriceListData = [
     {
@@ -148,7 +173,7 @@ function Microsite() {
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
       <HighlightsSpecifications
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-        specificationsComponent={() => <Specifications title="Specifications" specifications={[]} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
+        specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
       />
 
 

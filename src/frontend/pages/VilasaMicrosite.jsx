@@ -19,7 +19,11 @@ import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
+import actual1 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual1.jpg"
+import actual2 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual2.jpg"
+import actual3 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual3.jpg"
+import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.jpg"
+import render1 from "/assets/frontend/images/microsite/vilasa/gallery/render/render1.jpg"
 import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.png";
 import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.png";
 import gazebo from "/assets/frontend/images/microsite/vilasa/amentities/icons/gazebo.png";
@@ -69,38 +73,38 @@ function VilasaMicrosite() {
 
     // Plans data
 
-    const unitData = {
-        unit1: [
-            {
-                image: plan1,
-                type: "3 BHK + STUDY + 4T",
-                carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-                balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-                buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-                totalArea: "170.94 Sqm. (1840 Sq.Ft)",
-            },
-        ],
-        unit2: [
-            {
-                image: plan2,
-                type: "3 BHK + 3T",
-                carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-                balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-                buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-                totalArea: "157.94 Sqm. (1700 Sq.Ft)",
-            },
-        ],
-        unit34: [
-            {
-                image: plan3,
-                type: "2 BHK + STUDY + 2T",
-                carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-                balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-                buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-                totalArea: "125.42 Sqm. (1350 Sq.Ft)",
-            },
-        ],
-    };
+    // const unitData = {
+    //     unit1: [
+    //         {
+    //             image: plan1,
+    //             type: "3 BHK + STUDY + 4T",
+    //             carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
+    //             balconyArea: "13.24 Sqm. (143 Sq. Ft)",
+    //             buildArea: "131.45 Sqm. (1415 Sq.Ft)",
+    //             totalArea: "170.94 Sqm. (1840 Sq.Ft)",
+    //         },
+    //     ],
+    //     unit2: [
+    //         {
+    //             image: plan2,
+    //             type: "3 BHK + 3T",
+    //             carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
+    //             balconyArea: "13.26 Sqm. (143 Sq. Ft)",
+    //             buildArea: "121.50 Sqm. (1308 Sq.Ft)",
+    //             totalArea: "157.94 Sqm. (1700 Sq.Ft)",
+    //         },
+    //     ],
+    //     unit34: [
+    //         {
+    //             image: plan3,
+    //             type: "2 BHK + STUDY + 2T",
+    //             carpetArea: "81.51 Sqm. (877 Sq. Ft)",
+    //             balconyArea: "8.07 Sqm. (87 Sq. Ft)",
+    //             buildArea: "96.37 Sqm. (1037 Sq.Ft)",
+    //             totalArea: "125.42 Sqm. (1350 Sq.Ft)",
+    //         },
+    //     ],
+    // };
 
     // Highlishts data 
 
@@ -116,65 +120,47 @@ function VilasaMicrosite() {
 
     const specificationsData = [
         {
-            title: "Structure",
+            title: "Plot Sizes",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/structure.png", description: " Earthquake-resistant design with high-quality materials." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.png", description: "Ranging from 122 sq. yds. to 172 sq. yds" },
             ],
         },
         {
-            title: "Flooring",
+            title: "Security & Facilities",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/flooring.png", description: "Italian marble in living, dining, bedrooms & kitchens." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/security.png", description: "Gated entry, parks, and essential services." },
             ],
         },
         {
-            title: "Walls & Paint",
+            title: "Recreation",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/walls-paints.png", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/recreation.png", description: "Cricket, badminton, basketball, golf putting greens." },
             ],
         },
         {
-            title: "Woodwork",
+            title: "Roads & Infrastructure",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/woodworking.png", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/road.png", description: "10m wide roads, landscaped spaces." },
             ],
-        },
+        },       
         {
-            title: "Bathrooms",
+            title: "Commercial Complex",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/bathroom.png", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/commercialComplex.png", description: "Dedicated retail spaces within the community." },
             ],
-        },
+        },       
         {
-            title: "Kitchen",
+            title: "Community Spaces",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/kitchen.png", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/communitySpaces.png", description: "European-style gazebos, open lawns, and seating areas." },
             ],
-        },
+        },       
         {
-            title: "Water Supply",
+            title: "Sustainable Living",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/water-pipe.png", description: "24/7 provision with underground & rooftop tanks." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/sustainableLiving.png", description: "Green spaces and well-planned drainage systems." },
             ],
-        },
-        {
-            title: "Electrical",
-            items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/electricity.png", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
-            ],
-        },
-        {
-            title: "Special Features",
-            items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/features.png", description: "Spacious balconies, landscaped basement, modern façade." },
-            ],
-        },
-        {
-            title: "Customization",
-            items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/customization.png", description: "Buyer preferences accommodated with flexible designs." },
-            ],
-        },
+        },       
     ];
 
     // Images 
@@ -195,7 +181,7 @@ function VilasaMicrosite() {
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/gv/hero/hero.jpg"
+                backgroundImage="assets/frontend/images/microsite/vilasa/hero/hero.jpg"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -208,7 +194,7 @@ function VilasaMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/gv/about/about.jpg"
+                imageSrc="assets/frontend/images/microsite/vilasa/about/about.jpg"
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
@@ -227,7 +213,7 @@ function VilasaMicrosite() {
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
 
-            <Plans masterPlanData={masterPlanData} unitData={unitData} />
+            <Plans masterPlanData={masterPlanData} unitData />
 
             <LocationAdvantage
                 locationImage={loaction}
@@ -263,8 +249,8 @@ function VilasaMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[renderGallery3]}
-                renderImages={[renderGallery3]}
+                actualImages={[actual1, actual2, actual3, actual4]}
+                renderImages={[render1, render1, render1, render1]}
             />
         </>
     )

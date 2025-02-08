@@ -10,9 +10,9 @@ import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGaller
 import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.png";
 import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.jpg";
 import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.jpg";
-import plan2 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan2.jpg";
+import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.jpg";
 import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.jpg";
-import loaction from "/assets/frontend/images/microsite/location/location.png";
+import loaction from "/assets/frontend/images/microsite/gv/location/location.png";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
@@ -72,33 +72,22 @@ function GvHomesMicrosite() {
         unit1: [
             {
                 image: plan1,
-                type: "3 BHK + STUDY + 4T",
-                carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-                balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-                buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-                totalArea: "170.94 Sqm. (1840 Sq.Ft)",
+                type: "Ground Floor Civil Plan",
+                carpetArea: "---",
+                balconyArea: "---",
+                buildArea: "---",
+                totalArea: "1937 Sq. Ft.",
             },
-        ],
-        unit2: [
             {
                 image: plan2,
-                type: "3 BHK + 3T",
-                carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-                balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-                buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-                totalArea: "157.94 Sqm. (1700 Sq.Ft)",
+                type: "First Floor Civil Plan",
+                carpetArea: "---",
+                balconyArea: "---",
+                buildArea: "---",
+                totalArea: "1937 Sq. Ft.",
             },
         ],
-        unit34: [
-            {
-                image: plan3,
-                type: "2 BHK + STUDY + 2T",
-                carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-                balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-                buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-                totalArea: "125.42 Sqm. (1350 Sq.Ft)",
-            },
-        ],
+      
     };
 
     // Highlishts data 
@@ -117,61 +106,61 @@ function GvHomesMicrosite() {
         {
             title: "Structure",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/structure.png", description: " Earthquake-resistant design with high-quality materials." },
+                { image: "assets/frontend/images/microsite/gv/specifications/structure.png", description: " Earthquake-resistant design with high-quality materials." },
             ],
         },
         {
             title: "Flooring",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/flooring.png", description: "Italian marble in living, dining, bedrooms & kitchens." },
+                { image: "assets/frontend/images/microsite/gv/specifications/flooring.png", description: "Italian marble in living, dining, bedrooms & kitchens." },
             ],
         },
         {
             title: "Walls & Paint",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/walls-paints.png", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
+                { image: "assets/frontend/images/microsite/gv/specifications/walls-paints.png", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
             ],
         },
         {
             title: "Woodwork",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/woodworking.png", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
+                { image: "assets/frontend/images/microsite/gv/specifications/woodworking.png", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
             ],
         },
         {
             title: "Bathrooms",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/bathroom.png", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
+                { image: "assets/frontend/images/microsite/gv/specifications/bathroom.png", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
             ],
         },
         {
             title: "Kitchen",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/kitchen.png", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
+                { image: "assets/frontend/images/microsite/gv/specifications/kitchen.png", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
             ],
         },
         {
             title: "Water Supply",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/water-pipe.png", description: "24/7 provision with underground & rooftop tanks." },
+                { image: "assets/frontend/images/microsite/gv/specifications/water-pipe.png", description: "24/7 provision with underground & rooftop tanks." },
             ],
         },
         {
             title: "Electrical",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/electricity.png", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
+                { image: "assets/frontend/images/microsite/gv/specifications/electricity.png", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
             ],
         },
         {
             title: "Special Features",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/features.png", description: "Spacious balconies, landscaped basement, modern façade." },
+                { image: "assets/frontend/images/microsite/gv/specifications/features.png", description: "Spacious balconies, landscaped basement, modern façade." },
             ],
         },
         {
             title: "Customization",
             items: [
-                { image: "assets/frontend/images/microsite/anandam/specifications/customization.png", description: "Buyer preferences accommodated with flexible designs." },
+                { image: "assets/frontend/images/microsite/gv/specifications/customization.png", description: "Buyer preferences accommodated with flexible designs." },
             ],
         },
     ];
@@ -229,23 +218,34 @@ function GvHomesMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/education.png', text: 'Amity university , botanic garden of india republic', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/junction.png', text: 'Greater noida expressway, worlds of wonder', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/golfing.png', text: 'Noida golf course, sandal suites by lemon tree hotels', time: '20 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/hospital.png', text: 'Yatharth super specialty hospital, max super speciality hospital', time: '30 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '3 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '11 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Deer Park', time: '16 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/shopping.png', text: 'Green Park Market', time: '13 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/metro.png', text: 'Green Park Metro Station', time: '11 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/hauzkhas.png', text: 'Hauz Khas Village', time: '14 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/flights.png', text: 'IGI airport', time: '55 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Mayoor School of Music', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Oasis Noida', time: '20 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '11 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },                
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },                   
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="A well-connected haven in Noida’s prime locale, where every necessity is just around the corner, and every journey feels effortless."
+                description="A well-connected haven in Delhi's prime locale, where every necessity is just around the corner, and every journey feels effortless."
             />
 
             <ProjectGallery

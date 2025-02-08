@@ -139,7 +139,26 @@ function ProjectGallery({ actualImages, renderImages }) {
             modules={[Navigation]}
             className="mySwiper gallery_images"
           >
-            <SwiperSlide>
+            {Array.from({ length: Math.ceil(imageData.length / 4) }).map((_, slideIndex) => (
+              <SwiperSlide key={slideIndex}>
+                <div className="grid grid-cols-2 gap-4">
+                  {imageData
+                    .slice(slideIndex * 4, slideIndex * 4 + 4) // Only take 4 images per slide
+                    .map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`slide ${slideIndex * 4 + index + 1}`}
+                        className="w-[300px] h-[200px] object-cover"
+                        onClick={() => openLightbox(slideIndex * 4 + index)}
+                      />
+                    ))}
+                </div>
+              </SwiperSlide>
+            ))}
+
+
+            {/* <SwiperSlide>
               <div className="grid grid-cols-2 gap-4">
                 {imageData.map((image, index) => (
                   <img
@@ -151,20 +170,7 @@ function ProjectGallery({ actualImages, renderImages }) {
                   />
                 ))}
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="grid grid-cols-2 gap-4">
-                {imageData.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`slide ${index + 1}`}
-                    className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </div>
 

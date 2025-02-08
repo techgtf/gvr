@@ -129,31 +129,62 @@ function AnandamMicrosite() {
 
     // Specifications data 
 
-    // const specificationsData = [
-    //     {
-    //         title: "Master Bedroom(s)",
-    //         items: [
-    //             { image: "assets/frontend/images/microsite/specifications/mansory.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-    //             { image: "assets/frontend/images/microsite/specifications/parquet.png", description: "Walls: Gypsum Plaster/ Level Plast on RCC With Emulsion Paint" },
-    //         ],
-    //     },
-    //     {
-    //         title: "Modular Kitchen",
-    //         items: [
-    //             { image: "assets/frontend/images/microsite/specifications/mansory2.png", description: "Walls: Gypsum Plaster/Level Plast on RCC With Emulsion Paint" },
-    //             { image: "assets/frontend/images/microsite/specifications/mansory3.png", description: "Fixtures: High-Quality Branded CP Fittings" },
-    //         ],
-    //     },
-    //     {
-    //         title: "Living/Dining Room",
-    //         items: [
-    //             { image: "assets/frontend/images/microsite/specifications/mansory1.png", description: "Gypsum Plaster/ Level Plaster on RCC With Emulsion Paint" },
-    //             { image: "assets/frontend/images/microsite/specifications/parquet2.png", description: "Floors: High Quality Vitrified Tile" },
-    //             { image: "assets/frontend/images/microsite/specifications/door.png", description: "Floors: High Quality Vitrified Tile" },
-    //             { image: "assets/frontend/images/microsite/specifications/roller.png", description: "Floors: High Quality Vitrified Tile" },
-    //         ],
-    //     },
-    // ];
+    const specificationsData = [
+        {
+            title: "Living/Dining",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/dining.png", description: " Vitrified tile flooring with OBD finish walls and ceiling." },
+            ],
+        },       
+        {
+            title: "Master Bedroom",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/bedroom.png", description: " Laminated wooden flooring with elegant OBD walls." },
+            ],
+        },       
+        {
+            title: "Other Bedrooms",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/bedroom.png", description: " Vitrified tile flooring with a smooth OBD finish." },
+            ],
+        },       
+        {
+            title: "Kitchen",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/kitchen.png", description: " Ceramic with a granite countertop and SS sink." },
+            ],
+        },       
+        {
+            title: "Toilets",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/toilet.png", description: " Designer ceramic tiles with premium CP fittings." },
+            ],
+        },       
+        {
+            title: "Study/Servant Room",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/study.png", description: " Simple vitrified flooring with OBD walls." },
+            ],
+        },       
+        {
+            title: "Balconies/Terrace",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/terrace.png", description: " Ceramic tiles with a cement-painted finish." },
+            ],
+        },       
+        {
+            title: "Corridors/Lobby",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/lobby.png", description: " Kota/marble/tiled flooring with a whitewashed ceiling." },
+            ],
+        },       
+        {
+            title: "Staircases",
+            items: [
+                { image: "assets/frontend/images/microsite/anandam/specifications/stairs.png", description: "  Marble/Kota stone steps for durability and style." },
+            ],
+        },       
+    ];
 
     const images = [
         { image: "assets/frontend/images/microsite/amentities/slider/slide1.png", alt: "Beautiful Scenery 1" },
@@ -182,7 +213,7 @@ function AnandamMicrosite() {
 
             <About
                 imageSrc="assets/frontend/images/microsite/anandam/about/about.jpg"
-                headingText="ABOUT"
+                headingText="ABOUT US"
                 descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering thoughtfully designed 2 and 3 BHK apartments, it combines luxury with convenience, providing residents with a serene and opulent living experience. "
                 reverseWatermark={true}
             />
@@ -195,7 +226,7 @@ function AnandamMicrosite() {
             <PriceList priceListData={customPriceListData} headingText="Price List" />
             <HighlightsSpecifications
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-                specificationsComponent={() => <Specifications title="Specifications" specifications altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
+                specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
             />
 
             <Plans masterPlanData={masterPlanData} unitData={unitData} />;
@@ -222,8 +253,8 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3, gallery4]}
-                renderImages={[renderGallery1, renderGallery1]}
+                actualImages={[gallery1, gallery2, gallery3, gallery4, gallery3, gallery4]}
+                renderImages={[renderGallery1]}
             />
         </>
     )

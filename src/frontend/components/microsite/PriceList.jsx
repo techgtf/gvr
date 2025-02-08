@@ -5,6 +5,8 @@ import { Context } from "../../context/context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
+import { IoIosClose } from "react-icons/io";
+import { IoCloseOutline } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,15 +62,20 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
               className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400"
             >
               <div className="flex justify-center relative sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
-                <p>{item.area}</p>
+                <div className="flex justify-evenly w-full px-4">
+                <p className="flex justify-start w-[50%]">{item.area}</p>
                 <button
                   className="bg-white px-6"
                   onClick={() => handleTooltipToggle(i)}
                 >
                   MORE
                 </button>
+                </div>
                 {visibleTooltipIndex === i && (
-                  <div className="tooltip absolute w-full text-center rounded-md -left-[10px] -top-[65px] bg-black text-white p-2">
+                  <div className="tooltip absolute w-full text-center rounded-md -left-[10px] top-0 bg-black text-white p-2">
+                    <div className="absolute right-1 -top-7 bg-black rounded-full"  onClick={() => handleTooltipToggle(i)}>
+                    <IoCloseOutline  className="text-xl"/>
+                    </div>
                     {item.more}
                   </div>
                 )}
@@ -106,7 +113,10 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                     MORE
                   </button>
                   {visibleTooltipIndex === i && (
-                    <div className="tooltip w-[400px] absolute w-full text-center rounded-md -left-[10px] -top-[65px] bg-black text-white p-2">
+                    <div className="tooltip w-[400px] absolute w-full text-center rounded-md -left-[10px] top-0 bg-black text-white p-2">
+                      <div className="absolute right-1 -top-7 bg-black rounded-full"  onClick={() => handleTooltipToggle(i)}>
+                    <IoCloseOutline  className="text-xl"/>
+                    </div>
                       {item.more}
                     </div>
                   )}

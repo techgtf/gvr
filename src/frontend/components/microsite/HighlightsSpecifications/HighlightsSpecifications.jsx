@@ -11,7 +11,7 @@ function HighlightsSpecifications({
   scrub = 1,
   markers = false,
   start = "top -5%",  
-  endOffset = "100%",
+  endOffset = "30%",
 }) {
   useEffect(() => {
     const specifications = document.querySelector(".specifications-scroll-container");

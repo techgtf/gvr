@@ -187,7 +187,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}csr`,
+        path: `${BASE_ROOT}esg`,
         element: (
           <Suspense fallback={<Loader />}>
             <Layout>

@@ -107,7 +107,7 @@ function Plans({ masterPlanData, unitData }) {
             </div>
 
             <div className="slider">
-              {unitData[activeUnit].map((plan, index) => (
+              {unitData[activeUnit] && unitData[activeUnit].length > 0 ? unitData[activeUnit].map((plan, index) => (
                 <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                   <img
                     src={plan.image}
@@ -123,7 +123,7 @@ function Plans({ masterPlanData, unitData }) {
                     <p>Built Up Area: {plan.buildArea}</p>
                   </div>
                 </div>
-              ))}
+              )) : <div><img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.jpg" alt="ALt Image"/></div>}
             </div>
           </div>
         )}
