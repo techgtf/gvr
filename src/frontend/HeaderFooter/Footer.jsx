@@ -18,10 +18,13 @@ export default function Footer() {
 
   useEffect(() => {
     if (toggelLinks) {
-      gsap.to(window, {
-        scrollTo: { y: document.body.scrollHeight, autoKill: false },
-        duration: 1,
-      });
+      setTimeout(() => {
+        gsap.to(window, {
+          scrollTo: { y: document.body.scrollHeight, autoKill: false },
+          duration: 1,
+        });
+      }, 50)
+      
     }
   }, [toggelLinks]);
 
@@ -48,6 +51,7 @@ export default function Footer() {
               {toggelLinks ? <LiaAngleUpSolid className='cursor-pointer lg:text-[14px] text-[12px]' /> : <LiaAngleDownSolid className='cursor-pointer lg:text-[14px] text-[12px]' />}
             </span>
           </button>
+
           <div className='footer_container max-w-[95%] m-auto'>
             <div className='block md:flex justify-between items-center lg:pb-8 pb-5'>
               <Link to={`${CONFIG.BASE_ROOT}`} className='lg:flex hidden justify-center md:block'>
@@ -69,6 +73,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
+
           <FooterLinks toggelLinks={toggelLinks} />
         </footer>
         <FooterBottom />
