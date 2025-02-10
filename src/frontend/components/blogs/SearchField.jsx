@@ -1,9 +1,9 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 
-const SearchField = ({ searchTerm, setSearchTerm }) => {
+const SearchField = ({ searchTerm, setSearchTerm , customClass}) => {
   return (
-    <div className="relative w-full max-w-sm">
+    <div className={`relative w-full max-w-sm ${customClass}`}>
       <input
         type="text"
         placeholder="SEARCH HERE"
