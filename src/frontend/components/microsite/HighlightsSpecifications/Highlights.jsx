@@ -25,7 +25,7 @@ function Highlights({ title = "Highlights", highlights = [] }) {
         }
       );
     }
-  }, [highlights]);
+  }, [highlights, location.pathname]);
 
   return (
     <div className="col-span-4">

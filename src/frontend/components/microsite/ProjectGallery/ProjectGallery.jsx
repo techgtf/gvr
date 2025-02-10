@@ -56,11 +56,7 @@ function ProjectGallery({ actualImages, renderImages }) {
         },
       }
     );
-
-    return () => {
-      animation1.kill();
-    }
-  }, []);
+  }, [location.pathname]);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);

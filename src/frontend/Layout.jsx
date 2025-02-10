@@ -38,9 +38,14 @@ function Layout({ children }) {
       console.log("ScrollSmoother initialized");
     }
   
+    // ✅ Refresh GSAP when route changes
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+      console.log("GSAP Animations Refreshed!");
+    }, 500); 
+  
     return () => {
       console.log("Cleaning up ScrollSmoother...");
-      
       if (smoother) {
         smoother.kill(); 
       }
@@ -52,10 +57,10 @@ function Layout({ children }) {
       if (wrapper) wrapper.style.removeProperty("all");
       if (content) content.style.removeProperty("all");
     };
-  }, [location.pathname]);
+  }, [location.pathname]);  // ✅ Runs when route changes
   
   
-
+  
   return (
     <>
       {/* Custom Cursor */}

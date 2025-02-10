@@ -36,5 +36,5 @@ export function useImageReveal(selector) {
             });
             scrollTriggersRef.current = []; // Clear the array to prevent memory leaks
         };
-    }, [selector]); // This will trigger when the selector prop changes
+    }, [selector, location.pathname]); // This will trigger when the selector prop changes
 }

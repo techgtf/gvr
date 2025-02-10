@@ -25,7 +25,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
         },
       }
     );
-  }, [specifications]);
+  }, [specifications,location.pathname]);
 
   return (
     <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">

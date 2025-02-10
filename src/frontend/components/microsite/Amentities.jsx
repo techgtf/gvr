@@ -50,11 +50,7 @@ function Amentities({
         },
       }
     );
-
-    return()=>{
-      animation.kill();
-    }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <section

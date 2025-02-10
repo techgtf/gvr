@@ -31,7 +31,7 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
     return () => {
       animation.scrollTrigger?.kill(); // Cleanup ScrollTrigger
     };
-  }, [duration, delay]);
+  }, [duration, delay,location.pathname]);
 
   return <div ref={elementRef}>{children}</div>;
 };

@@ -18,7 +18,7 @@ function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [location.pathname]);
 
   return <div id="cursor" className='hidden md:block' ref={cursorRef}></div>;
 }

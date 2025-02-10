@@ -218,27 +218,26 @@ function VilasaMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'Fr. Agnel School', time: '3 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/park.png', text: 'Gulmohar Park', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/park.png', text: 'Deer Park', time: '16 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/shopping.png', text: 'Green Park Market', time: '13 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Green Park Metro Station', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hauzkhas.png', text: 'Hauz Khas Village', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/flights.png', text: 'IGI airport', time: '55 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Damdama Lake, Sohna', time: '22 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/airport.png', text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'Fr. Agnel School', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },                
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },                   
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },                   
+                
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

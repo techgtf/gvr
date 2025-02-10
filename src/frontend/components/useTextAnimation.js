@@ -23,7 +23,7 @@ export function useTextAnimation(animationConfig, dependencies = []) {
                 }
             );
         }
-    }, dependencies);
+    }, [location.pathname]);
 
     return ref;
 }
