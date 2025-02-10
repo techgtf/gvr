@@ -36,7 +36,7 @@ function Amentities({
   useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       elements,
       { opacity: 0, x: 50 },
       {

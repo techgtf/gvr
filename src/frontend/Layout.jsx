@@ -24,7 +24,6 @@ function Layout({ children }) {
       setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
     }
   }, [mediaLoaded]);
-
   useEffect(() => {
     let smoother = ScrollSmoother.get();
   
@@ -48,15 +47,15 @@ function Layout({ children }) {
     return () => {
       console.log("Cleaning up ScrollSmoother...");
       if (smoother) {
-        smoother.kill();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        smoother.kill(); 
       }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   
       const wrapper = document.getElementById("smooth-wrapper");
       const content = document.getElementById("smooth-content");
   
-      if (wrapper) wrapper.removeAttribute("style");
-      if (content) content.removeAttribute("style");
+      if (wrapper) wrapper.style.removeProperty("all");
+      if (content) content.style.removeProperty("all");
     };
   }, [location.pathname]);  // ✅ Runs when route changes
   

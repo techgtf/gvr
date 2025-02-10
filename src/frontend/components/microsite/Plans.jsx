@@ -19,7 +19,7 @@ function Plans({ masterPlanData, unitData }) {
   useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".unit");
 
-    gsap.fromTo(
+    let animation = gsap.fromTo(
       elements,
       { opacity: 0, x: 50 },
       {
