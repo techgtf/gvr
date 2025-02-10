@@ -56,6 +56,10 @@ function ProjectGallery({ actualImages, renderImages }) {
         },
       }
     );
+
+    return () => {
+      animation1.kill();
+    }
   }, []);
 
   const openLightbox = (index) => {

@@ -18,7 +18,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
   useLayoutEffect(() => {
     const tableElements = tableRef.current.querySelectorAll(".row_1");
 
-    gsap.fromTo(
+    let animation = gsap.fromTo(
       tableElements,
       { opacity: 0, y: 100 },
       {
@@ -34,6 +34,10 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
         },
       }
     );
+
+    return()=>{
+      animation.kill();
+    }
   }, []);
 
   const handleTooltipToggle = (index) => {

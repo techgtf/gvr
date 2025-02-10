@@ -38,7 +38,7 @@ export default function Projects() {
     ]
 
     return (
-        <div className='projectSection reveal_cut_effect 2xl:pt-[120px] lg:pt-[80px] text-center'>
+        <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
             <WaterMarkHeading
                 // textWaterMark={"Explore Properties"}
                 textWaterMark={reverseText("Explore Properties")}

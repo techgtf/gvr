@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
+import Testimonials from "../frontend/pages/Testimonials";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
@@ -31,6 +32,7 @@ import ThankYou from "../frontend/pages/ThankYou";
 import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
+import MediaCenter from "../frontend/pages/MediaCenter";
 
 export const UserRoutes = [
   {
@@ -123,6 +125,18 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}media`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <MediaCenter />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}gv-homes`,
         element: (
           <ErrorBoundary>
@@ -177,6 +191,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <About />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}testimonials`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Testimonials />
               </Layout>
             </Suspense>
           </ErrorBoundary>
