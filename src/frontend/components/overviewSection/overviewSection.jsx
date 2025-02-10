@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SlideIn from "../Animations/SlideIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +71,9 @@ console.log(location.pathname);
       <div className="wrap_content relative overflow-hidden m-auto lg:max-w-[85%] w-[100%]">
 
         <div ref={overlayLeftRef} className="overlay_overview overlay_left absolute z-[2] left-0 top-0 bottom-0 h-full bg-[#fff] w-[50%]"></div>
-
+        <SlideIn duration={1} delay={0.5}>
         <div className="content lg:mt-[50px] overflow-hidden lg:mb-[50px] mb-[20px] text-center">
-          <div className="opacity-0" ref={contentRef}>
+          <div className="opacity-0">
             <CommonPera
               PeraclassName="fontItalic"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
@@ -80,6 +81,7 @@ console.log(location.pathname);
             />
           </div>
         </div>
+        </SlideIn>
         <div ref={overlayRightRef} className="overlay_overview overlay_right absolute z-[2] right-0 top-0 bottom-0 h-full bg-[#fff] w-[50%]"></div>
       </div>
       {
