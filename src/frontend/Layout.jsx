@@ -12,8 +12,6 @@ import useMediaLoaded from "./components/useMediaLoaded";
 import "../Loader/loader.css";
 import { BASE_ROOT } from "../../config";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 function Layout({ children }) {
   const location = useLocation();
   const mediaLoaded = useMediaLoaded();
@@ -21,12 +19,25 @@ function Layout({ children }) {
 
   useEffect(() => {
     if (mediaLoaded) {
-      setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
+      setLoading(false)
     }
   }, [mediaLoaded]);
 
   useEffect(() => {
+<<<<<<< HEAD
     let smoother = ScrollSmoother.get();
+=======
+
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.5,
+      effects: true,
+      smoothTouch: 1.4,
+    });
+>>>>>>> origin/sandeep
   
     if (!smoother) {
       smoother = ScrollSmoother.create({

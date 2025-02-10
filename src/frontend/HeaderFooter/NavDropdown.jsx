@@ -8,6 +8,23 @@ import { BASE_ROOT } from "../../../config";
 function NavDropdown({ setDropdown, setActiveItem }) {
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
+<<<<<<< HEAD
+=======
+    
+    useEffect(() => {
+        let animation1 = gsap.fromTo(
+            ".nav_dropdown", 
+            {
+                y: -100,
+                opacity: 0
+            }, 
+            {
+                y: 0,
+                opacity: 0.9,
+                duration: 1,
+            }
+        );
+>>>>>>> origin/sandeep
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -27,8 +44,13 @@ function NavDropdown({ setDropdown, setActiveItem }) {
         document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
+<<<<<<< HEAD
             ctx.revert(); // Cleanup GSAP animations
             document.removeEventListener("mousedown", handleClickOutside);
+=======
+            animation1.kill();
+            document.removeEventListener('mousedown', handleClick);
+>>>>>>> origin/sandeep
         };
     }, []);
 

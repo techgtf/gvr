@@ -41,8 +41,13 @@ function ProjectGallery({ actualImages, renderImages }) {
     }
   }, []);
 
+<<<<<<< HEAD
   useLayoutEffect(() => {
     gsap.fromTo(
+=======
+  useEffect(() => {
+    let animation1 = gsap.fromTo(
+>>>>>>> origin/sandeep
       ".gallery_images",
       { opacity: 0, y: 50 },
       {
@@ -56,6 +61,10 @@ function ProjectGallery({ actualImages, renderImages }) {
         },
       }
     );
+
+    return () => {
+      animation1.kill();
+    }
   }, []);
 
   const openLightbox = (index) => {

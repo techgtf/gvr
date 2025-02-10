@@ -34,8 +34,13 @@ function LocationAdvantage({
     );
   };
 
+<<<<<<< HEAD
   useLayoutEffect(() => {
     gsap.fromTo(
+=======
+  useEffect(() => {
+    let animation2 = gsap.fromTo(
+>>>>>>> origin/sandeep
       locationRef.current,
       { opacity: 0, y: 50 },
       {
@@ -50,6 +55,10 @@ function LocationAdvantage({
         },
       }
     );
+
+    return () => {
+      animation2.kill();
+    };
   }, []);
 
   useImageReveal(".reveal");
