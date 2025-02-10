@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
 import CommonBtn from "../commonBtn";
 import Divider from "./Divider";
+import SlideIn from "../Animations/SlideIn";
 
 const latestBlog = [
   {
@@ -36,15 +37,9 @@ const Index = ({ data }) => {
   const hasNextBlog = latestBlog.some((blog) => blog.id === currentId + 1);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
       {/* Left side card */}
       <div className="lg:col-span-8">
-        {/* <FadeIn duration={2} delay={0.6}>
-          <CommonHeading
-            HeadingText="Blog Details"
-            HeadingClass="mb-4 text-[#143C5E]"
-          />
-        </FadeIn> */}
         <div className="DetailsCard bg-[#EFF5FA] lg:p-[45px] p-[20px]">
           <div className="ImageContain relative md:pt-[10px] md:pl-[10px] sm:h-auto h-[215px]  p-0">
             <img
@@ -54,25 +49,28 @@ const Index = ({ data }) => {
             />
           </div>
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
+          <FadeIn SlideIn duration={1} delay={0.5}>
           <h4 className=" md:mb-[50px]  mb-[20px] mt-4 text-[16px] text-[#143C5E] capitalize">{title}</h4>
-          {/* <CommonHeading
-            HeadingText={title}
-            HeadingClass="mb-4 mt-4 text-[#143C5E] capitalize"
-          /> */}
+          </FadeIn>
 
           {pera?.length > 0 && (
             <>
+            <FadeIn SlideIn duration={1} delay={0.5}>
               <p className="opacity-70 text-justify">{pera[0]}</p>
+              </FadeIn>
               <Divider className="md:mt-[50px] md:mb-[50px] mt-[20px] mb-[20px]" />
+              <FadeIn SlideIn duration={1} delay={0.5}>
               {pera.slice(1).map((paragraph, index) => (
                 <p key={index} className="opacity-70 text-justify">
                   {paragraph}
                 </p>
               ))}
+              </FadeIn>
             </>
           )}
 
           {/*  Fixed: Conditionally disable "Next" button */}
+          <FadeIn SlideIn duration={1} delay={0.5}>
           <div className="flex justify-between">
             {/* Other content */}
             <button
@@ -85,6 +83,7 @@ const Index = ({ data }) => {
               Next
             </button>
           </div>
+          </FadeIn>
         </div>
       </div>
 
@@ -104,6 +103,7 @@ const Index = ({ data }) => {
               key={index}
               className="mt-3  last:mb-0  first:mt-0 last:mb-0"
             >
+              <SlideIn SlideIn duration={1} delay={0.5}>
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                 <div className="ListCard">
                   <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
@@ -115,8 +115,9 @@ const Index = ({ data }) => {
                   </CommonBtn>
                 </div>
               </Link>
-            </li>
               <Divider className="md:mt-[30px] md:mb-[50px] mt-[20px] mb-[20px]" />
+              </SlideIn>
+            </li>
               </>
           ))}
         </ul>

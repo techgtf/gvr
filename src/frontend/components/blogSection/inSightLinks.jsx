@@ -8,19 +8,19 @@ export default function InSightLinks() {
     const latestNews = [
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
-            link: "#",
+            link: "blog/1",
             type: 'News',
             date: '24 july 2024'
         },
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
-            link: "#",
+            link: "blog/1",
             type: 'News',
             date: '24 july 2024'
         },
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
-            link: "#",
+            link: "blog/1",
             type: 'News',
             date: '24 july 2024'
         },

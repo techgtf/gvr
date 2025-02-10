@@ -7,14 +7,14 @@ export default function blogCard() {
     const latestNews = [
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home Why Noida Sector 107 is the Perfect Location for Your New Home",
-            link: "#",
+            link: "blog/2",
             type: 'News',
             date: '24 july 2024',
             imgSrc: 'blog.jpg'
         },
         {
             name: "Why Noida Sector 107 is the Perfect Location for Your New Home",
-            link: "#",
+            link: "blog/2",
             type: 'News',
             date: '24 july 2024',
             imgSrc: 'blog.jpg'
