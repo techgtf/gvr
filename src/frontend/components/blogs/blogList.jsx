@@ -73,7 +73,7 @@ const BlogList = () => {
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="lg:col-span-8">
       <SearchField  customClass={"block lg:hidden mt-[5px] mb-[20px]"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
