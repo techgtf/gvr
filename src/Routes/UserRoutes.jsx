@@ -27,6 +27,7 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import Testimonials from "../frontend/pages/Testimonials";
 
 export const UserRoutes = [
   {
@@ -125,6 +126,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <About />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}testimonials`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Testimonials />
               </Layout>
             </Suspense>
           </ErrorBoundary>
