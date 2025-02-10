@@ -31,6 +31,7 @@ import ThankYou from "../frontend/pages/ThankYou";
 import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
+import MediaCenter from "../frontend/pages/MediaCenter";
 
 export const UserRoutes = [
   {
@@ -117,6 +118,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <VilasaMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}media`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <MediaCenter />
               </Layout>
             </Suspense>
           </ErrorBoundary>
