@@ -12,6 +12,8 @@ import useMediaLoaded from "./components/useMediaLoaded";
 import "../Loader/loader.css";
 import { BASE_ROOT } from "../../config";
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
 function Layout({ children }) {
   const location = useLocation();
   const mediaLoaded = useMediaLoaded();
@@ -19,7 +21,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     if (mediaLoaded) {
-      setLoading(false)
+      setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
     }
   }, [mediaLoaded]);
 
