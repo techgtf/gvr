@@ -66,7 +66,7 @@ function SideMenu({ setOpenSidebar }) {
             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
               Our Projects
             </div>
-            <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+            <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
               <span
                 onClick={() => handleLinkClick(`${BASE_ROOT}residential`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
@@ -88,7 +88,7 @@ function SideMenu({ setOpenSidebar }) {
             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
               Our Profile
             </div>
-            <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+            <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
               <span
                 onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
