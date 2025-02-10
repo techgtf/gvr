@@ -23,12 +23,12 @@ export default function Projects() {
         {
             type: 'residential',
             imgSrc: 'residential.jpg',
-            Link: "#1"
+            Link: "residential"
         },
         {
             type: 'commercial',
             imgSrc: 'commercial.jpg',
-            Link: "#2"
+            Link: "commercial"
         },
         {
             type: 'Latest Property',

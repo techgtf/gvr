@@ -27,7 +27,7 @@ export default function Hero({
             {/* Background Image */}
 
             <div className='hero_vdo_div lg:h-[80vh] h-[75vh] relative w-full] bg-cover'
-                style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
+                style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center", backgroundSize:'cover' }}
             >
                 <LoadAnimation />
                 {/* <ZoomOut initialScale={1.5} duration={4}> */}
