@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom"; // ✅ Route track karne ke liye
 import Slider from "./Slider/Slider";
 import CommonHeading from "../commonHeading";
 import gsap from "gsap";
@@ -28,36 +29,41 @@ function Amentities({
     { name: "Jogging Track", image: runningTrack },
     { name: "Park", image: park },
   ], 
-  images = [], // Accept images as a prop
+  images = [], 
   headingText = "Amentities" 
 }) {
   const sectionRef = useRef(null);
+  const location = useLocation(); // ✅ Track route changes
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
-    const animation = gsap.fromTo(
-      elements,
-      { opacity: 0, x: 50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-        },
-      }
-    );
-  }, [location.pathname]);
+    // ✅ Reset animation state before running new animation
+    gsap.set(elements, { opacity: 0, x: 50 });
+
+    const animation = gsap.to(elements, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      stagger: 0.2, // ✅ Thoda delay har element ke beech
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+        once: false, // ✅ Ensure animation plays every time it's in view
+      },
+    });
+
+    return () => {
+      animation.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // ✅ Proper cleanup
+    };
+  }, [location.pathname]); // ✅ Ensures animation resets when route changes
 
   return (
-    <section
-      className="amentities relative py-10 md:py-14"
-      id="amentities"
-      ref={sectionRef}
-    >
+    <section className="amentities relative py-10 md:py-14" id="amentities" ref={sectionRef}>
       <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
         <div className="sm:col-span-3 col-span-12">
           <div className="about_heading text-center md:text-start">

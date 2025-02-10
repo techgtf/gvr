@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./microsite.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import CommonHeading from "../commonHeading";
 import { useImageReveal } from "../useImageReveal";
 import SlideIn from "../Animations/SlideIn";
 import FadeIn from "../Animations/FadeIn";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function LocationAdvantage({
   locationImage,
@@ -23,36 +26,33 @@ function LocationAdvantage({
   const [activeTab, setActiveTab] = useState("drive");
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const locationRef = useRef([]);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (listRef.current) {
+        gsap.fromTo(
+          ".locationTab",
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+          }
+        );
+      }
+    }, listRef);
+
+    return () => ctx.revert();
+  }, [activeTab]); // Animation sirf data par lagega, tab switch pe effect nahi hoga
+
+  useImageReveal(".reveal");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    gsap.fromTo(
-      ".locationTab",
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 0.5, stagger: 0.1 }
-    );
   };
-
-  useLayoutEffect(() => {
-    gsap.fromTo(
-      locationRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: locationRef.current,
-          start: "top 90%",
-          end: "bottom 20%",
-        },
-      }
-    );
-  }, [location.pathname]);
-
-  useImageReveal(".reveal");
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -72,33 +72,32 @@ function LocationAdvantage({
           <FadeIn duration={2} delay={0.5}>
             <CommonHeading HeadingText="Location Advantage" />
           </FadeIn>
-          <div
-            className="location_map py-10 reveal w-[80%]"
-            onClick={() => openLightbox(0)} // Opening the lightbox with index 0
-          >
+          <div className="location_map py-10 reveal w-[80%]" onClick={() => openLightbox(0)}>
             <img src={locationImage} alt="Location" className="cursor-pointer w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
-            <p className="md:w-96">
-            {description}
-            </p>
+            <p className="md:w-96">{description}</p>
           </SlideIn>
         </div>
 
         <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button
-              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "drive" ? "text-black" : "text-gray-300"}`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${
+                activeTab === "drive" ? "text-black" : "text-gray-300"
+              }`}
               onClick={() => handleTabClick("drive")}
             >
-              <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8 cursor-pointer" />
+              <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8" />
               DRIVE
             </button>
             <button
-              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "walk" ? "text-black" : "text-gray-300"}`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${
+                activeTab === "walk" ? "text-black" : "text-gray-300"
+              }`}
               onClick={() => handleTabClick("walk")}
             >
-              <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8 cursor-pointer" />
+              <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8" />
               WALK
             </button>
           </div>
@@ -108,13 +107,9 @@ function LocationAdvantage({
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
 
-          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20">
+          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" ref={listRef}>
             {(activeTab === "drive" ? driveData : walkData).map((item, index) => (
-              <li
-                key={index}
-                className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5"
-                ref={(el) => (locationRef.current[index] = el)}
-              >
+              <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
                 <div className="icon">
                   <img src={item.image} alt="Icon" />
                 </div>
@@ -139,7 +134,7 @@ function LocationAdvantage({
             title: item.alt,
             description: "Click to open in full view",
           }))}
-          index={currentIndex} // Using current index here
+          index={currentIndex}
           plugins={[Fullscreen, Zoom]}
           zoom={true}
         />

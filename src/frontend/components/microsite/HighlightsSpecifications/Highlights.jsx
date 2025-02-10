@@ -1,16 +1,24 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
 import CommonHeading from "../../commonHeading";
+import { useLocation } from "react-router-dom";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Highlights({ title = "Highlights", highlights = [] }) {
   const listRef = useRef(null);
+  const location = useLocation();
 
   useLayoutEffect(() => {
-    if (listRef.current) {
-      const listItems = listRef.current.children;
+    if (!listRef.current) return;
+
+    let ctx = gsap.context(() => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+
       gsap.fromTo(
-        listItems,
+        listRef.current.children,
         { y: 50, opacity: 0 },
         {
           y: 0,
@@ -24,8 +32,12 @@ function Highlights({ title = "Highlights", highlights = [] }) {
           },
         }
       );
-    }
-  }, [highlights, location.pathname]);
+
+      ScrollTrigger.refresh();
+    }, listRef);
+
+    return () => ctx.revert();
+  }, [location.pathname]); // ✅ Route change hone pe refresh hoga
 
   return (
     <div className="col-span-4">
