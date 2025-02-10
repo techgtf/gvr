@@ -75,16 +75,21 @@ export default function Header() {
     
   ];
 
+  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
+  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+  
+  const logoOnePages = [`${BASE_ROOT}`, `${BASE_ROOT}microsite`, `${BASE_ROOT}anandam`, `${BASE_ROOT}vilasa`, `${BASE_ROOT}gv-homes`];
+  
   const getLogoSrc = () => {
+    // Set base logo based on the route
+    let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
+  
+    // Override with colored logo if isFixed or activeItem is true
     if (isFixed || activeItem) {
-      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+      return coloredLogo;
     }
-
-    if (location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator`) {
-      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
-    }
-
-    return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
+  
+    return logo;
   };
 
   return (
@@ -97,7 +102,7 @@ export default function Header() {
               <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="logo" />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
-              <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator` ? "text-black" : "text-white"}`}>
+              <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"}`}>
                 <ul className="flex justify-evenly gap-8 items-center">
                   {navItems.map((item, i) => {
                     return item.hasMenus ? (

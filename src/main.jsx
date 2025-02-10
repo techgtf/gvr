@@ -12,7 +12,7 @@ import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
+  <StrictMode>
     <TeamProvider>
       <ContextProvider>
         <RouterProvider router={router} />
@@ -21,5 +21,5 @@ createRoot(document.getElementById("root")).render(
         </CustomPortal>
       </ContextProvider>
     </TeamProvider>
-  // </StrictMode>
+  </StrictMode>
 );
