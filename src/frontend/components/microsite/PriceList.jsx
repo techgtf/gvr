@@ -34,11 +34,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
         },
       }
     );
-
-    return()=>{
-      animation.kill();
-    }
-  }, []);
+  }, [location.pathname]);
 
   const handleTooltipToggle = (index) => {
     setVisibleTooltipIndex((prevIndex) =>

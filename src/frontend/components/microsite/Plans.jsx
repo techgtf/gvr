@@ -34,11 +34,7 @@ function Plans({ masterPlanData, unitData }) {
         },
       }
     );
-
-    return () => {
-      animation.kill();
-    }
-  }, []);
+  }, [location.pathname]);
 
   const handleUnitChange = (unit) => {
     setActiveUnit(unit);

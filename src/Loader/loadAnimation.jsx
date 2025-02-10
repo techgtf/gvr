@@ -26,7 +26,7 @@ export default function LoadAnimation() {
                 });
             }
         });
-    }, []);
+    }, [location.pathname]);
 
     return (
         <div className="fixed top-0 z-10 LoadAnimation flex h-screen w-full flex-col items-center justify-center">

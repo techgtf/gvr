@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5 }) => {
+const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5, setHeight }) => {
   const elementRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -30,10 +30,10 @@ const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5 }) => {
     }, element);
 
     return () => ctx.revert();
-  }, [duration, initialScale]);
+  }, [duration, initialScale, location.pathname]);
 
   return (
-    <div ref={elementRef} style={{ width: "100%", height: "100%" }}>
+    <div ref={elementRef} style={{ width: "100%", height: setHeight ? setHeight : '100%' }}>
       {children}
     </div>
   );

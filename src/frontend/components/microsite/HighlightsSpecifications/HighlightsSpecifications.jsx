@@ -42,7 +42,7 @@ function HighlightsSpecifications({
         ScrollTrigger.refresh();
       }
     }
-  }, [pin, scrub, markers, start, endOffset]);
+  }, [pin, scrub, markers, start, endOffset, location.pathname]);
 
   return (
     <section

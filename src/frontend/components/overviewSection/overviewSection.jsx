@@ -49,7 +49,8 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
       },
       "-=0.3" // Start 0.5s before overlay animation finishes
     );
-  }, []);
+  }, [location.pathname]);
+console.log(location.pathname);
 
 
   return (

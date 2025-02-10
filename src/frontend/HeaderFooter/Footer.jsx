@@ -31,7 +31,7 @@ export default function Footer() {
         duration: 1,
       });
     }
-  }, [footerHeight]);
+  }, [footerHeight, location.pathname]);
 
   const handleLinkClick = (e, path) => {
     e.preventDefault(); // Prevent default link behavior temporarily

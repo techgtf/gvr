@@ -30,7 +30,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
             ctx.revert(); // Cleanup GSAP animations
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, []);
+    }, [location.pathname]);
 
     const handleClose = () => {
         gsap.to(dropdownRef.current, {
@@ -70,7 +70,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
                         { name: "SHARANAM", path: "microsite", location: "sector 107, noida" },
                         { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
                         { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
-                        { name: "Vilasa", path: "vilasa", location: "uday park, new delhi" }
+                        { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
                     ].map(({ name, path, location }) => (
                         <li key={path}>
                             <span onClick={() => handleLinkClick(`${BASE_ROOT}${path}`)} className="cursor-pointer">

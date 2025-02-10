@@ -47,7 +47,7 @@ function Camps() {
                 },
             }
         );
-    }, []);
+    }, [location.pathname]);
 
     return (
         <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[95%] mx-auto pt-20">

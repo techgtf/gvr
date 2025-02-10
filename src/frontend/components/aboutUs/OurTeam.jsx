@@ -30,7 +30,7 @@ const OurTeam = () => {
         { y: 0, opacity: 1, duration: 0.5 } // Slide in and fade in
       );
     }
-  }, [allProfile]); // Trigger animation when allProfile changes
+  }, [allProfile, location.pathname]); // Trigger animation when allProfile changes
 
   useEffect(() => {
     const handleResize = () => {

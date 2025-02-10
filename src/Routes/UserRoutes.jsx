@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
+import Testimonials from "../frontend/pages/Testimonials";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
@@ -190,6 +191,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <About />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}testimonials`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Testimonials />
               </Layout>
             </Suspense>
           </ErrorBoundary>

@@ -50,11 +50,7 @@ function LocationAdvantage({
         },
       }
     );
-
-    return () => {
-      animation2.kill();
-    };
-  }, []);
+  }, [location.pathname]);
 
   useImageReveal(".reveal");
 
