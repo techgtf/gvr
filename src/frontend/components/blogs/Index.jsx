@@ -39,12 +39,6 @@ const Index = ({ data }) => {
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
       {/* Left side card */}
       <div className="lg:col-span-8">
-        {/* <FadeIn duration={2} delay={0.6}>
-          <CommonHeading
-            HeadingText="Blog Details"
-            HeadingClass="mb-4 text-[#143C5E]"
-          />
-        </FadeIn> */}
         <div className="DetailsCard bg-[#EFF5FA] lg:p-[45px] p-[20px]">
           <div className="ImageContain relative md:pt-[10px] md:pl-[10px] sm:h-auto h-[215px]  p-0">
             <img
@@ -55,10 +49,6 @@ const Index = ({ data }) => {
           </div>
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
           <h4 className=" md:mb-[50px]  mb-[20px] mt-4 text-[16px] text-[#143C5E] capitalize">{title}</h4>
-          {/* <CommonHeading
-            HeadingText={title}
-            HeadingClass="mb-4 mt-4 text-[#143C5E] capitalize"
-          /> */}
 
           {pera?.length > 0 && (
             <>
