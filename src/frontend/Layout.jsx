@@ -24,20 +24,7 @@ function Layout({ children }) {
   }, [mediaLoaded]);
 
   useEffect(() => {
-<<<<<<< HEAD
     let smoother = ScrollSmoother.get();
-=======
-
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.5,
-      effects: true,
-      smoothTouch: 1.4,
-    });
->>>>>>> origin/sandeep
   
     if (!smoother) {
       smoother = ScrollSmoother.create({

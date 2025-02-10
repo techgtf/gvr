@@ -41,13 +41,8 @@ function ProjectGallery({ actualImages, renderImages }) {
     }
   }, []);
 
-<<<<<<< HEAD
   useLayoutEffect(() => {
     gsap.fromTo(
-=======
-  useEffect(() => {
-    let animation1 = gsap.fromTo(
->>>>>>> origin/sandeep
       ".gallery_images",
       { opacity: 0, y: 50 },
       {
