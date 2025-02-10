@@ -63,7 +63,10 @@ export default function Header() {
       return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
     }
 
-    if (location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`) {
+    if (
+      location.pathname === `${BASE_ROOT}microsite` ||
+      location.pathname === `${BASE_ROOT}`
+    ) {
       return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
     }
 
@@ -73,33 +76,60 @@ export default function Header() {
   return (
     <>
       <ScrollToTop />
-      <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-20 ${activeItem ? "bg-[#EFF5FA]" : ""}`}>
+      <header
+        className={`app_header ${
+          isFixed ? "fixed active" : "relative"
+        } top-0 left-0 ring-0 w-full !z-20 ${activeItem ? "bg-[#EFF5FA]" : ""}`}
+      >
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
             <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="logo" />
+              <img
+                className="w-[50%] sm:w-[70%] cursor-pointer"
+                src={getLogoSrc()}
+                alt="logo"
+              />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
-              <div className={`nav_items hidden sm:block uppercase ${isFixed || location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}` ? "text-white" : "text-black"}`}>
+              <div
+                className={`nav_items hidden sm:block uppercase ${
+                  isFixed ||
+                  location.pathname === `${BASE_ROOT}microsite` ||
+                  location.pathname === `${BASE_ROOT}`
+                    ? "text-white"
+                    : "text-black"
+                }`}
+              >
                 <ul className="flex justify-evenly gap-8 items-center">
                   {navItems.map((item, i) => (
                     <li
                       key={i}
                       onClick={() => handleToggleDropdown(item)}
-                      className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                      className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${
+                        activeItem || isFixed ? "text-primary" : ""
+                      } ${
+                        activeItem === item ? "bg-white px-3 text-primary" : ""
+                      }`}
                     >
-                      {item} <BsChevronDown className="text-[14px] font-[300]" />
+                      {item}{" "}
+                      <BsChevronDown className="text-[14px] font-[300]" />
                     </li>
                   ))}
                 </ul>
               </div>
-              <button className="menuBtn flex justify-end items-center" onClick={handleToggleSidebar}>
+              <button
+                className="menuBtn flex justify-end items-center"
+                onClick={handleToggleSidebar}
+              >
                 <img
-                  className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
+                  className={`cursor-pointer ${
+                    isFixed ? "whiteIcon" : "coloredIcon"
+                  } w-[80%]`}
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
-                      : location.pathname === `${BASE_ROOT}microsite` || location.pathname === `${BASE_ROOT}`
+                      : location.pathname === `${BASE_ROOT}microsite` ||
+                        location.pathname === `${BASE_ROOT}`
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
                       : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
                   }
@@ -110,7 +140,12 @@ export default function Header() {
           </div>
         </div>
         {openSidebar && <SideMenu setOpenSidebar={setOpenSidebar} />}
-        {dropdown && <NavDropdown setDropdown={setDropdown} setActiveItem={setActiveItem} />}
+        {dropdown && (
+          <NavDropdown
+            setDropdown={setDropdown}
+            setActiveItem={setActiveItem}
+          />
+        )}
       </header>
     </>
   );

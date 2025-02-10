@@ -17,7 +17,7 @@ const Career = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.png`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.webp`}
         heading={"CAREER"}
         breadCrumb={"HOME - CAREER"}
         extraClassesImg={"objectRight"}

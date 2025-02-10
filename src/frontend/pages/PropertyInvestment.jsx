@@ -9,7 +9,7 @@ const ProperyInvestment = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.jpg`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
         heading={"PROPERTY INVESTMENT"}
         breadCrumb={"HOME - PROPERTY INVESTMENT"}
         extraClassesImg={"objectRight"}
@@ -32,7 +32,7 @@ const ProperyInvestment = () => {
         </div>
         <img
           className="basis-[45%] w-[400px] my-[37px] xl:mt-0"
-          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/graph.png`}
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/graph.webp`}
           alt="graph"
         />
       </div>
@@ -48,7 +48,7 @@ const ProperyInvestment = () => {
             development, and economic opportunities.
           </p>
           <img
-            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/real_estate.png`}
+            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/real_estate.webp`}
             alt="real_estate"
             className="xl:h-[450px] h-[650px] object-cover w-[100%]"
           />
@@ -70,14 +70,14 @@ const ProperyInvestment = () => {
         </div>
         <img
           className="basis-[45%]  w-[400px] mt-[37px] xl:mt-0"
-          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/objects.png`}
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/objects.webp`}
           alt="graph"
         />
       </div>
       <div className="flex xl:mt-[4rem] mb-[37px] xl:flex-row flex-col-reverse  mt-[2rem] justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0 flex-wrap">
         <img
           className="basis-[45%] w-[400px] xl:mt-0 mt-[37px]"
-          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/group.png`}
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/group.webp`}
           alt="group"
         />
         <div className="xl:basis-[45%] basis-[100%]">
@@ -108,7 +108,7 @@ const ProperyInvestment = () => {
         </div>
         <img
           className="basis-[45%] w-[400px] xl:mt-[0px] mt-[27px]"
-          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/infrastructure.png`}
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/infrastructure.webp`}
           alt="infrastructure"
         />
       </div>

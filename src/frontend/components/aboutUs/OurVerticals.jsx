@@ -73,14 +73,14 @@ const OurVerticals = () => {
             </div> */}
           </div>
           <img
-            src="assets/frontend/images/aboutus/verticals/vertical-1.jpg"
+            src="assets/frontend/images/aboutus/verticals/vertical-1.webp"
             alt="vertical-1"
             className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
         </div>
         <div className="flex items-center justify-between xl:mt-[4rem] mt-[3rem] flex-wrap">
           <img
-            src="assets/frontend/images/aboutus/verticals/vertical-2.jpg"
+            src="assets/frontend/images/aboutus/verticals/vertical-2.webp"
             alt="vertical-1"
             className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
