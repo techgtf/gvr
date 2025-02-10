@@ -59,7 +59,7 @@ const data = [
   },
   {
     id: 3,
-    imgSrc: "blog1.png",
+    imgSrc: "blog1.webp",
     date: "12-12-2024",
     title:"A Guide to the Best Schools, Hospitals, and Shopping Centers Near Sector 107, Noida",
     desc:"Sector 107, Noida, offers more than just comfortable living spaces; it’s a vibrant locale enriched with top-tier schools, state-of-the-art healthcare facilities, and bustling shopping destinations. Strategically located and well-connected, this area caters to every need, blending urban convenience with community charm. Whether you’re looking for quality education, reliable healthcare, or retail therapy, Sector 107 and its surroundings present a dynamic mix of options to elevate your lifestyle.",
