@@ -33,7 +33,7 @@ export default function WaterMarkHeading({
         },
       }
     );
-  }, [animationConfig.stagger]); // Re-run effect when stagger changes
+  }, [animationConfig.stagger, location.pathname]); // Re-run effect when stagger changes
 
   return (
     <div ref={sectionRef} className={`waterMarkDiv relative ${className}`}>

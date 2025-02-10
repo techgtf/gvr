@@ -50,7 +50,7 @@ function LocationAdvantage({
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   useImageReveal(".reveal");
 

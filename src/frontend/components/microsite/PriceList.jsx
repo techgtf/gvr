@@ -34,7 +34,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   const handleTooltipToggle = (index) => {
     setVisibleTooltipIndex((prevIndex) =>

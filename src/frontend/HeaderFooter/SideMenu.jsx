@@ -27,7 +27,7 @@ function SideMenu({ setOpenSidebar }) {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  }, [location.pathname]);
 
   const handleClose = () => {
     gsap.to(".sidemenu", {

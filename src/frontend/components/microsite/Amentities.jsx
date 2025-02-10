@@ -50,7 +50,7 @@ function Amentities({
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   return (
     <section

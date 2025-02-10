@@ -56,7 +56,7 @@ function ProjectGallery({ actualImages, renderImages }) {
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);

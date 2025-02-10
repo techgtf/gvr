@@ -33,7 +33,7 @@ function verticalWaterMarkHeading({
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div>

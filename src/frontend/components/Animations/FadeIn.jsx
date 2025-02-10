@@ -29,7 +29,7 @@ function FadeIn({ children, duration = 1, delay = 0 }) {
           return () => {
             ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
           };
-        }, [duration, delay]);
+        }, [duration, delay, location.pathname]);
 
 
   return (

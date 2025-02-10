@@ -1,6 +1,4 @@
 import React from 'react'
-import CommonBtn from '../../commonBtn'
-import { BsArrowUpRight } from 'react-icons/bs'
 import icon1 from "/assets/frontend/images/csr/charity/icons/1.png";
 import icon2 from "/assets/frontend/images/csr/charity/icons/2.png";
 import icon3 from "/assets/frontend/images/csr/charity/icons/3.png";
@@ -34,10 +32,8 @@ function Initiatives() {
                     </p>
                     </SlideIn>
                 </div>)}
-                <div className="initiative h-[250px] md:h-auto bg-[#EFF5FA] p-8 flex justify-center items-center">
-                    <CommonBtn target="_blank">
-                        Know <br /> More <BsArrowUpRight />
-                    </CommonBtn>
+                <div className="initiative h-[250px] bg-no-repeat bg-cover md:h-auto bg-[#EFF5FA] border-2 border-[#eff5fa] opacity-90 p-8 flex justify-center items-center  bg-[url(assets/frontend/images/csr/charity/images/charity.jpg)]">
+                   
                 </div>
 
             </div>

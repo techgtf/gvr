@@ -34,7 +34,7 @@ function Plans({ masterPlanData, unitData }) {
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   const handleUnitChange = (unit) => {
     setActiveUnit(unit);

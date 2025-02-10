@@ -69,11 +69,43 @@ function MediaCenter() {
                         <div className="logo_types p-5 bg-[#EFF5FA] mt-5 flex justify-center">
                             <ul>
                                 <li className='flex gap-10 items-center py-2'>
-                                    white - <span> <Link to="">png</Link>  </span> |<span> <Link to="">jpg</Link>  </span> |<span> <Link to="">webp</Link>  </span> 
+                                    white -
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`} download="logo-colored.png">
+                                            png
+                                        </a>
+                                    </span> |
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.jpg`} download="logo-colored.jpg">
+                                            jpg
+                                        </a>
+                                    </span> |
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`} download="logo-colored.webp">
+                                            webp
+                                        </a>
+                                    </span>
                                 </li>
+
                                 <li className='flex gap-10 items-center py-2'>
-                                    blue - <span> <Link to="">png</Link>  </span> |<span> <Link to="">jpg</Link>  </span> |<span> <Link to="">webp</Link>  </span> 
+                                    blue -
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.png`} download="logo-blue.png">
+                                            png
+                                        </a>
+                                    </span> |
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.jpg`} download="logo-blue.jpg">
+                                            jpg
+                                        </a>
+                                    </span> |
+                                    <span>
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.webp`} download="logo-blue.webp">
+                                            webp
+                                        </a>
+                                    </span>
                                 </li>
+
                             </ul>
                         </div>
 
