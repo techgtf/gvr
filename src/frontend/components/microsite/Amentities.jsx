@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import Slider from "./Slider/Slider";
 import CommonHeading from "../commonHeading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
 
+// Import images
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
 import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.png";
@@ -16,23 +17,26 @@ import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Amentities({ AmentitiesData = [
-  { name: "swimming pool", image: swimmingPool },
-  { name: "Yoga & Aerobics hall", image: yoga },
-  { name: "Gymnasium", image: gymnasium },
-  { name: "Mini home theater", image: theater },
-  { name: "Library", image: library },
-  { name: "Basketball", image: basketballBall },
-  { name: "Jogging Track", image: runningTrack },
-  { name: "park", image: park },
-], 
-headingText = "Amentities" }) {
+function Amentities({ 
+  AmentitiesData = [
+    { name: "Swimming Pool", image: swimmingPool },
+    { name: "Yoga & Aerobics Hall", image: yoga },
+    { name: "Gymnasium", image: gymnasium },
+    { name: "Mini Home Theater", image: theater },
+    { name: "Library", image: library },
+    { name: "Basketball", image: basketballBall },
+    { name: "Jogging Track", image: runningTrack },
+    { name: "Park", image: park },
+  ], 
+  images = [], // Accept images as a prop
+  headingText = "Amentities" 
+}) {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       elements,
       { opacity: 0, x: 50 },
       {
@@ -46,7 +50,7 @@ headingText = "Amentities" }) {
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   return (
     <section
@@ -80,8 +84,10 @@ headingText = "Amentities" }) {
           </div>
         </div>
       </div>
+
+      {/* Pass images to Slider */}
       <div className="pt-5 relative">
-        <Slider />
+        <Slider images={images} />  
       </div>
     </section>
   );

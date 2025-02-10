@@ -7,7 +7,8 @@ function HeroSection({
   scrollText = "SCROLL DOWN", 
   sectionId = "overview", 
   initialScale = 1.5, 
-  duration = 2 
+  duration = 2,
+  bannerDetailsProps = {} // Pass dynamic props to BannerDetails
 }) {
   const bannerDetailsRef = useRef(null);
 
@@ -27,11 +28,11 @@ function HeroSection({
               background: `url(${backgroundImage})`,
             }}
           >
-            <div className="absolute h-[300px] w-full bg-gradient-to-b  from-[#00000040] top-0 left-0"></div>
-            <div className="absolute h-[300px] w-full bg-gradient-to-t  from-[#00000040] bottom-0 left-0"></div>
-            <div className="absolute inset-0 bg-black opacity-10"></div>
+            <div className="absolute h-[300px] w-full bg-gradient-to-b from-[#00000040] top-0 left-0"></div>
+            <div className="absolute h-[300px] w-full bg-gradient-to-t from-[#00000040] bottom-0 left-0"></div>
+            <div className="absolute inset-0 bg-black opacity-20"></div>
             <div
-              className="scroll_down cursor-pointer text-[6px] md:-[7px] !z-20 midlandfontmedium !tracking-[9px] text-white absolute bottom-8  md:bottom-10 flex justify-center w-full"
+              className="scroll_down cursor-pointer text-[6px] md:-[7px] !z-20 midlandfontmedium !tracking-[9px] text-white absolute bottom-8 md:bottom-10 flex justify-center w-full"
               onClick={scrollToBannerDetails}
             >
               {scrollText}
@@ -41,7 +42,7 @@ function HeroSection({
       </section>
 
       <section className="banner_details bg-white relative w-full" ref={bannerDetailsRef}>
-        <BannerDetails />
+        <BannerDetails {...bannerDetailsProps} /> {/* Pass props dynamically */}
       </section>
     </>
   );

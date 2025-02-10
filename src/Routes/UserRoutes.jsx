@@ -17,6 +17,7 @@ import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
+import GvHomesMicrosite from "../frontend/pages/GvHomesMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
@@ -28,6 +29,10 @@ import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
 import Testimonials from "../frontend/pages/Testimonials";
+import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
+import CommercialProjects from "../frontend/pages/CommercialProjects";
+import ProperyInvestment from "../frontend/pages/PropertyInvestment";
+import MediaCenter from "../frontend/pages/MediaCenter";
 
 export const UserRoutes = [
   {
@@ -59,6 +64,30 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}property-investment`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ProperyInvestment />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}commercial-projects`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <CommercialProjects />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}thank-you`,
         element: (
           <ErrorBoundary>
@@ -78,6 +107,42 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <AnandamMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}vilasa`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <VilasaMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}media`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <MediaCenter />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}gv-homes`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <GvHomesMicrosite />
               </Layout>
             </Suspense>
           </ErrorBoundary>
@@ -174,7 +239,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}csr`,
+        path: `${BASE_ROOT}esg`,
         element: (
           <Suspense fallback={<Loader />}>
             <Layout>

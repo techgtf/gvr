@@ -20,14 +20,14 @@ export default function Verticals() {
         {
             title: 'GV Capital',
             imgSrc: 'capital.jpg',
-            description: 'The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.',
-            link: '#'
+            description: 'GV Capital accelerates visionary businesses with strategic investments, expert mentorship, and smart capital for lasting impact and growth.',
+            link: `${CONFIG.BASE_ROOT}about-us`
         },
         {
             title: 'GV Finance',
             imgSrc: 'finance.jpg',
-            description: 'The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.',
-            link: '#'
+            description: 'GV Finance empowers businesses and individuals with smart financial solutions, optimizing cash flow, securing investments, and driving sustainable growth.',
+            link: `${CONFIG.BASE_ROOT}about-us`
         },
     ]
 

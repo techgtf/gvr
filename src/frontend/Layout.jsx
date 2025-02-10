@@ -24,25 +24,43 @@ function Layout({ children }) {
       setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
     }
   }, [mediaLoaded]);
-
   useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.5,
-      effects: true,
-      smoothTouch: 1.4,
-    });
+    let smoother = ScrollSmoother.get();
   
-    console.log("ScrollSmoother created");
+    if (!smoother) {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.5,
+        effects: true,
+        smoothTouch: 1.4,
+      });
+      console.log("ScrollSmoother initialized");
+    }
+  
+    // ✅ Refresh GSAP when route changes
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+      console.log("GSAP Animations Refreshed!");
+    }, 500); 
   
     return () => {
-      console.log("ScrollSmoother destroyed");
-      smoother.kill();
-    };
-  }, [location.pathname]);
+      console.log("Cleaning up ScrollSmoother...");
+      if (smoother) {
+        smoother.kill(); 
+      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   
-
+      const wrapper = document.getElementById("smooth-wrapper");
+      const content = document.getElementById("smooth-content");
+  
+      if (wrapper) wrapper.style.removeProperty("all");
+      if (content) content.style.removeProperty("all");
+    };
+  }, [location.pathname]);  // ✅ Runs when route changes
+  
+  
+  
   return (
     <>
       {/* Custom Cursor */}

@@ -4,6 +4,7 @@ import BlogCard from './BlogCard'
 import WaterMarkHeading from "../waterMarkHeading"
 import "./blog.css"
 import FullBtn from '../fullBtn'
+import { BASE_ROOT } from '../../../../config'
 
 
 export default function BlogSection() {
@@ -17,7 +18,7 @@ export default function BlogSection() {
                         <div className='links_div lg:mt-14 lg:mb-16 mt-6 mb-8'>
                             <InSightLinks />
                         </div>
-                        <FullBtn link='#' text='explore more' />
+                        <FullBtn link={`${BASE_ROOT}blogs`} text='explore more' />
 
                     </div>
                     <div className='right-side lg:w-[47%] w-full lg:pl-24'>

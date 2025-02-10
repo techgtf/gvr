@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function useTextAnimation(animationConfig, dependencies = []) {
     const ref = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (ref.current) {
             gsap.fromTo(
                 ref.current,
@@ -23,7 +23,7 @@ export function useTextAnimation(animationConfig, dependencies = []) {
                 }
             );
         }
-    }, dependencies);
+    }, [location.pathname]);
 
     return ref;
 }

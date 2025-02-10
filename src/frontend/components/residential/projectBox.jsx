@@ -47,7 +47,7 @@ export default function ProjectBox({ projectsData }) {
                                 </SlideIn>
 
                                 <Link
-                                    to={`${data.pageLink}`}
+                                    to={`${data?.pageLink}`}
                                     className='lg:block px-6 py-[8px] lg:text-[16px] tracking-[2px] rounded-sm uppercase border text-[#33638b] border-[#33638b] hover:border-[#000] hover:text-[#000] w-fit'
                                 >view project</Link>
 

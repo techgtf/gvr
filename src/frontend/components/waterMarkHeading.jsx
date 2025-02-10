@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { useTextAnimation } from './useTextAnimation';
 import gsap from 'gsap';
 
@@ -14,7 +14,7 @@ export default function WaterMarkHeading({
   const textRef = useTextAnimation(animationConfig);
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Select all watermark text elements
     const elements = sectionRef.current.querySelectorAll('.bg_text');
 
@@ -33,7 +33,7 @@ export default function WaterMarkHeading({
         },
       }
     );
-  }, [animationConfig.stagger]); // Re-run effect when stagger changes
+  }, [animationConfig.stagger, location.pathname]); // Re-run effect when stagger changes
 
   return (
     <div ref={sectionRef} className={`waterMarkDiv relative ${className}`}>

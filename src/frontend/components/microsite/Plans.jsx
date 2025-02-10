@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import WaterMarkHeading from "../verticalWaterMarkHeading";
 import CommonHeading from "../commonHeading";
 import { useImageReveal } from "../useImageReveal";
@@ -16,10 +16,10 @@ function Plans({ masterPlanData, unitData }) {
 
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".unit");
 
-    gsap.fromTo(
+    let animation = gsap.fromTo(
       elements,
       { opacity: 0, x: 50 },
       {
@@ -34,7 +34,7 @@ function Plans({ masterPlanData, unitData }) {
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   const handleUnitChange = (unit) => {
     setActiveUnit(unit);
@@ -45,12 +45,18 @@ function Plans({ masterPlanData, unitData }) {
   const openLightbox = (index, isMasterPlan = false) => {
     setCurrentIndex(index);
     setOpen(true);
+    document.body.classList.add("lightbox-open");
     
     if (isMasterPlan) {
       setIsMasterPlanOpen(true);
     } else {
       setIsMasterPlanOpen(false);
     }
+  };
+
+  const closeLightbox = () => {
+    setOpen(false);
+    document.body.classList.remove("lightbox-open");
   };
 
   return (
@@ -84,9 +90,9 @@ function Plans({ masterPlanData, unitData }) {
         {unitData && (
           <div className="floor_plans mt-12 lg:m-0 lg:ps-20">
             <div className="md:flex justify-between items-center">
-              <FadeIn duration={2} delay={0.6}>
+             {unitData[activeUnit] && unitData[activeUnit].length > 0 ? <FadeIn duration={2} delay={0.6}>
                 <CommonHeading HeadingText="Floor Plans" />
-              </FadeIn>
+              </FadeIn> : ""}
               <div className="flex gap-2 md:gap- py-4 mt-4 md:mt-0">
                 {Object.keys(unitData).map((unit) => (
                   <button
@@ -101,7 +107,7 @@ function Plans({ masterPlanData, unitData }) {
             </div>
 
             <div className="slider">
-              {unitData[activeUnit].map((plan, index) => (
+              {unitData[activeUnit] && unitData[activeUnit].length > 0 ? unitData[activeUnit].map((plan, index) => (
                 <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                   <img
                     src={plan.image}
@@ -109,14 +115,15 @@ function Plans({ masterPlanData, unitData }) {
                     className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                     onClick={() => openLightbox(index)}
                   />
-                  <div className="flex flex-col justify-between mt-5 pr-24 tracking-wider uppercase md:mt-0">
+                  <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
                     <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
                     <p>Carpet Area: {plan.carpetArea}</p>
                     <p>Balcony Area: {plan.balconyArea}</p>
                     <p>Total Super Area: {plan.totalArea}</p>
+                    <p>Built Up Area: {plan.buildArea}</p>
                   </div>
                 </div>
-              ))}
+              )) : <div><img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.jpg" alt="ALt Image"/></div>}
             </div>
           </div>
         )}
@@ -146,7 +153,7 @@ function Plans({ masterPlanData, unitData }) {
       {open && !isMasterPlanOpen && (
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
+          close={closeLightbox}
           index={currentIndex}
           slides={unitData[activeUnit].map((item) => ({
             src: item.image,

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import "./styles.css";
 import CommonHeading from "../commonHeading";
 import CommonPera from "../commonPera";
@@ -21,7 +21,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
   const contentRef = useRef(null);
   const containerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -49,13 +49,14 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
       },
       "-=0.3" // Start 0.5s before overlay animation finishes
     );
-  }, []);
+  }, [location.pathname]);
+console.log(location.pathname);
 
 
   return (
     <div
       ref={containerRef}
-      className="overview_section 2xl:pt-[65px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+      className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
     // data-speed="clamp(.9)"
     // ref={sectionRef}
     >

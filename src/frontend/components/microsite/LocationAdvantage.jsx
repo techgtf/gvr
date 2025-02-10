@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import "./microsite.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import Lightbox from "yet-another-react-lightbox";
@@ -18,6 +18,7 @@ function LocationAdvantage({
   walkTabIcon,
   walkTabActiveIcon,
   lightboxImages,
+  description
 }) {
   const [activeTab, setActiveTab] = useState("drive");
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ function LocationAdvantage({
     );
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       locationRef.current,
       { opacity: 0, y: 50 },
@@ -49,7 +50,7 @@ function LocationAdvantage({
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   useImageReveal(".reveal");
 
@@ -79,7 +80,7 @@ function LocationAdvantage({
           </div>
           <SlideIn duration={0.8} delay={0.2}>
             <p className="md:w-96">
-              Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences.
+            {description}
             </p>
           </SlideIn>
         </div>

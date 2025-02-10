@@ -1,5 +1,5 @@
 // hooks/useImageReveal.js
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function useImageReveal(selector) {
     const scrollTriggersRef = useRef([]); // Use ref to persist scroll triggers across renders
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const revealContainers = document.querySelectorAll(selector);
 
         // Ensure to avoid setting up multiple ScrollTriggers unnecessarily
@@ -16,7 +16,7 @@ export function useImageReveal(selector) {
             revealContainers.forEach((container) => {
                 const trigger = ScrollTrigger.create({
                     trigger: container,
-                    start: window.innerWidth <= 768 ? 'top 80%' : 'top 80%',
+                    start: window.innerWidth <= 768 ? 'top 95%' : 'top 80%',
                     toggleClass: { targets: container, className: 'active' },
                     once: true, // Trigger only once
                 });
@@ -36,5 +36,5 @@ export function useImageReveal(selector) {
             });
             scrollTriggersRef.current = []; // Clear the array to prevent memory leaks
         };
-    }, [selector]); // This will trigger when the selector prop changes
+    }, [selector, location.pathname]); // This will trigger when the selector prop changes
 }
