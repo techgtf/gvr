@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
 import CommonBtn from "../commonBtn";
 import Divider from "./Divider";
+import SlideIn from "../Animations/SlideIn";
 
 const latestBlog = [
   {
@@ -50,7 +51,7 @@ const Index = ({ data }) => {
             <img
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/blog_img_1.png`}
               alt="Blog Image"
-              className="relative w-full h-full sm:object-contain object-cover z-[2]"
+              className=" relative w-full h-full sm:object-contain object-cover z-[2]"
             />
           </div>
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
@@ -62,17 +63,23 @@ const Index = ({ data }) => {
 
           {pera?.length > 0 && (
             <>
+            
+            <FadeIn duration={2} delay={0.6}>
               <p className="opacity-70 text-justify">{pera[0]}</p>
+              </FadeIn>
               <Divider className="md:mt-[50px] md:mb-[50px] mt-[20px] mb-[20px]" />
+              <FadeIn duration={2} delay={0.6}>
               {pera.slice(1).map((paragraph, index) => (
                 <p key={index} className="opacity-70 text-justify">
                   {paragraph}
                 </p>
               ))}
+              </FadeIn>
             </>
           )}
 
           {/*  Fixed: Conditionally disable "Next" button */}
+            <FadeIn duration={2} delay={0.6}>
           <div className="flex justify-between">
             {/* Other content */}
             <button
@@ -85,6 +92,7 @@ const Index = ({ data }) => {
               Next
             </button>
           </div>
+          </FadeIn>
         </div>
       </div>
 
@@ -104,6 +112,8 @@ const Index = ({ data }) => {
               key={index}
               className="mt-3  last:mb-0  first:mt-0 last:mb-0"
             >
+              
+            <SlideIn duration={1} delay={0.5}>
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                 <div className="ListCard">
                   <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
@@ -115,6 +125,7 @@ const Index = ({ data }) => {
                   </CommonBtn>
                 </div>
               </Link>
+              </SlideIn>
             </li>
               <Divider className="md:mt-[30px] md:mb-[50px] mt-[20px] mb-[20px]" />
               </>

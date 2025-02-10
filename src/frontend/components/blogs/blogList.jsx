@@ -3,6 +3,7 @@ import BlogCard from "./blogCard";
 import { Link } from "react-router-dom";
 import { BASE_ROOT } from "../../../../config";
 import SearchField from "./SearchField";
+import SlideIn from "../Animations/SlideIn";
 
 const data = [
   {
@@ -93,6 +94,7 @@ const BlogList = () => {
         {filteredBlogs.length > 0 ? (
           filteredBlogs.map((item, index) => (
             <li key={index} className="mt-5">
+            <SlideIn duration={1} delay={0.5}>
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                 <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-light lg:leading-[29px] leading-[25px]">
                   {" "}
@@ -111,6 +113,7 @@ const BlogList = () => {
                   {item.date}
                 </div>
               </Link>
+              </SlideIn>
             </li>
           ))
         ) : (
