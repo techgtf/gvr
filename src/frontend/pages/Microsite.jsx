@@ -7,12 +7,12 @@ import HighlightsSpecifications from "../components/microsite/HighlightsSpecific
 import Plans from "../components/microsite/Plans";
 import LocationAdvantage from "../components/microsite/LocationAdvantage";
 import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGallery";
-import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
-import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-1.png";
-import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.png";
-import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.png";
-import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.png";
-import loaction from "/assets/frontend/images/microsite/location/location.png";
+import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.webp";
+import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-1.webp";
+import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.webp";
+import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.webp";
+import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.webp";
+import loaction from "/assets/frontend/images/microsite/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
@@ -173,7 +173,7 @@ function Microsite() {
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
       <HighlightsSpecifications
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-        specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
+        specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />
 
 

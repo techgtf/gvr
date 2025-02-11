@@ -10,16 +10,16 @@ import Plans from '../components/microsite/Plans';
 import LocationAdvantage from '../components/microsite/LocationAdvantage';
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery';
 import banquet from "/assets/frontend/images/microsite/vilasa/amentities/icons/banquet.png";
-import master_plan_img from "/assets/frontend/images/microsite/vilasa/plans/masterplan.jpg";
-import loaction from "/assets/frontend/images/microsite/vilasa/location/location.jpg";
+import master_plan_img from "/assets/frontend/images/microsite/vilasa/plans/masterplan.webp";
+import loaction from "/assets/frontend/images/microsite/vilasa/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-import actual1 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual1.jpg"
-import actual2 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual2.jpg"
-import actual3 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual3.jpg"
-import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.jpg"
+import actual1 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual1.webp"
+import actual2 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual2.webp"
+import actual3 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual3.webp"
+import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.webp"
 import render1 from "/assets/frontend/images/microsite/vilasa/gallery/render/render1.jpg"
 import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.png";
 import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.png";
@@ -163,22 +163,21 @@ function VilasaMicrosite() {
     // Images 
 
     const images = [
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide1.jpg", alt: "Entertainment club" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide2.jpg", alt: "Banquet facilities" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide3.jpg", alt: "Cricket pitch" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide4.jpg", alt: "Badminton court" },
-      
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide5.jpg", alt: "10m wide arterial roads" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide6.jpg", alt: "Gated community" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide7.jpg", alt: "European style gazebo" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide8.jpg", alt: "Golf putting greens" },
-        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.jpg", alt: "Basketball court" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide1.webp", alt: "Entertainment club" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide2.webp", alt: "Banquet facilities" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide3.webp", alt: "Cricket pitch" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide4.webp", alt: "Badminton court" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide5.webp", alt: "10m wide arterial roads" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide6.webp", alt: "Gated community" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide7.webp", alt: "European style gazebo" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide8.webp", alt: "Golf putting greens" },
+        { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
 
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/vilasa/hero/hero.jpg"
+                backgroundImage="assets/frontend/images/microsite/vilasa/hero/hero.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -191,7 +190,7 @@ function VilasaMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/vilasa/about/about.jpg"
+                imageSrc="assets/frontend/images/microsite/vilasa/about/about.webp"
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
