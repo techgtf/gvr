@@ -176,6 +176,12 @@ img {
 .waterMarkDiv.vertical .bg_text {
   letter-spacing: -20px;
 }
+/* for safari  */
+@supports (-webkit-touch-callout: none) {
+  .waterMarkDiv.vertical .bg_text {
+      letter-spacing: 0px; 
+  }
+}
 
 .sectionHeading {
   font-size: 12px;

@@ -17,9 +17,9 @@ function Highlights({ title = "Highlights", highlights = [] }) {
     gsap.registerPlugin(ScrollTrigger);
 
     let ctx = gsap.context(() => {
-      ScrollTrigger.killAll(); // ✅ Ensure all old triggers are removed
+      ScrollTrigger.killAll();
 
-      requestAnimationFrame(() => { // ✅ Ensure DOM is ready
+      requestAnimationFrame(() => { 
         gsap.fromTo(
           listRef.current.children,
           { y: 50, opacity: 0 },
@@ -36,17 +36,16 @@ function Highlights({ title = "Highlights", highlights = [] }) {
           }
         );
 
-        ScrollTrigger.refresh(); // ✅ Ensure fresh triggers
+        ScrollTrigger.refresh(); 
       });
     }, listRef);
 
     return () => {
-      ctx.revert(); // ✅ Cleanup animations
-      ScrollTrigger.killAll(); // ✅ Ensure no old triggers persist
+      ctx.revert(); 
+      ScrollTrigger.killAll(); 
     };
-  }, [location.pathname]); // ✅ Will update when the route changes
+  }, [location.pathname]); 
 
-  // ✅ Force a re-render when route changes to fix disappearing animations
   useEffect(() => {
     setTimeout(() => {
       ScrollTrigger.refresh();

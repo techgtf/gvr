@@ -112,6 +112,7 @@ function Plans({ masterPlanData, unitData }) {
 
           {!isUnitDataEmpty && (
             <div className="slider">
+              
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
                   <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
