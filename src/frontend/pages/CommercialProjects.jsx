@@ -127,7 +127,7 @@ const CommercialProjects = () => {
                     className={`xl:basis-[25%] basis-[100%] flex xl:p-[22px] px-[0px] py-[15px]  flex-col border-opacity-[0.5] ${
                       index == 2
                         ? ""
-                        : "xl:border-r-[1px] xl:border-r-solid xl:border-r-[#0000004D] border-b-[1px] border-b-solid border-b-[#0000004D]"
+                        : "xl:border-r-[1px] xl:border-r-solid xl:border-r-[#0000004D] xl:border-b-[0px] border-b-[1px] border-b-solid border-b-[#0000004D]"
                     }`}
                   >
                     <h3 className="midlandfontmedium text-[10px] xl:mb-[28px]  mb-[15px] tracking-[3px] uppercase">

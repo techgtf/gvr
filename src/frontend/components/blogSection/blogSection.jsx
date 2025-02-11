@@ -12,10 +12,10 @@ export default function BlogSection() {
     return (
         <div className='blogSection 2xl:py-16 xl:py-8 py-[50px]'>
             <div className='max-w-[90%] m-auto'>
-                <div className='flexbox flex flex-wrap justify-between'>
-                    <div className='left-side lg:w-[40%] w-full lg:pr-[25px] lg:mb-0 mb-8'>
+                <div className='flexbox relative flex flex-wrap justify-between'>
+                    <div className='left-side lg:w-[40%] w-full lg:pr-[25px] lg:mb-0 mb-10'>
                         <WaterMarkHeading sectionHeading='Discover Insights' />
-                        <div className='links_div lg:mt-14 lg:mb-16 mt-6 mb-8'>
+                        <div className='links_div lg:mt-14 lg:mb-16 mt-7 mb-12'>
                             <InSightLinks />
                         </div>
                         <FullBtn link={`${BASE_ROOT}blogs`} text='explore more' />

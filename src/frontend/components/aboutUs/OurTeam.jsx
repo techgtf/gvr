@@ -51,7 +51,7 @@ const OurTeam = () => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           OUR TEAM
         </h3>
-        <p className="text-black xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] w-[250px] poppins-regular">
+        <p className="text-black xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
           Built on trust, driven by value, and inspired by emotion, we are
           dedicated to crafting spaces that feel like home and investments that
           stand the test of time.
@@ -128,12 +128,12 @@ const OurTeam = () => {
                 )}
 
                 {index === 0 && (
-                  <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.jpg)]"></div>
+                  <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.webp)]"></div>
                 )}
               </div>
 
               {(index === 2 || isMobile) && (
-                <div className="flex justify-between xl:w-[85%] w-[70%] mt-[2rem] xl:mt-[1rem] xl:ml-[0.75rem]">
+                <div className="flex justify-between xl:w-[85%] w-[84%] mt-[2rem] xl:mt-[1rem] xl:ml-[0.75rem]">
                   <div>
                     <p className="midlandfontmedium basis-[100%] text-black text-[10px] tracking-[2px]">
                       {profile.name}
