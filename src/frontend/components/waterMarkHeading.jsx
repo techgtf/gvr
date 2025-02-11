@@ -1,6 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { useTextAnimation } from './useTextAnimation';
 import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SlideIn from './Animations/SlideIn';
+gsap.registerPlugin(ScrollTrigger);
+
 
 export default function WaterMarkHeading({
   TagName = 'p', // Heading tag (e.g., h1 - h6)
@@ -14,27 +18,6 @@ export default function WaterMarkHeading({
   const textRef = useTextAnimation(animationConfig);
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
-    // Select all watermark text elements
-    const elements = sectionRef.current.querySelectorAll('.bg_text');
-
-    gsap.fromTo(
-      elements,
-      { opacity: 0, y: 80 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: animationConfig.stagger || 0.1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-        },
-      }
-    );
-  }, [animationConfig.stagger, location.pathname]); // Re-run effect when stagger changes
-
   return (
     <div ref={sectionRef} className={`waterMarkDiv relative ${className}`}>
       {textWaterMark && (
@@ -46,9 +29,10 @@ export default function WaterMarkHeading({
           ))}
         </div>
       )}
-      <TagName ref={textRef} className="sectionHeading midlandfontmedium uppercase">
-        {sectionHeading}
-      </TagName>
+      <SlideIn duration={1} delay={0.5}>
+        <TagName className="sectionHeading midlandfontmedium uppercase">{sectionHeading}</TagName>
+      </SlideIn>
+
     </div>
   );
 }
