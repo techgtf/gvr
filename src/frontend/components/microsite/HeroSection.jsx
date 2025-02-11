@@ -3,7 +3,7 @@ import BannerDetails from "./BannerDetails";
 import ZoomOut from "../Animations/ZoomOut";
 
 function HeroSection({ 
-  backgroundImage = "assets/frontend/images/microsite/hero.jpg", 
+  backgroundImage = "assets/frontend/images/microsite/hero.webp", 
   scrollText = "SCROLL DOWN", 
   sectionId = "overview", 
   initialScale = 1.5, 
