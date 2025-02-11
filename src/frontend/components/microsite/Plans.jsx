@@ -92,7 +92,7 @@ function Plans({ masterPlanData, unitData }) {
             <div className="flex gap-2 py-4 mt-4 md:mt-0">
               {isUnitDataEmpty ? (
                 <div className="flex justify-center">
-                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.jpg" alt="Alt Image" />
+                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" />
                 </div>
               ) : (
                 Object.keys(unitData).map((unit) => (
@@ -129,7 +129,7 @@ function Plans({ masterPlanData, unitData }) {
                 ))
               ) : (
                 <div className="flex justify-center">
-                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.jpg" alt="Alt Image" />
+                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" />
                 </div>
               )}
             </div>

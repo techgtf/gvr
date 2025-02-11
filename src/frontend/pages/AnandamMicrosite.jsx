@@ -8,11 +8,11 @@ import Plans from '../components/microsite/Plans'
 import LocationAdvantage from '../components/microsite/LocationAdvantage'
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery'
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
-import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
+import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.webp";
 import plan1 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan1.webp";
 import plan2 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan2.webp";
 import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
-import loaction from "/assets/frontend/images/microsite/location/location.png";
+import loaction from "/assets/frontend/images/microsite/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
@@ -224,7 +224,7 @@ function AnandamMicrosite() {
             <PriceList priceListData={customPriceListData} headingText="Price List" />
             <HighlightsSpecifications
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-                specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.jpg" />}
+                specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
             />
 
             <Plans masterPlanData={masterPlanData} unitData={unitData} />;
