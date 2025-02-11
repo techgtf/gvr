@@ -25,7 +25,7 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
+    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/pernia.webp`,
     detail: [
       {
         heading: "Pernia",
@@ -44,7 +44,8 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
+    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/great_value_mall.webp
+    `,
     detail: [
       {
         heading: "Great Value Mall",
@@ -62,7 +63,7 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
+    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/forestwalk.webp`,
     detail: [
       {
         heading: "Forest Walk",
@@ -80,7 +81,7 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
+    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/complex.webp`,
     detail: [
       {
         heading: "Complex Madangir",
@@ -102,7 +103,7 @@ const CommercialProjects = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.png`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"objectRight"}
@@ -117,7 +118,7 @@ const CommercialProjects = () => {
               <img
                 src={project.img}
                 alt="commercial"
-                className="xl:basis-[15%] basis-[100%] my-[16px] inline-block"
+                className="xl:basis-[15%] w-[198px] h-[151px] basis-[100%] my-[16px] inline-block"
               />
 
               {project.detail.map((detail, index) => {
