@@ -151,7 +151,7 @@ const CommercialProjects = () => {
               <img
                 src={project.img}
                 alt="commercial"
-                className="xl:basis-[15%] w-[198px] h-[151px] basis-[100%] my-[16px] inline-block"
+                className="xl:basis-[15%] w-[198px] xl:h-[151px] h-[251px]  basis-[100%] my-[16px] inline-block"
               />
 
               {project.detail.map((detail, index) => {
