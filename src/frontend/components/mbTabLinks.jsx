@@ -35,7 +35,7 @@ export default function MbTabLinks() {
                             { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
                             { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
                         ].map(({ name, path, location }) => (
-                            <li key={path}>
+                            <li key={path} className="pb-3 mb-3 border-b">
                                 <span onClick={() => handleLinkClick(`${BASE_ROOT}${path}`)} className="cursor-pointer">
                                     <CommonHeading HeadingText={name} />
                                     <p className="place uppercase pt-2 cursor-pointer">{location}</p>
