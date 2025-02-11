@@ -1,0 +1,83 @@
+.admin_modal_right{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    background:#fff;
+    z-index: 998;
+    max-width: 440px;
+    width: 100%;
+    animation:modal_right 200ms ease-in-out
+}
+
+@keyframes modal_right {
+    0%{
+        right:-440px;
+    }   
+    100%{
+        right:0;
+    }
+}
+
+.admin_modal_right .top{
+    height: 80px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin_modal_right .top .title{
+    margin:0;
+}
+
+.admin_modal_right .top .close{
+    font-size: 26px;
+    opacity: 0.5;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin_modal_right .main{
+    height:calc(100vh - 160px);
+    padding:20px 30px;
+    overflow:auto;
+}
+
+.admin_modal_right .main .form-label{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.admin_modal_right .bottom{
+    height:80px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+}
+
+.admin_modal_right .bottom .btns{
+
+}
+
+.admin_modal_right .radio_design{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.admin_modal_right .radio_design .radioItem{
+    flex:1;
+    margin-bottom: 5px;
+}
+
+.admin_modal_right .radio_design .custom_radio{
+    width: max-content;
+}
+
