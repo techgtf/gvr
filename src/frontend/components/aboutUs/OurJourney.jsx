@@ -94,6 +94,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2019,
       images: ["2019-1.webp", "2019-2.webp", "2019-3.webp", "2019-4.webp"],
       project: [
         {
@@ -140,6 +141,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2022,
       images: ["2022-1.webp", "2022-2.webp", "2022-3.webp", "2022-4.webp"],
       project: [
         {
@@ -159,6 +161,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2023,
       images: ["2023-1.webp", "2023-2.webp", "2023-3.webp", "2023-4.webp"],
       project: [
         {
