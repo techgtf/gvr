@@ -1,6 +1,4 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { UserRoutes } from "./Routes/UserRoutes.jsx";
 import { AdminRoutes } from "./Routes/AdminRoutes.jsx";
@@ -9,20 +7,38 @@ import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
+import ErrorBoundary from "./frontend/components/ErrorBoundary";
+import { BASE_ROOT } from "../config.js";
+import "./index.css";
 
-const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
+// Define layout with context providers for User Routes
+const UserLayout = ({ children }) => (
+  <TeamProvider>
+    <LatestBlogProvider>
+      <ContextProvider>{children}</ContextProvider>
+    <CustomPortal>
+      <PricelistForm />
+    </CustomPortal>
+    </LatestBlogProvider>
+  </TeamProvider>
+);
 
+// Create a single router with conditional wrapping for contexts
+const router = createBrowserRouter([
+  {
+    path: `${BASE_ROOT}admin`,
+    children: AdminRoutes, // Admin routes without additional context providers
+  },
+  {
+    path: `*`,
+    element: <UserLayout />, // Wrap only UserRoutes with necessary context providers
+    children: UserRoutes,
+  },
+]);
+
+// Render the app
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-    <TeamProvider>
-      <LatestBlogProvider>
-      <ContextProvider>
-        <RouterProvider router={router} />
-        <CustomPortal>
-          <PricelistForm />
-        </CustomPortal>
-      </ContextProvider>
-      </LatestBlogProvider>
-    </TeamProvider>
-  // </StrictMode>
+  <ErrorBoundary>
+    <RouterProvider router={router} />
+  </ErrorBoundary>
 );

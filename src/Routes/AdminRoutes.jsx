@@ -8,7 +8,7 @@ import PageNotFound from "../frontend/PageNotFound/PageNotFound";
 
 export const AdminRoutes = [
     {
-        path: `${BASE_ROOT}/admin`,
+        path: ``,
         children: [
             {
                 path: "",
