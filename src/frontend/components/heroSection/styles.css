@@ -2,3 +2,6 @@
 .heroSection .container{top: 50%; left: 50%; transform: translate(-50%, -50%);}
 .heroSection .common_heading{line-height: 60px;}
 .hero_vdo_div{width: 100%;background-color: #fff;}
+/* @media(max-width:767px){
+  .heroSection::after{height: 100px;}
+} */

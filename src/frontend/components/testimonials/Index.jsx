@@ -32,7 +32,7 @@ const Testimonials = ()=>{
   return(
     <section className="testimonial_page_section 2xl:py-[85px] xl:py-[75px] py-[50px] text-center">
       <div className="section_in 2xl:max-w-[80%] m-auto max-w-[100%]">
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:px-0 px-4'>
+        <div className='grid grid-cols-3 gap-12 lg:px-0 px-4'>
           {testimonialData && (
             testimonialData.map((item, index) =>
               <div className='boxes relative ' key={index}>

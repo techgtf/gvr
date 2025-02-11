@@ -11,7 +11,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
-import Testimonials from "../frontend/pages/Testimonials";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
@@ -29,10 +28,12 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import Testimonials from "../frontend/pages/Testimonials";
 import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 import MediaCenter from "../frontend/pages/MediaCenter";
+import NriInvestor from "../frontend/pages/NriInvestor";
 
 export const UserRoutes = [
   {
@@ -191,6 +192,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <About />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}nri-investor`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <NriInvestor />
               </Layout>
             </Suspense>
           </ErrorBoundary>
