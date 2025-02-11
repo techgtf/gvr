@@ -8,18 +8,21 @@ import ContextProvider from "./frontend/context/context.jsx";
 import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
+import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
     <TeamProvider>
+      <LatestBlogProvider>
       <ContextProvider>
         <RouterProvider router={router} />
         <CustomPortal>
           <PricelistForm />
         </CustomPortal>
       </ContextProvider>
+      </LatestBlogProvider>
     </TeamProvider>
   // </StrictMode>
 );
