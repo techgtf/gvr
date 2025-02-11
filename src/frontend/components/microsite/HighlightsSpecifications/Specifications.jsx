@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -10,48 +10,45 @@ gsap.registerPlugin(ScrollTrigger);
 function Specifications({ title = "Specifications", specifications = [], altImage }) {
   const specificationRefs = useRef([]);
   const location = useLocation();
+  const scrollTriggerRef = useRef(null);
 
   useLayoutEffect(() => {
     if (!specificationRefs.current.length) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
 
     let ctx = gsap.context(() => {
-      ScrollTrigger.killAll(); // ✅ Remove old triggers
+      scrollTriggerRef.current = gsap.fromTo(
+        specificationRefs.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: specificationRefs.current[0],
+            start: "top 90%",
+            end: "bottom 20%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
 
-      requestAnimationFrame(() => { // ✅ Ensure DOM update
-        gsap.fromTo(
-          specificationRefs.current,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: specificationRefs.current[0],
-              start: "top 90%",
-              end: "bottom 20%",
-            },
-          }
-        );
-
-        ScrollTrigger.refresh(); // ✅ Ensure fresh triggers
-      });
+      ScrollTrigger.refresh();
     });
 
     return () => {
-      ctx.revert(); // ✅ Cleanup animations
-      ScrollTrigger.killAll(); // ✅ Ensure no old triggers persist
-      specificationRefs.current.length = 0; // ✅ Clear refs
+      ctx.revert();
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
     };
-  }, [location.pathname]);
-
-  // ✅ Force refresh after route change
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
   }, [location.pathname]);
 
   return (
@@ -61,7 +58,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           <CommonHeading HeadingText={title} />
         </FadeIn>
         <div
-          className="grid grid-cols-12 mt-8 overflow-y-auto h-[350px] pr-5 specifications-scroll-container"
+          className="grid grid-cols-12 mt-8 overflow-y-auto h-[450px] pr-5 specifications-scroll-container"
           style={{
             backgroundImage: specifications.length > 0 ? "none" : `url(${altImage})`,
             backgroundSize: "cover",
