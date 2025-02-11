@@ -11,6 +11,7 @@ import Loader from "../Loader/loader";
 import useMediaLoaded from "./components/useMediaLoaded";
 import "../Loader/loader.css";
 import { BASE_ROOT } from "../../config";
+import MbTabLinks from "./components/mbTabLinks";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -26,7 +27,7 @@ function Layout({ children }) {
   }, [mediaLoaded]);
   useEffect(() => {
     let smoother = ScrollSmoother.get();
-  
+
     if (!smoother) {
       smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
@@ -37,30 +38,30 @@ function Layout({ children }) {
       });
       console.log("ScrollSmoother initialized");
     }
-  
+
     // ✅ Refresh GSAP when route changes
     setTimeout(() => {
       ScrollTrigger.refresh();
       console.log("GSAP Animations Refreshed!");
-    }, 500); 
-  
+    }, 500);
+
     return () => {
       console.log("Cleaning up ScrollSmoother...");
       if (smoother) {
-        smoother.kill(); 
+        smoother.kill();
       }
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  
+
       const wrapper = document.getElementById("smooth-wrapper");
       const content = document.getElementById("smooth-content");
-  
+
       if (wrapper) wrapper.style.removeProperty("all");
       if (content) content.style.removeProperty("all");
     };
   }, [location.pathname]);  // ✅ Runs when route changes
-  
-  
-  
+
+
+
   return (
     <>
       {/* Custom Cursor */}
@@ -75,6 +76,8 @@ function Layout({ children }) {
 
       {/* Main Content */}
       <Header />
+      {/* mobile menus tabs */}
+      <MbTabLinks />
       {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
       <div id="smooth-wrapper">
         <div id="smooth-content">
