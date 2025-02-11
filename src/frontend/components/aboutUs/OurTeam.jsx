@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState, useRef, useLayoutEffect } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { TeamContext } from "../../context/TeamContext";
 import TeamModal from "../teamModal/TeamModal";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
@@ -95,7 +101,11 @@ const OurTeam = () => {
           return (
             <div key={index} className="basis-[100%]">
               <div
-                onClick={() => handleImageClick(index)}
+                onClick={
+                  index != 2
+                    ? () => handleImageClick(index)
+                    : () => handleBio(index)
+                }
                 style={{ marginLeft: index === 0 ? "0.75rem" : undefined }}
                 className={
                   index === 0 || index === 1 || index === 3 || index === 4
