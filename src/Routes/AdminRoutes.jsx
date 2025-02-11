@@ -13,11 +13,7 @@ export const AdminRoutes = [
             {
                 path: "",
                 element: (
-                    <Suspense fallback={<Loader />}>
-                        <Layout>
-                            <h1>Admin</h1>
-                        </Layout>
-                    </Suspense>
+                    <h1>Admin</h1>
                 ),
             },
             {
