@@ -40,6 +40,7 @@ const OurJourney = () => {
         "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
     },
     {
+      year: 2009,
       images: ["2009-1.webp", "2009-2.webp", "2009-3.webp", "2009-4.webp"],
       project: [
         {
@@ -249,12 +250,7 @@ const OurJourney = () => {
             if (index == 0) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/1.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute top-[8%] xl:top-0 z-[1] left-[25%]"
                 />
@@ -263,26 +259,16 @@ const OurJourney = () => {
             if (index == 1) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/2.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
-                  className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:right-[13%] xl:top-[16%] top-[22%] right-[0%]  absolute z-[2]"
+                  className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:right-[13%] xl:top-[25%] top-[22%] right-[0%]  absolute z-[2]"
                 />
               );
             }
             if (index == 2) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/3.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:top-[25%] top-[22%] left-[0%] xl:left-[8%] absolute z-[2]"
                 />
@@ -291,12 +277,7 @@ const OurJourney = () => {
             if (index == 3) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/4.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute right-[27%] bottom-[35%] xl:bottom-[15%] xl:right-[33%] z-[3]"
                 />
