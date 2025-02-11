@@ -5,6 +5,7 @@ import { useImageReveal } from "../useImageReveal";
 import SlideIn from "../Animations/SlideIn";
 import FadeIn from "../Animations/FadeIn";
 import ZoomOut from "../Animations/ZoomOut";
+import VerticalWaterMarkHeading from "../verticalWaterMarkHeading";
 
 function About({
   imageSrc = "assets/frontend/images/microsite/about.jpg", // Default image
@@ -25,7 +26,7 @@ function About({
   return (
     <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14">
       <div className="absolute h-full flex items-center left-20 bottom-0">
-        <WaterMarkHeading
+        <VerticalWaterMarkHeading
           textWaterMark={reverseWatermark ? reverseText(headingText) : headingText}
           className="flex flex-col items-start justify-center text-[4vw]"
           animationConfig={animationConfig1}

@@ -14,30 +14,44 @@ function Highlights({ title = "Highlights", highlights = [] }) {
   useLayoutEffect(() => {
     if (!listRef.current) return;
 
+    gsap.registerPlugin(ScrollTrigger);
+
     let ctx = gsap.context(() => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      ScrollTrigger.killAll(); // ✅ Ensure all old triggers are removed
 
-      gsap.fromTo(
-        listRef.current.children,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: listRef.current,
-            start: "top 90%",
-            end: "bottom 20%",
-          },
-        }
-      );
+      requestAnimationFrame(() => { // ✅ Ensure DOM is ready
+        gsap.fromTo(
+          listRef.current.children,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: listRef.current,
+              start: "top 90%",
+              end: "bottom 20%",
+            },
+          }
+        );
 
-      ScrollTrigger.refresh();
+        ScrollTrigger.refresh(); // ✅ Ensure fresh triggers
+      });
     }, listRef);
 
-    return () => ctx.revert();
-  }, [location.pathname]); // ✅ Route change hone pe refresh hoga
+    return () => {
+      ctx.revert(); // ✅ Cleanup animations
+      ScrollTrigger.killAll(); // ✅ Ensure no old triggers persist
+    };
+  }, [location.pathname]); // ✅ Will update when the route changes
+
+  // ✅ Force a re-render when route changes to fix disappearing animations
+  useEffect(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  }, [location.pathname]);
 
   return (
     <div className="col-span-4">

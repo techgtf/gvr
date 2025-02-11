@@ -9,22 +9,20 @@ import LocationAdvantage from '../components/microsite/LocationAdvantage'
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery'
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
 import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.png";
-import plan1 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan1.jpg";
-import plan2 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan2.jpg";
-import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.jpg";
+import plan1 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan1.webp";
+import plan2 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan2.webp";
+import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
 import loaction from "/assets/frontend/images/microsite/location/location.png";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
 
-import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1.jpg";
-import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/2.jpg";
-import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.jpg";
-import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.jpg";
+import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1.webp";
+import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/2.webp";
+import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
+import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
 import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
-import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.jpg";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
@@ -187,19 +185,19 @@ function AnandamMicrosite() {
     ];
 
     const images = [
-        { image: "assets/frontend/images/microsite/amentities/slider/slide1.png", alt: "Beautiful Scenery 1" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide2.jpg", alt: "Beautiful Scenery 2" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide3.jpg", alt: "Beautiful Scenery 3" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide4.jpg", alt: "Beautiful Scenery 4" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide5.jpg", alt: "Beautiful Scenery 5" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide6.jpg", alt: "Beautiful Scenery 6" },
-        { image: "assets/frontend/images/microsite/amentities/slider/slide7.jpg", alt: "Beautiful Scenery 7" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Beautiful Scenery 1" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Beautiful Scenery 4" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide5.webp", alt: "Beautiful Scenery 5" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Beautiful Scenery 6" },
+        { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
       ];
 
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/anandam/hero/hero.jpg"
+                backgroundImage="assets/frontend/images/microsite/anandam/hero/hero.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -212,7 +210,7 @@ function AnandamMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/anandam/about/about.jpg"
+                imageSrc="assets/frontend/images/microsite/anandam/about/about.webp"
                 headingText="ABOUT US"
                 descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering thoughtfully designed 2 and 3 BHK apartments, it combines luxury with convenience, providing residents with a serene and opulent living experience. "
                 reverseWatermark={true}
@@ -233,11 +231,11 @@ function AnandamMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/education.png', text: 'Amity university , botanic garden of india republic', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/junction.png', text: 'Greater noida expressway, worlds of wonder', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/golfing.png', text: 'Noida golf course, sandal suites by lemon tree hotels', time: '20 min' },
-                    { image: 'assets/frontend/images/microsite/location/driveIcons/hospital.png', text: 'Yatharth super specialty hospital, max super speciality hospital', time: '30 min' },
-                ]}
+                    { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
+                    { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School , Noida', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Oasis Noida', time: '10 min' },
+                    { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Greater Noida Expressway', time: '15 min' },
+                  ]}
                 walkData={[
                     { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
@@ -253,7 +251,7 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3, gallery4, gallery3, gallery4]}
+                actualImages={[gallery1, gallery2, gallery3, gallery4]}
                 renderImages={[renderGallery1]}
             />
         </>

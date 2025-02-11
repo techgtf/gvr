@@ -51,7 +51,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}microsite`,
+        path: `${BASE_ROOT}sharanam`,
         element: (
           <ErrorBoundary>
             <Suspense fallback={<Loader />}>
