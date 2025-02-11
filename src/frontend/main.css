@@ -161,11 +161,11 @@ img {
 }
 
 .about .waterMarkDiv .bg_text {
-  font-size: 3.5vw;
+  font-size: 3vw;
 }
 
 .plans .waterMarkDiv .bg_text {
-  font-size: 2vw;
+  font-size: 1.5vw;
   rotate: 180deg;
 }
 
@@ -174,18 +174,18 @@ img {
 }
 
 .waterMarkDiv.vertical .bg_text {
-  letter-spacing: -20px;
+  letter-spacing: 0px;
 }
 
 
 /* Safari ke liye */
-@media not all and (min-resolution: 0.001dpcm) { 
+/* @media not all and (min-resolution: 0.001dpcm) { 
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
       .waterMarkDiv.vertical .bg_text {
-          letter-spacing: 0px !important; /* Safari */
+          letter-spacing: 0px !important; 
       }
   }
-}
+} */
 
 
 .sectionHeading {
