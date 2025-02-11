@@ -1,6 +1,9 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function HighlightsSpecifications({
   highlightsComponent: Highlights,
@@ -8,20 +11,25 @@ function HighlightsSpecifications({
   pin = true,
   scrub = 1,
   markers = false,
-  start = "top -5%",  
+  start = "top -5%",
   endOffset = "30%",
 }) {
-  useLayoutEffect(() => {
-    const specifications = document.querySelector(".specifications-scroll-container");
+  const location = useLocation();
+  const sectionRef = useRef(null);
+  const specificationsRef = useRef(null);
 
-    if (specifications) {
-      gsap.registerPlugin(ScrollTrigger);
-      
+  useLayoutEffect(() => {
+    if (!sectionRef.current || !specificationsRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    let ctx = gsap.context(() => {
+      ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Old triggers remove karo
+
       let firstTrigger = ScrollTrigger.create({
-        trigger: "#highlightsSpecifications",
+        trigger: sectionRef.current,
         start,
-        endTrigger: specifications,
-        end: () => `bottom+=${specifications.offsetHeight} top`,
+        endTrigger: specificationsRef.current,
+        end: `bottom+=${specificationsRef.current.offsetHeight} top`,
         pin,
         pinSpacing: true,
         scrub,
@@ -29,29 +37,24 @@ function HighlightsSpecifications({
       });
 
       let secondTrigger = ScrollTrigger.create({
-        trigger: ".specifications-scroll-container",
+        trigger: specificationsRef.current,
         start: "top top",
         end: `+=${endOffset}`,
         scrub,
         markers,
       });
 
-      return()=>{
-        firstTrigger.kill();
-        secondTrigger.kill();
-        ScrollTrigger.refresh();
-      }
-    }
-  }, [pin, scrub, markers, start, endOffset, location.pathname]);
+      ScrollTrigger.refresh(); // ✅ Ensure refresh
+    }, sectionRef);
+
+    return () => ctx.revert(); // ✅ Cleanup animations
+  }, [location.pathname]); // ✅ Route change pe refresh hoga
 
   return (
-    <section
-      id="highlightsSpecifications"
-      className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center"
-    >
+    <section ref={sectionRef} id="highlightsSpecifications" className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center">
       <div className="grid sm:grid-cols-12 grid-cols-1 md:gap-20">
         <Highlights />
-        <Specifications />
+        <Specifications ref={specificationsRef} />
       </div>
     </section>
   );

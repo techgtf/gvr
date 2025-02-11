@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState, useLayoutEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CommonHeading from "../commonHeading";
 import PriceListForm from "./PriceListForm";
@@ -14,45 +14,38 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
   const { showEnquiryForm, openEnquiryForm } = useContext(Context);
   const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
-  const location = useLocation(); // Get route location
+  const location = useLocation(); // ✅ Track route changes
 
-  useLayoutEffect(() => {
-    const animateTable = () => {
-      if (!tableRef.current) return;
+  useEffect(() => {
+    if (!tableRef.current) return;
 
-      const tableElements = tableRef.current.querySelectorAll(".row_1");
+    const tableElements = tableRef.current.querySelectorAll(".row_1");
 
-      if (tableElements.length === 0) {
-        console.warn("⚠️ No table elements found for animation!");
-        return;
-      }
+    if (tableElements.length === 0) {
+      console.warn("⚠️ No table elements found for animation!");
+      return;
+    }
 
-      gsap.fromTo(
-        tableElements,
-        { opacity: 0, y: 100 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: tableRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    // ✅ Reset animation state before running new animation
+    gsap.set(tableElements, { opacity: 0, y: 50 });
 
-      ScrollTrigger.refresh();
-    };
-
-    animateTable();
+    const animation = gsap.to(tableElements, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: tableRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill()); // Cleanup previous triggers
+      animation.kill();
+      ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
     };
-  }, [location.pathname]); // Re-run when the route changes
+  }, [location.pathname]); // ✅ Animation resets on route change
 
   const handleTooltipToggle = (index) => {
     setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
