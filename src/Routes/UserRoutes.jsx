@@ -106,9 +106,9 @@ export const UserRoutes = [
         element: (
           <ErrorBoundary>
             <Suspense fallback={<Loader />}>
-              <Layout>
+              {/* <Layout> */}
                 <ComingSoon />
-              </Layout>
+              {/* </Layout> */}
             </Suspense>
           </ErrorBoundary>
         ),
