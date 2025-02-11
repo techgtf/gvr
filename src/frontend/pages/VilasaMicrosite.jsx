@@ -177,7 +177,8 @@ function VilasaMicrosite() {
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/vilasa/hero/hero.webp"
+                 desktopBg="assets/frontend/images/microsite/vilasa/hero/hero.webp"
+                mobileBg="assets/frontend/images/microsite/vilasa/hero/hero.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}

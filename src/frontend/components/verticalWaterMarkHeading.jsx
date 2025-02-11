@@ -72,6 +72,9 @@ function VerticalWaterMarkHeading({
         {textWaterMark && (
           <div className="water_mark_flex flex flex-col h-full absolute opacity-[0.040] justify-center">
             {textWaterMark.split("").map((str, index) => (
+              <>
+              {console.log(str)}
+              
               <span
                 key={index}
                 className={`bg_text uppercase font-medium midlandfontmedium -rotate-90 writing-vertical-rl text-center ${
@@ -80,6 +83,7 @@ function VerticalWaterMarkHeading({
               >
                 {str}
               </span>
+              </>
             ))}
           </div>
         )}

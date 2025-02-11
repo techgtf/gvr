@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -10,46 +10,45 @@ gsap.registerPlugin(ScrollTrigger);
 function Highlights({ title = "Highlights", highlights = [] }) {
   const listRef = useRef(null);
   const location = useLocation();
+  const scrollTriggerRef = useRef(null);
 
   useLayoutEffect(() => {
     if (!listRef.current) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
 
     let ctx = gsap.context(() => {
-      ScrollTrigger.killAll();
+      scrollTriggerRef.current = gsap.fromTo(
+        listRef.current.children,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: "top 90%",
+            end: "bottom 20%",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
 
-      requestAnimationFrame(() => { 
-        gsap.fromTo(
-          listRef.current.children,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: listRef.current,
-              start: "top 90%",
-              end: "bottom 20%",
-            },
-          }
-        );
-
-        ScrollTrigger.refresh(); 
-      });
+      ScrollTrigger.refresh();
     }, listRef);
 
     return () => {
-      ctx.revert(); 
-      ScrollTrigger.killAll(); 
+      ctx.revert();
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
     };
-  }, [location.pathname]); 
-
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
   }, [location.pathname]);
 
   return (
