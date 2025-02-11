@@ -1,3 +1,4 @@
+import SlideIn from "../Animations/SlideIn";
 import { useImageReveal } from "../useImageReveal";
 import { useTextAnimation } from "../useTextAnimation";
 
@@ -5,7 +6,8 @@ const OurVision = () => {
   const sectionRef = useTextAnimation({
     from: { y: 100, opacity: 0 },
     to: { y: 0, opacity: 1, duration: 1 },
-  });
+  }, []);
+
   useImageReveal(".reveal");
 
   return (
@@ -18,31 +20,33 @@ const OurVision = () => {
         />
         <div
           className="xl:basis-[60%] basis-[100%] xl:mt-0 mt-[1.5rem]"
-          ref={sectionRef}
+          // ref={sectionRef}
         >
-          <div className="xl:mb-[3.5rem]  mb-[2rem]">
-            <h3 className="midlandfontmedium text-[11px] text-primary tracking-[2px]">
-              Our Vision
-            </h3>
-            <p className="text-[13px] text-justify mt-[1rem] poppins-regular text-black font-[300]">
-              Our vision is to set new industry standards by delivering
-              unparalleled quality through continuous innovation. We aspire to
-              create unique, customer-focused solutions that redefine
-              excellence, ensuring long-term value and lasting trust.
-            </p>
-          </div>
-          <div>
-            <h3 className="midlandfontmedium text-[11px]  text-primary tracking-[2px]">
-              Our Mission
-            </h3>
-            <p className="text-[13px] text-justify mt-[1rem] text-black poppins-regular font-[300]">
-              Our mission is to drive national progress and enrich lives by
-              delivering world-class infrastructure and financial services. We
-              are committed to building a future where innovation meets
-              excellence, fostering economic growth while creating enduring
-              value for our customers, communities
-            </p>
-          </div>
+          <SlideIn>
+            <div className="xl:mb-[3.5rem]  mb-[2rem]">
+              <h3 className="midlandfontmedium text-[11px] text-primary tracking-[2px]">
+                Our Vision
+              </h3>
+              <p className="text-[13px] text-justify mt-[1rem] poppins-regular text-black font-[300]">
+                Our vision is to set new industry standards by delivering
+                unparalleled quality through continuous innovation. We aspire to
+                create unique, customer-focused solutions that redefine
+                excellence, ensuring long-term value and lasting trust.
+              </p>
+            </div>
+            <div>
+              <h3 className="midlandfontmedium text-[11px]  text-primary tracking-[2px]">
+                Our Mission
+              </h3>
+              <p className="text-[13px] text-justify mt-[1rem] text-black poppins-regular font-[300]">
+                Our mission is to drive national progress and enrich lives by
+                delivering world-class infrastructure and financial services. We
+                are committed to building a future where innovation meets
+                excellence, fostering economic growth while creating enduring
+                value for our customers, communities
+              </p>
+            </div>
+          </SlideIn>
         </div>
       </div>
     </div>

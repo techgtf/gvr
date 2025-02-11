@@ -15,10 +15,10 @@ const nriOverview = () => {
   useImageReveal(".reveal");
   return (
     <>
-      <div className="max-w-[90%] m-auto relative mb-[2rem] md:mb-[5rem]">
-        <div className="flex items-center justify-between md:flex-row flex-col-reverse xl:mt-[4rem] lg:mt-[2rem] flex-wrap gap-[50px]">
+      <div className="max-w-[90%] m-auto relative xl:py-[80px] md:pt-[20px] md:pb-[80px] pb-[40px]">
+        <div className="flex items-center justify-between md:flex-row flex-col-reverse flex-wrap gap-[30px] md:gap-[50px]">
           <div className="basis-[100%] xl:basis-[calc(60%-50px)] flex-none">
-            <h2 className="sectionHeading text-center tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] xl:text-right text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
+            <h2 className="sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
             Great Value Realty Welcomes NRI Investors
             </h2>
             <p

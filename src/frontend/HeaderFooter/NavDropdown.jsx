@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import CommonHeading from "../components/commonHeading";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SlClose } from "react-icons/sl";
 import gsap from "gsap";
 import { BASE_ROOT } from "../../../config";
@@ -27,12 +27,12 @@ function NavDropdown({ setDropdown, setActiveItem }) {
         document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
-            ctx.revert(); // Cleanup GSAP animations
+            ctx.revert(); 
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [location.pathname]);
+    }, []);
 
-    const handleClose = () => {
+    const handleClose = (callback) => {
         gsap.to(dropdownRef.current, {
             y: -100,
             opacity: 0,
@@ -40,21 +40,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
             onComplete: () => {
                 setDropdown(false);
                 setActiveItem(null);
-            }
-        });
-    };
-
-    const handleLinkClick = (path) => {
-        gsap.to(dropdownRef.current, {
-            y: -100,
-            opacity: 0,
-            duration: 0.8,
-            onComplete: () => {
-                setDropdown(false);
-                setActiveItem(null);
-                setTimeout(() => {
-                    navigate(path);
-                }, 500);
+                if (callback) callback(); 
             }
         });
     };
@@ -67,22 +53,25 @@ function NavDropdown({ setDropdown, setActiveItem }) {
             <div className="relative h-full">
                 <ul className="flex justify-evenly items-center h-full">
                     {[
-                        { name: "SHARANAM", path: "microsite", location: "sector 107, noida" },
+                        { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                         { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
                         { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
                         { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
                     ].map(({ name, path, location }) => (
                         <li key={path}>
-                            <span onClick={() => handleLinkClick(`${BASE_ROOT}${path}`)} className="cursor-pointer">
+                            <Link to={`${BASE_ROOT}${path}`} onClick={(e) => {
+                                e.preventDefault(); 
+                                handleClose(() => navigate(`${BASE_ROOT}${path}`));
+                            }} className="cursor-pointer">
                                 <CommonHeading HeadingText={name} />
                                 <p className="place uppercase pt-2 cursor-pointer">{location}</p>
-                            </span>
+                            </Link>
                         </li>
                     ))}
                 </ul>
 
                 <div className="absolute bottom-0 left-[50%]">
-                    <SlClose onClick={handleClose} className="cursor-pointer text-3xl text-[#00000094]" />
+                    <SlClose onClick={() => handleClose()} className="cursor-pointer text-3xl text-[#00000094]" />
                 </div>
             </div>
         </div>

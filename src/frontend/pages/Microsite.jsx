@@ -18,12 +18,12 @@ import driveActive from "/assets/frontend/images/microsite/location/driveActive.
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
 
-import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
-import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
-import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
-import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
+import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
+import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
+import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
+import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
 import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
-import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.jpg";
+import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.webp";
 import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
@@ -154,13 +154,13 @@ function Microsite() {
   ];
 
   const images = [
-    { image: "assets/frontend/images/microsite/amentities/slider/slide1.png", alt: "Beautiful Scenery 1" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide2.jpg", alt: "Beautiful Scenery 2" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide3.jpg", alt: "Beautiful Scenery 3" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide4.jpg", alt: "Beautiful Scenery 4" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide5.jpg", alt: "Beautiful Scenery 5" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide6.jpg", alt: "Beautiful Scenery 6" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide7.jpg", alt: "Beautiful Scenery 7" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Beautiful Scenery 1" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Beautiful Scenery 4" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide5.webp", alt: "Beautiful Scenery 5" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Beautiful Scenery 6" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
   ];
 
 
@@ -181,10 +181,10 @@ function Microsite() {
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
-          { image: 'assets/frontend/images/microsite/location/driveIcons/education.png', text: 'Amity university , botanic garden of india republic', time: '10 min' },
-          { image: 'assets/frontend/images/microsite/location/driveIcons/junction.png', text: 'Greater noida expressway, worlds of wonder', time: '15 min' },
-          { image: 'assets/frontend/images/microsite/location/driveIcons/golfing.png', text: 'Noida golf course, sandal suites by lemon tree hotels', time: '20 min' },
-          { image: 'assets/frontend/images/microsite/location/driveIcons/hospital.png', text: 'Yatharth super specialty hospital, max super speciality hospital', time: '30 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School , Noida', time: '5 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Oasis Noida', time: '10 min' },
+          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Greater Noida Expressway', time: '15 min' },
         ]}
         walkData={[
           { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },

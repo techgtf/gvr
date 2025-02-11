@@ -40,6 +40,7 @@ const OurJourney = () => {
         "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
     },
     {
+      year: 2009,
       images: ["2009-1.webp", "2009-2.webp", "2009-3.webp", "2009-4.webp"],
       project: [
         {
@@ -187,10 +188,11 @@ const OurJourney = () => {
     },
   ];
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(2); // State to hold the selected project
-  const sectionRef = useTextAnimation(
-    { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
-    [selectedProjectIndex]
-  );
+
+  // const sectionRef = useTextAnimation(
+  //   { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
+  //   [selectedProjectIndex]
+  // );
 
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
@@ -199,9 +201,9 @@ const OurJourney = () => {
       </h3>
       <div className="flex justify-between items-center flex-wrap">
         {selectedProjectIndex == 4 ||
-        selectedProjectIndex == 9 ||
-        selectedProjectIndex == 11 ||
-        selectedProjectIndex == 12 ? (
+          selectedProjectIndex == 9 ||
+          selectedProjectIndex == 11 ||
+          selectedProjectIndex == 12 ? (
           <div className="relative xl:basis-[48%] xl:my-[2rem]  mb-[0rem] pt-[2rem] xl:pt-[0rem] overflow-y-scroll xl:max-h-[300px] no-scrollbar basis-[100%]">
             {projects[selectedProjectIndex].project.map((proj, index) => {
               return (
@@ -209,20 +211,22 @@ const OurJourney = () => {
                   className={
                     "xl:basis-[50%] no-scrollbar border-b-[1px] border-b-solid border-b-[#ddd] mr-[16px] pb-[10px] mb-[20px] basis-[100%] justify-between flex flex-wrap text-center "
                   }
-                  ref={sectionRef}
+                // ref={sectionRef}
                 >
-                  <div className="basis-[40%] text-left">
-                    <h4 className="midlandfontbold mb-[10px] xl:!text-[11px] text-[16px] sectionHeading tracking-[8px] text-primary">
-                      {proj.year}
-                    </h4>
-                    <p className=" text-primary tracking-[2px] leading-[20px] !text-[12px] ">
-                      {proj.category}
-                    </p>
-                  </div>
+                  <SlideIn>
+                    <div className="basis-[40%] text-left">
+                      <h4 className="midlandfontbold mb-[10px] xl:!text-[11px] text-[16px] sectionHeading tracking-[8px] text-primary">
+                        {proj.year}
+                      </h4>
+                      <p className=" text-primary tracking-[2px] leading-[20px] !text-[12px] ">
+                        {proj.category}
+                      </p>
+                    </div>
 
-                  <p className="basis-[55%] common_pera text-left !leading-[21px]">
-                    {proj.description}
-                  </p>
+                    <p className="basis-[55%] common_pera text-left !leading-[21px]">
+                      {proj.description}
+                    </p>
+                  </SlideIn>
                 </div>
               );
             })}
@@ -230,31 +234,31 @@ const OurJourney = () => {
         ) : (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
-            ref={sectionRef}
+          // ref={sectionRef}
           >
-            <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
-              {projects[selectedProjectIndex].year}
-            </h4>
-            <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-              {projects[selectedProjectIndex].category}
-            </p>
-            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-              {projects[selectedProjectIndex].description}
-            </p>
+            <SlideIn>
+              <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
+                {projects[selectedProjectIndex].year}
+              </h4>
+              <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
+                {projects[selectedProjectIndex].category}
+              </p>
+              <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+                {projects[selectedProjectIndex].description}
+              </p>
+            </SlideIn>
           </div>
         )}
 
-        <div className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center">
+        <div
+          // ref={sectionRef}
+          className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
+        >
           {projects[selectedProjectIndex].images.map((img, index) => {
             if (index == 0) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/1.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute top-[8%] xl:top-0 z-[1] left-[25%]"
                 />
@@ -263,26 +267,16 @@ const OurJourney = () => {
             if (index == 1) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/2.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
-                  className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:right-[13%] xl:top-[16%] top-[22%] right-[0%]  absolute z-[2]"
+                  className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:right-[13%] xl:top-[25%] top-[22%] right-[0%]  absolute z-[2]"
                 />
               );
             }
             if (index == 2) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/3.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] xl:top-[25%] top-[22%] left-[0%] xl:left-[8%] absolute z-[2]"
                 />
@@ -291,12 +285,7 @@ const OurJourney = () => {
             if (index == 3) {
               return (
                 <img
-                  src={
-                    projects[selectedProjectIndex].year == 2001 ||
-                    projects[selectedProjectIndex].year == 1970
-                      ? `assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`
-                      : `assets/frontend/images/aboutus/ourJourney/4.webp`
-                  }
+                  src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute right-[27%] bottom-[35%] xl:bottom-[15%] xl:right-[33%] z-[3]"
                 />
@@ -345,21 +334,18 @@ const OurJourney = () => {
                 onClick={() => setSelectedProjectIndex(index)}
               >
                 <figure
-                  className={`border relative bg-[#EFF5FA] border-solid border-[#B1B1B1] z-10 xl:w-32  xl:h-32 w-[4rem] h-[4rem] xl:flex-row flex-col flex justify-center items-center rounded-full ${
-                    selectedProjectIndex == index &&
+                  className={`border relative bg-[#EFF5FA] border-solid border-[#B1B1B1] z-10 xl:w-32  xl:h-32 w-[4rem] h-[4rem] xl:flex-row flex-col flex justify-center items-center rounded-full ${selectedProjectIndex == index &&
                     "border-primary xl:border-[1.5px] border-[1px]"
-                  }`}
+                    }`}
                 >
                   <img
-                    src={`assets/frontend/images/aboutus/ourJourney/${
-                      index == 4 || index == 9 || index == 11 || index == 12
-                        ? project.project[0].year
-                        : project.year
-                    }/${
-                      index === 4 || index === 9 || index === 11 || index === 12
+                    src={`assets/frontend/images/aboutus/ourJourney/${index == 4 || index == 9 || index == 11 || index == 12
+                      ? project.project[0].year
+                      : project.year
+                      }/${index === 4 || index === 9 || index === 11 || index === 12
                         ? project.project[0].timelineImg
                         : project.timelineImg
-                    }`}
+                      }`}
                     alt="timeline"
                     className="xl:w-[7.5rem] object-cover xl:h-[7.5rem] w-[3.5rem] h-[3.5rem] rounded-full"
                   />

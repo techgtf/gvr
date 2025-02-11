@@ -14,30 +14,45 @@ function Specifications({ title = "Specifications", specifications = [], altImag
   useLayoutEffect(() => {
     if (!specificationRefs.current.length) return;
 
+    gsap.registerPlugin(ScrollTrigger);
+
     let ctx = gsap.context(() => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      ScrollTrigger.killAll(); // ✅ Remove old triggers
 
-      gsap.fromTo(
-        specificationRefs.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: specificationRefs.current[0],
-            start: "top 90%",
-            end: "bottom 20%",
-          },
-        }
-      );
+      requestAnimationFrame(() => { // ✅ Ensure DOM update
+        gsap.fromTo(
+          specificationRefs.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: specificationRefs.current[0],
+              start: "top 90%",
+              end: "bottom 20%",
+            },
+          }
+        );
 
-      ScrollTrigger.refresh();
+        ScrollTrigger.refresh(); // ✅ Ensure fresh triggers
+      });
     });
 
-    return () => ctx.revert();
-  }, [location.pathname]); // ✅ Route change hone pe refresh hoga
+    return () => {
+      ctx.revert(); // ✅ Cleanup animations
+      ScrollTrigger.killAll(); // ✅ Ensure no old triggers persist
+      specificationRefs.current.length = 0; // ✅ Clear refs
+    };
+  }, [location.pathname]);
+
+  // ✅ Force refresh after route change
+  useEffect(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  }, [location.pathname]);
 
   return (
     <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
@@ -55,7 +70,11 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           }}
         >
           {specifications.map((spec, index) => (
-            <div key={index} className="col-span-12 lg:col-span-6" ref={(el) => (specificationRefs.current[index] = el)}>
+            <div
+              key={index}
+              className="col-span-12 lg:col-span-6"
+              ref={(el) => (specificationRefs.current[index] = el)}
+            >
               <h4 className="font-semibold">{spec.title}</h4>
               {spec.items?.map((item, itemIndex) => (
                 <div key={itemIndex} className="flex gap-3 py-5">
@@ -74,4 +93,3 @@ function Specifications({ title = "Specifications", specifications = [], altImag
 }
 
 export default Specifications;
-  
