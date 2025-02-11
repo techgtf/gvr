@@ -56,7 +56,7 @@ console.log(location.pathname);
   return (
     <div
       ref={containerRef}
-      className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+      className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[50px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
     // data-speed="clamp(.9)"
     // ref={sectionRef}
     >
@@ -71,7 +71,7 @@ console.log(location.pathname);
 
         <div ref={overlayLeftRef} className="overlay_overview overlay_left absolute z-[2] left-0 top-0 bottom-0 h-full bg-[#fff] w-[50%]"></div>
 
-        <div className="content lg:mt-[50px] overflow-hidden lg:mb-[50px] mb-[20px] text-center">
+        <div className="content lg:mt-[50px] mt-[10px] overflow-hidden lg:mb-[50px] mb-[20px] text-center">
           <div className="opacity-0" ref={contentRef}>
             <CommonPera
               PeraclassName="fontItalic"
