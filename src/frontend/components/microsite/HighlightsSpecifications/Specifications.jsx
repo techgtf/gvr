@@ -58,7 +58,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           <CommonHeading HeadingText={title} />
         </FadeIn>
         <div
-          className="grid grid-cols-12 mt-8 overflow-y-auto h-[450px] pr-5 specifications-scroll-container"
+          className="grid grid-cols-12 mt-8  pr-5 specifications-scroll-container"
           style={{
             backgroundImage: specifications.length > 0 ? "none" : `url(${altImage})`,
             backgroundSize: "cover",

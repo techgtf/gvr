@@ -18,51 +18,38 @@ function VerticalWaterMarkHeading({
 
   useLayoutEffect(() => {
     console.log("🚀 useLayoutEffect Running on:", location.pathname);
-
+  
     if (!sectionRef.current) {
-        console.error("❌ sectionRef.current is NULL");
-        return;
+      console.error("❌ sectionRef.current is NULL");
+      return;
     }
-
+  
     const elements = sectionRef.current.querySelectorAll(".bg_text");
     console.log("🔍 Found elements:", elements);
-
+  
     if (elements.length === 0) {
-        console.error("⚠️ No elements found for animation!");
-        return;
+      console.error("⚠️ No elements found for animation!");
+      return;
     }
-
-    // ✅ Ensure elements ki opacity reset ho animation ke pehle
-    gsap.set(elements, { opacity: 0, y: 80 });
-
-    // ✅ Check karo animation already chal chuki hai ya nahi
-    if (!sessionStorage.getItem("animationPlayed_" + location.pathname)) {
-        const animation = gsap.to(elements, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: animationConfig.stagger || 0.1,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 90%",
-                end: "bottom 20%",
-                toggleActions: "play none none none",
-            },
-            onComplete: () => {
-                console.log("✅ Animation Complete! Saving state...");
-                sessionStorage.setItem("animationPlayed_" + location.pathname, "true");
-            },
-        });
-
-        return () => {
-            console.log("♻️ Cleanup GSAP Animations...");
-            animation.kill();
-        };
-    } else {
-        console.log("⏭ Animation already played, skipping...");
-        gsap.set(elements, { opacity: 1, y: 0 }); // **Direct set so animation repeat na ho**
-    }
-}, [location.pathname]);
+  
+    // ❌ GSAP ka opacity: 0 set mat kar
+    // gsap.set(elements, { opacity: 0, y: 80 });
+  
+    gsap.to(elements, { 
+      opacity: 1, 
+      y: 0, 
+      duration: 0.8, 
+      stagger: animationConfig.stagger || 0.1,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 90%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      }
+    });
+  
+  }, [location.pathname]);
+  
 
 
 
