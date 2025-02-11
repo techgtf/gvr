@@ -142,7 +142,8 @@ export default function Header() {
                     isFixed ? "whiteIcon" : "coloredIcon"
                   } w-[80%]`}
                   src={
-                    isFixed ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                    isFixed || activeItem
+                    ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
                       : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
                   }
                   alt="menu"
