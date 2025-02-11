@@ -11,9 +11,6 @@ import LocationAdvantage from '../components/microsite/LocationAdvantage';
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery';
 import banquet from "/assets/frontend/images/microsite/vilasa/amentities/icons/banquet.png";
 import master_plan_img from "/assets/frontend/images/microsite/vilasa/plans/masterplan.jpg";
-import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.jpg";
-import plan2 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan2.jpg";
-import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.jpg";
 import loaction from "/assets/frontend/images/microsite/vilasa/location/location.jpg";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
@@ -218,26 +215,25 @@ function VilasaMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
                     { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Damdama Lake, Sohna', time: '22 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/airport.png', text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },       
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' }, 
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },           
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Damdama Lake, Sohna', time: '22 min' },                    
                     { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/airport.png', text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },                                  
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
                     { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },                   
-                
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },     
+                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },                                                                                                            
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

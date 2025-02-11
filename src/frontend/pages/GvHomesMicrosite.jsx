@@ -11,8 +11,8 @@ import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.p
 import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.jpg";
 import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.jpg";
 import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.jpg";
-import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.jpg";
-import loaction from "/assets/frontend/images/microsite/gv/location/location.png";
+import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
+import loaction from "/assets/frontend/images/microsite/gv/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
@@ -87,7 +87,7 @@ function GvHomesMicrosite() {
                 totalArea: "1937 Sq. Ft.",
             },
         ],
-      
+
     };
 
     // Highlishts data 
@@ -168,20 +168,20 @@ function GvHomesMicrosite() {
     // Images 
 
     const images = [
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide1.jpg", alt: "Split Air Conditioners" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide2.jpg", alt: "Power BAckup    " },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide3.jpg", alt: "Lift" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide4.jpg", alt: "Ventilation & Natural Light" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide5.jpg", alt: "Community Maintenance" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide6.jpg", alt: "Terrace" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide7.jpg", alt: "Basement Car Parking" },
-        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide8.jpg", alt: "Servant Quarters" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide1.webp", alt: "Split Air Conditioners" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide2.webp", alt: "Power BAckup    " },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide3.webp", alt: "Lift" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide4.webp", alt: "Ventilation & Natural Light" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide5.webp", alt: "Community Maintenance" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide6.webp", alt: "Terrace" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide7.webp", alt: "Basement Car Parking" },
+        { image: "assets/frontend/images/microsite/gv/amentities/slider/slide8.webp", alt: "Servant Quarters" },
     ];
 
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/gv/hero/hero.jpg"
+                backgroundImage="assets/frontend/images/microsite/gv/hero/hero.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -194,7 +194,7 @@ function GvHomesMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/gv/about/about.jpg"
+                imageSrc="assets/frontend/images/microsite/gv/about/about.webp"
                 headingText="ABOUT US"
                 descriptionText="GV HOMEZ, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
@@ -218,27 +218,28 @@ function GvHomesMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '3 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Deer Park', time: '16 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/shopping.png', text: 'Green Park Market', time: '13 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/metro.png', text: 'Green Park Metro Station', time: '11 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/shopping.png', text: 'Green Park Market', time: '13 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/hauzkhas.png', text: 'Hauz Khas Village', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '5 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Deer Park', time: '16 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/flights.png', text: 'IGI airport', time: '55 min' },
                 ]}
                 walkData={[
                     { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '11 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },
+                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },                
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },                   
+                   
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

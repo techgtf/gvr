@@ -1,12 +1,12 @@
 import gsap from "gsap";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { SlClose } from "react-icons/sl";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
 
 function SideMenu({ setOpenSidebar }) {
   const sideMenuRef = useRef(null);
-  const navigate = useNavigate(); // Using useNavigate for programmatic navigation
+  const navigate = useNavigate();
 
   useLayoutEffect(() => {
     gsap.fromTo(
@@ -15,7 +15,6 @@ function SideMenu({ setOpenSidebar }) {
       { x: 0, opacity: 0.9, duration: 1 }
     );
 
-    // Handle outside click to close sidebar
     const handleOutsideClick = (event) => {
       if (sideMenuRef.current && !sideMenuRef.current.contains(event.target)) {
         handleClose();
@@ -23,29 +22,21 @@ function SideMenu({ setOpenSidebar }) {
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [location.pathname]);
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = (callback) => {
     gsap.to(".sidemenu", {
       x: 100,
       opacity: 0,
-      duration: 1,
+      duration: 0.5,
       onComplete: () => {
-        setOpenSidebar(false); // Close the sidebar after animation completes
+        setOpenSidebar(false);
+        if (callback) callback();
       },
     });
-  };
-
-  const handleLinkClick = (path) => {
-    console.log(`Navigating to: ${path}`); // Ensure correct path before navigation
-    handleClose(); // Close the sidebar
-    setTimeout(() => {
-      navigate(path); // Programmatically navigate
-    }, 1000); // Delay navigation to match the animation
   };
 
   return (
@@ -55,83 +46,68 @@ function SideMenu({ setOpenSidebar }) {
     >
       <div className="flex flex-col relative items-center gap-5 justify-evenly h-full">
         <div className="absolute top-10 right-3">
-          <SlClose
-            onClick={handleClose}
-            className="cursor-pointer text-3xl text-[#00000094]"
-          />
+          <SlClose onClick={handleClose} className="cursor-pointer text-3xl text-[#00000094]" />
         </div>
         <ul className="w-full flex flex-col gap-10">
-          {/* Our Projects Section */}
           <li>
-            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              Our Projects
-            </div>
+            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">Our Projects</div>
             <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}residential`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                All Residential
-              </span>
+              <Link to={`${BASE_ROOT}residential`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}residential`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">All Residential</span>
+              </Link>
               /
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}commercial-projects`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                All Commercial
-              </span>
+              <Link to={`${BASE_ROOT}commercial-projects`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}commercial-projects`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">All Commercial</span>
+              </Link>
             </div>
           </li>
 
-          {/* Our Profile Section */}
           <li>
-            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              Our Profile
-            </div>
+            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">Our Profile</div>
             <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                About Us
-              </span>
+              <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}about-us`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">About Us</span>
+              </Link>
               /
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                Our ESG
-              </span>
+              <Link to={`${BASE_ROOT}esg`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}esg`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">Our ESG</span>
+              </Link>
             </div>
           </li>
 
-          {/* Career Section */}
           <li>
-            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              Career
-            </div>
+            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">Career</div>
             <div className="title_links uppercase text-[#0e69ae] py-3">
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}career`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                All Job Openings
-              </span>
+              <Link to={`${BASE_ROOT}career`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}career`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">All Job Openings</span>
+              </Link>
             </div>
           </li>
 
-          {/* Find Us Section */}
           <li>
-            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              Find Us
-            </div>
+            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">Find Us</div>
             <div className="title_links uppercase text-[#0e69ae] py-3">
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                Contact Us
-              </span>
+              <Link to={`${BASE_ROOT}contact-us`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}contact-us`));
+              }}>
+                <span className="text-[14px] tracking-[2px] cursor-pointer">Contact Us</span>
+              </Link>
             </div>
           </li>
         </ul>
