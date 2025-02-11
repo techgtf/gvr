@@ -181,7 +181,8 @@ function GvHomesMicrosite() {
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/gv/hero/hero.webp"
+                 desktopBg="assets/frontend/images/microsite/gv/hero/hero.webp"
+                mobileBg="assets/frontend/images/microsite/gv/hero/hero.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}

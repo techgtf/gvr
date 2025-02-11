@@ -133,55 +133,55 @@ function AnandamMicrosite() {
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/dining.png", description: " Vitrified tile flooring with OBD finish walls and ceiling." },
             ],
-        },       
+        },
         {
             title: "Master Bedroom",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/bedroom.png", description: " Laminated wooden flooring with elegant OBD walls." },
             ],
-        },       
+        },
         {
             title: "Other Bedrooms",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/bedroom.png", description: " Vitrified tile flooring with a smooth OBD finish." },
             ],
-        },       
+        },
         {
             title: "Kitchen",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/kitchen.png", description: " Ceramic with a granite countertop and SS sink." },
             ],
-        },       
+        },
         {
             title: "Toilets",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/toilet.png", description: " Designer ceramic tiles with premium CP fittings." },
             ],
-        },       
+        },
         {
             title: "Study/Servant Room",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/study.png", description: " Simple vitrified flooring with OBD walls." },
             ],
-        },       
+        },
         {
             title: "Balconies/Terrace",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/terrace.png", description: " Ceramic tiles with a cement-painted finish." },
             ],
-        },       
+        },
         {
             title: "Corridors/Lobby",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/lobby.png", description: " Kota/marble/tiled flooring with a whitewashed ceiling." },
             ],
-        },       
+        },
         {
             title: "Staircases",
             items: [
                 { image: "assets/frontend/images/microsite/anandam/specifications/stairs.png", description: "  Marble/Kota stone steps for durability and style." },
             ],
-        },       
+        },
     ];
 
     const images = [
@@ -192,22 +192,24 @@ function AnandamMicrosite() {
         { image: "assets/frontend/images/microsite/amentities/slider/slide5.webp", alt: "Beautiful Scenery 5" },
         { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Beautiful Scenery 6" },
         { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
-      ];
+    ];
 
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/anandam/hero/hero.webp"
+                desktopBg="assets/frontend/images/microsite/anandam/hero/hero.webp"
+                mobileBg="assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
                 duration={2}
                 bannerDetailsProps={{
                     heading: "ANANDAM",
-                    location: "sector 107, noida",
+                    location: "Sector 107, Noida",
                     description: "2 & 3 BHK LUXURY RESIDENTIAL APARTMENTS",
-                  }}
+                }}
             />
+
 
             <About
                 imageSrc="assets/frontend/images/microsite/anandam/about/about.webp"
@@ -235,7 +237,7 @@ function AnandamMicrosite() {
                     { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School , Noida', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Oasis Noida', time: '10 min' },
                     { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Greater Noida Expressway', time: '15 min' },
-                  ]}
+                ]}
                 walkData={[
                     { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
                     { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
