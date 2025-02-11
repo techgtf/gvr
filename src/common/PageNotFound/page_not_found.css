@@ -1,0 +1,12 @@
+.page_not_found{
+    height:calc(100vh - 73px);
+    /* display: flex;
+    align-items: center; */
+    /* background:#0158c7; */
+}
+
+.page_not_found .thumbnail{
+    max-width: 60%;
+    margin: auto;
+    display: table;
+}
