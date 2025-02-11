@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import ReactDOM from "react-dom";
 import WaterMarkHeading from '../waterMarkHeading';
 import './testimonial.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,64 +9,66 @@ import FullBtn from '../fullBtn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useImageReveal } from '../useImageReveal';
-// import 'swiper/css/effect-fade';
 
-
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 
 const slidesData = [
     {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2185164247/video/big-data-and-ai-title-on-newspaper-headline-style.mp4?s=mp4-640x640-is&k=20&c=qWLWncSWl-AKqW4Brj_Y0gBMxC-m3lLAoGp1gwPxBEc=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
+        name: 'Mr. Narinder Arora',
+        thumbs: 'narinder-arora.jpg',
+        video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
+        desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
     },
     {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2193787383/video/ai-as-a-service-title-on-digital-newspaper.mp4?s=mp4-640x640-is&k=20&c=86zE6WQGmagKxF4h9957zdfRxMwHBU3iaCpdZNhqIpo=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
+        name: 'Verma Family',
+        thumbs: 'verma-family.png',
+        video: 'https://www.youtube.com/watch?v=Nbm6iQ0IMMY',
+        desc: 'A Community Where Every Festival Feels Like Home',
     },
     {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2194184235/video/cyber-defense-powered-by-ai-the-end-of-hacking-headline-newspaper-title.mp4?s=mp4-640x640-is&k=20&c=fALDwOdpsl3iBSkyB8hCZtfPkAq2NNbNxr3rxZt_-LM=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
+        name: 'Mr. B.P. Bharti',
+        thumbs: 'bp-bharti.png',
+        video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
+        desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
     },
-    {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2185164247/video/big-data-and-ai-title-on-newspaper-headline-style.mp4?s=mp4-640x640-is&k=20&c=qWLWncSWl-AKqW4Brj_Y0gBMxC-m3lLAoGp1gwPxBEc=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
-    },
-    {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2193787383/video/ai-as-a-service-title-on-digital-newspaper.mp4?s=mp4-640x640-is&k=20&c=86zE6WQGmagKxF4h9957zdfRxMwHBU3iaCpdZNhqIpo=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
-    },
-    {
-        name: 'sidharth malhotra',
-        thumbs: 'thubnail.jpg',
-        video: 'https://media.istockphoto.com/id/2194184235/video/cyber-defense-powered-by-ai-the-end-of-hacking-headline-newspaper-title.mp4?s=mp4-640x640-is&k=20&c=fALDwOdpsl3iBSkyB8hCZtfPkAq2NNbNxr3rxZt_-LM=',
-        desc: 'Great Value Realty has been an absoluate game-changer for me.',
-    },
-
 ]
 
-// https://www.youtube.com/watch?v=Nbm6iQ0IMMY
-// https://www.youtube.com/watch?v=nT86JG8JiHk
-// https://www.youtube.com/watch?v=rSFwv7_ucSs
+const getEmbedUrl = (url) => url.replace("watch?v=", "embed/");
+
+const VideoModal = ({ videoUrl, onClose }) => {
+    if (!videoUrl) return null;
+    return ReactDOM.createPortal(
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-[20px] flex items-center justify-center z-50">
+            <div className="relative bg-white lg:p-4 p-2 rounded-lg lg:w-[auto] w-[98%]">
+                <button
+                    className="absolute top-2 right-2 bg-red-600 text-white px-3 py-1 rounded-full"
+                    onClick={onClose}
+                >
+                    ✕
+                </button>
+                <iframe
+                    className='lg:w-[1000px] w-[100%] lg:h-[500px] h-[250px]'
+                    src={videoUrl}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                ></iframe>
+            </div>
+        </div>,
+        document.body
+    );
+};
 
 export default function Testimonial() {
 
-    const [playingVideo, setPlayingVideo] = useState(null);
-
-    const videoRefs = useRef([]);
+    // const videoRefs = useRef([]);
     const testimonialRef = useRef(null);
     const swiperContainerRef = useRef(null);
+
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
     useImageReveal(".reveal")
 
@@ -74,27 +77,27 @@ export default function Testimonial() {
         from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
     };
 
-    const togglePlayPause = (index) => {
-        videoRefs.current.forEach((video, i) => {
-            if (video) {
-                if (i === index) {
-                    if (video.paused) {
-                        video.play();
-                        setPlayingVideo(video);
-                    } else {
-                        video.pause();
-                        setPlayingVideo(null);
-                    }
-                } else {
-                    video.pause();
-                }
-            }
-        });
-    };
+    // const togglePlayPause = (index) => {
+    //     videoRefs.current.forEach((video, i) => {
+    //         if (video) {
+    //             if (i === index) {
+    //                 if (video.paused) {
+    //                     video.play();
+    //                     setPlayingVideo(video);
+    //                 } else {
+    //                     video.pause();
+    //                     setPlayingVideo(null);
+    //                 }
+    //             } else {
+    //                 video.pause();
+    //             }
+    //         }
+    //     });
+    // };
 
-    const handleVideoEnd = () => {
-        setPlayingVideo(null)
-    }
+    // const handleVideoEnd = () => {
+    //     setPlayingVideo(null)
+    // }
 
 
 
@@ -129,26 +132,19 @@ export default function Testimonial() {
                             <SwiperSlide key={index} className="panel">
                                 <div className='flex_div flex flex-wrap justify-between'>
                                     <div className='posterSide relative lg:w-[45%] w-full'>
-                                        {/* <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.name}`} /> */}
-                                        <video
+                                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.name}`} />
+                                        {/* <video
                                             ref={(el) => (videoRefs.current[index] = el)}
                                             poster={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`}
                                             src={item.video}
                                             className="w-full"
-                                            onEnded={handleVideoEnd}
-                                        ></video>
+                                        ></video> */}
                                         <button
-                                            onClick={() => togglePlayPause(index)}
                                             className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'
-                                        ><img
-                                                src={playingVideo &&
-                                                    playingVideo.src === item.video ?
-                                                    `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/pause-button.png` :
-                                                    `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`
-                                                }
-                                                className='cursor-pointer lg:h-[44px] h-[30px]'
-                                                alt="playbtn"
-                                            /></button>
+                                            onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
+                                        >
+                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='cursor-pointer lg:h-[44px] h-[30px]' alt="playbtn" />
+                                        </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
                                     <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
@@ -162,6 +158,7 @@ export default function Testimonial() {
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    <VideoModal videoUrl={selectedVideo} onClose={() => setSelectedVideo(null)} />
                 </div>
             </div>
         </div>

@@ -8,13 +8,14 @@ export default function FooterBottom() {
       <div className="flex flex-wrap max-w-[95%] uppercase lg:justify-between justify-center m-auto">
         <Link
           className="xl:text-[12px] text-[10px] tracking-[1px] text-[#a3a3a3]"
-          to={"#"}
+          to={"https://gtftechnologies.com/"}
+          target="_blank"
         >
           Crafted by GTF Technologies
         </Link>
         <div className="xl:text-[12px] text-[10px] centerd tracking-[1px] text-[#8f8f8f]">
           Copyright ©{" "}
-          <Link className="xl:text-[12px] text-[10px] text-[#33638B]" to={"#"}>
+          <Link className="xl:text-[12px] text-[10px] text-[#33638B]" to={`${CONFIG.BASE_ROOT}`}>
             GreaT Value Realty
           </Link>{" "}
           2025. All Rights Reserved

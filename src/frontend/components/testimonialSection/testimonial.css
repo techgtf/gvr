@@ -50,4 +50,5 @@
   .testimonialSwiper .swiper-button-prev:after{font-size: 13px;}
   .testimonialSwiper .name::after{background-size: 30px; width: 32px; top: 0;}
   .testimonialSwiper .name{margin-bottom: 50px; margin-top: 21px;}
+  .testimonialSwiper .desc{line-height: 26px;}
 }

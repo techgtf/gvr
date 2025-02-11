@@ -125,14 +125,14 @@ const BlogList = () => {
             <li key={index} className="mt-5">
             <SlideIn duration={1} delay={0.5}>
               <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
-                <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-light lg:leading-[29px] leading-[25px]">
+                <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-normal md:font-light leading-[20px] md:leading-[25px] lg:leading-[29px]">
                   {" "}
                   {item.title?.length > 100
                     ? `${item.title.slice(0, 90)}...`
                     : item.title}{" "}
                 </p>
                 <div
-                  className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] ${
+                  className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] mt-2 ${
                     item?.length > 100
                       ? "lg:mt-[-18px] mt-[-20px]"
                       : "lg:mt-[5px]"
