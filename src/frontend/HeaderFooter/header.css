@@ -9,7 +9,9 @@
   animation: slide-down 0.9s;
 }
 .app_header.active::after{display: none;}
-
+.letter_spacing_20{
+  letter-spacing: 20px;
+}
 @keyframes slide-down {
   0% {
     -webkit-transform: translateY(-100%);

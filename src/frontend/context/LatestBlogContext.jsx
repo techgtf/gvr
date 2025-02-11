@@ -2,8 +2,10 @@ import { createContext, useState, useEffect } from "react";
 const latestBlog = [
     {
       id: 1,
-      imgSrc: "blog3.png",
+      desktopImg:"desktop-blog-3.webp",
+      mobileImg:"blog3.png",
       date: "10-12-2024",
+      type:"Blog",
       title:"Buying vs Renting in Noida Sector 107: Which Option is Right for You?",
       desc:"Noida Sector 107 has become a highly sought-after area for both buyers and renters, thanks to its strategic location, excellent connectivity, and well-developed infrastructure. If you're contemplating whether to buy or rent a property in this thriving locality, it's important to weigh the pros and cons of both options. Let's dive into the factors that can guide your decision.",
       subtitles:[
@@ -27,8 +29,10 @@ const latestBlog = [
     },
     {
       id: 2,
-      imgSrc: "blog2.png",
+      desktopImg:"desktop-blog-2.webp",
+      mobileImg:"blog2.png",
       date: "11-12-2024",
+      type:"Blog",
       title:"Why Noida Sector 107 is the Perfect Location for Your New Home",
       desc:"Finding the perfect home is not only about more than just a well-designed living space; it’s about choosing a location that advances your lifestyle. Noida Sector 107 is rapidly gaining popularity among homebuyers seeking a balance of urban convenience, connectivity, and green living. This vibrant neighborhood offers top-notch infrastructure, abundant green spaces, and proximity to essential amenities, making it a well-rounded option for families and professionals alike.",
       subtitles:[
@@ -52,8 +56,10 @@ const latestBlog = [
     },
     {
       id: 3,
-      imgSrc: "blog1.png",
+      desktopImg:"desktop-blog-3.webp",
+      mobileImg:"blog1.webp",
       date: "12-12-2024",
+      type:"Blog",
       title:"A Guide to the Best Schools, Hospitals, and Shopping Centers Near Sector 107, Noida",
       desc:"Sector 107, Noida, offers more than just comfortable living spaces; it’s a vibrant locale enriched with top-tier schools, state-of-the-art healthcare facilities, and bustling shopping destinations. Strategically located and well-connected, this area caters to every need, blending urban convenience with community charm. Whether you’re looking for quality education, reliable healthcare, or retail therapy, Sector 107 and its surroundings present a dynamic mix of options to elevate your lifestyle.",
       subtitles:[

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import InSightLinks from './inSightLinks'
 import BlogCard from './BlogCard'
 import WaterMarkHeading from "../waterMarkHeading"
 import "./blog.css"
 import FullBtn from '../fullBtn'
 import { BASE_ROOT } from '../../../../config'
+import { LatestBlogContext } from '../../context/LatestBlogContext'
 
 
 export default function BlogSection() {
+  const { latestBlog } = useContext(LatestBlogContext);
 
     return (
         <div className='blogSection 2xl:py-16 xl:py-8 py-[50px]'>
@@ -16,7 +18,7 @@ export default function BlogSection() {
                     <div className='left-side lg:w-[40%] w-full lg:pr-[25px] lg:mb-0 mb-10'>
                         <WaterMarkHeading sectionHeading='Discover Insights' />
                         <div className='links_div lg:mt-14 lg:mb-16 mt-7 mb-12'>
-                            <InSightLinks />
+                            <InSightLinks blogData={latestBlog}/>
                         </div>
                         <FullBtn link={`${BASE_ROOT}blogs`} text='explore more' />
 
@@ -24,7 +26,7 @@ export default function BlogSection() {
                     <div className='right-side lg:w-[47%] w-full lg:pl-24'>
                         <h5 className='heading-right midlandfontmedium tracking-[4px]'>Latest Blog</h5>
                         <div className='card_div lg:mt-10 mt-8'>
-                            <BlogCard />
+                            <BlogCard  blogData={latestBlog}/>
                         </div>
                     </div>
                 </div>
