@@ -177,6 +177,17 @@ img {
   letter-spacing: -20px;
 }
 
+
+/* Safari ke liye */
+@media not all and (min-resolution: 0.001dpcm) { 
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      .waterMarkDiv.vertical .bg_text {
+          letter-spacing: 0px !important; /* Safari */
+      }
+  }
+}
+
+
 .sectionHeading {
   font-size: 12px;
   font-weight: 500;

@@ -8,9 +8,9 @@ import Plans from '../components/microsite/Plans'
 import LocationAdvantage from '../components/microsite/LocationAdvantage'
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery'
 import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.png";
-import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.jpg";
-import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.jpg";
-import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.jpg";
+import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.webp";
+import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.webp";
+import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.webp";
 import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
 import loaction from "/assets/frontend/images/microsite/gv/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.png";
