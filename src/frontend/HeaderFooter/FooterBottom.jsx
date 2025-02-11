@@ -4,7 +4,7 @@ import * as CONFIG from "../../../config";
 
 export default function FooterBottom() {
   return (
-    <div className="footer_bottom text-center lg:py-5 py-2">
+    <div className="footer_bottom text-center lg:pt-5 lg:pb-5 pb-[80px] pt-2">
       <div className="flex flex-wrap max-w-[95%] uppercase lg:justify-between justify-center m-auto">
         <Link
           className="xl:text-[12px] text-[10px] tracking-[1px] text-[#a3a3a3]"
