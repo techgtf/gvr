@@ -19,7 +19,7 @@ const Aboutus = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
         heading={"ABOUT US"}
         extraClassesImg={"objectRight"}
       />
