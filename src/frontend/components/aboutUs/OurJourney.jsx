@@ -63,7 +63,7 @@ const OurJourney = () => {
     {
       year: 2010,
       timelineImg: "2010-1.webp",
-      images: ["2010-1.webp", "2010-2.webp", "2010-3.webp", "2010-4.webp"],
+      images: ["2010-1.webp", "2010-2.png ", "2010-3.png ", "2010-4.png "],
       category: "Great Value Sharanam",
       description:
         "A luxurious residential project spread across 16 acres, featuring 16 towers with world-class amenities.",
@@ -201,9 +201,9 @@ const OurJourney = () => {
       </h3>
       <div className="flex justify-between items-center flex-wrap">
         {selectedProjectIndex == 4 ||
-          selectedProjectIndex == 9 ||
-          selectedProjectIndex == 11 ||
-          selectedProjectIndex == 12 ? (
+        selectedProjectIndex == 9 ||
+        selectedProjectIndex == 11 ||
+        selectedProjectIndex == 12 ? (
           <div className="relative xl:basis-[48%] xl:my-[2rem]  mb-[0rem] pt-[2rem] xl:pt-[0rem] overflow-y-scroll xl:max-h-[300px] no-scrollbar basis-[100%]">
             {projects[selectedProjectIndex].project.map((proj, index) => {
               return (
@@ -211,7 +211,7 @@ const OurJourney = () => {
                   className={
                     "xl:basis-[50%] no-scrollbar border-b-[1px] border-b-solid border-b-[#ddd] mr-[16px] pb-[10px] mb-[20px] basis-[100%] justify-between flex flex-wrap text-center "
                   }
-                // ref={sectionRef}
+                  // ref={sectionRef}
                 >
                   <SlideIn>
                     <div className="basis-[40%] text-left">
@@ -234,26 +234,21 @@ const OurJourney = () => {
         ) : (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
-          // ref={sectionRef}
+            // ref={sectionRef}
           >
-            <SlideIn>
-              <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
-                {projects[selectedProjectIndex].year}
-              </h4>
-              <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-                {projects[selectedProjectIndex].category}
-              </p>
-              <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-                {projects[selectedProjectIndex].description}
-              </p>
-            </SlideIn>
+            <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
+              {projects[selectedProjectIndex].year}
+            </h4>
+            <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
+              {projects[selectedProjectIndex].category}
+            </p>
+            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+              {projects[selectedProjectIndex].description}
+            </p>
           </div>
         )}
 
-        <div
-          // ref={sectionRef}
-          className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
-        >
+        <div className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center">
           {projects[selectedProjectIndex].images.map((img, index) => {
             if (index == 0) {
               return (
@@ -296,9 +291,6 @@ const OurJourney = () => {
       </div>
       <div className="relative mt-[-6rem] xl:mt-[0rem]">
         <Swiper
-          // spaceBetween={120}
-          // slidesPerView={5}
-
           breakpoints={{
             300: {
               slidesPerView: 3,
@@ -334,18 +326,21 @@ const OurJourney = () => {
                 onClick={() => setSelectedProjectIndex(index)}
               >
                 <figure
-                  className={`border relative bg-[#EFF5FA] border-solid border-[#B1B1B1] z-10 xl:w-32  xl:h-32 w-[4rem] h-[4rem] xl:flex-row flex-col flex justify-center items-center rounded-full ${selectedProjectIndex == index &&
+                  className={`border relative bg-[#EFF5FA] border-solid border-[#B1B1B1] z-10 xl:w-32  xl:h-32 w-[4rem] h-[4rem] xl:flex-row flex-col flex justify-center items-center rounded-full ${
+                    selectedProjectIndex == index &&
                     "border-primary xl:border-[1.5px] border-[1px]"
-                    }`}
+                  }`}
                 >
                   <img
-                    src={`assets/frontend/images/aboutus/ourJourney/${index == 4 || index == 9 || index == 11 || index == 12
-                      ? project.project[0].year
-                      : project.year
-                      }/${index === 4 || index === 9 || index === 11 || index === 12
+                    src={`assets/frontend/images/aboutus/ourJourney/${
+                      index == 4 || index == 9 || index == 11 || index == 12
+                        ? project.project[0].year
+                        : project.year
+                    }/${
+                      index === 4 || index === 9 || index === 11 || index === 12
                         ? project.project[0].timelineImg
                         : project.timelineImg
-                      }`}
+                    }`}
                     alt="timeline"
                     className="xl:w-[7.5rem] object-cover xl:h-[7.5rem] w-[3.5rem] h-[3.5rem] rounded-full"
                   />
