@@ -7,8 +7,8 @@ import Header from "../frontend/HeaderFooter/Header";
 import Footer from "../frontend/HeaderFooter/Footer";
 import MicrositeMenu from "./components/microsite/MicrositeMenu";
 import CustomCursor from "./components/CustomCursor";
-import Loader from "../Loader/loader";
-import useMediaLoaded from "./components/useMediaLoaded";
+// import Loader from "../Loader/loader";
+// import useMediaLoaded from "./components/useMediaLoaded";
 import "../Loader/loader.css";
 import { BASE_ROOT } from "../../config";
 import MbTabLinks from "./components/mbTabLinks";
@@ -17,14 +17,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function Layout({ children }) {
   const location = useLocation();
-  const mediaLoaded = useMediaLoaded();
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (mediaLoaded) {
-      setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
-    }
-  }, [mediaLoaded]);
   useEffect(() => {
     let smoother = ScrollSmoother.get();
 
@@ -66,13 +59,6 @@ function Layout({ children }) {
     <>
       {/* Custom Cursor */}
       <CustomCursor />
-
-      {/* Loader Overlay */}
-      {loading && (
-        <div className="fixed top-0 left-0 w-full h-full bg-white flex items-center justify-center z-[100] transition-opacity duration-500">
-          <Loader />
-        </div>
-      )}
 
       {/* Main Content */}
       <Header />
