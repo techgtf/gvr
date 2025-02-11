@@ -188,6 +188,7 @@ const OurJourney = () => {
     },
   ];
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(2); // State to hold the selected project
+
   const sectionRef = useTextAnimation(
     { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
     [selectedProjectIndex]
@@ -245,7 +246,10 @@ const OurJourney = () => {
           </div>
         )}
 
-        <div className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center">
+        <div
+          ref={sectionRef}
+          className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
+        >
           {projects[selectedProjectIndex].images.map((img, index) => {
             if (index == 0) {
               return (
