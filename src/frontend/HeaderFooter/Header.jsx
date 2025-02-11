@@ -95,11 +95,19 @@ export default function Header() {
   return (
     <>
       <ScrollToTop />
-      <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 ring-0 w-full !z-20 ${activeItem ? "bg-[#EFF5FA]" : ""}`}>
+      <header
+        className={`app_header ${
+          isFixed ? "fixed active" : "relative"
+        } top-0 left-0 ring-0 w-full !z-20 ${activeItem ? "bg-[#EFF5FA]" : ""}`}
+      >
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
             <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="logo" />
+              <img
+                className="w-[50%] sm:w-[70%] cursor-pointer"
+                src={getLogoSrc()}
+                alt="logo"
+              />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
               <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"}`}>
@@ -125,9 +133,14 @@ export default function Header() {
                   })}
                 </ul>
               </div>
-              <button className="menuBtn flex justify-end items-center" onClick={handleToggleSidebar}>
+              <button
+                className="menuBtn flex justify-end items-center"
+                onClick={handleToggleSidebar}
+              >
                 <img
-                  className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
+                  className={`cursor-pointer ${
+                    isFixed ? "whiteIcon" : "coloredIcon"
+                  } w-[80%]`}
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
@@ -142,7 +155,12 @@ export default function Header() {
           </div>
         </div>
         {openSidebar && <SideMenu setOpenSidebar={setOpenSidebar} />}
-        {dropdown && <NavDropdown setDropdown={setDropdown} setActiveItem={setActiveItem} />}
+        {dropdown && (
+          <NavDropdown
+            setDropdown={setDropdown}
+            setActiveItem={setActiveItem}
+          />
+        )}
       </header>
     </>
   );

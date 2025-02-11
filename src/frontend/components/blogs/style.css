@@ -8,3 +8,14 @@
     height: calc(100% - 14px) ;
     z-index: 1;
 }
+
+.blogs_list_content{
+
+    li{
+
+        a{
+
+            
+        }
+    }
+}

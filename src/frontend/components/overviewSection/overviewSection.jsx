@@ -60,15 +60,21 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
   }, [location.pathname]); // 🔥 Ensures animation resets when route changes
 
   return (
-    <div ref={containerRef} className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
+    <div
+      ref={containerRef}
+      className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+    // data-speed="clamp(.9)"
+    // ref={sectionRef}
+    >
+
       <div className="headingWrap lg:max-w-[79%] max-w-[95%] m-auto text-center">
         <CommonHeading HeadingText={heading} />
       </div>
-      
+
       <div className="wrap_content relative overflow-hidden m-auto lg:max-w-[85%] w-[100%]">
         <div ref={overlayLeftRef} className="overlay_overview overlay_left absolute z-[2] left-0 top-0 bottom-0 h-full bg-[#fff] w-[50%]"></div>
 
-        <div className="content lg:mt-[50px] overflow-hidden lg:mb-[50px] mb-[20px] text-center">
+        <div className="content lg:mt-[50px] mt-[10px] overflow-hidden lg:mb-[50px] mb-[20px] text-center">
           <div className="opacity-0" ref={contentRef}>
             <CommonPera PeraclassName="fontItalic" PeraText={paragraph} />
           </div>

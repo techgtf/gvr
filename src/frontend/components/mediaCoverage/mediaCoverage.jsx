@@ -39,7 +39,7 @@ export default function MediaCoverage() {
         <div className='mediaCoverageSection bg-[#EFF5FA] lg:py-20 py-12 text-center'>
             <SlideIn duration={2} delay={0.5}>
                 <WaterMarkHeading sectionHeading='Our media coverage' />
-                <div className='lg:max-w-[61%] max-w-[95%] m-auto lg:pt-24 pt-7'>
+                <div className='lg:max-w-[61%] max-w-[95%] m-auto lg:pt-24 pt-12'>
                     <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">
                         <Swiper
                             modules={[Autoplay, FreeMode]}
