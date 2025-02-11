@@ -28,6 +28,7 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import ComingSoon from "../frontend/pages/ComingSoon";
 import Testimonials from "../frontend/pages/Testimonials";
 import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
@@ -95,6 +96,18 @@ export const UserRoutes = [
             <Suspense fallback={<Loader />}>
               <Layout>
                 <ThankYou />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}coming-soon`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <ComingSoon />
               </Layout>
             </Suspense>
           </ErrorBoundary>

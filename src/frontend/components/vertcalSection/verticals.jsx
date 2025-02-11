@@ -21,13 +21,13 @@ export default function Verticals() {
             title: 'GV Capital',
             imgSrc: 'capital.jpg',
             description: 'GV Capital accelerates visionary businesses with strategic investments, expert mentorship, and smart capital for lasting impact and growth.',
-            link: `${CONFIG.BASE_ROOT}about-us`
+            link: `${CONFIG.BASE_ROOT}coming-soon`
         },
         {
             title: 'GV Finance',
             imgSrc: 'finance.jpg',
             description: 'GV Finance empowers businesses and individuals with smart financial solutions, optimizing cash flow, securing investments, and driving sustainable growth.',
-            link: `${CONFIG.BASE_ROOT}about-us`
+            link: `${CONFIG.BASE_ROOT}coming-soon`
         },
     ]
 
