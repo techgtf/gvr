@@ -3,6 +3,7 @@ import CommonBtn from "../commonBtn";
 import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useImageReveal } from "../useImageReveal";
+import { BASE_ROOT } from "../../../../config";
 
 const OurVerticals = () => {
   const animationConfig = {
@@ -65,12 +66,16 @@ const OurVerticals = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
+            <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
-              <CommonBtn to={""} TagName={Link} target="_blank">
+              <CommonBtn
+                to={BASE_ROOT + "coming-soon"}
+                TagName={Link}
+                target="_blank"
+              >
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div> */}
+            </div>
           </div>
           <img
             src="assets/frontend/images/aboutus/verticals/vertical-1.webp"
@@ -120,12 +125,16 @@ const OurVerticals = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex justify-center mt-[1rem] w-[92%]">
+            <div className="flex justify-center mt-[1rem] w-[92%]">
               {" "}
-              <CommonBtn to={""} TagName={Link} target="_blank">
+              <CommonBtn
+                to={BASE_ROOT + "coming-soon"}
+                TagName={Link}
+                target="_blank"
+              >
                 Know More <BsArrowUpRight />{" "}
               </CommonBtn>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
