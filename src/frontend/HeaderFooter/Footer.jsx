@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import "./footer.css";
-import FooterLinks from "./FooterLinks";
-import gsap from "gsap";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
-import * as CONFIG from "../../../config";
-import { BASE_ROOT } from "../../../config";
-import { Link } from "react-router-dom";
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import "./footer.css"
+import FooterLinks from './FooterLinks'
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import * as CONFIG from '../../../config'
+import { BASE_ROOT } from '../../../config'
+import { Link } from 'react-router-dom'
 import { LiaAngleDownSolid } from "react-icons/lia";
 import { LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from "./FooterBottom";
@@ -15,15 +15,23 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef(null);
 
   useEffect(() => {
-    if (toggelLinks) {
+    if (footerRef.current) {
+      setFooterHeight(footerRef.current.scrollHeight);
+    }
+  }, [toggelLinks]); // Update height when toggling
+
+  useLayoutEffect(() => {
+    if (toggelLinks && footerHeight > 0) {
       gsap.to(window, {
         scrollTo: { y: document.body.scrollHeight, autoKill: false },
         duration: 1,
       });
     }
-  }, [toggelLinks]);
+  }, [footerHeight, location.pathname]);
 
   const handleLinkClick = (e, path) => {
     e.preventDefault(); // Prevent default link behavior temporarily
@@ -39,9 +47,8 @@ export default function Footer() {
     <>
       <ScrollToTop />
       <section id="mainfooter">
-        <footer className="footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative">
-          <button
-            className="toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px]"
+        <footer ref={footerRef} className='footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative'>
+          <button className='toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px]'
             onClick={() => {
               setToggelLinks(!toggelLinks);
             }}
@@ -66,32 +73,11 @@ export default function Footer() {
                   alt="logo"
                 />
               </Link>
-              <ul className="grid md:grid-cols-4 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]">
-                <li>
-                  {" "}
-                  <Link
-                    to={"/great-value-1/Residential"}
-                    className="xl:text-[14px] text-[12px]"
-                  >
-                    our projects
-                  </Link>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <Link to={"#"} className="xl:text-[14px] text-[12px]">
-                    media centre
-                  </Link>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <Link
-                    to={`/great-value-1/about-us`}
-                    className="xl:text-[14px] text-[12px]"
-                  >
-                    Our Profile
-                  </Link>{" "}
-                </li>
-                <li>
+              <ul className='grid md:grid-cols-4 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]'>
+                <li> <Link to={`${BASE_ROOT}residential`} className='xl:text-[14px] text-[12px]'>our projects</Link> </li>
+                <li> <Link to={'#'} className='xl:text-[14px] text-[12px]'>media centre</Link> </li>
+                <li> <Link to={`${BASE_ROOT}about-us`} className='xl:text-[14px] text-[12px]'>Our Profile</Link> </li>
+                <li> 
                   <Link
                     to={`${CONFIG.BASE_ROOT}contact-us`}
                     onClick={(e) =>

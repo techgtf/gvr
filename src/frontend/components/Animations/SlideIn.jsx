@@ -10,7 +10,9 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
   useEffect(() => {
     const element = elementRef.current;
 
-    gsap.fromTo(
+    if (!element) return;
+
+    const animation = gsap.fromTo(
       element,
       { y: 50, opacity: 0 },
       {
@@ -18,7 +20,6 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
         opacity: 1,
         duration,
         delay,
-        stagger: 1,
         scrollTrigger: {
           trigger: element,
           start: "top 100%",
@@ -28,9 +29,9 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
     );
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      animation.scrollTrigger?.kill(); // Cleanup ScrollTrigger
     };
-  }, [duration, delay]);
+  }, [duration, delay,location.pathname]);
 
   return <div ref={elementRef}>{children}</div>;
 };

@@ -5,6 +5,7 @@ import './styles.css';
 import { useTextAnimation } from '../useTextAnimation';
 import ZoomOut from "../Animations/ZoomOut";
 import LoadAnimation from "../../../Loader/loadAnimation";
+import ScrollToTop from "../ScrollToTop";
 
 export default function Hero({
     videoUrl,
@@ -23,33 +24,36 @@ export default function Hero({
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
     return (
-        <div className="heroSection relative z-0">
-            {/* Background Image */}
+        <>
+            <ScrollToTop />
+            <div className="heroSection relative z-0">
+                {/* Background Image */}
 
-            <div className='hero_vdo_div lg:h-[80vh] h-[75vh] relative w-full] bg-cover'
-                style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
-            >
-                <LoadAnimation />
-                {/* <ZoomOut initialScale={1.5} duration={4}> */}
-                <video
-                    // className="min-h-svh"
-                    // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-                    src={`https://res.cloudinary.com/dx3l6id8r/video/upload/v1738587559/herovdo_wpbnv6.mp4`}
-                    autoPlay
-                    playsInline
-                    loop
-                    muted
-                    onLoadedData={() => setIsVideoLoaded(true)}
-                    preload="auto"
-                    className="lg:h-[80vh] h-[75vh] w-full object-cover"
-                ></video>
-                {/* </ZoomOut> */}
+                <div className='hero_vdo_div lg:h-[auto] h-[75vh] relative w-full] bg-cover'
+                    style={{ background: "url(assets/frontend/images/home/hero.jpg) no-repeat center" }}
+                >
+                    <LoadAnimation />
+                    {/* <ZoomOut initialScale={1.5} duration={4}> */}
+                    <video
+                        // className="min-h-svh"
+                        // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
+                        // https://res.cloudinary.com/dx3l6id8r/video/upload/v1738997400/gvr-700x1000_mz5mdz.mp4
+                        src={window.innerWidth > 767 ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739181951/1920x900_1_jhutji.mp4` : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739180202/700x1000_xrmmbh.mp4`}
+                        autoPlay
+                        playsInline
+                        loop
+                        muted
+                        onLoadedData={() => setIsVideoLoaded(true)}
+                        preload="auto"
+                        className="lg:h-[auto] h-[75vh] w-full object-cover"
+                    ></video>
+                    {/* </ZoomOut> */}
 
 
-            </div>
+                </div>
 
-            {/* Content Overlay */}
-            {/* <div className={`container text-center absolute z-1 text-white ${containerClasses}`}>
+                {/* Content Overlay */}
+                {/* <div className={`container text-center absolute z-1 text-white ${containerClasses}`}>
                 <h1
                     ref={textRef}
                     data-speed="clamp(0.7)"
@@ -57,6 +61,7 @@ export default function Hero({
                     {heading || 'Curating the Finest in Luxury Real Estate'}
                 </h1>
             </div> */}
-        </div>
+            </div>
+        </>
     );
 }

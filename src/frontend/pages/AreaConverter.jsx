@@ -10,7 +10,6 @@ export default function AreaConverter() {
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/area-converter/banner.webp`}
                 heading={"Area Converter"}
-                breadCrumb={"Home  -  Area Converter"}
                 extraClassesImg={"objectRight"}
             />
             <AreaConverterIndex />

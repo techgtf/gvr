@@ -1,1 +1,5 @@
 .blogSection .heading-right{font-size: 10px;}
+.blogSection .flexbox::after{position: absolute; content: ''; left: 50%; top: 0; bottom: 0; height: 100%; width: 1px; background: rgb(157 157 157 / 14%);}
+@media (max-width:767px) {
+    .blogSection .flexbox::after{display: none;}
+}

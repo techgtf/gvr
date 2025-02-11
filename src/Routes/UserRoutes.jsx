@@ -11,12 +11,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import MicrositeMenu from "../frontend/components/microsite/MicrositeMenu";
 import About from "../frontend/pages/Aboutus";
+import Testimonials from "../frontend/pages/Testimonials";
 import EmiCalculator from "../frontend/pages/emiCalculator";
 import Residential from "../frontend/pages/residential";
 import ContactUs from "../frontend/pages/Contactus";
 import Csr from "../frontend/pages/Csr";
 import ErrorBoundary from "../frontend/components/ErrorBoundary";
 import AnandamMicrosite from "../frontend/pages/AnandamMicrosite";
+import GvHomesMicrosite from "../frontend/pages/GvHomesMicrosite";
 import TaxBenifits from "../frontend/pages/TaxBenifits";
 import NriCorner from "../frontend/pages/NriCorner";
 import Career from "../frontend/pages/Career";
@@ -27,8 +29,10 @@ import BlogDetails from "../frontend/pages/BlogDetails";
 import Faqs from "../frontend/pages/Faqs";
 import PropertyInvestment from "../frontend/pages/PropertyInvestment";
 import ThankYou from "../frontend/pages/ThankYou";
+import VilasaMicrosite from "../frontend/pages/VilasaMicrosite";
 import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
+import MediaCenter from "../frontend/pages/MediaCenter";
 
 export const UserRoutes = [
   {
@@ -109,6 +113,42 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}vilasa`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <VilasaMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}media`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <MediaCenter />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}gv-homes`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <GvHomesMicrosite />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}contact-us`,
         element: (
           <ErrorBoundary>
@@ -157,6 +197,18 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}testimonials`,
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Layout>
+                <Testimonials />
+              </Layout>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}blogs`,
         element: (
           <Suspense fallback={<Loader />}>
@@ -187,7 +239,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}csr`,
+        path: `${BASE_ROOT}esg`,
         element: (
           <Suspense fallback={<Loader />}>
             <Layout>

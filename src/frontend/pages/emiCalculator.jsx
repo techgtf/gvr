@@ -9,7 +9,6 @@ export default function miECalculator() {
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/emi/emi_cal.jpg`}
                 heading={"EMI CALCULATOR"}
-                breadCrumb={"HOME - EMI CALCULATOR"}
             />
             <Index />
         </>

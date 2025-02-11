@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { SlClose } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
@@ -8,23 +8,26 @@ function SideMenu({ setOpenSidebar }) {
   const sideMenuRef = useRef(null);
   const navigate = useNavigate(); // Using useNavigate for programmatic navigation
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       ".sidemenu",
       { x: 100, opacity: 0 },
       { x: 0, opacity: 0.9, duration: 1 }
     );
 
-    const handleClick = () => {
-      handleClose();
+    // Handle outside click to close sidebar
+    const handleOutsideClick = (event) => {
+      if (sideMenuRef.current && !sideMenuRef.current.contains(event.target)) {
+        handleClose();
+      }
     };
 
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  }, [location.pathname]);
 
   const handleClose = () => {
     gsap.to(".sidemenu", {
@@ -38,7 +41,7 @@ function SideMenu({ setOpenSidebar }) {
   };
 
   const handleLinkClick = (path) => {
-    console.log(`Navigating to: ${path}`); // Make sure this shows the correct path for csr
+    console.log(`Navigating to: ${path}`); // Ensure correct path before navigation
     handleClose(); // Close the sidebar
     setTimeout(() => {
       navigate(path); // Programmatically navigate
@@ -58,56 +61,76 @@ function SideMenu({ setOpenSidebar }) {
           />
         </div>
         <ul className="w-full flex flex-col gap-10">
+          {/* Our Projects Section */}
           <li>
             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              our profile
+              Our Projects
             </div>
-            <div className="title_links flex justify-between uppercase text-[#0e69ae] py-3">
+            <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
+              <span
+                onClick={() => handleLinkClick(`${BASE_ROOT}residential`)}
+                className="text-[14px] tracking-[2px] cursor-pointer"
+              >
+                All Residential
+              </span>
+              /
+              <span
+                onClick={() => handleLinkClick(`${BASE_ROOT}commercial-projects`)}
+                className="text-[14px] tracking-[2px] cursor-pointer"
+              >
+                All Commercial
+              </span>
+            </div>
+          </li>
+
+          {/* Our Profile Section */}
+          <li>
+            <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
+              Our Profile
+            </div>
+            <div className="title_links flex gap-5 uppercase text-[#0e69ae] py-3">
               <span
                 onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
               >
-                about us
+                About Us
               </span>
               /
               <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}csr`)}
+                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
               >
-                our CSR
-              </span>
-              /
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
-                className="text-[14px] tracking-[2px] cursor-pointer"
-              >
-                our verticals
+                Our ESG
               </span>
             </div>
           </li>
+
+          {/* Career Section */}
           <li>
             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              career
+              Career
             </div>
             <div className="title_links uppercase text-[#0e69ae] py-3">
               <span
                 onClick={() => handleLinkClick(`${BASE_ROOT}career`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
               >
-                all job openings
+                All Job Openings
               </span>
             </div>
           </li>
+
+          {/* Find Us Section */}
           <li>
             <div className="title uppercase text-[16px] py-3 border-b border-[#00000040]">
-              find us
+              Find Us
             </div>
             <div className="title_links uppercase text-[#0e69ae] py-3">
               <span
                 onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
                 className="text-[14px] tracking-[2px] cursor-pointer"
               >
-                contact us
+                Contact Us
               </span>
             </div>
           </li>

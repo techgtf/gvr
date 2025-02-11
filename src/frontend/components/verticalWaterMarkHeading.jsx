@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { useTextAnimation } from "./useTextAnimation";
 import gsap from "gsap";
 
@@ -15,7 +15,7 @@ function verticalWaterMarkHeading({
 
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = sectionRef.current.querySelectorAll(".bg_text");
 
     gsap.fromTo(
@@ -33,7 +33,7 @@ function verticalWaterMarkHeading({
         },
       }
     );
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div>

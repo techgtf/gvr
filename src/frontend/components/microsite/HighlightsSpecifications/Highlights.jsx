@@ -1,46 +1,49 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
 import CommonHeading from "../../commonHeading";
+import { useLocation } from "react-router-dom";
 
-function Highlights() {
+gsap.registerPlugin(ScrollTrigger);
+
+function Highlights({ title = "Highlights", highlights = [] }) {
   const listRef = useRef(null);
+  const location = useLocation();
 
-  const highlights = [
-    "3 sides open corner plot",
-    "Fully developed lush green landscape with sculptural mound",
-    "Exclusive Musical Fountain",
-    "All green facing apartments",
-    "Well crafted layouts to ensure sufficient natural light",
-    "Cross ventilation throughout the day",
-    "RFID security for vehicle entry",
-    "Grand entrance lobby in each tower",
-  ];
+  useLayoutEffect(() => {
+    if (!listRef.current) return;
 
-  useEffect(() => {
-    const listItems = listRef.current.children;
-    gsap.fromTo(
-      listItems,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: listRef.current,
-          start: "top 90%",
-          end: "bottom 20%",
-        },
-      }
-    );
-  }, []);
+    let ctx = gsap.context(() => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+
+      gsap.fromTo(
+        listRef.current.children,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: "top 90%",
+            end: "bottom 20%",
+          },
+        }
+      );
+
+      ScrollTrigger.refresh();
+    }, listRef);
+
+    return () => ctx.revert();
+  }, [location.pathname]); // ✅ Route change hone pe refresh hoga
 
   return (
     <div className="col-span-4">
       <div className="about_heading">
         <FadeIn duration={2} delay={0.5}>
-          <CommonHeading HeadingText="Highlights" />
+          <CommonHeading HeadingText={title} />
         </FadeIn>
         <ol className="pt-8" ref={listRef}>
           {highlights.map((highlight, index) => (

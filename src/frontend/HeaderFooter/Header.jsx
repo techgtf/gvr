@@ -56,21 +56,40 @@ export default function Header() {
     };
   }, [handleScroll]);
 
-  const navItems = ["residential", "commercial"];
+  const navItems = [
+    {
+      name:'Residential',
+      link:null,
+      hasMenus:true,
+    },
+    {
+      name:'Commercial',
+      link:'commercial-projects',
+      hasMenus:false,
+    },
+    {
+      name:'ESG',
+      link:'esg',
+      hasMenus:false,
+    },
+    
+  ];
 
+  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
+  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+  
+  const logoOnePages = [`${BASE_ROOT}`, `${BASE_ROOT}microsite`, `${BASE_ROOT}anandam`, `${BASE_ROOT}vilasa`, `${BASE_ROOT}gv-homes`];
+  
   const getLogoSrc = () => {
+    // Set base logo based on the route
+    let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
+  
+    // Override with colored logo if isFixed or activeItem is true
     if (isFixed || activeItem) {
-      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+      return coloredLogo;
     }
-
-    if (
-      location.pathname === `${BASE_ROOT}microsite` ||
-      location.pathname === `${BASE_ROOT}`
-    ) {
-      return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
-    }
-
-    return `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+  
+    return logo;
   };
 
   return (
@@ -91,30 +110,27 @@ export default function Header() {
               />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
-              <div
-                className={`nav_items hidden sm:block uppercase ${
-                  isFixed ||
-                  location.pathname === `${BASE_ROOT}microsite` ||
-                  location.pathname === `${BASE_ROOT}`
-                    ? "text-white"
-                    : "text-black"
-                }`}
-              >
+              <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"}`}>
                 <ul className="flex justify-evenly gap-8 items-center">
-                  {navItems.map((item, i) => (
-                    <li
-                      key={i}
-                      onClick={() => handleToggleDropdown(item)}
-                      className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${
-                        activeItem || isFixed ? "text-primary" : ""
-                      } ${
-                        activeItem === item ? "bg-white px-3 text-primary" : ""
-                      }`}
-                    >
-                      {item}{" "}
-                      <BsChevronDown className="text-[14px] font-[300]" />
-                    </li>
-                  ))}
+                  {navItems.map((item, i) => {
+                    return item.hasMenus ? (
+                      <li
+                        key={i}
+                        onClick={() => handleToggleDropdown(item.name)}
+                        className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                      >
+                        {item.name} <BsChevronDown className="text-[14px] font-[300]" />
+                      </li>
+                    ) : (
+                      <li
+                        key={i}
+                        className={`flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] ${activeItem || isFixed ? "text-primary" : ""} ${activeItem === item ? "bg-white px-3 text-primary" : ""}`}
+                      >
+                        <Link className="gap-3 tracking-[3px] text-[13px] font-[300]" to={`${BASE_ROOT}${item.link}`}>{item.name}</Link>
+                      </li>
+                    )
+                    
+                  })}
                 </ul>
               </div>
               <button
@@ -128,10 +144,9 @@ export default function Header() {
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
-                      : location.pathname === `${BASE_ROOT}microsite` ||
-                        location.pathname === `${BASE_ROOT}`
-                      ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
-                      : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                      : location.pathname === `${BASE_ROOT}about-us` || location.pathname === `${BASE_ROOT}emi-calculator`
+                      ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                      : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
                   }
                   alt="menu"
                 />

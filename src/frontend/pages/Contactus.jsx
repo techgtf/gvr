@@ -13,9 +13,8 @@ const ContactUs = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/contact_us.png`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/contact_us.jpg`}
         heading={"CONTACT US"}
-        breadCrumb={"HOME - CONTACT US"}
         extraClassesImg={"objectRight"}
       />
       <AddressSection />

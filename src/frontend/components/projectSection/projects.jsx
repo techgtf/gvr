@@ -8,12 +8,10 @@ import { useImageReveal } from '../useImageReveal';
 
 export default function Projects() {
 
-    const animationConfig = { // passing animation as prop for WaterMarkHeading
-        stagger: -0.1,
-    };
 
-    const reverseText = (text) => {
-        return text.split("").reverse().join("");
+    const animationConfig = { // passing animation as prop for WaterMarkHeading
+        // from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 },
+        from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
     };
 
 
@@ -23,26 +21,24 @@ export default function Projects() {
         {
             type: 'residential',
             imgSrc: 'residential.jpg',
-            Link: "#1"
+            Link: `${CONFIG.BASE_ROOT}residential`
         },
         {
             type: 'commercial',
             imgSrc: 'commercial.jpg',
-            Link: "#2"
+            Link: `${CONFIG.BASE_ROOT}commercial-projects`
         },
         {
             type: 'Latest Property',
             imgSrc: 'latest.jpg',
-            Link: "#3"
+            Link: `${CONFIG.BASE_ROOT}vilasa`
         },
     ]
 
     return (
-        <div className='projectSection reveal_cut_effect 2xl:pt-[120px] lg:pt-[80px] text-center'>
+        <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
             <WaterMarkHeading
-                // textWaterMark={"Explore Properties"}
-                textWaterMark={reverseText("Explore Properties")}
-
+                textWaterMark={"Explore Properties"}
                 sectionHeading={"Explore Properties"}
                 animationConfig={animationConfig}
             />
@@ -64,7 +60,7 @@ export default function Projects() {
                         />
                         <figcaption
                             // data-speed="clamp(0.9)"
-                            className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[30px] left-0 right-0 z-[1] px-2"
+                            className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[20px] left-0 right-0 z-[1] px-2"
                         >
                             {item.type}
                         </figcaption>

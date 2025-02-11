@@ -1,39 +1,44 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 
-// Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5 }) => {
+const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5, setHeight }) => {
   const elementRef = useRef(null);
+  const location = useLocation(); // Track route changes
 
   useEffect(() => {
     const element = elementRef.current;
+    if (!element) return;
 
-    // Create the GSAP context for scoped selector and cleanup
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        element,
-        { scale: initialScale },
-        {
-          scale: 1,
-          duration: duration,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%", // Adjust based on when you want the animation to start
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    }, element);
+    // GSAP animation
+    const animation = gsap.fromTo(
+      element,
+      { scale: initialScale },
+      {
+        scale: 1,
+        duration: duration,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
 
-    return () => ctx.revert();
-  }, [duration, initialScale]);
+    // **Fix for Route Change:** Refresh ScrollTrigger
+    ScrollTrigger.refresh();
+
+    return () => {
+      animation.scrollTrigger?.kill(); // Proper cleanup
+    };
+  }, [location.pathname]); // Route change pe re-run
 
   return (
-    <div ref={elementRef} style={{ width: "100%", height: "100%" }}>
+    <div ref={elementRef} style={{ width: "100%", height: setHeight ? setHeight : "100%" }}>
       {children}
     </div>
   );

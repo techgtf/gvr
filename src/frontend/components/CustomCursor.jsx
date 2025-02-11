@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 
 function CustomCursor() {
   const cursorRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleMouseMove = (event) => {
       gsap.to(cursorRef.current, {
         x: event.clientX,
@@ -18,7 +18,7 @@ function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [location.pathname]);
 
   return <div id="cursor" className='hidden md:block' ref={cursorRef}></div>;
 }

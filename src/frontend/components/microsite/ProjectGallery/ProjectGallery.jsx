@@ -2,13 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.png";
-import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.png";
-import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.png";
-import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.png";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
-import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.jpg";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
@@ -18,9 +11,10 @@ import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
 import FadeIn from "../../Animations/FadeIn";
 
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectGallery() {
+function ProjectGallery({ actualImages, renderImages }) {
   const [activeTab, setActiveTab] = useState("actual");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
@@ -29,9 +23,30 @@ function ProjectGallery() {
   const swiperRef = useRef(null);
   const projectRef = useRef();
 
-  const actualImages = [gallery1, gallery2, gallery3, gallery4];
-  const renderImages = [renderGallery1, renderGallery2, renderGallery3, renderGallery1];
+  // 🔥 Scroll pe har baar animation chalega
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".gallery_images",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reset",
+          },
+        }
+      );
+    }, projectRef);
 
+    return () => ctx.revert();
+  }, []);
+
+  // 🔥 Tab switch pe stagger animation
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     gsap.fromTo(
@@ -41,41 +56,15 @@ function ProjectGallery() {
     );
   };
 
-  useEffect(() => {
-    if (prevRef.current && nextRef.current && swiperRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
-    }
-  }, []);
-
-  useEffect(() => {
-    gsap.fromTo(
-      ".gallery_images",
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.7,
-        stagger: 1,
-        scrollTrigger: {
-          trigger: projectRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-  }, []);
-
   const openLightbox = (index) => {
     setCurrentIndex(index);
     setOpen(true);
-    document.body.classList.add('lightbox-open');
+    document.body.classList.add("lightbox-open");
   };
 
   const closeLightbox = () => {
     setOpen(false);
-    document.body.classList.remove('lightbox-open');  // Remove class to hide cursor
+    document.body.classList.remove("lightbox-open");
   };
 
   const imageData = activeTab === "actual" ? actualImages : renderImages;
@@ -94,8 +83,9 @@ function ProjectGallery() {
           <div className="flex items-center pt-8 project_gallery_tabs">
             <SlideIn duration={0.8} delay={0.2}>
               <h4
-                className={`mr-4 uppercase mt-14 cursor-pointer ${activeTab === "actual" ? "text-primary" : "text-gray-500"
-                  }`}
+                className={`mr-4 uppercase mt-14 cursor-pointer ${
+                  activeTab === "actual" ? "text-primary" : "text-gray-500"
+                }`}
                 onClick={() => handleTabClick("actual")}
               >
                 Project Actual Images
@@ -109,8 +99,9 @@ function ProjectGallery() {
           <div className="flex items-center project_gallery_tabs">
             <SlideIn duration={0.8} delay={0.3}>
               <h4
-                className={`mr-4 uppercase mt-10 cursor-pointer ${activeTab === "render" ? "text-primary" : "text-gray-500"
-                  }`}
+                className={`mr-4 uppercase mt-10 cursor-pointer ${
+                  activeTab === "render" ? "text-primary" : "text-gray-500"
+                }`}
                 onClick={() => handleTabClick("render")}
               >
                 Project Render Images
@@ -148,32 +139,23 @@ function ProjectGallery() {
             modules={[Navigation]}
             className="mySwiper gallery_images"
           >
-            <SwiperSlide>
-              <div className="grid grid-cols-2 gap-4">
-                {imageData.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`slide ${index + 1}`}
-                    className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="grid grid-cols-2 gap-4">
-                {imageData.map((image, index) => (
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`slide ${index + 1}`}
-                    className="w-[300px] h-[200px] object-cover"
-                    onClick={() => openLightbox(index)}
-                  />
-                ))}
-              </div>
-            </SwiperSlide>
+            {Array.from({ length: Math.ceil(imageData.length / 4) }).map((_, slideIndex) => (
+              <SwiperSlide key={slideIndex}>
+                <div className="grid grid-cols-2 gap-4">
+                  {imageData
+                    .slice(slideIndex * 4, slideIndex * 4 + 4)
+                    .map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`slide ${slideIndex * 4 + index + 1}`}
+                        className="w-[300px] h-[200px] object-cover"
+                        onClick={() => openLightbox(slideIndex * 4 + index)}
+                      />
+                    ))}
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
 

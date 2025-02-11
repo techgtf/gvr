@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom"; // ✅ Route track karne ke liye
 import Slider from "./Slider/Slider";
 import CommonHeading from "../commonHeading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
 
+// Import images
 import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
 import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.png";
@@ -16,44 +18,52 @@ import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Amentities({ AmentitiesData = [
-  { name: "swimming pool", image: swimmingPool },
-  { name: "Yoga & Aerobics hall", image: yoga },
-  { name: "Gymnasium", image: gymnasium },
-  { name: "Mini home theater", image: theater },
-  { name: "Library", image: library },
-  { name: "Basketball", image: basketballBall },
-  { name: "Jogging Track", image: runningTrack },
-  { name: "park", image: park },
-], 
-headingText = "Amentities" }) {
+function Amentities({ 
+  AmentitiesData = [
+    { name: "Swimming Pool", image: swimmingPool },
+    { name: "Yoga & Aerobics Hall", image: yoga },
+    { name: "Gymnasium", image: gymnasium },
+    { name: "Mini Home Theater", image: theater },
+    { name: "Library", image: library },
+    { name: "Basketball", image: basketballBall },
+    { name: "Jogging Track", image: runningTrack },
+    { name: "Park", image: park },
+  ], 
+  images = [], 
+  headingText = "Amentities" 
+}) {
   const sectionRef = useRef(null);
+  const location = useLocation(); // ✅ Track route changes
 
   useEffect(() => {
+    if (!sectionRef.current) return;
+
     const elements = sectionRef.current.querySelectorAll(".amentity");
 
-    gsap.fromTo(
-      elements,
-      { opacity: 0, x: 50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-        },
-      }
-    );
-  }, []);
+    // ✅ Reset animation state before running new animation
+    gsap.set(elements, { opacity: 0, x: 50 });
+
+    const animation = gsap.to(elements, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      stagger: 0.2, // ✅ Thoda delay har element ke beech
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+        once: false, // ✅ Ensure animation plays every time it's in view
+      },
+    });
+
+    return () => {
+      animation.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // ✅ Proper cleanup
+    };
+  }, [location.pathname]); // ✅ Ensures animation resets when route changes
 
   return (
-    <section
-      className="amentities relative py-10 md:py-14"
-      id="amentities"
-      ref={sectionRef}
-    >
+    <section className="amentities relative py-10 md:py-14" id="amentities" ref={sectionRef}>
       <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
         <div className="sm:col-span-3 col-span-12">
           <div className="about_heading text-center md:text-start">
@@ -80,8 +90,10 @@ headingText = "Amentities" }) {
           </div>
         </div>
       </div>
+
+      {/* Pass images to Slider */}
       <div className="pt-5 relative">
-        <Slider />
+        <Slider images={images} />  
       </div>
     </section>
   );

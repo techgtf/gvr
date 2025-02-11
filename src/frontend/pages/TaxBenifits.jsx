@@ -10,7 +10,6 @@ export default function TaxBenifits() {
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/taxBenifit/tax_benifits.webp`}
                 heading={"Tax Benefits"}
-                breadCrumb={"Home  -  Tax Benefits"}
                 extraClassesImg={"objectRight"}
             />
             <TaxBenifitIndex />

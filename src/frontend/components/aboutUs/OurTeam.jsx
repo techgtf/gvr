@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState, useRef, useLayoutEffect } from "react";
 import { TeamContext } from "../../context/TeamContext";
 import TeamModal from "../teamModal/TeamModal";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
@@ -21,7 +21,7 @@ const OurTeam = () => {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Specific animation for index === 2
     if (specialImageRef.current) {
       gsap.fromTo(
@@ -30,7 +30,7 @@ const OurTeam = () => {
         { y: 0, opacity: 1, duration: 0.5 } // Slide in and fade in
       );
     }
-  }, [allProfile]); // Trigger animation when allProfile changes
+  }, [allProfile, location.pathname]); // Trigger animation when allProfile changes
 
   useEffect(() => {
     const handleResize = () => {
