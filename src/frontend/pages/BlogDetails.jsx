@@ -4,7 +4,7 @@ import Index from '../components/blogs/Index';
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
-import { useParams } from "react-router-dom";
+import { useLocation  } from "react-router-dom";
 
 
 const data = [
@@ -89,8 +89,9 @@ const data = [
 ];
 
 const BlogDetails = () => {
-  const { id } = useParams();
-  const blog = data.find((b) => b.id === parseInt(id));
+  const location = useLocation();
+  const blog = location.state?.blog;
+  const latestBlog = location.state?.latestBlog;
 
   if (!blog) return <h2>Blog not found!</h2>;
   return (
@@ -102,7 +103,7 @@ const BlogDetails = () => {
           parentTitle={"BLOGS"}
           extraClassesImg={"objectRight"}
           />
-          <Index data={blog}/>
+          <Index data={blog} latestBlogData={latestBlog}/>
       </>
   )
 }

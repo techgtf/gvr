@@ -111,7 +111,7 @@ const CommercialProjects = () => {
         extraClassesImg={"objectRight object-top"}
       />
       <div
-        className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+        className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
         // data-speed="clamp(.9)"
         // ref={sectionRef}
       >
@@ -123,7 +123,7 @@ const CommercialProjects = () => {
             HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
           />
         </div>
-        {/* <SlideIn duration={2} delay={0.5}>
+        <SlideIn duration={2} delay={0.5}>
           <div
             style={{
               borderTop: "1px solid #b1b1b1",
@@ -139,7 +139,7 @@ const CommercialProjects = () => {
               }
             />
           </div>
-        </SlideIn> */}
+        </SlideIn>
       </div>
       <div className="xl:p-[70px] p-[20px] xl:!pt-[7px]">
         {projects.map((project, indexOfProject) => {

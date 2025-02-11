@@ -2,12 +2,11 @@ import { Link } from "react-router-dom"
 import CommonHeading from "./commonHeading"
 import NavDropdown from "../HeaderFooter/NavDropdown"
 import { SlClose } from "react-icons/sl";
-
-
-
-
+import { BASE_ROOT } from "../../../config";
+import { useState } from "react";
 
 export default function MbTabLinks() {
+    const [isVisible, setIsVisible] = useState(false)
     const Styles = {
         wrapper: {
             backgroundColor: '#f0f0f0',
@@ -15,40 +14,44 @@ export default function MbTabLinks() {
         },
         drpDiv: {
             zIndex: 11,
-            bottom: 0,
-
         }
     }
+
+
     return (
-        <div className="MbTabLinks fixed bottom-0 left-0 right-0 bg-gray-300 border-t border-gray-300" style={Styles.wrapper}>
+        <div className="MbTabLinks lg:hidden fixed bottom-0 left-0 right-0 bg-gray-300 border-t border-gray-300" style={Styles.wrapper}>
             <div className="mbLinks_in relative">
-                <div className="flex justify-between">
-                    <Link className="uppercase tracking-[2px] text-center w-[30%] text-[13px] px-5 py-3">Residential</Link>
-                    <Link className="uppercase tracking-[2px] text-center w-[30%] text-[13px] px-5 py-3 border-l border-gray-300">Commercial</Link>
-                    <Link className="uppercase tracking-[2px] text-center w-[30%] text-[13px] px-5 py-3 border-l border-gray-300">ESG</Link>
+                <div className="flex justify-center"
+                    onClick={() => { setIsVisible(true) }}
+                >
+                    <Link className="uppercase tracking-[2px] text-center text-[13px] px-5 py-3">Residential</Link>
+                    <Link className="uppercase tracking-[2px] text-center text-[13px] px-5 py-3 border-l border-gray-300">Commercial</Link>                    
                 </div>
-                <div style={Styles.drpDiv} className="fixed flex flex-col justify-end left-0 right-0 h-full bg-[#00000094] transition-all">
-                    <ul className="bg-white p-8">
+                {/* h-full bg-[#00000094] */}
+                <div style={Styles.drpDiv} className={`fixed flex flex-col justify-end left-0 right-0 ${isVisible ? "bottom-0" : "bottom-[-100%]"} transition-all`}>
+                    <div className="absolute top-[15px] right-[15px]"
+                        onClick={() => { setIsVisible(false) }}
+                    ><SlClose className="cursor-pointer text-3xl text-[#00000094]" />
+                    </div>
+                    <ul className="bg-white">
                         {[
-                            { name: "SHARANAM", path: "microsite", location: "sector 107, noida" },
+                            { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                             { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
                             { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
                             { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
                         ].map(({ name, path, location }) => (
-                            <li key={path} className="pb-3 mb-3 border-b">
-                                <span onClick={() => handleLinkClick(`${BASE_ROOT}${path}`)} className="cursor-pointer">
+                            <li key={path} className="px-8 pt-6 pb-4 mb-1 border-b last:border-b-0">
+                                <Link
+                                    onClick={() => { setIsVisible(false) }}
+                                    to={`${BASE_ROOT}${path}`} className="cursor-pointer">
                                     <CommonHeading HeadingText={name} />
                                     <p className="place uppercase pt-2 cursor-pointer">{location}</p>
-                                </span>
+                                </Link>
                             </li>
                         ))}
                     </ul>
-
-                    {/* <div className="absolute bottom-0">
-                        <SlClose className="cursor-pointer text-3xl text-[#00000094]" />
-                    </div> */}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
