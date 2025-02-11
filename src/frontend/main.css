@@ -176,12 +176,17 @@ img {
 .waterMarkDiv.vertical .bg_text {
   letter-spacing: -20px;
 }
-/* for safari  */
-@supports (-webkit-touch-callout: none) {
-  .waterMarkDiv.vertical .bg_text {
-      letter-spacing: 0px; 
+
+
+/* Safari ke liye */
+@media not all and (min-resolution: 0.001dpcm) { 
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      .waterMarkDiv.vertical .bg_text {
+          letter-spacing: 0px !important; /* Safari */
+      }
   }
 }
+
 
 .sectionHeading {
   font-size: 12px;
