@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ADMIN_ASSETS } from 'root/config';
+import { ADMIN_ASSETS } from "../../config";
 import Request from "root/config/Request";
 import './assets/css/admin.css';
 
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../config'
 
 const Dashboard = () => {
     const [data, setData] = useState({});
@@ -35,7 +35,7 @@ const Dashboard = () => {
             <div className="row cards_row">
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/project.svg'} alt="project" className="img-fluid icon" />
+                        <img src={ADMIN_ASSETS + 'images/icons/project.svg'} alt="project" className="img-fluid icon" />
                         <h4 className="count">{data?.project?.count}</h4>
                         <p className="title">Total {data?.project?.name}</p>
                     </div>
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/blogs.svg'} alt="blogs" className="img-fluid icon" />
+                        <img src={ADMIN_ASSETS + 'images/icons/blogs.svg'} alt="blogs" className="img-fluid icon" />
                         <h4 className="count">{data?.blog?.count}</h4>
                         <p className="title">Total {data?.blog?.name}</p>
                     </div>
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/enquire.svg'} alt="blogs" className="img-fluid icon" />
+                        <img src={ADMIN_ASSETS + 'images/icons/enquire.svg'} alt="blogs" className="img-fluid icon" />
                         <h4 className="count">{data?.total_enquiry?.count}</h4>
                         <p className="title">Total {data?.total_enquiry?.name}</p>
                     </div>

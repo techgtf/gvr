@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useEffect } from 'react'
 const Hero = lazy(() => import('../components/heroSection/hero'))
 const OverviewSection = lazy(() => import('../components/overviewSection/overviewSection'))
 const Projects = lazy(() => import('../components/projectSection/Projects'))
@@ -9,10 +9,11 @@ const BlogSection = lazy(() => import('../components/BlogSection/BlogSection'))
 import { BASE_ROOT } from '../../../config'
 import ScrollToTop from '../components/ScrollToTop'
 
-
-
 export default function Home() {
 
+    useEffect(() => {
+        console.log('homepage');
+    }, [])
 
     return (
 

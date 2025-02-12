@@ -9,12 +9,13 @@ import Button from 'common/Button/Button'
 import Dropdown from 'react-bootstrap/Dropdown';
 import * as actionTypes from 'root/store/actions'
 import { Link, useNavigate } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 
 
 const Header = (props)=>{
-    const toggleCount = useSelector(state=>state.adminSideMenu.toggleCount)
-    const currentMenuCount = useSelector(state=>state.adminSideMenu.currentMenuCount)
-    const isAscending = useSelector(state=>state.adminSideMenu.isAscending)
+    const toggleCount = useSelector(state=>state.sideMenu.toggleCount)
+    const currentMenuCount = useSelector(state=>state.sideMenu.currentMenuCount)
+    const isAscending = useSelector(state=>state.sideMenu.isAscending)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -61,33 +62,33 @@ const Header = (props)=>{
         <>
             <Navbar className="">
                 <Container fluid>
-                    {/* <Navbar.Brand href="#home">Brand link</Navbar.Brand> */}
-                    <div className="hamburger" onClick={toggleMenuHandler}>
-                        <span className='sm'></span>
-                        <span className='lg'></span>
-                    </div>
+                        {/* <Navbar.Brand href="#home">Brand link</Navbar.Brand> */}
+                        <div className="hamburger" onClick={toggleMenuHandler}>
+                            <span className='sm'></span>
+                            <span className='lg'></span>
+                        </div>
 
-                    <div className='logo'>
-                        <img src={CONFIG.ADMIN_ASSETS+'project-logo-img-png.png'} alt="logo" className='img-fluid logo' />
-                    </div>
+                        <div className='logo'>
+                            <img src={CONFIG.ADMIN_ASSETS+'images/logo.png'} alt="logo" className='img-fluid logo' />
+                        </div>
 
-                    <div className="user">
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                <span className="name">Admin</span>
-                                <img src={CONFIG.ADMIN_ASSETS + 'default/default_user.png'} alt="user" className='user_img' />
-                            </Dropdown.Toggle>
+                        <div className="user">
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    <span className="name">Admin</span>
+                                    <img src={CONFIG.ADMIN_ASSETS + 'images/default/default_user.png'} alt="user" className='user_img' />
+                                </Dropdown.Toggle>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            
+                        </div>
+
                         
-                    </div>
 
-                    
-
-                    {/* <Button onClick={logoutHandler}>Logout</Button> */}
+                        {/* <Button onClick={logoutHandler}>Logout</Button> */}
                 </Container>
             </Navbar>
         </>

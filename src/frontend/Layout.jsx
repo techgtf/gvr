@@ -64,25 +64,27 @@ function Layout({ children }) {
 
   return (
     <>
-      {/* Custom Cursor */}
-      <CustomCursor />
+      <div className="user_body">
+        {/* Custom Cursor */}
+        <CustomCursor />
 
-      {/* Loader Overlay */}
-      {loading && (
-        <div className="fixed top-0 left-0 w-full h-full bg-white flex items-center justify-center z-[100] transition-opacity duration-500">
-          <Loader />
-        </div>
-      )}
+        {/* Loader Overlay */}
+        {loading && (
+          <div className="fixed top-0 left-0 w-full h-full bg-white flex items-center justify-center z-[100] transition-opacity duration-500">
+            <Loader />
+          </div>
+        )}
 
-      {/* Main Content */}
-      <Header />
-      {/* mobile menus tabs */}
-      <MbTabLinks />
-      {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          {children}
-          <Footer />
+        {/* Main Content */}
+        <Header />
+        {/* mobile menus tabs */}
+        <MbTabLinks />
+        {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            {children}
+            <Footer />
+          </div>
         </div>
       </div>
     </>

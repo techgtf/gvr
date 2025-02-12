@@ -1,5 +1,5 @@
 export const ASSETS_URL = import.meta.env.VITE_APP_ASSET;
-export const ADMIN_ASSETS = import.meta.env.VITE_APP_ADMIN_ASSET;
+export const ADMIN_ASSETS = import.meta.env.VITE_ADMIN_IMAGES;
 export const ADMIN_ROOT = import.meta.env.VITE_APP_ADMIN_ROOT;
 export const ADMIN_IMG_URL = import.meta.env.VITE_APP_ADMIN_IMAGE_URL;
 export const API_URL = import.meta.env.VITE_APP_API_URL;

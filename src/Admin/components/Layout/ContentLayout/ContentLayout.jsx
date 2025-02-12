@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 
 const ContentLayout = (props)=>{
   console.log(props);
-  return;
     const dispatch = useDispatch();
     const location = useLocation()
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
