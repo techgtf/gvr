@@ -19,29 +19,31 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
       return;
     }
 
-    // Kill any existing ScrollTriggers
+    // ✅ Kill all previous ScrollTriggers before initializing a new one
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     ScrollTrigger.clearMatchMedia();
 
     let ctx = gsap.context(() => {
-      scrollTriggerRef.current = ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: () => `+=${specificationsRef.current.scrollHeight}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: 1,
-        markers: true,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (specificationsRef.current) {
-            specificationsRef.current.scrollTop =
-              self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
-          }
-        },
-      });
+      setTimeout(() => { // Small delay ensures DOM is updated
+        scrollTriggerRef.current = ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${specificationsRef.current.scrollHeight}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (specificationsRef.current) {
+              specificationsRef.current.scrollTop =
+                self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
+            }
+          },
+        });
 
-      ScrollTrigger.refresh();
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      }, 100);
     }, sectionRef);
 
     return () => {
@@ -51,20 +53,12 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
         scrollTriggerRef.current.kill();
         scrollTriggerRef.current = null;
       }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [location.pathname]);
-
-  useEffect(() => {
-    // Ensure ScrollTrigger refreshes after route change
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
   }, [location.pathname]);
 
   return (
     <section
-      key={location.pathname} 
+      key={location.pathname} // ✅ Forces re-render on route change
       ref={sectionRef}
       className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center overflow-hidden"
     >

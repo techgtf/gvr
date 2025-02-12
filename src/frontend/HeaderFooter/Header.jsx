@@ -63,18 +63,17 @@ export default function Header() {
 
   const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
   const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
-
-  const logoOnePages = [
-    `${BASE_ROOT}`,
-    `${BASE_ROOT}microsite`,
-    `${BASE_ROOT}anandam`,
-    `${BASE_ROOT}vilasa`,
-    `${BASE_ROOT}gv-homes`,
-  ];
-
+  
+  const logoOnePages = [`${BASE_ROOT}`, `${BASE_ROOT}sharanam`, `${BASE_ROOT}anandam`, `${BASE_ROOT}vilasa`, `${BASE_ROOT}gv-homes`];
+  
   const getLogoSrc = () => {
     let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
-    if (isFixed || activeItem) return coloredLogo;
+  
+    // Override with colored logo if isFixed or activeItem is true
+    if (isFixed || activeItem) {  
+      return coloredLogo;
+    }
+  
     return logo;
   };
 

@@ -12,10 +12,10 @@ import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.w
 import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.webp";
 import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.webp";
 import loaction from "/assets/frontend/images/microsite/location/location.webp";
-import drive from "/assets/frontend/images/microsite/location/drive.png";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
-import walk from "/assets/frontend/images/microsite/location/walk.png";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
+import drive from "/assets/frontend/images/microsite/location/drive.webp";
+import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
+import walk from "/assets/frontend/images/microsite/location/walk.webp";
+import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
@@ -29,10 +29,10 @@ import { useLocation } from "react-router-dom";
 import aboutImg from "/assets/frontend/images/microsite/about.jpg"
 
 // location drive and walk images 
-import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png"
-import school from "/assets/frontend/images/microsite/location/walkIcons/school.png"
-import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png"
-import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png"
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.webp"
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.webp"
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.webp"
 
 function Microsite() {
   const location = useLocation();
@@ -93,49 +93,49 @@ function Microsite() {
       {
           title: "Structure",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/structure.png", description: "RCC frame structure ensuring durability and earthquake resistance." },            
+              { image: "assets/frontend/images/microsite/specifications/structure.webp", description: "RCC frame structure ensuring durability and earthquake resistance." },            
           ],
       },
       {
           title: "Flooring",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/flooring.png", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
+              { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
           ],
       },
       {
           title: "Wall Finishes",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/wall.png", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
+              { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
           ],
       },
       {
           title: "Doors & Windows",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/door.png", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
+              { image: "assets/frontend/images/microsite/specifications/door.webp", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
           ],
       },
       {
           title: "Kitchen",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/kitchen.png", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
+              { image: "assets/frontend/images/microsite/specifications/kitchen.webp", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
           ],
       },
       {
           title: "Toilets",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/toilet.png", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
+              { image: "assets/frontend/images/microsite/specifications/toilet.webp", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
           ],
       },
       {
           title: "Electrical",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/electrical.png", description: "Concealed copper wiring with modular switches and power backup." },             
+              { image: "assets/frontend/images/microsite/specifications/electrical.webp", description: "Concealed copper wiring with modular switches and power backup." },             
           ],
       },
       {
           title: "Security",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/security.png", description: "CCTV surveillance and intercom system for enhanced safety." },             
+              { image: "assets/frontend/images/microsite/specifications/security.webp", description: "CCTV surveillance and intercom system for enhanced safety." },             
           ],
       },
   ];

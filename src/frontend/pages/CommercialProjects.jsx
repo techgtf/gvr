@@ -9,7 +9,8 @@ const HeroSectionAboutUs = lazy(() =>
 
 const projects = [
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739339981/mjjcv437dyf5hf0gww4z.png",
+    // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
     detail: [
       {
         heading: "GAP",
@@ -27,7 +28,8 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/pernia.webp`,
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340020/jrhfmx9ohai7sliuqtyd.webp",
+    // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/pernia.webp`,
     detail: [
       {
         heading: "Pernia",
@@ -46,8 +48,9 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/great_value_mall.webp
-    `,
+    // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/great_value_mall.webp
+    // `
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340009/wi1vjccfufzff66xzug0.webp",
     detail: [
       {
         heading: "Great Value Mall",
@@ -65,7 +68,8 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/forestwalk.webp`,
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340005/fxdduzr1sdzyclviix5i.webp",
+    // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/forestwalk.webp`,
     detail: [
       {
         heading: "Forest Walk",
@@ -83,7 +87,8 @@ const projects = [
     ],
   },
   {
-    img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/complex.webp`,
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340001/jcfbbbnzmn7c27ip6wax.webp",
+    // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/complex.webp`,
     detail: [
       {
         heading: "Complex Madangir",
@@ -105,7 +110,10 @@ const CommercialProjects = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
+        // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
+        img={
+          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739339970/dtpqduwfo9zafgpdy6bf.webp"
+        }
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"objectRight object-top"}
