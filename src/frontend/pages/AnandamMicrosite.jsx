@@ -32,9 +32,11 @@ import library from "/assets/frontend/images/microsite/amentities/icons/library.
 import basketballBall from "/assets/frontend/images/microsite/amentities/icons/basketballBall.png";
 import runningTrack from "/assets/frontend/images/microsite/amentities/icons/running-track.png";
 import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
+import { useLocation } from 'react-router-dom'
 
 
 function AnandamMicrosite() {
+    const location = useLocation();
 
     // Amentities data 
 
@@ -225,6 +227,7 @@ function AnandamMicrosite() {
             />
             <PriceList priceListData={customPriceListData} headingText="Price List" />
             <HighlightsSpecifications
+            key={location.pathname} 
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
             />

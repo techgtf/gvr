@@ -5,13 +5,12 @@ import { useImageReveal } from "../useImageReveal";
 import SlideIn from "../Animations/SlideIn";
 import FadeIn from "../Animations/FadeIn";
 import ZoomOut from "../Animations/ZoomOut";
-import VerticalWaterMarkHeading from "../verticalWaterMarkHeading";
 
 function About({
-  imageSrc = "assets/frontend/images/microsite/about.jpg", // Default image
-  headingText = "ABOUT US", // Default heading text
-  descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other.", // Default description
-  reverseWatermark = true, // Optional: Reverse watermark text
+  imageSrc , 
+  headingText,
+  descriptionText,
+  reverseWatermark = true,
 }) {
   const reverseText = (text) => {
     return text.split("").reverse().join("");
@@ -26,7 +25,7 @@ function About({
   return (
     <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14">
       <div className="absolute h-full flex items-center left-20 bottom-0">
-        <VerticalWaterMarkHeading
+        <WaterMarkHeading
           textWaterMark={reverseWatermark ? reverseText(headingText) : headingText}
           className="flex flex-col items-start justify-center text-[4vw]"
           animationConfig={animationConfig1}

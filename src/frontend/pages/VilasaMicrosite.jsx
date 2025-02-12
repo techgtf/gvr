@@ -29,8 +29,22 @@ import guard from "/assets/frontend/images/microsite/vilasa/amentities/icons/gua
 import pitch from "/assets/frontend/images/microsite/vilasa/amentities/icons/pitch.png";
 import badminton from "/assets/frontend/images/microsite/vilasa/amentities/icons/badminton.png";
 import golf from "/assets/frontend/images/microsite/vilasa/amentities/icons/golf.png";
+import aboutImg from "/assets/frontend/images/microsite/vilasa/about/about.webp"
+import heroImg from "/assets/frontend/images/microsite/vilasa/hero/hero.webp"
+import heroMobImg from "/assets/frontend/images/microsite/vilasa/hero/hero.webp"
+
+// location drive and walk images 
+import hospital from "/assets/frontend/images/microsite/vilasa/location/icons/hospital.png"
+import college from "/assets/frontend/images/microsite/vilasa/location/icons/college.png"
+import school from "/assets/frontend/images/microsite/vilasa/location/icons/school.png"
+import landmark from "/assets/frontend/images/microsite/vilasa/location/icons/landmark.png"
+import resort from "/assets/frontend/images/microsite/vilasa/location/icons/resort.png"
+import metro from "/assets/frontend/images/microsite/vilasa/location/icons/metro.png"
+import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.png"
+import { useLocation } from 'react-router-dom';
 
 function VilasaMicrosite() {
+    const location = useLocation();
     // Amentities data 
 
     const customAmentitiesData = [
@@ -45,65 +59,10 @@ function VilasaMicrosite() {
         { name: "Golf putting greens", image: golf },
     ]
 
-    // Pricelist data 
-
-    // const customPriceListData = [
-    //     {
-    //         area: "1 BHK",
-    //         more: "Living room/Kitchen/1 Toilet/Balcony",
-    //         size: "850 sq.ft",
-    //         price: "₹ 45 Lacs*",
-    //     },
-    //     {
-    //         area: "2 BHK ",
-    //         more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-    //         size: "1250 sq.ft",
-    //         price: "₹ 80 Lacs*",
-    //     },
-    // ];
-
-    // Master plan 
 
     const masterPlanData = [
         { image: master_plan_img, alt: "Master Plan" },
     ];
-
-    // Plans data
-
-    // const unitData = {
-    //     unit1: [
-    //         {
-    //             image: plan1,
-    //             type: "3 BHK + STUDY + 4T",
-    //             carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-    //             balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-    //             buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-    //             totalArea: "170.94 Sqm. (1840 Sq.Ft)",
-    //         },
-    //     ],
-    //     unit2: [
-    //         {
-    //             image: plan2,
-    //             type: "3 BHK + 3T",
-    //             carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-    //             balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-    //             buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-    //             totalArea: "157.94 Sqm. (1700 Sq.Ft)",
-    //         },
-    //     ],
-    //     unit34: [
-    //         {
-    //             image: plan3,
-    //             type: "2 BHK + STUDY + 2T",
-    //             carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-    //             balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-    //             buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-    //             totalArea: "125.42 Sqm. (1350 Sq.Ft)",
-    //         },
-    //     ],
-    // };
-
-    // Highlishts data 
 
     const highlightsData = [
         "Customizable Plots –Design your dream villa or Stilt + 4 floors.",
@@ -177,8 +136,8 @@ function VilasaMicrosite() {
     return (
         <>
             <HeroSection
-                 desktopBg="assets/frontend/images/microsite/vilasa/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/vilasa/hero/hero.webp"
+                 desktopBg={heroImg}
+                mobileBg={heroMobImg}
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -191,7 +150,7 @@ function VilasaMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/vilasa/about/about.webp"
+                imageSrc={aboutImg}
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
@@ -203,37 +162,38 @@ function VilasaMicrosite() {
                 images={images}
             />
 
-            <PriceList priceListData headingText="Price List" />
+            <PriceList headingText="Price List" />
 
             <HighlightsSpecifications
+            key={location.pathname} 
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
 
-            <Plans masterPlanData={masterPlanData} unitData />
+            <Plans masterPlanData={masterPlanData} />
 
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },       
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' }, 
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },           
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Damdama Lake, Sohna', time: '22 min' },                    
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/airport.png', text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },                                  
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
+                    { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
+                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
+                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },       
+                    { image: resort, text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' }, 
+                    { image: metro, text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },           
+                    { image: resort, text: 'Damdama Lake, Sohna', time: '22 min' },                    
+                    { image: landmark, text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
+                    { image: airport, text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },                                  
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },     
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },                                                                                                            
+                    { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
+                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },     
+                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },                                                                                                            
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

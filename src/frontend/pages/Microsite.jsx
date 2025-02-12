@@ -1,6 +1,5 @@
 import React from "react";
 import HeroSection from "../components/microsite/HeroSection";
-import About from "../components/microsite/About";
 import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
 import HighlightsSpecifications from "../components/microsite/HighlightsSpecifications/HighlightsSpecifications";
@@ -27,8 +26,12 @@ import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gal
 import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
+import About from "../components/microsite/About";
+import { useLocation } from "react-router-dom";
 
 function Microsite() {
+  const location = useLocation();
+  
   const masterPlanData = [
     { image: master_plan_img, alt: "Master Plan" },
   ];
@@ -168,10 +171,18 @@ function Microsite() {
   return (
     <>
       <HeroSection />
-      <About />
+     
+      <About
+       imageSrc="assets/frontend/images/microsite/about.jpg"
+       headingText="ABOUT US"
+       descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
+       reverseWatermark={true}
+      />
+
       <Amentities images={images}  />
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
       <HighlightsSpecifications
+      key={location.pathname} 
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />
