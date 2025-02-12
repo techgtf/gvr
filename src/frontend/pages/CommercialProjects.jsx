@@ -9,7 +9,7 @@ const HeroSectionAboutUs = lazy(() =>
 
 const projects = [
   {
-    img: "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/dcb79dd537545cfc48ea54f589d34b05/detailed",
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739339981/mjjcv437dyf5hf0gww4z.png",
     // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial-1.png`,
     detail: [
       {
@@ -28,7 +28,7 @@ const projects = [
     ],
   },
   {
-    img: "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/aa3a0a69377f7e7adc1b0c128451e08d/detailed",
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340020/jrhfmx9ohai7sliuqtyd.webp",
     // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/pernia.webp`,
     detail: [
       {
@@ -50,7 +50,7 @@ const projects = [
   {
     // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/great_value_mall.webp
     // `
-    img: "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/9327d14709049c8069ee82ae1fa0f1be/detailed",
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340009/wi1vjccfufzff66xzug0.webp",
     detail: [
       {
         heading: "Great Value Mall",
@@ -68,7 +68,7 @@ const projects = [
     ],
   },
   {
-    img: "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/9c055ffc194b6fd570ce923208828b33/detailed",
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340005/fxdduzr1sdzyclviix5i.webp",
     // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/forestwalk.webp`,
     detail: [
       {
@@ -87,7 +87,7 @@ const projects = [
     ],
   },
   {
-    img: "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/c68ccedc87ae939e6f715b7aed4ea35d/detailed",
+    img: "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739340001/jcfbbbnzmn7c27ip6wax.webp",
     // img: `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/complex.webp`,
     detail: [
       {
@@ -112,7 +112,7 @@ const CommercialProjects = () => {
       <HeroSectionAboutUs
         // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
         img={
-          "https://res-console.cloudinary.com/dx3l6id8r/media_explorer_thumbnails/0a02b49522caf19a82c1cde6c83cf739/detailed"
+          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739339970/dtpqduwfo9zafgpdy6bf.webp"
         }
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
