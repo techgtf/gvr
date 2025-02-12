@@ -66,7 +66,7 @@ function CharityInitiatives() {
                         trigger: ".charity-images",
                         start: "top 90%",
                         end: "bottom 20%",
-                        scrub: true,
+                        scrub: false,
                     },
                 }
             );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -8,6 +8,11 @@ import SlideIn from "../../Animations/SlideIn";
 gsap.registerPlugin(ScrollTrigger);
 
 function Highlights({ title = "Highlights", highlights = [] }) {
+  useEffect(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh(); // ✅ Ensure animations detect the new elements
+    }, 300);
+  }, []);
 
   return (
     <div className="col-span-4">
