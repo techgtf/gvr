@@ -66,13 +66,14 @@ function Layout({ children }) {
         <Loader /> :
 
         <>
+          {location.pathname === `${BASE_ROOT}sharanam` || `${BASE_ROOT}anandam` || `${BASE_ROOT}gv-homes` || `${BASE_ROOT}vilasa` && <MicrositeMenu />}
           {/* Custom Cursor */}
           <CustomCursor />
           {/* Main Content */}
           <Header />
           {/* mobile menus tabs */}
           <MbTabLinks />
-          {location.pathname === `${BASE_ROOT}sharanam` || `${BASE_ROOT}anandam` || `${BASE_ROOT}gv-homes` || `${BASE_ROOT}vilasa` && <MicrositeMenu />}
+        
           <div id="smooth-wrapper">
             <div id="smooth-content">
               {children}

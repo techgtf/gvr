@@ -49,7 +49,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
     return (
         <div
             ref={dropdownRef}
-            className="nav_dropdown fixed top-[73px] left-0 h-[30vh] w-full bg-[#EFF5FA] text-black opacity-95 p-5"
+            className="nav_dropdown fixed top-[90px] left-0 h-[30vh] w-full bg-[#EFF5FA] text-black opacity-95 p-5"
         >
             <div className="absolute top-3 px-20 flex justify-end w-full">
                     <AiOutlineClose  onClick={() => handleClose()} className="cursor-pointer text-xl text-[#00000094]" />

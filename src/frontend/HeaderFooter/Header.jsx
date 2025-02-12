@@ -7,7 +7,6 @@ import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
 import ScrollToTop from "../components/ScrollToTop";
 
-// Debounce function to limit scroll events
 const debounce = (func, delay) => {
   let timeoutId;
   return function (...args) {
