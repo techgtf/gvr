@@ -253,7 +253,6 @@ function GvHomesMicrosite() {
 
             <ProjectGallery
                 actualImages={[renderGallery3]}
-                renderImages={[renderGallery3]}
             />
         </>
     )
