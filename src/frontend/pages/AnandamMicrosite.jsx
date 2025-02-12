@@ -35,8 +35,8 @@ import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
 import { useLocation } from 'react-router-dom'
 
 import aboutImg from "/assets/frontend/images/microsite/anandam/about/about.webp"
-import heroImg from "/assets/frontend/images/microsite/anandam/hero/hero.webp"
-import heroMobImg from "/assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
+// import heroImg from "/assets/frontend/images/microsite/anandam/hero/hero.webp"
+// import heroMobImg from "/assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
 
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png"
