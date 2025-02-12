@@ -12,13 +12,18 @@ import CustomCursor from "./components/CustomCursor";
 import "../Loader/loader.css";
 import { BASE_ROOT } from "../../config";
 import MbTabLinks from "./components/mbTabLinks";
+import useMediaLoader from "./components/useMediaLoaded";
+import Loader from "../Loader/loader";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function Layout({ children }) {
+  const { isMediaLoaded, containerRef } = useMediaLoader();
   const location = useLocation();
 
   useEffect(() => {
+    if (!isMediaLoaded) return;
+
     let smoother = ScrollSmoother.get();
 
     if (!smoother) {
@@ -51,27 +56,32 @@ function Layout({ children }) {
       if (wrapper) wrapper.style.removeProperty("all");
       if (content) content.style.removeProperty("all");
     };
-  }, [location.pathname]);  // ✅ Runs when route changes
+  }, [location.pathname, isMediaLoaded]);  // ✅ Runs when route changes
 
 
 
   return (
-    <>
-      {/* Custom Cursor */}
-      <CustomCursor />
+    <main ref={containerRef}>
+      {!isMediaLoaded ?
+        <Loader /> :
 
-      {/* Main Content */}
-      <Header />
-      {/* mobile menus tabs */}
-      <MbTabLinks />
-      {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          {children}
-          <Footer />
-        </div>
-      </div>
-    </>
+        <>
+          {/* Custom Cursor */}
+          <CustomCursor />
+          {/* Main Content */}
+          <Header />
+          {/* mobile menus tabs */}
+          <MbTabLinks />
+          {location.pathname === `${BASE_ROOT}sharanam` || `${BASE_ROOT}anandam` || `${BASE_ROOT}gv-homes` || `${BASE_ROOT}vilasa` && <MicrositeMenu />}
+          <div id="smooth-wrapper">
+            <div id="smooth-content">
+              {children}
+              <Footer />
+            </div>
+          </div>
+        </>
+      }
+    </main>
   );
 }
 

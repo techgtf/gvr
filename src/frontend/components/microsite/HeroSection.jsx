@@ -3,8 +3,8 @@ import BannerDetails from "./BannerDetails";
 import ZoomOut from "../Animations/ZoomOut";
 
 function HeroSection({ 
-  desktopBg = "assets/frontend/images/microsite/hero.webp", 
-  mobileBg = "assets/frontend/images/microsite/hero.webp", 
+  desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342571/hero_yhnarx.webp", 
+  mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342571/hero_yhnarx.webp", 
   scrollText = "SCROLL DOWN", 
   sectionId = "overview", 
   initialScale = 1.5, 

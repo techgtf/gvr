@@ -7,27 +7,42 @@ import HighlightsSpecifications from '../components/microsite/HighlightsSpecific
 import Plans from '../components/microsite/Plans'
 import LocationAdvantage from '../components/microsite/LocationAdvantage'
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery'
-import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.png";
+import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.webp";
 import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.webp";
 import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.webp";
 import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.webp";
-import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
 import loaction from "/assets/frontend/images/microsite/gv/location/location.webp";
-import drive from "/assets/frontend/images/microsite/location/drive.png";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
-import walk from "/assets/frontend/images/microsite/location/walk.png";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
+import drive from "/assets/frontend/images/microsite/location/drive.webp";
+import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
+import walk from "/assets/frontend/images/microsite/location/walk.webp";
+import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
-import ac from "/assets/frontend/images/microsite/gv/amentities/icons/ac.png";
-import lift from "/assets/frontend/images/microsite/gv/amentities/icons/lift.png";
-import ventillation from "/assets/frontend/images/microsite/gv/amentities/icons/ventillation.png";
-import community from "/assets/frontend/images/microsite/gv/amentities/icons/community.png";
-import terrace from "/assets/frontend/images/microsite/gv/amentities/icons/terrace.png";
-import parking from "/assets/frontend/images/microsite/gv/amentities/icons/parking.png";
-import servant from "/assets/frontend/images/microsite/gv/amentities/icons/servant.png";
+import ac from "/assets/frontend/images/microsite/gv/amentities/icons/ac.webp";
+import lift from "/assets/frontend/images/microsite/gv/amentities/icons/lift.webp";
+import ventillation from "/assets/frontend/images/microsite/gv/amentities/icons/ventillation.webp";
+import community from "/assets/frontend/images/microsite/gv/amentities/icons/community.webp";
+import terrace from "/assets/frontend/images/microsite/gv/amentities/icons/terrace.webp";
+import parking from "/assets/frontend/images/microsite/gv/amentities/icons/parking.webp";
+import servant from "/assets/frontend/images/microsite/gv/amentities/icons/servant.webp";
 import { useLocation } from 'react-router-dom'
+
+import aboutImg from "/assets/frontend/images/microsite/gv/about/about.webp"
+import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+
+// location drive and walk images 
+import school from "/assets/frontend/images/microsite/gv/location/icons/school.webp"
+import college from "/assets/frontend/images/microsite/gv/location/icons/college.webp"
+import park from "/assets/frontend/images/microsite/gv/location/icons/park.webp"
+import auditorium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.webp"
+import institution from "/assets/frontend/images/microsite/gv/location/icons/institution.webp"
+import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.webp"
+import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.webp"
+import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
+import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
+import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.webp"
 
 function GvHomesMicrosite() {
     const location = useLocation();
@@ -44,23 +59,6 @@ function GvHomesMicrosite() {
         { name: "Lift", image: lift },
         { name: "Servant Quarters", image: servant },
     ]
-
-    // Pricelist data 
-
-    // const customPriceListData = [
-    //     {
-    //         area: "1 BHK",
-    //         more: "Living room/Kitchen/1 Toilet/Balcony",
-    //         size: "850 sq.ft",
-    //         price: "₹ 45 Lacs*",
-    //     },
-    //     {
-    //         area: "2 BHK ",
-    //         more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-    //         size: "1250 sq.ft",
-    //         price: "₹ 80 Lacs*",
-    //     },
-    // ];
 
     // Master plan 
 
@@ -108,66 +106,66 @@ function GvHomesMicrosite() {
         {
             title: "Structure",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/structure.png", description: " Earthquake-resistant design with high-quality materials." },
+                { image: "assets/frontend/images/microsite/gv/specifications/structure.webp", description: " Earthquake-resistant design with high-quality materials." },
             ],
         },
         {
             title: "Flooring",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/flooring.png", description: "Italian marble in living, dining, bedrooms & kitchens." },
+                { image: "assets/frontend/images/microsite/gv/specifications/flooring.webp", description: "Italian marble in living, dining, bedrooms & kitchens." },
             ],
         },
         {
             title: "Walls & Paint",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/walls-paints.png", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
+                { image: "assets/frontend/images/microsite/gv/specifications/walls-paints.webp", description: " P.O.P. punning, velvet/textured paint, false ceilings." },
             ],
         },
         {
             title: "Woodwork",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/woodworking.png", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
+                { image: "assets/frontend/images/microsite/gv/specifications/woodworking.webp", description: "Waterproof ply doors, premium wooden entrance, ample storage." },
             ],
         },
         {
             title: "Bathrooms",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/bathroom.png", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
+                { image: "assets/frontend/images/microsite/gv/specifications/bathroom.webp", description: "Designer fittings, toughened glass partitions, geysers, exhaust fans." },
             ],
         },
         {
             title: "Kitchen",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/kitchen.png", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
+                { image: "assets/frontend/images/microsite/gv/specifications/kitchen.webp", description: "Modular Italian-style kitchen, chimney, geyser, LPG pipeline." },
             ],
         },
         {
             title: "Water Supply",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/water-pipe.png", description: "24/7 provision with underground & rooftop tanks." },
+                { image: "assets/frontend/images/microsite/gv/specifications/water-pipe.webp", description: "24/7 provision with underground & rooftop tanks." },
             ],
         },
         {
             title: "Electrical",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/electricity.png", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
+                { image: "assets/frontend/images/microsite/gv/specifications/electricity.webp", description: "Fire-retardant wiring, LED lighting, Schindler lift, power backup." },
             ],
         },
         {
             title: "Special Features",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/features.png", description: "Spacious balconies, landscaped basement, modern façade." },
+                { image: "assets/frontend/images/microsite/gv/specifications/features.webp", description: "Spacious balconies, landscaped basement, modern façade." },
             ],
         },
         {
             title: "Customization",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/customization.png", description: "Buyer preferences accommodated with flexible designs." },
+                { image: "assets/frontend/images/microsite/gv/specifications/customization.webp", description: "Buyer preferences accommodated with flexible designs." },
             ],
         },
     ];
 
-    // Images 
+    // Amentities SLider Images 
 
     const images = [
         { image: "assets/frontend/images/microsite/gv/amentities/slider/slide1.webp", alt: "Split Air Conditioners" },
@@ -183,8 +181,8 @@ function GvHomesMicrosite() {
     return (
         <>
             <HeroSection
-                 desktopBg="assets/frontend/images/microsite/gv/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/gv/hero/hero.webp"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -197,7 +195,7 @@ function GvHomesMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/gv/about/about.webp"
+                imageSrc={aboutImg}
                 headingText="ABOUT US"
                 descriptionText="GV HOMEZ, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
@@ -212,7 +210,7 @@ function GvHomesMicrosite() {
             <PriceList priceListData headingText="Price List" />
 
             <HighlightsSpecifications
-            key={location.pathname} 
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
@@ -222,28 +220,28 @@ function GvHomesMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '3 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/metro.png', text: 'Green Park Metro Station', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/shopping.png', text: 'Green Park Market', time: '13 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hauzkhas.png', text: 'Hauz Khas Village', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Deer Park', time: '16 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/flights.png', text: 'IGI airport', time: '55 min' },
+                    { image: school, text: 'Fr. Agnel School', time: '3 min' },
+                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: park, text: 'Gulmohar Park', time: '5 min' },
+                    { image: auditorium, text: 'Siri Fort Auditorium', time: '5 min' },
+                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
+                    { image: hospital, text: 'Safdarjung Hospital', time: '11 min' },
+                    { image: metro, text: 'Green Park Metro Station', time: '11 min' },
+                    { image: shopping, text: 'Green Park Market', time: '13 min' },
+                    { image: hauzkhas, text: 'Hauz Khas Village', time: '14 min' },
+                    { image: park, text: 'Deer Park', time: '16 min' },
+                    { image: flights, text: 'IGI airport', time: '55 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
-                   
+                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
+                    { image: school, text: 'Fr. Agnel School', time: '11 min' },
+                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
+                    { image: park, text: 'Gulmohar Park', time: '15 min' },
+                    { image: auditorium, text: 'Siri Fort Auditorium', time: '15 min' },
+                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
+                    { image: hospital, text: 'Safdarjung Hospital', time: '35 min' },
+
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
