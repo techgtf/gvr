@@ -16,18 +16,23 @@ import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-
 import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
 import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.webp";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
 import About from "../components/microsite/About";
 import { useLocation } from "react-router-dom";
+
+import aboutImg from "/assets/frontend/images/microsite/about.jpg"
+
+// location drive and walk images 
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png"
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.png"
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png"
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png"
 
 function Microsite() {
   const location = useLocation();
@@ -166,42 +171,42 @@ function Microsite() {
     { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
   ];
 
-
-
   return (
     <>
       <HeroSection />
      
       <About
-       imageSrc="assets/frontend/images/microsite/about.jpg"
+       imageSrc={aboutImg}
        headingText="ABOUT US"
        descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
        reverseWatermark={true}
       />
 
       <Amentities images={images}  />
-      <PriceList priceListData={customPriceListData} headingText="Our Price List" />
+
+      <PriceList priceListData={customPriceListData} headingText="Price List" />
+
       <HighlightsSpecifications
-      key={location.pathname} 
+        key={location.pathname} 
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />
 
+      <Plans masterPlanData={masterPlanData} unitData={unitData} />
 
-      <Plans masterPlanData={masterPlanData} unitData={unitData} />;
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
-          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School , Noida', time: '5 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Oasis Noida', time: '10 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Greater Noida Expressway', time: '15 min' },
+          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
+          { image: school, text: 'Pathway School , Noida', time: '5 min' },
+          { image: musicschool, text: 'Oasis Noida', time: '10 min' },
+          { image: buildings, text: 'Greater Noida Expressway', time: '15 min' },
         ]}
         walkData={[
-          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Mayoor School of Music', time: '15 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Oasis Noida', time: '20 min' },
+          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
+          { image: school, text: 'Pathway School Noida', time: '10 min' },
+          { image: musicschool, text: 'Mayoor School of Music', time: '15 min' },
+          { image: buildings, text: 'Oasis Noida', time: '20 min' },
         ]}
         driveTabIcon={drive}
         driveTabActiveIcon={driveActive}
@@ -210,7 +215,6 @@ function Microsite() {
         lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
         description="  Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences."
       />
-
 
       <ProjectGallery
         actualImages={[gallery1, gallery2, gallery3, gallery4]}
