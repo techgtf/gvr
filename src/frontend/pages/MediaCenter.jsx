@@ -1,35 +1,17 @@
 import React from 'react'
-import ZoomOut from '../components/Animations/ZoomOut'
-import { Link } from 'react-router-dom'
-import SlideIn from '../components/Animations/SlideIn'
-import CommonHeading from '../components/commonHeading'
 import * as CONFIG from "../../../config";
+import HeroSectionAboutUs from '../components/aboutUs/HeroSectionAboutUs'
 
 function MediaCenter() {
     return (
         <>
-            <section className="relative heroSection h-[60vh] md:h-[80vh]" >
-                <ZoomOut initialScale={1.5}
-                    duration={2}>
-                    <div
-                        className="hero_vdo_div h-[60vh] md:h-[80vh] relative !bg-cover !bg-center bg-no-repeat"
-                        style={{
-                            backgroundImage: "url(assets/frontend/images/microsite/anandam/hero/hero.jpg)",
-                        }}
-                    >
-                        <div className="absolute h-[300px] w-full bg-gradient-to-b from-[#00000040] top-0 left-0"></div>
-                        <div className="absolute h-[300px] w-full bg-gradient-to-t from-[#00000040] bottom-0 left-0"></div>
-                        <div className="absolute inset-0 bg-black opacity-20"></div>
-
-                    </div>
-                </ZoomOut>
-            </section>
-            <div className="breadcrumb py-5 flex gap-5 items-center  text-[15px] w-full bg-transparent border-b border-black-rgba px-5">
-                <SlideIn duration={1} delay={0.3}>
-                    <CommonHeading HeadingText="MEDIA CENTER" />
-                </SlideIn>
-                HOME - <Link to="/" className="text-primary text-[14px]">MEDIA CENTER</Link>
-            </div>
+        <HeroSectionAboutUs
+                img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/hero.jpg`}
+                heading={"MEDIA CENTER"}
+                extraClassesImg={"objectRight"}
+              />
+         
+           
 
             <section className="download relative px-5 md:px-12 py-10 md:py-14">
                 <div className="grid grid-cols-2">
@@ -71,17 +53,17 @@ function MediaCenter() {
                                 <li className='flex gap-10 items-center py-2'>
                                     white -
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`} download="logo-colored.png">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/white/logo.png`} download="logo.png">
                                             png
                                         </a>
                                     </span> |
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.jpg`} download="logo-colored.jpg">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/white/logo.jpg`} download="logo.jpg">
                                             jpg
                                         </a>
                                     </span> |
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`} download="logo-colored.webp">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/white/logo.webp`} download="logo.webp">
                                             webp
                                         </a>
                                     </span>
@@ -90,17 +72,17 @@ function MediaCenter() {
                                 <li className='flex gap-10 items-center py-2'>
                                     blue -
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.png`} download="logo-blue.png">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/blue/logo.png`} download="logo.png">
                                             png
                                         </a>
                                     </span> |
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.jpg`} download="logo-blue.jpg">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/blue/logo.jpg`} download="logo.jpg">
                                             jpg
                                         </a>
                                     </span> |
                                     <span>
-                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-blue.webp`} download="logo-blue.webp">
+                                        <a href={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/logos/blue/logo.webp`} download="logo.webp">
                                             webp
                                         </a>
                                     </span>

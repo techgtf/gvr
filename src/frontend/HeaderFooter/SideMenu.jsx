@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { SlClose } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
+import { AiOutlineClose } from "react-icons/ai";
 
 function SideMenu({ setOpenSidebar }) {
   const sideMenuRef = useRef(null);
@@ -44,13 +45,9 @@ function SideMenu({ setOpenSidebar }) {
       ref={sideMenuRef}
       className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-full sm:w-[28%] h-screen px-10"
     >
-      <div className="absolute top-[40%] left-[-23px] bg-[#33638B] w-[37px] h-[175px] flex items-center flex-shrink-0 pt-[5px] pb-[5px]">
-        <button
-          onClick={handleClose}
-          className="w-[37px] h-[133.574px] flex-shrink-0 text-white text-center font-poppins text-[12px] tracking-[3px] font-normal leading-[28px] uppercase"
-        >
-          C<br />L<br />O<br />S<br />E
-        </button>
+      <div className="absolute top-5 right-5">
+        <AiOutlineClose  onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer"/>
+       
       </div>
       <div className="flex flex-col relative items-center gap-5 justify-evenly h-full">
         <ul className="w-full flex flex-col gap-10">
@@ -66,7 +63,7 @@ function SideMenu({ setOpenSidebar }) {
               <span
                 className="text-[12px] tracking-[2px] cursor-pointer"
               >
-                All Residential
+                Residential
               </span>
               </Link>
               <span className="text-[#0e69ae]">/</span>
@@ -77,7 +74,7 @@ function SideMenu({ setOpenSidebar }) {
               <span
                 className="text-[12px] tracking-[2px] cursor-pointer"
               >
-                All Commercial
+                Commercial
               </span>
               </Link>
               </div>
