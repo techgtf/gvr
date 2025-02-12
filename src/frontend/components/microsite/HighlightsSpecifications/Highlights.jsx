@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -49,6 +49,12 @@ function Highlights({ title = "Highlights", highlights = [] }) {
         scrollTriggerRef.current = null;
       }
     };
+  }, [location.pathname]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
   }, [location.pathname]);
 
   return (

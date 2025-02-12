@@ -7,10 +7,10 @@ import FadeIn from "../Animations/FadeIn";
 import ZoomOut from "../Animations/ZoomOut";
 
 function About({
-  imageSrc , // Default image
-  headingText, // Default heading text
-  descriptionText, // Default description
-  reverseWatermark = true, // Optional: Reverse watermark text
+  imageSrc , 
+  headingText,
+  descriptionText,
+  reverseWatermark = true,
 }) {
   const reverseText = (text) => {
     return text.split("").reverse().join("");

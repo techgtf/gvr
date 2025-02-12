@@ -27,8 +27,10 @@ import community from "/assets/frontend/images/microsite/gv/amentities/icons/com
 import terrace from "/assets/frontend/images/microsite/gv/amentities/icons/terrace.png";
 import parking from "/assets/frontend/images/microsite/gv/amentities/icons/parking.png";
 import servant from "/assets/frontend/images/microsite/gv/amentities/icons/servant.png";
+import { useLocation } from 'react-router-dom'
 
 function GvHomesMicrosite() {
+    const location = useLocation();
 
     // Amentities data 
 
@@ -210,6 +212,7 @@ function GvHomesMicrosite() {
             <PriceList priceListData headingText="Price List" />
 
             <HighlightsSpecifications
+            key={location.pathname} 
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />

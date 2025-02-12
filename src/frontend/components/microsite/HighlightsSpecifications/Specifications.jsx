@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../../Animations/FadeIn";
@@ -15,6 +15,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
   useLayoutEffect(() => {
     if (!specificationRefs.current.length) return;
 
+    // Kill any existing ScrollTriggers before creating a new one
     if (scrollTriggerRef.current) {
       scrollTriggerRef.current.kill();
       scrollTriggerRef.current = null;
@@ -51,6 +52,13 @@ function Specifications({ title = "Specifications", specifications = [], altImag
     };
   }, [location.pathname]);
 
+  useEffect(() => {
+    // Ensure ScrollTrigger refreshes after route change
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+  }, [location.pathname]);
+
   return (
     <div className="col-span-12 md:col-span-8 mt-10 sm:m-0">
       <div className="about_desc">
@@ -58,7 +66,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           <CommonHeading HeadingText={title} />
         </FadeIn>
         <div
-          className="grid grid-cols-12 mt-8  pr-5 specifications-scroll-container"
+          className="grid grid-cols-12 mt-8 pr-5 specifications-scroll-container"
           style={{
             backgroundImage: specifications.length > 0 ? "none" : `url(${altImage})`,
             backgroundSize: "cover",

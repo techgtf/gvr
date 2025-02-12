@@ -27,8 +27,11 @@ import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gal
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
 import About from "../components/microsite/About";
+import { useLocation } from "react-router-dom";
 
 function Microsite() {
+  const location = useLocation();
+  
   const masterPlanData = [
     { image: master_plan_img, alt: "Master Plan" },
   ];
@@ -179,6 +182,7 @@ function Microsite() {
       <Amentities images={images}  />
       <PriceList priceListData={customPriceListData} headingText="Our Price List" />
       <HighlightsSpecifications
+      key={location.pathname} 
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />

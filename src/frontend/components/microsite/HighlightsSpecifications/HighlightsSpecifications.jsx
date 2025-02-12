@@ -5,56 +5,76 @@ import { useLocation } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HighlightsSpecifications = ({ highlightsComponent: Highlights, specificationsComponent: Specifications }) => {
+const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent }) => {
   const sectionRef = useRef(null);
   const specificationsRef = useRef(null);
   const location = useLocation();
+  const scrollTriggerRef = useRef(null);
 
   useLayoutEffect(() => {
-    if (!sectionRef.current || !specificationsRef.current) return;
+    console.log("Initializing ScrollTrigger for:", location.pathname);
 
-    // Purane ScrollTriggers hatao taki naye se start ho
-    ScrollTrigger.getAll().forEach((t) => t.kill());
+    if (!sectionRef.current || !specificationsRef.current) {
+      console.warn("Refs are not available!");
+      return;
+    }
+
+    // Kill any existing ScrollTriggers
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    ScrollTrigger.clearMatchMedia();
 
     let ctx = gsap.context(() => {
-      ScrollTrigger.create({
+      scrollTriggerRef.current = ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
         end: () => `+=${specificationsRef.current.scrollHeight}`,
         pin: true,
         pinSpacing: true,
         scrub: 1,
-        markers: false,
+        markers: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          specificationsRef.current.scrollTop =
-            self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
+          if (specificationsRef.current) {
+            specificationsRef.current.scrollTop =
+              self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
+          }
         },
       });
+
+      ScrollTrigger.refresh();
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      console.log("Cleaning up ScrollTrigger for:", location.pathname);
+      ctx.revert();
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, [location.pathname]);
 
-  // Jab dusre page se wapas aayein to ScrollTrigger refresh ho
   useEffect(() => {
+    // Ensure ScrollTrigger refreshes after route change
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100);
+    }, 500);
   }, [location.pathname]);
 
   return (
     <section
+      key={location.pathname} // Forces re-render on route change
       ref={sectionRef}
       className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center overflow-hidden"
     >
       <div className="grid sm:grid-cols-12 grid-cols-1 md:gap-20 w-full">
-        <Highlights />
+        {highlightsComponent()} 
         <div
           ref={specificationsRef}
           className="col-span-12 md:col-span-8 overflow-y-auto h-[450px] pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent"
         >
-          <Specifications />
+          {specificationsComponent()}
         </div>
       </div>
     </section>
