@@ -16,14 +16,11 @@ import drive from "/assets/frontend/images/microsite/location/drive.png";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
 import walk from "/assets/frontend/images/microsite/location/walk.png";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-
 import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
 import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.webp";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
 import About from "../components/microsite/About";
