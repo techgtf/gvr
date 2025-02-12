@@ -33,16 +33,16 @@ import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
 import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
 
 // location drive and walk images 
-import school from "/assets/frontend/images/microsite/gv/location/icons/school.png"
-import college from "/assets/frontend/images/microsite/gv/location/icons/college.png"
-import park from "/assets/frontend/images/microsite/gv/location/icons/park.png"
-import auditorium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.png"
-import institution from "/assets/frontend/images/microsite/gv/location/icons/institution.png"
-import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.png"
-import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.png"
-import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.png"
-import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.png"
-import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.png"
+import school from "/assets/frontend/images/microsite/gv/location/icons/school.webp"
+import college from "/assets/frontend/images/microsite/gv/location/icons/college.webp"
+import park from "/assets/frontend/images/microsite/gv/location/icons/park.webp"
+import auditorium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.webp"
+import institution from "/assets/frontend/images/microsite/gv/location/icons/institution.webp"
+import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.webp"
+import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.webp"
+import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
+import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
+import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.webp"
 
 function GvHomesMicrosite() {
     const location = useLocation();

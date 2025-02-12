@@ -29,10 +29,10 @@ import { useLocation } from "react-router-dom";
 import aboutImg from "/assets/frontend/images/microsite/about.jpg"
 
 // location drive and walk images 
-import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png"
-import school from "/assets/frontend/images/microsite/location/walkIcons/school.png"
-import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png"
-import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png"
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.webp"
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.webp"
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.webp"
 
 function Microsite() {
   const location = useLocation();
