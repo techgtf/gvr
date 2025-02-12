@@ -34,6 +34,16 @@ import runningTrack from "/assets/frontend/images/microsite/amentities/icons/run
 import park from "/assets/frontend/images/microsite/amentities/icons/park.webp";
 import { useLocation } from 'react-router-dom'
 
+import aboutImg from "/assets/frontend/images/microsite/anandam/about/about.webp"
+import heroImg from "/assets/frontend/images/microsite/anandam/hero/hero.webp"
+import heroMobImg from "/assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
+
+// location drive and walk images 
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.png"
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.png"
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.png"
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.png"
+
 
 function AnandamMicrosite() {
     const location = useLocation();
@@ -199,8 +209,8 @@ function AnandamMicrosite() {
     return (
         <>
             <HeroSection
-                desktopBg="assets/frontend/images/microsite/anandam/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342186/hero-mobile_edjbo7.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -214,7 +224,7 @@ function AnandamMicrosite() {
 
 
             <About
-                imageSrc="assets/frontend/images/microsite/anandam/about/about.webp"
+                imageSrc={aboutImg}
                 headingText="ABOUT US"
                 descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering thoughtfully designed 2 and 3 BHK apartments, it combines luxury with convenience, providing residents with a serene and opulent living experience. "
                 reverseWatermark={true}
@@ -225,7 +235,9 @@ function AnandamMicrosite() {
                 headingText="Amenities"
                 images={images}
             />
+
             <PriceList priceListData={customPriceListData} headingText="Price List" />
+
             <HighlightsSpecifications
             key={location.pathname} 
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
@@ -236,16 +248,16 @@ function AnandamMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/mall.webp', text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/school.webp', text: 'Pathway School , Noida', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.webp', text: 'Oasis Noida', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.webp', text: 'Greater Noida Expressway', time: '15 min' },
+                    { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
+                    { image: school, text: 'Pathway School , Noida', time: '5 min' },
+                    { image: musicschool, text: 'Oasis Noida', time: '10 min' },
+                    { image: buildings, text: 'Greater Noida Expressway', time: '15 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/mall.webp', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/school.webp', text: 'Pathway School Noida', time: '10 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.webp', text: 'Mayoor School of Music', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.webp', text: 'Oasis Noida', time: '20 min' },
+                    { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
+                    { image: school, text: 'Pathway School Noida', time: '10 min' },
+                    { image: musicschool, text: 'Mayoor School of Music', time: '15 min' },
+                    { image: buildings, text: 'Oasis Noida', time: '20 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

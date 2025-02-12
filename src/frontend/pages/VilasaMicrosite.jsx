@@ -69,7 +69,7 @@ function VilasaMicrosite() {
         "Gated Community – Secure, well-planned, and exclusive living.",
         "Premium Amenities – Clubhouse, banquet, sports courts, and golf greens.",
         "Great Connectivity – Near Aravalli Hills and Damdama Lake.",
-        "Scenic Surroundings –122-172 sq. yds.",       
+        "Scenic Surroundings –122-172 sq. yds.",
     ];
 
     // Specifications data 
@@ -98,25 +98,25 @@ function VilasaMicrosite() {
             items: [
                 { image: "assets/frontend/images/microsite/vilasa/specifications/road.webp", description: "10m wide roads, landscaped spaces." },
             ],
-        },       
+        },
         {
             title: "Commercial Complex",
             items: [
                 { image: "assets/frontend/images/microsite/vilasa/specifications/commercialComplex.webp", description: "Dedicated retail spaces within the community." },
             ],
-        },       
+        },
         {
             title: "Community Spaces",
             items: [
                 { image: "assets/frontend/images/microsite/vilasa/specifications/communitySpaces.webp", description: "European-style gazebos, open lawns, and seating areas." },
             ],
-        },       
+        },
         {
             title: "Sustainable Living",
             items: [
                 { image: "assets/frontend/images/microsite/vilasa/specifications/sustainableLiving.webp", description: "Green spaces and well-planned drainage systems." },
             ],
-        },       
+        },
     ];
 
     // Images 
@@ -136,8 +136,8 @@ function VilasaMicrosite() {
     return (
         <>
             <HeroSection
-                 desktopBg={heroImg}
-                mobileBg={heroMobImg}
+                desktopBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
+                mobileBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -165,7 +165,7 @@ function VilasaMicrosite() {
             <PriceList headingText="Price List" />
 
             <HighlightsSpecifications
-            key={location.pathname} 
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
@@ -180,20 +180,20 @@ function VilasaMicrosite() {
                     { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
                     { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
                     { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
-                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },       
-                    { image: resort, text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' }, 
-                    { image: metro, text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },           
-                    { image: resort, text: 'Damdama Lake, Sohna', time: '22 min' },                    
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },
+                    { image: resort, text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' },
+                    { image: metro, text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },
+                    { image: resort, text: 'Damdama Lake, Sohna', time: '22 min' },
                     { image: landmark, text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
-                    { image: airport, text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },                                  
+                    { image: airport, text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },
                 ]}
                 walkData={[
                     { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
                     { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
                     { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
                     { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
-                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },     
-                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },                                                                                                            
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },
+                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

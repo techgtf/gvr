@@ -11,7 +11,6 @@ import power from "/assets/frontend/images/microsite/gv/amentities/icons/power.w
 import master_plan_img from "/assets/frontend/images/microsite/gv/plans/masterplan.webp";
 import plan1 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan1.webp";
 import plan2 from "/assets/frontend/images/microsite/gv/plans/floorPlans/plan2.webp";
-import plan3 from "/assets/frontend/images/microsite/anandam/plans/floorPlans/plan3.webp";
 import loaction from "/assets/frontend/images/microsite/gv/location/location.webp";
 import drive from "/assets/frontend/images/microsite/location/drive.webp";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
@@ -29,6 +28,22 @@ import parking from "/assets/frontend/images/microsite/gv/amentities/icons/parki
 import servant from "/assets/frontend/images/microsite/gv/amentities/icons/servant.webp";
 import { useLocation } from 'react-router-dom'
 
+import aboutImg from "/assets/frontend/images/microsite/gv/about/about.webp"
+import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+
+// location drive and walk images 
+import school from "/assets/frontend/images/microsite/gv/location/icons/school.png"
+import college from "/assets/frontend/images/microsite/gv/location/icons/college.png"
+import park from "/assets/frontend/images/microsite/gv/location/icons/park.png"
+import auditorium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.png"
+import institution from "/assets/frontend/images/microsite/gv/location/icons/institution.png"
+import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.png"
+import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.png"
+import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.png"
+import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.png"
+import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.png"
+
 function GvHomesMicrosite() {
     const location = useLocation();
 
@@ -44,23 +59,6 @@ function GvHomesMicrosite() {
         { name: "Lift", image: lift },
         { name: "Servant Quarters", image: servant },
     ]
-
-    // Pricelist data 
-
-    // const customPriceListData = [
-    //     {
-    //         area: "1 BHK",
-    //         more: "Living room/Kitchen/1 Toilet/Balcony",
-    //         size: "850 sq.ft",
-    //         price: "₹ 45 Lacs*",
-    //     },
-    //     {
-    //         area: "2 BHK ",
-    //         more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-    //         size: "1250 sq.ft",
-    //         price: "₹ 80 Lacs*",
-    //     },
-    // ];
 
     // Master plan 
 
@@ -167,7 +165,7 @@ function GvHomesMicrosite() {
         },
     ];
 
-    // Images 
+    // Amentities SLider Images 
 
     const images = [
         { image: "assets/frontend/images/microsite/gv/amentities/slider/slide1.webp", alt: "Split Air Conditioners" },
@@ -183,8 +181,8 @@ function GvHomesMicrosite() {
     return (
         <>
             <HeroSection
-                 desktopBg="assets/frontend/images/microsite/gv/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/gv/hero/hero.webp"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -197,7 +195,7 @@ function GvHomesMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/gv/about/about.webp"
+                imageSrc={aboutImg}
                 headingText="ABOUT US"
                 descriptionText="GV HOMEZ, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
@@ -212,7 +210,7 @@ function GvHomesMicrosite() {
             <PriceList priceListData headingText="Price List" />
 
             <HighlightsSpecifications
-            key={location.pathname} 
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
@@ -222,28 +220,28 @@ function GvHomesMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.webp', text: 'Fr. Agnel School', time: '3 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.webp', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.webp', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.webp', text: 'Gulmohar Park', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.webp', text: 'Siri Fort Auditorium', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.webp', text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.webp', text: 'Safdarjung Hospital', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/metro.webp', text: 'Green Park Metro Station', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/shopping.webp', text: 'Green Park Market', time: '13 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp', text: 'Hauz Khas Village', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.webp', text: 'Deer Park', time: '16 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/flights.webp', text: 'IGI airport', time: '55 min' },
+                    { image: school, text: 'Fr. Agnel School', time: '3 min' },
+                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: park, text: 'Gulmohar Park', time: '5 min' },
+                    { image: auditorium, text: 'Siri Fort Auditorium', time: '5 min' },
+                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
+                    { image: hospital, text: 'Safdarjung Hospital', time: '11 min' },
+                    { image: metro, text: 'Green Park Metro Station', time: '11 min' },
+                    { image: shopping, text: 'Green Park Market', time: '13 min' },
+                    { image: hauzkhas, text: 'Hauz Khas Village', time: '14 min' },
+                    { image: park, text: 'Deer Park', time: '16 min' },
+                    { image: flights, text: 'IGI airport', time: '55 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.webp', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.webp', text: 'Fr. Agnel School', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.webp', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.webp', text: 'Gulmohar Park', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.webp', text: 'Siri Fort Auditorium', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.webp', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.webp', text: 'Safdarjung Hospital', time: '35 min' },
-                   
+                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
+                    { image: school, text: 'Fr. Agnel School', time: '11 min' },
+                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
+                    { image: park, text: 'Gulmohar Park', time: '15 min' },
+                    { image: auditorium, text: 'Siri Fort Auditorium', time: '15 min' },
+                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
+                    { image: hospital, text: 'Safdarjung Hospital', time: '35 min' },
+
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

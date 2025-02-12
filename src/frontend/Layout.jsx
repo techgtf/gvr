@@ -72,7 +72,7 @@ function Layout({ children }) {
           <Header />
           {/* mobile menus tabs */}
           <MbTabLinks />
-          {location.pathname === `${BASE_ROOT}microsite` && <MicrositeMenu />}
+          {location.pathname === `${BASE_ROOT}sharanam` || `${BASE_ROOT}anandam` || `${BASE_ROOT}gv-homes` || `${BASE_ROOT}vilasa` && <MicrositeMenu />}
           <div id="smooth-wrapper">
             <div id="smooth-content">
               {children}

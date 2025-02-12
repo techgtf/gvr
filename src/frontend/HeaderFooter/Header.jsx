@@ -85,7 +85,7 @@ export default function Header() {
     let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
   
     // Override with colored logo if isFixed or activeItem is true
-    if (isFixed || activeItem) {
+    if (isFixed || activeItem) {  
       return coloredLogo;
     }
   

@@ -64,7 +64,7 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
 
   return (
     <section
-      key={location.pathname} // Forces re-render on route change
+      key={location.pathname} 
       ref={sectionRef}
       className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center overflow-hidden"
     >
