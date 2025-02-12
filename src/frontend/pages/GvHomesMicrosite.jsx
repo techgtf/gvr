@@ -234,15 +234,6 @@ function GvHomesMicrosite() {
                     { image: flights, text: 'IGI airport', time: '55 min' },
                 ]}
                 walkData={[
-<<<<<<< HEAD
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/school.png', text: 'Fr. Agnel School', time: '11 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/college.png', text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/park.png', text: 'Gulmohar Park', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
-                    { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
-=======
                     { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
                     { image: school, text: 'Fr. Agnel School', time: '11 min' },
                     { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
@@ -250,7 +241,6 @@ function GvHomesMicrosite() {
                     { image: auditorium, text: 'Siri Fort Auditorium', time: '15 min' },
                     { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
                     { image: hospital, text: 'Safdarjung Hospital', time: '35 min' },
->>>>>>> origin/khushi
 
                 ]}
                 driveTabIcon={drive}
