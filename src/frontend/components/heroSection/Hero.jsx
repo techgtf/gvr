@@ -16,7 +16,6 @@ export default function Hero({
     headingClasses = ''
 }) {
     const [isMuted, setIsMuted] = useState(true)
-    const [isPlaying, setIsPlaying] = useState(true);
     const videoRef = useRef(null);
 
     const handleToggelMute = () => {
