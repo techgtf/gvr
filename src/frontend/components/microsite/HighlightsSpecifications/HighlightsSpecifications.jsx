@@ -32,6 +32,12 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (specificationsRef.current) {
+              specificationsRef.current.scrollTop =
+                self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
+            }
+          },
         });
 
         requestAnimationFrame(() => {
