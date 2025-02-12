@@ -199,8 +199,8 @@ function AnandamMicrosite() {
     return (
         <>
             <HeroSection
-                desktopBg="assets/frontend/images/microsite/anandam/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342186/hero-mobile_edjbo7.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}

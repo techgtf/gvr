@@ -183,8 +183,8 @@ function GvHomesMicrosite() {
     return (
         <>
             <HeroSection
-                 desktopBg="assets/frontend/images/microsite/gv/hero/hero.webp"
-                mobileBg="assets/frontend/images/microsite/gv/hero/hero.webp"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -212,7 +212,7 @@ function GvHomesMicrosite() {
             <PriceList priceListData headingText="Price List" />
 
             <HighlightsSpecifications
-            key={location.pathname} 
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
@@ -243,7 +243,7 @@ function GvHomesMicrosite() {
                     { image: 'assets/frontend/images/microsite/gv/location/icons/auditorium.png', text: 'Siri Fort Auditorium', time: '15 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/institution.png', text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
                     { image: 'assets/frontend/images/microsite/gv/location/icons/hospital.png', text: 'Safdarjung Hospital', time: '35 min' },
-                   
+
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
