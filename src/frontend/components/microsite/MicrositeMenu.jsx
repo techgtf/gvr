@@ -33,10 +33,10 @@ function MicrositeMenu() {
 
             if (id === "mainfooter") {
               setIsFooterActive(true);
-            } else if(id === "overview") {
+            } else if (id === "overview") {
               setIsFooterActive(true);
             }
-            
+
             else {
               setIsFooterActive(false);
             }
@@ -58,17 +58,15 @@ function MicrositeMenu() {
 
   return (
     <section
-      className={`microsite_menu hidden sm:block bg-[#EFF5FA] px-10 py-3 w-full z-10 ${
-        isFooterActive ? "hidden" : "fixed bottom-0 left-0"
-      }`}
+    className="hidden"
+      // className={`microsite_menu hidden sm:block bg-[#EFF5FA] px-10 py-3 w-full z-10 ${isFooterActive ? "hidden" : "fixed bottom-0 left-0"}`}
     >
       <ul className="flex flex-wrap justify-evenly items-center text-gray-600 cursor-pointer">
         {menu.map((item, i) => (
           <li
             key={i}
-            className={`cursor-pointer ${
-              active === item.id ? "text-primary font-semibold" : ""
-            }`}
+            className={`cursor-pointer ${active === item.id ? "text-primary font-semibold" : ""
+              }`}
           >
             <Link to={item.id} spy={true} smooth={true} duration={500}>
               {item.name}
