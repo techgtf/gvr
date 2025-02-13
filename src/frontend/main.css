@@ -193,6 +193,7 @@ img {
   font-weight: 500;
   letter-spacing: 4px;
   word-spacing: 8px;
+  line-height: 35px;
 }
 
 .fullBtn {
@@ -280,8 +281,13 @@ img {
     line-height: 22px;
   }
 
+  .waterMarkDiv{padding: 0 15px;}
+
   .sectionHeading {
     font-size: 10px;
+    letter-spacing: 3px;
+    line-height: 30px;
+    word-spacing: 5px;
   }
 
   .common_heading {

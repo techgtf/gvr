@@ -16,19 +16,19 @@ gsap.registerPlugin(ScrollTrigger);
 const slidesData = [
     {
         name: 'Mr. Narinder Arora',
-        thumbs: 'narinder-arora.jpg',
+        thumbs: 'narinder-arora.webp',
         video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
         desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
     },
     {
         name: 'Verma Family',
-        thumbs: 'verma-family.png',
+        thumbs: 'verma-family.webp',
         video: 'https://www.youtube.com/watch?v=Nbm6iQ0IMMY',
         desc: 'A Community Where Every Festival Feels Like Home',
     },
     {
         name: 'Mr. B.P. Bharti',
-        thumbs: 'bp-bharti.png',
+        thumbs: 'bp-bharti.webp',
         video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
         desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
     },
@@ -77,36 +77,12 @@ export default function Testimonial() {
         from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
     };
 
-    // const togglePlayPause = (index) => {
-    //     videoRefs.current.forEach((video, i) => {
-    //         if (video) {
-    //             if (i === index) {
-    //                 if (video.paused) {
-    //                     video.play();
-    //                     setPlayingVideo(video);
-    //                 } else {
-    //                     video.pause();
-    //                     setPlayingVideo(null);
-    //                 }
-    //             } else {
-    //                 video.pause();
-    //             }
-    //         }
-    //     });
-    // };
-
-    // const handleVideoEnd = () => {
-    //     setPlayingVideo(null)
-    // }
-
-
-
     return (
         <div ref={testimonialRef} className="testimonialSection lg:pt-[120px] lg:pb-[90px] pt-[50px] pb-[50px]">
             <div className="max-w-[90%] mx-auto relative">
                 <WaterMarkHeading
                     textWaterMark='Our testimonials'
-                    sectionHeading='Our testimonials'
+                    sectionHeading='Voices That Celebrate Trust and Timeless Partnerships'
                     animationConfig={animationConfig}
                 />
                 <div ref={swiperContainerRef} className="swiper-container reveal">

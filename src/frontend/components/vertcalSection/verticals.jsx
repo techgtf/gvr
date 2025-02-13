@@ -19,13 +19,13 @@ export default function Verticals() {
     const verticalData = [
         {
             title: 'GV Capital',
-            imgSrc: 'capital.jpg',
+            imgSrc: 'capital.webp',
             description: 'GV Capital accelerates visionary businesses with strategic investments, expert mentorship, and smart capital for lasting impact and growth.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
         {
             title: 'GV Finance',
-            imgSrc: 'finance.jpg',
+            imgSrc: 'finance.webp',
             description: 'GV Finance empowers businesses and individuals with smart financial solutions, optimizing cash flow, securing investments, and driving sustainable growth.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
@@ -35,7 +35,7 @@ export default function Verticals() {
         <div className='verticalSection bg-[#EFF5FA] 2xl:py-[85px] xl:py-[75px] py-[50px] text-center lg:mt-0 mt-[50px]'>
             <div className='section_in 2xl:max-w-[80%] m-auto max-w-[100%]'>
                 <WaterMarkHeading
-                    sectionHeading='Other verticals'
+                    sectionHeading='Building Futures, Financing Dreams, Beyond Real Estate'
                     animationConfig={animationConfig}
                 />
                 <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[40px] xl:gap-0 gap-[44px] lg:px-0 px-4'>
