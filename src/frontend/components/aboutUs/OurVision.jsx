@@ -3,10 +3,13 @@ import { useImageReveal } from "../useImageReveal";
 import { useTextAnimation } from "../useTextAnimation";
 
 const OurVision = () => {
-  const sectionRef = useTextAnimation({
-    from: { y: 100, opacity: 0 },
-    to: { y: 0, opacity: 1, duration: 1 },
-  }, []);
+  const sectionRef = useTextAnimation(
+    {
+      from: { y: 100, opacity: 0 },
+      to: { y: 0, opacity: 1, duration: 1 },
+    },
+    []
+  );
 
   useImageReveal(".reveal");
 
@@ -15,7 +18,10 @@ const OurVision = () => {
       <div className="flex justify-between items-center xl:py-[50px] py-[3.5rem] flex-wrap max-w-[85%]">
         <img
           className="w-[350px] h-[350px] reveal w-[100%] object-contain"
-          src="assets/frontend/images/aboutus/vision_and_mission.webp"
+          src={
+            "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437040/vision_and_mission_e5tdx1.webp"
+          }
+          // src="assets/frontend/images/aboutus/vision_and_mission.webp"
           alt="vision_and_mission"
         />
         <div
