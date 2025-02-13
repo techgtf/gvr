@@ -33,10 +33,10 @@ function MicrositeMenu() {
 
             if (id === "mainfooter") {
               setIsFooterActive(true);
-            } else if(id === "overview") {
+            } else if (id === "overview") {
               setIsFooterActive(true);
             }
-            
+
             else {
               setIsFooterActive(false);
             }
@@ -68,9 +68,8 @@ function MicrositeMenu() {
         {menu.map((item, i) => (
           <li
             key={i}
-            className={`cursor-pointer ${
-              active === item.id ? "text-primary font-semibold" : ""
-            }`}
+            className={`cursor-pointer ${active === item.id ? "text-primary font-semibold" : ""
+              }`}
           >
             <Link to={item.id} spy={true} smooth={true} duration={500}>
               {item.name}

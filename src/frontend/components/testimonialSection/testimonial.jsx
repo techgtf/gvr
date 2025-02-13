@@ -157,7 +157,7 @@ export default function Testimonial() {
                                         <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
                                             <small className='line'></small> {item.name}
                                         </div>
-                                        <FullBtn text='Watch More' link='testimonials' />
+                                        {/* <FullBtn text='Watch More' link='testimonials' /> */}
                                     </div>
                                 </div>
                             </SwiperSlide>
