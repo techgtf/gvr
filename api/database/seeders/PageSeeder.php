@@ -21,33 +21,35 @@ class PageSeeder extends Seeder
             // 2
             ['name' => 'About Page'],
             // 3
-            ['name' => 'Our Verticals'],
-            // 4
             ['name' => 'Blog'],
-            // 5
+            // 4
             ['name' => 'Contact us'],
-            // 6
+            // 5
             ['name' => 'Career'],
-            // 7
+            // 6
             ['name' => 'CSR'],
-            // 8
+            // 7
             ['name' => 'Home Loans'],
-            // 9
+            // 8
             ['name' => 'Tax Benefits'],
-            // 10
+            // 9
             ['name' => 'Area Converter'],
-            // 11
+            // 10
             ['name' => 'Property Investment'],
-            // 12
+            // 11
             ['name' => 'NRI Corner'],
-            // 13
+            // 12
             ['name' => 'NRI Investors'],
-            // 14
+            // 13
             ['name' => 'Faq'],
-            // 15
+            // 14
             ['name' => 'EMI Calculator'],
-            // 16
+            // 15
             ['name' => 'Blog Details'],
+            // 16
+            ['name' => 'Testimonials'],
+            // 17
+            ['name' => 'Blogs'],
             // Add more data here
         ]);
     }

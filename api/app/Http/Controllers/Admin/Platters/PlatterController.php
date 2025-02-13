@@ -29,7 +29,7 @@ class PlatterController extends Controller
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
-            'message'=>"Success ",
+            'message'=>"Success",
             'data'=>$record
         ]);
     }
