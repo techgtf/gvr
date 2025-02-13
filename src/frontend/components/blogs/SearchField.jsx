@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 
 const SearchField = ({ searchTerm, setSearchTerm , customClass}) => {
   return (
-    <div className={`relative w-full max-w-sm ${customClass}`}>
+    <div className={`relative w-full max-w-md ${customClass}`}>
       <input
         type="text"
         placeholder="SEARCH HERE"
