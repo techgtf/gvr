@@ -7,8 +7,6 @@ import { BASE_ROOT } from "../../../../config";
 
 const OurVerticals = () => {
   const animationConfig = {
-    // passing animation as prop for WaterMarkHeading
-    // from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 },
     from: { x: -100, opacity: 0 },
     to: { x: 0, opacity: 1, duration: 1 },
   };
@@ -67,25 +65,30 @@ const OurVerticals = () => {
               </div>
             </div>
             <div className="flex justify-center mt-[1rem] w-[92%]">
-              {" "}
               <CommonBtn
                 to={BASE_ROOT + "coming-soon"}
                 TagName={Link}
                 target="_blank"
               >
-                Know More <BsArrowUpRight />{" "}
+                Know More <BsArrowUpRight />
               </CommonBtn>
             </div>
           </div>
           <img
-            src="assets/frontend/images/aboutus/verticals/vertical-1.webp"
+            src={
+              "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437044/vertical-1_rbwbmb.webp"
+            }
+            // src="assets/frontend/images/aboutus/verticals/vertical-1.webp"
             alt="vertical-1"
             className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />
         </div>
         <div className="flex items-center justify-between xl:mt-[4rem] mt-[3rem] flex-wrap">
           <img
-            src="assets/frontend/images/aboutus/verticals/vertical-2.webp"
+            src={
+              "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437046/vertical-2_u8tjv9.webp"
+            }
+            // src="assets/frontend/images/aboutus/verticals/vertical-2.webp"
             alt="vertical-1"
             className="xl:basis-[32%] reveal h-[480px] w-[100%]"
           />

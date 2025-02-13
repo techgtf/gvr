@@ -19,7 +19,10 @@ const Aboutus = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
+        img={
+          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437177/about_us_b4tbjm.webp"
+        }
+        // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
         heading={"ABOUT US"}
         extraClassesImg={"objectRight"}
       />
