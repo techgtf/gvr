@@ -37,20 +37,42 @@ export default function Hero({
                     <LoadAnimation />
                     <video
                         ref={videoRef}
-                        // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-                        src={window.innerWidth > 767 ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739181951/1920x900_1_jhutji.mp4` : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739180202/700x1000_xrmmbh.mp4`}
+                        src={window.innerWidth > 767
+                            ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739181951/1920x900_1_jhutji.mp4`
+                            : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739180202/700x1000_xrmmbh.mp4`}
                         autoPlay
                         playsInline
                         loop
                         muted={isMuted}
                         preload="auto"
                         className="lg:h-[auto] h-[75vh] w-full object-cover"
-                    ></video>
+                    >
+                        {/* Adding Captions */}
+                        <track
+                            // src="https://res.cloudinary.com/dx3l6id8r/video/upload/v1739181951/1920x900_1_jhutji.mp4"
+                            kind="subtitles"
+                            srcLang="en"
+                            label="English"
+                            default
+                        />
+                    </video>
+
                     <div className="vdo_btns absolute lg:bottom-[40px] bottom-[15px] lg:right-[30px] right-[15px]">
                         <button
                             onClick={handleToggelMute}
-                            className="text-white border border-solid lg:h-[60px] h-[40px] lg:w-[60px] w-[40px] flex justify-center items-center rounded-full cursor-pointer backdrop-blur-[20px] bg-[#00000038]"
-                        >{isMuted ? <IoVolumeMute className="lg:text-[35px] text-[20px] cursor-pointer" /> : <VscUnmute className="lg:text-[35px] text-[20px] cursor-pointer" />}</button>
+                            className="text-white border border-solid lg:h-[60px] h-[40px] lg:w-[60px] w-[40px] flex justify-center items-center rounded-full cursor-pointer backdrop-blur-[20px] bg-[#00000038] 
+  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                            aria-label={isMuted ? "Unmute audio" : "Mute audio"} // Screen reader label
+                            title={isMuted ? "Unmute audio" : "Mute audio"} // Tooltip on hover
+                        >
+                            {isMuted ? (
+                                <IoVolumeMute className="lg:text-[35px] text-[20px] cursor-pointer" />
+                            ) : (
+                                <VscUnmute className="lg:text-[35px] text-[20px] cursor-pointer" />
+                            )}
+                        </button>
+
+
                     </div>
                 </div>
 

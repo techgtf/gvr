@@ -16,7 +16,12 @@ import drive from "/assets/frontend/images/microsite/location/drive.webp";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
+import gallery1 from "/assets/frontend/images/microsite/gv/gallery/gallery1.webp"
+import gallery2 from "/assets/frontend/images/microsite/gv/gallery/gallery2.webp"
+import gallery3 from "/assets/frontend/images/microsite/gv/gallery/gallery3.webp"
+import gallery4 from "/assets/frontend/images/microsite/gv/gallery/gallery4.webp"
+import gallery5 from "/assets/frontend/images/microsite/gv/gallery/gallery5.webp"
+import gallery6 from "/assets/frontend/images/microsite/gv/gallery/gallery6.webp"
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
 import ac from "/assets/frontend/images/microsite/gv/amentities/icons/ac.webp";
@@ -252,7 +257,7 @@ function GvHomesMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[renderGallery3]}
+                actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
             />
         </>
     )

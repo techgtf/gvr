@@ -143,7 +143,12 @@ export default function Testimonial() {
                                             className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'
                                             onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
                                         >
-                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='cursor-pointer lg:h-[44px] h-[30px]' alt="playbtn" />
+                                            <img
+                                                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
+                                                className="cursor-pointer lg:h-[44px] h-[30px]"
+                                                alt="Play button icon"
+                                            />
+
                                         </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>

@@ -71,9 +71,11 @@ export default function MediaCoverage() {
                                     <>
                                         <SwiperSlide key={index}>
                                             <img
-                                                className='lg:w-auto w-[80px]'
+                                                className="lg:w-auto w-[80px]"
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`}
-                                                alt="media images" />
+                                                alt={item.altText || `Media coverage: ${item.title}`}
+                                            />
+
                                         </SwiperSlide>
                                         {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
                                     </>

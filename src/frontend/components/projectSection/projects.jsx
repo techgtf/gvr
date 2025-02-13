@@ -56,8 +56,9 @@ export default function Projects() {
                         <img
                             className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
-                            alt={item.type || 'Project image'}
+                            alt={item.type ? `${item.type} project image` : "Real estate project image"}
                         />
+
                         <figcaption
                             // data-speed="clamp(0.9)"
                             className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[20px] left-0 right-0 z-[1] px-2"

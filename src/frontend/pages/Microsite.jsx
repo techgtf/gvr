@@ -20,6 +20,8 @@ import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
+import gallery5 from "/assets/frontend/images/microsite/gallery/gallery5.webp";
+import gallery6 from "/assets/frontend/images/microsite/gallery/gallery6.webp";
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
 import About from "../components/microsite/About";
@@ -213,7 +215,7 @@ function Microsite() {
       />
 
       <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4]}
+        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
       />
     </>
   );

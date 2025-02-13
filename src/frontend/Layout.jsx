@@ -62,27 +62,43 @@ function Layout({ children }) {
 
   return (
     <main ref={containerRef}>
-      {!isMediaLoaded ?
-        <Loader /> :
+      {/* Skip Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only absolute top-0 left-0 bg-white text-black p-2 z-50"
+      >
+        Skip to Main Content
+      </a>
 
+      {!isMediaLoaded ? (
+        <Loader />
+      ) : (
         <>
-          {location.pathname === `${BASE_ROOT}sharanam` || `${BASE_ROOT}anandam` || `${BASE_ROOT}gv-homes` || `${BASE_ROOT}vilasa` && <MicrositeMenu />}
+          {location.pathname === `${BASE_ROOT}sharanam` ||
+            location.pathname === `${BASE_ROOT}anandam` ||
+            location.pathname === `${BASE_ROOT}gv-homes` ||
+            location.pathname === `${BASE_ROOT}vilasa` ? <MicrositeMenu /> : null}
+
           {/* Custom Cursor */}
           <CustomCursor />
+
           {/* Main Content */}
           <Header />
-          {/* mobile menus tabs */}
+
+          {/* Mobile Menu Tabs */}
           <MbTabLinks />
-        
+
           <div id="smooth-wrapper">
             <div id="smooth-content">
-              {children}
+              {/* 👇 Add ID for the skip link target */}
+              <div id="main-content">{children}</div>
               <Footer />
             </div>
           </div>
         </>
-      }
+      )}
     </main>
+
   );
 }
 
