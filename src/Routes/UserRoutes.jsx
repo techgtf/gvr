@@ -59,7 +59,7 @@ export const UserRoutes = [
             {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Microsite />
-                <MicrositeMenu />
+                {/* <MicrositeMenu /> */}
               </Layout>
             {/* </Suspense> */}
           </ErrorBoundary>

@@ -9,6 +9,7 @@ import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
+import MicrositeMenu from "./frontend/components/microsite/MicrositeMenu.jsx";
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
         <CustomPortal>
           <PricelistForm />
+          <MicrositeMenu/>
         </CustomPortal>
       </ContextProvider>
       </LatestBlogProvider>

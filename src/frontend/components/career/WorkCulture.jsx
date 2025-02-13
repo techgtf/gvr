@@ -26,18 +26,27 @@ const WorkCulture = () => {
         </div>
         <div className="flex  xl:basis-[68%] basis-[100%] mt-[20px] xl:mt-[0px]  justify-between flex-col xl:flex-row">
           <img
-            src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-1.webp`}
+            src={
+              "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359244/culture-1_sit0by.webp"
+            }
+            // src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-1.webp`}
             alt="img-1"
             className="xl:w-[65%] w-[100%] h-[auto]"
           />
           <div className="xl:w-[32%] w-[100%] flex xl:flex-col xl:mt-0 mt-[20px] flex-row justify-between">
             <img
-              src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-2.webp`}
+              src={
+                "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359250/culture-2_trrntw.webp"
+              }
+              // src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-2.webp`}
               alt="img-2"
               className="h-[160px] 2xl:[147px] xl:w-[100%] w-[47%] object-cover"
             />
             <img
-              src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-3.webp`}
+              src={
+                "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359254/culture-3_yjwkfu.webp"
+              }
+              // src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/career/culture-3.webp`}
               alt="img-3"
               className="h-[160px] 2xl:h-[150px] w-[47%] xl:w-[100%] object-cover"
             />
