@@ -1,5 +1,5 @@
 import { Children, Suspense } from "react";
-import { ADMIN_ROOT } from "root/config";
+import { ADMIN_ROOT } from "../../config";
 // import Home from "../frontend/pages/Home"
 import Loader from "../Loader/loader";
 import Layout from "../frontend/Layout";
@@ -77,11 +77,9 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}login`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Login />
-        </Suspense>
-      </AdminLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Login />
+      </Suspense>
     ),
   },
   {

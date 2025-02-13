@@ -4,7 +4,7 @@ import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "./components/Modal/SideModal/Index";
 import Form from 'react-bootstrap/Form';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../config';
 import Loader from "../common/Loader/loader";
 import {  toast } from 'react-toastify';
 import Pagination from '../common/Pagination/Pagination';

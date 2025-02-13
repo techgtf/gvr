@@ -11,7 +11,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Request from 'root/config/JsonRequest';
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 
 import {getTypologyByCategory,getSubTypologyByTypology,projectStatusList} from 'root/config/function';
 import { useSelector } from "react-redux";

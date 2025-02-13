@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as CONFIG from 'root/config';
 
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'

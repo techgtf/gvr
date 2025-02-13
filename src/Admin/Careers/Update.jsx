@@ -15,7 +15,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAsyncError, useParams } from "react-router-dom";
 
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const statusOptions = [
     { label: 'Active', value: '1' },

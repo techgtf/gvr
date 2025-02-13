@@ -14,7 +14,6 @@ import Request from "root/config/Request";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from 'common/Pagination/Pagination';
-import * as CONFIG from 'root/config';
 
 const statusOptions = [
     { label: 'Active', value: 'active' },

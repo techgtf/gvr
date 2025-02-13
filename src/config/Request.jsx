@@ -1,5 +1,5 @@
 // Importing environment variables
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../config';
 import {Decrypt} from 'root/config/Hash'
 
 export default  async (URL,METHOD,formdata) => {

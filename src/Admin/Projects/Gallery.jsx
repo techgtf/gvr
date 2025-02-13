@@ -14,7 +14,7 @@ import ProjectSteps from '../components/ProjectSteps/Index'
 import Col from 'react-bootstrap/Col';
 import Button from 'common/Button/Button'
 import Request from 'root/config/Request';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 import '../assets/css/admin.css';
 import Sections from '../components/Project/Sections';

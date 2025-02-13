@@ -9,7 +9,7 @@ import Request from "root/config/JsonRequest";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from 'common/Pagination/Pagination';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const statusOptions = [
     { label: 'Active', value: 'active' },

@@ -1,5 +1,4 @@
 // Importing environment variables
-import * as CONFIG from 'root/config';
 import Request from 'root/config/Request';
 
 export const getTypologyByCategory =async (category)=>{

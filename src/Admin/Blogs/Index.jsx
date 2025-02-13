@@ -4,7 +4,7 @@ import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
 import Form from 'react-bootstrap/Form';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
 import Pagination from 'common/Pagination/Pagination';
@@ -288,6 +288,12 @@ const Blogs = ()=>{
                                 Short Description
                             </th>
                             <th>
+                                Thumbnail
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
                                 Show
                             </th>
                             <th>
@@ -322,6 +328,12 @@ const Blogs = ()=>{
                                 </td>
                                 <td>
                                     {item.short_description}
+                                </td>
+                                <td>
+                                    <img className="img-fluid" src={CONFIG.VITE_APP_STORAGE + item.thumbnail} />
+                                </td>
+                                <td>
+                                    <img className="img-fluid" src={CONFIG.VITE_APP_STORAGE + item.image} />
                                 </td>
                                 <td>
                                     <CustomDropdown className="form-control" defaultVal={item.status} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)}  />

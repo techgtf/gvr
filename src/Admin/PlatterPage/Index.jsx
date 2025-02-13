@@ -13,7 +13,7 @@ import CustomSwitch from '../../common/CustomSwitch/Index'
 import Button from '../../common/Button/Button'
 import Pagination from '../../common/Pagination/Pagination';
 import '../assets/css/admin.css';
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 
 const statusOptions = [
     { label: 'Active', value: 1 },

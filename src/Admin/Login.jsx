@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  toast } from 'react-toastify';
 import {useNavigate,useLocation } from 'react-router-dom';
 import * as actionTypes from 'root/store/actions'
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../config'
 import Loader from "../common/Loader/loader";
 import {Encrypt} from 'root/config/Hash'
 
@@ -45,10 +45,9 @@ const Login = ()=>{
     
 
     const loginFunc = async()=>{
-        debugger;
+        setIsLoading(true);
         var emailVal = emailRef.current.value;
         var passwordVal = passwordRef.current.value;
-        setIsLoading(true);
         try{
             setEmailError('');
             setPasswordError('');
@@ -135,7 +134,7 @@ const Login = ()=>{
 
                     <div className="col-md-6 right_col">
                         <div className="logo">
-                            <img src={CONFIG.ADMIN_ASSETS + 'logo-color.png'} alt="logo" className="img-fluid" />
+                            <img src={CONFIG.ADMIN_ASSETS + 'images/logo-color.png'} alt="logo" className="img-fluid" />
                         </div>
 
                         <div className="form_data">

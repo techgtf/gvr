@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar/Index'
 // import * as actionTypes from 'root/store/actions'
 import './contentLayout.css'
 import { useLocation } from "react-router-dom";
-import { setCurrentPage } from "../../../redux/adminSidebarSlice";
+import { setCurrentPage } from "../../../redux/admin/sidebarSlice";
 
 const ContentLayout = (props)=>{
     const dispatch = useDispatch();

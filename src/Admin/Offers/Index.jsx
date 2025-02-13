@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import {  toast } from 'react-toastify';
 import Request from "root/config/Request";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 import Pagination from 'common/Pagination/Pagination';
 
 

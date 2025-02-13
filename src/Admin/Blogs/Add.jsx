@@ -16,7 +16,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAsyncError } from "react-router-dom";
  
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const statusOptions = [
     { label: 'Active', value: '1' },
@@ -36,11 +36,13 @@ const AddBlog = ()=>{
     const [selectedStatus, setSelectedStatus] = useState(null);
     const [showEditEnableImage, setShowEditEnableImage] = useState(null);
     const [blogData, setBlogData] = useState(null)
+
     const titleRef = useRef(null);
     const shortDescriptionRef = useRef(null);
     const descriptionRef = useRef(null);
     const blogCategoryRef = useRef(null);
     const imageRef = useRef(null);
+    const thumbnailRef = useRef(null);
 
     const navigate = useNavigate();
 
@@ -78,6 +80,7 @@ const AddBlog = ()=>{
             formData.append('description', descriptionRef.current.value);
             formData.append('category', blogCategoryRef.current.value);
             formData.append('image', imageRef.current.files[0]);
+            formData.append('thumbnail', thumbnailRef.current.files[0]);
            
             var response = await Request('admin/blog','POST', formData);
 
@@ -136,7 +139,7 @@ const AddBlog = ()=>{
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Blog Category*</Form.Label>
+                        <Form.Label>Blog Category</Form.Label>
                         <select ref={blogCategoryRef} className="form-control">
                             <option defaultValue={true} disabled>Select Blog Category</option>
                             {blogCategory?.map((category, index)=>(
@@ -144,6 +147,15 @@ const AddBlog = ()=>{
                             ))}
                         </select>
                         {errors.category && <div className="errMsg text-danger">{errors.category}</div>}
+                    </Form.Group>
+
+                    <Form.Group className="mb_15 form-group">
+                        <Form.Label>Thumbnail*
+                            <small className="size">(Size 1200px x 750px)</small>
+                        </Form.Label>
+                        <Form.Control ref={thumbnailRef} className="form-control" required type="file" />
+                        {errors.thumbnail && <div className="errMsg text-danger">{errors.thumbnail}</div>}
+                        {showEditEnableImage ? <img width="100" src={showEditEnableImage}/> : null }
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">

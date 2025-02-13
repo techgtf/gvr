@@ -10,7 +10,7 @@ import Request from "root/config/Request";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import ReactPaginate from 'react-paginate';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const statusOptions = [
     { label: 'Active', value: 'active' },

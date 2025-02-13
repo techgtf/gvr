@@ -7,7 +7,7 @@ import Request from 'root/config/Request';
 import ReactQuill from 'react-quill';
 import Button from 'common/Button/Button'
  
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 
 

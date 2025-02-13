@@ -27,7 +27,7 @@
 /* login page */
 
 .admin_body .login_page .left_col{
-    background:url('../../../../public/admin/images/login_bg.jpg') no-repeat center;
+    background:url('../../../../public/assets/admin/images/login_bg.webp') no-repeat center;
     background-size:cover;
     min-height:100vh;
 }
@@ -784,5 +784,34 @@
     z-index: 1;
   }
   
+
+  /* backdrop  */
+
+.backdrop{
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background: rgba(0 0 0 / 50%);
+  z-index: 99;
+  opacity:0;
+  visibility: hidden;
+}
+
+.backdrop.show{
+  animation:backdrop_an 100ms linear forwards;
+}
+
+@keyframes backdrop_an {
+  0%{
+    opacity:0;
+    visibility: hidden;
+  }
+  100%{
+    opacity:1;
+    visibility: visible;
+  }
+}
 
   

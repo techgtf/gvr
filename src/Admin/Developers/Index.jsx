@@ -10,7 +10,7 @@ import Request from "root/config/Request";
 import CustomSwitch from "common/CustomSwitch/Index";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import Pagination from 'common/Pagination/Pagination';
 
 const statusOptions = [

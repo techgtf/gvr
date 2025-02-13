@@ -10,7 +10,7 @@ import '../assets/css/admin.css';
 import Loader from "common/Loader/loader";
 
 import Request from 'root/config/Request';
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 
 import {getTypologyByCategory,getAllSubTypologyByTypology,projectStatusList} from 'root/config/function';
 

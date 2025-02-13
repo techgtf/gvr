@@ -13,7 +13,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'common/Button/Button'
 import SearchLocation from "../components/SearchLocation/Index";
-import * as CONFIG from 'root/config';
 import JsonRequest from 'root/config/JsonRequest';  
 import Loader from "common/Loader/loader";
 

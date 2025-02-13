@@ -3,11 +3,11 @@ import { NavLink, Link, useLocation, useParams } from "react-router-dom";
 import PerfectScrollbar from 'perfect-scrollbar';
 import { useDispatch, useSelector } from "react-redux";
 import * as actionTypes from 'root/store/actions';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../../config';
 import Request from 'root/config/Request';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import './sidebar.css';
-import  {ADMIN_ASSETS} from 'root/config' ;
+import  {ADMIN_ASSETS} from '../../../../config' ;
 
 const Sidebar = (props) => {
   const containerRef = useRef(null);
@@ -120,7 +120,7 @@ const Sidebar = (props) => {
             <span>Dashboard</span>
           </NavLink>
 
-          <Link className="sidebar_link hasSubMenu" onClick={(e) => props.toggleSubMenusHandler(e, 'projects')}>
+          <Link className="sidebar_link hasSubMenu" onClick={() => props.toggleSubMenusHandler('projects')}>
             <span className="icon">
               <img src={ADMIN_ASSETS + 'images/icons/projects.png'} alt="projects icon" className="img-fluid default" />
               <img src={ADMIN_ASSETS + 'images/icons/projects_color.png'} alt="projects icon" className="img-fluid color" />

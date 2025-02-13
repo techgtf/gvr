@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import ReactQuill from 'react-quill';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../../config';
 import Button from 'common/Button/Button'
 import Request from 'root/config/Request';
 import JsonRequest from 'root/config/JsonRequest';

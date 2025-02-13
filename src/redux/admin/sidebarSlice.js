@@ -23,8 +23,12 @@ const sidebarSlice = createSlice({
     toggleAscending:()=>{
 
     },
-    setCurrentPage:()=>{
-
+    setCurrentPage:(state, action)=>{
+      console.log('working');
+      return {
+        ...state,
+        currentPage:action.payload
+      }
     },
   }
 })

@@ -4,7 +4,7 @@ import ContentLayout from '../components/Layout/ContentLayout/ContentLayout';
 import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import SideModal from "../components/Modal/SideModal/Index";
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import '../assets/css/admin.css';
 import Request from "root/config/Request"
 import Pagination from 'common/Pagination/Pagination';

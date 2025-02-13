@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import { useParams } from 'react-router-dom';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import Request from "root/config/Request";
 import {  toast } from 'react-toastify';
 import Pagination from 'common/Pagination/Pagination';

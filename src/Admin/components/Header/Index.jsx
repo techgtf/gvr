@@ -4,7 +4,7 @@ import {  toast } from 'react-toastify';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import './header.css';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../../config';
 import Button from 'common/Button/Button'
 import Dropdown from 'react-bootstrap/Dropdown';
 import * as actionTypes from 'root/store/actions'

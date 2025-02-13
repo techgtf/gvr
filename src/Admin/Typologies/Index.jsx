@@ -10,7 +10,7 @@ import Loader from "common/Loader/loader";
 import Request from "root/config/Request";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import { Link } from "react-router-dom";
 
 const statusOptions = [

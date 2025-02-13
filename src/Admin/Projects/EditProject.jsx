@@ -11,7 +11,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Request from 'root/config/Request';
 import {getTypologyByCategory,getAllSubTypologyByTypology,projectStatusList} from '../../config/Function';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const EditProject = ()=>{
 const [isLoading, setIsLoading] = useState(true);

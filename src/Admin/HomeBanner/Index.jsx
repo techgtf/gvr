@@ -14,7 +14,7 @@ import Button from 'common/Button/Button'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAsyncError } from "react-router-dom";
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 
