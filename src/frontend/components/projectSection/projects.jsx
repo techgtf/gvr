@@ -20,17 +20,17 @@ export default function Projects() {
     const projectData = [
         {
             type: 'residential',
-            imgSrc: 'residential.jpg',
+            imgSrc: 'residential.webp',
             Link: `${CONFIG.BASE_ROOT}residential`
         },
         {
             type: 'iconic properties',
-            imgSrc: 'latest.jpg',
+            imgSrc: 'latest.webp',
             Link: `${CONFIG.BASE_ROOT}vilasa`
         },
         {
             type: 'commercial',
-            imgSrc: 'commercial.jpg',
+            imgSrc: 'commercial.webp',
             Link: `${CONFIG.BASE_ROOT}commercial-projects`
         },
     ]
@@ -39,7 +39,7 @@ export default function Projects() {
         <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
             <WaterMarkHeading
                 textWaterMark={"Explore Properties"}
-                sectionHeading={"Explore Properties"}
+                sectionHeading={"Spaces Crafted with Value and Trust"}
                 animationConfig={animationConfig}
             />
             <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] lg:px-0 px-4">

@@ -15,8 +15,8 @@ export default function BlogSection() {
         <div className='blogSection 2xl:py-16 xl:py-8 py-[50px]'>
             <div className='max-w-[90%] m-auto'>
                 <div className='flexbox relative flex flex-wrap justify-between'>
-                    <div className='left-side lg:w-[40%] w-full lg:pr-[25px] lg:mb-0 mb-10'>
-                        <WaterMarkHeading sectionHeading='Discover Insights' />
+                    <div className='left-side lg:w-[42%] w-full lg:pr-[25px] lg:mb-0 mb-10'>
+                        <WaterMarkHeading sectionHeading='Insights That Inspire, Innovate, and Elevate' />
                         <div className='links_div lg:mt-14 lg:mb-16 mt-7 mb-12'>
                             <InSightLinks blogData={latestBlog}/>
                         </div>
