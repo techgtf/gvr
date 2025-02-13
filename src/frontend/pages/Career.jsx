@@ -17,7 +17,10 @@ const Career = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.webp`}
+        img={
+          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359233/career_xzpgfz.webp"
+        }
+        // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.webp`}
         heading={"CAREER"}
         extraClassesImg={"objectRight"}
       />
