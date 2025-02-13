@@ -14,6 +14,7 @@ import { BASE_ROOT } from "../../config";
 import MbTabLinks from "./components/mbTabLinks";
 import useMediaLoader from "./components/useMediaLoaded";
 import Loader from "../Loader/loader";
+import ScrollToTop from "./components/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -61,30 +62,33 @@ function Layout({ children }) {
 
 
   return (
-    <main ref={containerRef}>
-      {!isMediaLoaded ?
-        <Loader /> :
-        <>
-          {/* {(location.pathname === `${BASE_ROOT}sharanam` ||
+    <>
+      <ScrollToTop />
+      <main ref={containerRef}>
+        {!isMediaLoaded ?
+          <Loader /> :
+          <>
+            {/* {(location.pathname === `${BASE_ROOT}sharanam` ||
             location.pathname === `${BASE_ROOT}anandam` ||
             location.pathname === `${BASE_ROOT}gv-homes` ||
             location.pathname === `${BASE_ROOT}vilasa`) && <MicrositeMenu />} */}
-          {/* Custom Cursor */}
-          <CustomCursor />
-          {/* Main Content */}
-          <Header />
-          {/* mobile menus tabs */}
-          <MbTabLinks />
+            {/* Custom Cursor */}
+            <CustomCursor />
+            {/* Main Content */}
+            <Header />
+            {/* mobile menus tabs */}
+            <MbTabLinks />
 
-          <div id="smooth-wrapper">
-            <div id="smooth-content">
-              {children}
-              <Footer />
+            <div id="smooth-wrapper">
+              <div id="smooth-content">
+                {children}
+                <Footer />
+              </div>
             </div>
-          </div>
-        </>
-      }
-    </main>
+          </>
+        }
+      </main>
+    </>
   );
 }
 

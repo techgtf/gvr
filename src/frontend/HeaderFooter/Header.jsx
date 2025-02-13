@@ -5,7 +5,6 @@ import { BASE_ROOT } from "../../../config";
 import * as CONFIG from "../../../config";
 import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
-import ScrollToTop from "../components/ScrollToTop";
 
 const debounce = (func, delay) => {
   let timeoutId;
@@ -77,8 +76,7 @@ export default function Header() {
   };
 
   return (
-    <>
-      <ScrollToTop />
+    <>      
       <header
         className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20  
           ${activeItem ? "bg-[#EFF5FA]" : ""}`} // ✅ Keeps background active until dropdown closes

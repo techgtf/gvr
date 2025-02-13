@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import * as CONFIG from '../../../../config';
 import './styles.css';
 import LoadAnimation from "../../../Loader/loadAnimation";
-import ScrollToTop from "../ScrollToTop";
 import { IoVolumeMute } from "react-icons/io5";
 import { VscUnmute } from "react-icons/vsc";
 
@@ -26,8 +25,7 @@ export default function Hero({
     }
 
     return (
-        <>
-            <ScrollToTop />
+        <>            
             <div className="heroSection relative z-0">
                 {/* Background Image */}
 
