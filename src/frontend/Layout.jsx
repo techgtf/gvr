@@ -14,6 +14,7 @@ import { BASE_ROOT } from "../../config";
 import MbTabLinks from "./components/mbTabLinks";
 import useMediaLoader from "./components/useMediaLoaded";
 import Loader from "../Loader/loader";
+import ScrollToTop from "./components/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -84,7 +85,7 @@ function Layout({ children }) {
 
           {/* Main Content */}
           <Header />
-
+          <ScrollToTop/>
           {/* Mobile Menu Tabs */}
           <MbTabLinks />
 

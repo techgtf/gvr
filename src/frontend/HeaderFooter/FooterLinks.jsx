@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
-import ScrollToTop from "../components/ScrollToTop";
 
 export default function FooterLinks({ toggelLinks }) {
   return (
     <>
-      <ScrollToTop />
       <div className={`footerLinks text-left ${toggelLinks ? "active" : ""} bg-[#33638b]`}>
         <div className="max-w-[95%] m-auto pt-12 pb-10 grid md:flex">
           

@@ -28,7 +28,6 @@ export default function Header() {
     setDropdown(false);
     setActiveItem(null);
   }, [location.pathname]); // ✅ Reset on route change
-  
 
   const handleToggleSidebar = () => {
     setOpenSidebar(!openSidebar);
@@ -37,20 +36,16 @@ export default function Header() {
 
   const handleScroll = useCallback(
     debounce(() => {
-      const currentScrollY = window.scrollY;
-      setIsFixed(currentScrollY > 100);
+      setIsFixed(window.scrollY > 100);
     }, 50),
     []
   );
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Open dropdown and set activeItem on hover
   const handleDropdownOpen = (item) => {
     if (item === "Residential") {
       setDropdown(true);
@@ -59,16 +54,15 @@ export default function Header() {
     }
   };
 
-  // Close dropdown **only when clicking the close button**
   const handleDropdownClose = () => {
     setDropdown(false);
     setActiveItem(null);
-    setHoveringNav(false);
+    setHoveringNav(false); // ✅ Remove BG when dropdown is closed
   };
 
   const handleMouseEnterOtherItems = (item) => {
     if (item !== "Residential") {
-      setHoveringNav(false); // ✅ Remove BG for Commercial & ESG
+      setHoveringNav(false);
       setDropdown(false);
       setActiveItem(null);
     }
@@ -83,28 +77,22 @@ export default function Header() {
   const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
   const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
 
-  const logoOnePages = [`${BASE_ROOT}`, `${BASE_ROOT}sharanam`, `${BASE_ROOT}anandam`, `${BASE_ROOT}vilasa`, `${BASE_ROOT}gv-homes`];
+  const logoOnePages = [
+    `${BASE_ROOT}`,
+    `${BASE_ROOT}sharanam`,
+    `${BASE_ROOT}anandam`,
+    `${BASE_ROOT}vilasa`,
+    `${BASE_ROOT}gv-homes`,
+  ];
 
   const getLogoSrc = () => {
-    let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
-
-    if (isFixed || activeItem) {
-      return coloredLogo;
-    }
-
-    return logo;
+    return isFixed || activeItem ? coloredLogo : logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
   };
-
-
 
   return (
     <>
       <ScrollToTop />
-      <header
-        className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20  
-  ${hoveringNav ? "bg-[#EFF5FA]" : ""}`} // ✅ Only active for Residential
-      >
-
+      <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
             <Link to={`${BASE_ROOT}`}>
@@ -117,24 +105,18 @@ export default function Header() {
                     <li
                       key={i}
                       onMouseEnter={() => {
-                        if (item.hasMenus) {
-                          handleDropdownOpen(item.name);
-                        } else {
-                          handleMouseEnterOtherItems(item.name);
-                        }
+                        item.hasMenus ? handleDropdownOpen(item.name) : handleMouseEnterOtherItems(item.name);
                       }}
                       className={`relative flex gap-3 items-center tracking-[3px] text-[13px] font-[300] 
-    ${activeItem === item.name ? "bg-white px-3 text-primary" : ""}
-    hover:bg-white hover:px-3 hover:text-primary transition-all duration-300`}
+                      ${activeItem === item.name ? "bg-white px-3 text-primary" : ""}
+                      hover:bg-white hover:px-3 hover:text-primary transition-all duration-300`}
                       role="menuitem"
                     >
-
                       {item.link ? (
                         <Link to={`${BASE_ROOT}${item.link}`} className="tracking-[3px] uppercase text-[13px] font-[300]">
                           {item.name}
                         </Link>
                       ) : (
-                        // ✅ Use <button> for dropdown triggers
                         <button
                           className="tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                           onClick={() => handleDropdownOpen(item.name)}
@@ -147,10 +129,10 @@ export default function Header() {
                     </li>
                   ))}
                 </ul>
-
               </div>
               <button
-                className="menuBtn flex justify-end items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500" aria-label="Open sidebar menu" aria-controls="sidebarMenu"
+                className="menuBtn flex justify-end items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                aria-label="Open sidebar menu"
                 onClick={handleToggleSidebar}
               >
                 <img
@@ -166,10 +148,8 @@ export default function Header() {
             </nav>
           </div>
         </div>
-        {openSidebar && <SideMenu setOpenSidebar={setOpenSidebar} />}
-        {dropdown && (
-          <NavDropdown setDropdown={handleDropdownClose} setActiveItem={setActiveItem} />
-        )}
+        {openSidebar && <SideMenu id="sidebarMenu" setOpenSidebar={setOpenSidebar} />}
+        {dropdown && <NavDropdown setDropdown={handleDropdownClose} setActiveItem={setActiveItem} />}
       </header>
     </>
   );

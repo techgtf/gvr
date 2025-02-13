@@ -8,7 +8,6 @@ import { BASE_ROOT } from "../../../config";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from "./FooterBottom";
-import ScrollToTop from "../components/ScrollToTop";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -50,7 +49,6 @@ export default function Footer() {
 
   return (
     <>
-      <ScrollToTop />
       <section id="mainfooter">
         <footer
           ref={footerRef}

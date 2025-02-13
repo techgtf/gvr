@@ -6,7 +6,7 @@ export default function FooterBottom() {
   return (
     <div className="footer_bottom text-center lg:pt-5 lg:pb-5 pb-[80px] pt-2">
       <div className="flex flex-wrap max-w-[95%] uppercase lg:justify-between justify-center m-auto">
-        
+
         {/* ✅ Use <a> for External Links */}
         <a
           className="xl:text-[12px] text-[10px] tracking-[1px] text-[#a3a3a3]"
@@ -42,7 +42,8 @@ export default function FooterBottom() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 
+                       focus-visible:ring focus-visible:ring-blue-300 focus-visible:bg-blue-100 rounded-md transition-all"
             >
               <img
                 className="lg:h-7 h-5"
