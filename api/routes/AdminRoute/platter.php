@@ -1,9 +1,4 @@
-
-
-
-
-        <?php
-
+<?php
 use App\Http\Controllers\Admin\Platters\PlatterBannerController;
 use App\Http\Controllers\Admin\Platters\PlatterController;
 use App\Http\Controllers\Admin\Project\FloorPlanController;
@@ -31,27 +26,19 @@ use  App\Http\Controllers\Admin\LocalityController;
 
 Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
     Route::group(['middleware' => ['admin.auth']], function () {
-   
-    
+        
         Route::resource('platter-page', PlatterController::class)->except(['update']);
         Route::post('platter-page/{id}/update', [PlatterController::class,'update']);
-
         Route::post('platter-page/{id}/status', [PlatterBannerController::class,'status']);
+
+
         Route::post('platter-page/{id}/footer-status', [PlatterBannerController::class,'footerStatus']);
 
 
         Route::post('platter/banner/update', [PlatterController::class,'update']);
         Route::resource('platter/{platterid}/banner', PlatterBannerController::class)->except(['update']);
         Route::post('platter/{platterid}/banner/{id}/update', [PlatterBannerController::class,'update']);
-
         Route::post('platter/banner/{id}/status', [PlatterBannerController::class,'status']);
-
-
-
-
-
-
-
 
     });
 });

@@ -54,10 +54,16 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(), 
             [
-                'name' => 'required|unique:categories,name'
+                'name' => 'required|unique:categories,name',
+                'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
+
             ],[
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'Category Already Exists.',
+                'image.required' => 'The Image field is required.',
+                'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'image.max' => 'The image may not be greater than 2048 kilobytes.',
+
             ]
         );
 
@@ -72,9 +78,14 @@ class CategoryController extends Controller
         }else{
             
             try{
+
+                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+                $path = $request->file('image')->storeAs('category', $name, 'public');
+
                 $categorie = new Categories();
                 $categorie->slug = $request->name;
                 $categorie->name = $request->name;
+                $categorie->image = $path;
 
                 if($categorie->save()){           
                        
@@ -183,8 +194,11 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), 
             [
+                'image' => 'mimes:png,jpg,jpeg,webp|max:2048',
                 'name' => 'required|unique:categories,name'
             ],[
+                'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'image.max' => 'The image may not be greater than 2048 kilobytes.',
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'Category Already Exists.',
             ]
@@ -210,26 +224,38 @@ class CategoryController extends Controller
             ]);
         }
 
-      
-        
-        $getrecord->slug = $request->slug;
-        $getrecord->name = $request->name;
-        
-        if($getrecord->save()){
-            return response()->json([
-                'status'=>true,
-                'statusCode'=>200,
-                'message'=>"Updated Sucessfully ",
-                'data'=>$getrecord
+        try {
+            if($request->file('image')){
+                
+                $imagesurl = $getrecord->image;
+                dltSingleImgFile($imagesurl);
+                
+                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+                $path = $request->file('image')->storeAs('category', $name, 'public');
+                $getrecord->image = $path;
+            }
+            
+            $getrecord->slug = $request->slug;
+            $getrecord->name = $request->name;
+            
+            if($getrecord->save()){
+                return response()->json([
+                    'status'=>true,
+                    'statusCode'=>200,
+                    'message'=>"Updated Sucessfully ",
+                    'data'=>$getrecord
 
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status'=>false,
+                'statusCode'=>500,
+                'message'=>"Something went wrong",
+                'error' => $th->getMessage()
             ]);
         }
-
-        return response()->json([
-            'status'=>false,
-            'statusCode'=>500,
-           'message' =>"Invalid Request/ Not Found ",
-        ]);
+             
     }
 
     /**
@@ -242,23 +268,23 @@ class CategoryController extends Controller
     {
         $result = Categories::find($id);
         if(!empty($result)){
-            if($result->delete()){
 
-       
-            return response()->json([
-                'status' => true,
-                'statusCode' => 200,
-                'message' => "Record Deleted",
-                'data' => $result,
-            ]);     }
+            dltSingleImgFile($result->image);
+
+            if($result->delete()){
+                return response()->json([
+                    'status' => true,
+                    'statusCode' => 200,
+                    'message' => "Record Deleted",
+                    'data' => $result,
+                ]);     
+            }
 
             return response()->json([
                 'status' => true,
                 'statusCode' => 500,
                 'message' => "faild to delete records",
             ]);
-
-
 
         }else{
 
