@@ -73,7 +73,7 @@ export default function Footer() {
                   alt="logo"
                 />
               </Link>
-              <ul className='grid md:grid-cols-5 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]'>
+              <ul className='grid md:grid-cols-5 grid-cols-3 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]'>
                 <li> <Link to={`${BASE_ROOT}residential`} className='xl:text-[14px] text-[12px]'>residential</Link> </li>
                 <li> <Link to={`${BASE_ROOT}commercial-projects`} className='xl:text-[14px] text-[12px]'>commercial</Link> </li>
                 <li> <Link to={`${BASE_ROOT}media`} className='xl:text-[14px] text-[12px]'>media centre</Link> </li>
