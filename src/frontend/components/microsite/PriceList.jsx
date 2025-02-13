@@ -65,21 +65,9 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
           {priceListData.length > 0 ? (
             priceListData.map((item, i) => (
               <div key={i} className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400">
-                <div className="flex justify-center relative sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
-                  <div className="flex justify-evenly w-full px-4">
-                    <p className="flex justify-start w-[50%]">{item.area}</p>
-                    <button className="bg-white px-6" onClick={() => handleTooltipToggle(i)}>
-                      MORE
-                    </button>
-                  </div>
-                  {visibleTooltipIndex === i && (
-                    <div className="tooltip absolute w-full text-center rounded-md -left-[10px] top-0 bg-black text-white p-2">
-                      <div className="absolute right-1 -top-7 bg-black rounded-full" onClick={() => handleTooltipToggle(i)}>
-                        <IoCloseOutline className="text-xl" />
-                      </div>
-                      {item.more}
-                    </div>
-                  )}
+                <div className="flex justify-center  sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
+                    <p>{item.area}</p>                   
+                
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                   <p>{item.size}</p>
@@ -89,8 +77,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center">
                   <button className="bg-transparent text-[#33638B] uppercase" onClick={openEnquiryForm}>
-                    inquire now
-                  </button>
+SOLD OUT                  </button>
                 </div>
               </div>
             ))
@@ -106,18 +93,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
               <div key={i} className="row_1 py-0 md:py-5">
                 <div className="grid grid-cols-3 border-b border-gray-300 py-3">
                   <div className="flex relative justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
-                    <p>{item.area}</p>
-                    <button className="bg-white px-3" onClick={() => handleTooltipToggle(i)}>
-                      MORE
-                    </button>
-                    {visibleTooltipIndex === i && (
-                      <div className="tooltip w-[400px] absolute w-full text-center rounded-md -left-[10px] top-0 bg-black text-white p-2">
-                        <div className="absolute right-1 -top-7 bg-black rounded-full" onClick={() => handleTooltipToggle(i)}>
-                          <IoCloseOutline className="text-xl" />
-                        </div>
-                        {item.more}
-                      </div>
-                    )}
+                    <p>{item.area}</p>                    
                   </div>
                   <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.size}</p>
@@ -129,7 +105,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                 <div className="justify-center flex py-3">
                   <div className="w-full flex text-center justify-center sm:gap-10 gap-3 items-center">
                     <div className="bg-transparent tracking-wide text-[#33638B] uppercase" onClick={openEnquiryForm}>
-                      inquire now
+                      SOLD OUT
                     </div>
                   </div>
                 </div>

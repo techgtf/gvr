@@ -49,8 +49,8 @@ export default function Hero({
                     <div className="vdo_btns absolute lg:bottom-[40px] bottom-[15px] lg:right-[30px] right-[15px]">
                         <button
                             onClick={handleToggelMute}
-                            className="text-white border border-solid lg:h-[60px] h-[40px] lg:w-[60px] w-[40px] flex justify-center items-center rounded-full cursor-pointer backdrop-blur-[20px] bg-[#00000038]"
-                        >{isMuted ? <IoVolumeMute className="lg:text-[35px] text-[20px] cursor-pointer" /> : <VscUnmute className="lg:text-[35px] text-[20px] cursor-pointer" />}</button>
+                            className="text-white border border-solid lg:h-[50px] h-[35px] lg:w-[50px] w-[35px] flex justify-center items-center rounded-full cursor-pointer"
+                        >{isMuted ? <IoVolumeMute className="lg:text-[25px] text-[18px] cursor-pointer" /> : <VscUnmute className="lg:text-[25px] text-[18px] cursor-pointer" />}</button>
                     </div>
                 </div>
 

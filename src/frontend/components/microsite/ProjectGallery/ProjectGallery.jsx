@@ -75,88 +75,30 @@ function ProjectGallery({ actualImages, renderImages }) {
       className="project_gallery pb-20 flex items-center px-5 md:px-12 py-10 md:py-14 bg-[#EFF5FA]"
       id="gallery"
     >
-      <div className="grid sm:grid-cols-2 grid-cols-1">
+      <div className="w-full">
         <div className="project_gallery_content">
           <FadeIn duration={2} delay={0.5}>
             <CommonHeading HeadingText="Project Gallery" />
           </FadeIn>
-          <div className="flex items-center pt-8 project_gallery_tabs">
-            <SlideIn duration={0.8} delay={0.2}>
-              <h4
-                className={`mr-4 uppercase mt-14 cursor-pointer ${
-                  activeTab === "actual" ? "text-primary" : "text-gray-500"
-                }`}
-                onClick={() => handleTabClick("actual")}
-              >
-                Project Actual Images
-              </h4>
-            </SlideIn>
-            {activeTab === "actual" && (
-              <div className="flex-1 border-t mt-14 mr-4 border-gray-300"></div>
-            )}
-          </div>
-
-          <div className="flex items-center project_gallery_tabs">
-            <SlideIn duration={0.8} delay={0.3}>
-              <h4
-                className={`mr-4 uppercase mt-10 cursor-pointer ${
-                  activeTab === "render" ? "text-primary" : "text-gray-500"
-                }`}
-                onClick={() => handleTabClick("render")}
-              >
-                Project Render Images
-              </h4>
-            </SlideIn>
-            {activeTab === "render" && (
-              <div className="flex-1 border-t mt-10 mr-4 border-gray-300"></div>
-            )}
-          </div>
         </div>
 
-        <div className="slider">
-          <div className="nav_buttons flex justify-end gap-5 py-5">
-            <button
-              ref={prevRef}
-              className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
-            >
-              <LuChevronLeft className="w-[30px] cursor-pointer md:w-8 h-[30px] opacity-80 md:h-8 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
-            </button>
-            <button
-              ref={nextRef}
-              className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
-            >
-              <LuChevronRight className="w-[30px] cursor-pointer md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-white rounded-full" />
-            </button>
-          </div>
-
-          <Swiper
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            loop={true}
-            slidesPerView={1}
-            spaceBetween={30}
-            modules={[Navigation]}
-            className="mySwiper gallery_images"
-          >
-            {Array.from({ length: Math.ceil(imageData.length / 4) }).map((_, slideIndex) => (
-              <SwiperSlide key={slideIndex}>
-                <div className="grid grid-cols-2 gap-4">
+        <div className="slider mt-10">
+        
+            {Array.from({ length: Math.ceil(imageData.length / 3) }).map((_, slideIndex) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {imageData
-                    .slice(slideIndex * 4, slideIndex * 4 + 4)
+                    .slice(slideIndex * 3, slideIndex * 3 + 3)
                     .map((image, index) => (
                       <img
                         key={index}
                         src={image}
-                        alt={`slide ${slideIndex * 4 + index + 1}`}
-                        className="w-[300px] h-[200px] object-cover"
+                        alt={`slide ${slideIndex * 3 + index + 1}`}
+                        className="w-[400px] h-[250px] my-3 object-cover"
                         onClick={() => openLightbox(slideIndex * 4 + index)}
                       />
                     ))}
                 </div>
-              </SwiperSlide>
             ))}
-          </Swiper>
         </div>
 
         {open && (

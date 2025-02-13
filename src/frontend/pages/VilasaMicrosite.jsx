@@ -20,7 +20,6 @@ import actual1 from "/assets/frontend/images/microsite/vilasa/gallery/actual/act
 import actual2 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual2.webp"
 import actual3 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual3.webp"
 import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.webp"
-import render1 from "/assets/frontend/images/microsite/vilasa/gallery/render/render1.jpg"
 import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.webp";
 import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.webp";
 import gazebo from "/assets/frontend/images/microsite/vilasa/amentities/icons/gazebo.webp";
@@ -30,8 +29,6 @@ import pitch from "/assets/frontend/images/microsite/vilasa/amentities/icons/pit
 import badminton from "/assets/frontend/images/microsite/vilasa/amentities/icons/badminton.webp";
 import golf from "/assets/frontend/images/microsite/vilasa/amentities/icons/golf.webp";
 import aboutImg from "/assets/frontend/images/microsite/vilasa/about/about.webp"
-import heroImg from "/assets/frontend/images/microsite/vilasa/hero/hero.webp"
-import heroMobImg from "/assets/frontend/images/microsite/vilasa/hero/hero.webp"
 
 // location drive and walk images 
 import hospital from "/assets/frontend/images/microsite/vilasa/location/icons/hospital.webp"
@@ -205,7 +202,6 @@ function VilasaMicrosite() {
 
             <ProjectGallery
                 actualImages={[actual1, actual2, actual3, actual4]}
-                renderImages={[render1, render1, render1, render1]}
             />
         </>
     )

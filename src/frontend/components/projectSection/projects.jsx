@@ -24,14 +24,14 @@ export default function Projects() {
             Link: `${CONFIG.BASE_ROOT}residential`
         },
         {
+            type: 'iconic properties',
+            imgSrc: 'latest.jpg',
+            Link: `${CONFIG.BASE_ROOT}vilasa`
+        },
+        {
             type: 'commercial',
             imgSrc: 'commercial.jpg',
             Link: `${CONFIG.BASE_ROOT}commercial-projects`
-        },
-        {
-            type: 'Latest Property',
-            imgSrc: 'latest.jpg',
-            Link: `${CONFIG.BASE_ROOT}vilasa`
         },
     ]
 
