@@ -81,20 +81,28 @@ export default function Footer() {
                 <img
                   className="h-[65px]"
                   src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`}
-                  alt="logo"
+                  alt="Great Value Realty Logo"
                 />
               </Link>
-              <ul className="grid md:grid-cols-4 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]">
+              <ul className="grid md:grid-cols-5 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]">
                 <li>
                   <Link
                     to={`${BASE_ROOT}residential`}
                     className="xl:text-[14px] text-[12px]"
                   >
-                    our projects
+                   Residential
                   </Link>
                 </li>
                 <li>
-                  <Link to={"#"} className="xl:text-[14px] text-[12px]">
+                  <Link
+                    to={`${BASE_ROOT}commercial-projects`}
+                    className="xl:text-[14px] text-[12px]"
+                  >
+                    Commercial
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px]">
                     media centre
                   </Link>
                 </li>
@@ -108,13 +116,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    to={`${CONFIG.BASE_ROOT}contact-us`}
-                    onClick={(e) =>
-                      handleLinkClick(e, `${CONFIG.BASE_ROOT}contact-us`)
-                    }
+                    to={`${CONFIG.BASE_ROOT}contact-us`}                 
                     className="xl:text-[14px] text-[12px]"
                   >
-                    contact
+                    contact us
                   </Link>
                 </li>
               </ul>

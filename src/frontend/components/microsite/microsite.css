@@ -44,8 +44,8 @@ display: none;
 }
 
 #cursor {
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #000;
   position: fixed;
@@ -54,9 +54,20 @@ display: none;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  z-index: 999999;
-  display: block;
+  z-index: 99999999 !important; /* Increase z-index */
+  pointer-events: none; /* Prevent interactions */
 }
+
+.portal-container { 
+  pointer-events: auto !important; /* Allow cursor movement */
+}
+
+
+.fixed.inset-0 { 
+  pointer-events: auto !important; /* Allow cursor movement */
+}
+
+
 
 /* mobile  */
 

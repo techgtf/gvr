@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { BASE_ROOT } from "../../../../config";
 
-const HeroSectionAboutUs = ({ img,   parentLink, parentTitle, heading, breadCrumb, extraClassesImg }) => {
+const HeroSectionAboutUs = ({ img,   parentLink, parentTitle, heading, breadCrumb, extraClassesImg, alt }) => {
   return (
     <div className={`relative uppercase pages_banner`}>
 
       <img
         src={img}
-        alt="about"
+        alt={alt}
         className={`xl:h-[60vh] h-[40vh] object-cover w-[100%] ${extraClassesImg}`}
       />
       <h2 className="xl:text-[13px] text-[12px] midlandfontmedium text-[#143C5E] hidden xl:block absolute top-[58%] xl:top-[50%] left-[10%] mb-[0.5rem] font-medium tracking-[5px]">

@@ -27,11 +27,11 @@ export default function Header() {
     setHoveringNav(false);
     setDropdown(false);
     setActiveItem(null);
-  }, [location.pathname]); // ✅ Reset on route change
+  }, [location.pathname]); 
 
   const handleToggleSidebar = () => {
     setOpenSidebar(!openSidebar);
-    setDropdown(false); // Close dropdown when sidebar opens
+    setDropdown(false); 
   };
 
   const handleScroll = useCallback(
@@ -50,14 +50,14 @@ export default function Header() {
     if (item === "Residential") {
       setDropdown(true);
       setActiveItem(item);
-      setHoveringNav(true); // ✅ Keep BG only for Residential
+      setHoveringNav(true); 
     }
   };
 
   const handleDropdownClose = () => {
     setDropdown(false);
     setActiveItem(null);
-    setHoveringNav(false); // ✅ Remove BG when dropdown is closed
+    setHoveringNav(false); 
   };
 
   const handleMouseEnterOtherItems = (item) => {
@@ -96,7 +96,7 @@ export default function Header() {
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
             <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="GVR Logo" />
+              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="Great Value Realty Logo" />
             </Link>
             <nav className="right_nav flex justify-between items-center gap-10" role="navigation" aria-label="Main Navigation">
               <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"} ${activeItem ? "text-primary" : ""}`}>
@@ -108,23 +108,29 @@ export default function Header() {
                         item.hasMenus ? handleDropdownOpen(item.name) : handleMouseEnterOtherItems(item.name);
                       }}
                       className={`relative flex gap-3 items-center tracking-[3px] text-[13px] font-[300] 
-                      ${activeItem === item.name ? "bg-white px-3 text-primary" : ""}
-                      hover:bg-white hover:px-3 hover:text-primary transition-all duration-300`}
+                      ${activeItem === item.name ? "font-bold px-3 text-primary" : ""}
+                      hover:font-bold hover:px-3 hover:text-primary transition-all duration-300`}
                       role="menuitem"
                     >
                       {item.link ? (
-                        <Link to={`${BASE_ROOT}${item.link}`} className="tracking-[3px] uppercase text-[13px] font-[300]">
+                        <Link
+                          to={`${BASE_ROOT}${item.link}`}
+                          className={`tracking-[3px] uppercase text-[13px] font-[300] 
+                       ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
+                        >
                           {item.name}
                         </Link>
+
                       ) : (
                         <button
-                          className="tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                          className={`tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500  ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
                           onClick={() => handleDropdownOpen(item.name)}
                           aria-haspopup="true"
                           aria-expanded={dropdown && activeItem === item.name}
                         >
                           {item.name}
                         </button>
+
                       )}
                     </li>
                   ))}

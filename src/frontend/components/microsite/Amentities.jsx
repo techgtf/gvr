@@ -80,7 +80,7 @@ function Amentities({
                 className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
               >
                 <div className="icon">
-                  <img src={item.image} alt={item.name} className="w-[2.5rem]" />
+                  <img src={item.image} alt={item.alt} className="w-[2.5rem]" />
                 </div>
                 <div className="text uppercase text-center md:text-start">
                   <p>{item.name}</p>

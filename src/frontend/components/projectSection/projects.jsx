@@ -21,17 +21,20 @@ export default function Projects() {
         {
             type: 'residential',
             imgSrc: 'residential.jpg',
-            Link: `${CONFIG.BASE_ROOT}residential`
+            Link: `${CONFIG.BASE_ROOT}residential`,
+            alt: "Great Value Residential Projects"
         },
         {
             type: 'iconic properties',
             imgSrc: 'latest.jpg',
-            Link: `${CONFIG.BASE_ROOT}vilasa`
+            Link: `${CONFIG.BASE_ROOT}vilasa`,
+            alt: "VILASA AT SECTOR 6, SOHNA"
         },
         {
             type: 'commercial',
             imgSrc: 'commercial.jpg',
-            Link: `${CONFIG.BASE_ROOT}commercial-projects`
+            Link: `${CONFIG.BASE_ROOT}commercial-projects`,
+            alt: "Great Value COMMERCIAL PROJECTS"
         },
     ]
 
@@ -56,7 +59,7 @@ export default function Projects() {
                         <img
                             className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
-                            alt={item.type ? `${item.type} project image` : "Real estate project image"}
+                            alt={item.alt}
                         />
 
                         <figcaption

@@ -8,6 +8,7 @@ import ZoomOut from "../Animations/ZoomOut";
 
 function About({
   imageSrc , 
+  alt,
   headingText,
   descriptionText,
   reverseWatermark = true,
@@ -50,7 +51,7 @@ function About({
                 <ZoomOut initialScale={1.5} duration={2}>
                   <img
                     src={imageSrc}
-                    alt="About Image"
+                    alt={alt}
                     className="object-cover"
                   />
                 </ZoomOut>
