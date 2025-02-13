@@ -30,7 +30,7 @@ export default function WaterMarkHeading({
         </div>
       )}
       <SlideIn duration={1} delay={0.5}>
-        <TagName className="sectionHeading midlandfontmedium uppercase">{sectionHeading}</TagName>
+        <TagName className="sectionHeading midlandfontmedium uppercase lg:text-[12px] text-[10px] font-[500] tracking-[4px]">{sectionHeading}</TagName>
       </SlideIn>
 
     </div>
