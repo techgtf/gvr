@@ -66,25 +66,19 @@ const Header = (props)=>{
                         <img src={CONFIG.ADMIN_ASSETS + "images/logo.png"} alt="logo" className="w-full" />
                     </div>
 
-                    <Menu as="div" className="relative">
-                        <Menu.Button className="flex items-center gap-3 text-gray-600 font-medium focus:outline-none">
-                            <span>Admin</span>
-                            <img src={CONFIG.ADMIN_ASSETS + "images/default/default_user.png"} alt="user" className="w-[35px] h-[35px] rounded-full" />
-                            <ChevronDownIcon className="w-4 h-4 text-gray-500" />
-                        </Menu.Button>
-                        <Menu.Items className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 shadow-lg rounded-md overflow-hidden">
-                            <MenuItem>
-                                {({ active }) => (
-                                    <button
-                                        onClick={logoutHandler}
-                                        className={`w-full px-4 py-2 text-left text-gray-700 ${active ? "bg-gray-100" : ""}`}
-                                    >
-                                        Logout
-                                    </button>
-                                )}
-                            </MenuItem>
-                        </Menu.Items>
-                    </Menu>
+                    <div className="user">
+                        {/* <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                <span className="name">Admin</span>
+                                <img src={CONFIG.IMAGE_URL + 'default_user.png'} alt="user" className='user_img' />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown> */}
+                        
+                    </div>
                 </div>
             </nav>
         </>

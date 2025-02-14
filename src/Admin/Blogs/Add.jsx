@@ -3,7 +3,6 @@ import CustomDropdown from "../../common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "../../common/Portal/Backdrop";
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from "react-bootstrap/Form";
 import Loader from "common/Loader/loader";
 import { toast } from "react-toastify";
 import Pagination from "common/Pagination/Pagination";
@@ -12,8 +11,6 @@ import Request from "root/config/Request";
 import ReactQuill from "react-quill";
 import Button from "../../common/Button/Button";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { useAsyncError } from "react-router-dom";
 
 import * as CONFIG from "../../../config";
@@ -120,46 +117,49 @@ const AddBlog = () => {
           <h5>Add Blog</h5>
         </div>
 
-        <Form onSubmit={addSubmitHandler} className="mt_40">
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>Title*</Form.Label>
-            <Form.Control
+        <form onSubmit={addSubmitHandler} className="mt_40">
+          <div className="mb_15 form-group">
+            <label className="block font-medium">Title*</label>
+            <input
               ref={titleRef}
               type="text"
               placeholder="Enter Blog Title"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.heading && (
               <div className="errMsg text-red-500">{errors.heading}</div>
             )}
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>Short Description*</Form.Label>
+          <div className="mb_15 form-group">
+            <label className="block font-medium">Short Description*</label>
             <textarea
               ref={shortDescriptionRef}
               required
-              type="text"
               placeholder="Enter Short Description"
-              className="form-control"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.short_description && (
               <div className="errMsg text-red-500">
                 {errors.short_description}
               </div>
             )}
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>Description*</Form.Label>
+          <div className="mb_15 form-group">
+            <label className="block font-medium">Description*</label>
             <ReactQuill ref={descriptionRef} placeholder="Enter Description" />
             {errors.description && (
               <div className="errMsg text-red-500">{errors.description}</div>
             )}
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>Blog Category</Form.Label>
-            <select ref={blogCategoryRef} className="form-control">
+          <div className="mb_15 form-group">
+            <label className="block font-medium">Blog Category</label>
+            <select
+              ref={blogCategoryRef}
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
               <option defaultValue={true} disabled>
                 Select Blog Category
               </option>
@@ -172,17 +172,17 @@ const AddBlog = () => {
             {errors.category && (
               <div className="errMsg text-red-500">{errors.category}</div>
             )}
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>
+          <div className="mb_15 form-group">
+            <label className="block font-medium">
               Thumbnail* <small className="size">(Size 1200px x 750px)</small>
-            </Form.Label>
-            <Form.Control
+            </label>
+            <input
               ref={thumbnailRef}
               required
               type="file"
-              className="form-control"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.thumbnail && (
               <div className="errMsg text-red-500">{errors.thumbnail}</div>
@@ -190,17 +190,17 @@ const AddBlog = () => {
             {showEditEnableImage && (
               <img width="100" src={showEditEnableImage} />
             )}
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mb_15 form-group">
-            <Form.Label>
+          <div className="mb_15 form-group">
+            <label className="block font-medium">
               Image* <small className="size">(Size 1200px x 750px)</small>
-            </Form.Label>
-            <Form.Control
+            </label>
+            <input
               ref={imageRef}
               required
               type="file"
-              className="form-control"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.image && (
               <div className="errMsg text-red-500">{errors.image}</div>
@@ -208,10 +208,15 @@ const AddBlog = () => {
             {showEditEnableImage && (
               <img width="100" src={showEditEnableImage} />
             )}
-          </Form.Group>
+          </div>
 
-          <Button className="btn btn_primary">Add</Button>
-        </Form>
+          <button
+            type="submit"
+            className="btn btn_primary px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-700"
+          >
+            Add
+          </button>
+        </form>
       </div>
     </>
   );

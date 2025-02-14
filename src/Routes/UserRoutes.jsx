@@ -5,7 +5,6 @@ import Layout from "../frontend/Layout";
 import Home from "../frontend/pages/Home";
 import Microsite from "../frontend/pages/Microsite";
 import PageNotFound from "../frontend/PageNotFound/PageNotFound";
-import "../frontend/main.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -35,6 +34,7 @@ import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 import MediaCenter from "../frontend/pages/MediaCenter";
 import NriInvestor from "../frontend/pages/NriInvestor";
+
 
 export const UserRoutes = [
   {

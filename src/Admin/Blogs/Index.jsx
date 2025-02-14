@@ -3,7 +3,6 @@ import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from 'react-bootstrap/Form';
 import * as CONFIG from '../../../config';
 import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
@@ -253,7 +252,7 @@ const Blogs = ()=>{
 
     return(
         <>
-        <div className="d-flex title_col justify-content-between align-items-center">
+        <div className="title_col flex justify-between items-center">
             <h4 className="page_title">Blogs</h4>
             {/* <button className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button> */}
             <Link className="btn ms-auto btn_primary btn-sm" to={`${CONFIG.ADMIN_ROOT}blogs/add`}>Add Blog</Link>

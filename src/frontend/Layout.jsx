@@ -21,6 +21,19 @@ function Layout({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Define dynamic CSS based on route
+    let cssFile;
+    
+    if (location.pathname.startsWith("/")) {
+      cssFile = import("../frontend/main.css"); // Admin-specific styles
+    }
+
+    return () => {
+      // Cleanup if needed (optional)
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (mediaLoaded) {
       setTimeout(() => setLoading(false), 500); // Smooth fade-out transition
     }
