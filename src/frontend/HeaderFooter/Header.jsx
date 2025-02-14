@@ -5,7 +5,6 @@ import { BASE_ROOT } from "../../../config";
 import * as CONFIG from "../../../config";
 import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
-import ScrollToTop from "../components/ScrollToTop";
 
 const debounce = (func, delay) => {
   let timeoutId;

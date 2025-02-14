@@ -3,7 +3,7 @@ const latestBlog = [
     {
       id: 1,
       desktopImg:"desktop-blog-3.webp",
-      mobileImg:"blog3.png",
+      mobileImg:"blog3.webp",
       date: "10-12-2024",
       type:"Blog",
       title:"Buying vs Renting in Noida Sector 107: Which Option is Right for You?",
@@ -30,7 +30,7 @@ const latestBlog = [
     {
       id: 2,
       desktopImg:"desktop-blog-2.webp",
-      mobileImg:"blog2.png",
+      mobileImg:"blog2.webp",
       date: "11-12-2024",
       type:"Blog",
       title:"Why Noida Sector 107 is the Perfect Location for Your New Home",

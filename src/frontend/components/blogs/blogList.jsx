@@ -11,7 +11,7 @@ const data = [
   {
     id: 1,
     desktopImg:"desktop-blog-3.webp",
-    mobileImg:"blog3.png",
+    mobileImg:"blog3.webp",
     date: "10-12-2024",
     title:"Buying vs Renting in Noida Sector 107: Which Option is Right for You?",
     desc:"Noida Sector 107 has become a highly sought-after area for both buyers and renters, thanks to its strategic location, excellent connectivity, and well-developed infrastructure. If you're contemplating whether to buy or rent a property in this thriving locality, it's important to weigh the pros and cons of both options. Let's dive into the factors that can guide your decision.",
@@ -37,7 +37,7 @@ const data = [
   {
     id: 2,
     desktopImg:"desktop-blog-2.webp",
-    mobileImg:"blog2.png",
+    mobileImg:"blog2.webp",
     date: "11-12-2024",
     title:"Why Noida Sector 107 is the Perfect Location for Your New Home",
     desc:"Finding the perfect home is not only about more than just a well-designed living space; it’s about choosing a location that advances your lifestyle. Noida Sector 107 is rapidly gaining popularity among homebuyers seeking a balance of urban convenience, connectivity, and green living. This vibrant neighborhood offers top-notch infrastructure, abundant green spaces, and proximity to essential amenities, making it a well-rounded option for families and professionals alike.",
@@ -104,7 +104,7 @@ const BlogList = () => {
       <SearchField  customClass={"block lg:hidden mt-[5px] mb-[20px]"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredBlogs.map((data, index) => (
-            <div className={`col-span-1 ${index < 2 ? ' ' : 'mt-[45px] '}`} key={index}>
+            <div className={`col-span-1 ${index < 2 ? ' ' : 'md:mt-[45px] '}`} key={index}>
               <Link to={`${BASE_ROOT}blog/${data.id}`} state={{ blog: data}} >
                 <BlogCard data={data} index={index} />
               </Link>
