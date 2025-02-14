@@ -45,9 +45,9 @@ export default function Projects() {
                 // sectionHeading={"Spaces Crafted with Value and Trust"}
                 sectionHeading={"EXplore Properties"}
                 animationConfig={animationConfig}
-                lineLeft={true}
-                lineRight={true}
-                justifyContent="justify-between"
+                // lineLeft={false}
+                // lineRight={false}
+                justifyContent="justify-center"
             />
             <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] lg:px-0 px-4">
                 {projectData && projectData.map((item, index) => (
