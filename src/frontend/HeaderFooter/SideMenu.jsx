@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import React, { useLayoutEffect, useRef } from "react";
-import { SlClose } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
 import { AiOutlineClose } from "react-icons/ai";
