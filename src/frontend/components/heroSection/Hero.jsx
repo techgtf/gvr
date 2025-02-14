@@ -36,7 +36,7 @@ export default function Hero({
               "url(assets/frontend/images/home/hero.jpg) no-repeat center",
           }}
         >
-          <LoadAnimation />
+          {/* <LoadAnimation /> */}
           <video
             ref={videoRef}
             // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
