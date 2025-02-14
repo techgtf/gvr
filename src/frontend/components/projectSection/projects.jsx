@@ -1,6 +1,6 @@
 import React from 'react'
 import "./projects.css"
-import WaterMarkHeading from '../waterMarkHeading'
+import AnimatedHeading from '../Animations/AnimatedHeading'
 import { Link } from 'react-router-dom'
 import * as CONFIG from '../../../../config';
 import { useImageReveal } from '../useImageReveal';
@@ -40,11 +40,14 @@ export default function Projects() {
 
     return (
         <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
-            <WaterMarkHeading
-                textWaterMark={"Explore Properties"}
+            <AnimatedHeading
+                // textWaterMark={"Explore Properties"}
                 // sectionHeading={"Spaces Crafted with Value and Trust"}
                 sectionHeading={"EXplore Properties"}
                 animationConfig={animationConfig}
+                lineLeft={true}
+                lineRight={true}
+                justifyContent="justify-between"
             />
             <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] lg:px-0 px-4">
                 {projectData && projectData.map((item, index) => (
