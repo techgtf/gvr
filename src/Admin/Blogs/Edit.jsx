@@ -15,7 +15,7 @@ const EditBlog = () => {
     short_description: "",
     description: "",
     image: "",
-    category: "",
+    thumbnail:'',
     previewImage: "",
   });
   const [errors, setErrors] = useState({});
@@ -46,6 +46,7 @@ const EditBlog = () => {
           setData((prevData) => ({
             ...prevData,
             ...response.data,
+            thumbnailImage: response.data.thumbnail,
             previewImage: response.data.image,
           }));
           setIsLoading(false);
@@ -149,7 +150,7 @@ const EditBlog = () => {
               placeholder="Enter Blog Title"
               value={data.heading}
               onChange={changeHandler}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
             />
             {errors.heading && (
               <p className="text-red-500 text-sm">{errors.heading}</p>
@@ -165,7 +166,7 @@ const EditBlog = () => {
               placeholder="Enter Short Description"
               value={data.short_description}
               onChange={changeHandler}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
             />
             {errors.short_description && (
               <p className="text-red-500 text-sm">{errors.short_description}</p>
@@ -188,7 +189,7 @@ const EditBlog = () => {
             )}
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700">
               Blog Category*
             </label>
@@ -208,6 +209,31 @@ const EditBlog = () => {
             {errors.category && (
               <p className="text-red-500 text-sm">{errors.category}</p>
             )}
+          </div> */}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Thumbnail*{" "}
+              <span className="text-xs text-gray-500">
+                (Size 1200px x 750px)
+              </span>
+            </label>
+            <input
+              type="file"
+              name="image"
+              onChange={changeHandler}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            />
+            {errors.thumbnail && (
+              <p className="text-red-500 text-sm">{errors.thumbnail}</p>
+            )}
+            {data.thumbnailImage && (
+              <img
+                src={CONFIG.VITE_APP_STORAGE + data.thumbnailImage}
+                alt="Preview"
+                className="mt-2 w-24 h-auto rounded-md shadow-sm"
+              />
+            )}
           </div>
 
           <div>
@@ -221,7 +247,7 @@ const EditBlog = () => {
               type="file"
               name="image"
               onChange={changeHandler}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
             />
             {errors.image && (
               <p className="text-red-500 text-sm">{errors.image}</p>

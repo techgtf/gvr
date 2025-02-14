@@ -74,7 +74,7 @@ const AddBlog = () => {
       formData.append("heading", titleRef.current.value);
       formData.append("short_description", shortDescriptionRef.current.value);
       formData.append("description", descriptionRef.current.value);
-      formData.append("category", blogCategoryRef.current.value);
+      // formData.append("category", blogCategoryRef.current.value);
       formData.append("image", imageRef.current.files[0]);
       formData.append("thumbnail", thumbnailRef.current.files[0]);
 
@@ -112,7 +112,7 @@ const AddBlog = () => {
         </button>
       </div>
 
-      <div className="card mt-4 card_style1">
+      <div className="card mt-4 card_style1 bg-white">
         <div>
           <h5>Add Blog</h5>
         </div>
@@ -154,7 +154,7 @@ const AddBlog = () => {
             )}
           </div>
 
-          <div className="mb_15 form-group">
+          {/* <div className="mb_15 form-group">
             <label className="block font-medium">Blog Category</label>
             <select
               ref={blogCategoryRef}
@@ -172,7 +172,7 @@ const AddBlog = () => {
             {errors.category && (
               <div className="errMsg text-red-500">{errors.category}</div>
             )}
-          </div>
+          </div> */}
 
           <div className="mb_15 form-group">
             <label className="block font-medium">
