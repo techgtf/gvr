@@ -1,15 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import React, { useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CommonHeading from "../../commonHeading";
-import SlideIn from "../../Animations/SlideIn";
 import FadeIn from "../../Animations/FadeIn";
+import SlideIn from "../../Animations/SlideIn";
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -18,43 +15,7 @@ function ProjectGallery({ actualImages, renderImages }) {
   const [activeTab, setActiveTab] = useState("actual");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const swiperRef = useRef(null);
   const projectRef = useRef();
-
-  // 🔥 Scroll pe har baar animation chalega
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".gallery_images",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: projectRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reset",
-          },
-        }
-      );
-    }, projectRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // 🔥 Tab switch pe stagger animation
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-    gsap.fromTo(
-      ".gallery_images img",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }
-    );
-  };
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -83,7 +44,7 @@ function ProjectGallery({ actualImages, renderImages }) {
         </div>
 
         <div className="slider mt-10">
-        
+        <SlideIn duration={2} delay={0.3}>
             {Array.from({ length: Math.ceil(imageData.length / 3) }).map((_, slideIndex) => (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {imageData
@@ -99,6 +60,7 @@ function ProjectGallery({ actualImages, renderImages }) {
                     ))}
                 </div>
             ))}
+            </SlideIn>
         </div>
 
         {open && (
