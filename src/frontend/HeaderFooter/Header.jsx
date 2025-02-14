@@ -146,7 +146,7 @@ export default function Header() {
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
                       : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
                   }
-                  alt="Menu Icon"
+                  alt="menu icon for navigation options"
                 />
               </button>
             </nav>

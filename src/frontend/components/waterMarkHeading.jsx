@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SlideIn from './Animations/SlideIn';
 gsap.registerPlugin(ScrollTrigger);
 
-
 export default function WaterMarkHeading({
   TagName = 'p', // Heading tag (e.g., h1 - h6)
   className = '', // Additional classes for the container
