@@ -63,17 +63,27 @@ export default function Header() {
 
   const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
   const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
-  
-  const logoOnePages = [`${BASE_ROOT}`, `${BASE_ROOT}sharanam`, `${BASE_ROOT}anandam`, `${BASE_ROOT}vilasa`, `${BASE_ROOT}gv-homes`];
-  
+
+  const logoOnePages = [
+    `${BASE_ROOT}`,
+    `${BASE_ROOT}sharanam`,
+    `${BASE_ROOT}anandam`,
+    `${BASE_ROOT}vilasa`,
+    `${BASE_ROOT}gv-homes`,
+  ];
+
   const getLogoSrc = () => {
-    let logo = logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
-  
+    // let logo = logoOnePages.includes(location.pathname)
+    //   ? whiteLogo
+    //   : coloredLogo;
+
+    let logo = whiteLogo;
+
     // Override with colored logo if isFixed or activeItem is true
-    if (isFixed || activeItem) {  
+    if (isFixed || activeItem) {
       return coloredLogo;
     }
-  
+
     return logo;
   };
 
@@ -81,27 +91,46 @@ export default function Header() {
     <>
       <ScrollToTop />
       <header
-        className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20  
+        className={`app_header ${
+          isFixed ? "fixed active" : "relative"
+        } top-0 left-0 w-full !z-20  
           ${activeItem ? "bg-[#EFF5FA]" : ""}`} // ✅ Keeps background active until dropdown closes
       >
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
             <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="logo" />
+              <img
+                className="w-[50%] sm:w-[70%] cursor-pointer"
+                src={getLogoSrc()}
+                alt="logo"
+              />
             </Link>
             <div className="right_nav flex justify-between items-center gap-10">
-              <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"} ${activeItem ? "text-primary" : ""}`}>  
+              <div
+                className={`nav_items hidden sm:block uppercase ${
+                  isFixed ? "text-black" : "text-white"
+                } ${activeItem ? "text-primary" : ""}`}
+              >
                 <ul className="flex justify-evenly gap-8 items-center">
                   {navItems.map((item, i) => (
                     <li
                       key={i}
-                      onMouseEnter={() => item.hasMenus && handleDropdownOpen(item.name)}
+                      onMouseEnter={() =>
+                        item.hasMenus && handleDropdownOpen(item.name)
+                      }
                       className={`relative flex cursor-pointer gap-3 items-center tracking-[3px] text-[13px] font-[300] 
-                        ${activeItem === item.name ? "bg-white px-3 text-primary" : ""}
+                        ${
+                          activeItem === item.name
+                            ? "bg-white px-3 text-primary"
+                            : ""
+                        }
                         hover:bg-white hover:px-3 hover:text-primary transition-all duration-300`}
                     >
                       {item.link ? (
-                        <Link to={`${BASE_ROOT}${item.link}`} className="tracking-[3px] text-[13px] font-[300]">
+                        <Link
+                          to={`${BASE_ROOT}${item.link}`}
+                          className="tracking-[3px] text-[13px] font-[300]"
+                        >
                           {item.name}
                         </Link>
                       ) : (
@@ -111,9 +140,14 @@ export default function Header() {
                   ))}
                 </ul>
               </div>
-              <button className="menuBtn flex justify-end items-center" onClick={handleToggleSidebar}>
+              <button
+                className="menuBtn flex justify-end items-center"
+                onClick={handleToggleSidebar}
+              >
                 <img
-                  className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
+                  className={`cursor-pointer ${
+                    isFixed ? "whiteIcon" : "coloredIcon"
+                  } w-[80%]`}
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
@@ -127,7 +161,10 @@ export default function Header() {
         </div>
         {openSidebar && <SideMenu setOpenSidebar={setOpenSidebar} />}
         {dropdown && (
-          <NavDropdown setDropdown={handleDropdownClose} setActiveItem={setActiveItem} />
+          <NavDropdown
+            setDropdown={handleDropdownClose}
+            setActiveItem={setActiveItem}
+          />
         )}
       </header>
     </>
