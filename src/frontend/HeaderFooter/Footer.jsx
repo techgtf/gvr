@@ -13,7 +13,10 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(0);
   const footerRef = useRef(null);
+  const gsapTimeline = useRef(null); // Store GSAP timeline
+  const location = useLocation();
   const navigate = useNavigate();
 
   return (

@@ -38,8 +38,7 @@ export default function Residential() {
   return (
     <div className='residential_page bg-[#EFF5FA] lg:pb-[80px] pb-[40px]'>
       <HeroSectionAboutUs
-        img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739343920/banner_va1btr.webp"}
-        heading={"Residential Projects"}
+        img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"}
         alt={"Great Value Residential Project"}
       />
       <ProjectBox projectsData={projectsData} />

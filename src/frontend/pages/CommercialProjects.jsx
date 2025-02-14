@@ -112,11 +112,8 @@ const CommercialProjects = () => {
       <HeroSectionAboutUs
         // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
         img={
-          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739339970/dtpqduwfo9zafgpdy6bf.webp"
+          `${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`
         }
-        heading={"COMMERCIAL  PROJECTS"}
-        breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
-        extraClassesImg={"objectRight object-top"}
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
