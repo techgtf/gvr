@@ -2,7 +2,6 @@
 const HeroSectionAboutUs = ({ img,   parentLink, parentTitle, heading, breadCrumb, extraClassesImg, alt }) => {
   return (
     <div className={`relative uppercase pages_banner`}>
-
       <img
         src={img}
         alt={alt}

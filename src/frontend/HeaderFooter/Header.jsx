@@ -85,7 +85,18 @@ export default function Header() {
   ];
 
   const getLogoSrc = () => {
-    return isFixed || activeItem ? coloredLogo : logoOnePages.includes(location.pathname) ? whiteLogo : coloredLogo;
+    // let logo = logoOnePages.includes(location.pathname)
+    //   ? whiteLogo
+    //   : coloredLogo;
+
+    let logo = whiteLogo;
+
+    // Override with colored logo if isFixed or activeItem is true
+    if (isFixed || activeItem) {
+      return coloredLogo;
+    }
+
+    return logo;
   };
 
   return (
@@ -140,7 +151,9 @@ export default function Header() {
                 onClick={handleToggleSidebar}
               >
                 <img
-                  className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"} w-[80%]`}
+                  className={`cursor-pointer ${
+                    isFixed ? "whiteIcon" : "coloredIcon"
+                  } w-[80%]`}
                   src={
                     isFixed || activeItem
                       ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`

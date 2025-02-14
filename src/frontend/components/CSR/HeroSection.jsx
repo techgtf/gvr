@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import * as CONFIG from "../../../../config";
 import Breadcrumb from '../breadcrumb';
 
@@ -21,9 +21,9 @@ function HeroSection() {
            
         </div>
 
-       <Breadcrumb currentPage="ESG" linkPath={`${CONFIG.BASE_ROOT}csr`}/>
-        </>
-    );
+      <Breadcrumb currentPage="ESG" linkPath={`${CONFIG.BASE_ROOT}csr`} />
+    </>
+  );
 }
 
 export default HeroSection;
