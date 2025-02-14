@@ -68,7 +68,7 @@ export default function Header() {
   };
 
   const navItems = [
-    { name: "Residential", link: null, hasMenus: true },
+    { name: "Residential", link: "residential", hasMenus: true },
     { name: "Commercial", link: "commercial-projects", hasMenus: false },
     { name: "ESG", link: "esg", hasMenus: false },
   ];

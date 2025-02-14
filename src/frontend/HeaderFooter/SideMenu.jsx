@@ -83,7 +83,7 @@ function SideMenu({ setOpenSidebar }) {
             <div className="title uppercase text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
               Our Profile
             </div>
-            <div className="title_links flex gap-5 uppercase text-[#484747] py-3">
+            <div className="title_links flex gap-2 uppercase text-[#484747] py-3">
             <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}about-us`));
@@ -105,6 +105,18 @@ function SideMenu({ setOpenSidebar }) {
                 className="text-[12px] tracking-[2px] cursor-pointer"
               >
                 Our ESG
+              </span>
+              </Link>
+              <span className="text-[#0e69ae]">/</span>
+              <Link to={`${BASE_ROOT}media`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}media`));
+              }}>
+              <span
+                onClick={() => handleLinkClick(`${BASE_ROOT}media`)}
+                className="text-[12px] tracking-[2px] cursor-pointer"
+              >
+                Media Centre
               </span>
               </Link>
             </div>

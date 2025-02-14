@@ -1,6 +1,5 @@
 import React from 'react';
 import * as CONFIG from "../../../../config";
-import { Link } from 'react-router-dom';
 import Breadcrumb from '../breadcrumb';
 
 function HeroSection() {
