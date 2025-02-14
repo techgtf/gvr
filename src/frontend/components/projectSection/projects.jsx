@@ -20,19 +20,19 @@ export default function Projects() {
     const projectData = [
         {
             type: 'residential',
-            imgSrc: 'residential.jpg',
+            imgSrc: 'residential.webp',
             Link: `${CONFIG.BASE_ROOT}residential`,
             alt: "Great Value Residential Projects"
         },
         {
             type: 'iconic properties',
-            imgSrc: 'latest.jpg',
+            imgSrc: 'latest.webp',
             Link: `${CONFIG.BASE_ROOT}vilasa`,
             alt: "VILASA AT SECTOR 6, SOHNA"
         },
         {
             type: 'commercial',
-            imgSrc: 'commercial.jpg',
+            imgSrc: 'commercial.webp',
             Link: `${CONFIG.BASE_ROOT}commercial-projects`,
             alt: "Great Value COMMERCIAL PROJECTS"
         },

@@ -19,12 +19,14 @@ export default function Verticals() {
         {
             title: 'GV Capital',
             imgSrc: 'capital.webp',
+            alt: "Gread Value Captial",
             description: 'GV Capital accelerates visionary businesses with strategic investments, expert mentorship, and smart capital for lasting impact and growth.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
         {
             title: 'GV Finance',
             imgSrc: 'finance.webp',
+            alt: "Gread Value Finance",
             description: 'GV Finance empowers businesses and individuals with smart financial solutions, optimizing cash flow, securing investments, and driving sustainable growth.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
@@ -48,7 +50,7 @@ export default function Verticals() {
                                     <img 
                                         className='lg:h-[300px] h-[300px] cursor-pointer w-full object-cover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
                                         src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} 
-                                        alt={item.title} 
+                                        alt={item.alt} 
                                         tabIndex="0"
                                     />
                                 </ZoomOut>
