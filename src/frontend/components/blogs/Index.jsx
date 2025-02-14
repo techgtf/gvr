@@ -102,8 +102,8 @@ const Index = ({ data }) => {
         <Divider className=" md:mb-[38px] mt-[20px] mb-[20px]" />
         <ul>
           {latestBlog.map((item, index) => (
-            <>
-              <li key={index} className="mt-3  last:mb-0  first:mt-0 last:mb-0">
+            <React.Fragment key={index}>
+              <li  className="mt-3  last:mb-0  first:mt-0 last:mb-0">
                 <SlideIn SlideIn duration={1} delay={0.5}>
                   <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
                     <div className="ListCard">
@@ -124,7 +124,7 @@ const Index = ({ data }) => {
                   <Divider className="md:mt-[30px] md:mb-[38px] mt-[20px] mb-[20px]" />
                 </SlideIn>
               </li>
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </div>

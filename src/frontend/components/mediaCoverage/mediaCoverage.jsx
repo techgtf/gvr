@@ -71,8 +71,8 @@ export default function MediaCoverage() {
                         >
                             {mediaData && (
                                 mediaData.map((item, index) =>
-                                    <>
-                                        <SwiperSlide key={index}>
+                                    <React.Fragment  key={index}>
+                                        <SwiperSlide>
                                             <img
                                                 className="lg:w-auto w-[80px]"
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`}
@@ -81,7 +81,7 @@ export default function MediaCoverage() {
 
                                         </SwiperSlide>
                                         {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
-                                    </>
+                                    </React.Fragment>
                                 )
                             )}
                         </Swiper>

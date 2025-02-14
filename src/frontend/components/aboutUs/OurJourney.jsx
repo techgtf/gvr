@@ -256,7 +256,8 @@ const OurJourney = () => {
           <div className="relative xl:basis-[48%] xl:my-[2rem]  mb-[0rem] pt-[2rem] xl:pt-[0rem] overflow-y-scroll xl:max-h-[300px] no-scrollbar basis-[100%]">
             {projects[selectedProjectIndex].project.map((proj, index) => {
               return (
-                <div
+                <div 
+                key={index}
                   className={
                     "xl:basis-[50%] no-scrollbar border-b-[1px] border-b-solid border-b-[#ddd] mr-[16px] pb-[10px] mb-[20px] basis-[100%] justify-between flex flex-wrap text-center "
                   }
@@ -302,7 +303,7 @@ const OurJourney = () => {
           {projects[selectedProjectIndex].images.map((img, index) => {
             if (index == 0) {
               return (
-                <img
+                <img key={index}
                   src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute top-[8%] xl:top-0 z-[1] left-[25%]"
