@@ -9,13 +9,7 @@ const ProperyInvestment = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={
-          "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739362037/property-investment_oo0bpu.webp"
-        }
-        // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
-        heading={"PROPERTY INVESTMENT"}
-        breadCrumb={"HOME - PROPERTY INVESTMENT"}
-        extraClassesImg={"objectRight"}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
       />
       <div className="flex xl:mt-[4rem] mt-[2rem] flex-wrap justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0">
         <div className=" xl:basis-[45%] basis-[100%]">
