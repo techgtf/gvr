@@ -13,39 +13,8 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
-  const [footerHeight, setFooterHeight] = useState(0);
   const footerRef = useRef(null);
-  const gsapTimeline = useRef(null); // Store GSAP timeline
-  const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (footerRef.current) {
-      setFooterHeight(footerRef.current.scrollHeight);
-    }
-  }, [toggelLinks]); // Update height when toggling
-
-  useLayoutEffect(() => {
-    if (!toggelLinks || footerHeight === 0) return;
-
-    gsapTimeline.current = gsap.to(window, {
-      scrollTo: { y: document.body.scrollHeight, autoKill: false },
-      duration: 1,
-    });
-
-    return () => {
-      gsapTimeline.current?.kill(); // Cleanup GSAP animation on unmount
-    };
-  }, [footerHeight, location.pathname]);
-
-  const handleLinkClick = (e, path) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    setTimeout(() => {
-      navigate(path); // SPA navigation without page reload
-    }, 600);
-  };
 
   return (
     <>
