@@ -3,7 +3,6 @@ import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from 'react-bootstrap/Form';
 import Button from 'common/Button/Button';
 import Loader from "common/Loader/loader";
 import Request from "root/config/Request";
@@ -131,123 +130,140 @@ const Process = ()=>{
 
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Process</h4>
-                <Button className="btn ms-auto btn_primary btn-sm" onClick={addDeveloperHandler}>Add Process</Button>
+            <div className="flex items-center justify-between mb-4">
+                <h4 className="text-xl font-semibold">Process</h4>
+                <button
+                className="ml-auto bg-blue-600 text-white px-4 py-2 text-sm rounded"
+                onClick={addDeveloperHandler}
+                >
+                Add Process
+                </button>
             </div>
 
-            <div className="card mt-4 card_style1">
-                <div className="d-flex">
-                    <h5>All Process</h5>
+            <div className="bg-white p-6 shadow-md rounded-md">
+                <div className="mb-4">
+                <h5 className="text-lg font-medium">All Process</h5>
                 </div>
 
-                <table className="mt_40">
-                    <thead>
-                        <tr>
-                            <th>
-                                Icon
-                            </th>
-                            <th>
-                                Title
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Actions
-                            </th>
+                <table className="w-full border-collapse">
+                <thead>
+                    <tr className="border-b">
+                    <th className="p-3 text-left">Icon</th>
+                    <th className="p-3 text-left">Title</th>
+                    <th className="p-3 text-left">Status</th>
+                    <th className="p-3 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {dataLoading && (
+                    <tr>
+                        <td colSpan={4} className="text-center py-4">
+                        <ScaleLoader color="#ddd" />
+                        </td>
+                    </tr>
+                    )}
+                    {!dataLoading &&
+                    data.map((item, index) => (
+                        <tr key={index} className="border-b">
+                        <td className="p-3">{item.developer}</td>
+                        <td className="p-3">
+                            <img
+                            src={CONFIG.VITE_APP_STORAGE + item.logo}
+                            alt=""
+                            className="w-10 h-10 object-cover"
+                            />
+                        </td>
+                        <td className="p-3">
+                            <select
+                            className="border rounded px-2 py-1"
+                            onChange={handleStatusSelect}
+                            >
+                            <option>Select --</option>
+                            {/* Add status options dynamically here */}
+                            </select>
+                        </td>
+                        <td className="p-3 flex space-x-2">
+                            <button className="p-2 bg-gray-200 rounded">
+                            <img
+                                src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
+                                alt="edit icon"
+                                className="w-5 h-5"
+                            />
+                            </button>
+                            <button className="p-2 bg-red-200 rounded">
+                            <img
+                                src={CONFIG.ADMIN_IMG_URL + "icons/delete_color.svg"}
+                                alt="delete icon"
+                                className="w-5 h-5"
+                            />
+                            </button>
+                        </td>
                         </tr>
-                    </thead>
-
-                    <tbody>
-                        {!data.length && dataLoading ? 
-                        <tr>
-                            <td colSpan={4}>
-                                <div className="text-center">
-                                <ScaleLoader 
-                                    color="#ddd"
-                                    className="w-100"
-                                /> 
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        : 
-                        data.map(item=>(
-                            <tr>
-                                <td>
-                                    {item.developer}
-                                </td>
-                                <td>
-                                    <div className="thumb icon">
-                                        <img src={CONFIG.VITE_APP_STORAGE + item.logo} alt="" className="img-fluid" />
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <CustomDropdown className="form-control" defaultVal="Select --" options={statusOptions} onSelect={handleStatusSelect()}  />
-                                </td>
-
-                                <td>
-                                    <button className="btn action_btn" >
-                                        <img src={CONFIG.ADMIN_IMG_URL + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
-                                    </button>
-
-                                    <button className="btn action_btn" >
-                                        <img src={CONFIG.ADMIN_IMG_URL + 'icons/delete_color.svg'} alt="delete icon"  className="img-fluid icon delete"  />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-
+                    ))}
+                </tbody>
                 </table>
 
                 {!dataLoading && !notFound && (
-                    <ReactPaginate 
-                        breakLabel="..."
-                        nextLabel="next"
-                        pageCount={totalPage}
-                        onPageChange={handlePageChange}
-                    />
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="Next"
+                    pageCount={totalPage}
+                    onPageChange={handlePageChange}
+                    className="flex space-x-2 mt-4"
+                />
                 )}
-                
-                {notFound && (
-                    <h5 className="no_record">No  More Record Found!</h5>
-                )}
+
+                {notFound && <h5 className="text-center text-gray-500 mt-4">No More Records Found!</h5>}
             </div>
 
             {showSidebar && (
-                <>
-                    <SidebarPortal className="portal">
-                        <SideModal onCancel={cancelHandler} onSubmit={(enableEdit ? updateAmenityHandler : addSubmitHandler)}>
-                            <Form >
-
-                                <Form.Group className="mb_15">
-                                    <Form.Label>Icon*</Form.Label>
-                                    <Form.Control ref={developerLogoRef} className="form-control" required type="file" />
-                                    {errors.image && <div className="errMsg">{errors.image}</div>}
-                                </Form.Group>
-
-                                <Form.Group className="mb_15">
-                                    <Form.Label>Title*</Form.Label>
-                                    <Form.Control ref={developerRef} className="form-control" placeholder="Enter title" required type="text" />
-                                    {errors.developer && <div className="errMsg">{errors.developer}</div>}
-                                </Form.Group>
-
-                                <Form.Group className="mb_15">
-                                    <Form.Label>Description*</Form.Label>
-                                    <textarea ref={developerDescriptionRef} className="form-control textarea_sm" name="" id="" rows="5" placeholder="Enter description" />
-                                    {errors.description && <div className="errMsg">{errors.description}</div>}
-                                </Form.Group>
-
-                            </Form>
-                        </SideModal>
-                    </SidebarPortal>
-                    <BackdropPortal />
-                </>
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white p-6 shadow-lg rounded-md w-96">
+                    <button className="absolute top-3 right-3 text-gray-500" onClick={cancelHandler}>
+                    &times;
+                    </button>
+                    <form onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Icon*</label>
+                        <input
+                        ref={developerLogoRef}
+                        type="file"
+                        className="w-full border p-2 rounded"
+                        required
+                        />
+                        {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Title*</label>
+                        <input
+                        ref={developerRef}
+                        type="text"
+                        className="w-full border p-2 rounded"
+                        placeholder="Enter title"
+                        required
+                        />
+                        {errors.developer && <p className="text-red-500 text-sm">{errors.developer}</p>}
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium">Description*</label>
+                        <textarea
+                        ref={developerDescriptionRef}
+                        className="w-full border p-2 rounded h-24"
+                        placeholder="Enter description"
+                        ></textarea>
+                        {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
+                    </div>
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-600 text-white p-2 rounded"
+                    >
+                        Save
+                    </button>
+                    </form>
+                </div>
+                </div>
             )}
-        </>
+            </>
     )
 }
 

@@ -57,8 +57,6 @@ import ProjectsQuery from '../admin/Enquiry/Projects';
 import ProjectQuery from '../admin/Enquiry/Project';
 import JobApplications from '../admin/Enquiry/JobApplications';
 import Offers from '../admin/Offers'
-
-import "bootstrap/dist/css/bootstrap.min.css";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [

@@ -3,7 +3,6 @@ import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from 'react-bootstrap/Form';
 import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
 import Pagination from 'common/Pagination/Pagination';
@@ -11,8 +10,6 @@ import {useNavigate } from 'react-router-dom';
 import Request from 'root/config/Request';
 import ReactQuill from 'react-quill';
 import Button from 'common/Button/Button'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useAsyncError, useParams } from "react-router-dom";
 
 import * as CONFIG from '../../../config';
@@ -147,94 +144,92 @@ const AddCareer = ()=>{
  
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Edit Career</h4>
+            <div className="flex justify-between items-center">
+                <h4 className="text-lg font-semibold">Edit Career</h4>
             </div>
 
-            <div className="card mt-4 card_style1">
-                <div className="d-flex">
-                    <h5>Edit Career</h5>
+            <div className="bg-white shadow-md rounded-lg p-6 mt-4">
+                <div className="mb-4">
+                <h5 className="text-lg font-semibold">Edit Career</h5>
                 </div>
-                
-                <Form onSubmit={updateSubmitHandler} className="mt_40">
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Title*</Form.Label>
-                        <Form.Control ref={titleRef} className="" type="text" placeholder="Enter Career Title" />
-                        {errors.destination && <div className="errMsg text-danger">{errors.destination}</div>}
-                    </Form.Group>
 
+                <form onSubmit={updateSubmitHandler} className="mt-4">
+                <div className="mb-4">
+                    <label className="block font-medium">Title*</label>
+                    <input
+                    ref={titleRef}
+                    type="text"
+                    placeholder="Enter Career Title"
+                    className="w-full border rounded p-2"
+                    />
+                    {errors.destination && <div className="text-red-500 text-sm">{errors.destination}</div>}
+                </div>
 
-                    <Row>
-                        <Form.Group className="mb_15 form-group" as={Col} md="4">
-                            
-                            <Form.Label>Job Type*</Form.Label>
-                            <select ref={typeRef} className="form-control" defaultValue="select">
-                                <option value="" selected disabled>Select Job Type</option>
-                                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                    <label className="block font-medium">Job Type*</label>
+                    <select ref={typeRef} className="w-full border rounded p-2">
+                        <option value="" disabled>Select Job Type</option>
+                        {Object.entries(jobType).map(([key, value]) => (
+                        <option value={key} key={key}>{value}</option>
+                        ))}
+                    </select>
+                    {errors.job_timing && <div className="text-red-500 text-sm">{errors.job_timing}</div>}
+                    </div>
 
-                                {Object.entries(jobType).map(([key, value]) => {
-                                    return (
-                                        <option value={key} key={key}>{value}</option>
-                                    );
-                                })}
+                    <div>
+                    <label className="block font-medium">Job Location*</label>
+                    <input
+                        ref={locationRef}
+                        type="text"
+                        placeholder="Enter Location"
+                        className="w-full border rounded p-2"
+                    />
+                    {errors.address && <div className="text-red-500 text-sm">{errors.address}</div>}
+                    </div>
 
-                            </select>
-                            {errors.job_timing && <div className="errMsg text-danger">{errors.job_timing}</div>}
+                    <div>
+                    <label className="block font-medium">Job Experience*</label>
+                    <select ref={experienceRef} className="w-full border rounded p-2">
+                        <option value="" disabled>Select Job Experience</option>
+                        {Object.entries(jobYear).map(([key, value]) => (
+                        <option value={key} key={key}>{value}</option>
+                        ))}
+                    </select>
+                    {errors.experience_id && <div className="text-red-500 text-sm">{errors.experience_id}</div>}
+                    </div>
+                </div>
 
-                        </Form.Group>
+                <div className="mb-4">
+                    <label className="block font-medium">Short Description*</label>
+                    <textarea
+                    ref={shortDescriptionRef}
+                    placeholder="Enter Short Description"
+                    className="w-full border rounded p-2"
+                    />
+                    {errors.short_description && <div className="text-red-500 text-sm">{errors.short_description}</div>}
+                </div>
 
+                <div className="mb-4">
+                    <label className="block font-medium">Description*</label>
+                    <ReactQuill ref={descriptionRef} value={editorHtml} placeholder="Enter Description" />
+                    {errors.description && <div className="text-red-500 text-sm">{errors.description}</div>}
+                </div>
 
-                        <Form.Group className="mb_15 form-group" as={Col} md="4">
-                            <Form.Label>Job Location*</Form.Label>
-                            <Form.Control ref={locationRef} className="" type="text" placeholder="Enter Location" />
-                            {errors.address && <div className="errMsg text-danger">{errors.address}</div>}
-                        </Form.Group>
-
-
-                        <Form.Group className="mb_15 form-group" as={Col} md="4">
-                            <Form.Label>Job Experience*</Form.Label>
-                            <select ref={experienceRef} className="form-control" defaultValue="select">
-                                <option value="" selected disabled>Select Job Experience</option>
-                                {Object.entries(jobYear).map(([key, value]) => {
-                                    return (
-                                        <option value={key} key={key}>{value}</option>
-                                    );
-                                })}
-                            </select>
-                            {errors.experience_id && <div className="errMsg text-danger">{errors.experience_id}</div>}
-                        </Form.Group>
-
-                    </Row>
-
-                    
-
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Short Description*</Form.Label>
-                        <textarea ref={shortDescriptionRef} className="form-control" type="text" placeholder="Enter Short Description" />
-                        {errors.short_description && <div className="errMsg text-danger">{errors.short_description}</div>}
-                    </Form.Group>
-
-
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Description*</Form.Label>
-                        <ReactQuill ref={descriptionRef} value={editorHtml} placeholder="Enter Description"   />
-                        {errors.description && <div className="errMsg text-danger">{errors.description}</div>}
-                    </Form.Group>
-
-
-                    
-
-
-                    {
-                        
-                        isLoading ? <>    <Button className="btn btn_primary mt_20" type="button" disabled>Please Wait ..</Button></>  :    <Button className="btn btn_primary mt_20" type="submit">Update</Button>
-                          
-                        }
-                        
-
-                </Form>
+                <div className="mt-4">
+                    {isLoading ? (
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed" disabled>
+                        Please Wait ..
+                    </button>
+                    ) : (
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" type="submit">
+                        Update
+                    </button>
+                    )}
+                </div>
+                </form>
             </div>
-        </>
+            </>
     )
 }
 
