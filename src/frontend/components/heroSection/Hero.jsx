@@ -26,7 +26,6 @@ export default function Hero({
 
   return (
     <>
-      <ScrollToTop />
       <div className="heroSection relative z-0">
         {/* Background Image */}
 

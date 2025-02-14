@@ -35,17 +35,14 @@ function Layout({ children }) {
         effects: true,
         smoothTouch: 1.4,
       });
-      console.log("ScrollSmoother initialized");
     }
 
     // ✅ Refresh GSAP when route changes
     setTimeout(() => {
       ScrollTrigger.refresh();
-      console.log("GSAP Animations Refreshed!");
     }, 500);
 
     return () => {
-      console.log("Cleaning up ScrollSmoother...");
       if (smoother) {
         smoother.kill();
       }

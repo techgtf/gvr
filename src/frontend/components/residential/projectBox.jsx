@@ -6,7 +6,6 @@ import { useImageReveal } from '../useImageReveal';
 import SlideIn from '../Animations/SlideIn';
 
 export default function ProjectBox({ projectsData }) {
-    console.log(projectsData);
     
     useImageReveal(".reveal")
     const [isMobile, setIsMobile] = useState(false);

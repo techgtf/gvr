@@ -14,10 +14,8 @@ const ScrollToTop = () => {
       if (smoother) {
         smoother.scrollTo(0, true); // Smoothly scroll to top
         smoother.refresh(); // Refresh smoother in case it's not updated
-        console.log("ScrollToTop: Scrolled using ScrollSmoother");
       } else {
         window.scrollTo(0, 0); // Fallback for non-GSAP pages
-        console.log("ScrollToTop: Used window.scrollTo (fallback)");
       }
     };
 
