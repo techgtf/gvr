@@ -90,7 +90,6 @@ export default function Header() {
 
   return (
     <>
-      <ScrollToTop />
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
