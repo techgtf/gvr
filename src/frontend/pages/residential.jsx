@@ -3,6 +3,8 @@ const HeroSectionAboutUs = lazy(() => import("../components/aboutUs/HeroSectionA
 import * as CONFIG from "../../../config"
 import ProjectBox from '../components/residential/projectBox'
 import "../components/residential/styles.css"
+const OverviewSection = lazy(() => import("../components/overviewSection/overviewSection"))
+
 
 export default function Residential() {
   const projectsData = [
@@ -41,6 +43,15 @@ export default function Residential() {
         img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"}
         alt={"Great Value Residential Project"}
       />
+      {/* <div className='overview_wrap bg-white' style={{background:"linear-gradient(1deg, #eff5fa, #ffffff)"}}> */}
+      <OverviewSection
+        heading={'Where Luxury Meets Comfort, Life Flourishes Brightly'}
+        paragraph={'Discover residences that seamlessly blend luxury with comfort, offering serene sanctuaries tailored to your lifestyle.'}
+        showKnowMore={false}
+        pageLink={`${CONFIG.BASE_ROOT}about-us`}
+        bgColor='bg-white'
+      />
+      {/* </div> */}
       <ProjectBox projectsData={projectsData} />
     </div>
   )

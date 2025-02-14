@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from "react-dom";
-import WaterMarkHeading from '../waterMarkHeading';
+import AnimatedHeading from '../Animations/AnimatedHeading'
 import './testimonial.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation } from 'swiper/modules';
@@ -83,11 +83,13 @@ export default function Testimonial() {
     return (
         <div ref={testimonialRef} className="testimonialSection lg:pt-[120px] lg:pb-[90px] pt-[50px] pb-[50px]">
             <div className="max-w-[90%] mx-auto relative">
-                <WaterMarkHeading
-                    textWaterMark='Our testimonials'
+                <AnimatedHeading
+                    // textWaterMark='Our testimonials'
                     // sectionHeading='Voices That Celebrate Trust and Timeless Partnerships'
                     sectionHeading='testimonials'
                     animationConfig={animationConfig}
+                    justifyContent='justify-left'
+                    lineRight={true}
                 />
                 <div ref={swiperContainerRef} className="swiper-container reveal">
                     <Swiper
