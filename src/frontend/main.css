@@ -36,10 +36,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-* {
-  cursor: none;
-}
-
 body.lightbox-open * {
   cursor: auto;
 }
@@ -47,6 +43,12 @@ body.lightbox-open * {
 body {
   font-family: "Poppins", serif;
 }
+
+.user_body{
+  cursor: none;
+
+}
+
 
 img,
 picture,

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import { Link } from "react-router-dom";
 import { BASE_ROOT } from "../../../../config";
@@ -93,7 +93,6 @@ const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { latestBlog } = useContext(LatestBlogContext);
 
-
   // 🔍 Filter blogs based on search input
   const filteredBlogs = data.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -101,7 +100,7 @@ const BlogList = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="lg:col-span-8">
-      <SearchField  customClass={"block lg:hidden mt-[5px] mb-[20px]"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+        <SearchField  customClass={"block lg:hidden mt-[5px] mb-[20px]"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredBlogs.map((data, index) => (
             <div className={`col-span-1 ${index < 2 ? ' ' : 'md:mt-[45px] '}`} key={index}>
@@ -112,6 +111,7 @@ const BlogList = () => {
           ))}
         </div>
       </div>
+      
       <div className="lg:col-span-4">
         <SearchField  customClass={"hidden lg:block"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <h4 className="ListTitle mt-5 text-[14px] font-normal leading-[33px] tracking-[3px] flex items-center">

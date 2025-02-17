@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Models\Admin;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class JobApplication extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['destination', 'experience_id', 'name', 'phone', 'email', 'resume'];
+
+    protected $table = 'job_applications';
+
+
+
+    public function getExperienceIdAttribute()
+    {
+        if(!empty($this->attributes['experience_id'])){
+            return getJobYear($this->attributes['experience_id']);
+        }
+    }
+
+
+    public function getDestinationAttribute()
+    {
+      
+         $data=Career::find($this->attributes['destination']);
+            if($data){
+                return $data->destination; 
+            }
+    }
+
+
+
+
+    public static function search ($search)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%'.$query.'%');
+    }
+  
+}
