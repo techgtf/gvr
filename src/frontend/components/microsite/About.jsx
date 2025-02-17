@@ -7,8 +7,7 @@ import FadeIn from "../Animations/FadeIn";
 import ZoomOut from "../Animations/ZoomOut";
 
 function About({
-  imageSrc , 
-  alt,
+  imageSrc,
   headingText,
   descriptionText,
   reverseWatermark = true,
@@ -27,7 +26,9 @@ function About({
     <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14">
       <div className="absolute h-full flex items-center left-20 bottom-0">
         <WaterMarkHeading
-          textWaterMark={reverseWatermark ? reverseText(headingText) : headingText}
+          textWaterMark={
+            reverseWatermark ? reverseText(headingText) : headingText
+          }
           className="flex flex-col items-start justify-center text-[4vw]"
           animationConfig={animationConfig1}
         />
