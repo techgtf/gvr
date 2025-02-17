@@ -7,7 +7,7 @@ export default function miECalculator() {
     return (
         <>
             <HeroSectionAboutUs
-                img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/emi/emi_cal.jpg`}
+                img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/emi/emi_cal.webp`}
                 heading={"EMI CALCULATOR"}
             />
             <Index />

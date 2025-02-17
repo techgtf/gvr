@@ -116,7 +116,8 @@ const OurTeam = () => {
                 <img
                   className={index === 2 ? activeProfile : inActiveProfile}
                   ref={index === 2 ? specialImageRef : null}
-                  src={`assets/frontend/images/aboutus/team/${profile.image}`}
+                  // src={`assets/frontend/images/aboutus/team/${profile.image}`}
+                  src={profile.image}
                   alt={profile.name}
                 />
 
@@ -137,8 +138,10 @@ const OurTeam = () => {
                   </>
                 )}
 
+                {/* bg-[url(/assets/frontend/images/aboutus/team/blue-bg.webp)] */}
+
                 {index === 0 && (
-                  <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(/assets/frontend/images/aboutus/team/blue-bg.webp)]"></div>
+                  <div className="top-[0.75rem] right-[0.75rem] ml-[-1rem] z-[-99] w-[100%] absolute h-[265px] bg-[url(https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437058/blue-bg_n2ncnu.webp)]"></div>
                 )}
               </div>
 

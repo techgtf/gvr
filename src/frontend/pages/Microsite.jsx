@@ -20,6 +20,8 @@ import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
+import gallery5 from "/assets/frontend/images/microsite/gallery/gallery5.webp";
+import gallery6 from "/assets/frontend/images/microsite/gallery/gallery6.webp";
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
 import About from "../components/microsite/About";
@@ -158,7 +160,7 @@ function Microsite() {
   ];
 
   const images = [
-    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Beautiful Scenery 1" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Great Value Sharanam Sector 107, Noida" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Beautiful Scenery 4" },
@@ -173,6 +175,7 @@ function Microsite() {
      
       <About
        imageSrc={aboutImg}
+       alt={"Sharanam Sector 107 Noida"}
        headingText="ABOUT US"
        descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
        reverseWatermark={true}
@@ -213,7 +216,7 @@ function Microsite() {
       />
 
       <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4]}
+        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
       />
     </>
   );

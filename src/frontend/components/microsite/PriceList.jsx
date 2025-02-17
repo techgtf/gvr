@@ -66,8 +66,8 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
             priceListData.map((item, i) => (
               <div key={i} className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400">
                 <div className="flex justify-center  sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
-                    <p>{item.area}</p>                   
-                
+                  <p>{item.area}</p>
+
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                   <p>{item.size}</p>
@@ -77,7 +77,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center">
                   <button className="bg-transparent text-[#33638B] uppercase" onClick={openEnquiryForm}>
-SOLD OUT                  </button>
+                    SOLD OUT </button>
                 </div>
               </div>
             ))
@@ -93,7 +93,7 @@ SOLD OUT                  </button>
               <div key={i} className="row_1 py-0 md:py-5">
                 <div className="grid grid-cols-3 border-b border-gray-300 py-3">
                   <div className="flex relative justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
-                    <p>{item.area}</p>                    
+                    <p>{item.area}</p>
                   </div>
                   <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.size}</p>

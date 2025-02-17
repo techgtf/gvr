@@ -1,6 +1,6 @@
 import React from 'react'
 import "./projects.css"
-import WaterMarkHeading from '../waterMarkHeading'
+import AnimatedHeading from '../Animations/AnimatedHeading'
 import { Link } from 'react-router-dom'
 import * as CONFIG from '../../../../config';
 import { useImageReveal } from '../useImageReveal';
@@ -20,27 +20,34 @@ export default function Projects() {
     const projectData = [
         {
             type: 'residential',
-            imgSrc: 'residential.jpg',
-            Link: `${CONFIG.BASE_ROOT}residential`
+            imgSrc: 'residential.webp',
+            Link: `${CONFIG.BASE_ROOT}residential`,
+            alt: "Great Value Residential Projects"
         },
         {
             type: 'iconic properties',
-            imgSrc: 'latest.jpg',
-            Link: `${CONFIG.BASE_ROOT}vilasa`
+            imgSrc: 'latest.webp',
+            Link: `${CONFIG.BASE_ROOT}vilasa`,
+            alt: "VILASA AT SECTOR 6, SOHNA"
         },
         {
             type: 'commercial',
-            imgSrc: 'commercial.jpg',
-            Link: `${CONFIG.BASE_ROOT}commercial-projects`
+            imgSrc: 'commercial.webp',
+            Link: `${CONFIG.BASE_ROOT}commercial-projects`,
+            alt: "Great Value COMMERCIAL PROJECTS"
         },
     ]
 
     return (
         <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
-            <WaterMarkHeading
-                textWaterMark={"Explore Properties"}
-                sectionHeading={"Explore Properties"}
+            <AnimatedHeading
+                // textWaterMark={"Explore Properties"}
+                // sectionHeading={"Spaces Crafted with Value and Trust"}
+                sectionHeading={"EXplore Properties"}
                 animationConfig={animationConfig}
+                // lineLeft={false}
+                // lineRight={false}
+                justifyContent="justify-center"
             />
             <div className="flex_projects flex flex-wrap justify-center mt-12 lg:gap-[0] gap-[20px] lg:px-0 px-4">
                 {projectData && projectData.map((item, index) => (
@@ -56,8 +63,9 @@ export default function Projects() {
                         <img
                             className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
                             src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/projects/${item.imgSrc}`}
-                            alt={item.type || 'Project image'}
+                            alt={item.alt}
                         />
+
                         <figcaption
                             // data-speed="clamp(0.9)"
                             className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[20px] left-0 right-0 z-[1] px-2"

@@ -59,7 +59,10 @@ function MicrositeMenu() {
   return (
     <section
     className="hidden"
-      // className={`microsite_menu hidden sm:block bg-[#EFF5FA] px-10 py-3 w-full z-10 ${isFooterActive ? "hidden" : "fixed bottom-0 left-0"}`}
+    //   className={`microsite_menu hidden sm:block bg-[#EFF5FA] px-10 py-3 w-full z-10 ${
+    //     isFooterActive ? "hidden" : "fixed bottom-0 left-0"
+    //   }`
+    // }
     >
       <ul className="flex flex-wrap justify-evenly items-center text-gray-600 cursor-pointer">
         {menu.map((item, i) => (

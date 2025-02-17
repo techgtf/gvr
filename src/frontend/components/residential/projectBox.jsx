@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import * as CONFIG from "../../../../config"
 import { Link } from 'react-scroll';
 import { useImageReveal } from '../useImageReveal';
-import { useTextAnimation } from '../useTextAnimation';
 // import ZoomOut from '../Animations/ZoomOut';
 import SlideIn from '../Animations/SlideIn';
 
 export default function ProjectBox({ projectsData }) {
+    
     useImageReveal(".reveal")
     const [isMobile, setIsMobile] = useState(false);
 
@@ -30,7 +30,7 @@ export default function ProjectBox({ projectsData }) {
                             key={index}>
                             <div className='img_side overflow-hidden lg:w-[62%] w-full reveal'>
                                 {/* <ZoomOut initialScale={1.5} duration={2}> */}
-                                <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/projects/residential/${data.imgSrc}`} alt="" />
+                                <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/projects/residential/${data.imgSrc}`} alt={data.alt} />
                                 {/* </ZoomOut> */}
                             </div>
                             <div className='content_side lg:pl-[50px] odd:pl-0 lg:w-[37%] w-full lg:pt-5 pt-[30px] grid lg:justify-between items-center lg:text-left lg:gap-0 gap-[35px]'>

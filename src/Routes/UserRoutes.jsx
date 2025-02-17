@@ -102,19 +102,6 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}coming-soon`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              {/* <Layout> */}
-                <ComingSoon />
-              {/* </Layout> */}
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
-      ,
-      {
         path: `${BASE_ROOT}anandam`,
         element: (
           <ErrorBoundary>
@@ -330,6 +317,16 @@ export const UserRoutes = [
           // <Suspense fallback={<Loader />}>
             <Layout>
               <PropertyInvestment />
+            </Layout>
+          // </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}coming-soon`,
+        element: (
+          // <Suspense fallback={<Loader />}>
+            <Layout>
+              <ComingSoon />
             </Layout>
           // </Suspense>
         ),
