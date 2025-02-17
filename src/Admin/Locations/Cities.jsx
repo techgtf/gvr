@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import Request from "root/config/Request";
 import Pagination from 'common/Pagination/Pagination';
 import ScaleLoader from "react-spinners/ScaleLoader";

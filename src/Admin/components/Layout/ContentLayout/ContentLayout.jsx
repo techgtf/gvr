@@ -2,12 +2,11 @@ import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from '../../Sidebar/Index'
 import * as actionTypes from 'root/store/actions'
+import { setCurrentPage } from "../../../../redux/admin/sidebarSlice";
 import './contentLayout.css'
 import { useLocation } from "react-router-dom";
 
 const ContentLayout = (props)=>{
-  console.log(props);
-  return;
     const dispatch = useDispatch();
     const location = useLocation()
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -42,7 +41,7 @@ const ContentLayout = (props)=>{
         e.stopPropagation();
         setIsSubMenuOpen(true)
         setMenuClasses('test test1')
-        dispatch(actionTypes.setCurrentPage(menu))
+        dispatch(setCurrentPage(menu))
     }
 
     return(

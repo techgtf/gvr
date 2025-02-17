@@ -1,6 +1,6 @@
 import {React,useEffect,useState} from "react"
 import { NavLink } from "react-router-dom"
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../../config'
 import Request from 'root/config/Request'
 
 

@@ -1,193 +1,276 @@
 import React, { useEffect, useRef, useState } from "react";
-import Form from 'react-bootstrap/Form';
 import Loader from "common/Loader/loader";
-import {  toast } from 'react-toastify';
-import {useNavigate, useParams } from 'react-router-dom';
-import Request from 'root/config/Request';
-import ReactQuill from 'react-quill';
-import Button from 'common/Button/Button'
- 
-import * as CONFIG from 'root/config';
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import Request from "root/config/Request";
+import ReactQuill from "react-quill";
+import Button from "common/Button/Button";
 
+import * as CONFIG from "../../../config";
 
+const EditBlog = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState({
+    heading: "",
+    short_description: "",
+    description: "",
+    image: "",
+    thumbnail:'',
+    previewImage: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [blogCategory, setBlogCategory] = useState(null);
 
-const EditBlog = ()=>{
-    const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState({
-        heading:'',
-        short_description:'',
-        description:'',
-        image:'',
-        category:'',
-        previewImage:''
-    });
-    const [errors, setErrors] = useState({});
-    const [blogCategory, setBlogCategory] = useState(null);
+  const navigate = useNavigate();
+  const params = useParams().id;
 
-    const navigate = useNavigate();
-    const params = useParams().id
-    
-    useState(()=>{
-        const blogSubCategory = async()=>{
-            try{
-                var response=await Request('admin/blog-category','GET');
-                if (response.status && response.statusCode === 200) {
-                    setBlogCategory(response.data.data)
-                }
-            }catch(err){
-            }
+  useState(() => {
+    const blogSubCategory = async () => {
+      try {
+        var response = await Request("admin/blog-category", "GET");
+        if (response.status && response.statusCode === 200) {
+          setBlogCategory(response.data.data);
         }
+      } catch (err) {}
+    };
 
-        blogSubCategory()
-    }, [])
+    blogSubCategory();
+  }, []);
 
-    useState(()=>{
-        const fetchBlogData = async()=>{
-            setIsLoading(true)
-            try{
-                var response=await Request(`admin/blog/${params}`,'GET');
-                if (response.status && response.statusCode === 200) {
-                    setData(prevData=>({
-                        ...prevData,
-                        ...response.data,
-                        previewImage:response.data.image
-                    }))
-                    setIsLoading(false)
-                }else{
-                    setData({})
-                }
-            }catch(err){
-                
-            }finally{
-                setIsLoading(false)
-            }
-        }
-
-        fetchBlogData()
-    }, [params])
-
-    const updateSubmitHandler = async(event)=>{
-        event.preventDefault();
-        setIsLoading(true);
-
-        try {
-            const formData = new FormData();
-            formData.append('heading', data.heading);
-            formData.append('short_description', data.short_description);
-            formData.append('description', data.description);
-            formData.append('category', data.category);
-            formData.append('image', data.image);
-           
-            var response = await Request(`admin/blog/${params}/update`,'POST', formData);
-
-            if(response.status && response.statusCode == 403){
-                setErrors(response.errors);
-                setIsLoading(false);
-                throw new Error(response.message);
-
-            }else if(response.status && response.statusCode==200){
-                resetFields();
-                setIsLoading(false);
-                toast.success(response.message);
-                return navigate(CONFIG.ADMIN_ROOT+'blogs')
-            }
-        }
-        catch (error) {
-            setIsLoading(false);
-            toast.error(error.message)
-        }
-    }
-
-    const changeHandler = (e)=>{
-        const { name, value, files } = e.target;
-
-        if(files && files.length){
-            setData(prevData => ({
-                ...prevData,
-                image:files[0],
-                previewImage:''
-            }));
-        }else{
-            setData(prevData => ({
-                ...prevData,
-                [name]: value
-            }));
-        }
-        
-    }
-
-    const resetFields=()=>{
-        setErrors({});
-    }
-
-    if (isLoading) {
-        return <Loader />; // Use the Loader component
-    } 
-
-    const setDescription=(value)=>{
-        setData(prevData => ({
+  useState(() => {
+    const fetchBlogData = async () => {
+      setIsLoading(true);
+      try {
+        var response = await Request(`admin/blog/${params}`, "GET");
+        if (response.status && response.statusCode === 200) {
+          setData((prevData) => ({
             ...prevData,
-            description: value
-        }));
+            ...response.data,
+            thumbnailImage: response.data.thumbnail,
+            previewImage: response.data.image,
+          }));
+          setIsLoading(false);
+        } else {
+          setData({});
+        }
+      } catch (err) {
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchBlogData();
+  }, [params]);
+
+  const updateSubmitHandler = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("heading", data.heading);
+      formData.append("short_description", data.short_description);
+      formData.append("description", data.description);
+      formData.append("category", data.category);
+      formData.append("image", data.image);
+
+      var response = await Request(
+        `admin/blog/${params}/update`,
+        "POST",
+        formData
+      );
+
+      if (response.status && response.statusCode == 403) {
+        setErrors(response.errors);
+        setIsLoading(false);
+        throw new Error(response.message);
+      } else if (response.status && response.statusCode == 200) {
+        resetFields();
+        setIsLoading(false);
+        toast.success(response.message);
+        return navigate(CONFIG.ADMIN_ROOT + "blogs");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(error.message);
     }
+  };
 
-    return(
-        <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Edit Blog</h4>
-            </div>
+  const changeHandler = (e) => {
+    const { name, value, files } = e.target;
 
-            <div className="card mt-4 card_style1">
-                <div className="d-flex">
-                    <h5>Edit Blog</h5>
-                </div>
-                
-                <Form onSubmit={updateSubmitHandler} className="mt_40">
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Title*</Form.Label>
-                        <Form.Control className="" type="text" placeholder="Enter Blog Title" name="heading" value={data.heading} onChange={changeHandler} />
-                        {errors.heading && <div className="errMsg text-danger">{errors.heading}</div>}
-                    </Form.Group>
+    if (files && files.length) {
+      setData((prevData) => ({
+        ...prevData,
+        image: files[0],
+        previewImage: "",
+      }));
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
 
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Short Description*</Form.Label>
-                        <textarea className="form-control" required type="text" placeholder="Enter Short Description" name="short_description" value={data.short_description} onChange={changeHandler} />
-                        {errors.short_description && <div className="errMsg text-danger">{errors.short_description}</div>}
-                    </Form.Group>
+  const resetFields = () => {
+    setErrors({});
+  };
 
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Description*</Form.Label>
-                        <ReactQuill placeholder="Enter Description" value={data.description} name="description" onChange={setDescription} />
-                        {/* <textarea className="form-control" required type="text"  name="description"  /> */}
-                        {errors.description && <div className="errMsg text-danger">{errors.description}</div>}
-                    </Form.Group>
+  if (isLoading) {
+    return <Loader />; // Use the Loader component
+  }
 
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Blog Category*</Form.Label>
-                        <select className="form-control" defaultValue={data.category}  name="category" onChange={changeHandler}>
-                            <option defaultValue={true} disabled>Select Blog Category</option>
-                            {blogCategory?.map((category, index)=>(
-                                <option key={index} value={category.id}>{category.name}</option>
-                            ))}
-                        </select>
-                        {errors.category && <div className="errMsg text-danger">{errors.category}</div>}
-                    </Form.Group>
+  const setDescription = (value) => {
+    setData((prevData) => ({
+      ...prevData,
+      description: value,
+    }));
+  };
 
-                    <Form.Group className="mb_15 form-group">
-                        <Form.Label>Image*
-                            <small className="size">(Size 1200px x 750px)</small>
-                        </Form.Label>
-                        <Form.Control className="form-control" required type="file" name="image" onChange={changeHandler} />
-                        {errors.image && <div className="errMsg text-danger">{errors.image}</div>}
-                        {data.previewImage ? <img width="100" src={CONFIG.VITE_APP_STORAGE+ data.previewImage}/> : null }
-                    </Form.Group>
+  return (
+    <>
+      <div className="flex items-center justify-between">
+        <h4 className="text-xl font-semibold">Edit Blog</h4>
+      </div>
 
-                    <Button className="btn btn_primary mt_20">Save Changes</Button>
+      <div className="bg-white shadow-md rounded-lg p-6 mt-4">
+        <div className="mb-4">
+          <h5 className="text-lg font-medium">Edit Blog</h5>
+        </div>
 
-                </Form>
-            </div>
-        </>
-    )
-}
+        <form onSubmit={updateSubmitHandler} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Title*
+            </label>
+            <input
+              type="text"
+              name="heading"
+              placeholder="Enter Blog Title"
+              value={data.heading}
+              onChange={changeHandler}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            />
+            {errors.heading && (
+              <p className="text-red-500 text-sm">{errors.heading}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Short Description*
+            </label>
+            <textarea
+              name="short_description"
+              placeholder="Enter Short Description"
+              value={data.short_description}
+              onChange={changeHandler}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            />
+            {errors.short_description && (
+              <p className="text-red-500 text-sm">{errors.short_description}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Description*
+            </label>
+            <ReactQuill
+              placeholder="Enter Description"
+              value={data.description}
+              name="description"
+              onChange={setDescription}
+              className="mt-1"
+            />
+            {errors.description && (
+              <p className="text-red-500 text-sm">{errors.description}</p>
+            )}
+          </div>
+
+          {/* <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Blog Category*
+            </label>
+            <select
+              name="category"
+              defaultValue={data.category}
+              onChange={changeHandler}
+              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            >
+              <option disabled>Select Blog Category</option>
+              {blogCategory?.map((category, index) => (
+                <option key={index} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+            {errors.category && (
+              <p className="text-red-500 text-sm">{errors.category}</p>
+            )}
+          </div> */}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Thumbnail*{" "}
+              <span className="text-xs text-gray-500">
+                (Size 1200px x 750px)
+              </span>
+            </label>
+            <input
+              type="file"
+              name="image"
+              onChange={changeHandler}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            />
+            {errors.thumbnail && (
+              <p className="text-red-500 text-sm">{errors.thumbnail}</p>
+            )}
+            {data.thumbnailImage && (
+              <img
+                src={CONFIG.VITE_APP_STORAGE + data.thumbnailImage}
+                alt="Preview"
+                className="mt-2 w-24 h-auto rounded-md shadow-sm"
+              />
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Image*{" "}
+              <span className="text-xs text-gray-500">
+                (Size 1200px x 750px)
+              </span>
+            </label>
+            <input
+              type="file"
+              name="image"
+              onChange={changeHandler}
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
+            />
+            {errors.image && (
+              <p className="text-red-500 text-sm">{errors.image}</p>
+            )}
+            {data.previewImage && (
+              <img
+                src={CONFIG.VITE_APP_STORAGE + data.previewImage}
+                alt="Preview"
+                className="mt-2 w-24 h-auto rounded-md shadow-sm"
+              />
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="mt-4 bg-primary text-white px-6 py-2 rounded-lg shadow-md hover:bg-primary-dark transition"
+          >
+            Save Changes
+          </button>
+        </form>
+      </div>
+    </>
+  );
+};
 
 export default EditBlog;

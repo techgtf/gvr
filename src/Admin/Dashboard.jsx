@@ -1,314 +1,166 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ADMIN_ASSETS } from 'root/config';
+import { ADMIN_ASSETS } from "../../config";
 import Request from "root/config/Request";
-import './assets/css/admin.css';
+import "./assets/css/admin.css";
 
-import * as CONFIG from 'root/config'
+import * as CONFIG from "../../config";
 
 const Dashboard = () => {
-    const [data, setData] = useState({});
+  const [data, setData] = useState({});
 
-    const listHandler = async () => {
-        var response = await Request('admin/dashboard', 'GET');
-        try {
-            if (response.status && response.statusCode == 200) {
-                setData(response.data);
-            }
-
-        } catch (error) {
-            console.log(error);
-        }
+  const listHandler = async () => {
+    var response = await Request("admin/dashboard", "GET");
+    try {
+      if (response.status && response.statusCode == 200) {
+        setData(response.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
+  useEffect(() => {
+    listHandler();
+  }, []);
 
-    useEffect(() => {
-        listHandler()
-    }, []);
+  return (
+    <>
+      {/* Title Section */}
+      <div className="title_col flex justify-between items-center">
+        <h4 className="page_title text-xl font-semibold">Dashboard</h4>
+      </div>
 
-    return (
-        <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Dashboard</h4>
+      {/* Cards Row */}
+      <div className="cards_row flex flex-wrap -mx-4">
+        <div className="single_col w-full md:w-1/3 px-4 mb-8">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+            <img
+              src={ADMIN_ASSETS + "images/icons/project.svg"}
+              alt="project"
+              className="icon w-12 h-12 mx-auto mb-4"
+            />
+            <h4 className="count text-2xl font-bold">{data?.project?.count}</h4>
+            <p className="title text-gray-600">Total {data?.project?.name}</p>
+          </div>
+        </div>
+
+        <div className="single_col w-full md:w-1/3 px-4 mb-8">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+            <img
+              src={ADMIN_ASSETS + "images/icons/blogs.svg"}
+              alt="blogs"
+              className="icon w-12 h-12 mx-auto mb-4"
+            />
+            <h4 className="count text-2xl font-bold">{data?.blog?.count}</h4>
+            <p className="title text-gray-600">Total {data?.blog?.name}</p>
+          </div>
+        </div>
+
+        <div className="single_col w-full md:w-1/3 px-4 mb-8">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+            <img
+              src={ADMIN_ASSETS + "images/icons/enquire.svg"}
+              alt="enquire"
+              className="icon w-12 h-12 mx-auto mb-4"
+            />
+            <h4 className="count text-2xl font-bold">
+              {data?.total_enquiry?.count}
+            </h4>
+            <p className="title text-gray-600">
+              Total {data?.total_enquiry?.name}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Small Cards Section */}
+      <div className="flex flex-wrap -mx-4">
+        <div className="w-full px-4">
+          <div className="flex flex-wrap -mx-4">
+            <div className="w-full md:w-1/4 px-4 mb-8">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+                <h4 className="count text-2xl font-bold">
+                  {data?.developer?.count}
+                </h4>
+                <p className="text-gray-600">Total {data?.developer?.name}</p>
+                <Link
+                  to={CONFIG.ADMIN_ROOT + "developers"}
+                  className="mt-4 inline-block underline uppercase"
+                >
+                  View
+                </Link>
+              </div>
             </div>
 
-            <div className="row cards_row">
-                <div className="col-md-4 single_col">
-                    <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/project.svg'} alt="project" className="img-fluid icon" />
-                        <h4 className="count">{data?.project?.count}</h4>
-                        <p className="title">Total {data?.project?.name}</p>
-                    </div>
-                </div>
-
-                <div className="col-md-4 single_col">
-                    <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/blogs.svg'} alt="blogs" className="img-fluid icon" />
-                        <h4 className="count">{data?.blog?.count}</h4>
-                        <p className="title">Total {data?.blog?.name}</p>
-                    </div>
-                </div>
-
-                <div className="col-md-4 single_col">
-                    <div className="card card_style1 color_card">
-                        <img src={ADMIN_ASSETS + 'icons/enquire.svg'} alt="blogs" className="img-fluid icon" />
-                        <h4 className="count">{data?.total_enquiry?.count}</h4>
-                        <p className="title">Total {data?.total_enquiry?.name}</p>
-                    </div>
-                </div>
+            <div className="w-full md:w-1/4 px-4 mb-8">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+                <h4 className="count text-2xl font-bold">
+                  {data?.amenities?.count}
+                </h4>
+                <p className="text-gray-600">Total {data?.amenities?.name}</p>
+                <Link
+                  to={CONFIG.ADMIN_ROOT + "amenities"}
+                  className="mt-4 inline-block underline uppercase"
+                >
+                  View
+                </Link>
+              </div>
             </div>
 
-            {/* <div className="card mt-4 card_style1">
-                <h5>Recent Added Projects</h5>
-
-                <table className="mt_40">
-                    <thead>
-                        <tr>
-                            <th>
-                                Project
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Featured
-                            </th>
-                            <th>
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div className="table_pr">
-                                    <div className="thumb">
-                                        <img src={FRONTEND_IMG_URL + 'properties/properties1.jpg'} alt="property" className="img-fluid" />
-                                    </div>
-
-                                    <div className="content">
-                                        <h6 className="pr_name">Brigade Orchards</h6>
-                                        <small className="location">Devanahalli, Bangalore</small>
-                                        <h5 className="price"><small>₹</small>41 L*</h5>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                <CustomDropdown className="form-control" defaultVal="Select --" options={statusOptions} onSelect={handleStatusSelect} />
-                            </td>
-
-                            <td>
-                                <CustomSwitch id='1' />
-                            </td>
-
-                            <td>
-                                <a href="#" className="action_btn">
-                                    <img src={ADMIN_ASSETS + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
-                                </a>
-
-                                <button className="btn action_btn">
-                                    <img src={ADMIN_ASSETS + 'icons/delete_color.svg'} alt="delete icon" className="img-fluid icon delete" />
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div className="table_pr">
-                                    <div className="thumb">
-                                        <img src={FRONTEND_IMG_URL + 'properties/properties1.jpg'} alt="property" className="img-fluid" />
-                                    </div>
-                                    
-                                    <div className="content">
-                                        <h6 className="pr_name">Brigade Orchards</h6>
-                                        <small className="location">Devanahalli, Bangalore</small>
-                                        <h5 className="price"><small>₹</small>41 L*</h5>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                <CustomDropdown className="form-control" defaultVal="Select --" options={statusOptions} onSelect={handleStatusSelect} />
-                            </td>
-
-                            <td>
-                                <CustomSwitch id='1' />
-                            </td>
-
-                            <td>
-                                <a href="#" className="action_btn">
-                                    <img src={ADMIN_ASSETS + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
-                                </a>
-
-                                <button className="btn action_btn">
-                                    <img src={ADMIN_ASSETS + 'icons/delete_color.svg'} alt="delete icon" className="img-fluid icon delete" />
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div className="table_pr">
-                                    <div className="thumb">
-                                        <img src={FRONTEND_IMG_URL + 'properties/properties1.jpg'} alt="property" className="img-fluid" />
-                                    </div>
-                                    
-                                    <div className="content">
-                                        <h6 className="pr_name">Brigade Orchards</h6>
-                                        <small className="location">Devanahalli, Bangalore</small>
-                                        <h5 className="price"><small>₹</small>41 L*</h5>
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td>
-                                <CustomDropdown className="form-control" defaultVal="Select --" options={statusOptions} onSelect={handleStatusSelect} />
-                            </td>
-
-                            <td>
-                                <CustomSwitch id='1' />
-                            </td>
-
-                            <td>
-                                <a href="#" className="action_btn">
-                                    <img src={ADMIN_ASSETS + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
-                                </a>
-
-                                <button className="btn action_btn">
-                                    <img src={ADMIN_IMG_URL + 'icons/delete_color.svg'} alt="delete icon" className="img-fluid icon delete" />
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-                <h5 className="no_record">No Projects Found!</h5>
-            </div> */}
-
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="row">
-
-                        <div className="col-md-3">
-                            <div className="card mt-4 card_style1 card_sm">
-                                <h4 className="count">{data?.developer?.count}</h4>
-                                <p>Total {data?.developer?.name}</p>
-                                <Link to={CONFIG.ADMIN_ROOT + 'developers'} className="btn">View</Link>
-                            </div>
-                        </div>
-
-                        <div className="col-md-3">
-                            <div className="card mt-4 card_style1 card_sm">
-                                <h4 className="count">{data?.amenities?.count}</h4>
-                                <p>Total {data?.amenities?.name}</p>
-                                <Link to={CONFIG.ADMIN_ROOT + 'amenities'} className="btn">View</Link>
-                            </div>
-                        </div>
-
-                        <div className="col-md-3">
-                            <div className="card mt-4 card_style1 card_sm">
-                                <h4 className="count">{data?.blog?.count}</h4>
-                                <p>Total {data?.blog?.name}</p>
-                                <Link to={CONFIG.ADMIN_ROOT + 'blogs'} className="btn">View</Link>
-                            </div>
-                        </div>
-
-                        <div className="col-md-3">
-                            <div className="card mt-4 card_style1 card_sm">
-                                <h4 className="count">{data?.testimonials?.count}</h4>
-                                <p>Total {data?.testimonials?.name}</p>
-                                <Link to={CONFIG.ADMIN_ROOT + 'testimonials'} className="btn">View</Link>
-                            </div>
-                        </div>
-
-                        <div className="col-md-3">
-                            <div className="card mt-4 card_style1 card_sm">
-                                <h4 className="count">{data?.jobApplication?.count}</h4>
-                                <p>Total {data?.jobApplication?.name}</p>
-                                <Link to={CONFIG.ADMIN_ROOT + 'job-application'} className="btn">View</Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <div className="col-md-5">
-                    <div className="card mt-4 card_style1">
-                        <h5>Latest Queries</h5>
-
-                        <table className="mt_40">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Builder
-                                    </th>
-                                    <th>
-                                        Total Query
-                                    </th>
-                                    <th>
-                                        View
-                                    </th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    Ireo Grand Arch	
-                                    </td>
-
-                                    <td>
-                                        3
-                                    </td>
-
-                                    <td>
-                                        <Link to={CONFIG.ADMIN_ROOT + 'projects-query'}>
-                                            <img src={ADMIN_IMG_URL + 'icons/eye.svg'} alt="view" className="img-fluid view_icon" />
-                                        </Link>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                    Ireo Grand Arch	
-                                    </td>
-
-                                    <td>
-                                        3
-                                    </td>
-
-                                    <td>
-                                        <Link to={CONFIG.ADMIN_ROOT + 'projects-query'}>
-                                            <img src={ADMIN_IMG_URL + 'icons/eye.svg'} alt="view" className="img-fluid view_icon" />
-                                        </Link>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                    Ireo Grand Arch	
-                                    </td>
-
-                                    <td>
-                                        3
-                                    </td>
-
-                                    <td>
-                                        <Link to={CONFIG.ADMIN_ROOT + 'projects-query'}>
-                                            <img src={ADMIN_IMG_URL + 'icons/eye.svg'} alt="view" className="img-fluid view_icon" />
-                                        </Link>
-                                    </td>
-                                </tr>
-                            </tbody>
-
-                        </table> 
-                    </div>
-                </div> */}
+            <div className="w-full md:w-1/4 px-4 mb-8">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+                <h4 className="count text-2xl font-bold">
+                  {data?.blog?.count}
+                </h4>
+                <p className="text-gray-600">Total {data?.blog?.name}</p>
+                <Link
+                  to={CONFIG.ADMIN_ROOT + "blogs"}
+                  className="mt-4 inline-block underline uppercase "
+                >
+                  View
+                </Link>
+              </div>
             </div>
-        </>
-    )
-}
 
-export default Dashboard
+            <div className="w-full md:w-1/4 px-4 mb-8">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+                <h4 className="count text-2xl font-bold">
+                  {data?.testimonials?.count}
+                </h4>
+                <p className="text-gray-600">
+                  Total {data?.testimonials?.name}
+                </p>
+                <Link
+                  to={CONFIG.ADMIN_ROOT + "testimonials"}
+                  className="mt-4 inline-block underline uppercase"
+                >
+                  View
+                </Link>
+              </div>
+            </div>
+
+            <div className="w-full md:w-1/4 px-4 mb-8">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+                <h4 className="count text-2xl font-bold">
+                  {data?.jobApplication?.count}
+                </h4>
+                <p className="text-gray-600">
+                  Total {data?.jobApplication?.name}
+                </p>
+                <Link
+                  to={CONFIG.ADMIN_ROOT + "job-application"}
+                  className="mt-4 inline-block underline uppercase"
+                >
+                  View
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Dashboard;

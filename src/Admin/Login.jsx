@@ -1,185 +1,196 @@
-import React, {useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { useDispatch, useSelector } from 'react-redux';
-import {  toast } from 'react-toastify';
-import {useNavigate,useLocation } from 'react-router-dom';
-import * as actionTypes from 'root/store/actions'
-import * as CONFIG from 'root/config'
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useNavigate, useLocation } from "react-router-dom";
+import { setLogin } from "../redux/admin/userSlice";
+import * as CONFIG from "../../config";
 import Loader from "../common/Loader/loader";
-import {Encrypt} from 'root/config/Hash'
+import { Encrypt } from "root/config/Hash";
 
-import './assets/css/admin.css';
+import "./assets/css/admin.css";
 
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
-const Login = ()=>{
-    const location = useLocation();
-    const [isLoading, setIsLoading] = useState(false);
+const Login = () => {
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
 
-    const isLogin = useSelector(state=>state.user.isLogin)
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [errors, setErrors] = useState({}) 
+  const isLogin = useSelector((state) => state.user.isLogin);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [errors, setErrors] = useState({});
 
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
-    useEffect(()=>{
-        if(isLogin){
-            return navigate(CONFIG.ADMIN_ROOT)
-        }
-    }, [useNavigate, useSelector])
+  useEffect(() => {
+    if (isLogin) {
+      return navigate(CONFIG.ADMIN_ROOT);
+    }
+  }, [useNavigate, useSelector]);
 
-    useEffect(()=>{
-      // Add 'admin_body' class when on admin routes
-      document.body.classList.add('admin_body');
-  
-      // Cleanup function to remove the class when leaving admin routes
-      return()=>{
-        document.body.classList.remove('admin_body');
+  useEffect(() => {
+    // Add 'admin_body' class when on admin routes
+    document.body.classList.add("admin_body");
+
+    // Cleanup function to remove the class when leaving admin routes
+    return () => {
+      document.body.classList.remove("admin_body");
+    };
+  }, [location]);
+
+  const loginFunc = async () => {
+    setIsLoading(true);
+    var emailVal = emailRef.current.value;
+    var passwordVal = passwordRef.current.value;
+    try {
+      setEmailError("");
+      setPasswordError("");
+
+      if (!emailVal) {
+        setEmailError("Please enter your email");
+        setIsLoading(false);
+        throw new Error("Invalid Email and Password");
       }
-    }, [location]);
 
-    
+      if (!passwordVal) {
+        setPasswordError("Please enter your password");
+        setIsLoading(false);
+        throw new Error("Invalid Email and Password");
+      }
 
-    const loginFunc = async()=>{
-        debugger;
-        var emailVal = emailRef.current.value;
-        var passwordVal = passwordRef.current.value;
-        setIsLoading(true);
-        try{
-            setEmailError('');
-            setPasswordError('');
+      // if (!CONFIG.TOKEN) {
+      //     throw new Error('JWT secret not available');
+      // }
 
-            if (!emailVal) {
-                setEmailError('Please enter your email');
-                setIsLoading(false);
-                throw new Error('Invalid Email and Password');
-            }
+      const response = await fetch(CONFIG.API_URL + "admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailVal,
+          password: passwordVal,
+        }),
+      });
 
-            if(!passwordVal){
-                setPasswordError('Please enter your password');
-                setIsLoading(false);
-                throw new Error('Invalid Email and Password');
-            }
+      if (!response.ok && response.status !== 200) {
+        passwordRef.current = "";
+        setIsLoading(false);
+        throw new Error("Invalid Email and Password");
+      }
 
-            // if (!CONFIG.TOKEN) {
-            //     throw new Error('JWT secret not available');
-            // }
-       
-            const response = await fetch(CONFIG.API_URL + 'admin/login', {
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify({
-                    email:emailVal,
-                    password:passwordVal
-                })
-            });
+      const data = await response.json();
 
-            if(!response.ok && response.status !== 200){
-               passwordRef.current = '';
-               setIsLoading(false);
-                throw new Error('Invalid Email and Password');
-            }
-            
-            const data = await response.json();
+      // get token from api
+      const token = data.authorisation.token;
 
-            // get token from api
-            const token = data.authorisation.token
+      // encrypt or add character
+      const encryptToken = Encrypt(token);
 
-            // encrypt or add character
-            const encryptToken = Encrypt(token)
+      emailVal = "";
+      passwordVal = "";
 
-            localStorage.setItem('token', encryptToken)
+      localStorage.setItem("token", encryptToken);
 
-            emailVal = '';
-            passwordVal = '';
-
-            setIsLoading(false);
-            dispatch(actionTypes.login())
-            toast.success('Login Successful')
-            return navigate(`${CONFIG.BASE_ROOT}admin`)
-
-        }catch(err){
-            setIsLoading(false);
-            toast.error(err.message)
-        }
-
-        
+      setIsLoading(false);
+      dispatch(setLogin());
+      toast.success("Login Successful");
+      return navigate(`${CONFIG.BASE_ROOT}admin`);
+    } catch (err) {
+      setIsLoading(false);
+      return toast.error(err.message);
     }
+  };
 
-    const loginHandler = (e)=>{
-        e.preventDefault();
+  const loginHandler = (e) => {
+    e.preventDefault();
 
-        loginFunc();
-    }
+    loginFunc();
+  };
 
+  if (isLoading) {
+    return <Loader />; // Use the Loader component
+  }
 
-    
-    if (isLoading) {
-        return <Loader />; // Use the Loader component
-    } 
+  return (
+    <>
+      <div className="admin_container login_page">
+        <div className="flex flex-wrap mx-0">
+          <div className="left_col w-full md:w-1/2"></div>
 
-
-    
-    return(
-        <>
-            <div className="admin_container login_page">
-                <div className="row mx-0">
-                    <div className="col-md-6 left_col">
-                    </div>
-
-                    <div className="col-md-6 right_col">
-                        <div className="logo">
-                            <img src={CONFIG.ADMIN_ASSETS + 'logo-color.png'} alt="logo" className="img-fluid" />
-                        </div>
-
-                        <div className="form_data">
-                            <h3 className="title">Sign In</h3>
-                            
-                            <form id="loginForm" onSubmit={loginHandler}>
-                                <div className="form-group mb-3">
-                                    <label className="form-label" htmlFor="emailAddress">Email Address</label>
-                                    <input ref={emailRef} type="email" className="form-control" required="" placeholder="Email or Username" />
-                                    {/* {errors.email && <div className="errMsg">{errors.email}</div>} */}
-                                    {emailError && <div className="errMsg">{emailError}</div>}
-                                </div>
-
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="loginPassword">Password</label>
-                                    <input ref={passwordRef} type="password" className="form-control" id="loginPassword" required="" placeholder="Password" />
-                                    {/* {errors.password && <div className="errMsg">{errors.password}</div>} */}
-                                    {passwordError && <div className="errMsg">{passwordError}</div>}
-                                </div>
-
-                                {/*<div className="row my-4">
-                                    /~ <div className="col">
-                                        <div className="form-check">
-                                            <input id="remember-me" name="remember" className="form-check-input" type="checkbox" />
-                                            <label className="form-check-label" htmlFor="remember-me">Remember Me</label>
-                                        </div>
-                                    </div> ~/
-
-                                    <div className="col text-end"><a href="forgot-password-18.html">Forgot Password ?</a></div>
-                                </div>*/}
-
-                                <div className="d-grid my-4">
-                                    <button className="btn btn_primary submit_btn" type="submit">Sign In</button>
-                                </div>
-
-                                {/* <p className="text-2 text-muted text-center">Not a member? <a href="register-18.html">Sign Up now</a></p> */}
-                            </form>
-                        </div>
-                    </div>
-                </div>
+          <div className="right_col w-full md:w-1/2">
+            <div className="logo">
+              <img
+                src={CONFIG.ADMIN_ASSETS + "images/logo-color.png"}
+                alt="logo"
+                className="max-w-full h-auto"
+              />
             </div>
-            
-        </>
-    )
-}
+
+            <div className="form_data">
+              <h3 className="title text-xl font-semibold mb-4">Sign In</h3>
+
+              <form id="loginForm" onSubmit={loginHandler}>
+                <div className="form-group mb-6">
+                  <label
+                    className="form-label block mb-2"
+                    htmlFor="emailAddress"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    ref={emailRef}
+                    type="email"
+                    className="form-control w-full px-3 py-2 border rounded"
+                    required=""
+                    placeholder="Email or Username"
+                  />
+                  {emailError && (
+                    <div className="errMsg text-red-500 mt-2">{emailError}</div>
+                  )}
+                </div>
+
+                <div className="form-group mb-6">
+                  <label
+                    className="form-label block mb-2"
+                    htmlFor="loginPassword"
+                  >
+                    Password
+                  </label>
+                  <input
+                    ref={passwordRef}
+                    type="password"
+                    className="form-control w-full px-3 py-2 border rounded"
+                    id="loginPassword"
+                    required=""
+                    placeholder="Password"
+                  />
+                  {passwordError && (
+                    <div className="errMsg text-red-500 mt-2">
+                      {passwordError}
+                    </div>
+                  )}
+                </div>
+
+                <div className="my-6">
+                  <button
+                    className="btn_primary submit_btn w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                    type="submit"
+                  >
+                    Sign In
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Login;

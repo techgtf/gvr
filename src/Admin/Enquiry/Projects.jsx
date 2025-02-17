@@ -4,7 +4,7 @@ import Request from "root/config/JsonRequest";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from 'common/Pagination/Pagination';
 import { Link } from "react-router-dom";
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 
 
 const ProjectsQuery = ()=>{

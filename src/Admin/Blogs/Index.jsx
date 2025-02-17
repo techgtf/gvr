@@ -3,8 +3,7 @@ import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from 'react-bootstrap/Form';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
 import Pagination from 'common/Pagination/Pagination';
@@ -26,6 +25,7 @@ const Blogs = ()=>{
     const [showSidebar, setShowSidebar] = useState(false);
     const [editId, setEditId] = useState(false);
     const [blogData, setBlogData] = useState(null)
+    const [selectedStatus ,setSelectedStatus] = useState()
     const titleRef = useRef(null);
     const shortDescriptionRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -37,7 +37,8 @@ const Blogs = ()=>{
      
 
     const handleStatusSelect = async (selectedValue, id) => {
-        setSelectedStatus(selectedValue);
+        // console.log('selectedValue',selectedValue, 'id',id);
+        // setSelectedStatus(selectedValue);
         await updateStatusHandler(id, selectedValue);
     };
 
@@ -253,24 +254,21 @@ const Blogs = ()=>{
 
     return(
         <>
-        <div className="d-flex title_col justify-content-between align-items-center">
+        <div className="title_col flex justify-between items-center">
             <h4 className="page_title">Blogs</h4>
             {/* <button className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button> */}
             <Link className="btn ms-auto btn_primary btn-sm" to={`${CONFIG.ADMIN_ROOT}blogs/add`}>Add Blog</Link>
         </div>
 
-            <div className="card mt-4 card_style1">
+            <div className="card bg-white mt-4 card_style1">
              
-                <div className="d-flex align-items-center">
-                    <h5 className="mb-0">All Blogs </h5>
+                <div className="flex items-center">
+                    <h5 className="mb-0 flex items-center">All Blogs </h5>
 
                     <div className="searchInput ms-auto">
-                        <input type="text" className="form-control" placeholder="Search by name" onChange={findHandler} />
+                        <input type="text" className="form-control border border-gray-200" placeholder="Search by name" onChange={findHandler} />
                     </div>
                 </div>
-
-
-
 
                 {/* <form >
                     <input ref={fileRef} type="file" className="form-control" />
@@ -278,19 +276,25 @@ const Blogs = ()=>{
                     <button type="submit" className="btn btn_primary">Save</button>
                 </form> */}
 
-                <table className="mt_40">
+                <table className="mt_40 w-full border-collapse border border-gray-200">
                     <thead>
-                        <tr>
-                            <th>
+                        <tr className="bg-gray-100">
+                            <th className="border border-gray-300 p-2 text-left">
                                 Title
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Short Description
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
+                                Thumbnail
+                            </th>
+                            <th className="border border-gray-300 p-2 text-left">
+                                Image
+                            </th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Show
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Actions
                             </th>
                         </tr>
@@ -301,7 +305,7 @@ const Blogs = ()=>{
                         
 
                     {isLoadingTableData && (
-                                <tr>
+                                <tr className="border-b border-gray-200">
                                     <td colSpan={4}>
                                         <div className="text-center">
                                             <ScaleLoader 
@@ -316,7 +320,7 @@ const Blogs = ()=>{
 
                     {
                         !isLoadingTableData && data.length ? data.map(item => (
-                            <tr key={item.id}>
+                            <tr key={item.id} className="border-b border-gray-200">
                                 <td>
                                     {item.heading}
                                 </td>
@@ -324,10 +328,16 @@ const Blogs = ()=>{
                                     {item.short_description}
                                 </td>
                                 <td>
-                                    <CustomDropdown className="form-control" defaultVal={item.status} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)}  />
+                                    <img className="img-fluid w-[100px]" src={CONFIG.VITE_APP_STORAGE + item.thumbnail} />
+                                </td>
+                                <td>
+                                    <img className="img-fluid w-[100px]" src={CONFIG.VITE_APP_STORAGE + item.image} />
+                                </td>
+                                <td>
+                                    <CustomDropdown className="form-control border border-gray-200" defaultVal={item.status} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)}  />
                                 </td>
 
-                                <td>
+                                <td className="flex items-center">
                                     <Link className="btn action_btn" to={CONFIG.ADMIN_ROOT + 'blogs/edit/' + item.id}>
                                         <img src={CONFIG.ADMIN_IMG_URL + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
                                     </Link>

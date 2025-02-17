@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './pagination.css';
-import * as CONFIG from 'root/config'
 
 // var chevronLeftIcon = '../../frontend/assets/images/icons/chevron_left.svg';
 // var chevronRightIcon = '../../frontend/assets/images/icons/chevron_right.svg';

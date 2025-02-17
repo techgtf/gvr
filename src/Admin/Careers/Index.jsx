@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 import {  toast } from 'react-toastify';
 import Pagination from 'common/Pagination/Pagination';
 import Request from 'root/config/Request';

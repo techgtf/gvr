@@ -9,20 +9,28 @@ import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
+import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import store from './store/store.js'
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-    <TeamProvider>
+    <>
+      <TeamProvider>
       <LatestBlogProvider>
       <ContextProvider>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
         <CustomPortal>
           <PricelistForm />
         </CustomPortal>
       </ContextProvider>
       </LatestBlogProvider>
     </TeamProvider>
+    <ToastContainer />
+    </>
   // </StrictMode>
 );

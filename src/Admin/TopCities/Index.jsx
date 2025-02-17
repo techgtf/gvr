@@ -3,14 +3,13 @@ import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Form from 'react-bootstrap/Form';
 import Button from 'common/Button/Button';
 import Loader from "common/Loader/loader";
 import Request from "root/config/Request";
 import {  toast } from 'react-toastify';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from 'common/Pagination/Pagination';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../config';
 
 const statusOptions = [
     { label: 'Active', value: '1' },
@@ -123,92 +122,87 @@ const TopCities = ()=>{
 
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Cities</h4>
-                {/* <Button className="btn ms-auto btn_primary btn-sm" onClick={addDeveloperHandler}>Add City</Button> */}
+            <div className="flex justify-between items-center border-b pb-2 mb-4">
+                <h4 className="text-lg font-semibold">Cities</h4>
             </div>
 
-            <div className="card mt-4 card_style1">
-                <div className="d-flex">
-                    <h5>All Cities</h5>
+            <div className="bg-white shadow-md rounded-lg p-4">
+                <div className="mb-4 border-b pb-2">
+                    <h5 className="text-base font-semibold">All Cities</h5>
                 </div>
 
-                <table className="mt_40">
+                <table className="w-full border-collapse">
                     <thead>
-                        <tr>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Icons
-                            </th>
-                            <th>
-                                Top City
-                            </th>
-                            {/*<th>
-                                Actions
-                            </th>*/}
+                        <tr className="border-b">
+                            <th className="py-2 text-left">Name</th>
+                            <th className="py-2 text-left">Icons</th>
+                            <th className="py-2 text-left">Top City</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        {!data.length && dataLoading ? 
-                        <tr>
-                            <td colSpan={4}>
-                                <div className="text-center">
-                                <ScaleLoader 
-                                    color="#ddd"
-                                    className="w-100"
-                                /> 
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        : 
-                        data.map((item, index)=>(
-                            <tr key={index}>
-                                <td>
-                                    {item.city}
+                        {!data.length && dataLoading ? (
+                            <tr>
+                                <td colSpan={3} className="py-4 text-center">
+                                    <ScaleLoader color="#ddd" className="inline-block" />
                                 </td>
-                                <td>
-                                    <div className="thumb icon">
-                                        <img src={CONFIG.VITE_APP_STORAGE + item.logo} alt="" className="img-fluid" onError={handleImageError} />
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <CustomDropdown className="form-control" defaultVal={item.is_popular} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)}  />
-                                </td>
-
                             </tr>
-                        ))}
+                        ) : (
+                            data.map((item, index) => (
+                                <tr key={index} className="border-b hover:bg-gray-50">
+                                    <td className="py-2 px-3">{item.city}</td>
+                                    <td className="py-2 px-3">
+                                        <div className="w-10 h-10 overflow-hidden rounded-full border">
+                                            <img
+                                                src={CONFIG.VITE_APP_STORAGE + item.logo}
+                                                alt="city icon"
+                                                className="w-full h-full object-cover"
+                                                onError={(e) => (e.target.style.display = "none")}
+                                            />
+                                        </div>
+                                    </td>
+                                    <td className="py-2 px-3">
+                                        <CustomDropdown
+                                            className="w-full"
+                                            defaultVal={item.is_popular}
+                                            options={statusOptions}
+                                            onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
 
                 {!dataLoading && !notFound && (
                     <Pagination currentPage={currentPage} totalPages={lastPage} onPageChange={handlePageChange} />
                 )}
-                
-                {notFound && (
-                    <h5 className="no_record">No  More Record Found!</h5>
-                )}
+
+                {notFound && <h5 className="text-center text-red-500 font-semibold mt-4">No More Records Found!</h5>}
             </div>
 
             {showSidebar && (
                 <>
-                    <SidebarPortal className="portal">
-                        <SideModal onCancel={cancelHandler} isEnableEdit={isEnableEdit} onSubmit={(isEnableEdit ? updateCityHandler : addSubmitHandler)}>
-                            <Form >
-                                <Form.Group className="mb_15">
-                                    <Form.Label>City Name*</Form.Label>
-                                    <Form.Control ref={cityRef} className="form-control" placeholder="Enter developer name" required type="text" />
-                                    {errors.developer && <div className="errMsg">{errors.developer}</div>}
-                                </Form.Group>
-
-                            </Form>
+                    <SidebarPortal>
+                        <SideModal
+                            onCancel={cancelHandler}
+                            isEnableEdit={isEnableEdit}
+                            onSubmit={isEnableEdit ? updateCityHandler : addSubmitHandler}
+                        >
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-1">City Name*</label>
+                                <input
+                                    ref={cityRef}
+                                    type="text"
+                                    placeholder="Enter city name"
+                                    required
+                                    className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-300"
+                                />
+                                {errors.developer && <div className="text-red-500 text-sm mt-1">{errors.developer}</div>}
+                            </div>
                         </SideModal>
                     </SidebarPortal>
-                    <BackdropPortal className="show" />
+                    <BackdropPortal className="fixed inset-0 bg-black bg-opacity-50" />
                 </>
             )}
         </>

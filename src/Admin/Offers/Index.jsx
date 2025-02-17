@@ -6,11 +6,10 @@ import Loader from "common/Loader/loader";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import SideModal from "../components/Modal/SideModal/Index";
 import BackdropPortal from 'common/Portal/Backdrop'
-import Form from 'react-bootstrap/Form';
 import {  toast } from 'react-toastify';
 import Request from "root/config/Request";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import * as CONFIG from 'root/config'
+import * as CONFIG from '../../../config'
 import Pagination from 'common/Pagination/Pagination';
 
 
@@ -238,119 +237,75 @@ const Offers = ()=>{
 
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
-                <h4 className="page_title">Offers</h4>
-                <Button className="btn btn_primary" onClick={addOfferHandler}>Add Offer</Button>
+            <div className="flex justify-between items-center">
+                <h4 className="text-xl font-semibold">Offers</h4>
+                <Button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={addOfferHandler}>Add Offer</Button>
             </div>
 
-            <div className="card mt-4 card_style1">
-                <h5>All Offers</h5>
+            <div className="bg-white shadow-md rounded p-4 mt-4">
+                <h5 className="text-lg font-semibold">All Offers</h5>
 
-                <table className="mt_40">
+                <table className="w-full mt-4 border-collapse border border-gray-300">
                     <thead>
-                        <tr>
-                            <th>
-                                Image (Desktop)
-                            </th>
-                            <th>
-                                Image (Mobile)
-                            </th>
-                            <th>
-                                Alt Text
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Actions
-                            </th>
+                        <tr className="bg-gray-100">
+                            <th className="p-2 border">Image (Desktop)</th>
+                            <th className="p-2 border">Image (Mobile)</th>
+                            <th className="p-2 border">Alt Text</th>
+                            <th className="p-2 border">Status</th>
+                            <th className="p-2 border">Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {isLoading && (
+                        {isLoading ? (
                             <tr>
-                                <td colSpan={4}>
-                                    <div className="text-center">
-                                    <ScaleLoader 
-                                        color="#ddd"
-                                        className="w-100"
-                                    /> 
-                                    </div>
+                                <td colSpan="5" className="text-center py-4">
+                                    <ScaleLoader color="#ddd" />
                                 </td>
-                            </tr> 
-                        )}  
-
-                        {!isLoading && data.length ? (
+                            </tr>
+                        ) : data.length ? (
                             data.map(item => (
-                                <tr key={item.id}>
-                                    <td>
-                                        <div className="thumb">
-                                            <img src={CONFIG.VITE_APP_STORAGE + item.md_image} alt="property" className="img-fluid" />
-                                        </div>
+                                <tr key={item.id} className="border">
+                                    <td className="p-2 border">
+                                        <img src={CONFIG.VITE_APP_STORAGE + item.md_image} alt="property" className="w-24 h-16 object-cover" />
                                     </td>
-
-                                    <td>
-                                        <div className="thumb">
-                                            <img src={CONFIG.VITE_APP_STORAGE + item.sm_image} alt="property" className="img-fluid" />
-                                        </div>
+                                    <td className="p-2 border">
+                                        <img src={CONFIG.VITE_APP_STORAGE + item.sm_image} alt="property" className="w-16 h-16 object-cover" />
                                     </td>
-
-                                    <td>
-                                        {item.alt}
+                                    <td className="p-2 border">{item.alt}</td>
+                                    <td className="p-2 border">
+                                        <CustomDropdown className="w-full" defaultVal={item.status} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)} />
                                     </td>
-
-                                    <td>
-                                        <CustomDropdown className="form-control" defaultVal={item.status} options={statusOptions} onSelect={(selectedValue) => handleStatusSelect(selectedValue, item.id)} />
-                                    </td>
-
-                                    <td>
-                                        <button className="btn action_btn" onClick={() => editOfferHandler(item.id)}>
-                                            <img src={CONFIG.ADMIN_IMG_URL + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon"  />
-                                        </button>
-
-                                        <button className="btn action_btn" onClick={() => deleteOfferHandler(item.id)}>
-                                            <img src={CONFIG.ADMIN_IMG_URL + 'icons/delete_color.svg'} alt="delete icon"  className="img-fluid icon delete" />
-                                        </button>
+                                    <td className="p-2 border flex gap-2">
+                                        <button className="bg-yellow-500 text-white p-2 rounded" onClick={() => editOfferHandler(item.id)}>Edit</button>
+                                        <button className="bg-red-500 text-white p-2 rounded" onClick={() => deleteOfferHandler(item.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))
-                        ) : !isLoading && <tr><td colSpan="5"><h5 className="no_record">No Offers Found!</h5></td></tr>}
-                        
+                        ) : (
+                            <tr><td colSpan="5" className="text-center py-4">No Offers Found!</td></tr>
+                        )}
                     </tbody>
                 </table>
-
-                {(data.length ? <Pagination currentPage={currentPage} totalPages={lastPage} onPageChange={handlePageChange} /> : null)}
+                {data.length > 0 && <Pagination currentPage={currentPage} totalPages={lastPage} onPageChange={setCurrentPage} />}
             </div>
 
             {showAddSidebar && (
                 <>
-                    <SidebarPortal className="portal">
-                        <SideModal onCancel={cancelHandler} onSubmit={(enableEdit ? updateOfferHandler : addSubmitHandler)} isEnableEdit={enableEdit}>
-                            <Form >
-                                <Form.Group className="mb_20">
-                                    <Form.Label>Select Desktop Image* <small className="size">(Size 1600px x 400px)</small></Form.Label>
-                                    <Form.Control ref={desktopImage} className="form-control" required type="file" />
-                                    {errors.md_image && <div className="errMsg text-danger">{errors.md_image}</div>}
-                                    {showEditEnableImage.desktopImage ? <img width="100" src={showEditEnableImage.desktopImage}/> : null }
-                                </Form.Group>
+                    <SidebarPortal>
+                        <SideModal onCancel={() => setShowAddSidebar(false)}>
+                            <div className="p-4">
+                                <label className="block">Select Desktop Image</label>
+                                <input type="file" ref={desktopImage} className="border p-2 w-full" />
+                                {showEditEnableImage.desktopImage && <img src={showEditEnableImage.desktopImage} className="w-24 mt-2" alt="Preview" />}
 
-                                <Form.Group className="mb_20">
-                                    <Form.Label>Select Mobile Image* <small className="size">(Size 500px x 700px)</small></Form.Label>
-                                    <Form.Control ref={moblieImage} className="form-control" required type="file" />
-                                    {errors.sm_image && <div className="errMsg text-danger">{errors.sm_image}</div>}
-                                    {showEditEnableImage.mobileImage ? <img width="100" src={showEditEnableImage.mobileImage}/> : null }
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <Form.Label>Alt Text*</Form.Label>
-                                    <Form.Control ref={altText} className="" required type="text" placeholder="Enter Alt Text" />
-
-                                </Form.Group>
-                            </Form>
+                                <label className="block mt-4">Select Mobile Image</label>
+                                <input type="file" ref={mobileImage} className="border p-2 w-full" />
+                                {showEditEnableImage.mobileImage && <img src={showEditEnableImage.mobileImage} className="w-24 mt-2" alt="Preview" />}
+                            </div>
                         </SideModal>
                     </SidebarPortal>
-                    <BackdropPortal  className="show"/>
+                    <BackdropPortal className="fixed inset-0 bg-black bg-opacity-50" />
                 </>
             )}
         </>

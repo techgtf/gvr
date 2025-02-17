@@ -3,19 +3,17 @@ import { NavLink, Link, useLocation, useParams } from "react-router-dom";
 import PerfectScrollbar from 'perfect-scrollbar';
 import { useDispatch, useSelector } from "react-redux";
 import * as actionTypes from 'root/store/actions';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../../config';
 import Request from 'root/config/Request';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import './sidebar.css';
-import  {ADMIN_ASSETS} from 'root/config' ;
-
-
+import  {ADMIN_ASSETS} from '../../../../config' ;
 
 const Sidebar = (props) => {
   const containerRef = useRef(null);
   const dispatch = useDispatch()
   const location = useLocation(); // Get current location
-  const currentPage = useSelector(state => state.adminSideMenu.currentPage)
+  const currentPage = useSelector(state => state.sideMenu.currentPage)
   const [categoryList, setCategoryList] = useState([]);
 
   const currentUrl = location.pathname.split('/admin')[1];
@@ -116,24 +114,24 @@ const Sidebar = (props) => {
         <div className="main-menu" ref={containerRef}>
           <NavLink to={`${CONFIG.ADMIN_ROOT}`} className="sidebar_link">
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/dashboard.png'} alt="dashboard icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/dashboard_color.png'} alt="dashboard icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/dashboard.png'} alt="dashboard icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/dashboard_color.png'} alt="dashboard icon" className="img-fluid color" />
             </span>
             <span>Dashboard</span>
           </NavLink>
 
-          <Link className="sidebar_link hasSubMenu" onClick={(e) => props.toggleSubMenusHandler(e, 'projects')}>
+          <Link className="sidebar_link hasSubMenu" onClick={() => props.toggleSubMenusHandler('projects')}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/projects.png'} alt="projects icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/projects_color.png'} alt="projects icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/projects.png'} alt="projects icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/projects_color.png'} alt="projects icon" className="img-fluid color" />
             </span>
             <span>Projects</span>
           </Link>
 
           <NavLink className="sidebar_link hasSubMenu" to={`${CONFIG.ADMIN_ROOT}platter-page`}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/platter.png'} alt="platter icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/platter_color.png'} alt="platter icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/platter.png'} alt="platter icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/platter_color.png'} alt="platter icon" className="img-fluid color" />
             </span>
             <span>Platter Page</span>
           </NavLink>
@@ -141,32 +139,32 @@ const Sidebar = (props) => {
 
           <NavLink className="sidebar_link hasSubMenu" to={`${CONFIG.ADMIN_ROOT}states`}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/locations.png'} alt="location icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/locations_color.png'} alt="location icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/locations.png'} alt="location icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/locations_color.png'} alt="location icon" className="img-fluid color" />
             </span>
             <span>Locations</span>
           </NavLink>
 
           <NavLink className="sidebar_link" to={`${CONFIG.ADMIN_ROOT}amenities`}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/amenities.png'} alt="amenities icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/amenities_color.png'} alt="amenities icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/amenities.png'} alt="amenities icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/amenities_color.png'} alt="amenities icon" className="img-fluid color" />
             </span>
             <span>Amenities</span>
           </NavLink>
 
           <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'pages')}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/pages.png'} alt="pages icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/pages_color.png'} alt="pages icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/pages.png'} alt="pages icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/pages_color.png'} alt="pages icon" className="img-fluid color" />
             </span>
             <span>Pages</span>
           </NavLink>
 
           <NavLink className="sidebar_link" to={`${CONFIG.ADMIN_ROOT}developers`}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/developers.png'} alt="developers icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/developers_color.png'} alt="developers icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/developers.png'} alt="developers icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/developers_color.png'} alt="developers icon" className="img-fluid color" />
             </span>
             <span>Developers</span>
           </NavLink>
@@ -174,24 +172,24 @@ const Sidebar = (props) => {
           {/* to={`${CONFIG.ADMIN_ROOT}typologies`} */}
           <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'typologies')}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/typologies.png'} alt="typologies icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/typologies_color.png'} alt="typologies icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/typologies.png'} alt="typologies icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/typologies_color.png'} alt="typologies icon" className="img-fluid color" />
             </span>
             <span>Typologies</span>
           </NavLink>
 
           <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'cms')}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/cms.png'} alt="cms icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/cms_color.png'} alt="cms icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/cms.png'} alt="cms icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/cms_color.png'} alt="cms icon" className="img-fluid color" />
             </span>
             <span>CMS</span>
           </NavLink>
 
           <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'enquiry')}>
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'icons/message.png'} alt="message icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'icons/message_color.png'} alt="message icon" className="img-fluid color" />
+              <img src={ADMIN_ASSETS + 'images/icons/message.png'} alt="message icon" className="img-fluid default" />
+              <img src={ADMIN_ASSETS + 'images/icons/message_color.png'} alt="message icon" className="img-fluid color" />
             </span>
             <span>Enquiry</span>
           </NavLink>
@@ -204,8 +202,8 @@ const Sidebar = (props) => {
                 categoryList.map((item, index) => {
                   return <NavLink key={item + index} className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT + 'projects/' + item.slug}`}>
                     <span className="icon">
-                      <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
-                      <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
+                      <img src={ADMIN_ASSETS + 'images/icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
+                      <img src={ADMIN_ASSETS + 'images/icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
                     </span>
                     <span>{item.name}</span>
                   </NavLink>
@@ -222,6 +220,14 @@ const Sidebar = (props) => {
                     <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
                   </span>
                   <span>Meta Details</span>
+                </NavLink>
+
+                <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'home-overview'}>
+                  <span className="icon">
+                    <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
+                    <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
+                  </span>
+                  <span>Home Overview</span>
                 </NavLink>
 
                 <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'about'}>
@@ -298,6 +304,11 @@ const Sidebar = (props) => {
                 <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}category`}>
                   <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
                   <span>Category</span>
+                </NavLink>
+
+                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}other-verticals`}>
+                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                  <span>Other Verticals</span>
                 </NavLink>
 
                 <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}top-cities`}>

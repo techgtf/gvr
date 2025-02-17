@@ -16,7 +16,7 @@ const SideModal = ({className, children, onCancel, onSubmit, isEnableEdit, isLoa
         <div className={`admin_modal_right ${!className && '' }`}>
             <div className="top">
                 
-                <h5 className="title">{isEnableEdit ? 'Edit New Item' : 'Add New Item'}</h5>
+                <h5 className="title text-lg">{isEnableEdit ? 'Edit New Item' : 'Add New Item'}</h5>
                 <span className="close" onClick={onCancel}>&times;</span>
             </div>
 
@@ -32,10 +32,6 @@ const SideModal = ({className, children, onCancel, onSubmit, isEnableEdit, isLoa
                         isLoading ?  <button className="btn btn_primary btn_sm" type="button" disabled>Please Wait ..</button>  :            <button className="btn btn_primary btn_sm" onClick={onSubmit}>Submit</button>
                           
                         }
-
-
-
-
                 </div>
             </div>
         </div>

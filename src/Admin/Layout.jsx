@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Index";
-import ContentLayout from './components/ContentLayout/ContentLayout'
+import ContentLayout from './components/ContentLayout1/ContentLayout'
 import Request from 'root/config/Request';
 import * as actionTypes from 'root/store/actions'
 
@@ -43,8 +43,6 @@ const AdminLayout = ()=>{
 useEffect(()=>{
   getAllCity();
 });
-
-
 
 
   return(

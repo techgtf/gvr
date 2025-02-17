@@ -1,20 +1,31 @@
-import React from "react";
-import Header from "admin/components/Header/Index";
-import ContentLayout from 'admin/components/Layout/ContentLayout/ContentLayout';
+import React, { useEffect, useState } from "react";
+import Header from "../../components/Header/Index";
+import ContentLayout from '../../components/Layout/ContentLayout/ContentLayout';
+import { useLocation } from "react-router-dom";
 import './layout.css'
 
-const AdminContainer = (props)=>{
+const AdminLayout = (props)=>{
+    const {pathname} = useLocation()
+    const [adminClass, setAdminClass] = useState();
+
+    useEffect(()=>{
+        if(pathname.includes('admin')){
+        setAdminClass('admin_body');
+        }
+    }, [pathname]); 
 
     return(
         <>
-        <Header />
-        <ContentLayout>
-            <div className={`admin_container ${props.className}`}>
-                {props.children}
+            <div className={adminClass}>
+                <Header />
+                <ContentLayout>
+                    <div className={`admin_container ${props.className}`}>
+                        {props.children}
+                    </div>
+                </ContentLayout>
             </div>
-        </ContentLayout>
         </>
     )
 }
 
-export default AdminContainer;
+export default AdminLayout;
