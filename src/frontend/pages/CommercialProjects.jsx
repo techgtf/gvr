@@ -82,7 +82,7 @@ const projects = [
   },
   {
     id: 3,
-    name: "RETAIL",
+    name: "High Street Retail & Office Spaces",
     projects: [
       {
         name: "PERNIA",
@@ -278,8 +278,8 @@ const CommercialProjectSection = ({ project }) => {
           <FadeIn duration={2} delay={0.7}>
             <CommonHeading HeadingText={project.name} />
           </FadeIn>
-          <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.015] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
-            {project.name}
+          <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.017] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
+            {project.id === 3 ? "RETAIL" : project.name}
           </p>
         </div>
         <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
