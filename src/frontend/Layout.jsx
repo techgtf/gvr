@@ -21,7 +21,18 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function Layout({ children }) {
   // const { isMediaLoaded, containerRef } = useMediaLoader();
   const location = useLocation();
+  useEffect(() => {
+    // Define dynamic CSS based on route
+    let cssFile;
+    
+    if (location.pathname.startsWith("/")) {
+      cssFile = import("../frontend/main.css"); // Admin-specific styles
+    }
 
+    return () => {
+      // Cleanup if needed (optional)
+    };
+  }, [location.pathname]);
   useEffect(() => {
     // if (!isMediaLoaded) return;
 
@@ -57,6 +68,12 @@ function Layout({ children }) {
   }, [location.pathname]);
 
 
+  const showMicrositeMenu =
+    location.pathname === `${BASE_ROOT}sharanam` ||
+    location.pathname === `${BASE_ROOT}anandam` ||
+    location.pathname === `${BASE_ROOT}gv-homes` ||
+    location.pathname === `${BASE_ROOT}vilasa`;
+
 
   return (
     <main>
@@ -67,10 +84,6 @@ function Layout({ children }) {
       ></a>
 
       <>
-        {location.pathname === `${BASE_ROOT}sharanam` ||
-          location.pathname === `${BASE_ROOT}anandam` ||
-          location.pathname === `${BASE_ROOT}gv-homes` ||
-          location.pathname === `${BASE_ROOT}vilasa` ? <MicrositeMenu /> : null}
 
         {/* Custom Cursor */}
         <CustomCursor />
@@ -80,6 +93,7 @@ function Layout({ children }) {
         <ScrollToTop />
         {/* Mobile Menu Tabs */}
         <MbTabLinks />
+        {showMicrositeMenu ? <MicrositeMenu /> : null}
 
         <div id="smooth-wrapper">
           <div id="smooth-content">

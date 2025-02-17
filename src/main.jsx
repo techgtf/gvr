@@ -25,7 +25,7 @@ createRoot(document.getElementById("root")).render(
         </Provider>
         <CustomPortal>
           <PricelistForm />
-          <MicrositeMenu/>
+          {/* <MicrositeMenu/> */}
         </CustomPortal>
       </ContextProvider>
       </LatestBlogProvider>
