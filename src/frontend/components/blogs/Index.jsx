@@ -116,7 +116,7 @@ const Index = ({ data }) => {
                           ? `${item.desc.slice(0, 200)}...`
                           : item.desc}{" "}
                       </p>
-                      <CommonBtn TagName={Link} className="text-[14px]">
+                      <CommonBtn className="text-[14px]">
                         Know more <MdArrowOutward />
                       </CommonBtn>
                     </div>
