@@ -43,7 +43,7 @@ export default function FooterBottom() {
               target="_blank"
               rel="noopener noreferrer"
               className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 
-                       focus-visible:ring focus-visible:ring-blue-300 focus-visible:bg-blue-100 rounded-md transition-all"
+             focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:bg-blue-200 rounded-md transition-all"
             >
               <img
                 className="lg:h-7 h-5"

@@ -14,7 +14,7 @@ export default function Residential() {
       location: "Sec 107, Noida",
       typology: "2, 3 & 4 BHK Luxury Residential Apartments",
       overview: "Great Value presents a new stature of luxury residential apartments at SHARANAM. Located in sector 107, Noida, these stunning apartments comprise of 18 exclusive towers with 2, 3 and 4 BHK Flats. At SHARANAM you will not only enjoy the benefits of a beautiful location but, you can also take pleasure with ready to move flats facilities in Noida.",
-      pageLink: `${CONFIG.BASE_ROOT}microsite`,
+      pageLink: `${CONFIG.BASE_ROOT}sharanam`,
       alt: "Sharanam Sector 107 Noida"
     },
     {
@@ -27,13 +27,31 @@ export default function Residential() {
       alt: "Anandam Sector 107 Noida"
     },
     {
-      name: "Gv Homez",
+      name: "CASA UDAY",
       imgSrc: "gv-home.jpg",
       location: "Uday Park, New Delhi",
       typology: "Luxury and Modern Builder Floors",
       overview: "GV Homes offers a luxury modern builders floor with a uniquely fashioned and perfectly placed to embrace the culture of Great Value. Our product proposition is predicated on design-led innovation that is based on research. We design homes that ensure trust for generations. Some of the key themes in our approach include creating a sense of place, brighter living experience, technological innovation, thoughtful amenities, and much more.",
-      pageLink: `${CONFIG.BASE_ROOT}gv-homes`,
-      alt: "GV Homez"
+      pageLink: `${CONFIG.BASE_ROOT}casa-uday`,
+      alt: "CASA UDAY"
+    },
+    {
+      name: "Vilasa",
+      imgSrc: "vilasa.webp",
+      location: "SECTOR 6, SOHNA",
+      typology: "Luxury Residential Plots",
+      overview: "Vilasa is an exclusive residential plotted development in Sector 6, Sohna, offering customizable plots in a secure gated community. With premium amenities, excellent connectivity to Gurgaon, and scenic views of the Aravalli Hills, it presents a perfect opportunity for investors and homeowners to build their dream space in a rapidly growing location.",
+      pageLink: `${CONFIG.BASE_ROOT}vilasa`,
+      alt: "Vilasa"
+    },
+    {
+      name: "Sanctuary 105",
+      imgSrc: "sanctuary.jpg",
+      location: "Sector 105, Gurugram",
+      typology: "3 & 4 BHK Apartments",
+      overview: "Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbour. An address seamlessly blends the contrasting elements of art, architecture, and nature.",
+      pageLink: `${CONFIG.BASE_ROOT}sanctuary`,
+      alt: "Sanctuary 105"
     },
   ]
 

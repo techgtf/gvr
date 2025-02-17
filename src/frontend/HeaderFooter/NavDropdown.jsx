@@ -49,21 +49,22 @@ function NavDropdown({ setDropdown, setActiveItem }) {
     return (
         <div
             ref={dropdownRef}
-            className="nav_dropdown fixed top-[90px] left-0 h-[30vh] w-full bg-[#EFF5FA] text-black opacity-95 p-5"
+            className="nav_dropdown fixed top-[90px] left-0  w-full bg-[#EFF5FA] text-black opacity-95 py-8 px-5"
         >
-            <div className="absolute top-3 px-20 flex justify-end w-full">
+            <div className="absolute top-5 px-20 flex justify-end w-full">
                     <AiOutlineClose  onClick={() => handleClose()} className="cursor-pointer text-xl text-[#00000094]" />
                 </div>
             <div className="relative h-full">
-                <ul className="flex justify-evenly items-center h-full">
+                <ul className="flex flex-wrap justify-center items-center h-full gap-5">
                     {[
                         { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                         { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
-                        { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
+                        { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
                         { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" },
+                        { name: "Sanctuary 105", path: "sanctuary", location: "SECTOR 105, GURUGRAM" },
                     ].map(({ name, path, location }, index, array) => (
                         <React.Fragment key={path}>
-                            <li>
+                            <li className={`w-1/5 text-center ${index >= 4 ? "w-full flex justify-center" : ""}`}s>
                                 <Link
                                     to={`${BASE_ROOT}${path}`}
                                     onClick={(e) => {
