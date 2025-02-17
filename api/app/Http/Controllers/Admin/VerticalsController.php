@@ -51,7 +51,6 @@ class VerticalsController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validator = Validator::make($request->all(),
         [
             'name' => 'required',
@@ -62,7 +61,7 @@ class VerticalsController extends Controller
         ],[
             'name.required' => 'The Name field is required.',
             'image.required' => 'The Image field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
+            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'short_description.required' => 'This Field is required.',
             'description.required' => 'This Field is required',

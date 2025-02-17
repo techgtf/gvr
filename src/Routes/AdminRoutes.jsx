@@ -59,6 +59,7 @@ import ProjectQuery from "../admin/Enquiry/Project";
 import JobApplications from "../admin/Enquiry/JobApplications";
 import Offers from "../admin/Offers";
 import HomePageOverview from "../admin/components/homepage/overview/Index";
+import OtherVerticals from "../admin/components/homepage/otherVerticals/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -388,6 +389,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <HomePageOverview />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}other-verticals`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OtherVerticals />
         </Suspense>
       </AdminLayout>
     ),
