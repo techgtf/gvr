@@ -214,23 +214,22 @@ const CommercialProjects = () => {
               <h2 className="midlandfontmedium text-[10px] tracking-[3px] ">
                 {project.name}
               </h2>
-
-              <div className="flex items-center xl:mt-[0px] mt-[1rem]">
-                <h3 className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                  TOTAL PROJECTS
-                </h3>
-                <p className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                  {project.totalProjects}
-                </p>
-
-                <Link to={project.id} smooth={true} duration={800}>
+              <Link to={project.id} smooth={true} duration={800}>
+                <div className="flex items-center xl:mt-[0px] mt-[1rem]">
+                  {" "}
+                  <h3 className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
+                    TOTAL PROJECTS
+                  </h3>
+                  <p className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
+                    {project.totalProjects}
+                  </p>
                   <img
                     src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/icons/download.png`}
                     className="w-[25px] h-[25px]"
                     alt="download"
                   />
-                </Link>
-              </div>
+                </div>
+              </Link>
             </div>
           );
         })}
