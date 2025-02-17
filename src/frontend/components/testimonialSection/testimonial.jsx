@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from "react-dom";
-import WaterMarkHeading from '../waterMarkHeading';
+import AnimatedHeading from '../Animations/AnimatedHeading'
 import './testimonial.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation } from 'swiper/modules';
@@ -16,21 +16,24 @@ gsap.registerPlugin(ScrollTrigger);
 const slidesData = [
     {
         name: 'Mr. Narinder Arora',
-        thumbs: 'narinder-arora.jpg',
+        thumbs: 'narinder-arora.webp',
         video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
         desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
+        alt: "Great Value Mr. Narinder Arora"
     },
     {
         name: 'Verma Family',
-        thumbs: 'verma-family.png',
+        thumbs: 'verma-family.webp',
         video: 'https://www.youtube.com/watch?v=Nbm6iQ0IMMY',
         desc: 'A Community Where Every Festival Feels Like Home',
+        alt: "Great Value Verma family"
     },
     {
         name: 'Mr. B.P. Bharti',
-        thumbs: 'bp-bharti.png',
+        thumbs: 'bp-bharti.webp',
         video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
         desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
+        alt: "Great Value Mr. B.P. Bharti "
     },
 ]
 
@@ -77,37 +80,16 @@ export default function Testimonial() {
         from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
     };
 
-    // const togglePlayPause = (index) => {
-    //     videoRefs.current.forEach((video, i) => {
-    //         if (video) {
-    //             if (i === index) {
-    //                 if (video.paused) {
-    //                     video.play();
-    //                     setPlayingVideo(video);
-    //                 } else {
-    //                     video.pause();
-    //                     setPlayingVideo(null);
-    //                 }
-    //             } else {
-    //                 video.pause();
-    //             }
-    //         }
-    //     });
-    // };
-
-    // const handleVideoEnd = () => {
-    //     setPlayingVideo(null)
-    // }
-
-
-
     return (
         <div ref={testimonialRef} className="testimonialSection lg:pt-[120px] lg:pb-[90px] pt-[50px] pb-[50px]">
             <div className="max-w-[90%] mx-auto relative">
-                <WaterMarkHeading
-                    textWaterMark='Our testimonials'
-                    sectionHeading='Our testimonials'
+                <AnimatedHeading
+                    // textWaterMark='Our testimonials'
+                    // sectionHeading='Voices That Celebrate Trust and Timeless Partnerships'
+                    sectionHeading='testimonials'
                     animationConfig={animationConfig}
+                    justifyContent='justify-left'
+                    lineRight={true}
                 />
                 <div ref={swiperContainerRef} className="swiper-container reveal">
                     <Swiper
@@ -132,7 +114,7 @@ export default function Testimonial() {
                             <SwiperSlide key={index} className="panel">
                                 <div className='flex_div flex flex-wrap justify-between'>
                                     <div className='posterSide relative lg:w-[45%] w-full'>
-                                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.name}`} />
+                                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.alt}`} />
                                         {/* <video
                                             ref={(el) => (videoRefs.current[index] = el)}
                                             poster={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`}
@@ -143,7 +125,12 @@ export default function Testimonial() {
                                             className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'
                                             onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
                                         >
-                                            <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`} className='cursor-pointer lg:h-[44px] h-[30px]' alt="playbtn" />
+                                            <img
+                                                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
+                                                className="cursor-pointer lg:h-[44px] h-[30px]"
+                                                alt="Play button icon"
+                                            />
+
                                         </button>
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
@@ -152,7 +139,7 @@ export default function Testimonial() {
                                         <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
                                             <small className='line'></small> {item.name}
                                         </div>
-                                        {/* <FullBtn text='Watch More' link='testimonials' /> */}
+                                        {/* <FullBtn text='Watch More' LinkName="a" link='https://www.youtube.com/@greatvaluerealty' /> */}
                                     </div>
                                 </div>
                             </SwiperSlide>

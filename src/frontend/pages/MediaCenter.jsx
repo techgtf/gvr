@@ -21,7 +21,7 @@ function MediaCenter() {
                             <div className="logo py-5">
                                 <img
                                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`}
-                                    alt="Great Value Logo"
+                                    alt="Great Value Realty Logo"
                                 />
                             </div>
                             <div className="mt-10">

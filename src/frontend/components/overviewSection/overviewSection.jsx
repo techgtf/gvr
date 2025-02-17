@@ -11,7 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink }) {
+export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink, bgColor = "" }) {
   const overlayLeftRef = useRef(null);
   const overlayRightRef = useRef(null);
   const contentRef = useRef(null);
@@ -62,7 +62,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
   return (
     <div
       ref={containerRef}
-      className="overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+      className={`overview_section 2xl:pt-[45px] xl:pt-[60px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px] ${bgColor}`}
     // data-speed="clamp(.9)"
     // ref={sectionRef}
     >

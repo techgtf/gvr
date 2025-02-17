@@ -22,7 +22,6 @@ import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1
 import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/2.webp";
 import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
 import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.webp";
@@ -66,19 +65,16 @@ function AnandamMicrosite() {
     const customPriceListData = [
         {
             area: "2 BHK",
-            more: "DD/ 2 BR/Study/ Kitchen/2 Toilets/Bal. ",
             size: "1350 Sq. Ft",
             price: "₹ 86.13 Lacs*",
         },
         {
             area: "3 BHK ",
-            more: "DD/ 3 BR/Kitchen/3 Toilets/Bal.",
             size: "1700 Sq. Ft",
             price: "₹ 1.08 CR*",
         },
         {
             area: "3 BHK + STUDY",
-            more: "DD/ 3 BR/Study / Kitchen/4 Toilets/Bal.",
             size: "1840 Sq. Ft",
             price: "₹ 1.17 CR*",
         },
@@ -269,7 +265,6 @@ function AnandamMicrosite() {
 
             <ProjectGallery
                 actualImages={[gallery1, gallery2, gallery3, gallery4]}
-                renderImages={[renderGallery1]}
             />
         </>
     )

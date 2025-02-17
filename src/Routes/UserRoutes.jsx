@@ -5,7 +5,6 @@ import Layout from "../frontend/Layout";
 import Home from "../frontend/pages/Home";
 import Microsite from "../frontend/pages/Microsite";
 import PageNotFound from "../frontend/PageNotFound/PageNotFound";
-import "../frontend/main.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -36,6 +35,7 @@ import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 import MediaCenter from "../frontend/pages/MediaCenter";
 import NriInvestor from "../frontend/pages/NriInvestor";
 
+
 export const UserRoutes = [
   {
     // path: `${BASE_ROOT}`,
@@ -59,7 +59,7 @@ export const UserRoutes = [
             {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Microsite />
-                <MicrositeMenu />
+                {/* <MicrositeMenu /> */}
               </Layout>
             {/* </Suspense> */}
           </ErrorBoundary>
@@ -101,19 +101,6 @@ export const UserRoutes = [
           </ErrorBoundary>
         ),
       },
-      {
-        path: `${BASE_ROOT}coming-soon`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              {/* <Layout> */}
-                <ComingSoon />
-              {/* </Layout> */}
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
-      ,
       {
         path: `${BASE_ROOT}anandam`,
         element: (
@@ -330,6 +317,16 @@ export const UserRoutes = [
           // <Suspense fallback={<Loader />}>
             <Layout>
               <PropertyInvestment />
+            </Layout>
+          // </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}coming-soon`,
+        element: (
+          // <Suspense fallback={<Loader />}>
+            <Layout>
+              <ComingSoon />
             </Layout>
           // </Suspense>
         ),

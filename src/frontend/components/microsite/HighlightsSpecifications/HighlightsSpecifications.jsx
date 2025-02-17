@@ -12,7 +12,6 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
   const scrollTriggerRef = useRef(null);
 
   useLayoutEffect(() => {
-    console.log("Initializing ScrollTrigger for:", location.pathname);
 
     if (!sectionRef.current || !specificationsRef.current) {
       console.warn("Refs are not available!");
@@ -47,7 +46,6 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
     }, sectionRef);
 
     return () => {
-      console.log("Cleaning up ScrollTrigger for:", location.pathname);
       ctx.revert();
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
@@ -58,6 +56,7 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
 
   return (
     <section
+    id="highlightsSpecifications"
       key={location.pathname} // ✅ Forces re-render on route change
       ref={sectionRef}
       className="w-full relative px-5 md:px-12 py-10 md:py-14 flex items-center overflow-hidden"

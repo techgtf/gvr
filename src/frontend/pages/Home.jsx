@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useEffect } from 'react'
 const Hero = lazy(() => import('../components/heroSection/hero'))
 const OverviewSection = lazy(() => import('../components/overviewSection/overviewSection'))
 const Projects = lazy(() => import('../components/projectSection/Projects'))
@@ -7,22 +7,16 @@ const Testimonial = lazy(() => import('../components/testimonialSection/testimon
 const MediaCoverage = lazy(() => import('../components/MediaCoverage/MediaCoverage'))
 const BlogSection = lazy(() => import('../components/BlogSection/BlogSection'))
 import { BASE_ROOT } from '../../../config'
-import ScrollToTop from '../components/ScrollToTop'
-
-
 
 export default function Home() {
-
-
     return (
 
         <div className='homepage'>
-            <ScrollToTop/>
             <Hero />
 
             <OverviewSection
-                heading={'ELEVATING THE BEAUTY & BUSINESS OF REAL ESTATE'}
-                paragraph={'The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious.'}
+                heading={' Creating A Legacy Of True Abundance'}
+                paragraph={'At Great Value Realty, we create more than just homes—we cultivate trust, deliver unmatched value, and craft lasting experiences. Since our inception in 1970, the Great Value Group has transformed industries, managing assets exceeding ₹1,300 crores. Guided by a vision rooted in innovation, integrity, and ambition, we are dedicated to building timeless excellence, enriching lives, and shaping a brighter future.'}
                 showKnowMore={true}
                 pageLink={`${BASE_ROOT}about-us`}
             />

@@ -9,6 +9,9 @@ import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
+import MicrositeMenu from "./frontend/components/microsite/MicrositeMenu.jsx";
+import { Provider } from "react-redux";
+import store from './store/store.js'
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
@@ -17,9 +20,12 @@ createRoot(document.getElementById("root")).render(
     <TeamProvider>
       <LatestBlogProvider>
       <ContextProvider>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
         <CustomPortal>
           <PricelistForm />
+          {/* <MicrositeMenu/> */}
         </CustomPortal>
       </ContextProvider>
       </LatestBlogProvider>

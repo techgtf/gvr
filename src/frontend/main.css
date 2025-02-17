@@ -36,10 +36,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-* {
-  cursor: none;
-}
-
 body.lightbox-open * {
   cursor: auto;
 }
@@ -47,6 +43,12 @@ body.lightbox-open * {
 body {
   font-family: "Poppins", serif;
 }
+
+.user_body{
+  cursor: none;
+
+}
+
 
 img,
 picture,
@@ -188,12 +190,7 @@ img {
 } */
 
 
-.sectionHeading {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 4px;
-  word-spacing: 8px;
-}
+.sectionHeading {word-spacing: 8px; line-height: 35px;}
 
 .fullBtn {
   background: var(--primary);
@@ -282,6 +279,8 @@ img {
 
   .sectionHeading {
     font-size: 10px;
+    line-height: 30px;
+    word-spacing: 6px;
   }
 
   .common_heading {

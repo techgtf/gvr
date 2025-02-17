@@ -17,7 +17,6 @@ function VerticalWaterMarkHeading({
   const sectionRef = useRef(null);
 
   useLayoutEffect(() => {
-    console.log("🚀 useLayoutEffect Running on:", location.pathname);
   
     if (!sectionRef.current) {
       console.error("❌ sectionRef.current is NULL");
@@ -25,7 +24,6 @@ function VerticalWaterMarkHeading({
     }
   
     const elements = sectionRef.current.querySelectorAll(".bg_text");
-    console.log("🔍 Found elements:", elements);
   
     if (elements.length === 0) {
       console.error("⚠️ No elements found for animation!");
@@ -59,18 +57,17 @@ function VerticalWaterMarkHeading({
         {textWaterMark && (
           <div className="water_mark_flex flex flex-col h-full absolute opacity-[0.040] justify-center">
             {textWaterMark.split("").map((str, index) => (
-              <>
-              {console.log(str)}
+              <React.Fragment  key={index}>
               
               <span
-                key={index}
+               
                 className={`bg_text uppercase font-medium midlandfontmedium -rotate-90 writing-vertical-rl text-center ${
                   rotate && "!-rotate-90"
                 }`}
               >
                 {str}
               </span>
-              </>
+              </React.Fragment>
             ))}
           </div>
         )}

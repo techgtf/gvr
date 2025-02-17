@@ -72,7 +72,6 @@ function CharityInitiatives() {
             );
 
             ScrollTrigger.refresh();
-            console.log("✅ GSAP Animations Refreshed!");
         }, 300);
     }, [location.pathname]);
 
