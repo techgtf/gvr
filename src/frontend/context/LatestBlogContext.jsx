@@ -56,7 +56,7 @@ const latestBlog = [
     },
     {
       id: 3,
-      desktopImg:"desktop-blog-3.webp",
+      desktopImg:"desktop-blog-1.webp",
       mobileImg:"blog1.webp",
       date: "12-12-2024",
       type:"Blog",

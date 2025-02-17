@@ -14,7 +14,8 @@ export default function CommonBtn({
     ...rest // Any other props
 }) {
     // Determine which element it is
-    const isReactRouterLink = TagName === 'Link';
+    const isReactRouterLink = TagName === Link;
+    
     const isAnchor = TagName === 'a';
     const isButton = TagName === 'button';
 

@@ -105,7 +105,7 @@ const Index = ({ data }) => {
             <React.Fragment key={index}>
               <li  className="mt-3  last:mb-0  first:mt-0 last:mb-0">
                 <SlideIn SlideIn duration={1} delay={0.5}>
-                  <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
+                  <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}  state={{ blog: item}}>
                     <div className="ListCard">
                       <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
                         {item.title}
