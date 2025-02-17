@@ -10,13 +10,15 @@ import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import store from './store/store.js'
 
 const router = createBrowserRouter([...UserRoutes, ...AdminRoutes]);
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-    <TeamProvider>
+    <>
+      <TeamProvider>
       <LatestBlogProvider>
       <ContextProvider>
         <Provider store={store}>
@@ -28,5 +30,7 @@ createRoot(document.getElementById("root")).render(
       </ContextProvider>
       </LatestBlogProvider>
     </TeamProvider>
+    <ToastContainer />
+    </>
   // </StrictMode>
 );
