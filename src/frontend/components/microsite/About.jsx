@@ -11,6 +11,7 @@ function About({
   headingText,
   descriptionText,
   reverseWatermark = true,
+  alt,
 }) {
   const reverseText = (text) => {
     return text.split("").reverse().join("");
@@ -52,7 +53,7 @@ function About({
                 <ZoomOut initialScale={1.5} duration={2}>
                   <img
                     src={imageSrc}
-                    alt={alt}
+                    alt={alt || "img"}
                     className="object-cover"
                   />
                 </ZoomOut>
