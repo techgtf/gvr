@@ -56,6 +56,7 @@ export default function Hero({
             <button
               onClick={handleToggelMute}
               className="text-white border border-solid lg:h-[50px] h-[35px] lg:w-[50px] w-[35px] flex justify-center items-center rounded-full cursor-pointer"
+              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
             >
               {isMuted ? (
                 <IoVolumeMute className="lg:text-[25px] text-[18px] cursor-pointer" />
@@ -63,6 +64,7 @@ export default function Hero({
                 <VscUnmute className="lg:text-[25px] text-[18px] cursor-pointer" />
               )}
             </button>
+
           </div>
         </div>
 

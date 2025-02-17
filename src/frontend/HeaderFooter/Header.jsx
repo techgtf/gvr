@@ -81,7 +81,7 @@ export default function Header() {
     `${BASE_ROOT}sharanam`,
     `${BASE_ROOT}anandam`,
     `${BASE_ROOT}vilasa`,
-    `${BASE_ROOT}gv-homes`,
+    `${BASE_ROOT}casa-uday`,
   ];
 
   const getLogoSrc = () => {

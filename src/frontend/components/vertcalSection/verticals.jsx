@@ -43,19 +43,25 @@ export default function Verticals() {
                 <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[40px] xl:gap-0 gap-[44px] lg:px-0 px-4'>
                     {verticalData.map((item, index) => (
                         <div className='boxes relative lg:w-[47%] w-full' key={index}>
-                            <Link 
-                                to={item.link} 
+                            <Link
+                                to={item.link}
                                 className='relative block overflow-hidden cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
                             >
                                 <ZoomOut initialScale={1.5} duration={2}>
-                                    <img 
-                                        className='lg:h-[300px] h-[300px] cursor-pointer w-full object-cover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
-                                        src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`} 
-                                        alt={item.alt} 
-                                        tabIndex="0"
-                                    />
+                                    <Link
+                                        to={`${CONFIG.BASE_ROOT}`}
+                                        className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
+             focus-visible:ring-4 focus-visible:ring-blue-500 rounded-md transition-all"
+                                    >
+                                        <img
+                                            className="lg:h-[300px] h-[300px] cursor-pointer w-full object-cover"
+                                            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.imgSrc}`}
+                                            alt={item.alt}
+                                        />
+                                    </Link>
+
                                 </ZoomOut>
-                                <span 
+                                <span
                                     className='link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
                                 >
                                     <GoArrowUpRight className='cursor-pointer lg:text-[49px] text-[35px]' />

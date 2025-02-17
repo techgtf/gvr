@@ -40,7 +40,7 @@ export default function MbTabLinks() {
                         {[
                             { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                             { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
-                            { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
+                            { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
                             { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
                         ].map(({ name, path, location }) => (
                             <li key={path} className="px-8 pt-6 pb-4 mb-1 border-b last:border-b-0">

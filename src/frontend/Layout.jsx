@@ -64,12 +64,15 @@ function Layout({ children }) {
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only absolute top-0 left-0 bg-white text-black p-2 z-50"
-      ></a>
+      >
+        Skip to main content
+      </a>
+
 
       <>
         {location.pathname === `${BASE_ROOT}sharanam` ||
           location.pathname === `${BASE_ROOT}anandam` ||
-          location.pathname === `${BASE_ROOT}gv-homes` ||
+          location.pathname === `${BASE_ROOT}casa-uday` ||
           location.pathname === `${BASE_ROOT}vilasa` ? <MicrositeMenu /> : null}
 
         {/* Custom Cursor */}

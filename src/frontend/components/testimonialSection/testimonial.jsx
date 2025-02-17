@@ -122,16 +122,20 @@ export default function Testimonial() {
                                             className="w-full"
                                         ></video> */}
                                         <button
-                                            className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'
+                                            className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
+             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white 
+             focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:border focus-visible:border-white 
+             rounded-full transition-all"
                                             onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
+                                            aria-label="Play Video"
                                         >
                                             <img
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
                                                 className="cursor-pointer lg:h-[44px] h-[30px]"
                                                 alt="Play button icon"
                                             />
-
                                         </button>
+
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
                                     <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
