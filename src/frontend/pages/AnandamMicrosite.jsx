@@ -264,7 +264,7 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3, gallery4]}
+                actualImages={[gallery1, gallery4, gallery3, ]}
             />
         </>
     )
