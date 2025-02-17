@@ -124,7 +124,7 @@ const BlogList = () => {
           latestBlog.map((item, index) => (
             <li key={index} className="mt-5">
             <SlideIn duration={1} delay={0.5}>
-              <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}>
+              <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id} state={{ blog: item}}>
                 <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-normal md:font-light leading-[20px] md:leading-[25px] lg:leading-[29px]">
                   {" "}
                   {item.title?.length > 100

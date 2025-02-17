@@ -5,6 +5,7 @@ import { BASE_ROOT } from "../../../config";
 import * as CONFIG from "../../../config";
 import SideMenu from "./SideMenu";
 import NavDropdown from "./NavDropdown";
+import SearchGlobal from "../components/SearchGlobal";
 
 const debounce = (func, delay) => {
   let timeoutId;
@@ -26,11 +27,11 @@ export default function Header() {
     setHoveringNav(false);
     setDropdown(false);
     setActiveItem(null);
-  }, [location.pathname]); 
+  }, [location.pathname]);
 
   const handleToggleSidebar = () => {
     setOpenSidebar(!openSidebar);
-    setDropdown(false); 
+    setDropdown(false);
   };
 
   const handleScroll = useCallback(
@@ -49,14 +50,14 @@ export default function Header() {
     if (item === "Residential") {
       setDropdown(true);
       setActiveItem(item);
-      setHoveringNav(true); 
+      setHoveringNav(true);
     }
   };
 
   const handleDropdownClose = () => {
     setDropdown(false);
     setActiveItem(null);
-    setHoveringNav(false); 
+    setHoveringNav(false);
   };
 
   const handleMouseEnterOtherItems = (item) => {
@@ -145,23 +146,25 @@ export default function Header() {
                   ))}
                 </ul>
               </div>
-              <button
-                className="menuBtn flex justify-end items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-                aria-label="Open sidebar menu"
-                onClick={handleToggleSidebar}
-              >
-                <img
-                  className={`cursor-pointer ${
-                    isFixed ? "whiteIcon" : "coloredIcon"
-                  } w-[80%]`}
-                  src={
-                    isFixed || activeItem
-                      ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
-                      : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
-                  }
-                  alt="menu icon for navigation options"
-                />
-              </button>
+              <div className="flex items-center lg:gap-x-5 gap-x-2">
+                <SearchGlobal headerFixed={isFixed} />
+                <button
+                  className="menuBtn flex justify-end items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                  aria-label="Open sidebar menu"
+                  onClick={handleToggleSidebar}
+                >
+                  <img
+                    className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"
+                      } w-[80%]`}
+                    src={
+                      isFixed || activeItem
+                        ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
+                        : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
+                    }
+                    alt="menu icon for navigation options"
+                  />
+                </button>
+              </div>
             </nav>
           </div>
         </div>
