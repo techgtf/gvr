@@ -144,7 +144,43 @@ export default function Testimonial() {
                         }}
                         className="testimonialSwiper lg:mt-20 mt-10"
                     >
-                        {memoizedSlides}
+                        {slidesData.map((item, index) => (
+                            <SwiperSlide key={index} className="panel">
+                                <div className='flex_div flex flex-wrap justify-between'>
+                                    <div className='posterSide relative lg:w-[45%] w-full'>
+                                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.alt}`} />
+                                        {/* <video
+                                            ref={(el) => (videoRefs.current[index] = el)}
+                                            poster={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`}
+                                            src={item.video}
+                                            className="w-full"
+                                        ></video> */}
+                                        <button
+                                            className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
+    focus-visible:outline-none focus-visible:ring-0"
+                                            onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
+                                            aria-label="Play Video"
+                                        >
+
+                                            <img
+                                                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
+                                                className="cursor-pointer lg:h-[44px] h-[30px]"
+                                                alt="Play button icon"
+                                            />
+                                        </button>
+
+                                    </div>
+                                    <div className='borderline w-[18%] relative lg:block hidden'></div>
+                                    <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
+                                        <p className='desc lg:text-[17px] text-[14px] tracking-[2px]'>{item.desc}</p>
+                                        <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
+                                            <small className='line'></small> {item.name}
+                                        </div>
+                                        {/* <FullBtn text='Watch More' LinkName="a" link='https://www.youtube.com/@greatvaluerealty' /> */}
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                     <VideoModal videoUrl={selectedVideo} onClose={closeVideo} />
                 </div>
