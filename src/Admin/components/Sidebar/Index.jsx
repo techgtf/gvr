@@ -222,6 +222,14 @@ const Sidebar = (props) => {
                   <span>Meta Details</span>
                 </NavLink>
 
+                <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'home-overview'}>
+                  <span className="icon">
+                    <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
+                    <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
+                  </span>
+                  <span>Home Overview</span>
+                </NavLink>
+
                 <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'about'}>
                   <span className="icon">
                     <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
@@ -296,6 +304,11 @@ const Sidebar = (props) => {
                 <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}category`}>
                   <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
                   <span>Category</span>
+                </NavLink>
+
+                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}other-verticals`}>
+                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                  <span>Other Verticals</span>
                 </NavLink>
 
                 <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}top-cities`}>

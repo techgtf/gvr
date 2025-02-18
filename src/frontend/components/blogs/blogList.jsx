@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "./blogCard";
 import { Link } from "react-router-dom";
-import { BASE_ROOT } from "../../../../config";
+import { BASE_ROOT ,DATA_ASSET_URL} from "../../../../config";
 import SearchField from "./SearchField";
 import Divider from "./Divider";
 import SlideIn from "../Animations/SlideIn";
 import { LatestBlogContext } from "../../context/LatestBlogContext";
-
+import axios from "axios";
+import dayjs from 'dayjs';
 const data = [
   {
     id: 1,
@@ -92,6 +93,39 @@ const data = [
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { latestBlog } = useContext(LatestBlogContext);
+
+  const [blogs, setBlogs] = useState([]); // State to store blog data
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+
+  useEffect(() => {
+    // Fetch blog data from the API when the component mounts
+    axios
+      .get(DATA_ASSET_URL+`blogs`) // API endpoint
+      .then((response) => {
+        setBlogs(response.data.data.data); // Set the fetched data to state
+        setLoading(false); // Set loading to false once data is fetched
+      })
+      .catch((error) => {
+        setError(error.message); // Set error message if the request fails
+        setLoading(false); // Set loading to false if there’s an error
+      });
+  }, []); // Empty dependency array means it runs once on component mount
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading message while fetching
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Show error message if request fails
+  }
+
+console.log(blogs,"blogs")
+// const blogDate = new Date(blogs[0].created_at);
+// const formattedDate = blogDate.toISOString().split('T')[0];
+// console.log(formattedDate,"date")
+const formattedDate = dayjs(blogs[0].created_at).format('YYYY-MM-DD');
+console.log(formattedDate, "formatted date");
 
   // 🔍 Filter blogs based on search input
   const filteredBlogs = data.filter((item) =>

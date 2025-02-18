@@ -10,7 +10,7 @@ import { useLocation  } from "react-router-dom";
 const BlogDetails = () => {
   const location = useLocation();
   const blog = location.state?.blog;
-  const latestBlog = location.state?.latestBlog;
+  // const latestBlog = location.state?.latestBlog;
 
   if (!blog) return <h2>Blog not found!</h2>;
   return (
@@ -22,7 +22,7 @@ const BlogDetails = () => {
           parentTitle={"BLOGS"}
           extraClassesImg={"objectRight"}
           />
-          <Index data={blog} latestBlogData={latestBlog}/>
+          <Index data={blog} />
       </>
   )
 }

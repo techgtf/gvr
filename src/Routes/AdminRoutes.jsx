@@ -4,59 +4,61 @@ import { ADMIN_ROOT } from "../../config";
 import Loader from "../Loader/loader";
 import Layout from "../frontend/Layout";
 import PageNotFound from "../frontend/PageNotFound/PageNotFound";
+import ProtectedRoute from "../admin/components/ProtectedRoute/Index";
 import Dashboard from "../admin/Dashboard";
 import { elements } from "chart.js";
 import AdminLayout from "../admin/components/Layout/Index";
 import PlatterPage from "../admin/PlatterPage/Index";
 import AddPlatterPage from "../admin/PlatterPage/AddPlatter";
-import States from '../admin/Locations/States';
-import Login from '../admin/Login';
-import EditPlatter from '../admin/PlatterPage/EditPlatter';
-import PlatterBanners from '../admin/PlatterPage/PlatterBanners';
-import Projects from '../admin/Projects/Index';
-import AddProject from '../admin/Projects/Add';
-import EditProject from '../admin/Projects/EditProject';
+import States from "../admin/Locations/States";
+import Login from "../admin/Login";
+import EditPlatter from "../admin/PlatterPage/EditPlatter";
+import PlatterBanners from "../admin/PlatterPage/PlatterBanners";
+import Projects from "../admin/Projects/Index";
+import AddProject from "../admin/Projects/Add";
+import EditProject from "../admin/Projects/EditProject";
 
-import ProjectLocation from '../admin/Projects/Location'
-import ProjectOverview from '../admin/Projects/Overview'
-import FloorPlan from '../admin/Projects/FloorPlan'
-import Gallery from '../admin/Projects/Gallery'
-import Banner from '../admin/Projects/Banner'
+import ProjectLocation from "../admin/Projects/Location";
+import ProjectOverview from "../admin/Projects/Overview";
+import FloorPlan from "../admin/Projects/FloorPlan";
+import Gallery from "../admin/Projects/Gallery";
+import Banner from "../admin/Projects/Banner";
 
-import ProjectAmenities from '../admin/Projects/Amenities'
-import ProjectMasterPlan from '../admin/Projects/MasterPlan'
-import ProjectLocationAdvantage from '../admin/Projects/LocationAdvantage'
-import ProjectFaq from '../admin/Projects/Faq'
-import Highlights from '../admin/Projects/Highlights'
-import MicroForm from '../admin/Projects/MicroForm'
+import ProjectAmenities from "../admin/Projects/Amenities";
+import ProjectMasterPlan from "../admin/Projects/MasterPlan";
+import ProjectLocationAdvantage from "../admin/Projects/LocationAdvantage";
+import ProjectFaq from "../admin/Projects/Faq";
+import Highlights from "../admin/Projects/Highlights";
+import MicroForm from "../admin/Projects/MicroForm";
 
-import Forgot from '../admin/Forgot';
-import Cities from '../admin/Locations/Cities';
-import HomeBanner from '../admin/HomeBanner/Index';
-import Amenities from '../admin/Amenities';
-import Developers from '../admin/Developers/Index';
-import Category from '../admin/Category/Index';
-import Typologies from '../admin/Typologies/Index';
-import PageMetas from '../admin/PageMeta/Index';
-import TypologiesSubTypologies from '../admin/Typologies/SubTypology';
-import CategoryTypology from '../admin/Category/CategoryTypology';
+import Forgot from "../admin/Forgot";
+import Cities from "../admin/Locations/Cities";
+import HomeBanner from "../admin/HomeBanner/Index";
+import Amenities from "../admin/Amenities";
+import Developers from "../admin/Developers/Index";
+import Category from "../admin/Category/Index";
+import Typologies from "../admin/Typologies/Index";
+import PageMetas from "../admin/PageMeta/Index";
+import TypologiesSubTypologies from "../admin/Typologies/SubTypology";
+import CategoryTypology from "../admin/Category/CategoryTypology";
 // import SubTypologies from '../../admin/Subtypology/Index';
-import BlogCategory from '../admin/Blogs/BlogCategory';
-import Blogs from '../admin/Blogs';
-import AddBlog from '../admin/Blogs/Add';
-import EditBlog from '../admin/Blogs/Edit';
-import Careers from '../admin/Careers/Index';
-import AddCareer from '../admin/Careers/Add';
-import UpdateCareer from '../admin/Careers/Update';
-import Localities from '../admin/Locations/Localities';
-import Process from '../admin/Process/Index';
-import TopCities from '../admin/Topcities/Index';
-import Testimonials from '../admin/Testimonials';
-import Enquiry from '../admin/Enquiry/Index';
-import ProjectsQuery from '../admin/Enquiry/Projects';
-import ProjectQuery from '../admin/Enquiry/Project';
-import JobApplications from '../admin/Enquiry/JobApplications';
-import Offers from '../admin/Offers'
+import BlogCategory from "../admin/Blogs/BlogCategory";
+import Blogs from "../admin/Blogs";
+import AddBlog from "../admin/Blogs/Add";
+import EditBlog from "../admin/Blogs/Edit";
+import Careers from "../admin/Careers/Index";
+import AddCareer from "../admin/Careers/Add";
+import UpdateCareer from "../admin/Careers/Update";
+import Localities from "../admin/Locations/Localities";
+import Process from "../admin/Process/Index";
+import TopCities from "../admin/Topcities/Index";
+import Testimonials from "../admin/Testimonials";
+import Enquiry from "../admin/Enquiry/Index";
+import ProjectsQuery from "../admin/Enquiry/Projects";
+import ProjectQuery from "../admin/Enquiry/Project";
+import JobApplications from "../admin/Enquiry/JobApplications";
+import Offers from "../admin/Offers";
+import HomePageOverview from "../admin/components/homepage/overview/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -64,11 +66,13 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Dashboard />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
@@ -373,6 +377,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <PageMetas />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}home-overview`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomePageOverview />
         </Suspense>
       </AdminLayout>
     ),
