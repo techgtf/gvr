@@ -72,7 +72,11 @@ const EnquiryForm = () => {
           </div>
 
           <div className="mt-[2px] basis-[100%] xl:text-right text-left">
-            <p className="poppins-regular  font-[350]">+91 7291 972 000</p>
+            <p className="poppins-regular  font-[350]">
+              <a href="tel:+917291972000" className="hover:underline">
+                +91 7291 972 000
+              </a>
+            </p>
           </div>
         </div>
 
@@ -90,7 +94,12 @@ const EnquiryForm = () => {
 
           <div className="mt-[2px] basis-[100%] xl:text-right text-left">
             <p className="poppins-regular xl:text-right text-left font-[350]">
-              marketing@greatvalueindia.com
+              <a
+                href="mailto:marketing@greatvalueindia.com"
+                className="hover:underline"
+              >
+                marketing@greatvalueindia.com
+              </a>
             </p>
           </div>
         </div>

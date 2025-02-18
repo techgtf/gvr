@@ -300,7 +300,7 @@ const CommercialProjects = () => {
                 spaceBetween: 40,
               },
             }}
-            className="mediaSwiper"
+            className="mediaSwiper commercialSwiper"
             style={{
               display: "flex !important",
               alignItems: "center !important",
@@ -373,6 +373,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               </p>
             </SlideIn>
           </div>
+          {/* <SlideIn duration={2} delay={0.5}> */}
           <div className="mt-[4rem]">
             <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
               All Projects
@@ -398,6 +399,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               );
             })}
           </div>
+          {/* </SlideIn> */}
         </div>
       </div>
 
