@@ -300,7 +300,7 @@ const CommercialProjects = () => {
                 spaceBetween: 40,
               },
             }}
-            className="mediaSwiper"
+            className="mediaSwiper commercialSwiper"
             style={{
               display: "flex !important",
               alignItems: "center !important",
@@ -373,31 +373,33 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               </p>
             </SlideIn>
           </div>
-          <div className="mt-[4rem]">
-            <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
-              All Projects
-            </h3>
-            {project.projects.map((proj) => {
-              return (
-                <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
-                  <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
-                    {proj.name}
-                  </p>
-                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  <p className="  basis-[30%] ">{proj.address}</p>
-                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  <div className="basis-[25%] ">
-                    <button className="bg-primary text-[11px] py-[8px] px-[15px] text-white">
-                      {proj.name == "Tavru Sohna" ||
-                      proj.name == "Moserbear Part 2"
-                        ? "COMING SOON"
-                        : "READ MORE"}
-                    </button>
+          <SlideIn duration={2} delay={0.5}>
+            <div className="mt-[4rem]">
+              <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
+                All Projects
+              </h3>
+              {project.projects.map((proj) => {
+                return (
+                  <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
+                    <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
+                      {proj.name}
+                    </p>
+                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                    <p className="  basis-[30%] ">{proj.address}</p>
+                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                    <div className="basis-[25%] ">
+                      <button className="bg-primary text-[11px] py-[8px] px-[15px] text-white">
+                        {proj.name == "Tavru Sohna" ||
+                        proj.name == "Moserbear Part 2"
+                          ? "COMING SOON"
+                          : "READ MORE"}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </SlideIn>
         </div>
       </div>
 
