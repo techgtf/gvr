@@ -47,13 +47,16 @@ function SocialDetails() {
             {/* Social Section */}
             <div className="details bg-[#EFF5FA] px-5 md:px-12 ">
                 <div className="tab_details">
-                    <div className="heading text-center flex justify-center py-10 flex-col items-center">
+                    <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
                             <CommonHeading HeadingText={tabData.social.heading} />
                         </FadeIn>
                         <SlideIn duration={0.8} delay={0.2}>
                             <p className="md:w-[45%] mx-auto py-5">{tabData.social.description}</p>
                         </SlideIn>
+                    </div>
+                    <div className="pipeline relative h-[20vh] flex justify-center">
+                        <div className="absolute top-0 w-[2px] bg-gray-700 h-[15vh]"></div>
                     </div>
 
                     {/* Social Content Mapping */}
@@ -78,13 +81,17 @@ function SocialDetails() {
             {/* Environment Section */}
             <div className="details bg-white mt-10 px-5 md:px-12">
                 <div className="tab_details">
-                    <div className="heading text-center flex justify-center py-10 flex-col items-center">
+                    <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
                             <CommonHeading HeadingText={tabData.environment.heading} />
                         </FadeIn>
                         <SlideIn duration={0.8} delay={0.2}>
                             <p className="md:w-[45%] mx-auto py-5">{tabData.environment.description}</p>
                         </SlideIn>
+                    </div>
+
+                    <div className="pipeline relative h-[20vh] flex justify-center">
+                        <div className="absolute top-0 w-[2px] bg-gray-700 h-[15vh]"></div>
                     </div>
 
                     {/* Environment Content Mapping */}
