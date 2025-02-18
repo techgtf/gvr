@@ -123,12 +123,11 @@ export default function Testimonial() {
                                         ></video> */}
                                         <button
                                             className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
-             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white 
-             focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:border focus-visible:border-white 
-             rounded-full transition-all"
+    focus-visible:outline-none focus-visible:ring-0"
                                             onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
                                             aria-label="Play Video"
                                         >
+
                                             <img
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
                                                 className="cursor-pointer lg:h-[44px] h-[30px]"

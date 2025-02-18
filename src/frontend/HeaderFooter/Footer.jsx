@@ -27,13 +27,13 @@ export default function Footer() {
           className="footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative"
         >
           <button
-            className="toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px] 
-    focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+            className="toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px] focus-visible:outline-none focus-visible:ring-0"
             onClick={() => setToggelLinks(!toggelLinks)}
-            aria-label={toggelLinks ? "Collapse footer links" : "Expand footer links"} // Screen reader label
-            title={toggelLinks ? "Collapse footer links" : "Expand footer links"} // Tooltip on hover
-            aria-expanded={toggelLinks} // Indicates the state of the toggle
+            aria-label={toggelLinks ? "Collapse footer links" : "Expand footer links"}
+            title={toggelLinks ? "Collapse footer links" : "Expand footer links"}
+            aria-expanded={toggelLinks}
           >
+
 
             <span className="sr-only">{toggelLinks ? "Collapse footer links" : "Expand footer links"}</span>
 
@@ -50,7 +50,7 @@ export default function Footer() {
             <div className="block md:flex justify-between items-center lg:pb-8 pb-5">
               <Link
                 to={`${CONFIG.BASE_ROOT}`}
-                className="lg:flex hidden justify-center md:block"
+                className="lg:flex hidden justify-center md:block focus-visible:outline-none focus-visible:ring-0"
               >
                 <img
                   className="h-[65px]"
@@ -58,11 +58,12 @@ export default function Footer() {
                   alt="Great Value Realty Logo"
                 />
               </Link>
+
               <ul className="grid md:grid-cols-5 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]">
                 <li>
                   <Link
                     to={`${BASE_ROOT}residential`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Residential
                   </Link>
@@ -70,20 +71,23 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${BASE_ROOT}commercial-projects`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Commercial
                   </Link>
                 </li>
                 <li>
-                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 tracking-[2px] focus:outline-transparent">
-                    media centre
+                  <Link
+                    to={`${BASE_ROOT}media`}
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                  >
+                    Media Centre
                   </Link>
                 </li>
                 <li>
                   <Link
                     to={`${BASE_ROOT}about-us`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Our Profile
                   </Link>
@@ -91,12 +95,13 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${CONFIG.BASE_ROOT}contact-us`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
                   >
-                    contact us
+                    Contact Us
                   </Link>
                 </li>
               </ul>
+
             </div>
           </div>
 

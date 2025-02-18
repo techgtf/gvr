@@ -14,13 +14,14 @@ export default function SearchGlobal({
     return (
         <>
             <button
-                className="search_icon"
+                className="search_icon focus-visible:outline-none focus-visible:ring-0"
                 onClick={() => setToggleModal(true)}
                 aria-label="Open search"
                 title="Open search"
             >
                 <IoIosSearch className={`cursor-pointer text-[20px] ${headerFixed ? 'text-black' : 'text-white'}`} />
             </button>
+
 
 
             {toggleModal && <SearchGlobalPortal
