@@ -55,7 +55,7 @@ export default function Hero({
           <div className="vdo_btns absolute lg:bottom-[40px] bottom-[15px] lg:right-[30px] right-[15px]">
             <button
               onClick={handleToggelMute}
-              className="text-white border border-solid lg:h-[50px] h-[35px] lg:w-[50px] w-[35px] flex justify-center items-center rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-0"
+              className="text-white  lg:h-[50px] h-[35px] lg:w-[50px] w-[35px] flex justify-center items-center rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-0"
               aria-label={isMuted ? "Unmute audio" : "Mute audio"}
             >
 

@@ -4,8 +4,8 @@ import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  // base: '/',
-  base: '/great-value-1/',
+  base: '/',
+  // base: '/great-value-1/',
   plugins: [react()],
   resolve: {
     alias: {
