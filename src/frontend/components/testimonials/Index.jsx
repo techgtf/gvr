@@ -63,7 +63,7 @@ const Testimonials = () => {
                     />
                     <button
                       className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
-    focus-visible:outline-none focus-visible:ring-0"
+    focus-visible:outline-transparent focus-visible:ring-0"
                     >
 
                       <img

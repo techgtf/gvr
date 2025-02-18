@@ -105,9 +105,17 @@ export default function Header() {
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
-            <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="Great Value Realty Logo" />
+            <Link
+              to={`${BASE_ROOT}`}
+              className="focus-visible:outline-transparent focus-visible:ring-0"
+            >
+              <img
+                className="w-[50%] sm:w-[70%] cursor-pointer"
+                src={getLogoSrc()}
+                alt="Great Value Realty Logo"
+              />
             </Link>
+
             <nav className="right_nav flex justify-between items-center gap-10" role="navigation" aria-label="Main Navigation">
               <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"} ${activeItem ? "text-primary" : ""}`}>
                 <ul className="flex justify-evenly gap-8 items-center" role="menu">
