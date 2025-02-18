@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
 import { AiOutlineClose } from "react-icons/ai";
+import * as CONFIG from "../../../config";
 
 function SideMenu({ setOpenSidebar }) {
   const sideMenuRef = useRef(null);
@@ -42,82 +43,93 @@ function SideMenu({ setOpenSidebar }) {
   return (
     <div
       ref={sideMenuRef}
-      className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-full sm:w-[28%] h-screen px-10"
+      className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-full sm:w-[28%] h-screen px-5 md:px-10"
     >
-      <div className="absolute top-5 right-5">
-        <AiOutlineClose  onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer"/>
-       
+
+      <Link
+        to={`${CONFIG.BASE_ROOT}`}
+        className="flex  absolute top-[30px] justify-center md:block focus-visible:outline-none focus-visible:ring-0"
+      >
+        <img
+          className="h-[50px]"
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`}
+          alt="Great Value Realty Logo"
+        />
+      </Link>
+      <div className="absolute top-10 right-5">
+        <AiOutlineClose onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer" />
+
       </div>
-      <div className="flex flex-col relative items-center gap-5 justify-evenly h-full">
+      <div className="flex flex-col relative mt-12 items-center gap-3 justify-evenly h-full">
         <ul className="w-full flex flex-col gap-10">
           <li>
             <div className="title text-[#0e69ae] tracking-[2px] uppercase text-[16px] py-3 border-b border-[#0000001a]">
               Our Projects
             </div>
             <div className="title_links flex gap-5 uppercase text-[#484747] py-3">
-            <Link to={`${BASE_ROOT}residential`} onClick={(e) => {
+              <Link to={`${BASE_ROOT}residential`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}residential`));
               }}>
-              <span
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                Residential
-              </span>
+                <span
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  Residential
+                </span>
               </Link>
               <span className="text-[#0e69ae]">/</span>
               <Link to={`${BASE_ROOT}commercial-projects`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}commercial-projects`));
               }}>
-              <span
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                Commercial
-              </span>
+                <span
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  Commercial
+                </span>
               </Link>
-              </div>
+            </div>
           </li>
 
           <li>
             <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
               Our Profile
             </div>
-            <div className="title_links flex gap-2 uppercase text-[#484747] py-3">
-            <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
+            <div className="title_links flex flex-wrap gap-2 uppercase text-[#484747] py-3">
+              <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}about-us`));
               }}>
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                About Us
-              </span>
+                <span
+                  onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  About Us
+                </span>
               </Link>
               <span className="text-[#0e69ae]">/</span>
               <Link to={`${BASE_ROOT}esg`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}esg`));
               }}>
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}esg`)}
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                Our ESG
-              </span>
+                <span
+                  onClick={() => handleLinkClick(`${BASE_ROOT}esg`)}
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  ESG
+                </span>
               </Link>
               <span className="text-[#0e69ae]">/</span>
               <Link to={`${BASE_ROOT}media`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}media`));
               }}>
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}media`)}
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                Media Centre
-              </span>
+                <span
+                  onClick={() => handleLinkClick(`${BASE_ROOT}media`)}
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  Media Centre
+                </span>
               </Link>
             </div>
           </li>
@@ -127,16 +139,16 @@ function SideMenu({ setOpenSidebar }) {
               Career
             </div>
             <div className="title_links uppercase text-[#484747]  py-3">
-            <Link to={`${BASE_ROOT}career`} onClick={(e) => {
+              <Link to={`${BASE_ROOT}career`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}career`));
               }}>
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}career`)}
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                All Job Openings
-              </span>
+                <span
+                  onClick={() => handleLinkClick(`${BASE_ROOT}career`)}
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  All Job Openings
+                </span>
               </Link>
             </div>
           </li>
@@ -146,16 +158,16 @@ function SideMenu({ setOpenSidebar }) {
               Find Us
             </div>
             <div className="title_links uppercase text-[#484747] py-3">
-            <Link to={`${BASE_ROOT}contact-us`} onClick={(e) => {
+              <Link to={`${BASE_ROOT}contact-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}contact-us`));
               }}>
-              <span
-                onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
-                className="text-[12px] tracking-[2px] cursor-pointer"
-              >
-                Contact Us
-              </span>
+                <span
+                  onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
+                  className="text-[12px] tracking-[2px] cursor-pointer"
+                >
+                  Contact Us
+                </span>
               </Link>
             </div>
           </li>
