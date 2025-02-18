@@ -59,7 +59,7 @@ const projects = [
       {
         link: "https://gvlip.com",
         name: "Moser Baer Solar Ltd / Warehouse",
-        address: "66A, Suraj Pur, Greater Noida",
+        address: "Surajpur, Greater Noida",
       },
       {
         name: "Tavru Sohna",
