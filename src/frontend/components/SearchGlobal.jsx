@@ -13,11 +13,15 @@ export default function SearchGlobal({
 
     return (
         <>
-            <div
-                className='search_icon '
+            <button
+                className="search_icon"
                 onClick={() => setToggleModal(true)}
-            ><IoIosSearch className={`cursor-pointer text-[20px] ${headerFixed ? 'text-black' : 'text-white'}`} />
-            </div>
+                aria-label="Open search"
+                title="Open search"
+            >
+                <IoIosSearch className={`cursor-pointer text-[20px] ${headerFixed ? 'text-black' : 'text-white'}`} />
+            </button>
+
 
             {toggleModal && <SearchGlobalPortal
                 isOpen={toggleModal}

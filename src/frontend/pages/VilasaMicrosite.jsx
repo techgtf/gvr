@@ -201,7 +201,7 @@ function VilasaMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[actual1, actual2, actual3, actual4]}
+                actualImages={[actual1, actual2, actual3]}
             />
         </>
     )

@@ -28,11 +28,13 @@ export default function Footer() {
         >
           <button
             className="toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px] 
-  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+    focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             onClick={() => setToggelLinks(!toggelLinks)}
             aria-label={toggelLinks ? "Collapse footer links" : "Expand footer links"} // Screen reader label
             title={toggelLinks ? "Collapse footer links" : "Expand footer links"} // Tooltip on hover
+            aria-expanded={toggelLinks} // Indicates the state of the toggle
           >
+
             <span className="sr-only">{toggelLinks ? "Collapse footer links" : "Expand footer links"}</span>
 
             <span className="icon cursor-pointer lg:h-[35px] lg:w-[35px] h-[28px] w-[28px] border border-[#3f3f3f] rounded-full flex justify-center items-center">
@@ -60,36 +62,36 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${BASE_ROOT}residential`}
-                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
                   >
-                   Residential
+                    Residential
                   </Link>
                 </li>
                 <li>
                   <Link
                     to={`${BASE_ROOT}commercial-projects`}
-                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
                   >
                     Commercial
                   </Link>
                 </li>
                 <li>
-                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500">
+                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 tracking-[2px] focus:outline-transparent">
                     media centre
                   </Link>
                 </li>
                 <li>
                   <Link
                     to={`${BASE_ROOT}about-us`}
-                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
                   >
                     Our Profile
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to={`${CONFIG.BASE_ROOT}contact-us`}                 
-                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                    to={`${CONFIG.BASE_ROOT}contact-us`}
+                    className="xl:text-[14px] text-[12px] tracking-[2px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-transparent"
                   >
                     contact us
                   </Link>

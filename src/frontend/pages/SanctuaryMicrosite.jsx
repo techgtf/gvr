@@ -155,7 +155,7 @@ function SanctuaryMicrosite() {
         bannerDetailsProps={{
             heading: "SANCTUARY 105",
             location: "SECTOR 105, GURUGRAM",
-            description: "3 & 4 BHK Apartments",
+            description: "3 & 4 BHK LUXURY RESIDENTIAL APARTMENTS",
         }}
     />
 

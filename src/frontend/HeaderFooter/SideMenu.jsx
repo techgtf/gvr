@@ -51,7 +51,7 @@ function SideMenu({ setOpenSidebar }) {
       <div className="flex flex-col relative items-center gap-5 justify-evenly h-full">
         <ul className="w-full flex flex-col gap-10">
           <li>
-            <div className="title text-[#0e69ae] uppercase text-[16px] py-3 border-b border-[#0000001a]">
+            <div className="title text-[#0e69ae] tracking-[2px] uppercase text-[16px] py-3 border-b border-[#0000001a]">
               Our Projects
             </div>
             <div className="title_links flex gap-5 uppercase text-[#484747] py-3">
@@ -80,7 +80,7 @@ function SideMenu({ setOpenSidebar }) {
           </li>
 
           <li>
-            <div className="title uppercase text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
+            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
               Our Profile
             </div>
             <div className="title_links flex gap-2 uppercase text-[#484747] py-3">
@@ -123,7 +123,7 @@ function SideMenu({ setOpenSidebar }) {
           </li>
 
           <li>
-            <div className="title uppercase text-[#0e69ae] text-[16px] py-3 border-b border-[#0000001a]">
+            <div className="title uppercase tracking-[2px] text-[#0e69ae] text-[16px] py-3 border-b border-[#0000001a]">
               Career
             </div>
             <div className="title_links uppercase text-[#484747]  py-3">
@@ -142,7 +142,7 @@ function SideMenu({ setOpenSidebar }) {
           </li>
 
           <li>
-            <div className="title uppercase text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
+            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
               Find Us
             </div>
             <div className="title_links uppercase text-[#484747] py-3">

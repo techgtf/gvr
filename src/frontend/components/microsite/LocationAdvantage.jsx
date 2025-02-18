@@ -106,7 +106,7 @@ function LocationAdvantage({
             <span className="mr-4">{activeTab === "drive" ? "BY DRIVE" : "BY WALK"}</span>
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
-
+          <SlideIn duration={2} delay={0.5}>
           <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" ref={listRef}>
             {(activeTab === "drive" ? driveData : walkData).map((item, index) => (
               <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
@@ -122,6 +122,7 @@ function LocationAdvantage({
               </li>
             ))}
           </ul>
+          </SlideIn>
         </div>
       </div>
 

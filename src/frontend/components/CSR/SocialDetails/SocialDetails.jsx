@@ -45,7 +45,7 @@ function SocialDetails() {
     return (
         <section className="social_details ">
             {/* Social Section */}
-            <div className="details bg-[#EFF5FA] px-5 md:px-12 ">
+            <div className="details bg-[#EFF5FA] py-10 px-5 md:px-12 ">
                 <div className="tab_details">
                     <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
@@ -60,7 +60,7 @@ function SocialDetails() {
                     </div>
 
                     {/* Social Content Mapping */}
-                    <div className="grid grid-cols-1 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
+                    <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.social.details.map((item, index) => (
                             <div key={index} className="card max-w-sm overflow-hidden">
                                 <div className="relative group reveal">
@@ -70,7 +70,7 @@ function SocialDetails() {
                                     </div>
                                 </div>
                                 <div className="py-4">
-                                    <div className="text-[10px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
+                                    <div className="text-[8px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
                                 </div>
                             </div>
                         ))}
@@ -79,7 +79,7 @@ function SocialDetails() {
             </div>
 
             {/* Environment Section */}
-            <div className="details bg-white mt-10 px-5 md:px-12">
+            <div className="details bg-white py-10 px-5 md:px-12">
                 <div className="tab_details">
                     <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
@@ -95,7 +95,7 @@ function SocialDetails() {
                     </div>
 
                     {/* Environment Content Mapping */}
-                    <div className="grid grid-cols-1 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
+                    <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.environment.details.map((item, index) => (
                             <div key={index} className="card max-w-sm overflow-hidden">
                                 <div className="relative group reveal">
@@ -105,7 +105,7 @@ function SocialDetails() {
                                     </div>
                                 </div>
                                 <div className="py-4">
-                                    <div className="text-[10px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
+                                    <div className="text-[8px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
                                 </div>
                             </div>
                         ))}
@@ -114,7 +114,7 @@ function SocialDetails() {
             </div>
 
             <div className="governance bg-[#EFF5FA] px-5 md:px-12 py-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 py-5 md:grid-cols-3 gap-5">
                     <div className="heading flex flex-col p-4 justify-center">
                         <FadeIn duration={2} delay={0.7}>
                             <CommonHeading HeadingText={tabData.governance.heading} />
@@ -128,7 +128,7 @@ function SocialDetails() {
                         <div className="icon py-3 reveals">
                             <img src={item.img} alt={item.title} />
                         </div>
-                        <div className="heading text-[10px] py-4 tracking-[3.5px] leading-[3] midlandfontmedium uppercase">
+                        <div className="heading text-[8px] py-4 tracking-[3.5px] leading-[3] midlandfontmedium uppercase">
                         {item.title}
                         </div>
                         <SlideIn duration={0.8} delay={0.2}>
