@@ -61,13 +61,19 @@ const Testimonials = () => {
                       alt={item.name}
                       tabIndex="0"
                     />
-                    <button className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+                    <button
+                      className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
+             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white 
+             focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:border focus-visible:border-white 
+             rounded-full transition-all"
+                    >
                       <img
                         src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
                         className="cursor-pointer lg:h-[44px] h-[30px]"
                         alt="Play Video"
                       />
                     </button>
+
                   </ZoomOut>
                   <span className="link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
                     <GoArrowUpRight className="cursor-pointer" />

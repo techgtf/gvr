@@ -24,7 +24,9 @@ export function useImageReveal(selector) {
                 trigger: container,
                 start: window.innerWidth <= 768 ? 'top 95%' : 'top 80%',
                 toggleClass: { targets: container, className: 'active' },
-                once: true,
+                // once: true,
+                toggleActions: "restart pause restart pause", // Ensures restart on scroll in both directions
+                scrub: true, // Smooth animation synced with scroll
             });
 
             scrollTriggersRef.current.push(trigger);

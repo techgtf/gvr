@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as CONFIG from "../../../../config"
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import { useImageReveal } from '../useImageReveal';
 // import ZoomOut from '../Animations/ZoomOut';
 import SlideIn from '../Animations/SlideIn';

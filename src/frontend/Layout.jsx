@@ -81,7 +81,10 @@ function Layout({ children }) {
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only absolute top-0 left-0 bg-white text-black p-2 z-50"
-      ></a>
+      >
+        Skip to main content
+      </a>
+
 
       <>
 

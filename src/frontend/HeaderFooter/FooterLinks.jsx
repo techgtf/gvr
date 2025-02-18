@@ -12,9 +12,10 @@ export default function FooterLinks({ toggelLinks }) {
           <ul className="links_ul uppercase text-white w-full col-span-2">
             <li>
               <div className="heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5">Residential</div>
-              <Link className="block mb-4" to={`${BASE_ROOT}gv-homes`}>GV Homes</Link>
+              <Link className="block mb-4" to={`${BASE_ROOT}casa-uday`}>CASA UDAY</Link>
               <Link className="block mb-4" to={`${BASE_ROOT}sharanam`}>Sharnam</Link>
               <Link className="block mb-4" to={`${BASE_ROOT}anandam`}>Anandam</Link>
+              <Link className="block mb-4" to={`${BASE_ROOT}sanctuary`}>Sanctuary 105</Link>
               <Link className="block mb-4" to={`${BASE_ROOT}residential`}>Residential</Link>
             </li>
           </ul>

@@ -67,7 +67,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
     // ref={sectionRef}
     >
 
-      <div className="headingWrap lg:max-w-[79%] max-w-[95%] m-auto text-center">
+      <div className="headingWrap lg:max-w-[85%] max-w-[95%] m-auto text-center">
         <CommonHeading HeadingText={heading} />
       </div>
 
