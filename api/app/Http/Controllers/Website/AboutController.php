@@ -22,8 +22,6 @@ class AboutController extends Controller
             $page = $request->input('page', 1);
             $record = Timeline::search($search)->select('*')->paginate($perPage, ['*'], 'page', $page);
             
-            // $groupedRecords = $record->groupBy('year');
-
             $groupedRecords = $record->groupBy('year')->map(function ($items, $year) {
                 return [
                     'year' => $year,

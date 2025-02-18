@@ -11,14 +11,16 @@ class BlogController extends Controller
     public function index (Request $request)
     {
         try {
+
             $search="";
             if(!empty($request->search)){
                 $search = $request->search;
             }
+
             $perPage = $request->input('per_page', 10);
             $page = $request->input('page', 1);
             
-            $record = Blog::search($search)->with('blogDetails')->paginate($perPage, ['*'], 'page', $page);
+            $record = Blog::search($search)->paginate($perPage, ['*'], 'page', $page);
 
             return response()->json([
                 'status'=>true,
@@ -41,7 +43,7 @@ class BlogController extends Controller
     {
         $take = $request->input('limit', 3);
 
-        $topblogs = Blog::with('blogDetails')->latest()->take($take)->get();
+        $topblogs = Blog::latest()->take($take)->get();
         
         try {
             return response()->json([
