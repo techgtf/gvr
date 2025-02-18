@@ -14,7 +14,6 @@ const OurJourneySection = lazy(() =>
   import("../components/aboutUs/OurJourney")
 );
 
-import * as CONFIG from "../../../config";
 const Aboutus = () => {
   return (
     <>
