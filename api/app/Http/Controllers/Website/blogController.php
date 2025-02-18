@@ -65,17 +65,22 @@ class BlogController extends Controller
 
     public function show ($id)
     {
-        // $result = Blog::find($id);
+
         $result = Blog::with('blogDetails')->where('slug', '=', $id)->first();
 
         try {
             if(!empty($result)){
+
+                $nextBlog = Blog::where('id', '>', $result->id)
+                ->orderBy('id', 'asc')
+                ->first();
 
                 return response()->json([
                     'status' => true,
                     'statusCode' => 200,
                     'message' => "Get Single Record",
                     'data' => $result,
+                    'next' => $nextBlog ? $nextBlog->slug : null,
                 ]);
     
             }
