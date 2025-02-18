@@ -57,17 +57,17 @@ function SocialDetails() {
                     </div>
 
                     {/* Social Content Mapping */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5">
+                    <div className="grid grid-cols-1 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.social.details.map((item, index) => (
                             <div key={index} className="card max-w-sm overflow-hidden">
                                 <div className="relative group reveal">
                                     <img className="w-full" src={item.img} alt={item.title} />
-                                    <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md text-center p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {item.content}
                                     </div>
                                 </div>
                                 <div className="py-4">
-                                    <div className="text-[10px] tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
+                                    <div className="text-[10px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
                                 </div>
                             </div>
                         ))}
@@ -88,17 +88,17 @@ function SocialDetails() {
                     </div>
 
                     {/* Environment Content Mapping */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5">
+                    <div className="grid grid-cols-1 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.environment.details.map((item, index) => (
                             <div key={index} className="card max-w-sm overflow-hidden">
                                 <div className="relative group reveal">
                                     <img className="w-full" src={item.img} alt={item.title} />
-                                    <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {item.content}
                                     </div>
                                 </div>
                                 <div className="py-4">
-                                    <div className="text-[10px] tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
+                                    <div className="text-[10px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
                                 </div>
                             </div>
                         ))}
