@@ -18,7 +18,7 @@ class BlogController extends Controller
             $perPage = $request->input('per_page', 10);
             $page = $request->input('page', 1);
             
-            $record = Blog::search($search)->with('blogCategory')->paginate($perPage, ['*'], 'page', $page);
+            $record = Blog::search($search)->with('blogDetails')->paginate($perPage, ['*'], 'page', $page);
 
             return response()->json([
                 'status'=>true,
@@ -39,9 +39,9 @@ class BlogController extends Controller
 
     public function topBlogs(Request $request)
     {
-        $take = $request->input('limit', 5);
+        $take = $request->input('limit', 3);
 
-        $topblogs = Blog::with('blogCategory')->latest()->take($take)->get();
+        $topblogs = Blog::with('blogDetails')->latest()->take($take)->get();
         
         try {
             return response()->json([
@@ -64,7 +64,7 @@ class BlogController extends Controller
     public function show ($id)
     {
         // $result = Blog::find($id);
-        $result = Blog::with('blogCategory')->where('slug', '=', $id)->first();
+        $result = Blog::with('blogDetails')->where('slug', '=', $id)->first();
 
         try {
             if(!empty($result)){

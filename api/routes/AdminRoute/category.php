@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
         Route::post('category/{id}/update', [CategoryController::class,'update']);
         Route::post('category/{id}/status', [CategoryController::class,'status']);
         
+        
         Route::apiResource('category-typology', CategoryTypologyController::class)->except(['update']);
         Route::post('category-typology/{id}/update', [CategoryTypologyController::class,'update']);
 
