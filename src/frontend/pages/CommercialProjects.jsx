@@ -1,6 +1,7 @@
 import * as CONFIG from "../../../config";
 import { lazy } from "react";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
@@ -56,15 +57,18 @@ const projects = [
     name: "WAREHOUSES",
     projects: [
       {
+        link: "https://gvlip.com",
         name: "Moser Baer Solar Ltd / Warehouse",
-        address: "66A, Suraj Pur, Greater Noida, UP 201306",
+        address: "66A, Suraj Pur, Greater Noida",
       },
       {
         name: "Tavru Sohna",
+        link: "#",
         address: "Sohna, Haryana",
       },
       {
         name: "Moserbear Part 2",
+        link: "#",
         address: "Surajpur, Greater Noida",
       },
     ],
@@ -85,7 +89,13 @@ const projects = [
     id: "commercial2",
 
     name: "MALL",
-    projects: [{ name: "GREAT VALUE MALL", address: "Ram Ghat Road, Aligarh" }],
+    projects: [
+      {
+        link: "https://greatmallofaligarh.com",
+        name: "GREAT VALUE MALL",
+        address: "Ram Ghat Road, Aligarh",
+      },
+    ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
     totalProjects: 1,
     images: [mall1, mall2, mall3, mall4, mall5],
@@ -96,21 +106,23 @@ const projects = [
     projects: [
       {
         name: "PERNIA",
-        address:
-          "The Villa Haven’, Ten Style Mile, 4-A, Kalka Das Marg, Mehrauli, New Delhi – 110030",
+        link: "",
+        address: "Mehrauli, New Delhi",
       },
       {
         name: "GAP",
-        address:
-          "Unit no 201, First Floor, DLF South Court, District Centre, Sake, New Delhi, Delhi 110017",
+        link: "",
+        address: "Saket, New Delhi",
       },
       {
         name: "COMPLEX MADANGIR",
-        address: "Local Shopping Center, Madangir, New Delhi",
+        link: "",
+        address: "Madangir, New Delhi",
       },
       {
         name: "JHARKHAND BHAWAN",
-        address: "13, Munirka Marg,  Vasant Vihar, New Delhi, Delhi 110057",
+        link: "",
+        address: "Vasant Vihar, New Delhi",
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -385,16 +397,30 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                     {proj.name}
                   </p>
                   <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  <p className="  basis-[30%] ">{proj.address}</p>
-                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  <div className="basis-[25%] ">
-                    <button className="bg-primary text-[11px] py-[8px] px-[15px] text-white">
-                      {proj.name == "Tavru Sohna" ||
-                      proj.name == "Moserbear Part 2"
-                        ? "COMING SOON"
-                        : "READ MORE"}
-                    </button>
-                  </div>
+                  <p className="basis-[30%]">{proj.address}</p>
+                  {proj.name != "COMPLEX MADANGIR" &&
+                  proj.name != "JHARKHAND BHAWAN" ? (
+                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                  ) : (
+                    <div className="h-[40px] w-[0.5px] "></div>
+                  )}
+
+                  {proj.name == "COMPLEX MADANGIR" ||
+                  proj.name == "JHARKHAND BHAWAN" ? (
+                    <div className="basis-[25%] "></div>
+                  ) : (
+                    <div className="basis-[25%] ">
+                      <Link
+                        to={proj.link}
+                        className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
+                      >
+                        {proj.name == "Tavru Sohna" ||
+                        proj.name == "Moserbear Part 2"
+                          ? "COMING SOON"
+                          : "READ MORE"}
+                      </Link>
+                    </div>
+                  )}
                 </div>
               );
             })}
