@@ -1,8 +1,4 @@
-
-
-
-
-        <?php
+<?php
 
 use App\Http\Controllers\Admin\Project\FloorPlanController;
 use App\Http\Controllers\Admin\Project\ProjectAmenitiesController;

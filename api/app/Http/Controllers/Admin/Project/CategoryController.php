@@ -55,14 +55,18 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), 
             [
                 'name' => 'required|unique:categories,name',
-                'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
+                'thumbnail' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
+                'feature_image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
 
             ],[
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'Category Already Exists.',
-                'image.required' => 'The Image field is required.',
-                'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-                'image.max' => 'The image may not be greater than 2048 kilobytes.',
+                'thumbnail.required' => 'The Image field is required.',
+                'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
+                'feature_image.required' => 'The Image field is required.',
+                'feature_image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'feature_image.max' => 'The image may not be greater than 2048 kilobytes.',
 
             ]
         );
@@ -78,14 +82,22 @@ class CategoryController extends Controller
         }else{
             
             try{
+                
+                if($request->file('thumbnail')){
+                    $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
+                    $thumbnail = $request->file('thumbnail')->storeAs('category', $name, 'public');    
+                }
 
-                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('category', $name, 'public');
+                if($request->file('feature_image')){
+                    $name = now()->timestamp.".{$request->feature_image->getClientOriginalName()}";
+                    $feature_image = $request->file('feature_image')->storeAs('category', $name, 'public');    
+                }
 
                 $categorie = new Categories();
                 $categorie->slug = $request->name;
                 $categorie->name = $request->name;
-                $categorie->image = $path;
+                $categorie->thumbnail = $thumbnail;
+                $categorie->feature_image = $feature_image;
 
                 if($categorie->save()){           
                        
@@ -194,11 +206,14 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), 
             [
-                'image' => 'mimes:png,jpg,jpeg,webp|max:2048',
+                'thumbnail' => 'mimes:png,jpg,jpeg,webp|max:2048',
+                'feature_image' => 'mimes:png,jpg,jpeg,webp|max:2048',
                 'name' => 'required|unique:categories,name'
             ],[
-                'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-                'image.max' => 'The image may not be greater than 2048 kilobytes.',
+                'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
+                'feature_image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
+                'feature_image.max' => 'The image may not be greater than 2048 kilobytes.',
                 'name.required' => 'The Name field is required.',
                 'name.unique' => 'Category Already Exists.',
             ]
@@ -225,14 +240,24 @@ class CategoryController extends Controller
         }
 
         try {
-            if($request->file('image')){
+            if($request->file('thumbnail')){
                 
-                $imagesurl = $getrecord->image;
+                $imagesurl = $getrecord->thumbnail;
                 dltSingleImgFile($imagesurl);
                 
-                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('category', $name, 'public');
-                $getrecord->image = $path;
+                $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
+                $path = $request->file('thumbnail')->storeAs('category', $name, 'public');
+                $getrecord->thumbnail = $path;
+            }
+
+            if($request->file('feature_image')){
+                
+                $imagesurl = $getrecord->feature_image;
+                dltSingleImgFile($imagesurl);
+                
+                $name = now()->timestamp.".{$request->feature_image->getClientOriginalName()}";
+                $path = $request->file('feature_image')->storeAs('category', $name, 'public');
+                $getrecord->feature_image = $path;
             }
             
             $getrecord->slug = $request->slug;
