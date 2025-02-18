@@ -20,7 +20,7 @@ const WorkCulture = () => {
     workPlaceImg6,
   ];
   const [imageScreen, setImageScreen] = useState(true);
-  const containerRef = useRef(null); // Reference for the image container
+  const containerRef = useRef(null);
 
   const handleClick = () => {
     const tl = gsap.timeline();
