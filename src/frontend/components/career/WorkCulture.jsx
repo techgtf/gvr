@@ -1,12 +1,7 @@
-import * as CONFIG from "../../../../config";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Lightbox from "yet-another-react-lightbox";
 import { gsap } from "gsap";
 // import "yet-another-react-lightbox/styles.css";
-import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import "swiper/css/free-mode";
 import workPlaceImg1 from "../../../../public/assets/frontend/images/career/work-place-img-1.jpg";
 import workPlaceImg2 from "../../../../public/assets/frontend/images/career/work-place-img-2.jpg";
@@ -112,7 +107,7 @@ const WorkCulture = () => {
           )}
         </div>
 
-        <button className="basis-[100%] xl:mt-0 mt-[-5rem]  cursor-pointer flex justify-end items-center p-1">
+        <button className="basis-[100%] z-[999] xl:mt-0 mt-[-5rem]  cursor-pointer flex justify-end items-center p-1">
           <BsArrowRight
             onClick={handleClick}
             className="text-[22px] text-gray-600"
