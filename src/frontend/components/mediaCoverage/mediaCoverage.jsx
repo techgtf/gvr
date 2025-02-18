@@ -2,7 +2,6 @@ import React from 'react'
 import "./mediaCoverage.css"
 import WaterMarkHeading from '../waterMarkHeading'
 import * as CONFIG from '../../../../config'
-// import { useImageReveal } from '../useImageReveal'
 import SlideIn from '../Animations/SlideIn'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';

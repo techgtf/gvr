@@ -1,12 +1,18 @@
 import * as CONFIG from "../../../config";
 import { lazy } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
 import FadeIn from "../components/Animations/FadeIn";
 import WaterMarkHeading from "../components/verticalWaterMarkHeading";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  forwardRef,
+} from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -37,13 +43,15 @@ import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.
 
 gsap.registerPlugin(ScrollTrigger);
 //
+
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
 
 const projects = [
   {
-    id: 1,
+    id: "commercial1",
+
     name: "WAREHOUSES",
     projects: [
       {
@@ -60,20 +68,21 @@ const projects = [
       },
     ],
     description: `Our warehouses, including the Moser Baer Solar Ltd Warehouse
-                  in Greater Noida, offer cutting-edge logistics and storage
-                  solutions tailored to modern supply chain requirements.
-                  Strategically located in key industrial zones, these
-                  warehouses ensure smooth transportation, efficient inventory
-                  management, and maximum operational efficiency. With large
-                  land parcels, robust security infrastructure, and scalable
-                  storage capacities, our warehouses are designed to support
-                  growing industries, e-commerce businesses, and large-scale
-                  manufacturing units`,
+                in Greater Noida, offer cutting-edge logistics and storage
+                solutions tailored to modern supply chain requirements.
+                Strategically located in key industrial zones, these
+                warehouses ensure smooth transportation, efficient inventory
+                management, and maximum operational efficiency. With large
+                land parcels, robust security infrastructure, and scalable
+                storage capacities, our warehouses are designed to support
+                growing industries, e-commerce businesses, and large-scale
+                manufacturing units`,
     images: [warehouse1, warehouse2, warehouse3, warehouse4, warehouse5],
     totalProjects: 3,
   },
   {
-    id: 2,
+    id: "commercial2",
+
     name: "MALL",
     projects: [{ name: "GREAT VALUE MALL", address: "Ram Ghat Road, Aligarh" }],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
@@ -81,7 +90,7 @@ const projects = [
     images: [mall1, mall2, mall3, mall4, mall5],
   },
   {
-    id: 3,
+    id: "commercial3",
     name: "High Street Retail & Office Spaces",
     projects: [
       {
@@ -113,8 +122,6 @@ const CommercialProjects = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (prevRef.current && nextRef.current && swiperRef.current) {
@@ -156,15 +163,6 @@ const CommercialProjects = () => {
       console.log("✅ GSAP Animations Refreshed!");
     }, 300);
   }, []);
-
-  const openLightbox = (i) => {
-    setCurrentIndex(i);
-    setOpen(true);
-  };
-
-  const animationConfig1 = {
-    stagger: -0.1,
-  };
 
   return (
     <section className="bg-[#EFF5FA]">
@@ -216,34 +214,40 @@ const CommercialProjects = () => {
               <h2 className="midlandfontmedium text-[10px] tracking-[3px] ">
                 {project.name}
               </h2>
-              {/* <Link to={"../#" + project.id}> */}
-              <div className="flex items-center xl:mt-[0px] mt-[1rem]">
-                <h3 className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                  TOTAL PROJECTS
-                </h3>
-                <p className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                  {project.totalProjects}
-                </p>
-
-                <img
-                  src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/icons/download.png`}
-                  className="w-[25px] h-[25px]"
-                  alt="download"
-                />
-              </div>
-              {/* </Link> */}
+              <Link to={project.id} smooth={true} duration={800}>
+                <div className="flex items-center xl:mt-[0px] mt-[1rem]">
+                  {" "}
+                  <h3 className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
+                    TOTAL PROJECTS
+                  </h3>
+                  <p className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
+                    {project.totalProjects}
+                  </p>
+                  <img
+                    src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/icons/download.png`}
+                    className="w-[25px] h-[25px]"
+                    alt="download"
+                  />
+                </div>
+              </Link>
             </div>
           );
         })}
       </div>
       {projects.map((project, index) => (
-        <CommercialProjectSection key={index} project={project} />
+        <div key={project.id}>
+          <CommercialProjectSection
+            // key={index}
+            // sectionRef={project.elementRef}
+            project={project}
+          />
+        </div>
       ))}
     </section>
   );
 };
 
-const CommercialProjectSection = ({ project }) => {
+const CommercialProjectSection = forwardRef(({ project }, ref) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
@@ -268,6 +272,7 @@ const CommercialProjectSection = ({ project }) => {
 
   return (
     <section
+      key={project.id}
       id={project.id}
       className="about bg-[#EFF5FA] relative px-5 pt-[0px] xl:pt-5 md:px-12 py-10 md:py-14"
     >
@@ -381,6 +386,6 @@ const CommercialProjectSection = ({ project }) => {
       </div>
     </section>
   );
-};
+});
 
 export default CommercialProjects;
