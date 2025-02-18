@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Admin\Timeline;
+use App\Models\Admin\TimelineImage;
 use Illuminate\Validation\Rule;
 
-class TimelineController extends Controller
+
+class TimelineImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +17,14 @@ class TimelineController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
     public function __construct()
     {
         $this->middleware('admin.auth');
     }
-
+ 
 
     public function index(Request $request)
     {
-
         $search="";
         if(!empty($request->search)){
             $search = $request->search; 
@@ -36,15 +35,14 @@ class TimelineController extends Controller
 
         // Fetch products with pagination
 
-        $amenitis = Timeline::search($search)->paginate($perPage, ['*'], 'page', $page);
+        $amenitis = TimelineImage::paginate($perPage, ['*'], 'page', $page);
              
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
-            'message'=>"Success ",
+            'message'=>"Success Timeline image",
             'data'=>$amenitis
         ]);
-
     }
 
     /**
@@ -67,21 +65,12 @@ class TimelineController extends Controller
     {
         $validator=Validator::make($request->all(),[
             'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
-            'title' => 'required|unique:timelines,title',
             'year' => 'required',
-            'location' => 'required',
-
-
         ],
         [
             'image.required' => 'The image field is required.',
             'image.mimes' => 'Invalid Image type only aloowed (png,jpg,jpeg)',
-            'title.required' => 'The title field is required.',
             'year.required' => ' year field is required.',
-            'location.required' => ' location field is required.',
-
-
-            'title.unique' => 'timelines Already Exists.',
         ]);
 
         if($validator->fails()){
@@ -91,35 +80,28 @@ class TimelineController extends Controller
                 'message' => "success",
                 'errors'=>$validator->errors()->toArray()
             ]);
-
-
-        
-
+  
         }else{
             try{
                 
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
                 $path = $request->file('image')->storeAs('timeline', $name, 'public');
-                $amenitiesdata=new Timeline();
+                $amenitiesdata=new TimelineImage();
                 $amenitiesdata->image=$path;
-                $amenitiesdata->title=$request->title;
                 $amenitiesdata->year=$request->year;
-                $amenitiesdata->location=$request->location;
-
-
 
                 if($amenitiesdata->save()){              
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
-                        'message'=>"Timeline Added Sucessfully ",
+                        'message'=>"Timeline Image Added Sucessfully ",
                         'data'=>$amenitiesdata
                 ]);
                 }else{
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>400,
-                        'message'=>"Failde to add Amenities "
+                        'message'=>"Failde to add Image"
                 ]);
                 }
     
@@ -131,7 +113,6 @@ class TimelineController extends Controller
                 ]);
             }
         }
-        
     }
 
     /**
@@ -142,7 +123,7 @@ class TimelineController extends Controller
      */
     public function show($id)
     {
-        $amities=Timeline::find($id);
+        $amities = TimelineImage::find($id);
           return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -151,58 +132,6 @@ class TimelineController extends Controller
         ]);
     }
 
-
-    public function statusUpdate(Request $request)
-    {
-        //
-
-        $validator=Validator::make($request->all(),[
-            'status' => 'required|integer',
-            'eid' => 'required|integer'
-
-        ],
-            [
-                'status.required' => 'Status field is required.',
-                'eid.required' => 'The project field is required.',
-            ]
-        );
-
-        if($validator->fails()){
-            return response()->json([
-                'status'=>true,
-                'statusCode'=>403,
-               'message' => $validator->errors()->toArray(),
-            ]);
-        }
-
-
-
-        $amities=Timeline::find($request->eid);
-        if($amities){
-            $amities->status=$request->status;
-            if($amities->save()){
-                return response()->json([
-                    'status'=>true,
-                    'statusCode'=>200,
-                    'message'=>"success",
-                    'data'=>$amities
-                    ]);
-            }
-            return response()->json([
-                'status'=>true,
-                'statusCode'=>400,
-                'message'=>"failed",
-                ]);
-
-
-        }
-        return response()->json([
-            'status'=>false,
-            'statusCode'=>404,
-            'message'=>"server error",
-            ]);
-         
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -223,23 +152,19 @@ class TimelineController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validator = Validator::make($request->all(), [
-            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
-            'title' => ['required',Rule::unique('timelines')->ignore($request->id)],
-            'year' => ['required'],
-            'location' => ['required'],
 
+            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
+            'year' => 'required',
 
         ], [
+
             'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'title.required' => 'The title field is required.',
-            'title.year' => 'The year field is required.',
-            'title.location' => 'The location field is required.',
-
-            'title.unique' => 'infrastructures Already Exists.',
+            'year.required' => 'The year field is required.',
+           
         ]);
+
         if($validator->fails()){
             return response()->json([
                 'status'=>true,
@@ -248,7 +173,8 @@ class TimelineController extends Controller
                 'errors'=>$validator->errors()->toArray()
             ]);
         }
-        $getrecord=Timeline::select('*')->where('id',$id)->first();
+
+        $getrecord = TimelineImage::select('*')->where('id',$id)->first();
         
         if(!$getrecord){
             return response()->json([
@@ -265,7 +191,7 @@ class TimelineController extends Controller
             dltSingleImgFile($imagesurl);
             
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('timeline-images', $name, 'public');
+            $path = $request->file('image')->storeAs('timeline', $name, 'public');
             $getrecord->image=$path;
         }
         $getrecord->title=$request->title;
@@ -288,7 +214,6 @@ class TimelineController extends Controller
             'statusCode'=>500,
            'message' =>"Invalid Request/ Not Found ",
         ]);
-        // return $getrecord;
     }
 
     /**
@@ -299,8 +224,7 @@ class TimelineController extends Controller
      */
     public function destroy($id)
     {
-       
-        $getrecord=Timeline::select('*')->where('id',$id)->first();
+        $getrecord = TimelineImage::select('*')->where('id',$id)->first();
         
         if(!$getrecord){
             return response()->json([
@@ -310,57 +234,22 @@ class TimelineController extends Controller
             ]);
         }
 
-         dltSingleImgFile($getrecord->image);
+        dltSingleImgFile($getrecord->image);
 
-         if($getrecord->delete()){
+        if($getrecord->delete()){
             return response()->json([
                 'status'=>true,
                 'statusCode'=>200,
                 'message'=>"Deleted Sucessfully ",
                 'data'=>$getrecord
-
             ]);
-         }
-         return response()->json([
+        }
+
+        return response()->json([
             'status'=>false,
             'statusCode'=>500,
-           'message' =>"Invalid Request/ Not Found ",
+            'message' =>"Invalid Request/ Not Found ",
         ]);
-        
+
     }
-
-
-    public function status(Request $request, $id)
-    {
-        $table = [
-            'tableName' => 'amenities',
-            'keyColumnName' => 'id',
-            'keyColumnId' => $id,
-            'updateColumnName' => 'status',
-            'updatecolumnVal' => $request->status
-        ];
-        
-        $result = updateSingleRecord($table);
-        return $result;
-    }
-
-    // public function distinctYear ()
-    // {
-    //     $years = Timeline::distinct()->pluck('year');
-    //     if($years) {
-    //         return response()->json([
-    //             'status' => true,
-    //             'statusCode' => 200,
-    //             'message' => 'Get all years',
-    //             'data' => $years
-    //         ]);
-    //     }
-
-    //     return response()->json([
-    //         'status' => true,
-    //         'statusCode' => 200,
-    //         'message' => 'No Record Timeline',
-    //     ]);
-    // }
-
 }
