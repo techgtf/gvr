@@ -13,7 +13,7 @@ export default function PageOverview() {
                     <p className='text-justify'>Did you know that tax benefits can be availed after the construction of the house as the interest repaid during construction cannot be claimed as Pre-EMI interest on the apartment loan? Read more about the various ways you can save tax on your apartment loan below.</p>
                 </SlideIn>
                 <div className='grid_div lg:mt-[50px] grid lg:grid-cols-2 lg:gap-[50px] overflow-hidden'>
-                    <div className='img_div lg:my-0 my-5'>
+                    <div className='img_div lg:my-0 my-5 overflow-hidden'>
                         <ZoomOut duration={2} delay={0.7}>
                             <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/taxBenifit/overview.webp`} alt="tax benifit overview image" />
                         </ZoomOut>

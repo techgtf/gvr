@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import "./mediaCoverage.css";
 import WaterMarkHeading from "../waterMarkHeading";
@@ -7,15 +6,6 @@ import * as CONFIG from "../../../../config";
 import SlideIn from "../Animations/SlideIn";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
-=======
-import React from 'react'
-import "./mediaCoverage.css"
-import WaterMarkHeading from '../waterMarkHeading'
-import * as CONFIG from '../../../../config'
-import SlideIn from '../Animations/SlideIn'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, FreeMode } from 'swiper/modules';
->>>>>>> 6dd7a612a5c29aa1e13859248af1e658d56be347
 import "swiper/css/free-mode";
 
 export default function MediaCoverage() {

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SlideIn from "./SlideIn"
+import SlideIn from "./SlideIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,15 +17,14 @@ export default function AnimatedHeading({
   const sectionRef = useRef(null);
   const lineLeftRef = useRef(null);
   const lineRightRef = useRef(null);
-  const animationRef = useRef(null); // Prevent multiple animations
+  const animationRef = useRef(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    // 🛑 Kill previous animations before starting new ones
+    // Kill only this component's previous animation
     if (animationRef.current) {
       animationRef.current.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
 
     const animateLine = (lineRef, origin) => {
@@ -40,22 +39,19 @@ export default function AnimatedHeading({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            toggleActions: "play none none none",
+            toggleActions: "play none none reverse",
           },
         }
       );
     };
 
-    if (lineLeft) animateLine(lineLeftRef, "left"); // ✅ Left line expands from left
-    if (lineRight) animateLine(lineRightRef, "right"); // ✅ Right line expands from right
+    if (lineLeft) animateLine(lineLeftRef, "left");
+    if (lineRight) animateLine(lineRightRef, "right");
 
     return () => {
-      // Cleanup GSAP animations on unmount
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
+      if (animationRef.current) animationRef.current.kill();
     };
-  }, [sectionRef.current]); // ✅ Runs only on mount
+  }, []); // ✅ Empty dependency array to prevent unnecessary re-renders
 
   return (
     <div ref={sectionRef} className={`relative ${className}`}>
