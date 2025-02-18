@@ -117,7 +117,7 @@ export default function Header() {
                       onMouseEnter={() => {
                         item.hasMenus ? handleDropdownOpen(item.name) : handleMouseEnterOtherItems(item.name);
                       }}
-                      className={`relative flex gap-3 items-center tracking-[3px] text-[13px] font-[300] 
+                      className={`relative flex gap-3 items-center tracking-[2px] text-[13px] font-[300] 
                       ${activeItem === item.name ? "font-bold px-3 text-primary" : ""}
                       hover:font-bold hover:px-3 hover:text-primary transition-all duration-300`}
                       role="menuitem"
