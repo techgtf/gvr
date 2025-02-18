@@ -42,8 +42,8 @@ export default function Hero({
             // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
             src={
               window.innerWidth > 767
-                ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739181951/1920x900_1_jhutji.mp4`
-                : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739180202/700x1000_xrmmbh.mp4`
+                ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739885030/1920x900_n3tzkh.mp4`
+                : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739886243/700x1000_hflfjc.mp4`
             }
             autoPlay
             playsInline
