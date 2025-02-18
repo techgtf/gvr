@@ -15,12 +15,13 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
+import "swiper/css/free-mode";
 
 // // Import Images
 import warehouse1 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-1.webp";
@@ -118,6 +119,41 @@ const projects = [
   },
 ];
 
+const mediaData = [
+  {
+    name: "caterpillar",
+    imgSrc: "caterpillar.jpg",
+  },
+  {
+    name: "good worth",
+    imgSrc: "good_worth.png",
+  },
+  {
+    name: "jaina_logo_master",
+    imgSrc: "Jaina_logo_master.png",
+  },
+  {
+    name: "logo_manitou_group",
+    imgSrc: "logo_manitou_group.png",
+  },
+  {
+    name: "pg electro",
+    imgSrc: "pg_electro.png",
+  },
+  {
+    name: "reliance retails",
+    imgSrc: "reliance_retails.png",
+  },
+  {
+    name: "samsung logo",
+    imgSrc: "samsung_logo.png",
+  },
+  {
+    name: "sansui logo",
+    imgSrc: "sansui_logo.png",
+  },
+];
+
 const CommercialProjects = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -199,7 +235,7 @@ const CommercialProjects = () => {
           </div>
         </SlideIn>
       </div>
-      <div className="text-[11px] flex xl:justify-center items-center xl:items-start mb-[2rem] xl:mb-[0px]  flex-col xl:flex-row">
+      <div className="text-[11px] flex xl:justify-center pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
         <h3 className="uppercase midlandfontmedium tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
           2,000,000 sq. ft.
         </h3>
@@ -207,7 +243,7 @@ const CommercialProjects = () => {
           2,000,000 sq. ft.
         </h3>
       </div>
-      <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
+      {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
         {projects.map((project) => {
           return (
             <div className="text-[14px] xl:flex-row flex-col mb-[2.4rem] pb-[1rem] flex justify-between text-primary border-b-[#ddd] border-b-[1.5px] border-b-solid">
@@ -233,16 +269,58 @@ const CommercialProjects = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
       {projects.map((project, index) => (
         <div key={project.id}>
-          <CommercialProjectSection
-            // key={index}
-            // sectionRef={project.elementRef}
-            project={project}
-          />
+          <CommercialProjectSection project={project} />
         </div>
       ))}
+      <div className="lg:max-w-[61%] max-w-[95%] m-auto lg:py-24 py-16">
+        <div className="flexbox flex flex-wrap justify-center  lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">
+          <Swiper
+            modules={[Autoplay, FreeMode]}
+            loop={true}
+            freeMode={true} // Enables smooth scrolling
+            speed={5000} // Controls smooth speed
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false, // Keeps scrolling when hovered
+              reverseDirection: false, // Set to true for reverse marquee
+            }}
+            // slidesPerView="auto"
+            // spaceBetween={20}
+            breakpoints={{
+              300: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+            }}
+            className="mediaSwiper commercialSwiper"
+            style={{
+              display: "flex !important",
+              alignItems: "center !important",
+            }}
+          >
+            {mediaData.map((item, index) => (
+              <React.Fragment key={index}>
+                <SwiperSlide>
+                  <img
+                    className="lg:w-auto w-[80px]"
+                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${item.imgSrc}`}
+                    alt={item.altText || `Media coverage: ${item.title}`}
+                  />
+                </SwiperSlide>
+                {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
+              </React.Fragment>
+            ))}
+          </Swiper>
+        </div>
+      </div>
     </section>
   );
 };
@@ -295,6 +373,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               </p>
             </SlideIn>
           </div>
+          {/* <SlideIn duration={2} delay={0.5}> */}
           <div className="mt-[4rem]">
             <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
               All Projects
@@ -302,12 +381,12 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
             {project.projects.map((proj) => {
               return (
                 <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
-                  <p className="border-r-[1px] text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary border-r-solid border-r-[#ddd]">
+                  <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
                     {proj.name}
                   </p>
-                  <p className="border-r-[1px]  basis-[30%] border-r-solid border-r-[#ddd]">
-                    {proj.address}
-                  </p>
+                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                  <p className="  basis-[30%] ">{proj.address}</p>
+                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
                   <div className="basis-[25%] ">
                     <button className="bg-primary text-[11px] py-[8px] px-[15px] text-white">
                       {proj.name == "Tavru Sohna" ||
@@ -320,6 +399,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               );
             })}
           </div>
+          {/* </SlideIn> */}
         </div>
       </div>
 
