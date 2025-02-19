@@ -60,7 +60,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${BASE_ROOT}residential`}
-                    className="xl:text-[14px] text-[12px]"
+                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
                   >
                    Residential
                   </Link>
@@ -68,20 +68,20 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${BASE_ROOT}commercial-projects`}
-                    className="xl:text-[14px] text-[12px]"
+                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
                   >
                     Commercial
                   </Link>
                 </li>
                 <li>
-                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px]">
+                  <Link to={`${BASE_ROOT}media`} className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500">
                     media centre
                   </Link>
                 </li>
                 <li>
                   <Link
                     to={`${BASE_ROOT}about-us`}
-                    className="xl:text-[14px] text-[12px]"
+                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
                   >
                     Our Profile
                   </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to={`${CONFIG.BASE_ROOT}contact-us`}                 
-                    className="xl:text-[14px] text-[12px]"
+                    className="xl:text-[14px] text-[12px] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
                   >
                     contact us
                   </Link>
