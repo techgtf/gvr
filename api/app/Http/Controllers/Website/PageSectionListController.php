@@ -36,13 +36,19 @@ class PageSectionListController extends Controller
     public function pagesListingSection ($pageId) {
         try {
             
-            $record = PageSectionList::where('page_id', $pageId)->get();
+            $records = PageSectionList::where('page_id', $pageId)->get();
+
+            $formattedData = [];
+            foreach ($records as $record) {
+                $formattedData[$record->page_section] = $record;
+            }
+            
 
             return response()->json([
                 'status'=>true,
                 'statusCode'=>200,
                 'message'=>"Success",
-                'data'=>$record
+                'data'=>$formattedData
             ]);
 
         } catch (\Throwable $e) {
