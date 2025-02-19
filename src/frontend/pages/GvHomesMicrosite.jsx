@@ -48,6 +48,7 @@ import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.web
 import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
 import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
 import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.webp"
+import { Helmet } from 'react-helmet'
 
 function GvHomesMicrosite() {
     const location = useLocation();
@@ -185,6 +186,10 @@ function GvHomesMicrosite() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Great Value Realty | Casa Uday</title>
+            </Helmet>
             <HeroSection
                 desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import CommonHeading from "./commonHeading"
-import NavDropdown from "../HeaderFooter/NavDropdown"
 import { SlClose } from "react-icons/sl";
 import { BASE_ROOT } from "../../../config";
 import { useState } from "react";
@@ -16,7 +15,6 @@ export default function MbTabLinks() {
             zIndex: 11,
         }
     }
-
 
     return (
         <div className="MbTabLinks lg:hidden fixed bottom-0 left-0 right-0 bg-gray-300 border-t border-gray-300" style={Styles.wrapper}>
@@ -41,7 +39,8 @@ export default function MbTabLinks() {
                             { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                             { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
                             { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
-                            { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" }
+                            { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" },
+                            { name: "Sanctuary 105", path: "vilasa", location: "sector 6, gurugram" }
                         ].map(({ name, path, location }) => (
                             <li key={path} className="px-8 pt-6 pb-4 mb-1 border-b last:border-b-0">
                                 <Link

@@ -10,6 +10,7 @@ function About({
   imageSrc,
   headingText,
   descriptionText,
+  sectionId = "about",
   reverseWatermark = true,
   alt,
 }) {
@@ -24,7 +25,7 @@ function About({
   useImageReveal(".reveal");
 
   return (
-    <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14">
+    <section className="about bg-[#EFF5FA] relative px-5 md:px-12 py-10 md:py-14" id={sectionId}>
       <div className="absolute h-full flex items-center left-20 bottom-0">
         <WaterMarkHeading
           textWaterMark={

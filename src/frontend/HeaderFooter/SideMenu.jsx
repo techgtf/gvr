@@ -13,7 +13,7 @@ function SideMenu({ setOpenSidebar }) {
     gsap.fromTo(
       ".sidemenu",
       { x: 100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1 }
+      { x: 0, opacity: 0.9, duration: 1 }
     );
 
     const handleOutsideClick = (event) => {
@@ -43,12 +43,12 @@ function SideMenu({ setOpenSidebar }) {
   return (
     <div
       ref={sideMenuRef}
-      className="sidemenu bg-[#EFF5FA] text-black opacity-90 fixed top-0 right-0 w-full sm:w-[28%] h-screen px-5 md:px-10"
+      className="sidemenu bg-[#EFF5FA] text-black opacity-95 fixed top-0 right-0 w-full sm:w-[28%] h-screen px-5 md:px-10"
     >
 
       <Link
         to={`${CONFIG.BASE_ROOT}`}
-        className="flex  absolute top-[30px] justify-center md:block focus-visible:outline-none focus-visible:ring-0"
+        className="flex  absolute top-[20px] justify-center md:block focus-visible:outline-none focus-visible:ring-0"
       >
         <img
           className="h-[50px]"
@@ -56,17 +56,18 @@ function SideMenu({ setOpenSidebar }) {
           alt="Great Value Realty Logo"
         />
       </Link>
-      <div className="absolute top-10 right-5">
+      <div className="absolute top-7 right-5">
         <AiOutlineClose onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer" />
 
       </div>
-      <div className="flex flex-col relative mt-12 items-center gap-3 justify-evenly h-full">
-        <ul className="w-full flex flex-col gap-10">
+      <div className="flex flex-col relative mt-12 items-center gap-1 justify-evenly h-full">
+        <ul className="w-full flex flex-col gap-3">
           <li>
-            <div className="title text-[#0e69ae] tracking-[2px] uppercase text-[16px] py-3 border-b border-[#0000001a]">
-              Our Projects
+            <div className="title text-[#0e69ae] tracking-[2px] uppercase text-[16px] py-2  border-b border-[#0000001a]">
+               Projects
             </div>
-            <div className="title_links flex gap-5 uppercase text-[#484747] py-3">
+            <div className="title_links uppercase text-[#484747] py-2">
+              <div className="py-2">
               <Link to={`${BASE_ROOT}residential`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}residential`));
@@ -77,7 +78,8 @@ function SideMenu({ setOpenSidebar }) {
                   Residential
                 </span>
               </Link>
-              <span className="text-[#0e69ae]">/</span>
+              </div>
+              <div className="py-2">
               <Link to={`${BASE_ROOT}commercial-projects`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}commercial-projects`));
@@ -88,14 +90,16 @@ function SideMenu({ setOpenSidebar }) {
                   Commercial
                 </span>
               </Link>
+              </div>
             </div>
           </li>
 
           <li>
-            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
-              Our Profile
+            <div className="title uppercase tracking-[2px] text-[16px] py-2 text-[#0e69ae] border-b border-[#0000001a]">
+               Profile
             </div>
-            <div className="title_links flex flex-wrap gap-2 uppercase text-[#484747] py-3">
+            <div className="title_links  uppercase text-[#484747] py-2">
+              <div className="py-2">
               <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}about-us`));
@@ -107,7 +111,8 @@ function SideMenu({ setOpenSidebar }) {
                   About Us
                 </span>
               </Link>
-              <span className="text-[#0e69ae]">/</span>
+              </div>
+              <div className="py-2">
               <Link to={`${BASE_ROOT}esg`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}esg`));
@@ -119,7 +124,8 @@ function SideMenu({ setOpenSidebar }) {
                   ESG
                 </span>
               </Link>
-              <span className="text-[#0e69ae]">/</span>
+              </div>
+              <div className="py-2">
               <Link to={`${BASE_ROOT}media`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}media`));
@@ -131,14 +137,16 @@ function SideMenu({ setOpenSidebar }) {
                   Media Centre
                 </span>
               </Link>
+              </div>
             </div>
           </li>
 
           <li>
-            <div className="title uppercase tracking-[2px] text-[#0e69ae] text-[16px] py-3 border-b border-[#0000001a]">
+            <div className="title uppercase tracking-[2px] text-[#0e69ae] py-2 text-[16px] border-b border-[#0000001a]">
               Career
             </div>
-            <div className="title_links uppercase text-[#484747]  py-3">
+            <div className="title_links uppercase text-[#484747]">
+              <div className="py-2">
               <Link to={`${BASE_ROOT}career`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}career`));
@@ -150,14 +158,16 @@ function SideMenu({ setOpenSidebar }) {
                   All Job Openings
                 </span>
               </Link>
+              </div>
             </div>
           </li>
 
           <li>
-            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-3 border-b border-[#0000001a]">
+            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-2 border-b border-[#0000001a]">
               Find Us
             </div>
-            <div className="title_links uppercase text-[#484747] py-3">
+            <div className="title_links uppercase text-[#484747]">
+              <div className="py-2">
               <Link to={`${BASE_ROOT}contact-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}contact-us`));
@@ -169,6 +179,7 @@ function SideMenu({ setOpenSidebar }) {
                   Contact Us
                 </span>
               </Link>
+              </div>
             </div>
           </li>
         </ul>

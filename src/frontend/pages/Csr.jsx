@@ -4,12 +4,16 @@ import OverviewSection from '../components/overviewSection/overviewSection'
 import CareCommunities from '../components/CSR/CC/CareCommunities'
 import CharityInitiatives from '../components/CSR/CharityInitiatives/CharityInitiatives'
 import SocialDetails from '../components/CSR/SocialDetails/SocialDetails'
+import { Helmet } from 'react-helmet'
 
 function Csr() {
   return (
     <>
-      <HeroSection/>
-    
+      <Helmet>
+        <title>Great Value Realty | CSR</title>
+      </Helmet>
+      <HeroSection />
+
       <OverviewSection
         heading={
           "Building a Future Where Sustainability, Community, and Integrity Thrive"
@@ -19,9 +23,9 @@ function Csr() {
         }
         showKnowMore={false}
       />
-        <SocialDetails/>
+      <SocialDetails />
       {/* <CareCommunities/> */}
-      <CharityInitiatives/>
+      <CharityInitiatives />
     </>
   )
 }

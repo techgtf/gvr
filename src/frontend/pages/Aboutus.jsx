@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
+import { Helmet } from "react-helmet";
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
@@ -17,6 +18,9 @@ const OurJourneySection = lazy(() =>
 const Aboutus = () => {
   return (
     <>
+      <Helmet>
+        <title>Great Value Realty | About-Us</title>
+      </Helmet>
       <HeroSectionAboutUs
         img={
           "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437177/about_us_b4tbjm.webp"
@@ -27,8 +31,8 @@ const Aboutus = () => {
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
-        // data-speed="clamp(.9)"
-        // ref={sectionRef}
+      // data-speed="clamp(.9)"
+      // ref={sectionRef}
       >
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading
