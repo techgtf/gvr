@@ -30,7 +30,7 @@ export default function Hero({
         {/* Background Image */}
 
         <div
-          className="hero_vdo_div lg:h-[auto] h-[75vh] relative w-full] bg-cover"
+          className="hero_vdo_div lg:h-[auto] h-[auto] relative w-full] bg-cover"
           style={{
             background:
               "url(assets/frontend/images/home/hero.jpg) no-repeat center",
@@ -43,14 +43,14 @@ export default function Hero({
             src={
               window.innerWidth > 767
                 ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739885030/1920x900_n3tzkh.mp4`
-                : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739886243/700x1000_hflfjc.mp4`
-            }
+                : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739959517/700x600_dpqfw9.mp4`
+            } 
             autoPlay
             playsInline
             loop
             muted={isMuted}
             preload="auto"
-            className="lg:h-[auto] h-[75vh] w-full object-cover"
+            className="lg:h-[auto] h-[auto] w-full object-cover"
           ></video>
           <div className="vdo_btns absolute lg:bottom-[40px] bottom-[15px] lg:right-[30px] right-[15px]">
             <button
