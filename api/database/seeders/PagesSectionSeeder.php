@@ -104,7 +104,7 @@ class PagesSectionSeeder extends Seeder
                 'name' => 'about-vision',
                 'page_type_id' => '2', // about page
                 'title'=>'vision',
-                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'false']),
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Section Sub Heading','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
 
 
