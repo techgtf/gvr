@@ -53,7 +53,7 @@ const HeroSectionAboutUs = lazy(() =>
 const projects = [
   {
     id: "commercial1",
-
+    waterMarkHeading: "WAREHOUSES",
     name: "WAREHOUSES",
     projects: [
       {
@@ -87,7 +87,7 @@ const projects = [
   },
   {
     id: "commercial2",
-
+    waterMarkHeading: "MALL",
     name: "MALL",
     projects: [
       {
@@ -102,6 +102,7 @@ const projects = [
   },
   {
     id: "commercial3",
+    waterMarkHeading: "RETAIL",
     name: "High Street Retail & Office Spaces",
     projects: [
       {
@@ -375,7 +376,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
             <CommonHeading HeadingText={project.name} />
           </FadeIn>
           <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.017] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
-            {project.id === 3 ? "RETAIL" : project.name}
+            {project.waterMarkHeading}
           </p>
         </div>
         <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
