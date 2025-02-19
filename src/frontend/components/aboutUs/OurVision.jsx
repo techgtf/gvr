@@ -1,6 +1,7 @@
 import SlideIn from "../Animations/SlideIn";
 import { useImageReveal } from "../useImageReveal";
 import { useTextAnimation } from "../useTextAnimation";
+import * as CONFIG from "../../../../config";
 
 const OurVision = ({visionData,missionData}) => {
   const sectionRef = useTextAnimation(
@@ -12,8 +13,6 @@ const OurVision = ({visionData,missionData}) => {
   );
 
   useImageReveal(".reveal");
-console.log(visionData,"visionData");
-console.log(missionData,"missionData");
 const visionDescription = visionData.description.replace(/<\/?[^>]+(>|$)/g, "");
 const missionDescription = missionData.description.replace(/<\/?[^>]+(>|$)/g, "");
 
@@ -22,9 +21,7 @@ const missionDescription = missionData.description.replace(/<\/?[^>]+(>|$)/g, ""
       <div className="flex justify-between items-center xl:py-[50px] py-[3.5rem] flex-wrap max-w-[85%]">
         <img
           className="w-[350px] h-[350px] reveal w-[100%] object-contain"
-          src={
-            "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437040/vision_and_mission_e5tdx1.webp"
-          }
+          src={`${CONFIG.VITE_APP_STORAGE}${visionData.image}`}
           // src="assets/frontend/images/aboutus/vision_and_mission.webp"
           alt="vision_and_mission"
         />
