@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('timeline_images', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('name')->unique();
-            $table->string('thumbnail');
-            $table->string('feature_image')->nullable();
-            $table->boolean('status')->default(1);
+            $table->string('year');
+            $table->string('image');
             $table->timestamps();
-            $table->softDeletes();
-
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('timeline_images');
     }
 };

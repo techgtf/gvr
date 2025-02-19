@@ -11,14 +11,16 @@ class BlogController extends Controller
     public function index (Request $request)
     {
         try {
+
             $search="";
             if(!empty($request->search)){
                 $search = $request->search;
             }
+
             $perPage = $request->input('per_page', 10);
             $page = $request->input('page', 1);
             
-            $record = Blog::search($search)->with('blogCategory')->paginate($perPage, ['*'], 'page', $page);
+            $record = Blog::search($search)->paginate($perPage, ['*'], 'page', $page);
 
             return response()->json([
                 'status'=>true,
@@ -39,9 +41,9 @@ class BlogController extends Controller
 
     public function topBlogs(Request $request)
     {
-        $take = $request->input('limit', 5);
+        $take = $request->input('limit', 3);
 
-        $topblogs = Blog::with('blogCategory')->latest()->take($take)->get();
+        $topblogs = Blog::latest()->take($take)->get();
         
         try {
             return response()->json([
@@ -63,17 +65,22 @@ class BlogController extends Controller
 
     public function show ($id)
     {
-        // $result = Blog::find($id);
-        $result = Blog::with('blogCategory')->where('slug', '=', $id)->first();
+
+        $result = Blog::with('blogDetails')->where('slug', '=', $id)->first();
 
         try {
             if(!empty($result)){
+
+                $nextBlog = Blog::where('id', '>', $result->id)
+                ->orderBy('id', 'asc')
+                ->first();
 
                 return response()->json([
                     'status' => true,
                     'statusCode' => 200,
                     'message' => "Get Single Record",
                     'data' => $result,
+                    'next' => $nextBlog ? $nextBlog->slug : null,
                 ]);
     
             }

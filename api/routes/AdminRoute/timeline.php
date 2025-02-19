@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TimelineController;
+use App\Http\Controllers\Admin\TimelineImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,12 @@ Route::group(['prefix'=>'admin'],function(){
         Route::apiResource('timeline', TimelineController::class)->except(['update']);
         Route::post('timeline/{id}/update', [TimelineController::class,'update']);
         Route::post('timeline/{id}/status', [TimelineController::class,'status']);
+
+        // Route::get('distinct-timeline', [TimelineController::class,'distinctYear']);
+        
+        // timeline images
+        Route::apiResource('timeline-preview', TimelineImageController::class)->except(['update']);
+        Route::post('timeline-preview/{id}/update', [TimelineImageController::class,'update']);
+        
     });
 });
-    
-

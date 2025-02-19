@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogDetailsController;
 use  App\Http\Controllers\Admin\BlogController;
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::apiResource('blog', BlogController::class)->except(['update']);
         Route::post('blog/{id}/update', [BlogController::class,'update']);
         Route::post('blog/{id}/status', [BlogController::class,'status']);
+    
+        
+        // Blog Details
+        Route::apiResource('blog-details', BlogDetailsController::class)->except(['update']);
+        Route::post('blog-details/{id}/update', [BlogDetailsController::class,'update']);
     });
 });
     

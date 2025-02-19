@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Admin\Blog;
-use Psr\Http\Message\ResponseInterface;
+use App\Models\Admin\BlogsDetails;
 
-class BlogController extends Controller
+class BlogDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +22,7 @@ class BlogController extends Controller
         }
         $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
-        $record = Blog::search($search)->paginate($perPage, ['*'], 'page', $page);
+        $record = BlogsDetails::paginate($perPage, ['*'], 'page', $page);
              
         return response()->json([
             'status'=>true,
@@ -53,19 +52,13 @@ class BlogController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
+            'blog_id' => 'required',
             'heading' => 'required',
-            'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
-            'thumbnail' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'description' => 'required',
             
         ],[
+            'blog_id.required' => 'This Blog Id field is required',
             'heading.required' => 'The Name field is required.',
-            'image.required' => 'The Image field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'thumbnail.required' => 'The Image field is required.',
-            'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
             'description.required' => 'This Field is required',
         ]);
 
@@ -80,46 +73,36 @@ class BlogController extends Controller
 
         }else{
             try{
-                $blogdat = new Blog();
+                                    
+                $blogDetailsData = new BlogsDetails();
+                $blogDetailsData->blog_id = $request->blog_id;
+                $blogDetailsData->heading = $request->heading;
+                $blogDetailsData->description = $request->description;
                 
-                if($request->file('image')){
-                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('blog', $name, 'public');
-                    $blogdat->image = $path;
-                }
-                
-                if($request->file('thumbnail')){
-                    $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
-                    $lispath = $request->file('thumbnail')->storeAs('blog', $name, 'public');
-                    $blogdat->thumbnail = $lispath;
-                }
-                
-                $blogdat->slug = $request->heading;
-                $blogdat->heading = $request->heading;
-                $blogdat->description = $request->description;
-                
-                if($blogdat->save()){              
+                if($blogDetailsData->save()){
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
-                        'message'=>"Add Blog Sucessfully ",
-                        'data'=>$blogdat
+                        'message'=>"Add Blog Details Sucessfully ",
+                        'data'=>$blogDetailsData
                     ]);
                 }else{
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>400,
-                        'message'=>"Failde to add Blog"
+                        'message'=>"Failde to Add Blog Details"
                     ]);
                 }
     
             }catch(\Exception $e){
+
                 return response()->json([
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
                     'error' => $e
                 ]);
+
             }
         }
     }
@@ -132,8 +115,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-
-        $result = Blog::find($id);
+        $result = BlogsDetails::find($id);
         if(!empty($result)){
 
             return response()->json([
@@ -176,18 +158,11 @@ class BlogController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            
             'heading' => 'required',
-            'image' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
-            'thumbnail' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
             'description' => 'required',
             
         ],[
             'heading.required' => 'The Name field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
             'description.required' => 'This Field is required',
         ]);
 
@@ -202,7 +177,7 @@ class BlogController extends Controller
 
         }else{
 
-            $getrecord = Blog::find($id);
+            $getrecord = BlogsDetails::find($id);
             
             if(!$getrecord){
                 return response()->json([
@@ -213,32 +188,12 @@ class BlogController extends Controller
             }
 
             try{
+                
 
-                if($request->file('image')){
-          
-                    $imagesurl = $getrecord->image;
-                    dltSingleImgFile($imagesurl);
-                    
-                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('blog', $name, 'public');
-                    $getrecord->image = $path;
-                }
-
-                if($request->file('thumbnail')){
-          
-                    $imagesurl = $getrecord->thumbnail;
-                    dltSingleImgFile($imagesurl);
-                    
-                    $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
-                    $path = $request->file('thumbnail')->storeAs('blog', $name, 'public');
-                    $getrecord->thumbnail = $path;
-                }
-
-                $getrecord->slug = $request->heading;
                 $getrecord->heading = $request->heading;
                 $getrecord->description = $request->description;
                 
-                if($getrecord->save()){              
+                if($getrecord->save()){
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
@@ -272,14 +227,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $result = Blog::find($id);
-
-        dltSingleImgFile($result->image);
-        dltSingleImgFile($result->thumbnail);
+        $result = BlogsDetails::find($id);
 
         if(!empty($result)){
+
             if($result->delete()){
-       
                 return response()->json([
                     'status' => true,
                     'statusCode' => 200,
@@ -305,20 +257,4 @@ class BlogController extends Controller
 
         }
     }
-
-
-    public function status(Request $request, $id)
-    {   
-        $table = [
-            'tableName' => 'blogs',
-            'keyColumnName' => 'id',
-            'keyColumnId' => $id,
-            'updateColumnName' => 'status',
-            'updatecolumnVal' => $request->status
-        ];
-        
-        $result = updateSingleRecord($table);
-        return $result;
-    }
-
 }
