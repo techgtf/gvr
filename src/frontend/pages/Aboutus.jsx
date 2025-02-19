@@ -1,4 +1,5 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect, useState } from "react";
+import { DATA_ASSET_URL } from "../../../config";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
@@ -14,13 +15,48 @@ const OurVerticalsSection = lazy(() =>
 const OurJourneySection = lazy(() =>
   import("../components/aboutUs/OurJourney")
 );
+import axios from "axios";
 
 const Aboutus = () => {
+  const [data, setData,] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${DATA_ASSET_URL}page-sections/2`) 
+      .then((response) => {
+        setData(response.data.data); // Set the blog data
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  console.log(data,"data")
+
+
+    // Extract section data
+    const banner = data.find((item) => item.page_section === "about-banner");
+    const overview = data.find((item) => item.page_section === "about-overview");
+    const mission = data.find((item) => item.page_section === "about-mission");
+    const vision = data.find((item) => item.page_section === "about-vision");
+    const team = data.find((item) => item.page_section === "about-team");
+    const journey = data.find((item) => item.page_section === "about-our-journey");
+    const verticals = data.find((item) => item.page_section === "about-our-verticals");
+
+  
   return (
     <>
       <Helmet>
         <title>Great Value Realty | About-Us</title>
       </Helmet>
+
+    {banner && 
       <HeroSectionAboutUs
         img={
           "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739437177/about_us_b4tbjm.webp"
@@ -28,7 +64,8 @@ const Aboutus = () => {
         // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
         heading={"ABOUT US"}
         extraClassesImg={"objectRight"}
-      />
+      />}
+      {overview && 
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
       // data-speed="clamp(.9)"
@@ -59,12 +96,12 @@ const Aboutus = () => {
             />
           </div>
         </SlideIn>
-      </div>
+      </div>}
 
-      <OurVisionSection />
-      <OurTeamSection />
-      <OurJourneySection />
-      <OurVerticalsSection />
+      {vision && <OurVisionSection visionData={vision} missionData={mission}/>}
+      {team && <OurTeamSection data={team}/>}
+      {journey && <OurJourneySection data={journey}/>}
+      {verticals && <OurVerticalsSection />}
     </>
   );
 };

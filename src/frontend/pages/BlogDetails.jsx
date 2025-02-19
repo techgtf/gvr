@@ -4,30 +4,50 @@ import Index from '../components/blogs/Index';
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
-import { useLocation } from "react-router-dom";
+import { DATA_ASSET_URL } from "../../../config";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import { Helmet } from 'react-helmet';
 
 
-const BlogDetails = () => {
-  const location = useLocation();
-  const blog = location.state?.blog;
-  const latestBlog = location.state?.latestBlog;
 
-  if (!blog) return <h2>Blog not found!</h2>;
+const BlogDetails = () => {
+  const { slug } = useParams(); // Extract slug from URL
+  const [blog, setBlog,] = useState(null);
+  const [nextBlog, setNextBlog,] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${DATA_ASSET_URL}blogs/${slug}`) 
+      .then((response) => {
+        setBlog(response.data.data); // Set the blog data
+        setNextBlog(response.data.next);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <>
       <Helmet>
         <title>Great Value Realty | Blog</title>
       </Helmet>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.webp`}
-        heading={"BLOG DETAILS"}
-        parentLink={"blogs"}
-        parentTitle={"BLOGS"}
-        extraClassesImg={"objectRight"}
-      />
-      <Index data={blog} latestBlogData={latestBlog} />
-    </>
+          img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.webp`}
+          heading={"BLOG DETAILS"}
+          parentLink={"blogs"}
+          parentTitle={"BLOGS"}
+          extraClassesImg={"objectRight"}
+          />
+          <Index data={blog} nextBlog={nextBlog}/>
+      </>
   )
 }
 
