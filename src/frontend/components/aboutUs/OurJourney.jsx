@@ -3,11 +3,31 @@ import { Navigation } from "swiper/modules";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
+import { DATA_ASSET_URL } from "../../../../config";
 
 const OurJourney = () => {
   const elementRef = useRef(null);
   const imgClusterRef = useRef(null);
+  const [data, setData,] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    axios
+      .get(`${DATA_ASSET_URL}timeline`) 
+      .then((response) => {
+        setData(response.data.data); // Set the blog data
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
+
+
+  console.log(data,"timeline")
   const projects = [
     {
       year: 1970,
@@ -193,6 +213,9 @@ const OurJourney = () => {
         "Upcoming high-end luxury residential project over 4 acres with world-class amenities and modern architecture.",
     },
   ];
+
+
+
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(1); // State to hold the selected project
 
   useEffect(() => {

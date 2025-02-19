@@ -48,7 +48,7 @@ const Aboutus = () => {
     const team = data?.["about-team"] || {};
     const journey = data?.["about-our-journey"] || {};
     const verticals = data?.["about-our-verticals"] || {};
-console.log(banner.image,"banner")
+console.log(journey,"journey data")
 const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
   
   return (
@@ -91,7 +91,7 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
       {vision && <OurVisionSection visionData={vision} missionData={mission}/>}
       {team && <OurTeamSection data={team}/>}
       {journey && <OurJourneySection data={journey}/>}
-      {verticals && <OurVerticalsSection />}
+      {verticals && <OurVerticalsSection data={verticals}/>}
     </>
   );
 };

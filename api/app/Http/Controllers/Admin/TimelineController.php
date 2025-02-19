@@ -66,7 +66,7 @@ class TimelineController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
+            // 'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
             'title' => 'required|unique:timelines,title',
             'year' => 'required',
             'location' => 'required',
@@ -74,14 +74,12 @@ class TimelineController extends Controller
 
         ],
         [
-            'image.required' => 'The image field is required.',
-            'image.mimes' => 'Invalid Image type only aloowed (png,jpg,jpeg)',
+            // 'image.required' => 'The image field is required.',
+            // 'image.mimes' => 'Invalid Image type only aloowed (png,jpg,jpeg)',
             'title.required' => 'The title field is required.',
             'year.required' => ' year field is required.',
             'location.required' => ' location field is required.',
-
-
-            'title.unique' => 'timelines Already Exists.',
+ 
         ]);
 
         if($validator->fails()){
@@ -98,10 +96,10 @@ class TimelineController extends Controller
         }else{
             try{
                 
-                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('timeline', $name, 'public');
+                // $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+                // $path = $request->file('image')->storeAs('timeline', $name, 'public');
                 $amenitiesdata=new Timeline();
-                $amenitiesdata->image=$path;
+                // $amenitiesdata->image=$path;
                 $amenitiesdata->title=$request->title;
                 $amenitiesdata->year=$request->year;
                 $amenitiesdata->location=$request->location;
@@ -225,20 +223,20 @@ class TimelineController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
+            // 'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'title' => ['required',Rule::unique('timelines')->ignore($request->id)],
             'year' => ['required'],
             'location' => ['required'],
 
 
         ], [
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
+            // 'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
+            // 'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'title.required' => 'The title field is required.',
             'title.year' => 'The year field is required.',
             'title.location' => 'The location field is required.',
 
-            'title.unique' => 'infrastructures Already Exists.',
+            // 'title.unique' => 'infrastructures Already Exists.',
         ]);
         if($validator->fails()){
             return response()->json([
@@ -259,18 +257,18 @@ class TimelineController extends Controller
         }
 
       
-        if($request->file('image')){
-          
-            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->image);
-            dltSingleImgFile($imagesurl);
-            
-            $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('timeline-images', $name, 'public');
-            $getrecord->image=$path;
-        }
-        $getrecord->title=$request->title;
-        $getrecord->year=$request->year;
-        $getrecord->location=$request->location;
+        // if($request->file('image')){
+        //     $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->image);
+        //     dltSingleImgFile($imagesurl);
+        //     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+        //     $path = $request->file('image')->storeAs('timeline-images', $name, 'public');
+        //     $getrecord->image=$path;
+        // }
+
+
+        $getrecord->title = $request->title;
+        $getrecord->year = $request->year;
+        $getrecord->location = $request->location;
 
 
         if($getrecord->save()){
