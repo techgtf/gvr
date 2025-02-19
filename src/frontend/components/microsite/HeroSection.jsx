@@ -38,7 +38,7 @@ function HeroSection({
 
   return (
     <>
-      <section className="relative heroSection h-[60vh] md:h-[80vh]" id={sectionId}>
+      <section className="relative heroSection h-[60vh] md:h-[80vh]" >
         <ZoomOut initialScale={initialScale} duration={duration}>
           <div
             className="hero_vdo_div h-[60vh] md:h-[80vh] relative !bg-cover !bg-center bg-no-repeat"
@@ -59,7 +59,7 @@ function HeroSection({
         </ZoomOut>
       </section>
 
-      <section className="banner_details bg-white relative w-full" ref={bannerDetailsRef}>
+      <section id={sectionId} className="banner_details bg-white relative w-full" ref={bannerDetailsRef}>
         <BannerDetails {...bannerDetailsProps} />
       </section>
     </>
