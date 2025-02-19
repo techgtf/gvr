@@ -9,28 +9,39 @@ import Specifications from '../components/microsite/HighlightsSpecifications/Spe
 import Plans from '../components/microsite/Plans';
 import LocationAdvantage from '../components/microsite/LocationAdvantage';
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery';
-import banquet from "/assets/frontend/images/microsite/vilasa/amentities/icons/banquet.png";
+import banquet from "/assets/frontend/images/microsite/vilasa/amentities/icons/banquet.webp";
 import master_plan_img from "/assets/frontend/images/microsite/vilasa/plans/masterplan.webp";
 import loaction from "/assets/frontend/images/microsite/vilasa/location/location.webp";
-import drive from "/assets/frontend/images/microsite/location/drive.png";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
-import walk from "/assets/frontend/images/microsite/location/walk.png";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
+import drive from "/assets/frontend/images/microsite/location/drive.webp";
+import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
+import walk from "/assets/frontend/images/microsite/location/walk.webp";
+import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import actual1 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual1.webp"
 import actual2 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual2.webp"
 import actual3 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual3.webp"
 import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.webp"
-import render1 from "/assets/frontend/images/microsite/vilasa/gallery/render/render1.jpg"
-import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.png";
-import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.png";
-import gazebo from "/assets/frontend/images/microsite/vilasa/amentities/icons/gazebo.png";
-import road from "/assets/frontend/images/microsite/vilasa/amentities/icons/road.png";
-import guard from "/assets/frontend/images/microsite/vilasa/amentities/icons/guard.png";
-import pitch from "/assets/frontend/images/microsite/vilasa/amentities/icons/pitch.png";
-import badminton from "/assets/frontend/images/microsite/vilasa/amentities/icons/badminton.png";
-import golf from "/assets/frontend/images/microsite/vilasa/amentities/icons/golf.png";
+import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.webp";
+import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.webp";
+import gazebo from "/assets/frontend/images/microsite/vilasa/amentities/icons/gazebo.webp";
+import road from "/assets/frontend/images/microsite/vilasa/amentities/icons/road.webp";
+import guard from "/assets/frontend/images/microsite/vilasa/amentities/icons/guard.webp";
+import pitch from "/assets/frontend/images/microsite/vilasa/amentities/icons/pitch.webp";
+import badminton from "/assets/frontend/images/microsite/vilasa/amentities/icons/badminton.webp";
+import golf from "/assets/frontend/images/microsite/vilasa/amentities/icons/golf.webp";
+import aboutImg from "/assets/frontend/images/microsite/vilasa/about/about.webp"
+
+// location drive and walk images 
+import hospital from "/assets/frontend/images/microsite/vilasa/location/icons/hospital.webp"
+import college from "/assets/frontend/images/microsite/vilasa/location/icons/college.webp"
+import school from "/assets/frontend/images/microsite/vilasa/location/icons/school.webp"
+import landmark from "/assets/frontend/images/microsite/vilasa/location/icons/landmark.webp"
+import resort from "/assets/frontend/images/microsite/vilasa/location/icons/resort.webp"
+import metro from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
+import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.webp"
+import { useLocation } from 'react-router-dom';
 
 function VilasaMicrosite() {
+    const location = useLocation();
     // Amentities data 
 
     const customAmentitiesData = [
@@ -45,72 +56,17 @@ function VilasaMicrosite() {
         { name: "Golf putting greens", image: golf },
     ]
 
-    // Pricelist data 
-
-    // const customPriceListData = [
-    //     {
-    //         area: "1 BHK",
-    //         more: "Living room/Kitchen/1 Toilet/Balcony",
-    //         size: "850 sq.ft",
-    //         price: "₹ 45 Lacs*",
-    //     },
-    //     {
-    //         area: "2 BHK ",
-    //         more: "Living room/2 BR/Kitchen/2 Toilets/Balcony",
-    //         size: "1250 sq.ft",
-    //         price: "₹ 80 Lacs*",
-    //     },
-    // ];
-
-    // Master plan 
 
     const masterPlanData = [
         { image: master_plan_img, alt: "Master Plan" },
     ];
-
-    // Plans data
-
-    // const unitData = {
-    //     unit1: [
-    //         {
-    //             image: plan1,
-    //             type: "3 BHK + STUDY + 4T",
-    //             carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-    //             balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-    //             buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-    //             totalArea: "170.94 Sqm. (1840 Sq.Ft)",
-    //         },
-    //     ],
-    //     unit2: [
-    //         {
-    //             image: plan2,
-    //             type: "3 BHK + 3T",
-    //             carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-    //             balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-    //             buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-    //             totalArea: "157.94 Sqm. (1700 Sq.Ft)",
-    //         },
-    //     ],
-    //     unit34: [
-    //         {
-    //             image: plan3,
-    //             type: "2 BHK + STUDY + 2T",
-    //             carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-    //             balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-    //             buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-    //             totalArea: "125.42 Sqm. (1350 Sq.Ft)",
-    //         },
-    //     ],
-    // };
-
-    // Highlishts data 
 
     const highlightsData = [
         "Customizable Plots –Design your dream villa or Stilt + 4 floors.",
         "Gated Community – Secure, well-planned, and exclusive living.",
         "Premium Amenities – Clubhouse, banquet, sports courts, and golf greens.",
         "Great Connectivity – Near Aravalli Hills and Damdama Lake.",
-        "Scenic Surroundings –122-172 sq. yds.",       
+        "Scenic Surroundings –122-172 sq. yds.",
     ];
 
     // Specifications data 
@@ -119,45 +75,45 @@ function VilasaMicrosite() {
         {
             title: "Plot Sizes",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.png", description: "Ranging from 122 sq. yds. to 172 sq. yds" },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.webp", description: "Ranging from 122 sq. yds. to 172 sq. yds" },
             ],
         },
         {
             title: "Security & Facilities",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/security.png", description: "Gated entry, parks, and essential services." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/security.webp", description: "Gated entry, parks, and essential services." },
             ],
         },
         {
             title: "Recreation",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/recreation.png", description: "Cricket, badminton, basketball, golf putting greens." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/recreation.webp", description: "Cricket, badminton, basketball, golf putting greens." },
             ],
         },
         {
             title: "Roads & Infrastructure",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/road.png", description: "10m wide roads, landscaped spaces." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/road.webp", description: "10m wide roads, landscaped spaces." },
             ],
-        },       
+        },
         {
             title: "Commercial Complex",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/commercialComplex.png", description: "Dedicated retail spaces within the community." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/commercialComplex.webp", description: "Dedicated retail spaces within the community." },
             ],
-        },       
+        },
         {
             title: "Community Spaces",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/communitySpaces.png", description: "European-style gazebos, open lawns, and seating areas." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/communitySpaces.webp", description: "European-style gazebos, open lawns, and seating areas." },
             ],
-        },       
+        },
         {
             title: "Sustainable Living",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/sustainableLiving.png", description: "Green spaces and well-planned drainage systems." },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/sustainableLiving.webp", description: "Green spaces and well-planned drainage systems." },
             ],
-        },       
+        },
     ];
 
     // Images 
@@ -177,7 +133,8 @@ function VilasaMicrosite() {
     return (
         <>
             <HeroSection
-                backgroundImage="assets/frontend/images/microsite/vilasa/hero/hero.webp"
+                desktopBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
+                mobileBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -190,7 +147,7 @@ function VilasaMicrosite() {
             />
 
             <About
-                imageSrc="assets/frontend/images/microsite/vilasa/about/about.webp"
+                imageSrc={aboutImg}
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
@@ -202,37 +159,38 @@ function VilasaMicrosite() {
                 images={images}
             />
 
-            <PriceList priceListData headingText="Price List" />
+            <PriceList headingText="Price List" />
 
             <HighlightsSpecifications
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
             />
 
-            <Plans masterPlanData={masterPlanData} unitData />
+            <Plans masterPlanData={masterPlanData} />
 
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },       
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' }, 
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/metro.png', text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },           
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/resort.png', text: 'Damdama Lake, Sohna', time: '22 min' },                    
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/airport.png', text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },                                  
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
+                    { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
+                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
+                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },
+                    { image: resort, text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' },
+                    { image: metro, text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },
+                    { image: resort, text: 'Damdama Lake, Sohna', time: '22 min' },
+                    { image: landmark, text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
+                    { image: airport, text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },
                 ]}
                 walkData={[
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/hospital.png', text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/school.png', text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/landmark.png', text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },     
-                    { image: 'assets/frontend/images/microsite/vilasa/location/icons/college.png', text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },                                                                                                            
+                    { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
+                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
+                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },
+                    { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
@@ -244,7 +202,6 @@ function VilasaMicrosite() {
 
             <ProjectGallery
                 actualImages={[actual1, actual2, actual3, actual4]}
-                renderImages={[render1, render1, render1, render1]}
             />
         </>
     )

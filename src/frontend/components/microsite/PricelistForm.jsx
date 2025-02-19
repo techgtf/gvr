@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SlClose } from "react-icons/sl";
 import { Context } from "../../context/context";
 import CommonHeading from "../commonHeading";
 
 function PricelistForm() {
   const { showEnquiryForm, closeEnquiryForm } = useContext(Context);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (showEnquiryForm) {
+      setTimeout(() => setIsVisible(true), 50); // Short delay for smooth fade-in
+    } else {
+      setIsVisible(false);
+    }
+  }, [showEnquiryForm]);
+
   if (!showEnquiryForm) return null;
 
   return (

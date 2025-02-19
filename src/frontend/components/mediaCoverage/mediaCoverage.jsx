@@ -13,23 +13,23 @@ export default function MediaCoverage() {
     const mediaData = [
         {
             name: 'sky news',
-            imgSrc: 'sky-news.png',
+            imgSrc: 'sky-news.webp',
         },
         {
             name: 'global news',
-            imgSrc: 'global-news.png',
+            imgSrc: 'global-news.webp',
         },
         {
             name: 'nbc sports group',
-            imgSrc: 'nbc-group.png',
+            imgSrc: 'nbc-group.webp',
         },
         {
             name: 'corel draw news',
-            imgSrc: 'core-draw-news.png',
+            imgSrc: 'core-draw-news.webp',
         },
         {
             name: 'breaking news',
-            imgSrc: 'breaking-news.png',
+            imgSrc: 'breaking-news.webp',
         }
     ]
 
@@ -38,7 +38,10 @@ export default function MediaCoverage() {
     return (
         <div className='mediaCoverageSection bg-[#EFF5FA] lg:py-20 py-12 text-center'>
             <SlideIn duration={2} delay={0.5}>
-                <WaterMarkHeading sectionHeading='Our media coverage' />
+                <WaterMarkHeading
+                    // sectionHeading='Media Vault - Our Journey Unveiled'
+                    sectionHeading='Our media coverage'
+                />
                 <div className='lg:max-w-[61%] max-w-[95%] m-auto lg:pt-24 pt-12'>
                     <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">
                         <Swiper
@@ -68,15 +71,17 @@ export default function MediaCoverage() {
                         >
                             {mediaData && (
                                 mediaData.map((item, index) =>
-                                    <>
-                                        <SwiperSlide key={index}>
+                                    <React.Fragment  key={index}>
+                                        <SwiperSlide>
                                             <img
-                                                className='lg:w-auto w-[80px]'
+                                                className="lg:w-auto w-[80px]"
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media-coverage/${item.imgSrc}`}
-                                                alt="media images" />
+                                                alt={item.altText || `Media coverage: ${item.title}`}
+                                            />
+
                                         </SwiperSlide>
                                         {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
-                                    </>
+                                    </React.Fragment>
                                 )
                             )}
                         </Swiper>

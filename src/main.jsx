@@ -9,6 +9,7 @@ import CustomPortal from "./frontend/components/customPortal.jsx";
 import PricelistForm from "./frontend/components/microsite/PriceListForm.jsx";
 import { TeamProvider } from "./frontend/context/TeamContext.jsx";
 import LatestBlogProvider from "./frontend/context/LatestBlogContext.jsx";
+import MicrositeMenu from "./frontend/components/microsite/MicrositeMenu.jsx";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import store from './store/store.js'
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
         </Provider>
         <CustomPortal>
           <PricelistForm />
+          {/* <MicrositeMenu/> */}
         </CustomPortal>
       </ContextProvider>
       </LatestBlogProvider>

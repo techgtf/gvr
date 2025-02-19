@@ -66,13 +66,12 @@ function CharityInitiatives() {
                         trigger: ".charity-images",
                         start: "top 90%",
                         end: "bottom 20%",
-                        scrub: true,
+                        scrub: false,
                     },
                 }
             );
 
             ScrollTrigger.refresh();
-            console.log("✅ GSAP Animations Refreshed!");
         }, 300);
     }, [location.pathname]);
 

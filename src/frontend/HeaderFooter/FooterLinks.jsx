@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BASE_ROOT } from "../../../config";
-import ScrollToTop from "../components/ScrollToTop";
 
 export default function FooterLinks({ toggelLinks }) {
   return (
     <>
-      <ScrollToTop />
       <div className={`footerLinks text-left ${toggelLinks ? "active" : ""} bg-[#33638b]`}>
         <div className="max-w-[95%] m-auto pt-12 pb-10 grid md:flex">
           
@@ -17,7 +15,7 @@ export default function FooterLinks({ toggelLinks }) {
               <Link className="block mb-4" to={`${BASE_ROOT}gv-homes`}>GV Homes</Link>
               <Link className="block mb-4" to={`${BASE_ROOT}sharanam`}>Sharnam</Link>
               <Link className="block mb-4" to={`${BASE_ROOT}anandam`}>Anandam</Link>
-              <Link className="block mb-4" to={`${BASE_ROOT}residential`}>All Residential</Link>
+              <Link className="block mb-4" to={`${BASE_ROOT}residential`}>Residential</Link>
             </li>
           </ul>
 
@@ -25,7 +23,7 @@ export default function FooterLinks({ toggelLinks }) {
           <ul className="links_ul uppercase text-white w-full col-span-2">
             <li>
               <div className="heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5">Commercial</div>
-              <Link className="block mb-4" to={`${BASE_ROOT}commercial-projects`}>All Commercial</Link>
+              <Link className="block mb-4" to={`${BASE_ROOT}commercial-projects`}>Commercial</Link>
             </li>
           </ul>
 

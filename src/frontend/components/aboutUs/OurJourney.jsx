@@ -1,10 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { useState } from "react";
-import { useTextAnimation } from "../useTextAnimation";
-import SlideIn from "../Animations/SlideIn";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const OurJourney = () => {
+  const elementRef = useRef(null);
+  const imgClusterRef = useRef(null);
+
   const projects = [
     {
       year: 1970,
@@ -94,6 +97,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2019,
       images: ["2019-1.webp", "2019-2.webp", "2019-3.webp", "2019-4.webp"],
       project: [
         {
@@ -140,6 +144,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2022,
       images: ["2022-1.webp", "2022-2.webp", "2022-3.webp", "2022-4.webp"],
       project: [
         {
@@ -159,6 +164,7 @@ const OurJourney = () => {
     },
 
     {
+      year: 2023,
       images: ["2023-1.webp", "2023-2.webp", "2023-3.webp", "2023-4.webp"],
       project: [
         {
@@ -187,7 +193,50 @@ const OurJourney = () => {
         "Upcoming high-end luxury residential project over 4 acres with world-class amenities and modern architecture.",
     },
   ];
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(2); // State to hold the selected project
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(1); // State to hold the selected project
+
+  useEffect(() => {
+    const element = elementRef.current;
+    const imgCluster = imgClusterRef.current;
+    if (!element) return;
+    if (!imgCluster) return;
+
+    const animation = gsap.fromTo(
+      element,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        // duration: 1,
+        // delay: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 100%",
+          end: "bottom 20%",
+        },
+      }
+    );
+
+    const animationForImgCluster = gsap.fromTo(
+      imgCluster,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        // duration: 1,
+        // delay: 1,
+        scrollTrigger: {
+          trigger: imgCluster,
+          start: "top 100%",
+          end: "bottom 20%",
+        },
+      }
+    );
+    return () => {
+      animation.scrollTrigger?.kill(); // Cleanup ScrollTrigger
+      animationForImgCluster.scrollTrigger?.kill();
+    };
+  }, [selectedProjectIndex]);
 
   // const sectionRef = useTextAnimation(
   //   { from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 } },
@@ -207,26 +256,25 @@ const OurJourney = () => {
           <div className="relative xl:basis-[48%] xl:my-[2rem]  mb-[0rem] pt-[2rem] xl:pt-[0rem] overflow-y-scroll xl:max-h-[300px] no-scrollbar basis-[100%]">
             {projects[selectedProjectIndex].project.map((proj, index) => {
               return (
-                <div
+                <div 
+                key={index}
                   className={
                     "xl:basis-[50%] no-scrollbar border-b-[1px] border-b-solid border-b-[#ddd] mr-[16px] pb-[10px] mb-[20px] basis-[100%] justify-between flex flex-wrap text-center "
                   }
-                  // ref={sectionRef}
+                  ref={elementRef}
                 >
-                  <SlideIn>
-                    <div className="basis-[40%] text-left">
-                      <h4 className="midlandfontbold mb-[10px] xl:!text-[11px] text-[16px] sectionHeading tracking-[8px] text-primary">
-                        {proj.year}
-                      </h4>
-                      <p className=" text-primary tracking-[2px] leading-[20px] !text-[12px] ">
-                        {proj.category}
-                      </p>
-                    </div>
-
-                    <p className="basis-[55%] common_pera text-left !leading-[21px]">
-                      {proj.description}
+                  <div className="basis-[40%] text-left">
+                    <h4 className="midlandfontbold mb-[10px] xl:!text-[11px] text-[16px] sectionHeading tracking-[8px] text-primary">
+                      {proj.year}
+                    </h4>
+                    <p className="text-primary tracking-[2px] leading-[20px] !text-[12px] ">
+                      {proj.category}
                     </p>
-                  </SlideIn>
+                  </div>
+
+                  <p className="basis-[55%] common_pera text-left !leading-[21px]">
+                    {proj.description}
+                  </p>
                 </div>
               );
             })}
@@ -234,7 +282,7 @@ const OurJourney = () => {
         ) : (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
-            // ref={sectionRef}
+            ref={elementRef}
           >
             <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
               {projects[selectedProjectIndex].year}
@@ -248,11 +296,14 @@ const OurJourney = () => {
           </div>
         )}
 
-        <div className="xl:basis-[50%] basis-[100%]   xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center">
+        <div
+          ref={imgClusterRef}
+          className="xl:basis-[50%] basis-[100%] xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
+        >
           {projects[selectedProjectIndex].images.map((img, index) => {
             if (index == 0) {
               return (
-                <img
+                <img key={index}
                   src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
                   alt={projects[selectedProjectIndex].year + index + ".img"}
                   className="xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] absolute top-[8%] xl:top-0 z-[1] left-[25%]"
