@@ -141,7 +141,6 @@ const AddProjects = () => {
   };
   const getSubTypologyByTypologyList = async (event) => {
     setCheckedTypology(event.target.value);
-    debugger;
 
     var response = await getAllSubTypologyByTypology(event.target.value);
     if (response.status && response.statusCode === 200) {

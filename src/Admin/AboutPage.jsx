@@ -28,6 +28,7 @@ const AboutPage = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
   const [lastPage, setLastPage] = useState(1);
+  const [pageTitle, setPageTitle] = useState(null);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -202,6 +203,16 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
+    const getPageTitle = async()=>{
+      const response = await Request('admin/distinct-pages', "GET")
+      const pageObj = response.data.find(resObj=>resObj.id == pageId)
+      setPageTitle(pageObj.name)
+    }
+
+    getPageTitle();
+  }, [pageId]); 
+
+  useEffect(() => {
     listHandler();
   }, [currentPage, totalPage]);
 
@@ -217,7 +228,7 @@ const AboutPage = () => {
   return (
     <>
       <div className="d-flex title_col justify-content-between align-items-center">
-        <h4 className="page_title">About Page</h4>
+        <h4 className="page_title">{pageTitle}</h4>
         <button className="btn ms-auto btn_primary btn-sm" onClick={addHandler}>
           Add Timeline
         </button>
