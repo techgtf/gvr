@@ -93,7 +93,6 @@ const OtherVerticals = () => {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
-    debugger;
 
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();

@@ -87,7 +87,6 @@ const Sections = React.memo((props)=>{
             'page_id':page_id,
         }
         var response=await JsonRequest('admin/page/page-sections/'+page_section,'GET');
-        debugger;
       
         // setIsLoading(false);
 
