@@ -28,4 +28,10 @@ class Timeline extends Model
         return empty($query) ? static::query()
             : static::where('title', 'like', '%'.$query.'%');
     }
+
+    public function images()
+    {
+        return $this->hasMany(TimelineImage::class);
+    }
+
 }
