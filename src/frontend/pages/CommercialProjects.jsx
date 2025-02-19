@@ -218,10 +218,14 @@ const CommercialProjects = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/commercial_banner.webp`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${
+          window.innerWidth <= 768
+            ? "commercial_banner_mb.jpg"
+            : "commercial_banner.jpg"
+        }`}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
-        extraClassesImg={"objectRight object-top"}
+        extraClassesImg={" object-center "}
       />
       <div className="overview_section 2xl:pt-[80px] px-[30px] pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
@@ -290,52 +294,6 @@ const CommercialProjects = () => {
           <CommercialProjectSection project={project} />
         </div>
       ))}
-      <div className="lg:max-w-[61%] max-w-[95%] m-auto lg:py-24 py-16">
-        <div className="flexbox flex flex-wrap justify-center  lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">
-          <Swiper
-            modules={[Autoplay, FreeMode]}
-            loop={true}
-            freeMode={true} // Enables smooth scrolling
-            speed={5000} // Controls smooth speed
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false, // Keeps scrolling when hovered
-              reverseDirection: false, // Set to true for reverse marquee
-            }}
-            // slidesPerView="auto"
-            // spaceBetween={20}
-            breakpoints={{
-              300: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-              },
-            }}
-            className="mediaSwiper commercialSwiper"
-            style={{
-              display: "flex !important",
-              alignItems: "center !important",
-            }}
-          >
-            {mediaData.map((item, index) => (
-              <React.Fragment key={index}>
-                <SwiperSlide>
-                  <img
-                    className="lg:w-auto w-[80px]"
-                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${item.imgSrc}`}
-                    alt={item.altText || `Media coverage: ${item.title}`}
-                  />
-                </SwiperSlide>
-                {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
-              </React.Fragment>
-            ))}
-          </Swiper>
-        </div>
-      </div>
     </section>
   );
 };
@@ -414,16 +372,17 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                       "PERNIA",
                     ].includes(proj.name) ? (
                       proj.name === "COMPLEX MADANGIR" ? (
-                        <p className="basis-[25%]">
-                          High Street Retail & Office Spaces
-                        </p>
+                        <p className="basis-[25%]">High Street Retail</p>
                       ) : (
                         <p className="basis-[25%]">Office Spaces</p>
                       )
                     ) : (
                       <Link
                         to={proj.link}
-                        className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
+                        style={{
+                          width: "115px",
+                        }}
+                        className="bg-primary  text-[10px] text-center py-[8px] px-[15px] text-white"
                       >
                         {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
                           ? "COMING SOON"
@@ -438,6 +397,52 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
         </div>
 
         <div className="mt-16 md:mt-20">
+          {project.name.includes("WAREHOUSES") && (
+            <div className="lg:max-w-[61%] max-w-[95%] m-auto pb-[3rem]">
+              <div className="flexbox flex flex-wrap justify-center  lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">
+                <Swiper
+                  modules={[Autoplay, FreeMode]}
+                  loop={true}
+                  freeMode={true} // Enables smooth scrolling
+                  speed={5000} // Controls smooth speed
+                  autoplay={{
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false, // Keeps scrolling when hovered
+                    reverseDirection: false, // Set to true for reverse marquee
+                  }}
+                  breakpoints={{
+                    300: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 4,
+                      spaceBetween: 40,
+                    },
+                  }}
+                  className="mediaSwiper commercialSwiper"
+                  style={{
+                    display: "flex !important",
+                    alignItems: "center !important",
+                  }}
+                >
+                  {mediaData.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <SwiperSlide>
+                        <img
+                          className="lg:w-auto w-[80px]"
+                          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${item.imgSrc}`}
+                          alt={item.altText || `Media coverage: ${item.title}`}
+                        />
+                      </SwiperSlide>
+                      {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
+                    </React.Fragment>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          )}
           <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end">
             <button
               ref={prevRef}
@@ -452,7 +457,6 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
             </button>
           </div>
-
           <div className={project.name.toLowerCase() + "-images"}>
             <Swiper
               onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -500,7 +504,6 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
         </div>
       </section>
     </>
-
   );
 });
 
