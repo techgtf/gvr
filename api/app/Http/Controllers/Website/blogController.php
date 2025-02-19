@@ -70,14 +70,18 @@ class BlogController extends Controller
 
         try {
             if(!empty($result)){
+                $nextBlog = Blog::where('id', '>', $result->id)
+                ->orderBy('id', 'asc')
+                ->first();
 
                 return response()->json([
                     'status' => true,
                     'statusCode' => 200,
                     'message' => "Get Single Record",
                     'data' => $result,
+                    'next' => $nextBlog ? $nextBlog->slug : null,
                 ]);
-    
+               
             }
         } catch (\Throwable $th) {
             return response()->json([

@@ -5,7 +5,6 @@ import Index from '../components/blogs/Index';
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
-import { useLocation  } from "react-router-dom";
 import { DATA_ASSET_URL } from "../../../config";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -13,20 +12,18 @@ import axios from "axios";
 
 
 const BlogDetails = () => {
-  const location = useLocation();
-  const blog = location.state?.blog;
-  // const latestBlog = location.state?.latestBlog;
-  if (!blog) return <h2>Blog not found!</h2>;
   const { slug } = useParams(); // Extract slug from URL
-  const [blogDetails, setBlogDetails,] = useState(null);
+  const [blog, setBlog,] = useState(null);
+  const [nextBlog, setNextBlog,] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${DATA_ASSET_URL}blogs/${slug}`) // Fetch blog details by slug
+      .get(`${DATA_ASSET_URL}blogs/${slug}`) 
       .then((response) => {
-        setBlogDetails(response.data.data); // Set the blog data
+        setBlog(response.data.data); // Set the blog data
+        setNextBlog(response.data.next);
         setLoading(false);
       })
       .catch((err) => {
@@ -37,9 +34,6 @@ const BlogDetails = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
-
-  console.log(blogDetails,"blogDetails")
   return (
     <>
       <HeroSectionAboutUs
@@ -49,7 +43,7 @@ const BlogDetails = () => {
           parentTitle={"BLOGS"}
           extraClassesImg={"objectRight"}
           />
-          <Index data={blog} />
+          <Index data={blog} nextBlog={nextBlog}/>
       </>
   )
 }
