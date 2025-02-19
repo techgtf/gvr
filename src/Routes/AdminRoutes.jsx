@@ -64,6 +64,8 @@ import Timeline from "../admin/components/timeline/Index";
 import EditTimeline from "../admin/components/timeline/Edit";
 import AddTimeline from "../admin/components/timeline/Add";
 import AboutPage from "../admin/AboutPage";
+import OurTeam from "../admin/components/about/team/Index";
+import TimelineImages from "../admin/components/timeline/images/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -409,6 +411,17 @@ export const AdminRoutes = [
     ),
   },
   {
+    path: `${ADMIN_ROOT}team`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OurTeam />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
     path: `${ADMIN_ROOT}category`,
     // element:<AdminLayout />,
     element: (
@@ -614,6 +627,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <EditTimeline />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}timeline/images`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TimelineImages />
         </Suspense>
       </AdminLayout>
     ),
