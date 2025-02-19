@@ -398,16 +398,18 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                   </p>
                   <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
                   <p className="basis-[30%]">{proj.address}</p>
-                  {proj.name != "COMPLEX MADANGIR" &&
-                  proj.name != "JHARKHAND BHAWAN" ? (
-                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  ) : (
-                    <div className="h-[40px] w-[0.5px] "></div>
-                  )}
+
+                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
 
                   {proj.name == "COMPLEX MADANGIR" ||
-                  proj.name == "JHARKHAND BHAWAN" ? (
-                    <div className="basis-[25%] "></div>
+                  proj.name == "JHARKHAND BHAWAN" ||
+                  proj.name == "GAP" ||
+                  proj.name == "PERNIA" ? (
+                    <div className="basis-[25%] ">
+                      {proj.name == "JHARKHAND BHAWAN"
+                        ? "High Street Retail & Office Spaces"
+                        : "Office Spaces"}
+                    </div>
                   ) : (
                     <div className="basis-[25%] ">
                       <Link
