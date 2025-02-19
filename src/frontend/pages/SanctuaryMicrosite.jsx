@@ -180,7 +180,7 @@ function SanctuaryMicrosite() {
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} />}
     />
 
-    <Plans masterPlanData={masterPlanData} />
+    {/* <Plans masterPlanData={masterPlanData} /> */}
 
     <LocationAdvantage
         locationImage={loaction}

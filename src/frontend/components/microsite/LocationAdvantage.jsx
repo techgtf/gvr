@@ -72,7 +72,7 @@ function LocationAdvantage({
           <FadeIn duration={2} delay={0.5}>
             <CommonHeading HeadingText="Location Advantage" />
           </FadeIn>
-          <div className="location_map py-10 reveal w-[80%]" onClick={() => openLightbox(0)}>
+          <div className="location_map py-10  w-full md:w-[80%]" onClick={() => openLightbox(0)}>
             <img src={locationImage} alt="Location" className="cursor-pointer w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
