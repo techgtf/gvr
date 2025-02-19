@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import CustomDropdown from "../common/Custom_Dropdown/CustomDropdown";
+import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
-import SideModal from "./components/Modal/SideModal/Index";
-import * as CONFIG from "../../config";
-import Loader from "../common/Loader/loader";
+import SideModal from "../../Modal/SideModal/Index";
+import * as CONFIG from "../../../../../config";
 import { toast } from "react-toastify";
-import Pagination from "../common/Pagination/Pagination";
+import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import Request from "../config/Request";
+import Request from "../../../../config/Request";
 
-import "./assets/css/admin.css";
+import "../../../assets/css/admin.css";
 
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
@@ -21,7 +20,7 @@ const statusOptions = [
   { label: "Hide", value: "0" },
 ];
 
-const Amenities = () => {
+const HomePageOverview = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -46,6 +45,7 @@ const Amenities = () => {
 
   const fileRef = useRef(null);
   const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
@@ -93,9 +93,14 @@ const Amenities = () => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
-    formData.append("image", fileRef.current.files[0]);
-    formData.append("title", titleRef.current.value);
-    var response = await Request("admin/amenities", "POST", formData);
+    
+    formData.append('page_id', 1);
+    formData.append('page_section', 'home-about');
+    formData.append("heading", titleRef.current.value);
+    formData.append("description", descriptionRef.current.value);
+
+    var response = await Request("admin/page/page-sections/", "POST", formData);
+    
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
       toast.error(response.message);
@@ -145,12 +150,12 @@ const Amenities = () => {
   const listHandler = async (search = "") => {
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/amenities?search=" + search + "&page=" + currentPage,
+      "page/page-sections/home-about",
       "GET"
     );
     if (response.status && response.statusCode === 200) {
-      setData(response.data.data);
-      setLastPage(response.data.last_page);
+      setData(response.data);
+      // setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };
@@ -184,43 +189,38 @@ const Amenities = () => {
     listHandler();
   }, [currentPage, totalPage]);
 
-  const findHandler = async (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    listHandler(searchTerm);
-  };
-
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Amenities</h4>
+        <h4 className="page_title">Home Page Overview</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Amenity
+          Add Overview
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">Amenities</h5>
+          <h5 className="mb-0">Overview Data</h5>
 
-          <div className="searchInput ml-auto">
+          {/* <div className="searchInput ml-auto">
             <input
               type="text"
               className="border rounded px-3 py-2 w-full"
               placeholder="Search by name"
               onChange={findHandler}
             />
-          </div>
+          </div> */}
         </div>
 
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">Name</th>
-              <th className="border border-gray-300 p-2 text-left">Icons</th>
-              <th className="border border-gray-300 p-2 text-left">Status</th>
+              <th className="border border-gray-300 p-2 text-left">Title</th>
+              <th className="border border-gray-300 p-2 text-left">Description</th>
+              {/* <th className="border border-gray-300 p-2 text-left">Status</th> */}
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -229,53 +229,49 @@ const Amenities = () => {
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
                 <td colSpan={4}>
-                  <div className="text-center py-4">
+                  <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
                 </td>
               </tr>
             ) : (
               <>
-                {data && Array.isArray(data) && data.length > 0 ? (
-                  data.map((item) => (
-                    <tr key={item.id} className="border-b">
-                      <td className="py-2 px-4">{item.title}</td>
-                      <td className="py-2 px-4">
-                        <div className="thumb icon bg-primary p-2 rounded">
-                          <img src={item.icons} alt="" className="img-fluid" />
-                        </div>
-                      </td>
-                      <td className="py-2 px-4">
-                        <CustomDropdown
-                          className="border rounded px-3 py-2 w-full"
-                          defaultVal={item.status}
-                          options={statusOptions}
-                          onSelect={(selectedValue) =>
-                            handleStatusSelect(selectedValue, item.id)
-                          }
-                        />
-                      </td>
-                      <td className="py-2 px-4 flex gap-2">
-                        <button
-                          className="btn action_btn"
-                          onClick={() => editHandler(item.id)}
-                        >
-                          <FaEdit />
-                        </button>
-                        <button
-                          className="btn action_btn"
-                          onClick={() => deleteHandler(item.id)}
-                        >
-                          <RiDeleteBin5Fill />
-                        </button>
-                      </td>
-                    </tr>
-                  ))
+                {data ? (
+                  <tr className="border-b">
+                    <td className="py-2 px-4">{data.heading}</td>
+                    <td className="py-2 px-4">
+                      {data.description}
+                    </td>
+                    {/* <td className="py-2 px-4">
+                      <CustomDropdown
+                        className="border rounded px-3 py-2 w-full"
+                        defaultVal={data.status}
+                        options={statusOptions}
+                        onSelect={(selectedValue) =>
+                          handleStatusSelect(selectedValue, data.id)
+                        }
+                      />
+                    </td> */}
+                    <td className="py-2 px-4 flex gap-2">
+                      <button
+                        className="btn action_btn"
+                        onClick={() => editHandler(data.id)}
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        className="btn action_btn"
+                        onClick={() => deleteHandler(data.id)}
+                      >
+                        <RiDeleteBin5Fill />
+                      </button>
+                    </td>
+                  </tr>
                 ) : (
                   <tr>
                     <td colSpan="4">
                       <h5 className="no_record text-center py-4">
-                        No Amenities Found!
+                        No Data Found!
                       </h5>
                     </td>
                   </tr>
@@ -284,14 +280,6 @@ const Amenities = () => {
             )}
           </tbody>
         </table>
-
-        {!isLoadingTableData && data && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={lastPage}
-            onPageChange={handlePageChange}
-          />
-        )}
       </div>
 
       {showAddSidebar && (
@@ -305,33 +293,31 @@ const Amenities = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Icon
-                  </label>
-                  <input
-                    ref={fileRef}
-                    className="border rounded px-3 py-2 w-full"
-                    type="file"
-                  />
-                  {errors.image && (
-                    <span className="text-red-500">{errors.image}</span>
-                  )}
-                  {showEditEnableImage && (
-                    <img src={showEditEnableImage} width="100" />
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Title
+                    Title*
                   </label>
                   <input
                     ref={titleRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Amenity Title"
+                    placeholder="Enter Title"
                   />
-                  {errors.title && (
-                    <span className="text-red-500">{errors.title}</span>
+                  {errors.heading && (
+                    <span className="text-red-500">{errors.heading}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Description*
+                  </label>
+                  <input
+                    ref={descriptionRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Description"
+                  />
+                  {errors.description && (
+                    <span className="text-red-500">{errors.description}</span>
                   )}
                 </div>
               </form>
@@ -344,4 +330,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default HomePageOverview;
