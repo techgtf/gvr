@@ -114,15 +114,16 @@ const projects = [
         link: "",
         address: "Saket, New Delhi",
       },
-      {
-        name: "COMPLEX MADANGIR",
-        link: "",
-        address: "Madangir, New Delhi",
-      },
+
       {
         name: "JHARKHAND BHAWAN",
         link: "",
         address: "Vasant Vihar, New Delhi",
+      },
+      {
+        name: "COMPLEX MADANGIR",
+        link: "",
+        address: "Madangir, New Delhi",
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -385,7 +386,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               </p>
             </SlideIn>
           </div>
-          {/* <SlideIn duration={2} delay={0.5}> */}
+
           <div className="mt-[4rem]">
             <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
               All Projects
@@ -400,34 +401,33 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                   <p className="basis-[30%]">{proj.address}</p>
 
                   <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-
-                  {proj.name == "COMPLEX MADANGIR" ||
-                  proj.name == "JHARKHAND BHAWAN" ||
-                  proj.name == "GAP" ||
-                  proj.name == "PERNIA" ? (
-                    <div className="basis-[25%] ">
-                      {proj.name == "JHARKHAND BHAWAN"
-                        ? "High Street Retail & Office Spaces"
-                        : "Office Spaces"}
-                    </div>
+                  {[
+                    "COMPLEX MADANGIR",
+                    "JHARKHAND BHAWAN",
+                    "GAP",
+                    "PERNIA",
+                  ].includes(proj.name) ? (
+                    proj.name === "COMPLEX MADANGIR" ? (
+                      <p className="basis-[25%]">
+                        High Street Retail & Office Spaces
+                      </p>
+                    ) : (
+                      <p className="basis-[25%]">Office Spaces</p>
+                    )
                   ) : (
-                    <div className="basis-[25%] ">
-                      <Link
-                        to={proj.link}
-                        className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
-                      >
-                        {proj.name == "Tavru Sohna" ||
-                        proj.name == "Moserbear Part 2"
-                          ? "COMING SOON"
-                          : "READ MORE"}
-                      </Link>
-                    </div>
+                    <Link
+                      to={proj.link}
+                      className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
+                    >
+                      {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
+                        ? "COMING SOON"
+                        : "READ MORE"}
+                    </Link>
                   )}
                 </div>
               );
             })}
           </div>
-          {/* </SlideIn> */}
         </div>
       </div>
 
