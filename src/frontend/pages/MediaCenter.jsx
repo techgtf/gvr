@@ -29,6 +29,7 @@ import charity13 from "/assets/frontend/images/csr/charity/images/charity13.webp
 import charity14 from "/assets/frontend/images/csr/charity/images/charity14.webp";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
+import { Helmet } from 'react-helmet';
 gsap.registerPlugin(ScrollTrigger);
 function MediaCenter() {
     const location = useLocation();
@@ -87,6 +88,9 @@ function MediaCenter() {
     };
     return (
         <>
+            <Helmet>
+                <title>Great Value Realty | media-center</title>
+            </Helmet>
             <HeroSectionAboutUs
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/hero.jpg`}
                 heading={"MEDIA CENTER"}

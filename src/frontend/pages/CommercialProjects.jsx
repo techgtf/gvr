@@ -42,6 +42,7 @@ import retail2 from "/assets/frontend/images/commercialProjects/retail/retail-2.
 import retail3 from "/assets/frontend/images/commercialProjects/retail/retail-3.webp";
 import retail4 from "/assets/frontend/images/commercialProjects/retail/retail-4.webp";
 import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.webp";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 //
@@ -363,137 +364,143 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   };
 
   return (
-    <section
-      key={project.id}
-      id={project.id}
-      className="about bg-[#EFF5FA] relative px-5 pt-[0px] xl:pt-5 md:px-12 py-10 md:py-14"
-    >
-      <div className="absolute h-full flex items-center left-20 bottom-0"></div>
+    <>
+      <Helmet>
+        <title>Great Value Realty | commercial projects</title>
+      </Helmet>
+      <section
+        key={project.id}
+        id={project.id}
+        className="about bg-[#EFF5FA] relative px-5 pt-[0px] xl:pt-5 md:px-12 py-10 md:py-14"
+      >
+        <div className="absolute h-full flex items-center left-20 bottom-0"></div>
 
-      <div className="grid grid-cols-12">
-        <div className="col-span-12 md:col-span-4">
-          <FadeIn duration={2} delay={0.7}>
-            <CommonHeading HeadingText={project.name} />
-          </FadeIn>
-          <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.017] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
-            {project.waterMarkHeading}
-          </p>
-        </div>
-        <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
-          <div className="about_desc">
-            <SlideIn duration={0.8} delay={0.2}>
-              <p className="text-justify text-[11px] font-[300] tracking-[2px]">
-                {project.description}
-              </p>
-            </SlideIn>
+        <div className="grid grid-cols-12">
+          <div className="col-span-12 md:col-span-4">
+            <FadeIn duration={2} delay={0.7}>
+              <CommonHeading HeadingText={project.name} />
+            </FadeIn>
+            <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.017] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
+              {project.waterMarkHeading}
+            </p>
           </div>
+          <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
+            <div className="about_desc">
+              <SlideIn duration={0.8} delay={0.2}>
+                <p className="text-justify text-[11px] font-[300] tracking-[2px]">
+                  {project.description}
+                </p>
+              </SlideIn>
+            </div>
 
-          <div className="mt-[4rem]">
-            <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
-              All Projects
-            </h3>
-            {project.projects.map((proj) => {
-              return (
-                <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
-                  <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
-                    {proj.name}
-                  </p>
-                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  <p className="basis-[30%]">{proj.address}</p>
+            <div className="mt-[4rem]">
+              <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
+                All Projects
+              </h3>
+              {project.projects.map((proj) => {
+                return (
+                  <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
+                    <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
+                      {proj.name}
+                    </p>
+                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                    <p className="basis-[30%]">{proj.address}</p>
 
-                  <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                  {[
-                    "COMPLEX MADANGIR",
-                    "JHARKHAND BHAWAN",
-                    "GAP",
-                    "PERNIA",
-                  ].includes(proj.name) ? (
-                    proj.name === "COMPLEX MADANGIR" ? (
-                      <p className="basis-[25%]">
-                        High Street Retail & Office Spaces
-                      </p>
+                    <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+                    {[
+                      "COMPLEX MADANGIR",
+                      "JHARKHAND BHAWAN",
+                      "GAP",
+                      "PERNIA",
+                    ].includes(proj.name) ? (
+                      proj.name === "COMPLEX MADANGIR" ? (
+                        <p className="basis-[25%]">
+                          High Street Retail & Office Spaces
+                        </p>
+                      ) : (
+                        <p className="basis-[25%]">Office Spaces</p>
+                      )
                     ) : (
-                      <p className="basis-[25%]">Office Spaces</p>
-                    )
-                  ) : (
-                    <Link
-                      to={proj.link}
-                      className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
-                    >
-                      {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
-                        ? "COMING SOON"
-                        : "READ MORE"}
-                    </Link>
-                  )}
-                </div>
-              );
-            })}
+                      <Link
+                        to={proj.link}
+                        className="bg-primary text-[11px] py-[8px] px-[15px] text-white"
+                      >
+                        {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
+                          ? "COMING SOON"
+                          : "READ MORE"}
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-16 md:mt-20">
-        <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end">
-          <button
-            ref={prevRef}
-            className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
-          >
-            <LuChevronLeft className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
-          </button>
-          <button
-            ref={nextRef}
-            className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
-          >
-            <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
-          </button>
+        <div className="mt-16 md:mt-20">
+          <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end">
+            <button
+              ref={prevRef}
+              className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
+            >
+              <LuChevronLeft className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+            </button>
+            <button
+              ref={nextRef}
+              className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"
+            >
+              <LuChevronRight className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
+            </button>
+          </div>
+
+          <div className={project.name.toLowerCase() + "-images"}>
+            <Swiper
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              loop={true}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              slidesPerView={1}
+              spaceBetween={5}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+              }}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              modules={[Autoplay, Navigation]}
+              className="mySwiper"
+            >
+              {project.images.map((item, i) => (
+                <SwiperSlide key={i}>
+                  <img
+                    src={item}
+                    alt={`${project.name} Image ${i + 1}`}
+                    className="w-full md:w-[350px] h-[250px] object-cover cursor-pointer"
+                    onClick={() => openLightbox(i)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {open && (
+              <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                index={currentIndex}
+                slides={project.images.map((item, index) => ({
+                  src: item,
+                  title: `Image ${index + 1}`,
+                }))}
+                plugins={[Fullscreen, Zoom]}
+              />
+            )}
+          </div>
         </div>
+      </section>
+    </>
 
-        <div className={project.name.toLowerCase() + "-images"}>
-          <Swiper
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
-            loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            slidesPerView={1}
-            spaceBetween={5}
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            modules={[Autoplay, Navigation]}
-            className="mySwiper"
-          >
-            {project.images.map((item, i) => (
-              <SwiperSlide key={i}>
-                <img
-                  src={item}
-                  alt={`${project.name} Image ${i + 1}`}
-                  className="w-full md:w-[350px] h-[250px] object-cover cursor-pointer"
-                  onClick={() => openLightbox(i)}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {open && (
-            <Lightbox
-              open={open}
-              close={() => setOpen(false)}
-              index={currentIndex}
-              slides={project.images.map((item, index) => ({
-                src: item,
-                title: `Image ${index + 1}`,
-              }))}
-              plugins={[Fullscreen, Zoom]}
-            />
-          )}
-        </div>
-      </div>
-    </section>
   );
 });
 

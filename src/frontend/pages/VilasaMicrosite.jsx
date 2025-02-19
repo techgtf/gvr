@@ -39,6 +39,7 @@ import resort from "/assets/frontend/images/microsite/vilasa/location/icons/reso
 import metro from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
 import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.webp"
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function VilasaMicrosite() {
     const location = useLocation();
@@ -132,6 +133,9 @@ function VilasaMicrosite() {
 
     return (
         <>
+            <Helmet>
+                <title>Great Value Realty | VILASA</title>
+            </Helmet>
             <HeroSection
                 desktopBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
                 mobileBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
