@@ -1,6 +1,5 @@
 import React from "react";
 import HeroSection from "../components/microsite/HeroSection";
-import About from "../components/microsite/About";
 import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
 import HighlightsSpecifications from "../components/microsite/HighlightsSpecifications/HighlightsSpecifications";
@@ -13,22 +12,32 @@ import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.w
 import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.webp";
 import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.webp";
 import loaction from "/assets/frontend/images/microsite/location/location.webp";
-import drive from "/assets/frontend/images/microsite/location/drive.png";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.png";
-import walk from "/assets/frontend/images/microsite/location/walk.png";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.png";
-
+import drive from "/assets/frontend/images/microsite/location/drive.webp";
+import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
+import walk from "/assets/frontend/images/microsite/location/walk.webp";
+import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
 import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
-import renderGallery1 from "/assets/frontend/images/microsite/gallery/render/gallery1.jpg";
-import renderGallery2 from "/assets/frontend/images/microsite/gallery/render/gallery2.webp";
-import renderGallery3 from "/assets/frontend/images/microsite/gallery/render/gallery3.jpg"
+import gallery5 from "/assets/frontend/images/microsite/gallery/gallery5.webp";
+import gallery6 from "/assets/frontend/images/microsite/gallery/gallery6.webp";
 import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
 import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
+import About from "../components/microsite/About";
+import { useLocation } from "react-router-dom";
+
+import aboutImg from "/assets/frontend/images/microsite/about.jpg"
+
+// location drive and walk images 
+import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
+import school from "/assets/frontend/images/microsite/location/walkIcons/school.webp"
+import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.webp"
+import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.webp"
 
 function Microsite() {
+  const location = useLocation();
+  
   const masterPlanData = [
     { image: master_plan_img, alt: "Master Plan" },
   ];
@@ -85,49 +94,49 @@ function Microsite() {
       {
           title: "Structure",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/structure.png", description: "RCC frame structure ensuring durability and earthquake resistance." },            
+              { image: "assets/frontend/images/microsite/specifications/structure.webp", description: "RCC frame structure ensuring durability and earthquake resistance." },            
           ],
       },
       {
           title: "Flooring",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/flooring.png", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
+              { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
           ],
       },
       {
           title: "Wall Finishes",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/wall.png", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
+              { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
           ],
       },
       {
           title: "Doors & Windows",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/door.png", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
+              { image: "assets/frontend/images/microsite/specifications/door.webp", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
           ],
       },
       {
           title: "Kitchen",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/kitchen.png", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
+              { image: "assets/frontend/images/microsite/specifications/kitchen.webp", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
           ],
       },
       {
           title: "Toilets",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/toilet.png", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
+              { image: "assets/frontend/images/microsite/specifications/toilet.webp", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
           ],
       },
       {
           title: "Electrical",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/electrical.png", description: "Concealed copper wiring with modular switches and power backup." },             
+              { image: "assets/frontend/images/microsite/specifications/electrical.webp", description: "Concealed copper wiring with modular switches and power backup." },             
           ],
       },
       {
           title: "Security",
           items: [
-              { image: "assets/frontend/images/microsite/specifications/security.png", description: "CCTV surveillance and intercom system for enhanced safety." },             
+              { image: "assets/frontend/images/microsite/specifications/security.webp", description: "CCTV surveillance and intercom system for enhanced safety." },             
           ],
       },
   ];
@@ -135,26 +144,23 @@ function Microsite() {
   const customPriceListData = [
     {
       area: "2 BHK",
-      more: "DD/ 2 BR/ KITCHEN/ 2 TOILETS/ BAL.",
       size: "1139 sq.ft",
       price: "₹ 74 Lacs*",
     },
     {
       area: "3 BHK ",
-      more: "DD/ 3 BR/ KITCHEN/ 3 TOILETS/ BAL.",
       size: "1647 sq.ft",
       price: "₹ 1.07 CR*",
     },
     {
       area: "4 BHK ",
-      more: "DD/ 4 BR/ STUDY/ KITCHEN/ 4 TOILETS/ BAL.",
       size: "2283 sq.ft",
       price: "₹ 1.48 CR*",
     },
   ];
 
   const images = [
-    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Beautiful Scenery 1" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Great Value Sharanam Sector 107, Noida" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Beautiful Scenery 4" },
@@ -163,34 +169,43 @@ function Microsite() {
     { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
   ];
 
-
-
   return (
     <>
       <HeroSection />
-      <About />
+     
+      <About
+       imageSrc={aboutImg}
+       alt={"Sharanam Sector 107 Noida"}
+       headingText="ABOUT US"
+       descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
+       reverseWatermark={true}
+      />
+
       <Amentities images={images}  />
-      <PriceList priceListData={customPriceListData} headingText="Our Price List" />
+
+      <PriceList priceListData={customPriceListData} headingText="Price List" />
+
       <HighlightsSpecifications
+        key={location.pathname} 
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />
 
+      <Plans masterPlanData={masterPlanData} unitData={unitData} />
 
-      <Plans masterPlanData={masterPlanData} unitData={unitData} />;
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
-          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School , Noida', time: '5 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Oasis Noida', time: '10 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Greater Noida Expressway', time: '15 min' },
+          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
+          { image: school, text: 'Pathway School , Noida', time: '5 min' },
+          { image: musicschool, text: 'Oasis Noida', time: '10 min' },
+          { image: buildings, text: 'Greater Noida Expressway', time: '15 min' },
         ]}
         walkData={[
-          { image: 'assets/frontend/images/microsite/location/walkIcons/mall.png', text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/school.png', text: 'Pathway School Noida', time: '10 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/musicschool.png', text: 'Mayoor School of Music', time: '15 min' },
-          { image: 'assets/frontend/images/microsite/location/walkIcons/buildings.png', text: 'Oasis Noida', time: '20 min' },
+          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
+          { image: school, text: 'Pathway School Noida', time: '10 min' },
+          { image: musicschool, text: 'Mayoor School of Music', time: '15 min' },
+          { image: buildings, text: 'Oasis Noida', time: '20 min' },
         ]}
         driveTabIcon={drive}
         driveTabActiveIcon={driveActive}
@@ -200,10 +215,8 @@ function Microsite() {
         description="  Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences."
       />
 
-
       <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4]}
-        renderImages={[ renderGallery2]}
+        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
       />
     </>
   );

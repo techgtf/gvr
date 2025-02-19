@@ -10,3 +10,5 @@ export const API_URL = import.meta.env.VITE_APP_API_URL;
 export const VITE_APP_STORAGE = import.meta.env.VITE_APP_STORAGE_URL
 export const TOKEN = localStorage.getItem('token');
 export const APP_PUBLIC_IMAGES = import.meta.env.VITE_APP_PUBLIC_IMAGES;
+export const DATA_ASSET_URL = import.meta.env.VITE_APP_API_URL;
+

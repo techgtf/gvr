@@ -44,11 +44,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Home />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -56,12 +56,12 @@ export const UserRoutes = [
         path: `${BASE_ROOT}sharanam`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Microsite />
-                <MicrositeMenu />
+                {/* <MicrositeMenu /> */}
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -69,11 +69,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}property-investment`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <ProperyInvestment />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -81,11 +81,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}commercial-projects`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <CommercialProjects />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -93,36 +93,23 @@ export const UserRoutes = [
         path: `${BASE_ROOT}thank-you`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <ThankYou />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
-      {
-        path: `${BASE_ROOT}coming-soon`,
-        element: (
-          <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
-              {/* <Layout> */}
-                <ComingSoon />
-              {/* </Layout> */}
-            </Suspense>
-          </ErrorBoundary>
-        ),
-      },
-      ,
       {
         path: `${BASE_ROOT}anandam`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <AnandamMicrosite />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -130,11 +117,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}vilasa`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <VilasaMicrosite />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -142,11 +129,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}media`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <MediaCenter />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -154,11 +141,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}gv-homes`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <GvHomesMicrosite />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -166,11 +153,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}contact-us`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <ContactUs />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -178,11 +165,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}career`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Career />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -190,11 +177,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}Residential`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Residential />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -202,11 +189,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}about-us`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <About />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -214,11 +201,11 @@ export const UserRoutes = [
         path: `${BASE_ROOT}nri-investor`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <NriInvestor />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
@@ -226,120 +213,130 @@ export const UserRoutes = [
         path: `${BASE_ROOT}testimonials`,
         element: (
           <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <Testimonials />
               </Layout>
-            </Suspense>
+            {/* </Suspense> */}
           </ErrorBoundary>
         ),
       },
       {
         path: `${BASE_ROOT}blogs`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <Blogs />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
-        path: `${BASE_ROOT}blog/:id`,
+        path: `${BASE_ROOT}blog/:slug`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <BlogDetails />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}emi-calculator`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <EmiCalculator />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}esg`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <Csr />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}tax-benefits`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <TaxBenifits />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}nri-corner`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <NriCorner />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}area-converter`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <AreaConverter />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}home-loan`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <HomeLoan />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}Faqs`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <Faqs />
             </Layout>
-          </Suspense>
+          // </Suspense>
         ),
       },
       {
         path: `${BASE_ROOT}property-investment`,
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <Layout>
               <PropertyInvestment />
             </Layout>
-          </Suspense>
+          // </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}coming-soon`,
+        element: (
+          // <Suspense fallback={<Loader />}>
+            <Layout>
+              <ComingSoon />
+            </Layout>
+          // </Suspense>
         ),
       },
       {
         path: "*",
         element: (
-          <Suspense fallback={<Loader />}>
+          // <Suspense fallback={<Loader />}>
             <PageNotFound />
-          </Suspense>
+          // </Suspense>
         ),
       },
     ],

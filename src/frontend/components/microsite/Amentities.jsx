@@ -7,14 +7,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
 
 // Import images
-import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.png";
-import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.png";
-import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.png";
-import theater from "/assets/frontend/images/microsite/amentities/icons/theater.png";
-import library from "/assets/frontend/images/microsite/amentities/icons/library.png";
-import basketballBall from "/assets/frontend/images/microsite/amentities/icons/basketballBall.png";
-import runningTrack from "/assets/frontend/images/microsite/amentities/icons/running-track.png";
-import park from "/assets/frontend/images/microsite/amentities/icons/park.png";
+import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.webp";
+import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.webp";
+import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.webp";
+import theater from "/assets/frontend/images/microsite/amentities/icons/theater.webp";
+import library from "/assets/frontend/images/microsite/amentities/icons/library.webp";
+import basketballBall from "/assets/frontend/images/microsite/amentities/icons/basketballBall.webp";
+import runningTrack from "/assets/frontend/images/microsite/amentities/icons/running-track.webp";
+import park from "/assets/frontend/images/microsite/amentities/icons/park.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,7 +80,7 @@ function Amentities({
                 className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
               >
                 <div className="icon">
-                  <img src={item.image} alt={item.name} className="w-[2.5rem]" />
+                  <img src={item.image} alt={item.alt} className="w-[2.5rem]" />
                 </div>
                 <div className="text uppercase text-center md:text-start">
                   <p>{item.name}</p>

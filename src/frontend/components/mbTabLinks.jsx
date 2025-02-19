@@ -21,11 +21,14 @@ export default function MbTabLinks() {
     return (
         <div className="MbTabLinks lg:hidden fixed bottom-0 left-0 right-0 bg-gray-300 border-t border-gray-300" style={Styles.wrapper}>
             <div className="mbLinks_in relative">
-                <div className="flex justify-center"
-                    onClick={() => { setIsVisible(true) }}
-                >
-                    <Link className="uppercase tracking-[2px] text-center text-[13px] px-5 py-3">Residential</Link>
-                    <Link className="uppercase tracking-[2px] text-center text-[13px] px-5 py-3 border-l border-gray-300">Commercial</Link>                    
+                <div className="flex justify-center">
+                    <Link
+                        onClick={() => { setIsVisible(true) }}
+                        className="uppercase w-[49%] tracking-[2px] text-center text-[13px] px-5 py-3 bg-[#eff5fa]">Residential</Link>
+                    <Link
+                        onClick={() => { setIsVisible(false) }}
+                        to={`${BASE_ROOT}commercial-projects`}
+                        className="uppercase w-[49%] tracking-[2px] text-center text-[13px] px-5 py-3 bg-[#eff5fa] border-l border-gray-300">Commercial</Link>
                 </div>
                 {/* h-full bg-[#00000094] */}
                 <div style={Styles.drpDiv} className={`fixed flex flex-col justify-end left-0 right-0 ${isVisible ? "bottom-0" : "bottom-[-100%]"} transition-all`}>
@@ -33,7 +36,7 @@ export default function MbTabLinks() {
                         onClick={() => { setIsVisible(false) }}
                     ><SlClose className="cursor-pointer text-3xl text-[#00000094]" />
                     </div>
-                    <ul className="bg-white">
+                    <ul className="bg-[#eff5faf5]">
                         {[
                             { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                             { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },

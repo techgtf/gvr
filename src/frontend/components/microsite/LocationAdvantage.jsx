@@ -67,7 +67,7 @@ function LocationAdvantage({
 
   return (
     <section className="advantage px-5 md:px-12 py-10 md:py-14 flex items-center" id="advantage">
-      <div className="grid sm:grid-cols-2 grid-cols-1">
+      <div className="grid sm:grid-cols-2 grid-cols-1 w-full">
         <div className="brief md:border-r-2 border-gray-200">
           <FadeIn duration={2} delay={0.5}>
             <CommonHeading HeadingText="Location Advantage" />

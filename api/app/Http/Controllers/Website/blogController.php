@@ -70,6 +70,9 @@ class BlogController extends Controller
 
         try {
             if(!empty($result)){
+                $nextBlog = Blog::where('id', '>', $result->id)
+                ->orderBy('id', 'asc')
+                ->first();
 
                 $nextBlog = Blog::where('id', '>', $result->id)
                 ->orderBy('id', 'asc')
@@ -82,7 +85,7 @@ class BlogController extends Controller
                     'data' => $result,
                     'next' => $nextBlog ? $nextBlog->slug : null,
                 ]);
-    
+               
             }
         } catch (\Throwable $th) {
             return response()->json([

@@ -1,11 +1,11 @@
-.app_header{ color: var(--white); padding-top: 20px; transition: all 0.2s ease-in-out;}
+.app_header{ color: var(--white); padding-block: 20px; transition: all 0.2s ease-in-out;}
 /* .app_header::after{content: ''; position: absolute; left: 0; right: 0; top: 0; height: 140px; z-index: -1;  background:linear-gradient(180deg, #000000cc 0%, rgba(255, 255, 255, 0.00) 100%); } */
 
 
 .app_header.active {
   background: #EFF5FA;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   animation: slide-down 0.9s;
 }
 .app_header.active::after{display: none;}

@@ -8,7 +8,7 @@ const Blogs = () => {
   return (
     <>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.png`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.webp`}
         heading={"BLOGS"}
         extraClassesImg={"objectRight"}
         />
