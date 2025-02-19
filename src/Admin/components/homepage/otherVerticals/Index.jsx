@@ -145,7 +145,7 @@ const OtherVerticals = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/amenities/" + id, "DELETE");
+    var response = await Request("admin/verticals/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -177,10 +177,13 @@ const OtherVerticals = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    formData.append("title", titleRef.current.value);
+    formData.append("name", titleRef.current.value);
+    formData.append("description", descriptionRef.current.value);
+    formData.append("short_description", shortDescriptionRef.current.value);
+    formData.append("price", priceRef.current.value);
 
     var response = await Request(
-      "admin/amenities/" + editId + "/update",
+      "admin/verticals/" + editId + "/update",
       "POST",
       formData
     );
@@ -281,7 +284,7 @@ const OtherVerticals = () => {
                         </button>
                         <button
                           className="btn action_btn"
-                          onClick={() => deleteHandler(data.id)}
+                          onClick={() => deleteHandler(item.id)}
                         >
                           <RiDeleteBin5Fill />
                         </button>
@@ -330,6 +333,7 @@ const OtherVerticals = () => {
                     type="file"
                     placeholder="Enter Title"
                   />
+                  {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
                   {errors.image && (
                     <span className="text-red-500">{errors.image}</span>
                   )}

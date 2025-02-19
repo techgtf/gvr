@@ -311,7 +311,7 @@ class TimelineController extends Controller
             ]);
         }
 
-         dltSingleImgFile($getrecord->icons);
+         dltSingleImgFile($getrecord->image);
 
          if($getrecord->delete()){
             return response()->json([
