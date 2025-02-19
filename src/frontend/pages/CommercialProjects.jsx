@@ -114,15 +114,16 @@ const projects = [
         link: "",
         address: "Saket, New Delhi",
       },
-      {
-        name: "COMPLEX MADANGIR",
-        link: "",
-        address: "Madangir, New Delhi",
-      },
+
       {
         name: "JHARKHAND BHAWAN",
         link: "",
         address: "Vasant Vihar, New Delhi",
+      },
+      {
+        name: "COMPLEX MADANGIR",
+        link: "",
+        address: "Madangir, New Delhi",
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -406,7 +407,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                     "GAP",
                     "PERNIA",
                   ].includes(proj.name) ? (
-                    proj.name === "JHARKHAND BHAWAN" ? (
+                    proj.name === "COMPLEX MADANGIR" ? (
                       <p className="basis-[25%]">
                         High Street Retail & Office Spaces
                       </p>
