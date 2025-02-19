@@ -22,27 +22,33 @@ const Testimonials = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
+  const [isLoadingTableData, setIsLoadingTableData] = useState(false);
+  const [isSitebarFormButtonLoading, setIsSitebarFormButtonLoading] =
+    useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [enableEdit, setenableEdit] = useState(false);
+  const [showEditEnableImage, setEditEnableImage] = useState(null);
+  const [showEditEnableVideo, setEditEnableVideo] = useState(null);
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(null);
 
   var nameRef = useRef(null);
+  var iframeRef = useRef(null);
   var designationRef = useRef(null);
   var descriptionRef = useRef(null);
   var imageRef = useRef(null);
-  var editImageRef = useRef(null);
+  var videoRef = useRef(null);
 
   useEffect(() => {
     listHandler();
   }, [currentPage]);
 
-  const listHandler = async () => {
+  const listHandler = async (search='') => {
     try {
       setIsLoading(true);
       var response = await Request(
-        "admin/testimonials?page=" + currentPage,
+        "admin/testimonials?search="+search+"&page=" + currentPage,
         "GET"
       );
       if (response.statusCode !== 200) {
@@ -100,12 +106,15 @@ const Testimonials = () => {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
+    debugger
 
     const formData = new FormData();
     formData.append("name", nameRef.current.value);
     formData.append("destination", designationRef.current.value);
     formData.append("description", descriptionRef.current.value);
     formData.append("image", imageRef.current.files[0]);
+    formData.append("video", videoRef.current.files[0]);
+    formData.append("iframe_url", iframeRef.current.value);
 
     var response = await Request("admin/testimonials", "POST", formData);
 
@@ -130,10 +139,16 @@ const Testimonials = () => {
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
+      if (response.data.image) {
+        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
+      }
+      if (response.data.video) {
+        setEditEnableVideo(CONFIG.VITE_APP_STORAGE + response.data.video);
+      }
       nameRef.current.value = response.data.name;
       designationRef.current.value = response.data.destination;
       descriptionRef.current.value = response.data.description;
-      editImageRef.current.src = CONFIG.VITE_APP_STORAGE + response.data.image;
+      iframeRef.current.value = response.data.iframe_url;
     }
   };
 
@@ -165,6 +180,7 @@ const Testimonials = () => {
     formData.append("name", nameRef.current.value);
     formData.append("destination", designationRef.current.value);
     formData.append("description", descriptionRef.current.value);
+    formData.append("iframe_url", iframeRef.current.value);
     if (imageRef.current.files[0]) {
       formData.append("image", imageRef.current.files[0]);
     }
@@ -189,48 +205,88 @@ const Testimonials = () => {
     event.target.src = CONFIG.ADMIN_ASSETS + "default_blog.jpg";
   };
 
+  const findHandler = async (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    listHandler(searchTerm);
+  };
+
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
-        <h4 className="text-xl font-semibold">Testimonials</h4>
+      <div className="flex title_col justify-between items-center">
+        <h4 className="page_title">Testimonials</h4>
         <button
-          className="ml-auto bg-blue-500 text-white px-4 py-2 text-sm rounded"
+          className="btn ml-auto btn_primary btn-sm"
           onClick={addCategoryHandler}
         >
           Add Testimonial
         </button>
       </div>
 
-      <div className="bg-white shadow-lg rounded-lg p-4 mt-4">
-        <div className="flex">
-          <h5 className="text-lg font-semibold">All Testimonials</h5>
+      <div className="card bg-white mt-4 card_style1">
+        <div className="flex items-center">
+          <h5 className="mb-0">All Testimonials</h5>
+
+          <div className="searchInput ml-auto">
+            <input
+              type="text"
+              className="border rounded px-3 py-2 w-full"
+              placeholder="Search by Name"
+              onChange={findHandler}
+            />
+          </div>
         </div>
 
-        <table className="w-full mt-6 border-collapse border border-gray-200">
+        <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2">Title</th>
-              <th className="border border-gray-300 p-2">Designation</th>
-              <th className="border border-gray-300 p-2">Show</th>
-              <th className="border border-gray-300 p-2">Actions</th>
+              <th className="border border-gray-300 p-2 text-left">Image</th>
+              <th className="border border-gray-300 p-2 text-left">Video</th>
+              <th className="border border-gray-300 p-2 text-left">Name</th>
+              <th className="border border-gray-300 p-2 text-left">
+                Designation
+              </th>
+              <th className="border border-gray-300 p-2 text-left">
+                Description
+              </th>
+              <th className="border border-gray-300 p-2 text-left">
+                Iframe
+              </th>
+              {/* <th className="border border-gray-300 p-2 text-left">Show</th> */}
+              <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             {isLoading && (
-              <tr>
-                <td colSpan={4} className="text-center p-4">
-                  <ScaleLoader color="#ddd" />
+              <tr className="border-b border-gray-200">
+                <td colSpan={7}>
+                  <div className="text-center ">
+                    <ScaleLoader color="#ddd" className="w-full" />
+                  </div>
                 </td>
               </tr>
             )}
 
             {!isLoading && data.length
               ? data.map((item) => (
-                  <tr key={item.id} className="border-b border-gray-200">
-                    <td className="p-2">{item.name}</td>
-                    <td className="p-2">{item.destination}</td>
-                    <td className="p-2">
+                  <tr key={item.id} className="border-b">
+                    <td className="py-2 px-4">
+                      <img
+                        src={CONFIG.VITE_APP_STORAGE + item.image}
+                        className="w-[60px] h-[60px] object-contain border"
+                        alt={item.name + "image"}
+                      />
+                    </td>
+                    <td className="py-2 px-4">
+                      {item.video ? (
+                        <video className="w-[200px] h-[80px] object-contain border" src={CONFIG.VITE_APP_STORAGE + item.video} alt={item.name + "image"} controls />
+                      ) : 'No Video Found'}
+                    </td>
+                    <td className="py-2 px-4">{item.name}</td>
+                    <td className="py-2 px-4">{item.destination}</td>
+                    <td className="py-2 px-4">{item.description}</td>
+                    <td className="py-2 px-4">{item.iframe_url}</td>
+                    {/* <td className="py-2 px-4">
                       <CustomDropdown
                         className="w-full border rounded p-1"
                         defaultVal={item.status}
@@ -239,8 +295,8 @@ const Testimonials = () => {
                           handleStatusSelect(selectedValue, item.id)
                         }
                       />
-                    </td>
-                    <td className="p-2 flex space-x-2">
+                    </td> */}
+                    <td className="py-2 px-4 flex gap-2">
                       <button
                         className="bg-gray-200 p-1 rounded"
                         onClick={() => editHandler(item.id)}
@@ -266,7 +322,7 @@ const Testimonials = () => {
                 ))
               : !isLoading && (
                   <tr>
-                    <td colSpan="4" className="text-center p-4 text-gray-500">
+                    <td colSpan="4" className="no_record text-center py-4">
                       No Data Found!
                     </td>
                   </tr>
@@ -284,7 +340,128 @@ const Testimonials = () => {
       </div>
 
       {showSidebar && (
-        <SidebarPortal className="fixed inset-0 bg-gray-900 bg-opacity-50" />
+        <>
+          <SidebarPortal className="portal">
+            <SideModal
+              onCancel={cancelHandler}
+              onSubmit={enableEdit ? updateHandler : addSubmitHandler}
+              isLoading={isSitebarFormButtonLoading}
+            >
+              <form>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Thumbnail*
+                    <small class="size block font-[400] text-[#888]">(Size 1600px x 400px)</small>
+                  </label>
+                  <input
+                    ref={imageRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="file"
+                    placeholder="Enter Title"
+                  />
+                  {showEditEnableImage && (
+                    <img
+                      src={showEditEnableImage}
+                      className="h-[80px] w-[80px] object-contain border mt-1"
+                    />
+                  )}
+                  {errors.image && (
+                    <span className="text-red-500">{errors.image}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Video*
+                    {/* <small class="size block font-[400] text-[#888]">(Size 1600px x 400px)</small> */}
+                  </label>
+                  <input
+                    ref={videoRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="file"
+                    placeholder="Enter Title"
+                  />
+                  {showEditEnableVideo && (
+                    <video
+                      src={showEditEnableVideo}
+                      className="h-[100px] w-[150px] object-contain border mt-1"
+                      controls
+                    />
+                  )}
+                  {errors.image && (
+                    <span className="text-red-500">{errors.image}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Iframe
+                  </label>
+                  <input
+                    ref={iframeRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Video Iframe Url"
+                  />
+                  {errors.name && (
+                    <span className="text-red-500">
+                      {errors.name && "The Name field is required"}
+                    </span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Name*
+                  </label>
+                  <input
+                    ref={nameRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Name"
+                  />
+                  {errors.name && (
+                    <span className="text-red-500">
+                      {errors.name && "The Name field is required"}
+                    </span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Designation*
+                  </label>
+                  <input
+                    ref={designationRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Designation"
+                  />
+                  {errors.destination && (
+                    <span className="text-red-500">{errors.destination && "The Designation field is required"}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Description*
+                  </label>
+                  <input
+                    ref={descriptionRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Description"
+                  />
+                  {errors.description && (
+                    <span className="text-red-500">{errors.description && "The Description field is required"}</span>
+                  )}
+                </div>
+
+              </form>
+            </SideModal>
+          </SidebarPortal>
+          <BackdropPortal className="show" />
+        </>
       )}
     </>
   );
