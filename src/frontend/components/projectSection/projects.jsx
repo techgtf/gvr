@@ -27,7 +27,7 @@ export default function Projects() {
         {
             type: 'iconic properties',
             imgSrc: 'latest.webp',
-            Link: `${CONFIG.BASE_ROOT}vilasa`,
+            Link: `${CONFIG.BASE_ROOT}coming-soon`,
             alt: "VILASA AT SECTOR 6, SOHNA"
         },
         {
