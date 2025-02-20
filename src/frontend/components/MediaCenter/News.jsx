@@ -3,6 +3,7 @@ import CommonBtn from "../commonBtn";
 import { BsArrowUpRight } from "react-icons/bs";
 import FadeIn from "../Animations/FadeIn";
 import CommonHeading from "../commonHeading";
+import * as CONFIG from '../../../../config';
 
 function News() {
     return (
@@ -65,7 +66,7 @@ function News() {
                             {/* Image */}
                             <div className="newsImg w-1/3 px-4 flex items-center justify-center bg-[#EFF5FA]">
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/NBC_News_logo.png"
+                                    src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/news/logos/1.webp`}
                                     alt="News"
                                     className="w-[150px] "
                                 />
