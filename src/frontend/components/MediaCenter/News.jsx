@@ -28,7 +28,7 @@ function News() {
                             </div>
                             <div className="date py-2 text-primary">DD/MM/YY</div>
                             <div className="content pb-6">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et 
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et
                             </div>
                             <CommonBtn to="" target="_blank">
                                 Know More <BsArrowUpRight />
@@ -44,7 +44,7 @@ function News() {
                             </div>
                             <div className="date py-2 text-primary">DD/MM/YY</div>
                             <div className="content pb-6">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et 
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et
                             </div>
                             <CommonBtn to="" target="_blank">
                                 Know More <BsArrowUpRight />
@@ -73,83 +73,17 @@ function News() {
 
                             {/* Text Content */}
                             <div className="details w-3/3">
-                                <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium">SOME HEADING HERE</div>
+                                <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium uppercase">The Economic Times Hindi Budget</div>
                                 <div className="content py-2">
                                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa.
                                 </div>
-                                <div className="date pb-3 text-primary">DD/MM/YY</div>
-                                <CommonBtn to="" target="_blank">
+                                <div className="date  pb-3 text-primary">01/02/2025</div>
+                                <CommonBtn to="https://hindi.economictimes.com/budget/live-union-budget-2025-26-nirmala-sitharaman-budget-2005-speech-income-tax-slab-budget-2025-26-highlights-industry-and-market-demand/liveblog/117812842.cms#:~:tex" target="_blank">
                                     Know More <BsArrowUpRight />
                                 </CommonBtn>
                             </div>
                         </div>
-                        <div className="news flex gap-8  py-[34px] border-b border-gray-300">
-                            {/* Image */}
-                            <div className="newsImg w-1/3 px-4 flex items-center justify-center bg-[#EFF5FA]">
-                                <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/NBC_News_logo.png"
-                                    alt="News"
-                                    className="w-[150px] "
-                                />
-                            </div>
-
-                            {/* Text Content */}
-                            <div className="details w-3/3">
-                                <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium">SOME HEADING HERE</div>
-                                <div className="content py-2">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa.
-                                </div>
-                                <div className="date pb-3 text-primary">DD/MM/YY</div>
-                                <CommonBtn to="" target="_blank">
-                                    Know More <BsArrowUpRight />
-                                </CommonBtn>
-                            </div>
-                        </div>
-                        <div className="news flex gap-8  py-[34px] border-b border-gray-300">
-                            {/* Image */}
-                            <div className="newsImg w-1/3 px-4 flex items-center justify-center bg-[#EFF5FA]">
-                                <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/NBC_News_logo.png"
-                                    alt="News"
-                                    className="w-[150px] "
-                                />
-                            </div>
-
-                            {/* Text Content */}
-                            <div className="details w-3/3">
-                                <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium">SOME HEADING HERE</div>
-                                <div className="content py-2">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa.
-                                </div>
-                                <div className="date pb-3 text-primary">DD/MM/YY</div>
-                                <CommonBtn to="" target="_blank">
-                                    Know More <BsArrowUpRight />
-                                </CommonBtn>
-                            </div>
-                        </div>
-                        <div className="news flex gap-8  py-[34px] border-b border-gray-300">
-                            {/* Image */}
-                            <div className="newsImg w-1/3 px-4 flex items-center justify-center bg-[#EFF5FA]">
-                                <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/NBC_News_logo.png"
-                                    alt="News"
-                                    className="w-[150px] "
-                                />
-                            </div>
-
-                            {/* Text Content */}
-                            <div className="details w-3/3">
-                                <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium">SOME HEADING HERE</div>
-                                <div className="content py-2">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa.
-                                </div>
-                                <div className="date pb-3 text-primary">DD/MM/YY</div>
-                                <CommonBtn to="" target="_blank">
-                                    Know More <BsArrowUpRight />
-                                </CommonBtn>
-                            </div>
-                        </div>
-
+                        
                     </div>
                 </div>
 

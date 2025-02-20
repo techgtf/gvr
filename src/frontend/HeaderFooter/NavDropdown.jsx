@@ -15,7 +15,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
             gsap.fromTo(
                 dropdownRef.current,
                 { y: -100, opacity: 0 },
-                { y: 0, opacity: 0.9, duration: 0.8 }
+                { y: 0, opacity: 0.9, duration: 0 }
             );
         }, dropdownRef);
 
@@ -37,7 +37,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
         gsap.to(dropdownRef.current, {
             y: -100,
             opacity: 0,
-            duration: 0.8,
+            duration: 0,
             onComplete: () => {
                 setDropdown(false);
                 setActiveItem(null);

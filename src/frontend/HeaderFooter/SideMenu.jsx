@@ -48,7 +48,7 @@ function SideMenu({ setOpenSidebar }) {
 
       <Link
         to={`${CONFIG.BASE_ROOT}`}
-        className="flex  absolute top-[20px] justify-center md:block focus-visible:outline-none focus-visible:ring-0"
+        className="flex md:hidden  absolute top-[20px] justify-center md:block focus-visible:outline-none focus-visible:ring-0"
       >
         <img
           className="h-[50px]"
@@ -60,12 +60,9 @@ function SideMenu({ setOpenSidebar }) {
         <AiOutlineClose onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer" />
 
       </div>
-      <div className="flex flex-col relative mt-12 items-center gap-1 justify-evenly h-full">
-        <ul className="w-full flex flex-col gap-3">
-          <li>
-            <div className="title text-[#0e69ae] tracking-[2px] uppercase text-[16px] py-2  border-b border-[#0000001a]">
-               Projects
-            </div>
+      <div className="flex flex-col relative  items-center gap-1 justify-evenly h-full">
+        <ul className="w-full flex flex-col items-center gap-4">
+          <li>          
             <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}residential`} onClick={(e) => {
@@ -73,115 +70,111 @@ function SideMenu({ setOpenSidebar }) {
                 handleClose(() => navigate(`${BASE_ROOT}residential`));
               }}>
                 <span
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
                   Residential
                 </span>
               </Link>
-              </div>
+              </div>              
+            </div>
+          </li>
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}commercial-projects`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}commercial-projects`));
               }}>
                 <span
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
-                  Commercial
+                  commercial
                 </span>
               </Link>
-              </div>
+              </div>              
             </div>
           </li>
-
-          <li>
-            <div className="title uppercase tracking-[2px] text-[16px] py-2 text-[#0e69ae] border-b border-[#0000001a]">
-               Profile
-            </div>
-            <div className="title_links  uppercase text-[#484747] py-2">
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}about-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}about-us`));
               }}>
                 <span
-                  onClick={() => handleLinkClick(`${BASE_ROOT}about-us`)}
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
-                  About Us
+                  about us
                 </span>
               </Link>
-              </div>
-              <div className="py-2">
-              <Link to={`${BASE_ROOT}esg`} onClick={(e) => {
-                e.preventDefault();
-                handleClose(() => navigate(`${BASE_ROOT}esg`));
-              }}>
-                <span
-                  onClick={() => handleLinkClick(`${BASE_ROOT}esg`)}
-                  className="text-[12px] tracking-[2px] cursor-pointer"
-                >
-                  ESG
-                </span>
-              </Link>
-              </div>
+              </div>              
+            </div>
+          </li>
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}media`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}media`));
               }}>
                 <span
-                  onClick={() => handleLinkClick(`${BASE_ROOT}media`)}
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
-                  Media Centre
+                  media centre
                 </span>
               </Link>
-              </div>
+              </div>              
             </div>
           </li>
-
-          <li>
-            <div className="title uppercase tracking-[2px] text-[#0e69ae] py-2 text-[16px] border-b border-[#0000001a]">
-              Career
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
+              <div className="py-2">
+              <Link to={`${BASE_ROOT}blogs`} onClick={(e) => {
+                e.preventDefault();
+                handleClose(() => navigate(`${BASE_ROOT}blogs`));
+              }}>
+                <span
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
+                >
+                  blogs
+                </span>
+              </Link>
+              </div>              
             </div>
-            <div className="title_links uppercase text-[#484747]">
+          </li>
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}career`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}career`));
               }}>
                 <span
-                  onClick={() => handleLinkClick(`${BASE_ROOT}career`)}
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
-                  All Job Openings
+                  job openings
                 </span>
               </Link>
-              </div>
+              </div>              
             </div>
           </li>
-
-          <li>
-            <div className="title uppercase tracking-[2px] text-[16px] text-[#0e69ae] py-2 border-b border-[#0000001a]">
-              Find Us
-            </div>
-            <div className="title_links uppercase text-[#484747]">
+          <li>          
+            <div className="title_links uppercase text-[#484747] py-2">
               <div className="py-2">
               <Link to={`${BASE_ROOT}contact-us`} onClick={(e) => {
                 e.preventDefault();
                 handleClose(() => navigate(`${BASE_ROOT}contact-us`));
               }}>
                 <span
-                  onClick={() => handleLinkClick(`${BASE_ROOT}contact-us`)}
-                  className="text-[12px] tracking-[2px] cursor-pointer"
+                  className="text-[8px] midlandfontmedium text-primary tracking-[4px] cursor-pointer"
                 >
-                  Contact Us
+                  contact us
                 </span>
               </Link>
-              </div>
+              </div>              
             </div>
           </li>
+
         </ul>
       </div>
     </div>
