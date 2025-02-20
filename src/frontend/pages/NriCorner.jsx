@@ -27,8 +27,6 @@ export default function NriCorner() {
   
     if (loading) return <Loader/>;
     if (error) return <p>Error: {error}</p>;
-
-    console.log(data,"nri corner")
   
     return (
         <>
