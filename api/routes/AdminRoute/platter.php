@@ -36,11 +36,11 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
 
 
         Route::post('platter/banner/update', [PlatterController::class,'update']);
+
+        
         Route::resource('platter/{platterid}/banner', PlatterBannerController::class)->except(['update']);
         Route::post('platter/{platterid}/banner/{id}/update', [PlatterBannerController::class,'update']);
         Route::post('platter/banner/{id}/status', [PlatterBannerController::class,'status']);
 
     });
 });
-    
-
