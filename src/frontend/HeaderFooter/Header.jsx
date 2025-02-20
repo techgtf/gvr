@@ -124,7 +124,7 @@ export default function Header() {
               className="focus-visible:outline-transparent focus-visible:ring-0"
             >
               <img
-                className="w-[50%] sm:w-[70%] cursor-pointer"
+                className="w-[50%] sm:w-[70%] cursor-pointer logo_img"
                 src={getLogoSrc()}
                 alt="Great Value Realty Logo"
               />
