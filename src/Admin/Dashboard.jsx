@@ -34,11 +34,11 @@ const Dashboard = () => {
       {/* Cards Row */}
       <div className="cards_row flex flex-wrap -mx-4">
         <div className="single_col w-full md:w-1/3 px-4 mb-8">
-          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-left">
             <img
               src={ADMIN_ASSETS + "images/icons/project.svg"}
               alt="project"
-              className="icon w-12 h-12 mx-auto mb-4"
+              className="icon w-12 h-12 mb-4"
             />
             <h4 className="count text-2xl font-bold">{data?.project?.count}</h4>
             <p className="title text-gray-600">Total {data?.project?.name}</p>
@@ -46,11 +46,11 @@ const Dashboard = () => {
         </div>
 
         <div className="single_col w-full md:w-1/3 px-4 mb-8">
-          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-left">
             <img
               src={ADMIN_ASSETS + "images/icons/blogs.svg"}
               alt="blogs"
-              className="icon w-12 h-12 mx-auto mb-4"
+              className="icon w-12 h-12 mb-4"
             />
             <h4 className="count text-2xl font-bold">{data?.blog?.count}</h4>
             <p className="title text-gray-600">Total {data?.blog?.name}</p>
@@ -58,11 +58,11 @@ const Dashboard = () => {
         </div>
 
         <div className="single_col w-full md:w-1/3 px-4 mb-8">
-          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-center">
+          <div className="card_style1 color_card p-6 rounded-lg shadow-md text-left">
             <img
               src={ADMIN_ASSETS + "images/icons/enquire.svg"}
               alt="enquire"
-              className="icon w-12 h-12 mx-auto mb-4"
+              className="icon w-12 h-12 mb-4"
             />
             <h4 className="count text-2xl font-bold">
               {data?.total_enquiry?.count}
@@ -78,30 +78,16 @@ const Dashboard = () => {
       <div className="flex flex-wrap -mx-4">
         <div className="w-full px-4">
           <div className="flex flex-wrap -mx-4">
-            <div className="w-full md:w-1/4 px-4 mb-8">
-              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
-                <h4 className="count text-2xl font-bold">
-                  {data?.developer?.count}
-                </h4>
-                <p className="text-gray-600">Total {data?.developer?.name}</p>
-                <Link
-                  to={CONFIG.ADMIN_ROOT + "developers"}
-                  className="mt-4 inline-block underline uppercase"
-                >
-                  View
-                </Link>
-              </div>
-            </div>
 
             <div className="w-full md:w-1/4 px-4 mb-8">
-              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md bg-white">
                 <h4 className="count text-2xl font-bold">
                   {data?.amenities?.count}
                 </h4>
                 <p className="text-gray-600">Total {data?.amenities?.name}</p>
                 <Link
                   to={CONFIG.ADMIN_ROOT + "amenities"}
-                  className="mt-4 inline-block underline uppercase"
+                  className="mt-2 inline-block underline uppercase"
                 >
                   View
                 </Link>
@@ -109,14 +95,14 @@ const Dashboard = () => {
             </div>
 
             <div className="w-full md:w-1/4 px-4 mb-8">
-              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md bg-white">
                 <h4 className="count text-2xl font-bold">
                   {data?.blog?.count}
                 </h4>
                 <p className="text-gray-600">Total {data?.blog?.name}</p>
                 <Link
                   to={CONFIG.ADMIN_ROOT + "blogs"}
-                  className="mt-4 inline-block underline uppercase "
+                  className="mt-2 inline-block underline uppercase "
                 >
                   View
                 </Link>
@@ -124,7 +110,7 @@ const Dashboard = () => {
             </div>
 
             <div className="w-full md:w-1/4 px-4 mb-8">
-              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md bg-white">
                 <h4 className="count text-2xl font-bold">
                   {data?.testimonials?.count}
                 </h4>
@@ -133,7 +119,7 @@ const Dashboard = () => {
                 </p>
                 <Link
                   to={CONFIG.ADMIN_ROOT + "testimonials"}
-                  className="mt-4 inline-block underline uppercase"
+                  className="mt-2 inline-block underline uppercase"
                 >
                   View
                 </Link>
@@ -141,7 +127,7 @@ const Dashboard = () => {
             </div>
 
             <div className="w-full md:w-1/4 px-4 mb-8">
-              <div className="card_style1 card_sm p-6 rounded-lg shadow-md text-center">
+              <div className="card_style1 card_sm p-6 rounded-lg shadow-md bg-white">
                 <h4 className="count text-2xl font-bold">
                   {data?.jobApplication?.count}
                 </h4>
@@ -150,7 +136,7 @@ const Dashboard = () => {
                 </p>
                 <Link
                   to={CONFIG.ADMIN_ROOT + "job-application"}
-                  className="mt-4 inline-block underline uppercase"
+                  className="mt-2 inline-block underline uppercase"
                 >
                   View
                 </Link>
