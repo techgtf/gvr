@@ -1,23 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import * as CONFIG from "../../../../config";
-import "./styles.css";
-import LoadAnimation from "../../../Loader/loadAnimation";
 import { IoVolumeMute } from "react-icons/io5";
 import { VscUnmute } from "react-icons/vsc";
 
-export default function Hero({
-  videoUrl,
-  textInMiddle,
-  imageUrl,
-  heading,
-  containerClasses = "",
-  headingClasses = "",
-}) {
+export default function Hero() {
   const [isMuted, setIsMuted] = useState(true);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef(null);
 
-  const handleToggelMute = () => {
+  // Set video source only once (reduces re-renders)
+  const videoSrc =
+    window.innerWidth > 767
+      ? "https://res.cloudinary.com/dx3l6id8r/video/upload/v1739885030/1920x900_n3tzkh.mp4"
+      : "https://res.cloudinary.com/dx3l6id8r/video/upload/v1739959517/700x600_dpqfw9.mp4";
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener("loadeddata", () => setIsVideoLoaded(true));
+    }
+    return () => {
+      if (video) {
+        video.removeEventListener("loadeddata", () => setIsVideoLoaded(true));
+      }
+    };
+  }, []);
+
+  const handleToggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
@@ -25,60 +33,39 @@ export default function Hero({
   };
 
   return (
-    <>
-      <div className="heroSection relative z-0">
-        {/* Background Image */}
+    <div className="relative w-full h-screen bg-cover bg-center" style={{ backgroundImage: 'url(/assets/frontend/images/home/hero.jpg)' }}>
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        src={videoSrc}
+        autoPlay
+        playsInline
+        loop
+        muted={isMuted}
+        preload="auto"
+        poster="/assets/frontend/images/home/hero.jpg"
+        width="1920"
+        height="900"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+          isVideoLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      ></video>
 
-        <div
-          className="hero_vdo_div lg:h-[auto] h-[auto] relative w-full] bg-cover"
-          style={{
-            background:
-              "url(assets/frontend/images/home/hero.jpg) no-repeat center",
-          }}
+      {/* Mute / Unmute Button */}
+      <div className="absolute bottom-4 right-4 lg:bottom-10 lg:right-10">
+        <button
+          onClick={handleToggleMute}
+          className="flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-75 transition"
+          title={isMuted ? "Unmute Video" : "Mute Video"}
+          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
         >
-          {/* <LoadAnimation /> */}
-          <video
-            ref={videoRef}
-            // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/herovdo.mp4`}
-            src={
-              window.innerWidth > 767
-                ? `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739885030/1920x900_n3tzkh.mp4`
-                : `https://res.cloudinary.com/dx3l6id8r/video/upload/v1739959517/700x600_dpqfw9.mp4`
-            } 
-            autoPlay
-            playsInline
-            loop
-            muted={isMuted}
-            preload="auto"
-            className="lg:h-[auto] h-[auto] w-full object-cover"
-          ></video>
-          <div className="vdo_btns absolute lg:bottom-[40px] bottom-[15px] lg:right-[30px] right-[15px]">
-            <button
-              onClick={handleToggelMute}
-              className="text-white  lg:h-[50px] h-[35px] lg:w-[50px] w-[35px] flex justify-center items-center rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-0"
-              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-            >
-
-              {isMuted ? (
-                <IoVolumeMute className="lg:text-[25px] text-[18px] cursor-pointer" />
-              ) : (
-                <VscUnmute className="lg:text-[25px] text-[18px] cursor-pointer" />
-              )}
-            </button>
-
-          </div>
-        </div>
-
-        {/* Content Overlay */}
-        {/* <div className={`container text-center absolute z-1 text-white ${containerClasses}`}>
-                <h1
-                    ref={textRef}
-                    data-speed="clamp(0.7)"
-                    className={`common_heading midlandfontmedium uppercase lg:max-w-[470px] m-auto lg:tracking-[4px] tracking-[2px] ${headingClasses}`}>
-                    {heading || 'Curating the Finest in Luxury Real Estate'}
-                </h1>
-            </div> */}
+          {isMuted ? (
+            <IoVolumeMute className="text-lg lg:text-2xl" />
+          ) : (
+            <VscUnmute className="text-lg lg:text-2xl" />
+          )}
+        </button>
       </div>
-    </>
+    </div>
   );
 }
