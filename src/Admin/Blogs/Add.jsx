@@ -124,7 +124,7 @@ const AddBlog = () => {
               ref={titleRef}
               type="text"
               placeholder="Enter Blog Title"
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             />
             {errors.heading && (
               <div className="errMsg text-red-500">{errors.heading}</div>
@@ -137,7 +137,7 @@ const AddBlog = () => {
               ref={shortDescriptionRef}
               required
               placeholder="Enter Short Description"
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             />
             {errors.short_description && (
               <div className="errMsg text-red-500">
@@ -158,7 +158,7 @@ const AddBlog = () => {
             <label className="block font-medium">Blog Category</label>
             <select
               ref={blogCategoryRef}
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             >
               <option defaultValue={true} disabled>
                 Select Blog Category
@@ -182,7 +182,7 @@ const AddBlog = () => {
               ref={thumbnailRef}
               required
               type="file"
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             />
             {errors.thumbnail && (
               <div className="errMsg text-red-500">{errors.thumbnail}</div>
@@ -200,7 +200,7 @@ const AddBlog = () => {
               ref={imageRef}
               required
               type="file"
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             />
             {errors.image && (
               <div className="errMsg text-red-500">{errors.image}</div>

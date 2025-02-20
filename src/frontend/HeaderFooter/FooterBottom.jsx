@@ -9,20 +9,22 @@ export default function FooterBottom() {
 
         {/* ✅ Use <a> for External Links */}
         <a
-          className="xl:text-[12px] text-[10px] tracking-[1px] text-[#a3a3a3]"
+          className="xl:text-[12px] text-[10px] tracking-[1px] text-[#a3a3a3] focus-visible:outline-none focus-visible:ring-0"
           href="https://gtftechnologies.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
+
           Crafted by GTF Technologies
         </a>
 
         <div className="xl:text-[12px] text-[10px] centerd tracking-[1px] text-[#8f8f8f]">
           Copyright ©{" "}
           <Link
-            className="xl:text-[12px] text-[10px] text-[#33638B]"
+            className="xl:text-[12px] text-[10px] text-[#33638B] focus-visible:outline-none focus-visible:ring-0"
             to={`${CONFIG.BASE_ROOT}`}
           >
+
             GreaT Value Realty
           </Link>{" "}
           2025. All Rights Reserved
@@ -42,7 +44,7 @@ export default function FooterBottom() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 
+              className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent 
              focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:bg-blue-200 rounded-md transition-all"
             >
               <img

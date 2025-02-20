@@ -4,6 +4,7 @@ import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
 import * as CONFIG from "../../../config";
+import { Helmet } from "react-helmet";
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
@@ -54,6 +55,9 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
   return (
     <>
 
+    <Helmet>
+        <title>Great Value Realty | About-Us</title>
+      </Helmet>
     {banner && 
       <HeroSectionAboutUs
         img={`${CONFIG.VITE_APP_STORAGE}${banner.image}`}

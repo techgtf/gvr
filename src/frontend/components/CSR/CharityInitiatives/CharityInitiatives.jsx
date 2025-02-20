@@ -19,12 +19,12 @@ import charity5 from "/assets/frontend/images/csr/charity/images/charity5.webp";
 import charity6 from "/assets/frontend/images/csr/charity/images/charity6.webp";
 import charity7 from "/assets/frontend/images/csr/charity/images/charity7.webp";
 import charity8 from "/assets/frontend/images/csr/charity/images/charity8.webp";
-import charity9 from "/assets/frontend/images/csr/charity/images/charity9.webp";
-import charity10 from "/assets/frontend/images/csr/charity/images/charity10.webp";
-import charity11 from "/assets/frontend/images/csr/charity/images/charity11.webp";
-import charity12 from "/assets/frontend/images/csr/charity/images/charity12.webp";
-import charity13 from "/assets/frontend/images/csr/charity/images/charity13.webp";
-import charity14 from "/assets/frontend/images/csr/charity/images/charity14.webp";
+// import charity9 from "/assets/frontend/images/csr/charity/images/charity9.webp";
+// import charity10 from "/assets/frontend/images/csr/charity/images/charity10.webp";
+// import charity11 from "/assets/frontend/images/csr/charity/images/charity11.webp";
+// import charity12 from "/assets/frontend/images/csr/charity/images/charity12.webp";
+// import charity13 from "/assets/frontend/images/csr/charity/images/charity13.webp";
+// import charity14 from "/assets/frontend/images/csr/charity/images/charity14.webp";
 
 import Initiatives from './Initiatives';
 import InitiativesDesc from './InitiativesDesc';
@@ -33,7 +33,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function CharityInitiatives() {
     const location = useLocation();
-    const images = [charity, charity2, charity3, charity4, charity5, charity6, charity7, charity8, charity9, charity10, charity11, charity12, charity13, charity14];
+    const images = [charity, charity2, charity3, charity4, charity5, charity6, charity7, charity8];
 
     const prevRef = useRef(null);
     const nextRef = useRef(null);

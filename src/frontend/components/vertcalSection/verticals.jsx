@@ -45,13 +45,14 @@ export default function Verticals() {
                         <div className='boxes relative lg:w-[47%] w-full' key={index}>
                             <Link
                                 to={item.link}
-                                className='relative block overflow-hidden cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
+                                className="relative block overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-0"
                             >
+
                                 <ZoomOut initialScale={1.5} duration={2}>
                                     <Link
                                         to={`${CONFIG.BASE_ROOT}`}
-                                        className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
-             focus-visible:ring-4 focus-visible:ring-blue-500 rounded-md transition-all"
+                                        className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent
+             focus-visible:ring-4 focus-visible:ring-transparent rounded-md transition-all"
                                     >
                                         <img
                                             className="lg:h-[300px] h-[300px] cursor-pointer w-full object-cover"
@@ -62,7 +63,7 @@ export default function Verticals() {
 
                                 </ZoomOut>
                                 <span
-                                    className='link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500'
+                                    className='link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent'
                                 >
                                     <GoArrowUpRight className='cursor-pointer lg:text-[49px] text-[35px]' />
                                 </span>

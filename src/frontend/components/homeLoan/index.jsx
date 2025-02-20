@@ -34,7 +34,7 @@ export default function Index() {
         <div className='area_converter_in lg:py-[80px] py-[30px] uppercase'>
             <div className='wrap_div lg:max-w-[95%] lg:px-0 px-[15px] w-full m-auto'>
                 <div className='grid_div grid lg:grid-cols-2 items-center'>
-                    <div className='left_side flex flex-wrap lg:gap-[40px] gap-[15px] lg:py-5 lg:mb-0 mb-[30px]'>
+                    <div className='left_side flex flex-wrap lg:gap-[40px] gap-[15px] lg:py-5 lg:mb-0 mb-[30px] overflow-hidden'>
                         {
                             pageData && pageData.map((data, index) => (
                                 data.content ? data.content.map((text, contentIndex) => (

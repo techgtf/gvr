@@ -15,13 +15,13 @@ export default function CommonBtn({
 }) {
     // Determine which element it is
     const isReactRouterLink = TagName === Link;
-    
+
     const isAnchor = TagName === 'a';
     const isButton = TagName === 'button';
 
     // Compute final props based on tag type
     const tagProps = {
-        className: `common_btn uppercase cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${className}`,
+        className: `common_btn uppercase cursor-pointer focus-visible:outline-none focus-visible:ring-0 ${className}`,
         onClick: (!isReactRouterLink && !isAnchor) ? onClick : undefined, // Only attach if not Link or anchor
         'aria-label': ariaLabel || (typeof children === 'string' ? children : undefined), // Ensure accessibility
         ...(isReactRouterLink ? { to } : {}), // React Router Link needs 'to'
