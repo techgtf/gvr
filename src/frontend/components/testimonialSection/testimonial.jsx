@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
-import ReactDOM from "react-dom";
+import React, { useRef, useState, useCallback } from 'react';
 import AnimatedHeading from '../Animations/AnimatedHeading'
 import './testimonial.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,112 +8,25 @@ import FullBtn from '../fullBtn';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useImageReveal } from '../useImageReveal';
+import { TestimonialsData } from "./testimonialsData";
+import { VideoModal, getEmbedUrl } from "./testimonialsVideoModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 
-const slidesData = [
-    {
-        name: 'Mr. Narinder Arora',
-        thumbs: 'narinder-arora.webp',
-        video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
-        desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
-        alt: "Great Value Mr. Narinder Arora"
-    },
-    {
-        name: 'Verma Family',
-        thumbs: 'verma-family.webp',
-        video: 'https://www.youtube.com/watch?v=Nbm6iQ0IMMY',
-        desc: 'A Community Where Every Festival Feels Like Home',
-        alt: "Great Value Verma family"
-    },
-    {
-        name: 'Mr. B.P. Bharti',
-        thumbs: 'bp-bharti.webp',
-        video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
-        desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
-        alt: "Great Value Mr. B.P. Bharti "
-    },
-]
-
-const getEmbedUrl = (url) => url.replace("watch?v=", "embed/");
-
-const VideoModal = ({ videoUrl, onClose }) => {
-    if (!videoUrl) return null;
-    return ReactDOM.createPortal(
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-[20px] flex items-center justify-center z-50">
-            <div className="relative bg-white lg:p-4 p-2 rounded-lg lg:w-[auto] w-[98%]">
-                <button
-                    className="absolute top-2 right-2 bg-red-600 text-white px-3 py-1 rounded-full"
-                    onClick={onClose}
-                >
-                    ✕
-                </button>
-                <iframe
-                    className='lg:w-[1000px] w-[100%] lg:h-[500px] h-[250px]'
-                    src={videoUrl}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                ></iframe>
-            </div>
-        </div>,
-        document.body
-    );
-};
-
 export default function Testimonial() {
+    const slidesData = TestimonialsData;
     const testimonialRef = useRef(null);
     const swiperContainerRef = useRef(null);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
     useImageReveal(".reveal")
 
-    const openVideo = useCallback((videoUrl) => {
-        gsap.globalTimeline.pause(); // Pause all GSAP animations
-        setSelectedVideo(videoUrl);
-    }, []);
-
     const closeVideo = useCallback(() => {
         setSelectedVideo(null);
         gsap.globalTimeline.resume(); // Resume animations
         setTimeout(() => ScrollTrigger.refresh(), 300); // Refresh ScrollTrigger
     }, []);
-
-
-
-
-    const memoizedSlides = useMemo(() => (
-        slidesData.map((item, index) => (
-            <SwiperSlide key={index} className="panel">
-                <div className='flex_div flex flex-wrap justify-between'>
-                    <div className='posterSide relative lg:w-[45%] w-full'>
-                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.alt}`} />
-                        <button
-                            className='playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer'
-                            onClick={() => openVideo(getEmbedUrl(item.video))}
-                        >
-                            <img
-                                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
-                                className="cursor-pointer lg:h-[44px] h-[30px]"
-                                alt="Play button icon"
-                            />
-                        </button>
-                    </div>
-                    <div className='borderline w-[18%] relative lg:block hidden'></div>
-                    <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
-                        <p className='desc lg:text-[17px] text-[14px] tracking-[2px]'>{item.desc}</p>
-                        <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
-                            <small className='line'></small> {item.name}
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-        ))
-    ), [openVideo]);
-
 
 
     return (
@@ -156,8 +68,7 @@ export default function Testimonial() {
                                             className="w-full"
                                         ></video> */}
                                         <button
-                                            className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
-    focus-visible:outline-transparent focus-visible:ring-0"
+                                            className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer "
                                             onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
                                             aria-label="Play Video"
                                         >
@@ -177,6 +88,7 @@ export default function Testimonial() {
                                             <small className='line'></small> {item.name}
                                         </div>
                                         {/* <FullBtn text='Watch More' LinkName="a" link='https://www.youtube.com/@greatvaluerealty' /> */}
+                                        <FullBtn text='Watch More' LinkName="Link" link={`${CONFIG.BASE_ROOT}testimonials`} />
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -189,72 +101,6 @@ export default function Testimonial() {
     );
 }
 
-// import React, { useRef, useEffect, useState } from 'react';
-// import ReactDOM from "react-dom";
-// import AnimatedHeading from '../Animations/AnimatedHeading'
-// import './testimonial.css';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Autoplay, FreeMode, Navigation } from 'swiper/modules';
-// import * as CONFIG from "../../../../config";
-// import FullBtn from '../fullBtn';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { useImageReveal } from '../useImageReveal';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-
-// const slidesData = [
-//     {
-//         name: 'Mr. Narinder Arora',
-//         thumbs: 'narinder-arora.webp',
-//         video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
-//         desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
-//         alt: "Great Value Mr. Narinder Arora"
-//     },
-//     {
-//         name: 'Verma Family',
-//         thumbs: 'verma-family.webp',
-//         video: 'https://www.youtube.com/watch?v=Nbm6iQ0IMMY',
-//         desc: 'A Community Where Every Festival Feels Like Home',
-//         alt: "Great Value Verma family"
-//     },
-//     {
-//         name: 'Mr. B.P. Bharti',
-//         thumbs: 'bp-bharti.webp',
-//         video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
-//         desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
-//         alt: "Great Value Mr. B.P. Bharti "
-//     },
-// ]
-
-// const getEmbedUrl = (url) => url.replace("watch?v=", "embed/");
-
-// const VideoModal = ({ videoUrl, onClose }) => {
-//     if (!videoUrl) return null;
-//     return ReactDOM.createPortal(
-//         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-[20px] flex items-center justify-center z-50">
-//             <div className="relative bg-white lg:p-4 p-2 rounded-lg lg:w-[auto] w-[98%]">
-//                 <button
-//                     className="absolute top-2 right-2 bg-red-600 text-white px-3 py-1 rounded-full"
-//                     onClick={onClose}
-//                 >
-//                     ✕
-//                 </button>
-//                 <iframe
-//                     className='lg:w-[1000px] w-[100%] lg:h-[500px] h-[250px]'
-//                     src={videoUrl}
-//                     title="YouTube video player"
-//                     frameBorder="0"
-//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//                     referrerPolicy="strict-origin-when-cross-origin"
-//                     allowFullScreen
-//                 ></iframe>
-//             </div>
-//         </div>,
-//         document.body
-//     );
-// };
 
 // export default function Testimonial() {
 

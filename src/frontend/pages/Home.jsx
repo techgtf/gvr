@@ -10,10 +10,24 @@ import { BASE_ROOT } from '../../../config'
 import { Helmet } from 'react-helmet'
 
 export default function Home() {
+
+    // const arr = [12, 5, 7, 7, 6, 4, 58, 8];
+
+    // function giveUniqNumber(arr) {
+    //     if (arr.length < 0) return;
+    //     let uniqeArr = arr[0]
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] === uniqeArr) { 
+    //             uniqeArr
+    //         }
+    //     }
+    // }
+
+
     return (
         <>
             <Helmet>
-                <title> Great Value Realty| Home</title>
+                <title> Great Value Realty | Your Trusted Real Estate Partner</title>
                 <meta name="keywords" content="Great Value realty, Great Value Sharanam Noida, Great Value Anandam Noida, Sector 107 Noida,  Great Value Anandam, Great Value Sharanam Sector 107 Noida, Best Casa Uday Delhi, Great Value Realty Vilasa, Best Sanctuary residential project sector 105 " />
                 <meta name="description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
@@ -88,6 +102,7 @@ export default function Home() {
                     paragraph={'At Great Value Realty, we create more than just homes—we cultivate trust, deliver unmatched value, and craft lasting experiences. Since our inception in 1970, the Great Value Group has transformed industries, managing assets exceeding ₹1,300 crores. Guided by a vision rooted in innovation, integrity, and ambition, we are dedicated to building timeless excellence, enriching lives, and shaping a brighter future.'}
                     showKnowMore={true}
                     pageLink={`${BASE_ROOT}about-us`}
+                    tag="h1"
                 />
                 <Projects />
                 <Verticals />
