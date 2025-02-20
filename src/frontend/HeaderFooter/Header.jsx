@@ -99,7 +99,17 @@ export default function Header() {
 
     return logo;
   };
-
+  useEffect(() => {
+    const handleScroll = () => {
+      setDropdown(false); // Close dropdown when scrolling
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Cleanup
+    };
+  }, []); // Empty dependency array runs only once on mount
   return (
     <>
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
