@@ -306,6 +306,32 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
+  function openNewBackgroundTab(link) {
+    var a = document.createElement("a");
+    a.href = link;
+    var evt = document.createEvent("MouseEvents");
+
+    //the tenth parameter of initMouseEvent sets ctrl key
+    evt.initMouseEvent(
+      "click",
+      true,
+      true,
+      window,
+      0,
+      0,
+      0,
+      0,
+      0,
+      true,
+      false,
+      false,
+      false,
+      0,
+      null
+    );
+    a.dispatchEvent(evt);
+  }
+
   useEffect(() => {
     const swiper = swiperRef.current;
     if (swiper && prevRef.current && nextRef.current) {
@@ -361,16 +387,12 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                 return (
                   <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
                     <p
-                      className={`text-left ${
-                        proj.name == "PERNIA'S POP-UP STUDIO"
-                          ? "basis-[26%]"
-                          : "basis-[30%]"
-                      } pr-[0.2rem] text-[13px] text-primary`}
+                      className={`text-left basis-[30%] inline-block pr-[0.2rem] text-[13px] text-primary`}
                     >
                       {proj.name}
                     </p>
                     <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                    <p className="basis-[30%]">{proj.address}</p>
+                    <p className="basis-[25%]">{proj.address}</p>
 
                     <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
 
@@ -386,17 +408,25 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                         <p className="basis-[25%]">Office Spaces</p>
                       )
                     ) : (
-                      <Link
-                        to={proj.link}
-                        style={{
-                          width: "115px",
-                        }}
-                        className="bg-primary  text-[10px] text-center py-[8px] px-[15px] text-white"
-                      >
-                        {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
-                          ? "COMING SOON"
-                          : "READ MORE"}
-                      </Link>
+                      <div className="basis-[25%]">
+                        <Link
+                          to={proj.link}
+                          // target="_blank"
+                          onClick={() => openNewBackgroundTab(proj.link)}
+                          rel="noopener noreferrer"
+                          className={`${
+                            proj.name == "Moser Baer Solar Ltd / Warehouse"
+                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary  text-[10px] text-center text-white"
+                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                          } `}
+                        >
+                          {["Tavru Sohna", "Moserbear Part 2"].includes(
+                            proj.name
+                          )
+                            ? "COMING SOON"
+                            : "READ MORE"}
+                        </Link>
+                      </div>
                     )}
                   </div>
                 );
