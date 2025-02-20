@@ -263,7 +263,7 @@ class PageMetaController extends Controller
 }
 
 public function  DistinctPages(){
-    $data = Page::doesntHave('meta')->get();
+    $data = Page::get();
     return response()->json([
         'status'=>true,
         'statusCode'=>200,
