@@ -50,7 +50,7 @@ export default function Verticals() {
 
                                 <ZoomOut initialScale={1.5} duration={2}>
                                     <Link
-                                        to={`${CONFIG.BASE_ROOT}`}
+                                        to={`${item.link}`}
                                         className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent
              focus-visible:ring-4 focus-visible:ring-transparent rounded-md transition-all"
                                     >
@@ -65,7 +65,7 @@ export default function Verticals() {
                                 <span
                                     className='link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent'
                                 >
-                                    <GoArrowUpRight className='cursor-pointer lg:text-[49px] text-[35px]' />
+                                    <GoArrowUpRight className='cursor-pointer lg:text-[45px] text-[35px]' />
                                 </span>
                             </Link>
                             <SlideIn duration={2} delay={0.5}>
