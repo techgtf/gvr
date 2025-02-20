@@ -3,7 +3,7 @@ import './styles.css'
 import CommonAccordion from '../commonAccordion'
 import PageOverview from './pageOverview';
 
-export default function Index() {
+export default function Index({data}) {
     const accData = [
         {
             title: "Deduction in interest:",
@@ -33,7 +33,7 @@ export default function Index() {
     return (
         <div className='tax_benifit_in lg:py-[80px] py-[20px]'>
             <PageOverview />
-            <CommonAccordion data={accData} />
+            <CommonAccordion data={data} />
         </div>
     )
 }

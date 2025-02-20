@@ -30,6 +30,7 @@ export default function NriCorner() {
 
     console.log(data, "nri corner")
 
+  
     return (
         <>
             <Helmet>
