@@ -121,8 +121,14 @@ export default function Header() {
 =======
   useEffect(() => {
     const handleScroll = () => {
+<<<<<<< HEAD
       setDropdown(false); // Close dropdown when scrolling
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+      setDropdown(false);
+      setActiveItem(null);
+      setHoveringNav(false);
+>>>>>>> 895946c (workculture)
     };
   
     window.addEventListener("scroll", handleScroll);
