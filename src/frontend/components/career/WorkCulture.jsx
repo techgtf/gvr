@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { gsap } from "gsap";
+import * as CONFIG from "../../../../config";
 // import "yet-another-react-lightbox/styles.css";
 import "swiper/css/free-mode";
 import workPlaceImg1 from "../../../../public/assets/frontend/images/career/work-place-img-1.jpg";
@@ -10,7 +11,7 @@ import workPlaceImg4 from "../../../../public/assets/frontend/images/career/work
 import workPlaceImg5 from "../../../../public/assets/frontend/images/career/work-place-img-5.jpg";
 import workPlaceImg6 from "../../../../public/assets/frontend/images/career/work-place-img-6.jpg";
 
-const WorkCulture = () => {
+const WorkCulture = ({data}) => {
   const images = [
     workPlaceImg1,
     workPlaceImg2,
@@ -45,20 +46,18 @@ const WorkCulture = () => {
 
   return (
     <section className="lg:max-w-[79%] max-w-[85%] py-[50px] mb-[40px] max-w-[100%] m-auto">
-      <h3 className="sectionHeading uppercase border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
-        Work Culture
+      {data.heading && (
+        <h3 className="sectionHeading uppercase border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
+        {data.heading}
       </h3>
+      )}
       <div className="flex  flex-wrap justify-between ">
         <div className="text-justify text-[#333333AB] xl:basis-[29%] basis-[100%] text-[15px] font-[500]">
+         {data.description && (
           <p className="text-justify">
-            At Great Value, we foster a dynamic and inclusive work culture that
-            values innovation, collaboration, and personal growth. Our team
-            thrives in an environment where diverse perspectives are celebrated,
-            and every member is encouraged to contribute ideas. We are committed
-            to providing opportunities for professional development, ensuring
-            our employees feel valued and empowered to reach their full
-            potential.
-          </p>
+          {data.description}
+         </p>
+         )} 
         </div>
         <div
           className="flex flex-wrap xl:basis-[68%] basis-[100%] mt-[20px] xl:mt-[0px]  xl:justify-between justify-start flex-col xl:flex-row"
@@ -67,8 +66,8 @@ const WorkCulture = () => {
           {imageScreen ? (
             <>
               <img
-                src={images[0]}
-                alt="img-1"
+                src={`${CONFIG.VITE_APP_STORAGE}${data.image}`}
+                alt={data.heading}
                 className="basis-[60%] h-[320px] object-cover"
               />
               <div className="xl:w-[38%] w-[100%] flex xl:flex-col xl:mt-0 mt-[20px] flex-row justify-between">
