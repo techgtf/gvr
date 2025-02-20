@@ -66,6 +66,7 @@ import AddTimeline from "../admin/components/timeline/Add";
 import AboutPage from "../admin/AboutPage";
 import OurTeam from "../admin/components/about/team/Index";
 import TimelineImages from "../admin/components/timeline/images/Index";
+import Faqs from "../admin/components/faq/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -660,6 +661,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <AboutPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}faqs`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Faqs />
         </Suspense>
       </AdminLayout>
     ),

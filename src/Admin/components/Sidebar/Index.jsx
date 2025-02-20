@@ -476,14 +476,7 @@ const Sidebar = (props) => {
                     <span>NRI Services</span>
                   </NavLink>
 
-                  <NavLink className="sub_menu_link">
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>FAQs</span>
-                  </NavLink>
+                  
 
                   <NavLink
                     className="sub_menu_link"
@@ -623,6 +616,18 @@ const Sidebar = (props) => {
                     className="img-fluid icon"
                   />
                   <span>Team</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}faqs`}
+                >
+                  <img
+                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
+                    alt="dashboard icon"
+                    className="img-fluid icon"
+                  />
+                  <span>Faqs</span>
                 </NavLink>
 
                 <NavLink
