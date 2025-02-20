@@ -9,6 +9,8 @@ import { DATA_ASSET_URL } from "../../../config";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import { useLocation } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 
 const BlogDetails = () => {
@@ -36,6 +38,9 @@ const BlogDetails = () => {
   if (error) return <p>Error: {error}</p>;
   return (
     <>
+      <Helmet>
+        <title>Great Value Realty | Blog</title>
+      </Helmet>
       <HeroSectionAboutUs
           img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.webp`}
           heading={"BLOG DETAILS"}

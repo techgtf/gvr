@@ -34,6 +34,7 @@ import CommercialProjects from "../frontend/pages/CommercialProjects";
 import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 import MediaCenter from "../frontend/pages/MediaCenter";
 import NriInvestor from "../frontend/pages/NriInvestor";
+import SanctuaryMicrosite from "../frontend/pages/SanctuaryMicrosite";
 
 
 export const UserRoutes = [
@@ -114,6 +115,18 @@ export const UserRoutes = [
         ),
       },
       {
+        path: `${BASE_ROOT}sanctuary`,
+        element: (
+          <ErrorBoundary>
+            {/* <Suspense fallback={<Loader />}> */}
+              <Layout>
+                <SanctuaryMicrosite />
+              </Layout>
+            {/* </Suspense> */}
+          </ErrorBoundary>
+        ),
+      },
+      {
         path: `${BASE_ROOT}vilasa`,
         element: (
           <ErrorBoundary>
@@ -138,7 +151,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}gv-homes`,
+        path: `${BASE_ROOT}casa-uday`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}

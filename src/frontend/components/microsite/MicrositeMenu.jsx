@@ -5,7 +5,7 @@ function MicrositeMenu() {
   const [active, setActive] = useState("");
   const [isFooterActive, setIsFooterActive] = useState(false);
   const sectionRefs = useRef({});
-  
+
   const menu = [
     { name: "OVERVIEW", id: "overview" },
     { name: "AMENTITIES", id: "amentities" },
@@ -20,14 +20,14 @@ function MicrositeMenu() {
 
   useEffect(() => {
     // Reset active state when component mounts or when the page switches
-    setActive(""); 
+    setActive("");
     setIsFooterActive(false);
 
     // Populating the sectionRefs with DOM elements
     menu.forEach((item) => {
       sectionRefs.current[item.id] = document.getElementById(item.id);
     });
-    
+
     // Setting up the IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,7 +35,7 @@ function MicrositeMenu() {
           if (entry.isIntersecting) {
             const id = entry.target.id;
             setActive(id); // Update the active state with the section's id
-            
+
             if (id === "mainfooter" || id === "overview") {
               setIsFooterActive(true); // Set footer as active
             } else {
@@ -75,7 +75,7 @@ function MicrositeMenu() {
               active === item.id ? "text-primary font-semibold" : ""
             }`}
           >
-            <Link to={item.id} spy={true} smooth={true} duration={500}>
+            <Link to={item.id} spy={true} smooth={true} duration={500} offset={-120}>
               {item.name}
             </Link>
           </li>

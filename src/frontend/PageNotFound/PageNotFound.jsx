@@ -22,7 +22,7 @@ const PageNotFound = () => {
                 <Link to="#"> Anandam - Sector 107, Noida</Link>{" "}
               </li>
               <li className=" pb-[4px] underline inline-block">
-                <Link to="#"> GV HOMEZ - 31, Uday Park, New Delhi</Link>
+                <Link to="#"> CASA UDAY - 31, Uday Park, New Delhi</Link>
               </li>
               <li className=" pb-[4px] underline inline-block">
                 <Link to={CONFIG.BASE_ROOT + "about-us"}>about us</Link>

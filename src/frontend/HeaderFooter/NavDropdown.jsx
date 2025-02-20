@@ -49,30 +49,32 @@ function NavDropdown({ setDropdown, setActiveItem }) {
     return (
         <div
             ref={dropdownRef}
-            className="nav_dropdown fixed top-[90px] left-0 h-[30vh] w-full bg-[#EFF5FA] text-black opacity-95 p-5"
+            className="nav_dropdown fixed top-[90px] left-0  w-full bg-[#EFF5FA] text-black opacity-95 py-8 px-5"
         >
             <div className="absolute top-3 px-20 flex justify-end w-full">
                     <AiOutlineClose  onClick={() => handleClose()} className="cursor-pointer text-xl text-[#00000094]" />
                 </div>
             <div className="relative h-full">
-                <ul className="flex justify-evenly items-center h-full">
+                <ul className="flex flex-wrap justify-center text-center items-center h-full gap-10">
                     {[
                         { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
                         { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
-                        { name: "GV HOMEZ", path: "gv-homes", location: "uday park, new delhi" },
+                        { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
                         { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" },
+                        { name: "Sanctuary 105", path: "sanctuary", location: "SECTOR 105, GURUGRAM" },
                     ].map(({ name, path, location }, index, array) => (
                         <React.Fragment key={path}>
-                            <li>
+                            <li >
                                 <Link
                                     to={`${BASE_ROOT}${path}`}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleClose(() => navigate(`${BASE_ROOT}${path}`));
                                     }}
-                                    className="cursor-pointer"
+                                    className="cursor-pointer !text-[10px]"
                                 >
-                                    <CommonHeading HeadingText={name} />
+                                    <h2 className="!text-[10px] tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{name}</h2>
+                                    {/* <CommonHeading HeadingText={name}  /> */}
                                     <p className="place uppercase pt-2 cursor-pointer">{location}</p>
                                 </Link>
                             </li>

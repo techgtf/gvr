@@ -48,6 +48,7 @@ import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.web
 import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
 import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
 import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.webp"
+import { Helmet } from 'react-helmet'
 
 function GvHomesMicrosite() {
     const location = useLocation();
@@ -185,6 +186,10 @@ function GvHomesMicrosite() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Great Value Realty | Casa Uday</title>
+            </Helmet>
             <HeroSection
                 desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
@@ -193,7 +198,7 @@ function GvHomesMicrosite() {
                 initialScale={1.5}
                 duration={2}
                 bannerDetailsProps={{
-                    heading: "GV HOMES",
+                    heading: "Casa Uday",
                     location: "31, Uday Park, New Delhi",
                     description: "LUXURY MODERN BUILDERS FLOOR",
                 }}
@@ -202,7 +207,7 @@ function GvHomesMicrosite() {
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
-                descriptionText="GV HOMEZ, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
+                descriptionText="CASA UDAY, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
             />
 

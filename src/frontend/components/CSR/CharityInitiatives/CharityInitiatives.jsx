@@ -11,14 +11,20 @@ import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from 'yet-another-react-lightbox/plugins';
 
 // Import Images
-import charity from "/assets/frontend/images/csr/charity/images/charity.jpg";
-import charity2 from "/assets/frontend/images/csr/charity/images/charity2.jpg";
-import charity3 from "/assets/frontend/images/csr/charity/images/charity3.jpg";
-import charity4 from "/assets/frontend/images/csr/charity/images/charity4.jpg";
-import charity5 from "/assets/frontend/images/csr/charity/images/charity5.jpg";
-import charity6 from "/assets/frontend/images/csr/charity/images/charity6.jpg";
-import charity7 from "/assets/frontend/images/csr/charity/images/charity7.jpg";
-import charity8 from "/assets/frontend/images/csr/charity/images/charity8.jpg";
+import charity from "/assets/frontend/images/csr/charity/images/charity.webp";
+import charity2 from "/assets/frontend/images/csr/charity/images/charity2.webp";
+import charity3 from "/assets/frontend/images/csr/charity/images/charity3.webp";
+import charity4 from "/assets/frontend/images/csr/charity/images/charity4.webp";
+import charity5 from "/assets/frontend/images/csr/charity/images/charity5.webp";
+import charity6 from "/assets/frontend/images/csr/charity/images/charity6.webp";
+import charity7 from "/assets/frontend/images/csr/charity/images/charity7.webp";
+import charity8 from "/assets/frontend/images/csr/charity/images/charity8.webp";
+// import charity9 from "/assets/frontend/images/csr/charity/images/charity9.webp";
+// import charity10 from "/assets/frontend/images/csr/charity/images/charity10.webp";
+// import charity11 from "/assets/frontend/images/csr/charity/images/charity11.webp";
+// import charity12 from "/assets/frontend/images/csr/charity/images/charity12.webp";
+// import charity13 from "/assets/frontend/images/csr/charity/images/charity13.webp";
+// import charity14 from "/assets/frontend/images/csr/charity/images/charity14.webp";
 
 import Initiatives from './Initiatives';
 import InitiativesDesc from './InitiativesDesc';
@@ -82,17 +88,16 @@ function CharityInitiatives() {
 
     return (
         <>
-            <section className="charity relative px-5 md:px-12 py-10 md:py-14">
-                <div className="headingWrap lg:max-w-[50%] mx-auto text-center">
+            <section className="charity bg-[#EFF5FA] relative px-5 md:px-12 pb-16">
+                {/* <div className="headingWrap lg:max-w-[50%] mx-auto text-center">
                     <CommonHeading HeadingText="Great Value Charitable Initiatives: Educating & Empowering" />
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-20">
                     <Initiatives />
                     <InitiativesDesc />
-                </div>
+                </div> */}
 
-                <section className='mt-16 md:mt-20'>
                     <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end">
                         <button ref={prevRef} className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1">
                             <LuChevronLeft className="w-[30px] md:w-8 h-[30px] md:h-8 opacity-80 border-2 hover:border-0 border-gray-500 bg-transparent hover:bg-[#EFF5FA] rounded-full" />
@@ -140,7 +145,6 @@ function CharityInitiatives() {
                             />
                         )}
                     </div>
-                </section>
             </section>
         </>
     );

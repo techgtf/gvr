@@ -31,7 +31,14 @@
   width: 100%; /* Make the image fill the button */
   height: auto; /* Maintain aspect ratio */
 }
-a{cursor: pointer;}
+a {
+  cursor: pointer;
+}
+
+.commercialSwiper .swiper-wrapper {
+  display: flex !important; /* Apply flex display */
+  align-items: center !important; /* Center items vertically */
+}
 
 /* .swiper-button-prev {
   position: absolute;

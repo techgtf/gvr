@@ -82,7 +82,7 @@ export default function Header() {
     `${BASE_ROOT}sharanam`,
     `${BASE_ROOT}anandam`,
     `${BASE_ROOT}vilasa`,
-    `${BASE_ROOT}gv-homes`,
+    `${BASE_ROOT}casa-uday`,
   ];
 
   const getLogoSrc = () => {
@@ -105,9 +105,17 @@ export default function Header() {
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
         <div className="max-w-[95%] m-auto">
           <div className="flex justify-between items-center">
-            <Link to={`${BASE_ROOT}`}>
-              <img className="w-[50%] sm:w-[70%] cursor-pointer" src={getLogoSrc()} alt="Great Value Realty Logo" />
+            <Link
+              to={`${BASE_ROOT}`}
+              className="focus-visible:outline-transparent focus-visible:ring-0"
+            >
+              <img
+                className="w-[50%] sm:w-[70%] cursor-pointer"
+                src={getLogoSrc()}
+                alt="Great Value Realty Logo"
+              />
             </Link>
+
             <nav className="right_nav flex justify-between items-center gap-10" role="navigation" aria-label="Main Navigation">
               <div className={`nav_items hidden sm:block uppercase ${isFixed ? "text-black" : "text-white"} ${activeItem ? "text-primary" : ""}`}>
                 <ul className="flex justify-evenly gap-8 items-center" role="menu">
@@ -117,7 +125,7 @@ export default function Header() {
                       onMouseEnter={() => {
                         item.hasMenus ? handleDropdownOpen(item.name) : handleMouseEnterOtherItems(item.name);
                       }}
-                      className={`relative flex gap-3 items-center tracking-[3px] text-[13px] font-[300] 
+                      className={`relative  flex gap-3 items-center tracking-[2px] text-[13px] font-[300] 
                       ${activeItem === item.name ? "font-bold px-3 text-primary" : ""}
                       hover:font-bold hover:px-3 hover:text-primary transition-all duration-300`}
                       role="menuitem"
@@ -126,14 +134,17 @@ export default function Header() {
                         <Link
                           to={`${BASE_ROOT}${item.link}`}
                           className={`tracking-[3px] uppercase text-[13px] font-[300] 
-                       ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
+                        ${activeItem === item.name ? "font-[600] text-primary" : ""} 
+                        hover:font-[600] hover:text-primary transition-all duration-300 
+                        focus-visible:outline-none focus-visible:ring-0`}
                         >
                           {item.name}
                         </Link>
 
+
                       ) : (
                         <button
-                          className={`tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500  ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
+                          className={`tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent  ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
                           onClick={() => handleDropdownOpen(item.name)}
                           aria-haspopup="true"
                           aria-expanded={dropdown && activeItem === item.name}
@@ -149,10 +160,11 @@ export default function Header() {
               <div className="flex items-center lg:gap-x-5 gap-x-2">
                 <SearchGlobal headerFixed={isFixed} />
                 <button
-                  className="menuBtn flex justify-end items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                  className="menuBtn flex justify-end items-center focus-visible:outline-none focus-visible:ring-0"
                   aria-label="Open sidebar menu"
                   onClick={handleToggleSidebar}
                 >
+
                   <img
                     className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"
                       } w-[80%]`}
