@@ -55,12 +55,14 @@ class TeamController extends Controller
             'name' => 'required',
             'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'designation' => 'required',
+            'bio' => 'required',
         ],[
             'name.required' => 'The Name field is required.',
             'image.required' => 'The Image field is required.',
             'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'designation.required' => 'This Field is required.',
+            'bio.required' => 'This field is required',
           
         ]);
 
@@ -74,6 +76,7 @@ class TeamController extends Controller
             ]); 
 
         }else{
+            
             try{
                 
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
@@ -83,6 +86,7 @@ class TeamController extends Controller
                 $team->name = $request->name;
                 $team->image = $path;
                 $team->designation = $request->designation;
+                $team->bio = $request->bio;
             
                 if($team->save()){
                     return response()->json([
@@ -165,13 +169,14 @@ class TeamController extends Controller
             'name' => 'required',
             'image' => 'mimes:png,jpg,jpeg,webp|max:2048',
             'designation' => 'required',
+            'bio' => 'required',
         
         ],[
             'name.required' => 'The Name field is required.',
             'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'designation.required' => 'This Field is required',
-
+            'bio.required' => 'This filed is required',
         ]);
 
         if($validator->fails()){
@@ -209,6 +214,7 @@ class TeamController extends Controller
 
                 $getrecord->name = $request->name;
                 $getrecord->designation = $request->designation;
+                $getrecord->bio = $request->bio;
                
 
                 if($getrecord->save()){              

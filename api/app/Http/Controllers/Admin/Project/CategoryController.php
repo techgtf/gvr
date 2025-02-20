@@ -136,25 +136,25 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $result = Categories::find($id);
-        if(!empty($result)){
+        // $result = Categories::find($id);
+        // if(!empty($result)){
 
-            return response()->json([
-                'status' => true,
-                'statusCode' => 200,
-                'message' => "Get Single Record",
-                'data' => $result,
-            ]);
+        //     return response()->json([
+        //         'status' => true,
+        //         'statusCode' => 200,
+        //         'message' => "Get Single Record",
+        //         'data' => $result,
+        //     ]);
 
-        }else{
+        // }else{
 
-            return response()->json([
-                'status' => true,
-                'statusCode' => 200,
-                'message' => "Matching record not found",
-            ]);
+        //     return response()->json([
+        //         'status' => true,
+        //         'statusCode' => 200,
+        //         'message' => "Matching record not found",
+        //     ]);
 
-        }
+        // }
         
     }
 
@@ -192,7 +192,25 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = Categories::find($id);
+        if(!empty($result)){
+
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => "Get Single Record",
+                'data' => $result,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => "Matching record not found",
+            ]);
+
+        }
     }
 
     /**
