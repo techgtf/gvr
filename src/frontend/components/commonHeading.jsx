@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CommonHeading({
-  TagName = "div",
+  TagName = "h2",
   HeadingClass = "",
   HeadingText = "",
 }) {
