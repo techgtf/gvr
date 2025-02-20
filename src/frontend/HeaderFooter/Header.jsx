@@ -102,7 +102,9 @@ export default function Header() {
   
   useEffect(() => {
     const handleScroll = () => {
-      setDropdown(false); // Close dropdown when scrolling
+      setDropdown(false);
+      setActiveItem(null);
+      setHoveringNav(false);
     };
   
     window.addEventListener("scroll", handleScroll);
