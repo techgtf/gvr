@@ -76,6 +76,7 @@ class TeamController extends Controller
             ]); 
 
         }else{
+            
             try{
                 
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";

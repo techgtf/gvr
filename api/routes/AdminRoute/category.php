@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Category\CategoryTypologyController;
 use App\Models\Admin\CategoryTypology;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin\Project\CategoryController;
+use  App\Http\Controllers\Admin\Project\CateoryOverviewController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +28,10 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
         
         Route::apiResource('category-typology', CategoryTypologyController::class)->except(['update']);
         Route::post('category-typology/{id}/update', [CategoryTypologyController::class,'update']);
+
+
+        Route::apiResource('category/{id}/overview', CateoryOverviewController::class)->except(['update']);
+        Route::post('category/{id}/update', [CategoryController::class,'update']);
 
     });
 });

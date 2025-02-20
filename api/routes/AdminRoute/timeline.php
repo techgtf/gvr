@@ -21,7 +21,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('timeline/{id}/update', [TimelineController::class,'update']);
         Route::post('timeline/{id}/status', [TimelineController::class,'status']);
 
-        // Route::get('distinct-timeline', [TimelineController::class,'distinctYear']);
+        Route::get('distinct-timeline', [TimelineController::class,'distinctYear']);
         
         // timeline images
         Route::apiResource('timeline-preview', TimelineImageController::class)->except(['update']);
