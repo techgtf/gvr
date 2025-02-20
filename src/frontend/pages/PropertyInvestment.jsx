@@ -1,18 +1,47 @@
 import { Helmet } from "react-helmet";
 import * as CONFIG from "../../../config";
 import { lazy } from "react";
+<<<<<<< HEAD
 import { useImageReveal } from "../components/useImageReveal";
 import SlideIn from "../components/Animations/SlideIn";
 import { Slide } from "react-toastify";
 import CommonPera from "../components/commonPera";
 
+=======
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
+>>>>>>> d1980c8 (api with navbar scroll)
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
 
 const ProperyInvestment = () => {
+<<<<<<< HEAD
   useImageReveal(".reveal");
+=======
+  const { data: pageData, loading: pageDataLoading, error: pageDataError } = useFetchData("page-sections", "10");
+
+
+  // 🔹 Extract Banner Data Safely
+  const extractPageData = (pageData) => {
+      if (!pageData) return { banner: { image: "", heading: "Default Heading" }, overview: {} };
+  
+      const pageValues = Object.values(pageData); 
+      return {
+          banner: {
+              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              heading: pageValues[0]?.heading || "Default Heading"
+          }
+      };
+  };
+  
+  const { banner} = extractPageData(pageData);
+    // Handle Loading and Errors
+    if (pageDataLoading) return <Loader />;
+    if (pageDataError) return <p className="text-red-500">Property Investment Error loading Banner: {pageDataError}</p>;
+  
+>>>>>>> d1980c8 (api with navbar scroll)
   return (
     <>
       <Helmet>
@@ -20,7 +49,8 @@ const ProperyInvestment = () => {
       </Helmet>
       <section className="bg-[#EFF5FA]">
         <HeroSectionAboutUs
-          img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
+          img={banner.image}
+          heading={banner.heading}
         />
         <div className="flex xl:mt-[4rem] mt-[2rem] flex-wrap justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0">
           {" "}

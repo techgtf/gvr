@@ -102,6 +102,7 @@ export default function Header() {
 
     return logo;
   };
+<<<<<<< HEAD
 
   useEffect(() => {
     let timeoutId;
@@ -117,17 +118,28 @@ export default function Header() {
       timeoutId = setTimeout(() => {
         setActiveItem(null);
       }, 3000);
+=======
+  useEffect(() => {
+    const handleScroll = () => {
+      setDropdown(false); // Close dropdown when scrolling
+>>>>>>> d1980c8 (api with navbar scroll)
     };
   
     window.addEventListener("scroll", handleScroll);
   
     return () => {
+<<<<<<< HEAD
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timeoutId); // Cleanup on unmount
     };
   }, [activeItem]);  // Depend on activeItem to avoid unintended resets
   
 
+=======
+      window.removeEventListener("scroll", handleScroll); // Cleanup
+    };
+  }, []); // Empty dependency array runs only once on mount
+>>>>>>> d1980c8 (api with navbar scroll)
   return (
     <>
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
