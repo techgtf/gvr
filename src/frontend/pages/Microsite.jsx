@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from 'react-helmet'
 import HeroSection from "../components/microsite/HeroSection";
 import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
@@ -37,7 +38,7 @@ import buildings from "/assets/frontend/images/microsite/location/walkIcons/buil
 
 function Microsite() {
   const location = useLocation();
-  
+
   const masterPlanData = [
     { image: master_plan_img, alt: "Master Plan" },
   ];
@@ -58,10 +59,10 @@ function Microsite() {
         balconyArea: "145 Sq. Ft.",
         totalArea: "1647 Sq. Ft.",
       },
-    
+
     ],
     unit2: [
-      
+
       {
         image: plan2,
         type: "TypeB: 2B/R+S",
@@ -90,55 +91,55 @@ function Microsite() {
     "Easy access to Metro Station, connecting to metro network all around NCR.",
   ];
 
-    const specificationsData = [
-      {
-          title: "Structure",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/structure.webp", description: "RCC frame structure ensuring durability and earthquake resistance." },            
-          ],
-      },
-      {
-          title: "Flooring",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },             
-          ],
-      },
-      {
-          title: "Wall Finishes",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },             
-          ],
-      },
-      {
-          title: "Doors & Windows",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/door.webp", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },             
-          ],
-      },
-      {
-          title: "Kitchen",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/kitchen.webp", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },             
-          ],
-      },
-      {
-          title: "Toilets",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/toilet.webp", description: "Premium CP fittings with white sanitary ware and geyser provision." },             
-          ],
-      },
-      {
-          title: "Electrical",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/electrical.webp", description: "Concealed copper wiring with modular switches and power backup." },             
-          ],
-      },
-      {
-          title: "Security",
-          items: [
-              { image: "assets/frontend/images/microsite/specifications/security.webp", description: "CCTV surveillance and intercom system for enhanced safety." },             
-          ],
-      },
+  const specificationsData = [
+    {
+      title: "Structure",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/structure.webp", description: "RCC frame structure ensuring durability and earthquake resistance." },
+      ],
+    },
+    {
+      title: "Flooring",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },
+      ],
+    },
+    {
+      title: "Wall Finishes",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },
+      ],
+    },
+    {
+      title: "Doors & Windows",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/door.webp", description: "Hardwood frame doors with flush shutters; Aluminum/UPVC windows with clear glass." },
+      ],
+    },
+    {
+      title: "Kitchen",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/kitchen.webp", description: "Granite countertop with stainless steel sink and designer ceramic tiles." },
+      ],
+    },
+    {
+      title: "Toilets",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/toilet.webp", description: "Premium CP fittings with white sanitary ware and geyser provision." },
+      ],
+    },
+    {
+      title: "Electrical",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/electrical.webp", description: "Concealed copper wiring with modular switches and power backup." },
+      ],
+    },
+    {
+      title: "Security",
+      items: [
+        { image: "assets/frontend/images/microsite/specifications/security.webp", description: "CCTV surveillance and intercom system for enhanced safety." },
+      ],
+    },
   ];
 
   const customPriceListData = [
@@ -171,22 +172,73 @@ function Microsite() {
 
   return (
     <>
+      <Helmet>
+        <title>Great Value Sharanam Sector 107,Noida</title>
+        <meta name="keywords" content="Great Value realty, Great Value Sharanam, Great Value Sharanam Noida, Sector 107 Noida, Sharanam Sector 107 Noida, Great Value Sharanam Sector 107 Noida" />
+        <meta name="description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/sharanam" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Sharanam Noida" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="rating" content="safe for kids" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Sharanam Noida" />
+        <meta property="og:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta property="og:url" content="https://greatvaluerealty.com/sharanam" />
+        <meta property="og:site_name" content="Great Value Sharanam Noida" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Sharanam Noida" />
+        <meta name="twitter:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        {/* <!--End of Twitter TH data --> */}
+
+        <script type="application/ld+json">
+          {`
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Great Value Sharanam Sector 107,Noida",
+          "alternateName": "Great Value Sharanam Noida",
+          "url": "https://greatvaluerealty.com/sharanam",
+          "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+          "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91 7777079770",
+              "contactType": "customer service",
+              "areaServed": "IN",
+              "availableLanguage": "en"
+          }`}
+
+        </script>
+      </Helmet>
+
       <HeroSection />
-     
+
       <About
-       imageSrc={aboutImg}
-       alt={"Sharanam Sector 107 Noida"}
-       headingText="ABOUT US"
-       descriptionText = "A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
-       reverseWatermark={true}
+        imageSrc={aboutImg}
+        alt={"Sharanam Sector 107 Noida"}
+        headingText="ABOUT US"
+        descriptionText="A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
+        reverseWatermark={true}
       />
 
-      <Amentities images={images}  />
+      <Amentities images={images} />
 
       <PriceList priceListData={customPriceListData} headingText="Price List" />
 
       <HighlightsSpecifications
-        key={location.pathname} 
+        key={location.pathname}
         highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
         specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
       />

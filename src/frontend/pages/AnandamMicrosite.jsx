@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import HeroSection from '../components/microsite/HeroSection'
 import About from '../components/microsite/About'
 import Amentities from '../components/microsite/Amentities'
@@ -204,6 +205,56 @@ function AnandamMicrosite() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Great Value Anandam Sector 107, Noida</title>
+                <meta name="keywords" content="Great Value realty, Anandam Sector 107 Noida, Great Value Anandam, Sector 107 Noida,Great Value Anandam Noida, Best Great Value Anandam" />
+                <meta name="description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+                <link rel="canonical" href="https://greatvaluerealty.com/anandam" />
+                <meta name="distribution" content="Global" />
+                <meta name="Language" content="English" />
+                <meta name="doc-type" content="Public" />
+                <meta name="robots" content="index, follow" />
+                <meta name="author" content="Anandam Sector 107 Noida" />
+                <meta name="googlebot" content="all, index, follow" />
+                <meta name="YahooSeeker" content="all, index, follow" />
+                <meta name="msnbot" content="all, index, follow" />
+                <meta name="HandheldFriendly" content="true" />
+                <meta name="revisit-after" content="1 days" />
+                <meta name="rating" content="safe for kids" />
+                <meta name="expires" content="never" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Great Value Anandam Noida" />
+                <meta property="og:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
+                <meta property="og:site_name" content="Great Value Anandam" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@GreatValueGroup" />
+                <meta name="twitter:title" content="Great Value Anandam" />
+                <meta name="twitter:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="twitter:creator" content="@GreatValueGroup" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                {/* <!--End of Twitter TH data --> */}
+
+                <script type="application/ld+json">
+                    {`
+                   "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Anandam Sector 107, Noida",
+                    "alternateName": "Great Value Anandam Noida",
+                    "url": "https://greatvaluerealty.com/anandam",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
+                </script>
+            </Helmet>
             <HeroSection
                 desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"
                 mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342186/hero-mobile_edjbo7.webp"
@@ -235,7 +286,7 @@ function AnandamMicrosite() {
             <PriceList priceListData={customPriceListData} headingText="Price List" />
 
             <HighlightsSpecifications
-            key={location.pathname} 
+                key={location.pathname}
                 highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
             />
@@ -264,7 +315,7 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery4, gallery3, ]}
+                actualImages={[gallery1, gallery4, gallery3,]}
             />
         </>
     )

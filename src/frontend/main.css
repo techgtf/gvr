@@ -25,6 +25,11 @@
   letter-spacing: 0.5px;
 }
 
+input::placeholder,
+textarea::placeholder {
+  font-family: "Poppins", serif;
+}
+
 html,
 body {
   position: relative;
@@ -44,11 +49,9 @@ body {
   font-family: "Poppins", serif;
 }
 
-.user_body{
+.user_body {
   cursor: none;
-
 }
-
 
 img,
 picture,
@@ -185,8 +188,6 @@ img {
   padding-block: 14px;
 }
 
-
-
 /* Safari ke liye */
 /* @media not all and (min-resolution: 0.001dpcm) { 
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
@@ -196,13 +197,14 @@ img {
   }
 } */
 
-
-.sectionHeading {word-spacing: 8px; line-height: 35px;}
+.sectionHeading {
+  word-spacing: 8px;
+  line-height: 35px;
+}
 
 .fullBtn {
   background: var(--primary);
 }
-
 
 /* .reveal{position: relative;}
 .reveal::before {position: absolute;content: "";height: 100%;width: 100%;background: #000; opacity: 1; left: 0; bottom: 0;z-index: 1;transition: all 1s ease-in-out;}
@@ -266,7 +268,6 @@ img {
   text-orientation: upright;
 }
 
-
 /* mobile  */
 
 @media only screen and (max-width: 600px) {
@@ -293,29 +294,84 @@ img {
   .common_heading {
     font-size: 10px;
   }
-  .common_btn, .common_btn svg{
+  .common_btn,
+  .common_btn svg {
     font-size: 14px;
   }
 }
 
 /*end common Css */
 
-
-.amenities-container, .gallery-container{padding: 70px 0; height: 100%;
-  .container{max-width: 92%;}  
-  .commonHeading{line-height: 40px;font-size: 25px;margin-bottom: 0;letter-spacing: 1px;}
-  .commonHeading::after, .commonHeading::before{display: none;}
-  .contentSide, .headings-div{position: sticky; top: 66px; height: fit-content;}
-  .headings-div{text-align: right;}
-  .desc{margin-bottom: 35px;font-size: 14px;}
-  .siteBtn{padding: 12px 35px; border-radius: 4px; display: block; margin-top: 25px;}
-  .am_name, .el_name{font-size: 35px; color: var(--primary); font-weight: 600; min-width: 24%; text-align: right;}
-  .el_name{min-width: auto;text-align: left;text-transform: capitalize;}
+.amenities-container,
+.gallery-container {
+  padding: 70px 0;
+  height: 100%;
+  .container {
+    max-width: 92%;
+  }
+  .commonHeading {
+    line-height: 40px;
+    font-size: 25px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
+  .commonHeading::after,
+  .commonHeading::before {
+    display: none;
+  }
+  .contentSide,
+  .headings-div {
+    position: sticky;
+    top: 66px;
+    height: fit-content;
+  }
+  .headings-div {
+    text-align: right;
+  }
+  .desc {
+    margin-bottom: 35px;
+    font-size: 14px;
+  }
+  .siteBtn {
+    padding: 12px 35px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 25px;
+  }
+  .am_name,
+  .el_name {
+    font-size: 35px;
+    color: var(--primary);
+    font-weight: 600;
+    min-width: 24%;
+    text-align: right;
+  }
+  .el_name {
+    min-width: auto;
+    text-align: left;
+    text-transform: capitalize;
+  }
 }
-.am_scroll_section{text-align: right; padding-left: 123px;
-  .box_inner{display: flex; justify-content: end; gap: 25px 0;}
-  .boxes{display: grid; gap: 25px 0;}
-  .imgBox{padding-left: 25px; margin-left: 25px; border-left: 1px solid var(--secondary); width: 100%; min-width: 74%;
-    img{width: 100%;}
+.am_scroll_section {
+  text-align: right;
+  padding-left: 123px;
+  .box_inner {
+    display: flex;
+    justify-content: end;
+    gap: 25px 0;
+  }
+  .boxes {
+    display: grid;
+    gap: 25px 0;
+  }
+  .imgBox {
+    padding-left: 25px;
+    margin-left: 25px;
+    border-left: 1px solid var(--secondary);
+    width: 100%;
+    min-width: 74%;
+    img {
+      width: 100%;
+    }
   }
 }

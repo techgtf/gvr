@@ -39,6 +39,7 @@ import resort from "/assets/frontend/images/microsite/vilasa/location/icons/reso
 import metro from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
 import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.webp"
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function VilasaMicrosite() {
     const location = useLocation();
@@ -132,6 +133,55 @@ function VilasaMicrosite() {
 
     return (
         <>
+            <Helmet>
+                <title> Great Value Realty Vilasa Sector 6, Sohna</title>
+                <meta name="keywords" content="Great Value realty, Vilasa by Great Value Realty, Best Vilasa properties in Sohna, Vilasa luxury apartments Sohna , Vilasa residential project Sohna, Great Value Realty Vilasa" />
+                <meta name="description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+                <link rel="canonical" href="https://greatvaluerealty.com/vilasa" />
+                <meta name="distribution" content="Global" />
+                <meta name="Language" content="English" />
+                <meta name="doc-type" content="Public" />
+                <meta name="robots" content="index, follow" />
+                <meta name="author" content="Great Value Realty Vilasa" />
+                <meta name="googlebot" content="all, index, follow" />
+                <meta name="YahooSeeker" content="all, index, follow" />
+                <meta name="msnbot" content="all, index, follow" />
+                <meta name="HandheldFriendly" content="true" />
+                <meta name="revisit-after" content="1 days" />
+                <meta name="rating" content="safe for kids" />
+                <meta name="expires" content="never" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Great Value Realty Vilasa" />
+                <meta property="og:description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta property="og:url" content="https://greatvaluerealty.com/vilasa" />
+                <meta property="og:site_name" content="Great Value Realty Vilasa" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@GreatValueGroup" />
+                <meta name="twitter:title" content="Great Value Realty Vilasa" />
+                <meta name="twitter:description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta name="twitter:creator" content="@GreatValueGroup" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                {/* <!--End of Twitter TH data --> */}
+
+
+                <script type="application/ld+json">
+                    {`"@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Realty Vilasa Sector 6, Sohna",
+                    "alternateName": "Great Value Realty Vilasa",
+                    "url": "https://greatvaluerealty.com/vilasa",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
+                </script>
+            </Helmet>
             <HeroSection
                 desktopBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
                 mobileBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
@@ -201,7 +251,7 @@ function VilasaMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[actual1, actual2, actual3, actual4]}
+                actualImages={[actual1, actual2, actual3]}
             />
         </>
     )

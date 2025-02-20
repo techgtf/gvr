@@ -48,6 +48,7 @@ import metro from "/assets/frontend/images/microsite/gv/location/icons/metro.web
 import shopping from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
 import hauzkhas from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
 import flights from "/assets/frontend/images/microsite/gv/location/icons/flights.webp"
+import { Helmet } from 'react-helmet'
 
 function GvHomesMicrosite() {
     const location = useLocation();
@@ -185,6 +186,55 @@ function GvHomesMicrosite() {
 
     return (
         <>
+
+            <Helmet>
+                <title> Great Value Realty Casa 31 Uday Park, New Delhi </title>
+                <meta name="keywords" content="Great Value realty, Great Value Realty Casa Uday, Casa Uday Delhi, Luxury apartments Casa Uday Delhi , Great Value Realty projects Delhi NCR, Casa Uday residential project" />
+                <meta name="description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces." />
+                <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+                <link rel="canonical" href="https://greatvaluerealty.com/casa-uday" />
+                <meta name="distribution" content="Global" />
+                <meta name="Language" content="English" />
+                <meta name="doc-type" content="Public" />
+                <meta name="robots" content="index, follow" />
+                <meta name="author" content="Great Value Realty 31 Casa Uday Park" />
+                <meta name="googlebot" content="all, index, follow" />
+                <meta name="YahooSeeker" content="all, index, follow" />
+                <meta name="msnbot" content="all, index, follow" />
+                <meta name="HandheldFriendly" content="true" />
+                <meta name="revisit-after" content="1 days" />
+                <meta name="rating" content="safe for kids" />
+                <meta name="expires" content="never" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Great Value Realty 31 Casa Uday Park" />
+                <meta property="og:description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces. ." />
+                <meta property="og:url" content="https://greatvaluerealty.com/casa-uday" />
+                <meta property="og:site_name" content="Great Value Realty 31 Casa Uday Park" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@GreatValueGroup" />
+                <meta name="twitter:title" content="Great Value Realty 31 Casa Uday Park" />
+                <meta name="twitter:description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces." />
+                <meta name="twitter:creator" content="@GreatValueGroup" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                {/* <!--End of Twitter TH data --> */}
+                <script type="application/ld+json">
+                    {`
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
+                    "alternateName": "Great Value Realty Casa Uday",
+                    "url": "https://greatvaluerealty.com/casa-uday",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
+                </script>
+            </Helmet>
             <HeroSection
                 desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
                 mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"

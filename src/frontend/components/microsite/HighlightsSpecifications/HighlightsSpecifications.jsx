@@ -22,28 +22,33 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     ScrollTrigger.clearMatchMedia();
 
-    let ctx = gsap.context(() => {
-      setTimeout(() => { // Small delay ensures DOM is updated
-        scrollTriggerRef.current = ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${specificationsRef.current.scrollHeight}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            if (specificationsRef.current) {
-              specificationsRef.current.scrollTop =
-                self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
-            }
-          },
-        });
+   let ctx = gsap.context(() => {
+    ScrollTrigger.matchMedia({
+      // ✅ Only apply animation on screens wider than 768px (tablets & desktops)
+      "(min-width: 768px)": () => {
+        setTimeout(() => {
+          scrollTriggerRef.current = ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => `+=${specificationsRef.current.scrollHeight}`,
+            pin: true,
+            scrub: false,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              if (specificationsRef.current) {
+                specificationsRef.current.scrollTop =
+                  self.progress * (specificationsRef.current.scrollHeight - specificationsRef.current.clientHeight);
+              }
+            },
+          });
 
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
-        });
-      }, 100);
-    }, sectionRef);
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        }, 100);
+      }
+    });
+  }, sectionRef);
 
     return () => {
       ctx.revert();

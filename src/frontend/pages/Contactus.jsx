@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import * as CONFIG from "../../../config";
+import { Helmet } from "react-helmet";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -12,6 +13,9 @@ const EnquiryFormSection = lazy(() =>
 const ContactUs = () => {
   return (
     <>
+      <Helmet>
+        <title>Great Value Realty | contact-us</title>
+      </Helmet>
       <HeroSectionAboutUs
         img={
           "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359097/contact_us_qvab82.jpg"

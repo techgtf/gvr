@@ -38,7 +38,7 @@ const Testimonials = () => {
                 <>
                   <ZoomOut initialScale={1.5} duration={2} setHeight="auto">
                     <iframe
-                      className="lg:h-[300px] h-[300px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                      className="lg:h-[300px] h-[300px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent"
                       width="100%"
                       src={`https://www.youtube.com/embed/${item.videoId}`}
                       title="YouTube video player"
@@ -48,7 +48,7 @@ const Testimonials = () => {
                       tabIndex="0"
                     ></iframe>
                   </ZoomOut>
-                  <span className="link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+                  <span className="link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent">
                     <GoArrowUpRight className="cursor-pointer" />
                   </span>
                 </>
@@ -56,17 +56,16 @@ const Testimonials = () => {
                 <>
                   <ZoomOut initialScale={1.5} duration={2} setHeight="auto">
                     <img
-                      className="lg:h-[300px] h-[300px] cursor-pointer w-full object-cover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                      className="lg:h-[300px] h-[300px] cursor-pointer w-full object-cover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent"
                       src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/verticals/${item.src}`}
                       alt={item.name}
                       tabIndex="0"
                     />
                     <button
                       className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer 
-             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white 
-             focus-visible:ring-4 focus-visible:ring-blue-500 focus-visible:border focus-visible:border-white 
-             rounded-full transition-all"
+    focus-visible:outline-transparent focus-visible:ring-0"
                     >
+
                       <img
                         src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
                         className="cursor-pointer lg:h-[44px] h-[30px]"
@@ -75,7 +74,7 @@ const Testimonials = () => {
                     </button>
 
                   </ZoomOut>
-                  <span className="link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+                  <span className="link_arrow absolute bottom-[15px] right-[15px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent">
                     <GoArrowUpRight className="cursor-pointer" />
                   </span>
                 </>

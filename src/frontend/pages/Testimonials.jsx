@@ -8,9 +8,13 @@ const HeroSectionAboutUs = lazy(() =>
 import TestimonialGrid from "../components/testimonials/Index";
 
 import * as CONFIG from "../../../config";
+import { Helmet } from "react-helmet";
 const Testimonials = () => {
   return (
     <>
+      <Helmet>
+        <title>Great Value Realty | Testimonials</title>
+      </Helmet>
       <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
         heading={"Testimonials"}
@@ -18,8 +22,8 @@ const Testimonials = () => {
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
-        // data-speed="clamp(.9)"
-        // ref={sectionRef}
+      // data-speed="clamp(.9)"
+      // ref={sectionRef}
       >
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading

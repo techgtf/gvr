@@ -9,6 +9,7 @@ import FadeIn from "../Animations/FadeIn";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLocation } from "react-router-dom";
+import SlideIn from "../Animations/SlideIn";
 
 function Plans({ masterPlanData, unitData }) {
   const [open, setOpen] = useState(false);
@@ -71,7 +72,7 @@ function Plans({ masterPlanData, unitData }) {
             <FadeIn duration={2} delay={0.5}>
               <CommonHeading HeadingText="Master Plan" />
             </FadeIn>
-            <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 reveal"
+            <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 "
               onClick={() => openLightbox(0, true)}>
               <img src={masterPlanData[0]?.image} alt={masterPlanData[0]?.alt} className="cursor-pointer w-full" />
             </div>
@@ -111,10 +112,12 @@ function Plans({ masterPlanData, unitData }) {
           </div>
 
           {!isUnitDataEmpty && (
+            
             <div className="slider">
               
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
+                  <SlideIn duration={2} delay={0.5}>
                   <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                     <img src={plan.image} alt={`plan ${index + 1}`}
                       className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
@@ -127,13 +130,15 @@ function Plans({ masterPlanData, unitData }) {
                       <p>Built Up Area: {plan.buildArea}</p>
                     </div>
                   </div>
+                  </SlideIn>
                 ))
               ) : (
                 <div className="flex justify-center">
-                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" />
+                  <SlideIn duration={2} delay={0.5}>
+                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" /></SlideIn>
                 </div>
               )}
-            </div>
+            </div>           
           )}
         </div>
       </div>

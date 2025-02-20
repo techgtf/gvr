@@ -75,7 +75,7 @@ function MicrositeMenu() {
               active === item.id ? "text-primary font-semibold" : ""
             }`}
           >
-            <Link to={item.id} spy={true} smooth={true} duration={500}>
+            <Link to={item.id} spy={true} smooth={true} duration={500} offset={-120}>
               {item.name}
             </Link>
           </li>

@@ -180,8 +180,8 @@ const BlogCategory = () => {
 
         {/* 
     <form>
-      <input ref={fileRef} type="file" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-      <input type="text" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter Amenity Name" />
+      <input ref={fileRef} type="file" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent" />
+      <input type="text" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent" placeholder="Enter Amenity Name" />
       <button type="submit" className="btn btn_primary px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-700">
         Save
       </button>
@@ -204,7 +204,7 @@ const BlogCategory = () => {
                   <td className="p-2">{item.name}</td>
                   <td className="p-2">
                     <CustomDropdown
-                      className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
                       defaultVal={item.status}
                       options={statusOptions}
                       onSelect={(selectedValue) =>
@@ -269,7 +269,7 @@ const BlogCategory = () => {
                     required
                     type="text"
                     placeholder="Enter Category Name"
-                    className="w-full !border !border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full !border !border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
                   />
                   {errors.name}
                 </div>
