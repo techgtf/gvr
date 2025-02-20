@@ -7,7 +7,7 @@ function BannerDetails({ heading = "SHARANAM", location = "sector 107, noida", d
     <div className="md:flex block justify-between items-center px-5 md:px-12 py-10 md:py-8">
       <div className="name_place">
         <SlideIn duration={1} delay={0.3}> 
-          <CommonHeading HeadingText={heading} />
+          <h1 className="common_heading midlandfontmedium uppercase">{heading} </h1>
           <p className="place uppercase pt-2">{location}</p>
         </SlideIn>
       </div>

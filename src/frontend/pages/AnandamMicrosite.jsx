@@ -207,9 +207,9 @@ function AnandamMicrosite() {
         <>
 
             <Helmet>
-                <title>Great Value Realty Sector 107, Noida</title>
+                <title>Great Value Anandam Sector 107, Noida</title>
                 <meta name="keywords" content="Great Value realty, Anandam Sector 107 Noida, Great Value Anandam, Sector 107 Noida,Great Value Anandam Noida, Best Great Value Anandam" />
-                <meta name="description" content="Anandam by Great Value Realty is a luxurious residential project in Sector 107 Noida, offering 2 and 3 BHK apartments. The Real Estate Projects." />
+                <meta name="description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/anandam" />
                 <meta name="distribution" content="Global" />
@@ -225,27 +225,34 @@ function AnandamMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Anandam" />
-                <meta property="og:description" content="Anandam by Great Value Realty is a luxurious residential project in Sector 107 Noida, offering 2 and 3 BHK apartments.The Real Estate Projects." />
+                <meta property="og:title" content="Great Value Anandam Noida" />
+                <meta property="og:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
                 <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
                 <meta property="og:site_name" content="Great Value Anandam" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Great Value Anandam" />
-                <meta name="twitter:description" content="Anandam by Great Value Realty is a luxurious residential project in Sector 107, Noida, offering 2 and 3 BHK apartments. The Real Estate Projects." />
+                <meta name="twitter:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                {/* <!--End of Twitter TH data --> */}
 
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNK3GPJG5D"></script>
-                <script>
+                <script type="application/ld+json">
                     {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-
-                    gtag('config', 'G-FNK3GPJG5D');
-                    `}
+                   "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Anandam Sector 107, Noida",
+                    "alternateName": "Great Value Anandam Noida",
+                    "url": "https://greatvaluerealty.com/anandam",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
                 </script>
             </Helmet>
             <HeroSection

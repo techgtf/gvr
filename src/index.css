@@ -40,6 +40,27 @@ a {
   align-items: center !important; /* Center items vertically */
 }
 
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 .selected-flag {
+  background-color: #eff5fa;
+  display: flex;
+  align-items: center;
+  /* position: absolute;
+  top: 80%; */
+}
+.font-sans {
+  background: transparent;
+  color: black;
+  box-shadow: none;
+  font-weight: 400;
+  position: absolute;
+  top: 5px;
+  left: 8px;
+}
+
+.intl-tel-input.allow-dropdown.separate-dial-code .selected-dial-code {
+  padding-left: 10px;
+}
+
 /* .swiper-button-prev {
   position: absolute;
   top: 50%;

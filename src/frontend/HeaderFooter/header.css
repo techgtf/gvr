@@ -2,16 +2,13 @@
 /* .app_header::after{content: ''; position: absolute; left: 0; right: 0; top: 0; height: 140px; z-index: -1;  background:linear-gradient(180deg, #000000cc 0%, rgba(255, 255, 255, 0.00) 100%); } */
 
 
-.app_header.active {
-  background: #EFF5FA;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  animation: slide-down 0.9s;
-}
+.app_header.active {background: #EFF5FA;padding-top: 20px;padding-bottom: 20px;animation: slide-down 0.9s;}
 .app_header.active::after{display: none;}
-.letter_spacing_20{
-  letter-spacing: 20px;
-}
+.letter_spacing_20{letter-spacing: 20px;}
+/* this class for coming-soon page active_1 */
+.active_1 a, .active_1 svg {color: #000;}
+.active_1 .menuBtn img {filter: invert(1);}
+
 @keyframes slide-down {
   0% {
     -webkit-transform: translateY(-100%);

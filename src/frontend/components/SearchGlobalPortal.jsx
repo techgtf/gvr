@@ -52,7 +52,7 @@ export default function SearchGlobalPortal({ isOpen, onClose, headerFixed }) {
 
     return ReactDOM.createPortal(
         <div className={`fixed ${headerFixed ? "lg:top-[93px] top-[78px]" : "top-[0]"} bottom-0 left-0 right-0 h-full w-full z-[20] bg-[#EFF5FA]`}>
-            <div className='close absolute top-[15px] right-[15px] h-[45px] w-[45px] bg-white rounded-full flex justify-center items-center'
+            <div className='close cursor-pointer absolute top-[15px] right-[15px] h-[45px] w-[45px] bg-white rounded-full flex justify-center items-center'
                 onClick={onClose}
             ><IoCloseOutline className='text-[20px]' /></div>
             <div className='max-w-[500px] m-auto p-5'>

@@ -11,7 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink, bgColor = "" }) {
+export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink, tag, bgColor = "" }) {
   const overlayLeftRef = useRef(null);
   const overlayRightRef = useRef(null);
   const contentRef = useRef(null);
@@ -68,7 +68,7 @@ export default function OverviewSection({ heading, paragraph, showKnowMore, page
     >
 
       <div className="headingWrap lg:max-w-[85%] max-w-[95%] m-auto text-center">
-        <CommonHeading HeadingText={heading} />
+        <CommonHeading TagName={tag} HeadingText={heading} />
       </div>
 
       <div className="wrap_content relative overflow-hidden m-auto lg:max-w-[85%] w-[100%]">
