@@ -11,21 +11,17 @@ import { Helmet } from 'react-helmet'
 
 export default function Home() {
     return (
-
         <>
             <Helmet>
-                <title>Great Value Realty | Home</title>
-                <meta name="keywords"
-                    content="Great Value realty, Great Value Sharanam Noida, Great Value Anandam Noida, Sector 107 Noida,  Great Value Anandam, Great Value Sharanam Sector 107 Noida" />
-                <meta name="description"
-                    content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences The Real Estate Projects." />
+                <title> Great Value Realty| Home</title>
+                <meta name="keywords" content="Great Value realty, Great Value Sharanam Noida, Great Value Anandam Noida, Sector 107 Noida,  Great Value Anandam, Great Value Sharanam Sector 107 Noida, Best Casa Uday Delhi, Great Value Realty Vilasa, Best Sanctuary residential project sector 105 " />
+                <meta name="description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-                <link rel="canonical" href="https://greatvaluerealty.com/" />
                 <meta name="distribution" content="Global" />
                 <meta name="Language" content="English" />
                 <meta name="doc-type" content="Public" />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="Great Value Realty Noida" />
+                <meta name="author" content="Great Value realty Noida" />
                 <meta name="googlebot" content="all, index, follow" />
                 <meta name="YahooSeeker" content="all, index, follow" />
                 <meta name="msnbot" content="all, index, follow" />
@@ -35,25 +31,53 @@ export default function Home() {
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Great Value Realty | Home" />
-                <meta property="og:description"
-                    content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences.The Real Estate Projects." />
+                <meta property="og:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta property="og:url" content="https://greatvaluerealty.com/" />
                 <meta property="og:site_name" content="Great Value Realty Noida" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <link rel="canonical" href="https://greatvaluerealty.com/" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Realty | Home" />
-                <meta name="twitter:description"
-                    content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences. The Real Estate Projects." />
+                <meta name="twitter:title" content="Great Value Realty| Home" />
+                <meta name="twitter:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNK3GPJG5D"></script>
-                <script>
-                    {`window.dataLayer = window.dataLayer || [];
-                    function gtag() {dataLayer.push(arguments); }
-                    gtag('js', new Date());
+                {/* <!--End of Twitter TH data --> */}
 
-                    gtag('config', 'G-FNK3GPJG5D');`}
+                <script type="application/ld+json">
+                    {`
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Realty",
+                    "alternateName": "GVR",
+                    "url": "https://greatvaluerealty.com/",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
+                </script>
+
+                <script type="application/ld+json" class="schemantra">
+                    {`
+                    "@context": "https://schema.org",
+                    "@type": "RealEstateAgent",
+                    "@id": "RealEstateAgent",
+                    "actionableFeedbackPolicy": "https://greatvaluerealty.com/",
+                    "address": "DSC - 319, DLF South Court, Saket New Delhi - 110017",
+                    "alternateName": "GVR",
+                    "description": "Real Estate Developer",
+                    "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "keywords": "https://greatvaluerealty.com/",
+                    "knowsLanguage": "English",
+                    "legalName": "Great Value Realty",
+                    "location": "India",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "longitude": "917777079770"F
+                    `}
                 </script>
             </Helmet>
             <div className='homepage'>

@@ -173,9 +173,9 @@ function Microsite() {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty Sharanam Sector 107, Noida</title>
+        <title>Great Value Sharanam Sector 107,Noida</title>
         <meta name="keywords" content="Great Value realty, Great Value Sharanam, Great Value Sharanam Noida, Sector 107 Noida, Sharanam Sector 107 Noida, Great Value Sharanam Sector 107 Noida" />
-        <meta name="description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that rejuvenate your soul. The Real Estate Projects." />
+        <meta name="description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
         <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
         <link rel="canonical" href="https://greatvaluerealty.com/sharanam" />
         <meta name="distribution" content="Global" />
@@ -191,28 +191,35 @@ function Microsite() {
         <meta name="rating" content="safe for kids" />
         <meta name="expires" content="never" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Great Value Sharanam Noida " />
-        <meta property="og:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that rejuvenate your soul.The Real Estate Projects." />
+        <meta property="og:title" content="Great Value Sharanam Noida" />
+        <meta property="og:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
         <meta property="og:url" content="https://greatvaluerealty.com/sharanam" />
         <meta property="og:site_name" content="Great Value Sharanam Noida" />
         <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@GreatValueGroup" />
         <meta name="twitter:title" content="Great Value Sharanam Noida" />
-        <meta name="twitter:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that rejuvenate your soul. The Real Estate Projects." />
+        <meta name="twitter:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
         <meta name="twitter:creator" content="@GreatValueGroup" />
         <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        {/* <!--End of Twitter TH data --> */}
 
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNK3GPJG5D"></script>
-        <script>
+        <script type="application/ld+json">
           {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Great Value Sharanam Sector 107,Noida",
+          "alternateName": "Great Value Sharanam Noida",
+          "url": "https://greatvaluerealty.com/sharanam",
+          "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+          "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91 7777079770",
+              "contactType": "customer service",
+              "areaServed": "IN",
+              "availableLanguage": "en"
+          }`}
 
-          gtag('config', 'G-FNK3GPJG5D');
-          `}
         </script>
       </Helmet>
 
