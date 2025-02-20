@@ -209,12 +209,21 @@ const Timeline = () => {
       <div className="title_col flex justify-between items-center">
         <h4 className="page_title">Timeline</h4>
         {/* <button className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button> */}
-        <Link
-          className="btn ms-auto btn_primary btn-sm"
-          to={`${CONFIG.ADMIN_ROOT}timeline/add`}
-        >
-          Add Timeline
-        </Link>
+        <div className="flex gap-3">
+          <Link
+            className="btn ms-auto btn_primary btn-sm"
+            to={`${CONFIG.ADMIN_ROOT}timeline/add`}
+          >
+            Add Timeline
+          </Link>
+
+          <Link
+            className="btn ms-auto btn_primary btn-sm"
+            to={`${CONFIG.ADMIN_ROOT}timeline/images`}
+          >
+            Add Images
+          </Link>
+        </div>
       </div>
 
       <div className="card bg-white mt-4 card_style1">

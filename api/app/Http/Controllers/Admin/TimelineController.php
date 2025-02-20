@@ -342,23 +342,23 @@ class TimelineController extends Controller
         return $result;
     }
 
-    // public function distinctYear ()
-    // {
-    //     $years = Timeline::distinct()->pluck('year');
-    //     if($years) {
-    //         return response()->json([
-    //             'status' => true,
-    //             'statusCode' => 200,
-    //             'message' => 'Get all years',
-    //             'data' => $years
-    //         ]);
-    //     }
+    public function distinctYear ()
+    {
+        $years = Timeline::distinct()->pluck('year');
+        if($years) {
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => 'Get all years',
+                'data' => $years
+            ]);
+        }
 
-    //     return response()->json([
-    //         'status' => true,
-    //         'statusCode' => 200,
-    //         'message' => 'No Record Timeline',
-    //     ]);
-    // }
+        return response()->json([
+            'status' => true,
+            'statusCode' => 200,
+            'message' => 'No Record Timeline',
+        ]);
+    }
 
 }

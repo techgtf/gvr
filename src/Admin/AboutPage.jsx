@@ -28,6 +28,8 @@ const AboutPage = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
   const [lastPage, setLastPage] = useState(1);
+  const [pageTitleLoading, setPageTitleLoading] = useState(false);
+  const [sectionLoading, setSectionLoading] = useState(false);
   const [pageTitle, setPageTitle] = useState(null);
 
   const handlePageChange = (page) => {
@@ -156,9 +158,11 @@ const AboutPage = () => {
   };
 
   const getSectionlist = async () => {
+    setSectionLoading(true)
     var response = await Request("admin/page/" + pageId, "GET");
     if (response.status && response.statusCode === 200) {
       setsectionList(response.data);
+      setSectionLoading(false)
     }
   };
 
@@ -203,14 +207,16 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
-    const getPageTitle = async()=>{
-      const response = await Request('admin/distinct-pages', "GET")
-      const pageObj = response.data.find(resObj=>resObj.id == pageId)
-      setPageTitle(pageObj.name)
-    }
+    const getPageTitle = async () => {
+      setPageTitleLoading(true)
+      const response = await Request("admin/distinct-pages", "GET");
+      const pageObj = response.data.find((resObj) => resObj.id == pageId);
+      setPageTitle(pageObj.name);
+      setPageTitleLoading(false)
+    };
 
     getPageTitle();
-  }, [pageId]); 
+  }, [pageId]);
 
   useEffect(() => {
     listHandler();
@@ -225,13 +231,16 @@ const AboutPage = () => {
     listHandler(searchTerm);
   };
 
+  if(pageTitleLoading && sectionLoading){
+    return <div className="flex justify-center items-center h-[100vh]">
+      <ScaleLoader color="#ddd" height={50} width={7} />
+    </div>
+  }
+
   return (
     <>
       <div className="d-flex title_col justify-content-between align-items-center">
         <h4 className="page_title">{pageTitle}</h4>
-        <button className="btn ms-auto btn_primary btn-sm" onClick={addHandler}>
-          Add Timeline
-        </button>
       </div>
       {sectionList
         ? sectionList.map((item) => {
@@ -257,124 +266,6 @@ const AboutPage = () => {
             );
           })
         : null}
-
-      <div className="card mt-4 card_style1">
-        <div className="d-flex align-items-center">
-          <h5 className="mb-0">Timeline </h5>
-
-          <div className="searchInput ms-auto">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by name"
-              onChange={findHandler}
-            />
-          </div>
-        </div>
-
-        {/* <form >
-                    <input ref={fileRef} type="file" className="form-control" />
-                    <input type="text" className="form-control" placeholder="Enter Amenity Name" />
-                    <button type="submit" className="btn btn_primary">Save</button>
-                </form> */}
-
-        <table className="mt_40">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Year</th>
-              <th>Location</th>
-              <th>Icon</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {isLoadingTableData ? (
-              <tr>
-                <td colSpan={4}>
-                  <div className="text-center">
-                    <ScaleLoader color="#ddd" className="w-100" />
-                  </div>
-                </td>
-              </tr>
-            ) : (
-              <>
-                {data && Array.isArray(data) && data.length > 0 ? (
-                  data.map((item) => (
-                    <tr key={item.id}>
-                      <td>{item.title}</td>
-                      <td>{item.year}</td>
-                      <td>{item.location}</td>
-                      <td>
-                        <div className="thumb icon">
-                          <img
-                            src={CONFIG.VITE_APP_STORAGE + item.image}
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <CustomDropdown
-                          className="form-control"
-                          defaultVal={item.status}
-                          options={statusOptions}
-                          onSelect={(selectedValue) =>
-                            handleStatusSelect(selectedValue, item.id)
-                          }
-                        />
-                      </td>
-
-                      <td>
-                        <button
-                          className="btn action_btn"
-                          onClick={() => editHandler(item.id)}
-                        >
-                          <img
-                            src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
-                            alt="edit icon"
-                            className="img-fluid icon"
-                          />
-                        </button>
-
-                        <button
-                          className="btn action_btn"
-                          onClick={() => deleteHandler(item.id)}
-                        >
-                          <img
-                            src={
-                              CONFIG.ADMIN_IMG_URL + "icons/delete_color.svg"
-                            }
-                            alt="delete icon"
-                            className="img-fluid icon delete"
-                          />
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="4">
-                      <h5 className="no_record">No Amenities Found!</h5>
-                    </td>
-                  </tr>
-                )}
-              </>
-            )}
-          </tbody>
-        </table>
-
-        {!isLoadingTableData && data ? (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={lastPage}
-            onPageChange={handlePageChange}
-          />
-        ) : null}
-      </div>
 
       {showAddSidebar && (
         <>

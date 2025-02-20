@@ -615,6 +615,18 @@ const Sidebar = (props) => {
 
                 <NavLink
                   className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}team`}
+                >
+                  <img
+                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
+                    alt="dashboard icon"
+                    className="img-fluid icon"
+                  />
+                  <span>Team</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}top-cities`}
                 >
                   <img
@@ -647,18 +659,6 @@ const Sidebar = (props) => {
                     className="img-fluid icon"
                   />
                   <span>Process</span>
-                </NavLink>
-
-                <NavLink
-                  className="sub_menu_link"
-                  to={`${CONFIG.ADMIN_ROOT}blogs/categories`}
-                >
-                  <img
-                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                    alt="dashboard icon"
-                    className="img-fluid icon"
-                  />
-                  <span>Blogs Categories</span>
                 </NavLink>
 
                 <NavLink
