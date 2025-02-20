@@ -162,7 +162,15 @@ class PagesSectionSeeder extends Seeder
 
             ],
             [
-                'name' => 'work-culture-banner',
+                'name' => 'career-overview',
+                'page_type_id' => '5', // work culture
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Section Sub Heading','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'career-work-culture',
                 'page_type_id' => '5', // work culture
                 'title'=>'work culture',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false']),
@@ -170,33 +178,41 @@ class PagesSectionSeeder extends Seeder
 
             ],
             [
-                'name' => 'csr-banner',
-                'page_type_id' => '6', // csr
+                'name' => 'esg-banner',
+                'page_type_id' => '6', // esg
                 'title'=>'Banner',
                 'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Section Sub Heading','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
 
             ],
             [
-                'name' => 'csr-overview',
-                'page_type_id' => '6', // csr
+                'name' => 'esg-overview',
+                'page_type_id' => '6', // esg
                 'title'=>'overview',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Section Sub Heading','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
 
             ],
             [
-                'name' => 'csr-communities',
-                'page_type_id' => '6', // csr
-                'title'=>'communities',
+                'name' => 'esg-social',
+                'page_type_id' => '6', // esg
+                'title'=>'social',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Section Sub Heading','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
 
             ],
             [
-                'name' => 'csr-education-center',
-                'page_type_id' => '6', // csr
-                'title'=>'education center',
+                'name' => 'esg-environment-center',
+                'page_type_id' => '6', // esg
+                'title'=>'Environment Center',
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Title','image'=>'Image','alt'=>'Alt text','description'=>'Short Description'])
+
+            ],
+            [
+                'name' => 'esg-governance-center',
+                'page_type_id' => '6', // esg governance
+                'title'=>'Governance Center',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'true']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Title','image'=>'Image','alt'=>'Alt text','description'=>'Short Description'])
 

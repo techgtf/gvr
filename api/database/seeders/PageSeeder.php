@@ -28,10 +28,14 @@ class PageSeeder extends Seeder
             ['name' => 'Career', 'type' => null],
             // 6
 <<<<<<< HEAD
+<<<<<<< HEAD
             ['name' => 'ESG'],
 =======
             ['name' => 'CSR', 'type' => null],
 >>>>>>> 4b34a1d (make ESG api)
+=======
+            ['name' => 'ESG', 'type' => null],
+>>>>>>> d495d8b (pages section)
             // 7
             ['name' => 'Home Loans', 'type' => null],
             // 8
