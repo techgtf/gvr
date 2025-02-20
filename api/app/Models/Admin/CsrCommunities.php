@@ -11,6 +11,7 @@ class CsrCommunities extends Model
 
     protected $fillable = ['name', 'short_description', 'image'];
 
+    protected $table = "esg_social";
 
     public static function search ($query) {
         return empty($query) ? static::query()

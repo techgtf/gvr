@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('csr_galleries', function (Blueprint $table) {
+        Schema::create('esg_galleries', function (Blueprint $table) {
             $table->id();
             $table->string('image');
             $table->string('alt');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('csr_galleries');
+        Schema::dropIfExists('esg_galleries');
     }
 };

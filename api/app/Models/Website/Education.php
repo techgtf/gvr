@@ -10,7 +10,7 @@ class Education extends Model
 {
     use HasFactory;
 
-    // protected $table = 'csr_communities';
+    protected $table = 'esg_environment';
 
     public function getImageAttribute()
     {
