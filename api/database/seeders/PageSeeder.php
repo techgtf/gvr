@@ -27,7 +27,7 @@ class PageSeeder extends Seeder
             // 5
             ['name' => 'Career', 'type' => null],
             // 6
-            ['name' => 'CSR', 'type' => null],
+            ['name' => 'ESG', 'type' => null],
             // 7
             ['name' => 'Home Loans', 'type' => null],
             // 8
