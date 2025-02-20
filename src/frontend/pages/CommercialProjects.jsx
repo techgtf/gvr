@@ -226,7 +226,7 @@ const CommercialProjects = () => {
         }`}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
-        extraClassesImg={" object-center  xl:!h-[70vh]"}
+        extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
       />
       <div className="overview_section 2xl:pt-[80px] px-[30px] pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">

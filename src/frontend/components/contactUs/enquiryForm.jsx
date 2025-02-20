@@ -453,7 +453,7 @@ const countryData = [
 
 const EnquiryForm = () => {
   return (
-    <section className="plans  px-5 md:pr-12 md:pl-[0px] py-10 md:py-14 flex flex-wrap justify-between">
+    <section className="plans  px-5 md:pr-12 md:pl-[0px] py-10 md:py-20 flex flex-wrap justify-between">
       {" "}
       <h3 className="text-primary basis-[100%] xl:pl-12 mb-[50px] midlandfontmedium xl:text-[12px] text-[10px] tracking-[5px]">
         GET IN TOUCH WITH US
