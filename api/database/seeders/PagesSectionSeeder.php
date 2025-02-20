@@ -329,7 +329,38 @@ class PagesSectionSeeder extends Seeder
                 'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
 
             ],
-           
+            [
+                'name' => 'residential-banner',
+                'page_type_id' => '18', // Residential
+                'title'=>'Banner',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'residential-overview',
+                'page_type_id' => '18', // Residential
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],[
+                'name' => 'commercial-banner',
+                'page_type_id' => '19', // Commercial
+                'title'=>'Banner',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'commercial-overview',
+                'page_type_id' => '19', // Commercial
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+
         ]);
     }
 }

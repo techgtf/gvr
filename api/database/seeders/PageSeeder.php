@@ -17,39 +17,54 @@ class PageSeeder extends Seeder
     {
         DB::table('pages')->insert([
             // 1
-            ['name' => 'Home Page'],
+            ['name' => 'Home Page', 'type' => null],
             // 2
-            ['name' => 'About Page'],
+            ['name' => 'About Page', 'type' => null],
             // 3
-            ['name' => 'Blog'],
+            ['name' => 'Blog', 'type' => null],
             // 4
-            ['name' => 'Contact us'],
+            ['name' => 'Contact us', 'type' => null],
             // 5
-            ['name' => 'Career'],
+            ['name' => 'Career', 'type' => null],
             // 6
+<<<<<<< HEAD
             ['name' => 'ESG'],
+=======
+            ['name' => 'CSR', 'type' => null],
+>>>>>>> 4b34a1d (make ESG api)
             // 7
-            ['name' => 'Home Loans'],
+            ['name' => 'Home Loans', 'type' => null],
             // 8
-            ['name' => 'Tax Benefits'],
+            ['name' => 'Tax Benefits', 'type' => null],
             // 9
-            ['name' => 'Area Converter'],
+            ['name' => 'Area Converter', 'type' => null],
             // 10
-            ['name' => 'Property Investment'],
+            ['name' => 'Property Investment', 'type' => null],
             // 11
-            ['name' => 'NRI Corner'],
+            ['name' => 'NRI Corner', 'type' => null],
             // 12
-            ['name' => 'NRI Investors'],
+            ['name' => 'NRI Investors', 'type' => null],
             // 13
-            ['name' => 'Faq'],
+            ['name' => 'Faq', 'type' => null],
             // 14
-            ['name' => 'EMI Calculator'],
+            ['name' => 'EMI Calculator', 'type' => null],
             // 15
-            ['name' => 'Blog Details'],
+            ['name' => 'Blog Details', 'type' => null],
             // 16
-            ['name' => 'Testimonials'],
+            ['name' => 'Testimonials', 'type' => null],
             // 17
-            ['name' => 'Blogs'],
+            ['name' => 'Blogs', 'type' => null],
+            // 18
+            [
+                'name' => 'Residential',
+                'type' => 'platter',
+            ],
+            //19
+            [
+                'name' => 'Commercial',
+                'type' => 'platter',
+            ],
+
             // Add more data here
         ]);
     }
