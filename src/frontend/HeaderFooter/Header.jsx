@@ -99,6 +99,18 @@ export default function Header() {
 
     return logo;
   };
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setDropdown(false); // Close dropdown when scrolling
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Cleanup
+    };
+  }, []); // Empty dependency array runs only once on mount
 
   return (
     <>

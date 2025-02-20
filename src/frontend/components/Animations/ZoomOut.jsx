@@ -25,8 +25,8 @@ const ZoomOut = ({ children, duration = 1.5, initialScale = 1.5, setHeight }) =>
           trigger: element,
           start: "top 80%",
           // toggleActions: "play none none none",
-          toggleActions: "restart pause restart pause",
-          scrub: true,
+          toggleActions: "play none none none",
+          scrub: false,
         },
       }
     );

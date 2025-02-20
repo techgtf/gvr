@@ -25,7 +25,7 @@ export function useImageReveal(selector) {
                 start: window.innerWidth <= 768 ? 'top 95%' : 'top 80%',
                 toggleClass: { targets: container, className: 'active' },
                 // once: true,
-                toggleActions: "restart pause restart pause", // Ensures restart on scroll in both directions
+                toggleActions: "play none none none", // Ensures restart on scroll in both directions
                 scrub: true, // Smooth animation synced with scroll
             });
 

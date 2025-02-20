@@ -22,10 +22,10 @@ function FadeIn({ children, duration = 1, delay = 0 }) {
         delay,
         scrollTrigger: {
           trigger: element,
-          start: "top 90%", // Animation starts when the top of the element reaches 90% of the viewport
-          end: "bottom 20%", // Animation ends when the bottom of the element reaches 20% of the viewport
-          toggleActions: "restart pause resume pause", // Restart animation on every scroll (onEnter and onLeave)
-          scrub: true, // Smooth scroll
+          start: "top 90%", 
+          end: "bottom 20%", 
+          toggleActions: "play none none none",
+          scrub: false, // Smooth scroll
         },
       }
     );

@@ -24,8 +24,9 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
           trigger: element,
           start: "top 100%",
           end: "bottom 20%",
-          toggleActions: "restart pause restart pause",
+          toggleActions: "play none none none",  // This ensures it only plays on top-to-bottom scroll
           scrub: true,
+        
         },
       }
     );
