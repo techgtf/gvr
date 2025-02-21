@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./styles.css"
 import * as CONFIG from "../../../../config"
 import SlideIn from "../Animations/SlideIn";
 import ZoomOut from "../Animations/ZoomOut";
 import useFetchData from '../../apiHooks/useFetchData';
 import Loader from '../../../common/Loader/loader';
+import { BASE_ROOT, DATA_ASSET_URL } from "../../../../config";
+import axios from "axios";
 
 
 
@@ -14,7 +16,7 @@ export default function Index({data}) {
     const { data: logos, loading: logoLoading, error: logoError } = useFetchData("loan");
         // Handle Loading and Errors
         if (logoLoading) return <Loader />;
-        if (logoError) return <p className="text-red-500">Error loading Banner: {logoError}</p>;
+        if (logoError) return <p className="text-red-500">Error loading Home Loan Logos: {logoError}</p>;
 
 
     return (

@@ -8,9 +8,17 @@ const useFetchData = (sectionName, pageName="") => {
 
   useEffect(() => {
     axios
-      .get(`${DATA_ASSET_URL}${sectionName}/${pageName}`) // Dynamic API
+      .get(`${DATA_ASSET_URL}${sectionName}${pageName ? `/${pageName}` : ""}`)
       .then((response) => {
-        setData(response.data.data);
+        let extractedData = response.data.data;
+  
+        // If extractedData is an object and contains another 'data', extract it
+        // if (extractedData && typeof extractedData === "object" && "data" in extractedData) if you need for object use this
+        if (extractedData && "data" in extractedData) {
+          extractedData = extractedData.data;
+        }
+  
+        setData(extractedData);
         setLoading(false);
       })
       .catch((err) => {

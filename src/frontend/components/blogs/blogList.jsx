@@ -8,11 +8,24 @@ import SlideIn from "../Animations/SlideIn";
 import { LatestBlogContext } from "../../context/LatestBlogContext";
 import axios from "axios";
 import dayjs from "dayjs";
+import Loader from "../../../common/Loader/loader";
+import useFetchData from "../../apiHooks/useFetchData";
 
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState("");
+<<<<<<< HEAD
   const { latestBlog } = useContext(LatestBlogContext);
+=======
+   const { latestBlog } = useContext(LatestBlogContext);
+
+   const { data: blogs, loading: logoLoading, error: logoError } = useFetchData("blogs");
+   // Handle Loading and Errors
+   if (logoLoading) return <Loader />;
+   if (logoError) return <p className="text-red-500">Error loading Home Loan Logos: {logoError}</p>;
+
+
+>>>>>>> 4ecab56 (live api)
 
   // 🔍 Filter blogs based on search input
   const filteredBlogs = data.filter((item) =>
