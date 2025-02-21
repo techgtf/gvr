@@ -37,7 +37,7 @@ export default function Header() {
   const handleScroll = useCallback(
     debounce(() => {
       setIsFixed(window.scrollY > 100);
-    }, 50),
+    }, 0),
     []
   );
 
@@ -49,10 +49,12 @@ export default function Header() {
   const handleDropdownOpen = (item) => {
     if (item === "Residential") {
       setDropdown(true);
+      setOpenSidebar(false); // Close sidebar when opening dropdown
       setActiveItem(item);
       setHoveringNav(true);
     }
   };
+
 
   const handleDropdownClose = () => {
     setDropdown(false);
@@ -77,6 +79,7 @@ export default function Header() {
   const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
   const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
 
+
   const logoOnePages = [
     `${BASE_ROOT}`,
     `${BASE_ROOT}sharanam`,
@@ -99,20 +102,31 @@ export default function Header() {
 
     return logo;
   };
-  
+
   useEffect(() => {
+    let timeoutId;
+  
     const handleScroll = () => {
       setDropdown(false);
-      setActiveItem(null);
       setHoveringNav(false);
+  
+      // Clear any existing timeout to prevent early resets
+      clearTimeout(timeoutId);
+  
+      // Set a timeout to remove activeItem after 3 seconds
+      timeoutId = setTimeout(() => {
+        setActiveItem(null);
+      }, 3000);
     };
   
     window.addEventListener("scroll", handleScroll);
   
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Cleanup
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId); // Cleanup on unmount
     };
-  }, []); // Empty dependency array runs only once on mount
+  }, [activeItem]);  // Depend on activeItem to avoid unintended resets
+  
 
   return (
     <>
@@ -137,42 +151,67 @@ export default function Header() {
                     <li
                       key={i}
                       onMouseEnter={() => {
-                        item.hasMenus ? handleDropdownOpen(item.name) : handleMouseEnterOtherItems(item.name);
+                        item.hasMenus
+                          ? handleDropdownOpen(item.name)
+                          : handleMouseEnterOtherItems(item.name);
                       }}
-                      className={`relative  flex gap-3 items-center tracking-[2px] text-[13px] font-[300] 
-                      ${activeItem === item.name ? "font-bold px-3 text-primary" : ""}
-                      hover:font-bold hover:px-3 hover:text-primary transition-all duration-300`}
+                      className={`relative flex gap-3 items-center tracking-[2px] text-[13px] font-[300] 
+      ${activeItem === item.name ? "font-bold px-3 text-primary" : ""}
+       hover:text-white`}
                       role="menuitem"
                     >
                       {item.link ? (
                         <Link
                           to={`${BASE_ROOT}${item.link}`}
-                          className={`tracking-[3px] uppercase text-[13px] font-[300] 
-                        ${activeItem === item.name ? "font-[600] text-primary" : ""} 
-                        hover:font-[600] hover:text-primary transition-all duration-300 
-                        focus-visible:outline-none focus-visible:ring-0`}
+                          className="group relative inline-block cursor-pointer tracking-[3px] uppercase text-[13px] font-[300] 
+          focus-visible:outline-none focus-visible:ring-0"
                         >
-                          {item.name}
+                          <span
+                            className={`text-[13px] tracking-[3px] 
+            bg-gradient-to-r from-[#33638b] via-[#33638b] hover:font-[600] to-black 
+            bg-[length:200%_100%] bg-[-100%] 
+            inline-block transition-all duration-300 ease-in-out 
+            ${activeItem === item.name ? "bg-[0%] font-[600] text-transparent bg-clip-text" : ""}
+            group-hover:bg-[0%] group-hover:text-transparent bg-clip-text`}
+                          >
+                            {item.name}
+                          </span>
+                          <span
+                            className={`absolute bottom-[-3px] left-0 h-[1px] bg-[#33638b99] transition-all duration-300 ease-in-out 
+            ${activeItem === item.name ? "w-full" : "w-0"} group-hover:w-full`}
+                          ></span>
                         </Link>
-
-
                       ) : (
                         <button
-                          className={`tracking-[3px] text-[13px] font-[300] uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-transparent  ${activeItem === item.name ? "font-[600] text-primary" : ""} hover:font-[600] hover:text-primary transition-all duration-300`}
                           onClick={() => handleDropdownOpen(item.name)}
+                          className="group relative inline-block cursor-pointer tracking-[3px] uppercase text-[13px] font-[300] 
+          focus-visible:outline-none focus-visible:ring-0"
                           aria-haspopup="true"
                           aria-expanded={dropdown && activeItem === item.name}
                         >
-                          {item.name}
+                          <span
+                            className={`text-[13px] tracking-[3px] 
+            bg-gradient-to-r from-[#33638b] via-[#33638b] to-black 
+            bg-[length:200%_100%] bg-[-100%] 
+            inline-block transition-all duration-300 ease-in-out 
+            ${activeItem === item.name ? "bg-[0%] font-[600] text-transparent bg-clip-text" : ""}
+            group-hover:bg-[0%] group-hover:text-transparent bg-clip-text`}
+                          >
+                            {item.name}
+                          </span>
+                          <span
+                            className={`absolute bottom-[-3px] left-0 h-[1px] bg-[#33638b99] transition-all duration-300 ease-in-out 
+            ${activeItem === item.name ? "w-full" : "w-0"} group-hover:w-full`}
+                          ></span>
                         </button>
-
                       )}
                     </li>
                   ))}
                 </ul>
+
               </div>
               <div className="flex items-center lg:gap-x-5 gap-x-2">
-                <SearchGlobal headerFixed={isFixed} />
+                <SearchGlobal headerFixed={isFixed} hoveringNav={hoveringNav} />
                 <button
                   className="menuBtn flex justify-end items-center focus-visible:outline-none focus-visible:ring-0"
                   aria-label="Open sidebar menu"

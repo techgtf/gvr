@@ -18,13 +18,13 @@ const HighlightsSpecifications = ({ highlightsComponent, specificationsComponent
       return;
     }
 
-    // ✅ Kill all previous ScrollTriggers before initializing a new one
+    // Kill all previous ScrollTriggers before initializing a new one
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     ScrollTrigger.clearMatchMedia();
 
    let ctx = gsap.context(() => {
     ScrollTrigger.matchMedia({
-      // ✅ Only apply animation on screens wider than 768px (tablets & desktops)
+      // Only apply animation on screens wider than 768px (tablets & desktops)
       "(min-width: 768px)": () => {
         setTimeout(() => {
           scrollTriggerRef.current = ScrollTrigger.create({

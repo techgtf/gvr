@@ -91,24 +91,22 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
           {priceListData.length > 0 ? (
             priceListData.map((item, i) => (
               <div key={i} className="row_1 py-0 md:py-5">
-                <div className="grid grid-cols-3 border-b border-gray-300 py-3">
+                <div className="grid grid-cols-4 border-b border-gray-300 py-3">
                   <div className="flex relative justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
                     <p>{item.area}</p>
                   </div>
                   <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.size}</p>
                   </div>
-                  <div className="flex text-center justify-center sm:gap-10 gap-3 items-center font-semibold">
+                  <div className="flex text-center justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.price}</p>
                   </div>
-                </div>
-                <div className="justify-center flex py-3">
                   <div className="w-full flex text-center justify-center sm:gap-10 gap-3 items-center">
-                    <div className="bg-transparent tracking-wide text-[#33638B] uppercase" onClick={openEnquiryForm}>
+                    <div className="bg-transparent tracking-wide text-[#33638B] uppercase" disabled onClick={openEnquiryForm}>
                       SOLD OUT
                     </div>
                   </div>
-                </div>
+                </div>              
               </div>
             ))
           ) : (
