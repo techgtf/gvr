@@ -12,7 +12,7 @@ function News() {
             <div className="grid grid-cols-12 gap-6">
 
                 {/* Left section (4 columns) */}
-                <div className="col-span-12 md:col-span-4">
+                {/* <div className="col-span-12 md:col-span-4">
                     <div className="mb-5">
                         <FadeIn duration={2} delay={0.5}>
                             <CommonHeading HeadingText="Offline News" />
@@ -52,7 +52,7 @@ function News() {
                             </CommonBtn>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Right section (8 columns) */}
                 <div className="col-span-12 md:col-span-8">
@@ -76,7 +76,7 @@ function News() {
                             <div className="details w-3/3">
                                 <div className="heading tracking-[3.5px] text-[10px] leading-[3] midlandfontmedium uppercase">The Economic Times Hindi Budget</div>
                                 <div className="content py-2">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa.
+                                    {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus nisi aliquid eligendi debitis et voluptatem sit reiciendis laboriosam nihil culpa. */}
                                 </div>
                                 <div className="date  pb-3 text-primary">01/02/2025</div>
                                 <CommonBtn to="https://hindi.economictimes.com/budget/live-union-budget-2025-26-nirmala-sitharaman-budget-2005-speech-income-tax-slab-budget-2025-26-highlights-industry-and-market-demand/liveblog/117812842.cms#:~:tex" target="_blank">
