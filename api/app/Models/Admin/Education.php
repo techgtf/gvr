@@ -11,5 +11,5 @@ class Education extends Model
 
     protected $fillable = ['image', 'short_description', 'status'];
 
-    
+    protected $table = "esg_environment";
 }

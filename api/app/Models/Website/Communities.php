@@ -10,7 +10,7 @@ class Communities extends Model
 {
     use HasFactory;
 
-    protected $table = 'csr_communities';
+    protected $table = 'esg_social';
 
     public function getImageAttribute()
     {
