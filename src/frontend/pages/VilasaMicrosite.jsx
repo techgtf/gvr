@@ -134,9 +134,9 @@ function VilasaMicrosite() {
     return (
         <>
             <Helmet>
-                <title> Great Value Realty Vilasa Sector 6, Sohna</title>
+                <title>Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna</title>
                 <meta name="keywords" content="Great Value realty, Vilasa by Great Value Realty, Best Vilasa properties in Sohna, Vilasa luxury apartments Sohna , Vilasa residential project Sohna, Great Value Realty Vilasa" />
-                <meta name="description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta name="description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/vilasa" />
                 <meta name="distribution" content="Global" />
@@ -152,15 +152,15 @@ function VilasaMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Realty Vilasa" />
-                <meta property="og:description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta property="og:title" content="Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna" />
+                <meta property="og:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/vilasa" />
                 <meta property="og:site_name" content="Great Value Realty Vilasa" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Realty Vilasa" />
-                <meta name="twitter:description" content="Find your dream home at Great Value Realty Sector 6 Sohna with Vilasa. Enjoy spacious apartments, modern amenities." />
+                <meta name="twitter:title" content="Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna" />
+                <meta name="twitter:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}

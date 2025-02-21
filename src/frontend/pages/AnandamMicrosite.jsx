@@ -205,11 +205,10 @@ function AnandamMicrosite() {
 
     return (
         <>
-
             <Helmet>
-                <title>Great Value Anandam Sector 107, Noida</title>
+                <title>Explore Anandam Noida – Luxury Residences by Great Value</title>
                 <meta name="keywords" content="Great Value realty, Anandam Sector 107 Noida, Great Value Anandam, Sector 107 Noida,Great Value Anandam Noida, Best Great Value Anandam" />
-                <meta name="description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/anandam" />
                 <meta name="distribution" content="Global" />
@@ -225,15 +224,15 @@ function AnandamMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Anandam Noida" />
-                <meta property="og:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta property="og:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
+                <meta property="og:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
                 <meta property="og:site_name" content="Great Value Anandam" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Anandam" />
-                <meta name="twitter:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="twitter:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
+                <meta name="twitter:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}
@@ -269,7 +268,6 @@ function AnandamMicrosite() {
                 }}
             />
 
-
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
@@ -291,7 +289,8 @@ function AnandamMicrosite() {
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
             />
 
-            <Plans masterPlanData={masterPlanData} unitData={unitData} />;
+            <Plans masterPlanData={masterPlanData} unitData={unitData} />
+            
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[

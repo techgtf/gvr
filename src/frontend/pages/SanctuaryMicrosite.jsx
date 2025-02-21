@@ -147,9 +147,9 @@ function SanctuaryMicrosite() {
     return (
         <>
             <Helmet>
-                <title> Great Value Realty Sanctuary Sector 105, Gurugram </title>
+                <title> Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram</title>
                 <meta name="keywords" content="Great Value realty, Great Value Realty Sanctuary Sector 105, Great Value Realty Sanctuary Gurugram, Sanctuary 105 Gurugram , Sanctuary by Great Value Realty, Sanctuary residential project Gurugram" />
-                <meta name="description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle.s" />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/sanctuary" />
                 <meta name="distribution" content="Global" />
@@ -165,15 +165,15 @@ function SanctuaryMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Realty Sanctuary Sector 105" />
-                <meta property="og:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta property="og:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
+                <meta property="og:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/sanctuary" />
                 <meta property="og:site_name" content="Great Value Realty Sanctuary Sector 105" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Realty Sanctuary Sector 105" />
-                <meta name="twitter:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="twitter:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
+                <meta name="twitter:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}

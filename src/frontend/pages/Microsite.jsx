@@ -173,9 +173,9 @@ function Microsite() {
   return (
     <>
       <Helmet>
-        <title>Great Value Sharanam Sector 107,Noida</title>
+        <title>Sharanam by Great Value | Premium 2 & 3 BHK Homes</title>
         <meta name="keywords" content="Great Value realty, Great Value Sharanam, Great Value Sharanam Noida, Sector 107 Noida, Sharanam Sector 107 Noida, Great Value Sharanam Sector 107 Noida" />
-        <meta name="description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta name="description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
         <link rel="canonical" href="https://greatvaluerealty.com/sharanam" />
         <meta name="distribution" content="Global" />
@@ -191,15 +191,15 @@ function Microsite() {
         <meta name="rating" content="safe for kids" />
         <meta name="expires" content="never" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Great Value Sharanam Noida" />
-        <meta property="og:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta property="og:title" content="Sharanam by Great Value | Premium 2 & 3 BHK Homes" />
+        <meta property="og:description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta property="og:url" content="https://greatvaluerealty.com/sharanam" />
         <meta property="og:site_name" content="Great Value Sharanam Noida" />
         <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@GreatValueGroup" />
-        <meta name="twitter:title" content="Great Value Sharanam Noida" />
-        <meta name="twitter:description" content="Discover Sharanam in Noida – a serene haven offering ready-to-move flats that refresh your soul." />
+        <meta name="twitter:title" content="Sharanam by Great Value | Premium 2 & 3 BHK Homes" />
+        <meta name="twitter:description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta name="twitter:creator" content="@GreatValueGroup" />
         <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
         {/* <!--End of Twitter TH data --> */}
