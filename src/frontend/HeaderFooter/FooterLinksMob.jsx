@@ -54,6 +54,7 @@ export default function FooterLinksMob({ toggelLinks }) {
                                 <Link className="block tracking-[1.2px] mb-4 font-[300] w-full" to={`${BASE_ROOT}nri-corner`}>NRI Corner</Link>
                                 <Link className="block tracking-[1.2px] mb-4 font-[300] w-full" to={`${BASE_ROOT}nri-investor`}>NRI Investors</Link>
                                 <Link className="block tracking-[1.2px] mb-4 font-[300] w-full" to={`${BASE_ROOT}emi-calculator`}>EMI Calculator</Link>
+                                <Link className="block tracking-[1.2px] mb-4 font-[300] w-full" to={`${BASE_ROOT}testimonials`}>testimonials</Link>
                                 <Link className="block tracking-[1.2px] mb-4 font-[300] w-full" to={`${BASE_ROOT}faqs`}>FAQ</Link>
                             </div>
                         </div>
