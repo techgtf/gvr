@@ -34,6 +34,7 @@ export default function FooterLinks({ toggelLinks }) {
               <div className="heading-div midlandfontmedium text-[8px] tracking-[4px] mb-5">Our Profile</div>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}about-us`}>About Us</Link>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}esg`}>ESG</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}testimonials`}>testimonials</Link>
             </li>
           </ul>
 
