@@ -99,7 +99,20 @@ export default function Header() {
 
     return logo;
   };
-
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setDropdown(false);
+      setActiveItem(null);
+      setHoveringNav(false);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Cleanup
+    };
+  }, []); // Empty dependency array runs only once on mount
   return (
     <>
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
@@ -110,7 +123,7 @@ export default function Header() {
               className="focus-visible:outline-transparent focus-visible:ring-0"
             >
               <img
-                className="w-[50%] sm:w-[70%] cursor-pointer"
+                className="w-[50%] sm:w-[70%] cursor-pointer logo_img"
                 src={getLogoSrc()}
                 alt="Great Value Realty Logo"
               />

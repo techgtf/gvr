@@ -72,7 +72,7 @@ function Plans({ masterPlanData, unitData }) {
             <FadeIn duration={2} delay={0.5}>
               <CommonHeading HeadingText="Master Plan" />
             </FadeIn>
-            <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 reveal"
+            <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 "
               onClick={() => openLightbox(0, true)}>
               <img src={masterPlanData[0]?.image} alt={masterPlanData[0]?.alt} className="cursor-pointer w-full" />
             </div>

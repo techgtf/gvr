@@ -1,12 +1,35 @@
 import { Helmet } from "react-helmet";
 import * as CONFIG from "../../../config";
 import { lazy } from "react";
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
 
 const ProperyInvestment = () => {
+  const { data: pageData, loading: pageDataLoading, error: pageDataError } = useFetchData("page-sections", "10");
+
+
+  // 🔹 Extract Banner Data Safely
+  const extractPageData = (pageData) => {
+      if (!pageData) return { banner: { image: "", heading: "Default Heading" }, overview: {} };
+  
+      const pageValues = Object.values(pageData); 
+      return {
+          banner: {
+              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              heading: pageValues[0]?.heading || "Default Heading"
+          }
+      };
+  };
+  
+  const { banner} = extractPageData(pageData);
+    // Handle Loading and Errors
+    if (pageDataLoading) return <Loader />;
+    if (pageDataError) return <p className="text-red-500">Property Investment Error loading Banner: {pageDataError}</p>;
+  
   return (
     <>
       <Helmet>
@@ -15,7 +38,8 @@ const ProperyInvestment = () => {
       <section className="bg-[#EFF5FA]">
 
         <HeroSectionAboutUs
-          img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
+          img={banner.image}
+          heading={banner.heading}
         />
         <div className="flex xl:mt-[4rem] mt-[2rem] flex-wrap justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0">
           <div className=" xl:basis-[45%] basis-[100%]">

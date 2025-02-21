@@ -16,7 +16,7 @@ const Testimonials = () => {
         <title>Great Value Realty | Testimonials</title>
       </Helmet>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.jpg`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/banner.webp`}
         heading={"Testimonials"}
         extraClassesImg={"objectRight"}
       />
@@ -28,7 +28,7 @@ const Testimonials = () => {
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading
             HeadingText={
-              "Great Value Industries: Shaping Excellence Across Industries – From Quality Packaging to Premium Living,"
+              `Voices of Trust, Stories of Excellence, Legacies Built Together" Introduction`
             }
             HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
           />
@@ -45,7 +45,7 @@ const Testimonials = () => {
               PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                "The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious clients including, Home Foil, Hello Mineral Water & UB Group among many others. Plastics and packaging with a unit at Bangalore and further expanded with units at Firozabad and Noida.The group envisions in creating highly lucrative residential properties for sale in Noida. Have your own luxury homes with world class fully furnished facilities in 2,3and4 BHK apartments. The year 2001 witnessed the group’s remarkable expansion in the Food Division. Group processed food domain with a 60,000 metric ton unit at Noida that was further strengthened by another 1, 80,000-metric ton unit 2 years later. Today GVIL is a major global force with one of the world’s largest capacities in producing ready to eat foods. Another significant stride taken in 2001 was GVIL’s foray into IT services."
+                `At Great Value Realty, every home, office, and commercial space is more than just a structure—it is a milestone in someone’s journey. Our Testimonials Section brings to life the experiences of those who have found success, comfort, and growth with us. From homeowners to businesses, every story is a testament to our commitment to quality, integrity, and lasting relationships. Hear firsthand how we turn visions into reality and spaces into legacies.`
               }
             />
           </div>

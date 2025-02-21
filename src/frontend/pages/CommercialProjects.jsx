@@ -37,11 +37,11 @@ import mall3 from "/assets/frontend/images/commercialProjects/mall/mall-3.webp";
 import mall4 from "/assets/frontend/images/commercialProjects/mall/mall-4.webp";
 import mall5 from "/assets/frontend/images/commercialProjects/mall/mall-5.webp";
 
-import retail1 from "/assets/frontend/images/commercialProjects/retail/retail-1.webp";
+import retail1 from "/assets/frontend/images/commercialProjects/retail/gap-log-img.jpg";
 import retail2 from "/assets/frontend/images/commercialProjects/retail/retail-2.webp";
 import retail3 from "/assets/frontend/images/commercialProjects/retail/retail-3.webp";
 import retail4 from "/assets/frontend/images/commercialProjects/retail/retail-4.webp";
-import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.webp";
+import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.jpg";
 import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -99,7 +99,8 @@ const projects = [
     ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
     totalProjects: 1,
-    images: [mall1, mall2, mall3, mall4, mall5],
+    // images: [mall1, mall2, mall3, mall4, mall5],
+    images: [],
   },
   {
     id: "commercial3",
@@ -107,7 +108,7 @@ const projects = [
     name: "High Street Retail & Office Spaces",
     projects: [
       {
-        name: "PERNIA",
+        name: "PERNIA'S POP-UP STUDIO",
         link: "",
         address: "Mehrauli, New Delhi",
       },
@@ -225,7 +226,7 @@ const CommercialProjects = () => {
         }`}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
-        extraClassesImg={" object-center "}
+        extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
       />
       <div className="overview_section 2xl:pt-[80px] px-[30px] pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
@@ -305,6 +306,32 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
+  function openNewBackgroundTab(link) {
+    var a = document.createElement("a");
+    a.href = link;
+    var evt = document.createEvent("MouseEvents");
+
+    //the tenth parameter of initMouseEvent sets ctrl key
+    evt.initMouseEvent(
+      "click",
+      true,
+      true,
+      window,
+      0,
+      0,
+      0,
+      0,
+      0,
+      true,
+      false,
+      false,
+      false,
+      0,
+      null
+    );
+    a.dispatchEvent(evt);
+  }
+
   useEffect(() => {
     const swiper = swiperRef.current;
     if (swiper && prevRef.current && nextRef.current) {
@@ -329,6 +356,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
       <section
         key={project.id}
         id={project.id}
+        // style={{ paddingBottom: project.name === "MALL" && "0px" }}
         className="about bg-[#EFF5FA] relative px-5 pt-[0px] xl:pt-5 md:px-12 py-10 md:py-14"
       >
         <div className="absolute h-full flex items-center left-20 bottom-0"></div>
@@ -358,13 +386,16 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               {project.projects.map((proj) => {
                 return (
                   <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] mt-[1.5rem] border-b-primary">
-                    <p className=" text-left basis-[30%] pr-[0.2rem] text-[13px] text-primary ">
+                    <p
+                      className={`text-left basis-[30%] inline-block pr-[0.2rem] text-[13px] text-primary`}
+                    >
                       {proj.name}
                     </p>
                     <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
-                    <p className="basis-[30%]">{proj.address}</p>
+                    <p className="basis-[25%]">{proj.address}</p>
 
                     <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
+
                     {[
                       "COMPLEX MADANGIR",
                       "JHARKHAND BHAWAN",
@@ -377,17 +408,25 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                         <p className="basis-[25%]">Office Spaces</p>
                       )
                     ) : (
-                      <Link
-                        to={proj.link}
-                        style={{
-                          width: "115px",
-                        }}
-                        className="bg-primary  text-[10px] text-center py-[8px] px-[15px] text-white"
-                      >
-                        {["Tavru Sohna", "Moserbear Part 2"].includes(proj.name)
-                          ? "COMING SOON"
-                          : "READ MORE"}
-                      </Link>
+                      <div className="basis-[25%]">
+                        <Link
+                          to={proj.link}
+                          // target="_blank"
+                          onClick={() => openNewBackgroundTab(proj.link)}
+                          rel="noopener noreferrer"
+                          className={`${
+                            proj.name == "Moser Baer Solar Ltd / Warehouse"
+                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary  text-[10px] text-center text-white"
+                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                          } `}
+                        >
+                          {["Tavru Sohna", "Moserbear Part 2"].includes(
+                            proj.name
+                          )
+                            ? "COMING SOON"
+                            : "READ MORE"}
+                        </Link>
+                      </div>
                     )}
                   </div>
                 );
@@ -443,7 +482,12 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               </div>
             </div>
           )}
-          <div className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end">
+          <div
+            style={{
+              display: project.name === "MALL" && "hidden",
+            }}
+            className="nav_buttons flex gap-5 py-5 px-10 justify-center md:justify-end"
+          >
             <button
               ref={prevRef}
               className="text-gray-500 cursor-pointer flex justify-center items-center relative z-20 p-1"

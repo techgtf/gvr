@@ -147,7 +147,53 @@ function SanctuaryMicrosite() {
     return (
         <>
             <Helmet>
-                <title>Great Value Realty | SANCTUARY 105</title>
+                <title> Great Value Realty Sanctuary Sector 105, Gurugram </title>
+                <meta name="keywords" content="Great Value realty, Great Value Realty Sanctuary Sector 105, Great Value Realty Sanctuary Gurugram, Sanctuary 105 Gurugram , Sanctuary by Great Value Realty, Sanctuary residential project Gurugram" />
+                <meta name="description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+                <link rel="canonical" href="https://greatvaluerealty.com/sanctuary" />
+                <meta name="distribution" content="Global" />
+                <meta name="Language" content="English" />
+                <meta name="doc-type" content="Public" />
+                <meta name="robots" content="index, follow" />
+                <meta name="author" content="Great Value Realty Sanctuary Sector 105" />
+                <meta name="googlebot" content="all, index, follow" />
+                <meta name="YahooSeeker" content="all, index, follow" />
+                <meta name="msnbot" content="all, index, follow" />
+                <meta name="HandheldFriendly" content="true" />
+                <meta name="revisit-after" content="1 days" />
+                <meta name="rating" content="safe for kids" />
+                <meta name="expires" content="never" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Great Value Realty Sanctuary Sector 105" />
+                <meta property="og:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta property="og:url" content="https://greatvaluerealty.com/sanctuary" />
+                <meta property="og:site_name" content="Great Value Realty Sanctuary Sector 105" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@GreatValueGroup" />
+                <meta name="twitter:title" content="Great Value Realty Sanctuary Sector 105" />
+                <meta name="twitter:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="twitter:creator" content="@GreatValueGroup" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                {/* <!--End of Twitter TH data --> */}
+
+                <script type="application/ld+json">
+                    {`
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
+                    "alternateName": "Great Value Realty Sanctuary Gurugram",
+                    "url": "https://greatvaluerealty.com/sanctuary",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+91 7777079770",
+                        "contactType": "customer service",
+                        "areaServed": "IN",
+                        "availableLanguage": "en"
+                    }`}
+                </script>
             </Helmet>
             <HeroSection
                 desktopBg={'assets/frontend/images/microsite/sanctuary/hero/hero.webp'}
