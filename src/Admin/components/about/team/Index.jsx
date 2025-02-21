@@ -14,6 +14,9 @@ import "../../../assets/css/admin.css";
 
 import * as CONFIG from "../../../../../config";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const statusOptions = [
   { label: "Active", value: "1" },
   { label: "Hide", value: "0" },
@@ -48,7 +51,7 @@ const OurTeam = () => {
   const descriptionRef = useRef(null);
   const designationRef = useRef(null);
   const shortDescriptionRef = useRef(null);
-  const messageRef = useRef(null);
+  const bioRef = useRef(null);
   const priceRef = useRef(null);
 
   const [errors, setErrors] = useState({});
@@ -102,8 +105,9 @@ const OurTeam = () => {
     formData.append("name", nameRef.current.value);
     formData.append("image", fileRef.current.files[0]);
     formData.append("designation", designationRef.current.value);
+    formData.append("bio", bioRef.current.value);
 
-    var response = await Request("admin/team/", "POST", formData);
+    var response = await Request("admin/team", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -131,6 +135,7 @@ const OurTeam = () => {
       }
       nameRef.current.value = response.data.name;
       designationRef.current.value = response.data.designation;
+      bioRef.current.value = response.data.bio;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -168,6 +173,7 @@ const OurTeam = () => {
 
   const updateSubmitHandler = async (event) => {
     event.preventDefault();
+    debugger
     setIsSitebarFormButtonLoading(true);
 
     const formData = new FormData();
@@ -176,6 +182,7 @@ const OurTeam = () => {
     }
     formData.append("name", nameRef.current.value);
     formData.append("designation", designationRef.current.value);
+    formData.append("bio", bioRef.current.value);
 
     var response = await Request(
       "admin/team/" + editId + "/update",
@@ -238,7 +245,7 @@ const OurTeam = () => {
                 Designation
               </th>
               <th className="border border-gray-300 p-2 text-left">
-                Message
+                Bio
               </th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
@@ -256,8 +263,8 @@ const OurTeam = () => {
             ) : (
               <>
                 {data && Array.isArray(data) && data.length > 0 ? (
-                  data.map((item) => (
-                    <tr className="border-b">
+                  data.map((item, index) => (
+                    <tr className="border-b" key={index}>
                       <td className="py-2 px-4">
                         <img
                           src={CONFIG.VITE_APP_STORAGE + item.image}
@@ -267,19 +274,19 @@ const OurTeam = () => {
                       </td>
                       <td className="py-2 px-4">{item.name}</td>
                       <td className="py-2 px-4">{item.designation}</td>
-                      <td className="py-2 px-4">{item.message}</td>
+                      <td className="py-2 px-4">{item.bio}</td>
                       <td className="py-2 px-4 flex gap-2">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
@@ -366,16 +373,17 @@ const OurTeam = () => {
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Message*
+                    Bio*
                   </label>
-                  <input
-                    ref={messageRef}
+                  <textarea
+                    ref={bioRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Message"
+                    placeholder="Enter Bio"
+                    rows={4}
                   />
-                  {errors.message && (
-                    <span className="text-red-500">{errors.message}</span>
+                  {errors.Bio && (
+                    <span className="text-red-500">{errors.Bio}</span>
                   )}
                 </div>
 
