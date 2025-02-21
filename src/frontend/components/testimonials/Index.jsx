@@ -59,7 +59,7 @@ const Testimonials = () => {
                       >
 
                         <img
-                          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.png`}
+                          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.webp`}
                           className="cursor-pointer lg:h-[44px] h-[30px]"
                           alt="Play button icon"
                         />
