@@ -49,7 +49,11 @@ const Aboutus = () => {
     const team = data?.["about-team"] || {};
     const journey = data?.["about-our-journey"] || {};
     const verticals = data?.["about-our-verticals"] || {};
+<<<<<<< HEAD
 console.log(banner.image,"banner")
+=======
+
+>>>>>>> 37f6116 (about us api)
 const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
   
   return (
