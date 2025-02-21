@@ -128,7 +128,7 @@ const Sidebar = (props) => {
 
       <div className={`sidebar`}>
         <div className="main-menu" ref={containerRef}>
-          <NavLink to={`${CONFIG.ADMIN_ROOT}`} className="sidebar_link">
+          <NavLink end to={`${CONFIG.ADMIN_ROOT}`} className="sidebar_link">
             <span className="icon">
             <RxDashboard size={26} />
             </span>
@@ -145,7 +145,7 @@ const Sidebar = (props) => {
             <span>Projects</span>
           </Link>
 
-          <NavLink
+          <NavLink exact
             className="sidebar_link hasSubMenu"
             to={`${CONFIG.ADMIN_ROOT}platter-page`}
           >
@@ -155,7 +155,7 @@ const Sidebar = (props) => {
             <span>Platter Page</span>
           </NavLink>
 
-          <NavLink
+          <NavLink exact
             className="sidebar_link hasSubMenu"
             to={`${CONFIG.ADMIN_ROOT}states`}
           >
@@ -165,7 +165,7 @@ const Sidebar = (props) => {
             <span>Locations</span>
           </NavLink>
 
-          <NavLink
+          <NavLink exact
             className="sidebar_link"
             to={`${CONFIG.ADMIN_ROOT}amenities`}
           >
@@ -175,7 +175,7 @@ const Sidebar = (props) => {
             <span>Amenities</span>
           </NavLink>
 
-          <NavLink
+          <Link
             className="sidebar_link"
             onClick={(e) => props.toggleSubMenusHandler(e, "pages")}
           >
@@ -183,10 +183,10 @@ const Sidebar = (props) => {
             <ImPageBreak size={26} />
             </span>
             <span>Pages</span>
-          </NavLink>
+          </Link>
 
           {/* to={`${CONFIG.ADMIN_ROOT}typologies`} */}
-          <NavLink
+          <Link 
             className="sidebar_link"
             onClick={(e) => props.toggleSubMenusHandler(e, "typologies")}
           >
@@ -194,9 +194,9 @@ const Sidebar = (props) => {
             <PiResize size={26} />
             </span>
             <span>Typologies</span>
-          </NavLink>
+          </Link>
 
-          <NavLink
+          <Link 
             className="sidebar_link"
             onClick={(e) => props.toggleSubMenusHandler(e, "cms")}
           >
@@ -204,9 +204,9 @@ const Sidebar = (props) => {
             <MdOutlineSettingsInputComponent size={26} />
             </span>
             <span>CMS</span>
-          </NavLink>
+          </Link>
 
-          <NavLink
+          <Link 
             className="sidebar_link"
             onClick={(e) => props.toggleSubMenusHandler(e, "enquiry")}
           >
@@ -214,7 +214,7 @@ const Sidebar = (props) => {
             <TiMessages size={26} />
             </span>
             <span>Enquiry</span>
-          </NavLink>
+          </Link>
         </div>
 
         {props.isSubMenuOpen && (
@@ -223,7 +223,7 @@ const Sidebar = (props) => {
               (categoryList
                 ? categoryList.map((item, index) => {
                     return (
-                      <NavLink
+                      <NavLink exact
                         key={item + index}
                         className="sub_menu_link"
                         to={`${CONFIG.ADMIN_ROOT + "projects/" + item.slug}`}
@@ -251,7 +251,7 @@ const Sidebar = (props) => {
               pages.length &&
               pages.map((page) => (
                 <React.Fragment key={page.id}>
-                  <NavLink
+                  <NavLink exact
                     className="sub_menu_link"
                     to={CONFIG.ADMIN_ROOT + "page/"+page.id}
                   >
@@ -452,7 +452,7 @@ const Sidebar = (props) => {
 
             {currentPage == "typologies" && (
               <>
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}typologies`}
                 >
@@ -464,7 +464,7 @@ const Sidebar = (props) => {
                   <span>Typologies</span>
                 </NavLink>
 
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}sub-typologies`}
                 >
@@ -480,7 +480,7 @@ const Sidebar = (props) => {
 
             {currentPage == "cms" && (
               <>
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}home-banner`}
                 >
@@ -496,7 +496,7 @@ const Sidebar = (props) => {
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}category`}
                 >
-                  <img
+                  <img exact
                     src={ADMIN_ASSETS + "icons/dashboard.svg"}
                     alt="dashboard icon"
                     className="img-fluid icon"
@@ -504,7 +504,7 @@ const Sidebar = (props) => {
                   <span>Category</span>
                 </NavLink>
 
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}other-verticals`}
                 >
@@ -516,7 +516,7 @@ const Sidebar = (props) => {
                   <span>Other Verticals</span>
                 </NavLink>
 
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}team`}
                 >
@@ -528,7 +528,7 @@ const Sidebar = (props) => {
                   <span>Team</span>
                 </NavLink>
 
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}faqs`}
                 >
@@ -540,7 +540,7 @@ const Sidebar = (props) => {
                   <span>Faqs</span>
                 </NavLink>
 
-                <NavLink
+                <NavLink exact
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}top-cities`}
                 >
