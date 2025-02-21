@@ -223,8 +223,8 @@ export default function Header() {
                       } w-[80%]`}
                     src={
                       isFixed || activeItem
-                        ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.png`
-                        : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.png`
+                        ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.webp`
+                        : `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu.webp`
                     }
                     alt="menu icon for navigation options"
                   />
