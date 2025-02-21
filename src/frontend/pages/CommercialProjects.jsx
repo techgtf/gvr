@@ -396,11 +396,11 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
 
                     <div className="h-[40px] w-[0.5px] bg-[#ddd]"></div>
 
-                    {[
+                    {/* {[
                       "COMPLEX MADANGIR",
                       "JHARKHAND BHAWAN",
                       "GAP",
-                      "PERNIA",
+                      "PERNIA'S POP-UP STUDIO",
                     ].includes(proj.name) ? (
                       proj.name === "COMPLEX MADANGIR" ? (
                         <p className="basis-[25%]">High Street Retail</p>
@@ -417,6 +417,41 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                           className={`${
                             proj.name == "Moser Baer Solar Ltd / Warehouse"
                               ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary  text-[10px] text-center text-white"
+                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                          } `}
+                        >
+                          {["Tavru Sohna", "Moserbear Part 2"].includes(
+                            proj.name
+                          )
+                            ? "COMING SOON"
+                            : "READ MORE"}
+                        </Link>
+                      </div>
+                    )} */}
+
+                    {[
+                      "COMPLEX MADANGIR",
+                      "JHARKHAND BHAWAN",
+                      "GAP",
+                      "PERNIA",
+                      "PERNIA'S POP-UP STUDIO",
+                    ].includes(proj.name) ? (
+                      proj.name === "COMPLEX MADANGIR" ? (
+                        <p className="basis-[25%]">High Street Retail</p>
+                      ) : proj.name === "PERNIA'S POP-UP STUDIO" ? (
+                        <p className="basis-[25%]">Retail Store</p>
+                      ) : (
+                        <p className="basis-[25%]">Office Spaces</p>
+                      )
+                    ) : (
+                      <div className="basis-[25%]">
+                        <Link
+                          to={proj.link}
+                          onClick={() => openNewBackgroundTab(proj.link)}
+                          rel="noopener noreferrer"
+                          className={`${
+                            proj.name === "Moser Baer Solar Ltd / Warehouse"
+                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
                               : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
                           } `}
                         >

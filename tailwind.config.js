@@ -9,6 +9,7 @@ export default {
       },
       objectPosition: {
         custom: "0px -63px",
+        customMb: "-43px 0px"
       },
       writingMode: {
         "vertical-rl": "vertical-rl",
