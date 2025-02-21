@@ -55,8 +55,8 @@ function SocialDetails() {
                             <p className="md:w-[45%] mx-auto py-5">{tabData.social.description}</p>
                         </SlideIn>
                     </div>
-                    <div className="pipeline relative h-[20vh] flex justify-center">
-                        <div className="absolute top-0 w-[2px] bg-gray-700 h-[15vh]"></div>
+                    <div className="pipeline relative h-[12vh] flex justify-center">
+                        <div className="absolute top-0 w-[2px] bg-gray-400 h-[8vh]"></div>
                     </div>
 
                     {/* Social Content Mapping */}
@@ -90,10 +90,9 @@ function SocialDetails() {
                         </SlideIn>
                     </div>
 
-                    <div className="pipeline relative h-[20vh] flex justify-center">
-                        <div className="absolute top-0 w-[2px] bg-gray-700 h-[15vh]"></div>
+                    <div className="pipeline relative h-[12vh] flex justify-center">
+                        <div className="absolute top-0 w-[2px] bg-gray-400 h-[8vh]"></div>
                     </div>
-
                     {/* Environment Content Mapping */}
                     <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.environment.details.map((item, index) => (
