@@ -66,8 +66,13 @@ function SideMenu({ setOpenSidebar }) {
           alt="Great Value Realty Logo"
         />
       </Link>
-      <div className="absolute top-7 right-5">
-        <AiOutlineClose onClick={handleClose} className="text-2xl text-gray-500 cursor-pointer" />
+      <div className="absolute top-7 right-5 z-50">
+        <AiOutlineClose
+          onTouchStart={handleClose} // For mobile touch event
+          onClick={handleClose}
+          className="text-2xl text-gray-500 cursor-pointer"
+        />
+
       </div>
       <div className="flex flex-col relative items-center gap-1 justify-evenly h-full">
         <ul className="w-full flex flex-col items-center gap-4">
