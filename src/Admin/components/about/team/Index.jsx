@@ -3,17 +3,16 @@ import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
 import SideModal from "../../Modal/SideModal/Index";
-import * as CONFIG from "../../../../../config";
 import { toast } from "react-toastify";
 import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
-
-import Request from "../../../../config/Request";
-
-import "../../../assets/css/admin.css";
-
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+
+import Request from "../../../../config/Request";
+import "../../../assets/css/admin.css";
+
+import * as CONFIG from "../../../../../config";
 
 const statusOptions = [
   { label: "Active", value: "1" },
@@ -157,7 +156,7 @@ const OurTeam = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/team/?search=" + search + "&page=" + currentPage,
+      "admin/team?search="+ search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
