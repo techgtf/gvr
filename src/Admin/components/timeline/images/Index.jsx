@@ -23,6 +23,7 @@ const statusOptions = [
 const TimelineImages = () => {
   const [data, setData] = useState([]);
   const [selectedYear, setSelectedYear] = useState('2024');
+  const [yearOptions, setYearOptions] = useState(null);
 
   // pagination
   const [totalPage, setTotalPage] = useState(0);
@@ -63,27 +64,7 @@ const TimelineImages = () => {
   };
 
   const handleStatusSelect = async (selectedValue, id) => {
-    setSelectedYear(selectedValue);
-  };
-
-  const updateStatusHandler = async (id, selectedStatus) => {
-    setIsSitebarFormButtonLoading(true);
-
-    const formData = new FormData();
-    formData.append("status", selectedStatus);
-    var response = await Request(
-      "admin/amenities/" + id + "/status",
-      "POST",
-      formData
-    );
-
-    if (response.status && response.statusCode == 403) {
-      setErrors(response.errors);
-      toast.error(response.message);
-    } else if (response.status && response.statusCode == 200) {
-      toast.success(response.message);
-    }
-    setIsSitebarFormButtonLoading(false);
+    setYearOptions(selectedValue);
   };
 
   const addAmenityHandler = () => {
@@ -151,7 +132,7 @@ const TimelineImages = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/timeline-preview/?search=" + search + "&page=" + currentPage,
+      "admin/timeline-preview?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -160,7 +141,7 @@ const TimelineImages = () => {
     }
     setIsLoadingTableData(false);
   };
-
+ 
   const updateSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
@@ -196,6 +177,23 @@ const TimelineImages = () => {
     const searchTerm = e.target.value.toLowerCase();
     listHandler(searchTerm);
   };
+
+  useEffect(()=>{
+    const fetchImagesYears = async()=>{
+      var response = await Request(
+        "admin/distinct-timeline",
+        "GET"
+      );
+  
+      if (response.status && response.statusCode === 200) {
+        setYearOptions(response.data);
+      } else if (response.status && response.statusCode === 403) {
+        toast.error(response.message);
+      }
+    }
+
+    fetchImagesYears()
+  }, [])
 
   return (
     <>
@@ -338,7 +336,7 @@ const TimelineImages = () => {
                   <CustomDropdown
                     className="border rounded px-3 py-2 w-full"
                     defaultVal={selectedYear}
-                    options={statusOptions}
+                    options={yearOptions}
                     onSelect={(selectedValue) =>
                       handleStatusSelect(selectedValue, item.id)
                     }
