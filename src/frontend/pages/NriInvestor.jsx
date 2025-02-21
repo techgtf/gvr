@@ -28,7 +28,7 @@ const NriInvestor = () => {
   const { banner, overview } = extractPageData(pageData);
   // Handle Loading and Errors
   if (pageDataLoading) return <Loader />;
-  if (pageDataError) return <p className="text-red-500">Error loading Banner: {pageDataError}</p>;
+  if (pageDataError) return <p className="text-red-500">Error loading NRI Investor Banner: {pageDataError}</p>;
 
   return (
     <>
