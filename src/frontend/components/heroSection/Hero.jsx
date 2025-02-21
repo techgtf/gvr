@@ -23,7 +23,7 @@ export default function Hero() {
       className="hero_vdo_div lg:h-[auto] h-[auto] relative w-full] bg-cover"
       style={{
         background:
-          "url(assets/frontend/images/home/hero.jpg) no-repeat center",
+          "url(assets/frontend/images/home/hero.webp) no-repeat center",
       }}
     >
       {/* <LoadAnimation /> */}

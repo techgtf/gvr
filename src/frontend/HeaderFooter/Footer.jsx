@@ -92,7 +92,7 @@ export default function Footer() {
                 <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${BASE_ROOT}esg`}
-                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] lg:hidden block text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     esg
                   </Link>
