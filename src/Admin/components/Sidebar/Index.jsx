@@ -256,16 +256,7 @@ const Sidebar = (props) => {
                     to={CONFIG.ADMIN_ROOT + "page/"+page.id}
                   >
                     <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
+                    <ImPageBreak size={16} />
                     </span>
                     <span>{page.name}</span>
                   </NavLink>
