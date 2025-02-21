@@ -6,6 +6,7 @@ const CustomDropdown = (props)=>{
     const onSelect=props.onSelect;
     const className=props.className;
     const defaultVal=props.defaultVal;
+    const disabled=props.disabled;
 
     const handleSelect = (event) => {
         const selectedValue = event.target.value;
@@ -14,14 +15,13 @@ const CustomDropdown = (props)=>{
     
     return(
         <>
-            <select className={className} defaultValue={defaultVal} name='optionName' onChange={handleSelect}>
+            <select className={className} value={defaultVal} name='optionName' onChange={handleSelect}>
                 {options.map((option, index) => (
-                    <option key={index} value={option.value}>
+                    <option key={index} value={option.value} disabled={option.disabled}>
                     {option.label}
                     </option>
                 ))}
             </select>
-
         </>
     )
 }

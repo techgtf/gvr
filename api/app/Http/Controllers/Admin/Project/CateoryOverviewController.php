@@ -17,14 +17,15 @@ class CateoryOverviewController extends Controller
      */
     public function index($categoryid, Request $request)
     {
-        $search="";
-        if(!empty($request->search)){
-            $search = $request->search;
-        }
+        $search = $request->search ?? ''; 
         $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
-        $record = CategoryOverview::where('category_id',$categoryid)->paginate($perPage, ['*'], 'page', $page)->get();
-             
+        $query = CategoryOverview::where('category_id', $categoryid);
+        if (!empty($search)) {
+            $query->where('column_name', 'like', "%{$search}%"); 
+        }
+        $record = $query->paginate($perPage, ['*'], 'page', $page);
+        
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -49,14 +50,15 @@ class CateoryOverviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $categoryId)
     {
+
         $validator = Validator::make($request->all(), 
         [
-            'heading' => 'This field is required',
-            'description' => 'This field is required',
+            'heading' => 'required',
+            'description' => 'required',
         ],
-            [
+        [
                 'heading.required' => 'This field is required',
                 'description.required' => 'This field is required',
             ]
@@ -73,11 +75,11 @@ class CateoryOverviewController extends Controller
             ]);
 
         }
-
-      
+ 
         try {
             
             $categoryOverview = new CategoryOverview();
+            $categoryOverview->category_id = $categoryId;
             $categoryOverview->heading = $request->heading;
             $categoryOverview->description = $request->description;
             
@@ -149,7 +151,7 @@ class CateoryOverviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $categoryid, $id)
     {
         $validator = Validator::make($request->all(), 
         [
@@ -180,6 +182,7 @@ class CateoryOverviewController extends Controller
                   
                 $getdata->heading = $request->heading;
                 $getdata->description = $request->description;
+
                 if($getdata->save()){
                     return response()->json([
                         'status' => true,

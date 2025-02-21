@@ -31,7 +31,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
 
 
         Route::apiResource('category/{id}/overview', CateoryOverviewController::class)->except(['update']);
-        Route::post('category/{id}/update', [CategoryController::class,'update']);
+        Route::post('category/{cateoryid}/overview/{id}/update', [CateoryOverviewController::class,'update']);
 
     });
 });

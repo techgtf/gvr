@@ -66,22 +66,13 @@ import AddTimeline from "../admin/components/timeline/Add";
 import AboutPage from "../admin/AboutPage";
 import OurTeam from "../admin/components/about/team/Index";
 import TimelineImages from "../admin/components/timeline/images/Index";
+import Faqs from "../admin/components/faq/Index";
+import EsgSocial from "../admin/components/esg/social/Index";
+import EsgEnvironment from "../admin/components/esg/environment/Index";
+import EsgGallery from "../admin/components/esg/gallery/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
-  {
-    path: `${ADMIN_ROOT}`,
-    // element:<AdminLayout />,
-    element: (
-      <ProtectedRoute>
-        <AdminLayout>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Dashboard />
-          </Suspense>
-        </AdminLayout>
-      </ProtectedRoute>
-    ),
-  },
   {
     path: `${ADMIN_ROOT}login`,
     // element:<AdminLayout />,
@@ -643,6 +634,40 @@ export const AdminRoutes = [
     ),
   },
   {
+    path: `${ADMIN_ROOT}esg/social`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgSocial />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}esg/environment`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgEnvironment />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+
+  {
+    path: `${ADMIN_ROOT}esg/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgGallery />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
     path: `${ADMIN_ROOT}page/:pageId`,
     // element:<AdminLayout />,
     element: (
@@ -662,6 +687,30 @@ export const AdminRoutes = [
           <AboutPage />
         </Suspense>
       </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}faqs`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Faqs />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}`,
+    // element:<AdminLayout />,
+    element: (
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
 ];

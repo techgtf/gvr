@@ -1,27 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import CustomDropdown from "../common/Custom_Dropdown/CustomDropdown";
+import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
-import SideModal from "./components/Modal/SideModal/Index";
-import * as CONFIG from "../../config";
-import Loader from "../common/Loader/loader";
+import SideModal from "../../Modal/SideModal/Index";
+import * as CONFIG from "../../../../../config";
 import { toast } from "react-toastify";
-import Pagination from "../common/Pagination/Pagination";
+import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import Request from "../config/Request";
+import Request from "../../../../config/Request";
 
-import "./assets/css/admin.css";
+import "../../../assets/css/admin.css";
 
-import { AiOutlineEdit } from "react-icons/ai";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
   { label: "Hide", value: "0" },
 ];
 
-const Amenities = () => {
+const EsgSocial = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -46,6 +45,12 @@ const Amenities = () => {
 
   const fileRef = useRef(null);
   const titleRef = useRef(null);
+  const nameRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const designationRef = useRef(null);
+  const shortDescriptionRef = useRef(null);
+  const messageRef = useRef(null);
+  const priceRef = useRef(null);
 
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
@@ -91,11 +96,16 @@ const Amenities = () => {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
+
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
+
     formData.append("image", fileRef.current.files[0]);
-    formData.append("title", titleRef.current.value);
-    var response = await Request("admin/amenities", "POST", formData);
+    formData.append("name", titleRef.current.value);
+    formData.append("short_description", descriptionRef.current.value);
+
+    var response = await Request("admin/communities/", "POST", formData);
+
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
       toast.error(response.message);
@@ -113,14 +123,15 @@ const Amenities = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/amenities/" + id, "GET");
+    var response = await Request("admin/communities/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
-      if (response.data.icons) {
-        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.icons);
+      if (response.data.image) {
+        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
       }
-      titleRef.current.value = response.data.title;
+      titleRef.current.value = response.data.name;
+      descriptionRef.current.value = response.data.short_description;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -132,7 +143,7 @@ const Amenities = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/amenities/" + id, "DELETE");
+    var response = await Request("admin/communities/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -143,19 +154,20 @@ const Amenities = () => {
   };
 
   const listHandler = async (search = "") => {
+    // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/amenities?search=" + search + "&page=" + currentPage,
+      "admin/communities/?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
       setData(response.data.data);
-      setLastPage(response.data.last_page);
+      // setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };
 
-  const updateAmenityHandler = async (event) => {
+  const updateSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
 
@@ -163,10 +175,11 @@ const Amenities = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    formData.append("title", titleRef.current.value);
+    formData.append("name", titleRef.current.value);
+    formData.append("short_description", descriptionRef.current.value);
 
     var response = await Request(
-      "admin/amenities/" + editId + "/update",
+      "admin/communities/" + editId + "/update",
       "POST",
       formData
     );
@@ -192,24 +205,24 @@ const Amenities = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Amenities</h4>
+        <h4 className="page_title">Social</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Amenity
+          Add Social
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">Amenities</h5>
+          <h5 className="mb-0">Social</h5>
 
           <div className="searchInput ml-auto">
             <input
               type="text"
               className="border rounded px-3 py-2 w-full"
-              placeholder="Search by name"
+              placeholder="Search by Title"
               onChange={findHandler}
             />
           </div>
@@ -218,9 +231,13 @@ const Amenities = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">Name</th>
-              <th className="border border-gray-300 p-2 text-left">Icons</th>
-              <th className="border border-gray-300 p-2 text-left">Status</th>
+              <th className="border border-gray-300 p-2 text-left">
+                Thumbnail
+              </th>
+              <th className="border border-gray-300 p-2 text-left">Title</th>
+              <th className="border border-gray-300 p-2 text-left">
+                Description
+              </th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -229,7 +246,7 @@ const Amenities = () => {
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
                 <td colSpan={4}>
-                  <div className="text-center py-4">
+                  <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
                 </td>
@@ -238,44 +255,37 @@ const Amenities = () => {
               <>
                 {data && Array.isArray(data) && data.length > 0 ? (
                   data.map((item) => (
-                    <tr key={item.id} className="border-b">
-                      <td className="py-2 px-4">{item.title}</td>
+                    <tr className="border-b">
                       <td className="py-2 px-4">
-                        <div className="thumb icon bg-primary p-2 rounded">
-                          <img src={item.icons} alt="" className="img-fluid" />
-                        </div>
-                      </td>
-                      <td className="py-2 px-4">
-                        <CustomDropdown
-                          className="border rounded px-3 py-2 w-full"
-                          defaultVal={item.status}
-                          options={statusOptions}
-                          onSelect={(selectedValue) =>
-                            handleStatusSelect(selectedValue, item.id)
-                          }
+                        <img
+                          src={CONFIG.VITE_APP_STORAGE + item.image}
+                          className="w-[80px] h-[80px] object-contain border"
+                          alt={item.name}
                         />
                       </td>
-                      <td className="py-2 px-4 ">
+                      <td className="py-2 px-4">{item.name}</td>
+                      <td className="py-2 px-4">{item.short_description}</td>
+                      <td className="py-2 px-4 flex gap-2">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <AiOutlineEdit size={22} />
+                          <FaEdit />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin6Line size={18} className="text-red-500" />
+                          <RiDeleteBin5Fill />
                         </button>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4">
+                    <td colSpan="5">
                       <h5 className="no_record text-center py-4">
-                        No Amenities Found!
+                        No Data Found!
                       </h5>
                     </td>
                   </tr>
@@ -285,13 +295,13 @@ const Amenities = () => {
           </tbody>
         </table>
 
-        {!isLoadingTableData && data && (
+        {!isLoadingTableData && data ? (
           <Pagination
             currentPage={currentPage}
             totalPages={lastPage}
             onPageChange={handlePageChange}
           />
-        )}
+        ) : null}
       </div>
 
       {showAddSidebar && (
@@ -299,41 +309,58 @@ const Amenities = () => {
           <SidebarPortal className="portal">
             <SideModal
               onCancel={cancelHandler}
-              onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}
+              onSubmit={enableEdit ? updateSubmitHandler : addSubmitHandler}
               isLoading={isSitebarFormButtonLoading}
             >
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Icon
+                    Select Thumbnail*
                   </label>
                   <input
                     ref={fileRef}
                     className="border rounded px-3 py-2 w-full"
                     type="file"
+                    placeholder="Enter Title"
                   />
+                  {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
                   {errors.image && (
                     <span className="text-red-500">{errors.image}</span>
-                  )}
-                  {showEditEnableImage && (
-                    <img src={showEditEnableImage} width="100" />
                   )}
                 </div>
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Title
+                    Title*
                   </label>
                   <input
                     ref={titleRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Amenity Title"
+                    placeholder="Enter Title"
                   />
-                  {errors.title && (
-                    <span className="text-red-500">{errors.title}</span>
+                  {errors.name && (
+                    <span className="text-red-500">
+                      {errors.name && "The Title field is required"}
+                    </span>
                   )}
                 </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Description*
+                  </label>
+                  <input
+                    ref={descriptionRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Description"
+                  />
+                  {errors.short_description && (
+                    <span className="text-red-500">The Description field is required</span>
+                  )}
+                </div>
+
               </form>
             </SideModal>
           </SidebarPortal>
@@ -344,4 +371,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default EsgSocial;
