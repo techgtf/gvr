@@ -12,7 +12,7 @@ export default function HomeLoan() {
 
     // Handle Loading and Errors
     if (pageDataLoading) return <Loader />;
-    if (pageDataError) return <p className="text-red-500">Error loading Banner: {pageDataError}</p>;
+    if (pageDataError) return <p className="text-red-500">Error loading Home Loan Banner: {pageDataError}</p>;
 
     // 🔹 Extract Banner Data Safely
     const extractPageData = (pageData) => {
@@ -29,6 +29,8 @@ export default function HomeLoan() {
     };
     
     const { banner, overview } = extractPageData(pageData);
+
+    console.log(overview,"overview home loan");
     return (
         <>
             <Helmet>
