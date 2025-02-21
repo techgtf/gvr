@@ -74,19 +74,6 @@ import EsgGallery from "../admin/components/esg/gallery/Index";
 
 export const AdminRoutes = [
   {
-    path: `${ADMIN_ROOT}`,
-    // element:<AdminLayout />,
-    element: (
-      <ProtectedRoute>
-        <AdminLayout>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Dashboard />
-          </Suspense>
-        </AdminLayout>
-      </ProtectedRoute>
-    ),
-  },
-  {
     path: `${ADMIN_ROOT}login`,
     // element:<AdminLayout />,
     element: (
@@ -711,6 +698,19 @@ export const AdminRoutes = [
           <Faqs />
         </Suspense>
       </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}`,
+    // element:<AdminLayout />,
+    element: (
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
 ];
