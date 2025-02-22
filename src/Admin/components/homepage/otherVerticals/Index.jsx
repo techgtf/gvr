@@ -158,7 +158,7 @@ const OtherVerticals = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/verticals/?search=" + search + "&page=" + currentPage,
+      "admin/verticals?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -252,7 +252,7 @@ const OtherVerticals = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={7}>
+                <td colSpan={6}>
                   <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
