@@ -162,7 +162,7 @@ function News() {
                         </FadeIn>
                     </div>
                     <div className="online bg-white px-[34px] ">
-                       {onlineNews && onlineNews.length > 0 ? onlineNews.map((item, i)=> <div key={i} className="news grid grid-cols-12 gap-8  py-[34px] border-b border-gray-300">
+                       {onlineNews && onlineNews.length > 0 ? onlineNews.map((item, i)=> <div key={i} className="news grid grid-cols-12 lg:gap-8  py-[34px] border-b border-gray-300">
                             {/* Image */}
                             <div className="newsImg col-span-12 lg:col-span-4 px-4 flex items-center justify-center bg-[#EFF5FA]">
                                 <img src={item?.logo} alt={item?.alt} className="w-[150px] " />
@@ -170,7 +170,7 @@ function News() {
                             {/* Text Content */}
                             {/*  */}
                             {/*  */}
-                            <div className="details col-span-12 lg:col-span-8">
+                            <div className="details col-span-12 lg:col-span-8 mt-4 lg:mt-0">
                                 <div className={`heading   py-2 text-[10px] leading-[3]  uppercase ${item?.lang === 'hindi' ? 'hind-regular tracking-[2.5px]' : 'midlandfontmedium tracking-[3.5px]'}`}>{item?.heading}</div>
 
                                 <div className="date  pb-3 text-primary">{item?.date}</div>
