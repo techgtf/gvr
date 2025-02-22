@@ -194,10 +194,8 @@ class TimelineImageController extends Controller
             $path = $request->file('image')->storeAs('timeline', $name, 'public');
             $getrecord->image=$path;
         }
-        $getrecord->title=$request->title;
-        $getrecord->year=$request->year;
-        $getrecord->location=$request->location;
 
+        $getrecord->year=$request->year;
 
         if($getrecord->save()){
             return response()->json([
