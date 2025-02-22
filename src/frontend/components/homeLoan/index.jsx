@@ -40,7 +40,7 @@ export default function Index() {
                                 data.content ? data.content.map((text, contentIndex) => (
                                     <SlideIn duration={2} delay={0.7}>
                                         <p
-                                            className='w-full lg:text-justify text-center lg:tracking-[1px] tracking-[0]'
+                                            className='w-full lg:text-justify text-center common_pera'
                                             key={`${index}-${contentIndex}`}
                                         >{text}</p>
                                     </SlideIn>

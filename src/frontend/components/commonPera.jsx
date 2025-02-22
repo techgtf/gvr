@@ -6,7 +6,7 @@ export default function commonPera({
   PeraText = "",
 }) {
   return (
-    <TagName className={`common_pera ${PeraClass}`}>
+    <TagName className={`common_pera text-[#141414] ${PeraClass}`}>
       {PeraText || "Great Value Realty"}
     </TagName>
   );

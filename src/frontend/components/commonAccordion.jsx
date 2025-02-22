@@ -14,7 +14,7 @@ const CommonAccordion = ({ data, extraClass }) => {
 
     return (
         <div className={`w-full max-w-[1000px] mx-auto lg:p-0 p-[15px] ${extraClass}`}>
-            <SlideIn duration={2} delay={0.7}>
+            <SlideIn duration={0} delay={0.9}>
                 {data && (
                     data.map((item, index) => (
                         <div key={index} className="lg:px-[40px] lg:py-[30px] p-[18px] bg-white mb-4 rounded-[10px]">
@@ -22,7 +22,7 @@ const CommonAccordion = ({ data, extraClass }) => {
                                 onClick={() => toggleAccordion(index)}
                                 className={`w-full cursor-pointer flex justify-between items-center text-left font-medium transition duration-200 ${openIndex === index ? "lg:pb-5 pb-0" : ""}`}
                             >
-                                <span className="cursor-pointer lg:text-[14px] text-[13px] lg:tracking-[2px] capitalize">{item.title}</span>
+                                <span className="cursor-pointer lg:text-[14px] text-[13px] lg:tracking-[1px] capitalize">{item.title}</span>
                                 {openIndex === index ? <FiMinus className="text-xl cursor-pointer" /> : <FiPlus className="text-xl cursor-pointer" />}
                             </button>
 
@@ -34,7 +34,7 @@ const CommonAccordion = ({ data, extraClass }) => {
                                     overflow: "hidden",
                                 }}
                             >
-                                <div className="text-gray-700 pt-4 text-justify">{item.content}</div>
+                                <div className="text-gray-700 pt-4 text-justify common_pera">{item.content}</div>
                             </div>
                         </div>
                     ))

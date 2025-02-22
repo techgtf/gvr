@@ -25,10 +25,7 @@ const OurVerticals = () => {
               GV FINANCE
             </h2>
             <p
-              className="my-[1rem] 
-            text-justify
-            text-[13px] xl:!mt-[2.7rem] poppins-regular text-black font-[300]"
-            >
+              className="my-[1rem] text-justify xl:!mt-[2.7rem] common_pera">
               GV Finance delivers tailored financial solutions that empower
               businesses and individuals to optimize cash flow, secure
               investments, and scale with confidence. From structured lending to
@@ -51,7 +48,7 @@ const OurVerticals = () => {
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px] text-justify  poppins-regular">
+                  <p className="common_pera text-justify">
                     GV Finance delivers tailored financial solutions that
                     empower businesses and individuals to optimize cash flow,
                     secure investments.
@@ -96,7 +93,7 @@ const OurVerticals = () => {
             <h2 className="sectionHeading xl:text-left mt-[2rem]  text-[14px] text-center  tracking-[4px] xl:!text-[16px] midlandfontmedium text-primary">
               GV CAPITAL
             </h2>
-            <p className="my-[1rem] text-justify text-[13px] !mt-[2.7rem] poppins-regular text-black font-[300]">
+            <p className="my-[1rem] text-justify !mt-[2.7rem] common_pera">
               GV Capital fuels high-potential businesses with strategic
               investments, empowering visionary entrepreneurs to scale and
               innovate. Beyond funding, we provide deep industry insights,
@@ -118,7 +115,7 @@ const OurVerticals = () => {
                   </span>
                 </h3>
                 <div className="basis-[65%]">
-                  <p className="text-[12px] text-justify poppins-regular">
+                  <p className="common_pera text-justify">
                     GV Capital fuels high-potential businesses with strategic
                     investments.
                   </p>
