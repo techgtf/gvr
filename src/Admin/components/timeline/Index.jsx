@@ -12,6 +12,9 @@ import ReactQuill from "react-quill";
 import { Link, useAsyncError } from "react-router-dom";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const statusOptions = [
   { label: "Active", value: "1" },
   { label: "Hide", value: "0" },
@@ -249,9 +252,9 @@ const Timeline = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">
+              {/* <th className="border border-gray-300 p-2 text-left">
                 Thumbnail
-              </th>
+              </th> */}
               <th className="border border-gray-300 p-2 text-left">Title</th>
               <th className="border border-gray-300 p-2 text-left">Year</th>
               <th className="border border-gray-300 p-2 text-left">Location</th>
@@ -262,7 +265,7 @@ const Timeline = () => {
           <tbody>
             {isLoadingTableData && (
               <tr className="border-b border-gray-200">
-                <td colSpan={6}>
+                <td colSpan={4}>
                   <div className="text-center">
                     <ScaleLoader color="#ddd" className="w-100" />
                   </div>
@@ -273,12 +276,12 @@ const Timeline = () => {
             {!isLoadingTableData && data.length
               ? data.map((item) => (
                   <tr key={item.id} className="border-b border-gray-200">
-                    <td>
+                    {/* <td>
                       <img
                         className="img-fluid w-[100px] border"
                         src={CONFIG.VITE_APP_STORAGE + item.image}
                       />
-                    </td>
+                    </td> */}
                     <td>{item.title}</td>
                     <td>{item.year}</td>
                     <td>{item.location}</td>
@@ -288,22 +291,14 @@ const Timeline = () => {
                         className="btn action_btn"
                         to={CONFIG.ADMIN_ROOT + "timeline/edit/" + item.id}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
-                          alt="edit icon"
-                          className="img-fluid icon"
-                        />
+                        <AiOutlineEdit size={22} />
                       </Link>
 
                       <button
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/delete_color.svg"}
-                          alt="delete icon"
-                          className="img-fluid icon delete"
-                        />
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
                       </button>
                     </td>
                   </tr>

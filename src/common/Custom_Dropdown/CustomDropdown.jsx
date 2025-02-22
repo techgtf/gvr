@@ -7,6 +7,7 @@ const CustomDropdown = (props) => {
   const className = props.className;
   const defaultVal = props.defaultVal;
   const disabled = props.disabled;
+  const selectedValue = props.select
 
   const handleSelect = (event) => {
     const selectedValue = event.target.value;
@@ -17,7 +18,7 @@ const CustomDropdown = (props) => {
     <>
       <select
         className={className}
-        value={defaultVal}
+        value={selectedValue}
         name="optionName"
         onChange={handleSelect}
       >
