@@ -57,7 +57,7 @@ const OurTeam = () => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           OUR TEAM
         </h3>
-        <p className="text-black xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
+        <p className="common_pera xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
           Built on trust, driven by value, and inspired by emotion, we are
           dedicated to crafting spaces that feel like home and investments that
           stand the test of time.

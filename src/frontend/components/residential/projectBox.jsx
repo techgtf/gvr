@@ -40,20 +40,20 @@ export default function ProjectBox({ projectsData }) {
                             </div>
                             <div className='content_side lg:pl-[50px] odd:pl-0 lg:w-[37%] w-full lg:pt-5 pt-[30px] grid lg:justify-between items-center lg:text-left lg:gap-0 gap-[20px]'>
                                 <div className='top_div'>
-                                    <div className='pro_name midlandfontmedium lg:tracking-[7px] tracking-[5px] uppercase lg:text-[18px] text-[11px] lg:mb-[45px] mb-[20px]'>{data?.name}</div>
-                                    <div className='pro_name midlandfontmedium tracking-[4px] uppercase lg:text-[11px] text-[8px]'>{data?.location}</div>
+                                    <div className='pro_name midlandfontmedium lg:tracking-[7px] tracking-[5px] uppercase lg:text-[15px] text-[11px] lg:mb-[45px] mb-[20px]'>{data?.name}</div>
+                                    <div className='pro_name midlandfontmedium tracking-[4px] uppercase lg:text-[10px] text-[8px]'>{data?.location}</div>
                                 </div>
 
                                 <SlideIn duration={1} delay={0.5}>
                                     <div className='bottom_div'>
                                         <span className='typology lg:text-[16px] text-[13px] tracking-[1px] uppercase block lg:mb-[25px] mb-[10px]'>{data?.typology}</span>
-                                        <p className='overview text-[#000000B2] tracking-[1px] text-justify'>{isMobile ? data?.overview.slice(0, 160) + "..." : data?.overview}</p>
+                                        <p className='overview text-[#000000B2] common_pera text-justify'>{isMobile ? data?.overview.slice(0, 160) + "..." : data?.overview}</p>
                                     </div>
                                 </SlideIn>
 
                                 <Link
                                     to={`${data?.pageLink}`}
-                                    className='lg:block lg:mt-0 mt-[12px] px-6 py-[8px] lg:text-[16px] tracking-[2px] rounded-sm uppercase border text-[#33638b] border-[#33638b] hover:border-[#000] hover:text-[#000] w-fit'
+                                    className='lg:block lg:mt-0 mt-[12px] px-5 py-[7px] lg:text-[14px] tracking-[1.5px] rounded-sm uppercase border text-[#33638b] border-[#33638b] hover:border-[#000] hover:text-[#000] w-fit'
                                 >view project</Link>
 
 

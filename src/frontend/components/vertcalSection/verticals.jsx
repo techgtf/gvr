@@ -34,7 +34,7 @@ export default function Verticals() {
 
     return (
         <div className='verticalSection bg-[#EFF5FA] 2xl:py-[85px] xl:py-[75px] py-[50px] text-center lg:mt-0 mt-[50px]'>
-            <div className='section_in 2xl:max-w-[80%] m-auto max-w-[100%]'>
+            <div className='section_in xl:max-w-[80%] m-auto max-w-[100%]'>
                 <WaterMarkHeading
                     // sectionHeading='Building Futures, Financing Dreams, Beyond Real Estate'
                     sectionHeading='Others Verticals'

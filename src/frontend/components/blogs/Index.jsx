@@ -24,7 +24,7 @@ const Index = ({ data }) => {
   const hasNextBlog = latestBlog.some((blog) => blog.id === currentId + 1);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:mt-[98px] lg:mb-[98px] mt-[0px] mb-[50px]  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[80px] lg:pb-[70px] mt-[0px] mb-[50px] px-0 sm:px-5 lg:px-8 xl:px-12">
       {/* Left side card */}
       <div className="lg:col-span-8">
         <div className="DetailsCard bg-[#EFF5FA] lg:p-[45px] p-[20px]">
@@ -45,35 +45,35 @@ const Index = ({ data }) => {
           </div>
 
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
-          <FadeIn SlideIn duration={1} delay={0.5}>
-            <h4 className=" md:mb-[30px]  mb-[20px] mt-4 text-[16px] text-[#143C5E] capitalize">
+          <FadeIn SlideIn duration={0} delay={0.5}>
+            <h4 className=" md:mb-[30px]  mb-[20px] mt-4 lg:leading-[30px] leading-[28px] text-[16px] text-[#143C5E] capitalize">
               {title}
             </h4>
           </FadeIn>
           {desc && (
             <>
-              <FadeIn SlideIn duration={1} delay={0.5}>
-                <p className="opacity-70 text-justify">{desc}</p>
+              <FadeIn SlideIn duration={0} delay={0.5}>
+                <p className="opacity-70 text-justify common_pera">{desc}</p>
               </FadeIn>
               <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
             </>
           )}
 
           {subtitles?.length > 0 && (
-            <FadeIn SlideIn duration={1} delay={0.5}>
+            <FadeIn SlideIn duration={0} delay={0.5}>
               {subtitles.map(({ title, description }, index) => (
                 <React.Fragment key={index}>
                   <h4 className="mb-4 mt-4 text-[14px] text-[#143C5E] capitalize">
                     {title}
                   </h4>
-                  <p className="opacity-70 text-justify">{description}</p>
+                  <p className="opacity-70 text-justify common_pera">{description}</p>
                 </React.Fragment>
               ))}
             </FadeIn>
           )}
 
           {/*  Fixed: Conditionally disable "Next" button */}
-          <FadeIn SlideIn duration={1} delay={0.5}>
+          <FadeIn SlideIn duration={0} delay={0.5}>
             <div className="flex justify-between">
               {/* Other content */}
               <button
@@ -92,7 +92,7 @@ const Index = ({ data }) => {
 
       {/* Right side list start*/}
       {/* latest blog start */}
-      <div className="lg:col-span-4">
+      <div className="lg:col-span-4 lg:px-0 px-5">
         <FadeIn duration={2} delay={0.6}>
           <CommonHeading
             HeadingText="Latest Blogs"
@@ -104,13 +104,13 @@ const Index = ({ data }) => {
           {latestBlog.map((item, index) => (
             <React.Fragment key={index}>
               <li  className="mt-3  last:mb-0  first:mt-0 last:mb-0">
-                <SlideIn SlideIn duration={1} delay={0.5}>
+                <SlideIn SlideIn duration={0} delay={0.5}>
                   <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}  state={{ blog: item}}>
                     <div className="ListCard">
-                      <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
+                      <h4 className="ListHeading font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[30px] leading-[27px] tracking-[0.4px] capitalize">
                         {item.title}
                       </h4>
-                      <p className="mt-[20px] mb-[20px] opacity-70 text-justify">
+                      <p className="mt-[20px] mb-[20px] opacity-70 text-justify common_pera">
                         {" "}
                         {item.desc?.length > 200
                           ? `${item.desc.slice(0, 200)}...`

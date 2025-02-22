@@ -32,7 +32,7 @@ export default function blogCard({blogData}) {
                             <Link className="blog_card_link block" to={`${BASE_ROOT}blog/${data.id}`} state={{ blog: data}}>
                                 <img className='cursor-pointer' src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/${data.mobileImg}`} alt={`${data.title}`} />
                                 <p className='cursor-pointer name mt-5 text-[#0061AB] xl:text-[17px] text-[14px] font-light lg:leading-[29px] leading-[25px]'> {data.title?.length > 100 ? `${data.title.slice(0, 90)}...` : data.title} </p>
-                                <div className={`cursor-pointer type uppercase text-right text-[#2b2b2b94] ${data.name?.length > 100 ? 'lg:mt-5 mt-10' : 'lg:mt-[5px]'} tracking-[1px]`}> {data.date} | {data.type}</div>
+                                <div className={`cursor-pointer type uppercase text-right text-[#141414] ${data.name?.length > 100 ? 'lg:mt-5 mt-10' : 'lg:mt-[5px]'} tracking-[1px]`}> {data.date} | {data.type}</div>
                             </Link>
                         </div>
                     )

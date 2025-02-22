@@ -302,7 +302,7 @@ const OurJourney = () => {
             <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
               {projects[selectedProjectIndex].project[0].category}
             </p>
-            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+            <p className="common_pera mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
               {projects[selectedProjectIndex].project[0].description}
             </p>
           </div>

@@ -98,7 +98,7 @@ const BlogList = () => {
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[80px] lg:pb-[70px] mt-[0px] pb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="lg:col-span-8">
         <SearchField  customClass={"block lg:hidden mt-[5px] mb-[20px]"} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -123,7 +123,7 @@ const BlogList = () => {
         {latestBlog.length > 0 ? (
           latestBlog.map((item, index) => (
             <li key={index} className="mt-5">
-            <SlideIn duration={1} delay={0.5}>
+            <SlideIn duration={0} delay={0.5}>
               <Link to={`${BASE_ROOT}blog/${item.id}`}  state={{blog : item}}>
                 <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-normal md:font-light leading-[20px] md:leading-[25px] lg:leading-[29px]">
                   {" "}
