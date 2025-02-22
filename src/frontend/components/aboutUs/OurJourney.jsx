@@ -183,11 +183,11 @@ const projects = [
   {
     year: 2022,
     images: ["2022-1.webp", "2022-2.webp", "2022-3.webp", "2022-4.webp"],
+    timelineImg: "2022-1.webp",
     project: [
       {
         year: 2022,
 
-        timelineImg: "2022-1.webp",
         category: "Office Property, Worli, Mumbai",
         description:
           "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
@@ -203,9 +203,9 @@ const projects = [
   {
     year: 2023,
     images: ["2023-1.webp", "2023-2.webp", "2023-3.webp", "2023-4.webp"],
+    timelineImg: "2023-1.webp",
     project: [
       {
-        timelineImg: "2023-1.webp",
         year: 2023,
 
         category: "Alternative Investment Fund (AIF)",
