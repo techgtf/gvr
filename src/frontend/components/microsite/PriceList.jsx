@@ -6,7 +6,6 @@ import { Context } from "../../context/context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
-import { IoCloseOutline } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,42 +13,44 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
   const { showEnquiryForm, openEnquiryForm } = useContext(Context);
   const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
-  const location = useLocation(); // ✅ Track route changes
+  const location = useLocation();
 
   useEffect(() => {
     if (!tableRef.current) return;
-
+  
     const tableElements = tableRef.current.querySelectorAll(".row_1");
-
+  
     if (tableElements.length === 0) {
       console.warn("⚠️ No table elements found for animation!");
       return;
     }
-
-    // ✅ Reset animation state before running new animation
-    gsap.set(tableElements, { opacity: 0, y: 50 });
-
-    const animation = gsap.to(tableElements, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: tableRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
+  
+    // ✅ Wrap GSAP animations in a requestAnimationFrame
+    requestAnimationFrame(() => {
+      gsap.set(tableElements, { opacity: 0, y: 50 });
+  
+      const animation = gsap.to(tableElements, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: tableRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+  
+      return () => {
+        animation.kill();
+        ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
+      };
     });
-
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
-    };
-  }, [location.pathname]); // ✅ Animation resets on route change
-
-  const handleTooltipToggle = (index) => {
-    setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
+  }, [location.pathname]); 
+  
+  // const handleTooltipToggle = (index) => {
+  //   setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
+  // };
 
   return (
     <>
@@ -76,7 +77,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                   <p>{item.price}</p>
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center">
-                  <button className="bg-transparent text-[#33638B] uppercase" disabled onClick={openEnquiryForm}>
+                  <button className="bg-transparent text-[#33638B] uppercase"  onClick={openEnquiryForm}>
                     SOLD OUT </button>
                 </div>
               </div>

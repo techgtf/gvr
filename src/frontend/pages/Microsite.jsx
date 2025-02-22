@@ -33,8 +33,13 @@ import aboutImg from "/assets/frontend/images/microsite/about.jpg"
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
 import school from "/assets/frontend/images/microsite/location/walkIcons/school.webp"
-import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.webp"
-import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.webp"
+import stadium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.webp"
+import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.webp"
+import store from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
+import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.webp"
+import college from "/assets/frontend/images/microsite/gv/location/icons/college.webp"
+import cafe from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
+import railway from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
 
 function Microsite() {
   const location = useLocation();
@@ -248,16 +253,24 @@ function Microsite() {
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
-          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
-          { image: school, text: 'Pathway School , Noida', time: '5 min' },
-          { image: musicschool, text: 'Oasis Noida', time: '10 min' },
-          { image: buildings, text: 'Greater Noida Expressway', time: '15 min' },
+          { image: store, text: 'Sector 104 Market', time: '4 min' },
+          { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
+          { image: school, text: 'Pathways School Noida', time: '5 min' },
+          { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
+          { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
+          { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
+          { image: mall, text: 'DLF Mall of India', time: '15 min' },
+          { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+          { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
+          { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
         ]}
         walkData={[
-          { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-          { image: school, text: 'Pathway School Noida', time: '10 min' },
-          { image: musicschool, text: 'Mayoor School of Music', time: '15 min' },
-          { image: buildings, text: 'Oasis Noida', time: '20 min' },
+          { image: mall, text: 'Starling Mall, Plot no 1A, Hazipur, Sector 104, Noida, Uttar Pradesh 201301', time: '8 min' },
+          { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
+          { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
+          { image: school, text: 'Pathways School Noida', time: '14 min' },
+          { image: store, text: 'Sector 104 Market', time: '15 min' },
+          { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
         ]}
         driveTabIcon={drive}
         driveTabActiveIcon={driveActive}

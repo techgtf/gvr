@@ -3,6 +3,7 @@ import FadeIn from "../../Animations/FadeIn";
 import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
 import { useImageReveal } from "../../useImageReveal";
+import CommonPera from '../../commonPera'
 
 function SocialDetails() {
     useImageReveal(".reveal")
@@ -62,11 +63,11 @@ function SocialDetails() {
                     {/* Social Content Mapping */}
                     <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.social.details.map((item, index) => (
-                            <div key={index} className="card max-w-sm overflow-hidden">
+                            <div key={index} className="card max-w-sm overflow-hidden reveal_cut_effect">
                                 <div className="relative group reveal">
                                     <img className="w-full" src={item.img} alt={item.title} />
                                     <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md text-center p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        {item.content}
+                                        <CommonPera PeraText={item.content} />
                                     </div>
                                 </div>
                                 <div className="py-4">
@@ -96,11 +97,11 @@ function SocialDetails() {
                     {/* Environment Content Mapping */}
                     <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.environment.details.map((item, index) => (
-                            <div key={index} className="card max-w-sm overflow-hidden">
+                            <div key={index} className="card max-w-sm overflow-hidden reveal_cut_effect">
                                 <div className="relative group reveal">
                                     <img className="w-full" src={item.img} alt={item.title} />
                                     <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md p-3 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        {item.content}
+                                        <CommonPera PeraText={item.content} />
                                     </div>
                                 </div>
                                 <div className="py-4">
@@ -123,15 +124,16 @@ function SocialDetails() {
                         </SlideIn>
                     </div>
 
-                  {tabData.governance.details.map((item, index) => (  <div key={index} className="card bg-white p-5">
+                    {tabData.governance.details.map((item, index) => (<div key={index} className="card bg-white p-5">
                         <div className="icon py-3 reveals">
                             <img src={item.img} alt={item.title} />
                         </div>
-                        <div className="heading text-[8px] py-4 tracking-[3.5px] leading-[3] midlandfontmedium uppercase">
-                        {item.title}
+                        <div className="heading w-[90%] text-[8px] py-4 tracking-[3.5px] leading-[3] midlandfontmedium uppercase">
+                            {item.title}
                         </div>
                         <SlideIn duration={0.8} delay={0.2}>
-                        <p className="desc py-4 text-justify">{item.content}</p>
+                            <p className="desc py-4 text-justify">
+                                 <CommonPera PeraText={item.content} /> </p>
                         </SlideIn>
                     </div>))}
                 </div>

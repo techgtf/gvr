@@ -34,8 +34,8 @@ import servant from "/assets/frontend/images/microsite/gv/amentities/icons/serva
 import { useLocation } from 'react-router-dom'
 
 import aboutImg from "/assets/frontend/images/microsite/gv/about/about.webp"
-import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
-import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+// import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+// import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
 
 // location drive and walk images 
 import school from "/assets/frontend/images/microsite/gv/location/icons/school.webp"

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useImageReveal } from '../useImageReveal';
 // import ZoomOut from '../Animations/ZoomOut';
 import SlideIn from '../Animations/SlideIn';
+import CommonPera from '../commonPera';
 
 export default function ProjectBox({ projectsData }) {
 

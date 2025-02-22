@@ -35,6 +35,7 @@ import ProperyInvestment from "../frontend/pages/PropertyInvestment";
 import MediaCenter from "../frontend/pages/MediaCenter";
 import NriInvestor from "../frontend/pages/NriInvestor";
 import SanctuaryMicrosite from "../frontend/pages/SanctuaryMicrosite";
+import Gallery from "../frontend/pages/Gallery";
 
 
 export const UserRoutes = [
@@ -320,6 +321,16 @@ export const UserRoutes = [
           // <Suspense fallback={<Loader />}>
             <Layout>
               <Faqs />
+            </Layout>
+          // </Suspense>
+        ),
+      },
+      {
+        path: `${BASE_ROOT}gallery`,
+        element: (
+          // <Suspense fallback={<Loader />}>
+            <Layout>
+              <Gallery />
             </Layout>
           // </Suspense>
         ),
