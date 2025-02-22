@@ -8,36 +8,19 @@ import SlideIn from "../Animations/SlideIn";
 import { LatestBlogContext } from "../../context/LatestBlogContext";
 import axios from "axios";
 import dayjs from "dayjs";
+import Loader from "../../../common/Loader/loader";
+import useFetchData from "../../apiHooks/useFetchData";
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState("");
    const { latestBlog } = useContext(LatestBlogContext);
 
-  const [blogs, setBlogs] = useState([]); // State to store blog data
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+   const { data: blogs, loading: logoLoading, error: logoError } = useFetchData("blogs");
+   // Handle Loading and Errors
+   if (logoLoading) return <Loader />;
+   if (logoError) return <p className="text-red-500">Error loading Home Loan Logos: {logoError}</p>;
 
-  useEffect(() => {
-    // Fetch blog data from the API when the component mounts
-    axios
-      .get(DATA_ASSET_URL + `blogs`) // API endpoint
-      .then((response) => {
-        setBlogs(response.data.data.data); // Set the fetched data to state
-        setLoading(false); // Set loading to false once data is fetched
-      })
-      .catch((error) => {
-        setError(error.message); // Set error message if the request fails
-        setLoading(false); // Set loading to false if there’s an error
-      });
-  }, []); // Empty dependency array means it runs once on component mount
 
-  if (loading) {
-    return <div>Loading...</div>; // Show loading message while fetching
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>; // Show error message if request fails
-  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">

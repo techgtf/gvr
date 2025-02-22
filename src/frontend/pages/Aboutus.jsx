@@ -49,7 +49,7 @@ const Aboutus = () => {
     const team = data?.["about-team"] || {};
     const journey = data?.["about-our-journey"] || {};
     const verticals = data?.["about-our-verticals"] || {};
-console.log(journey,"journey data")
+
 const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
   
   return (
