@@ -4,6 +4,8 @@ import { lazy } from "react";
 import { useImageReveal } from "../components/useImageReveal";
 import SlideIn from "../components/Animations/SlideIn";
 import { Slide } from "react-toastify";
+import CommonPera from "../components/commonPera";
+
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -26,7 +28,8 @@ const ProperyInvestment = () => {
             <h2 className="sectionHeading xl:mb-[37px] mb-[24px] tracking-[5px] text-black midlandfontmedium text-[14px]">
               Real Estate Investment In India
             </h2>
-            <p className="text-[#666] text-justify">
+            <CommonPera PeraText={"India's real estate sector has witnessed significant growth in recent years, emerging as a pivotal component of the nation's economy. In 2024, the market thrived with record office leases, robust residential sales, and substantial foreign investments. The industry's expansion is further underscored by projections indicating a market volume of approximately USD 51.54 trillion by 2029, reflecting a compound annual growth rate (CAGR) of 2.46% from 2025 to 2029.."} />
+            {/* <p className="text-[#666] text-justify">
               India's real estate sector has witnessed significant growth in
               recent years, emerging as a pivotal component of the nation's
               economy. In 2024, the market thrived with record office leases,
@@ -35,7 +38,7 @@ const ProperyInvestment = () => {
               indicating a market volume of approximately USD 51.54 trillion by
               2029, reflecting a compound annual growth rate (CAGR) of 2.46%
               from 2025 to 2029..
-            </p>
+            </p> */}
           </div>
           <img
             className="basis-[45%] reveal w-[400px] my-[37px] xl:mt-0"
@@ -54,11 +57,8 @@ const ProperyInvestment = () => {
           </SlideIn>
           <div className="relative">
             <SlideIn duration={2} delay={0.5}>
-              <p className="absolute top-[30px] xl:left-[7.5%] left-[8%] bg-[#EFF5FA] xl:px-[60px] px-[30px] py-[20px] w-[85%] text-center tracking-[4px] font-[300]">
-                The Delhi National Capital Region (NCR) has been a focal point
-                for real estate investments, with Noida standing out as a prime
-                destination due to its strategic location, infrastructure
-                development, and economic opportunities.
+              <p className="absolute top-[30px] xl:left-[7.5%] left-[8%] bg-[#EFF5FA] xl:px-[60px] px-[30px] py-[20px] w-[85%] text-center ">
+              <CommonPera PeraText={"The Delhi National Capital Region (NCR) has been a focal point for real estate investments, with Noida standing out as a prime destination due to its strategic location, infrastructure development, and economic opportunities."} />              
               </p>
             </SlideIn>
             <img
@@ -77,14 +77,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading xl:mb-[37px] mb-[24px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Real Estate Investment In India
               </h2>
-              <p className="text-[#666] text-justify">
-                Noida has experienced a substantial increase in housing prices.
-                Data from Anarock indicates that average housing prices along
-                the Noida Expressway rose by 66% over the past five years,
-                reaching Rs 8,400 per square foot as of September 2024. This
-                surge is attributed to enhanced connectivity and the
-                establishment of commercial hubs in the vicinity.
-              </p>
+              <CommonPera PeraText={"Noida has experienced a substantial increase in housing prices. Data from Anarock indicates that average housing prices along the Noida Expressway rose by 66% over the past five years, reaching Rs 8,400 per square foot as of September 2024. This surge is attributed to enhanced connectivity and the establishment of commercial hubs in the vicinity."} />             
             </SlideIn>
           </div>
           <img
@@ -111,13 +104,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading mb-[37px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Luxury Segment Expansion
               </h2>
-              <p className="text-[#666] text-justify">
-                The luxury housing segment in Noida has seen remarkable growth.
-                For instance, Sector 150 witnessed a 12% year-on-year increase
-                in monthly rentals for luxury properties in the first half of
-                2024. This trend reflects the rising demand for premium
-                residences equipped with modern amenities.
-              </p>
+              <CommonPera PeraText={"The luxury housing segment in Noida has seen remarkable growth. For instance, Sector 150 witnessed a 12% year-on-year increase in monthly rentals for luxury properties in the first half of 2024. This trend reflects the rising demand for premium residences equipped with modern amenities."} />                
             </SlideIn>
           </div>
         </div>
@@ -127,13 +114,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading mb-[37px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Infrastructure Development
               </h2>
-              <p className="text-[#666] text-justify">
-                Ongoing infrastructure projects, such as the development of the
-                Noida International Airport and the expansion of metro
-                connectivity, have significantly bolstered Noida's real estate
-                appeal. These developments are anticipated to further drive
-                property values and attract both investors and end-users.
-              </p>
+              <CommonPera PeraText={" Ongoing infrastructure projects, such as the development of the Noida International Airport and the expansion of metro connectivity, have significantly bolstered Noida's real estate appeal. These developments are anticipated to further drive property values and attract both investors and end-users."} />               
             </SlideIn>
           </div>
           <img
@@ -151,16 +132,7 @@ const ProperyInvestment = () => {
             <h3 className="sectionHeading mb-[37px] mt-[40px] tracking-[5px] text-black midlandfontmedium text-[14px]">
               Conclusion
             </h3>
-            <p className="text-[#666] text-justify">
-              The upward trajectory of India's real estate sector, particularly
-              in regions like Noida within the Delhi NCR, presents lucrative
-              opportunities for investors. Factors such as escalating property
-              prices, burgeoning demand in the luxury segment, and continuous
-              infrastructure advancements contribute to Noida's prominence as a
-              preferred investment hub. As the market evolves, stakeholders are
-              advised to stay informed and consider strategic investments to
-              capitalize on the region's growth potential.
-            </p>
+            <CommonPera PeraText={" The upward trajectory of India's real estate sector, particularly in regions like Noida within the Delhi NCR, presents lucrative opportunities for investors. Factors such as escalating property prices, burgeoning demand in the luxury segment, and continuous infrastructure advancements contribute to Noida's prominence as a preferred investment hub. As the market evolves, stakeholders are advised to stay informed and consider strategic investments to capitalize on the region's growth potential."} />           
           </SlideIn>
         </div>
       </section>

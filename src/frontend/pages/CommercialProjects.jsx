@@ -6,7 +6,6 @@ import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
 import FadeIn from "../components/Animations/FadeIn";
-import WaterMarkHeading from "../components/verticalWaterMarkHeading";
 import React, {
   useEffect,
   useLayoutEffect,
@@ -361,7 +360,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
       >
         <div className="absolute h-full flex items-center left-20 bottom-0"></div>
 
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-3">
           <div className="col-span-12 md:col-span-4">
             <FadeIn duration={2} delay={0.7}>
               <CommonHeading HeadingText={project.name} />
@@ -373,9 +372,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
           <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
             <div className="about_desc">
               <SlideIn duration={0.8} delay={0.2}>
-                <p className="text-justify text-[11px] font-[300] tracking-[2px]">
-                  {project.description}
-                </p>
+                 <CommonPera PeraText={project.description} />                
               </SlideIn>
             </div>
 

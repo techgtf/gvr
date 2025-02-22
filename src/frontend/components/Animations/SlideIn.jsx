@@ -25,7 +25,7 @@ const SlideIn = ({ children, duration = 1, delay = 0 }) => {
           start: "top 100%",
           end: "bottom 20%",
           toggleActions: "restart pause restart pause",
-          scrub: true,
+          scrub: false,
         },
       }
     );

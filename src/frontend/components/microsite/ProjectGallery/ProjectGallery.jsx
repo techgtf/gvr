@@ -46,7 +46,7 @@ function ProjectGallery({ actualImages, renderImages }) {
         <div className="slider mt-10">
         <SlideIn duration={2} delay={0.3}>
             {Array.from({ length: Math.ceil(imageData.length / 3) }).map((_, slideIndex) => (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div key={slideIndex} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {imageData
                     .slice(slideIndex * 3, slideIndex * 3 + 3)
                     .map((image, index) => (

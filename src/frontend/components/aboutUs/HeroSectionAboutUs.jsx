@@ -10,7 +10,7 @@ const HeroSectionAboutUs = ({
   alt,
 }) => {
   return (
-    <div className={`relative uppercase pages_banner`}>
+    <div className={`relative uppercase pages_banner overflow-hidden`}>
       <ZoomOut initialScale={1.3} duration={2}>
         {" "}
         <img

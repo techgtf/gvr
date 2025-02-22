@@ -9,7 +9,6 @@ import Specifications from '../components/microsite/HighlightsSpecifications/Spe
 import Plans from '../components/microsite/Plans';
 import LocationAdvantage from '../components/microsite/LocationAdvantage';
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery';
-
 import reflexology from "/assets/frontend/images/microsite/sanctuary/amentities/icons/reflexology.webp";
 import master_plan_img from "/assets/frontend/images/microsite/sanctuary/plans/masterplan.webp";
 import loaction from "/assets/frontend/images/microsite/sanctuary/location/location.webp";
@@ -20,7 +19,6 @@ import walkActive from "/assets/frontend/images/microsite/location/walkActive.we
 import gallery1 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery1.webp"
 import gallery2 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery2.webp"
 import gallery3 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery3.webp"
-import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.webp"
 import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.webp";
 import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.webp";
 import power from "/assets/frontend/images/microsite/sanctuary/amentities/icons/power.webp";
@@ -39,7 +37,6 @@ import buildings from "/assets/frontend/images/microsite/location/walkIcons/buil
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
 import road from "/assets/frontend/images/microsite/vilasa/amentities/icons/road.webp";
 
-
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -56,8 +53,7 @@ function SanctuaryMicrosite() {
         { name: "Power Backup", image: power },
         { name: "Gated community", image: guard },
         { name: "Car Parking", image: car },
-    ]
-
+    ];
 
     const masterPlanData = [
         { image: master_plan_img, alt: "Master Plan" },
@@ -144,6 +140,7 @@ function SanctuaryMicrosite() {
         { image: "assets/frontend/images/microsite/sanctuary/amentities/slider/slide8.webp", alt: "Car Parking" },
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
+
     return (
         <>
             <Helmet>

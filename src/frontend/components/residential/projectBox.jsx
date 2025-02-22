@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useImageReveal } from '../useImageReveal';
 // import ZoomOut from '../Animations/ZoomOut';
 import SlideIn from '../Animations/SlideIn';
+import CommonPera from '../commonPera';
 
 export default function ProjectBox({ projectsData }) {
 
@@ -47,7 +48,10 @@ export default function ProjectBox({ projectsData }) {
                                 <SlideIn duration={1} delay={0.5}>
                                     <div className='bottom_div'>
                                         <span className='typology lg:text-[16px] text-[13px] tracking-[1px] uppercase block lg:mb-[25px] mb-[10px]'>{data?.typology}</span>
-                                        <p className='overview text-[#000000B2] tracking-[1px] text-justify'>{isMobile ? data?.overview.slice(0, 160) + "..." : data?.overview}</p>
+                                        <p className='overview text-[#000000B2] tracking-[1px] text-justify'>
+                                        <CommonPera PeraText={isMobile ? data?.overview.slice(0, 160) + "..." : data?.overview} />
+                                            {/* {isMobile ? data?.overview.slice(0, 160) + "..." : data?.overview} */}
+                                            </p>
                                     </div>
                                 </SlideIn>
 
