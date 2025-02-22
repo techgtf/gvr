@@ -3,17 +3,17 @@ import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
 import SideModal from "../../Modal/SideModal/Index";
-import * as CONFIG from "../../../../../config";
 import { toast } from "react-toastify";
 import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 import Request from "../../../../config/Request";
+import * as CONFIG from "../../../../../config";
+
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 import "../../../assets/css/admin.css";
-
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
@@ -104,7 +104,7 @@ const EsgSocial = () => {
     formData.append("name", titleRef.current.value);
     formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/communities/", "POST", formData);
+    var response = await Request("admin/communities", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -117,7 +117,7 @@ const EsgSocial = () => {
     }
     setIsSitebarFormButtonLoading(false);
   };
-
+ 
   const editHandler = async (id) => {
     setShowSidebar(true);
     setShowAddSidebar(true);
@@ -157,7 +157,7 @@ const EsgSocial = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/communities/?search=" + search + "&page=" + currentPage,
+      "admin/communities?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -265,25 +265,25 @@ const EsgSocial = () => {
                       </td>
                       <td className="py-2 px-4">{item.name}</td>
                       <td className="py-2 px-4">{item.short_description}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5">
+                    <td colSpan="4">
                       <h5 className="no_record text-center py-4">
                         No Data Found!
                       </h5>
