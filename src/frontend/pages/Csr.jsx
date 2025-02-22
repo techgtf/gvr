@@ -5,22 +5,42 @@ import CareCommunities from '../components/CSR/CC/CareCommunities'
 import CharityInitiatives from '../components/CSR/CharityInitiatives/CharityInitiatives'
 import SocialDetails from '../components/CSR/SocialDetails/SocialDetails'
 import { Helmet } from 'react-helmet'
+import Loader from '../../common/Loader/loader'
+import useFetchData from '../apiHooks/useFetchData'
+import * as CONFIG from "../../../config";
 
 function Csr() {
+  const { data: pageData, loading: pageDataLoading, error: pageDataError } = useFetchData("page-sections", "6");
+
+  // 🔹 Extract Banner Data Safely
+  const extractPageData = (pageData) => {
+      if (!pageData) return { banner: { image: "", heading: "Default Heading" }, overview: {} };
+  
+      const pageValues = Object.values(pageData); 
+      return {
+          banner: {
+              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              heading: pageValues[0]?.heading || "Default Heading"
+          },
+          overview: pageValues[1] || {} 
+      };
+  };
+  
+  const { banner, overview } = extractPageData(pageData);
+  // Handle Loading and Errors
+  if (pageDataLoading) return <Loader />;
+  if (pageDataError) return <p className="text-red-500">Error loading ESG Banner: {pageDataError}</p>;
+
   return (
     <>
       <Helmet>
         <title>Great Value Realty | CSR</title>
       </Helmet>
-      <HeroSection />
+      <HeroSection data={banner}/>
 
       <OverviewSection
-        heading={
-          "Building a Future Where Sustainability, Community, and Integrity Thrive"
-        }
-        paragraph={
-          "At Great Value Realty, we create spaces that go beyond walls and structures to shape a world where progress is rooted in responsibility. Our commitment to environmental stewardship ensures that every project embraces sustainable practices for a healthier planet. By investing in social initiatives, we empower communities through education, healthcare, and inclusivity. Strong governance policies drive our ethical foundation, fostering transparency, accountability, and long-term trust. Every development reflects a vision where business growth, community well-being, and environmental consciousness come together to build a future that is both dynamic and sustainable."
-        }
+        heading={overview.heading}
+        paragraph={overview.description}
         showKnowMore={false}
       />
       <SocialDetails />
