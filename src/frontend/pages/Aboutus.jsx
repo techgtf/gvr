@@ -61,7 +61,6 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
     {banner && 
       <HeroSectionAboutUs
         img={`${CONFIG.VITE_APP_STORAGE}${banner.image}`}
-        // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
         heading={"ABOUT US"}
         extraClassesImg={"objectRight"}
       />}
