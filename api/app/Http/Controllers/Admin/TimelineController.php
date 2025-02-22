@@ -345,12 +345,21 @@ class TimelineController extends Controller
     public function distinctYear ()
     {
         $years = Timeline::distinct()->pluck('year');
+
+        $selectOption = [];
+        foreach ($years as $key => $value) {
+            $selectOption[] = [
+                'label' => $value,
+                'value' => $value
+            ];
+        }
+
         if($years) {
             return response()->json([
                 'status' => true,
                 'statusCode' => 200,
                 'message' => 'Get all years',
-                'data' => $years
+                'data' => $selectOption
             ]);
         }
 
