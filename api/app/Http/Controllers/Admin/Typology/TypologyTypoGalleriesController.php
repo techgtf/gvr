@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin\Typology;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Admin\Typology\TypologySubTypology;
+use App\Models\Admin\Typology\TypologyTypoGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
-class TypologySubTypologyController extends Controller
+class TypologyTypoGalleriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,6 @@ class TypologySubTypologyController extends Controller
      */
     public function index(Request $request)
     {
-        //
 
         $validator = Validator::make($request->all(), 
             [
@@ -54,9 +53,6 @@ class TypologySubTypologyController extends Controller
         $data->where('sub_typologies.typology', 'like', '%' . $request->search . '%');
     }       
     
-    // Debugging
-    // dd($data->toSql()); // This will print the SQL query
-    
     $result = $data->paginate($perPage, ['*'], 'page', $page);
     return response()->json([
         'status' => true,
@@ -89,20 +85,20 @@ class TypologySubTypologyController extends Controller
         
         $validator = Validator::make($request->all(), 
         [
-            'sub_typologies_id' => 'required|exists:sub_typologies,id',
+            'galleries_id' => 'required|exists:sub_typologies,id',
             'typologies_id' => [
                 'required',
-                Rule::unique('typology_sub_typologies')
+                Rule::unique('typology_typo_galleries')
                     ->where(function ($query) use ($request) {
                         $query->where('typologies_id', $request->typologies_id)
-                            ->where('sub_typologies_id', $request->sub_typologies_id)
+                            ->where('galleries_id', $request->galleries_id)
                             ->WhereNull('deleted_at'); // Include soft-deleted records
                     })
             ],
         ],
         [
-            'sub_typologies_id.required' => 'This field is required.',
-            'sub_typologies_id.exists' => 'The selected category does not exist.',
+            'galleries_id.required' => 'This field is required.',
+            'galleries_id.exists' => 'The selected id does not exist.',
 
             'typologies_id.required' => 'This field is required.',
             'typologies_id.exists' => 'The selected typology does not exist.',
@@ -125,9 +121,9 @@ class TypologySubTypologyController extends Controller
 
         try{
 
-            $record = TypologySubTypology::withTrashed()
+            $record = TypologyTypoGallery::withTrashed()
             ->where('typologies_id', $request->typologies_id)
-            ->where('sub_typologies_id', $request->sub_typologies_id)
+            ->where('galleries_id', $request->galleries_id)
             ->first();
 
 
@@ -135,9 +131,9 @@ class TypologySubTypologyController extends Controller
 
 
             if (!$record) {
-                $categorie = new TypologySubTypology();
+                $categorie = new TypologyTypoGallery();
                 $categorie->typologies_id = $request->typologies_id;
-                $categorie->sub_typologies_id = $request->sub_typologies_id;
+                $categorie->galleries_id = $request->galleries_id;
                 if($categorie->save()){           
                     return response()->json([
                         'status' => true,
@@ -192,10 +188,9 @@ class TypologySubTypologyController extends Controller
     public function show($id)
     {
     
-        $data=TypologySubTypology::with('typologies','subtypology')->find($id);
+        $data = TypologyTypoGallery::with('typologies','subtypology')->find($id);
        
       try {
-      
 
         if($data){
             return response()->json([
@@ -245,19 +240,19 @@ class TypologySubTypologyController extends Controller
        
         $validator = Validator::make($request->all(), 
         [
-            'sub_typologies_id' => 'required|exists:sub_typologies,id',
+            'galleries_id' => 'required|exists:typologies_galleries,id',
             'typologies_id' => [
                 'required',
-                Rule::unique('typology_sub_typologies')->where(function ($query) use ($request) {
+                Rule::unique('typology_typo_galleries')->where(function ($query) use ($request) {
                     return $query->where('typologies_id', $request->typologies_id)
-                                 ->where('sub_typologies_id', $request->sub_typologies_id);
+                    ->where('galleries_id', $request->galleries_id);
                 })
             ],
 
         ],
         [
-            'sub_typologies_id.required' => 'This field is required.',
-            'sub_typologies_id.exists' => 'The selected category does not exist.',
+            'galleries_id.required' => 'This field is required.',
+            'galleries_id.exists' => 'The selected id does not exist.',
 
             'typologies_id.required' => 'This field is required.',
             'typologies_id.exists' => 'The selected typology does not exist.',
@@ -274,7 +269,7 @@ class TypologySubTypologyController extends Controller
                 'errors'=>$validator->errors()->toArray()
             ]);
         }
-        $getrecord=TypologySubTypology::find($id);
+        $getrecord = TypologyTypoGallery::find($id);
        
         if(!$getrecord){
             return response()->json([
@@ -285,7 +280,7 @@ class TypologySubTypologyController extends Controller
         }
 
       
-        $getrecord->sub_typologies_id=$request->sub_typologies_id;
+        $getrecord->galleries_id=$request->galleries_id;
         $getrecord->typologies_id=$request->typologies_id;
 
         if($getrecord->save()){
@@ -313,12 +308,9 @@ class TypologySubTypologyController extends Controller
      */
     public function destroy($id)
     {
-        //
-       
-    
-        $data=TypologySubTypology::find($id);
-     
-        
+
+        $data = TypologyTypoGallery::find($id);
+
         if(!$data){
             return response()->json([
                 'status'=>false,
@@ -349,85 +341,73 @@ class TypologySubTypologyController extends Controller
 
     }
 
-    public function getAllSubtyplogyByTypology($id)
+    public function getAllgalleriesByTypology($id)
     {
-        //
+      
+        $data = DB::table('typology_typo_galleries')
+        ->join('typologies', 'typology_typo_galleries.typologies_id', '=', 'typologies.id')
+        ->join('typologies_galleries', 'typology_typo_galleries.galleries_id', '=', 'typologies_galleries.id')
+        ->select('typology_typo_galleries.id','typologies.typology','typologies_galleries.file as file','typologies_galleries.id as galleries_id')
+        ->where('typology_typo_galleries.typologies_id', $id)
+        ->whereNull('typology_typo_galleries.deleted_at');
 
-    
-
-   
-
-    $data = DB::table('typology_sub_typologies')
-        ->join('typologies', 'typology_sub_typologies.typologies_id', '=', 'typologies.id')
-        ->join('sub_typologies', 'typology_sub_typologies.sub_typologies_id', '=', 'sub_typologies.id')
-        ->select('typology_sub_typologies.id','typologies.typology','sub_typologies.typology as sub_typology','sub_typologies.id as sub_typologies_id')
-        ->where('typology_sub_typologies.typologies_id', $id)
-        ->whereNull('typology_sub_typologies.deleted_at');
-     
-    
-    // Debugging
-    // dd($data->toSql()); // This will print the SQL query
-    
-    $result = $data->get();
-    return response()->json([
-        'status' => true,
-        'statusCode' => 200,
-        'message' => "Success ",
-        'data' => $result
-    ]);
+        
+        $result = $data->get();
+        return response()->json([
+            'status' => true,
+            'statusCode' => 200,
+            'message' => "Success ",
+            'data' => $result
+        ]);
     
     }
 
     public function allindex(Request $request)
     {
-        //
-
+        
         $validator = Validator::make($request->all(), 
         [
-            'typologies_id' => 'required|exists:typologies,id', 
+                'typologies_id' => 'required|exists:typologies,id', 
         ],
         [
             'typologies_id.required' => 'This field is required.',
             'typologies_id.exists' => 'Invalid typology.',
-        ]
-        );
-
-    if($validator->fails()){
-
-        return response()->json([
-            'status' => true,
-            'statusCode' => 403,
-            'message' => $validator->errors(),
         ]);
 
+        if($validator->fails()){
+
+            return response()->json([
+                'status' => true,
+                'statusCode' => 403,
+                'message' => $validator->errors(),
+            ]);
+
+        }
+
+        $typologies_id = $request->typologies_id;
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1); 
+        $data = DB::table('typology_sub_typologies')
+            ->join('typologies', 'typology_sub_typologies.typologies_id', '=', 'typologies.id')
+            ->join('sub_typologies', 'typology_sub_typologies.sub_typologies_id', '=', 'sub_typologies.id')
+            ->select('typology_sub_typologies.id','typologies.typology','sub_typologies.typology as sub_typology','sub_typologies.id as sub_typologies_id')
+            ->where('typology_sub_typologies.typologies_id', $typologies_id)
+            ->whereNull('typology_sub_typologies.deleted_at');
+        
+        if(!empty($request->search)){
+            $data->where('sub_typologies.typology', 'like', '%' . $request->search . '%');
+        }       
+    
+        // Debugging
+        // dd($data->toSql()); // This will print the SQL query
+        
+        $result = $data->get();
+        return response()->json([
+            'status' => true,
+            'statusCode' => 200,
+            'message' => "Success ",
+            'data' => $result
+        ]);
+    
     }
-    $typologies_id = $request->typologies_id;
-    $perPage = $request->input('per_page', 10);
-    $page = $request->input('page', 1); 
-    $data = DB::table('typology_sub_typologies')
-        ->join('typologies', 'typology_sub_typologies.typologies_id', '=', 'typologies.id')
-        ->join('sub_typologies', 'typology_sub_typologies.sub_typologies_id', '=', 'sub_typologies.id')
-        ->select('typology_sub_typologies.id','typologies.typology','sub_typologies.typology as sub_typology','sub_typologies.id as sub_typologies_id')
-        ->where('typology_sub_typologies.typologies_id', $typologies_id)
-        ->whereNull('typology_sub_typologies.deleted_at');
-    
-    if(!empty($request->search)){
-        $data->where('sub_typologies.typology', 'like', '%' . $request->search . '%');
-    }       
-    
-    // Debugging
-    // dd($data->toSql()); // This will print the SQL query
-    
-    $result = $data->get();
-    return response()->json([
-        'status' => true,
-        'statusCode' => 200,
-        'message' => "Success ",
-        'data' => $result
-    ]);
-    
-    }
-
-
-
 }
