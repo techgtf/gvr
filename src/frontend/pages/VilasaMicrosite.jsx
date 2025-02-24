@@ -173,13 +173,13 @@ function VilasaMicrosite() {
                     "alternateName": "Great Value Realty Vilasa",
                     "url": "https://greatvaluerealty.com/vilasa",
                     "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint": {
+                    "contactPoint":[ {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                    }]`}
                 </script>
             </Helmet>
             <HeroSection

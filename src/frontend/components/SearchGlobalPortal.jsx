@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { BASE_ROOT } from '../../../config';
 
 const defaultResults = [
-    { text: 'sharnam', pageLink: "sharanam" },
+    { text: 'sharanam', pageLink: "sharanam" },
     { text: 'Anandam', pageLink: "anandam" },
     { text: 'Gv Homez', pageLink: "gv-homes" },
     { text: 'VILASA', pageLink: "vilasa" },

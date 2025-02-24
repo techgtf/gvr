@@ -10,7 +10,7 @@ const OverviewSection = lazy(() => import("../components/overviewSection/overvie
 export default function Residential() {
   const projectsData = [
     {
-      name: "sharnam",
+      name: "sharanam",
       imgSrc: "sharnam.webp",
       imgSm: "sharnam-sm.webp",
       location: "Sec 107, Noida",
@@ -25,7 +25,7 @@ export default function Residential() {
       imgSm: "anandam-sm.webp",
       location: "Sec 107, Noida",
       typology: "2, 3 & 4 BHK Luxury Residential Apartments",
-      overview: "Great Value Sharnam proved to be a landmark and continuing the legacy of delivering success, we gladly unveil our newest and the most elegant piece of art to be ever built-Great Value Anandam, situated in the heart of luxury, sector 107, Noida. This project depicts sheer elegance. It breathes opulence and makes conveniences a readily available resource, with everything that you can ever imagine available so promptly. Great Value Anandam is the example of true magnificence, suited seamlessly to blue bloods.",
+      overview: "Great Value Sharanam proved to be a landmark and continuing the legacy of delivering success, we gladly unveil our newest and the most elegant piece of art to be ever built-Great Value Anandam, situated in the heart of luxury, sector 107, Noida. This project depicts sheer elegance. It breathes opulence and makes conveniences a readily available resource, with everything that you can ever imagine available so promptly. Great Value Anandam is the example of true magnificence, suited seamlessly to blue bloods.",
       pageLink: `${CONFIG.BASE_ROOT}anandam`,
       alt: "Anandam Sector 107 Noida"
     },

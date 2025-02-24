@@ -13,7 +13,7 @@ export default function FooterLinks({ toggelLinks }) {
             <li>
               <div className="heading-div  midlandfontmedium text-[8px] tracking-[4px] mb-5">Residential</div>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}casa-uday`}>CASA UDAY</Link>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sharanam`}>Sharnam</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sharanam`}>Sharanam</Link>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}anandam`}>Anandam</Link>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sanctuary`}>Sanctuary 105</Link>
               <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}residential`}>Residential</Link>
