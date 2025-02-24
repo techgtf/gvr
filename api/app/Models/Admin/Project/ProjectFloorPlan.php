@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ProjectFloorPlan extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable = ['project_id','image','sub_typology','protected','price','size','carpet_area','balcony_area','super_area','sizes_type'];
+    protected $fillable = ['project_id','type','image','sub_typology','protected','price','size','carpet_area','balcony_area','super_area','sizes_type'];
 
 
 

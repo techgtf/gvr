@@ -12,7 +12,7 @@ class TypologyTypoGallery extends Model
     
     protected $fillable = ['galleries_id', 'typologies_id'];
 
-    protected $table = "typologies_galleries";
+    protected $table = "typology_typo_galleries";
 
     public function typologies(){
         return $this->belongsTo(Typology::class,'typologies_id');

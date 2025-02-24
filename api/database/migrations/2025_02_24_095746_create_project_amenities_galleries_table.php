@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('project_specification_lists', function (Blueprint $table) {
+        Schema::create('project_amenities_galleries', function (Blueprint $table) {
             $table->id();
-            $table->integer('spec_id');
-            $table->string('icons');
-            $table->string('alt');
-            $table->string('short_description');
-            $table->boolean('status')->default(1);
+            $table->integer('project_id');
+            $table->string('image');
+            $table->string('alt_text')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_specification_lists');
+        Schema::dropIfExists('project_amenities_galleries');
     }
 };
