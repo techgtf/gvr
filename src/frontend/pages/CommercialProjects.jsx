@@ -238,6 +238,7 @@ const CommercialProjects = () => {
             HeadingText={
               "Empowering Businesses with Future-Ready Commercial Spaces"
             }
+            TagName="h1"
             HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
           />
         </div>
