@@ -13,13 +13,14 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from "common/Pagination/Pagination";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import * as CONFIG from '../../../config';
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const statusOptions = [
-  { label: "Active", value: "active" },
-  { label: "Hide", value: "hide" },
+const typoOptions = [
+  { label: "Logo", value: 1 },
+  { label: "Image", value: 2 },
 ];
 
 const TypologyGallery = () => {
@@ -45,12 +46,16 @@ const TypologyGallery = () => {
   const [errors, setErrors] = useState({});
   const [enableEdit, setenableEdit] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [galleryType, setGalleryType] = useState(2);
   const typologyRef = useRef(null);
+  const fileRef = useRef(null);
+  const [editGalleryLogo, setEditGalleryLogo] = useState(null);
+  const [editGalleryImage, setEditGalleryImage] = useState(null);
 
   const list = async (search = "") => {
     setDataLoading(true);
     const response = await Request(
-      `admin/sub-typology?search=${search}&page=${currentPage}`,
+      `admin/typology-galleries?search=${search}&page=${currentPage}`,
       "GET"
     );
 
@@ -79,11 +84,16 @@ const TypologyGallery = () => {
     setIsLoading(true);
     try {
       const formData = new FormData();
-      formData.append("typology", typologyRef.current.value);
+      formData.append("type", galleryType);
+      formData.append("file", fileRef.current.files[0]);
 
       // hit api
 
-      const response = await Request("admin/sub-typology", "POST", formData);
+      const response = await Request(
+        "admin/typology-galleries",
+        "POST",
+        formData
+      );
 
       if (response.status && response.statusCode == 403) {
         setErrors(response.errors);
@@ -107,12 +117,12 @@ const TypologyGallery = () => {
   const updateHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    var typologyVal = typologyRef.current.value;
     try {
       const formData = new FormData();
-      formData.append("typology", typologyVal);
+      formData.append("file", fileRef.current.files[0]);
+      formData.append("type", galleryType);
       const response = await Request(
-        "admin/sub-typology/" + editId + "/update",
+        "admin/typology-galleries/" + editId + "/update",
         "POST",
         formData
       );
@@ -138,7 +148,7 @@ const TypologyGallery = () => {
 
   const deleteHandler = async (id) => {
     setIsLoading(true);
-    var response = await Request("admin/sub-typology/" + id, "DELETE");
+    var response = await Request("admin/typology-galleries/" + id, "DELETE");
     list();
     setIsLoading(false);
     toast.success(response.message);
@@ -149,11 +159,16 @@ const TypologyGallery = () => {
       setenableEdit(true);
       setShowSidebar(true);
 
-      var response = await Request("admin/sub-typology/" + id + "/edit", "GET");
+      var response = await Request("admin/typology-galleries/" + id, "GET");
       if (response.status && response.statusCode === 200) {
         setEditId(id);
         var result = response.data;
-        typologyRef.current.value = result.typology;
+        setGalleryType(result.type)
+        if(result.type == 1){
+          setEditGalleryLogo(CONFIG.VITE_APP_STORAGE + result.file)
+        }else{
+          setEditGalleryImage(CONFIG.VITE_APP_STORAGE + result.file)
+        }
       }
     } catch (err) {
       console.log(err);
@@ -169,6 +184,11 @@ const TypologyGallery = () => {
   const findHandler = async (e) => {
     const searchTerm = e.target.value.toLowerCase();
     list(searchTerm);
+  };
+
+  const handleStatusSelect = async (selectedValue) => {
+    setGalleryType(selectedValue);
+    // await updateStatusHandler(id, selectedValue);
   };
 
   // end search
@@ -205,7 +225,8 @@ const TypologyGallery = () => {
             <table className="mt_40 w-full border-collapse border border-gray-200">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border border-gray-300 p-2 text-left">Name</th>
+                  <th className="border border-gray-300 p-2 text-left">Thumbnail</th>
+                  <th className="border border-gray-300 p-2 text-left">Type</th>
                   <th className="border border-gray-300 p-2 text-left">
                     Action
                   </th>
@@ -214,7 +235,7 @@ const TypologyGallery = () => {
               <tbody>
                 {!data.length && dataLoading ? (
                   <tr>
-                    <td colSpan={4}>
+                    <td colSpan={3}>
                       <div className="text-center">
                         <ScaleLoader color="#ddd" className="w-full" />
                       </div>
@@ -223,7 +244,16 @@ const TypologyGallery = () => {
                 ) : data.length ? (
                   data.map((item, index) => (
                     <tr key={index} className="border-b">
-                      <td className="py-2">{item.typology}</td>
+                      <td className="py-2">
+                        <img
+                          src={CONFIG.VITE_APP_STORAGE + item.file}
+                          alt={item.typology}
+                          className="w-[50px] h-[50px] object-contain"
+                        />
+                      </td>
+                      <td className="py-2">
+                        {item.type == 1? "Logo" : "Image"}
+                      </td>
                       <td className="py-2">
                         <button
                           className="btn action_btn text-blue-500 hover:text-blue-700"
@@ -245,9 +275,9 @@ const TypologyGallery = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={2}>
+                    <td colSpan={3}>
                       <h5 className="no_record text-center py-4">
-                        No Sub Typology Found!
+                        No Typologies Gallery Found!
                       </h5>
                     </td>
                   </tr>
@@ -277,19 +307,57 @@ const TypologyGallery = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Sub Typology Name*
+                    Select Typology Gallery Type*
                   </label>
-                  <input
-                    ref={typologyRef}
+                  <CustomDropdown
                     className="border rounded px-3 py-2 w-full"
-                    placeholder="Enter sub typology name"
-                    required
-                    type="text"
+                    select={galleryType}
+                    options={typoOptions}
+                    onSelect={(selectedValue) =>
+                      handleStatusSelect(selectedValue)
+                    }
                   />
-                  {errors.typology && (
-                    <div className="errMsg">{errors.typology}</div>
-                  )}
                 </div>
+
+                {galleryType == 1 ? (
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Sub Typology Gallery Logo*
+                    </label>
+                    <input
+                      ref={fileRef}
+                      className="border rounded px-3 py-2 w-full"
+                      placeholder="Enter sub typology Logo"
+                      required
+                      type="file"
+                    />
+                    {editGalleryLogo && (
+                      <img src={editGalleryLogo} width="50" className="border mt-2" />
+                    )}
+                    {/* {errors.typology && (
+                      <div className="errMsg">{errors.typology}</div>
+                    )} */}
+                  </div>
+                ) : (
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Select Typology Gallery Image*
+                    </label>
+                    <input
+                      ref={fileRef}
+                      className="border rounded px-3 py-2 w-full"
+                      placeholder="Enter sub typology Image"
+                      required
+                      type="file"
+                    />
+                    {editGalleryImage && (
+                      <img src={editGalleryImage} width="100" className="border mt-2" />
+                    )}
+                    {/* {errors.typology && (
+                      <div className="errMsg">{errors.typology}</div>
+                    )} */}
+                  </div>
+                )}
               </form>
             </SideModal>
           </SidebarPortal>
