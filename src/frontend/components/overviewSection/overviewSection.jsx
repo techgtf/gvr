@@ -11,7 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink, tag, bgColor = "" }) {
+export default function OverviewSection({ heading, paragraph, showKnowMore, pageLink, tag="h1", bgColor = "" }) {
   const overlayLeftRef = useRef(null);
   const overlayRightRef = useRef(null);
   const contentRef = useRef(null);
