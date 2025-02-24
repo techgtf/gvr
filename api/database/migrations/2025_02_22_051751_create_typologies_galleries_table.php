@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('typologies', function (Blueprint $table) {
+        Schema::create('typologies_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('typology');
-            $table->string('image')->nullable();
-            $table->longText('description')->nullable();
-            $table->integer('primary')->default(0);
-            $table->string('status')->default(1);
+            $table->integer('type')->comment('1 = icons, 2 = images');
+            $table->string('file');
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes(); // This adds the 'deleted_at' column
-
         });
     }
 
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('typologies');
+        Schema::dropIfExists('typologies_galleries');
     }
 };
