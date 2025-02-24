@@ -81,6 +81,7 @@ function SideMenu({ setOpenSidebar }) {
             { label: "Commercial", path: `${BASE_ROOT}commercial-projects` },
             { label: "About Us", path: `${BASE_ROOT}about-us` },
             { label: "Media Centre", path: `${BASE_ROOT}media` },
+            { label: "Gallery", path: `${BASE_ROOT}gallery` },
             { label: "Blogs", path: `${BASE_ROOT}blogs` },
             { label: "Job Openings", path: `${BASE_ROOT}career` },
             { label: "Contact Us", path: `${BASE_ROOT}contact-us` },
