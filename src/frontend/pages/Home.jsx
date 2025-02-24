@@ -46,7 +46,7 @@ export default function Home() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`
+                    {`{
                     "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Realty",
@@ -59,7 +59,7 @@ export default function Home() {
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                    }}`}
                 </script>
 
                 <script type="application/ld+json" class="schemantra">

@@ -176,7 +176,7 @@ function SanctuaryMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`
+                    {`{
                         "@context": "https://schema.org",
                         "@type": "Organization",
                         "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
@@ -189,8 +189,7 @@ function SanctuaryMicrosite() {
                             "contactType": "customer service",
                             "areaServed": "IN",
                             "availableLanguage": "en"
-                        }
-                    `}
+                    }}`}
                 </script>
             </Helmet>
             <HeroSection
