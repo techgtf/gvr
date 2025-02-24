@@ -217,6 +217,7 @@ const Typologies = () => {
             <tr className="bg-gray-100 text-left">
               <th className="p-3 border">Name</th>
               <th className="p-3 border">Sub Typology</th>
+              <th className="p-3 border">Gallery</th>
               <th className="p-3 border">Status</th>
               <th className="p-3 border">Actions</th>
             </tr>
@@ -242,6 +243,14 @@ const Typologies = () => {
                         to={`${CONFIG.ADMIN_ROOT}typology/${item.id}/sub`}
                       >
                         View Sub Typology
+                      </Link>
+                    </td>
+                    <td className="p-3 border">
+                      <Link
+                        className="btn btn-primary btn-sm"
+                        to={`${CONFIG.ADMIN_ROOT}typology/${item.id}/gallery`}
+                      >
+                        View Gallery
                       </Link>
                     </td>
                     <td className="p-3 border">
