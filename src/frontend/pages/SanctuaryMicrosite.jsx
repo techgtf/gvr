@@ -177,19 +177,20 @@ function SanctuaryMicrosite() {
 
                 <script type="application/ld+json">
                     {`
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
-                    "alternateName": "Great Value Realty Sanctuary Gurugram",
-                    "url": "https://greatvaluerealty.com/sanctuary",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }`}
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
+                        "alternateName": "Great Value Realty Sanctuary Gurugram",
+                        "url": "https://greatvaluerealty.com/sanctuary",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }
+                    `}
                 </script>
             </Helmet>
             <HeroSection
