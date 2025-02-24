@@ -12,8 +12,8 @@ import Request from "../../../../config/Request";
 
 import "../../../assets/css/admin.css";
 
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
@@ -103,7 +103,7 @@ const OtherVerticals = () => {
     formData.append("short_description", shortDescriptionRef.current.value);
     formData.append("price", priceRef.current.value);
 
-    var response = await Request("admin/verticals/", "POST", formData);
+    var response = await Request("admin/verticals", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -168,7 +168,7 @@ const OtherVerticals = () => {
     setIsLoadingTableData(false);
   };
 
-  const updateAmenityHandler = async (event) => {
+  const updateSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
 
@@ -191,8 +191,10 @@ const OtherVerticals = () => {
     if (response.status && response.statusCode === 200) {
       listHandler();
       cancelHandler();
+      toast.success(response.message);
     } else if (response.status && response.statusCode === 403) {
       setErrors(response.errors);
+      toast.error(response.message);
     }
   };
 
@@ -274,18 +276,18 @@ const OtherVerticals = () => {
                       <td className="py-2 px-4">{item.short_description}</td>
                       <td className="py-2 px-4">{item.description}</td>
                       <td className="py-2 px-4">{item.price}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
@@ -318,7 +320,7 @@ const OtherVerticals = () => {
           <SidebarPortal className="portal">
             <SideModal
               onCancel={cancelHandler}
-              onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}
+              onSubmit={enableEdit ? updateSubmitHandler : addSubmitHandler}
               isLoading={isSitebarFormButtonLoading}
             >
               <form>

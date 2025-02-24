@@ -70,6 +70,8 @@ import Faqs from "../admin/components/faq/Index";
 import EsgSocial from "../admin/components/esg/social/Index";
 import EsgEnvironment from "../admin/components/esg/environment/Index";
 import EsgGallery from "../admin/components/esg/gallery/Index";
+import SubTypologies from "../admin/Typologies/SubTypology";
+import SubTypologiesPage from "../admin/Subtypology/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -364,6 +366,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <Typologies />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}sub-typologies`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SubTypologiesPage />
         </Suspense>
       </AdminLayout>
     ),

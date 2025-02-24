@@ -14,6 +14,10 @@ import "../../../assets/css/admin.css";
 
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "2023", value: '2023' },
@@ -63,8 +67,8 @@ const TimelineImages = () => {
     setenableEdit(false);
   };
 
-  const handleStatusSelect = async (selectedValue, id) => {
-    setYearOptions(selectedValue);
+  const handleStatusSelect = async (selectedValue) => {
+    setSelectedYear(selectedValue);
   };
 
   const addAmenityHandler = () => {
@@ -80,7 +84,7 @@ const TimelineImages = () => {
     formData.append("year", selectedYear);
     formData.append("image", fileRef.current.files[0]);
 
-    var response = await Request("admin/timeline-preview/", "POST", formData);
+    var response = await Request("admin/timeline-preview", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -137,7 +141,7 @@ const TimelineImages = () => {
     );
     if (response.status && response.statusCode === 200) {
       setData(response.data.data);
-      // setLastPage(response.data.last_page);
+      setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };
@@ -200,12 +204,12 @@ const TimelineImages = () => {
       <div className="flex title_col justify-between items-center">
         <h4 className="page_title">Timeline Images</h4>
         <div className="flex gap-3">
-          <button
+          <Link
             className="btn ml-auto btn_primary btn-sm"
-            onClick={addAmenityHandler}
+            to={`${CONFIG.ADMIN_ROOT}timeline`}
           >
             Back To Timeline
-          </button>
+          </Link>
           <button
             className="btn ml-auto btn_primary btn-sm"
             onClick={addAmenityHandler}
@@ -260,18 +264,18 @@ const TimelineImages = () => {
                         />
                       </td>
                       <td className="py-2 px-4">{item.year}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
@@ -335,10 +339,10 @@ const TimelineImages = () => {
                   </label>
                   <CustomDropdown
                     className="border rounded px-3 py-2 w-full"
-                    defaultVal={selectedYear}
+                    select={selectedYear}
                     options={yearOptions}
                     onSelect={(selectedValue) =>
-                      handleStatusSelect(selectedValue, item.id)
+                      handleStatusSelect(selectedValue)
                     }
                   />
                   {errors.name && (

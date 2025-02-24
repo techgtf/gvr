@@ -10,6 +10,9 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 
 import Request from "../../../../config/Request";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 import "../../../assets/css/admin.css";
 
 import { FaEdit } from "react-icons/fa";
@@ -104,7 +107,7 @@ const EsgEnvironment = () => {
     // formData.append("name", titleRef.current.value);
     formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/education/", "POST", formData);
+    var response = await Request("admin/education", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -157,7 +160,7 @@ const EsgEnvironment = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/education/?search=" + search + "&page=" + currentPage,
+      "admin/education?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -265,18 +268,18 @@ const EsgEnvironment = () => {
                       </td>
                       {/* <td className="py-2 px-4">{item.name}</td> */}
                       <td className="py-2 px-4">{item.short_description}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
