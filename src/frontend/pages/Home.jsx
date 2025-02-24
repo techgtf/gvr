@@ -46,40 +46,44 @@ export default function Home() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`{
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty",
-                    "alternateName": "GVR",
-                    "url": "https://greatvaluerealty.com/",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }}`}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty",
+                        "alternateName": "GVR",
+                        "url": "https://greatvaluerealty.com/",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "contactPoint": [
+                            {
+                                "@type": "ContactPoint",
+                                "telephone": "+91 7777079770",
+                                "contactType": "customer service",
+                                "areaServed": "IN",
+                                "availableLanguage": "en"
+                            }
+                        ]
+                    })}
                 </script>
 
-                <script type="application/ld+json" class="schemantra">
-                    {`
-                    "@context": "https://schema.org",
-                    "@type": "RealEstateAgent",
-                    "@id": "RealEstateAgent",
-                    "actionableFeedbackPolicy": "https://greatvaluerealty.com/",
-                    "address": "DSC - 319, DLF South Court, Saket New Delhi - 110017",
-                    "alternateName": "GVR",
-                    "description": "Real Estate Developer",
-                    "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "keywords": "https://greatvaluerealty.com/",
-                    "knowsLanguage": "English",
-                    "legalName": "Great Value Realty",
-                    "location": "India",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "longitude": "917777079770"F
-                    `}
+                <script type="application/ld+json" className="schemantra">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "RealEstateAgent",
+                        "@id": "RealEstateAgent",
+                        "actionableFeedbackPolicy": "https://greatvaluerealty.com/",
+                        "address": "DSC - 319, DLF South Court, Saket, New Delhi - 110017",
+                        "alternateName": "GVR",
+                        "description": "Real Estate Developer",
+                        "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "keywords": "https://greatvaluerealty.com/",
+                        "knowsLanguage": "English",
+                        "legalName": "Great Value Realty",
+                        "location": "India",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "longitude": "917777079770"
+                    })}
                 </script>
+
             </Helmet>
             <div className='homepage'>
                 <Hero />
