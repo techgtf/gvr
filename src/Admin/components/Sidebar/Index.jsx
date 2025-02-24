@@ -464,6 +464,15 @@ const Sidebar = (props) => {
                   <PiResize size={20} className="mr-2" />
                   <span>Sub Typologies</span>
                 </NavLink>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}typologies/gallery`}
+                >
+                  <PiResize size={20} className="mr-2" />
+                  <span>Typology Gallery</span>
+                </NavLink>
               </>
             )}
 

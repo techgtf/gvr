@@ -72,6 +72,7 @@ import EsgEnvironment from "../admin/components/esg/environment/Index";
 import EsgGallery from "../admin/components/esg/gallery/Index";
 import SubTypologies from "../admin/Typologies/SubTypology";
 import SubTypologiesPage from "../admin/Subtypology/Index";
+import TypologyGallery from "../admin/typologyGallery/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -377,6 +378,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <SubTypologiesPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}typologies/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TypologyGallery />
         </Suspense>
       </AdminLayout>
     ),

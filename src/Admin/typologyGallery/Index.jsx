@@ -22,7 +22,7 @@ const statusOptions = [
   { label: "Hide", value: "hide" },
 ];
 
-const SubTypologiesPage = () => {
+const TypologyGallery = () => {
   // pagination
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
@@ -176,12 +176,12 @@ const SubTypologiesPage = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title text-xl font-semibold">Sub Typologies</h4>
+        <h4 className="page_title text-xl font-semibold">Typologies Gallery</h4>
         <button
           className="btn ms-auto bg-blue-500 text-white px-4 py-2 rounded btn_primary btn-sm"
           onClick={addDeveloperHandler}
         >
-          Add Sub Typology
+          Add Typology Gallery
         </button>
       </div>
 
@@ -190,7 +190,7 @@ const SubTypologiesPage = () => {
           <div className="card mt-4 card_style1 bg-white shadow-md rounded-lg p-4">
             <div className="flex items-center">
               <h5 className="mb-0 text-lg font-semibold">
-                All Sub Typologies List
+                All Typologies Gallery List
               </h5>
               <div className="searchInput ms-auto">
                 <input
@@ -300,4 +300,4 @@ const SubTypologiesPage = () => {
   );
 };
 
-export default SubTypologiesPage;
+export default TypologyGallery;
