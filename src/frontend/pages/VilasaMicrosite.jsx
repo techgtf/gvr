@@ -167,7 +167,8 @@ function VilasaMicrosite() {
 
 
                 <script type="application/ld+json">
-                    {`"@context": "https://schema.org",
+                    {`{
+                    "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Realty Vilasa Sector 6, Sohna",
                     "alternateName": "Great Value Realty Vilasa",
@@ -179,7 +180,7 @@ function VilasaMicrosite() {
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                     }}`}
                 </script>
             </Helmet>
             <HeroSection

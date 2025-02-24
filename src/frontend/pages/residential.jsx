@@ -68,7 +68,8 @@ export default function Residential() {
       </Helmet>
       <div className='residential_page bg-[#EFF5FA] lg:pb-[80px] pb-[40px]'>
         <HeroSectionAboutUs
-          img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/projects/residential/banner.webp`}
+          // img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"}
           alt={"Great Value Residential Project"}
         />
         {/* <div className='overview_wrap bg-white' style={{background:"linear-gradient(1deg, #eff5fa, #ffffff)"}}> */}

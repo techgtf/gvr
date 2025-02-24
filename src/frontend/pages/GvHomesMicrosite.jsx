@@ -219,7 +219,7 @@ function GvHomesMicrosite() {
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}
                 <script type="application/ld+json">
-                    {`
+                    {`{
                     "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
@@ -232,7 +232,7 @@ function GvHomesMicrosite() {
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                    }}`}
                 </script>
             </Helmet>
             <HeroSection
