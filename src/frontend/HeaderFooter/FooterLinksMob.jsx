@@ -11,7 +11,7 @@ export default function FooterLinksMob({ toggelLinks }) {
                 <ul className="links_ul uppercase text-white w-full border-b border-solid border-[rgba(250,250,250,0.34)] pb-2 px-5 mb-7">
                     <li className="flex flex-wrap w-full">
                         <div className="heading-div text-left midlandfontmedium text-[8px] tracking-[4px] mb-5 w-full">Residential</div>
-                        <Link className="block tracking-[1.2px] mb-4 font-[300] w-[33.3%]" to={`${BASE_ROOT}sharanam`}>Sharnam</Link>
+                        <Link className="block tracking-[1.2px] mb-4 font-[300] w-[33.3%]" to={`${BASE_ROOT}sharanam`}>Sharanam</Link>
                         <Link className="block tracking-[1.2px] mb-4 font-[300] w-[33.3%] text-center" to={`${BASE_ROOT}anandam`}>Anandam</Link>
                         <Link className="block tracking-[1.2px] mb-4 font-[300] w-[33.3%] text-right" to={`${BASE_ROOT}casa-uday`}>CASA UDAY</Link>
                         <Link className="block tracking-[1.2px] mb-4 font-[300] w-[33.3%]" to={`${BASE_ROOT}vilasa`}>Vilas</Link>

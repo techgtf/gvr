@@ -3,7 +3,7 @@ export const TestimonialsData = [
         name: 'Mr. Narinder Arora',
         thumbs: 'narinder-arora.webp',
         video: 'https://www.youtube.com/watch?v=nT86JG8JiHk',
-        desc: 'Sharnam: The Perfect Blend of Location, Space & Greenery',
+        desc: 'Sharanam: The Perfect Blend of Location, Space & Greenery',
         alt: "Great Value Mr. Narinder Arora"
     },
     {
@@ -17,7 +17,7 @@ export const TestimonialsData = [
         name: 'Mr. B.P. Bharti',
         thumbs: 'bp-bharti.webp',
         video: 'https://www.youtube.com/watch?v=rSFwv7_ucSs',
-        desc: 'Openness, Luxury, and Leisure—Love Living at Sharnam',
+        desc: 'Openness, Luxury, and Leisure—Love Living at Sharanam',
         alt: "Great Value Mr. B.P. Bharti "
     },
 ]

@@ -36,7 +36,7 @@ function ProjectImages({ images }) {
 
       {/* Gallery Grid */}
       <SlideIn duration={2} delay={0.3}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {images.slice(0, visibleCount).map((image, index) => (
             <img
               key={index}

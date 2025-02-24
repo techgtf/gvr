@@ -77,7 +77,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                   <p>{item.price}</p>
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center">
-                  <button className="bg-transparent text-[#33638B] uppercase"  onClick={openEnquiryForm}>
+                  <button className="bg-transparent text-[#33638B] uppercase" disabled   onClick={openEnquiryForm}>
                     SOLD OUT </button>
                 </div>
               </div>
