@@ -26,6 +26,7 @@ export default function Index({data}) {
                     <div className='left_side flex flex-wrap lg:gap-[40px] gap-[15px] lg:py-5 lg:mb-0 mb-[30px] overflow-hidden'>
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             pageData && pageData.map((data, index) => (
                                 data.content ? data.content.map((text, contentIndex) => (
                                     <SlideIn duration={2} delay={0.7}>
@@ -36,6 +37,8 @@ export default function Index({data}) {
                                     </SlideIn>
                                 )) : null
 =======
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                             detailsArray && detailsArray.map((text, index) => (
                                 <SlideIn duration={2} delay={0.7}>
                                     <p
@@ -43,7 +46,10 @@ export default function Index({data}) {
                                         key={index}
                                     >{text}</p>
                                 </SlideIn>
+<<<<<<< HEAD
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                             ))
                         }
                     </div>

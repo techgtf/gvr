@@ -22,6 +22,10 @@ const CommonAccordion = ({ data, extraClass }) => {
                                 onClick={() => toggleAccordion(index)}
                                 className={`w-full cursor-pointer flex justify-between items-center text-left font-medium transition duration-200 ${openIndex === index ? "lg:pb-5 pb-0" : ""}`}
                             >
+<<<<<<< HEAD
+=======
+                                <span className="cursor-pointer lg:text-[14px] text-[13px] lg:tracking-[1px] capitalize">{item.title}</span>
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                                 <span className="cursor-pointer lg:text-[14px] text-[13px] lg:tracking-[2px] capitalize">{item.question}</span>
                                 {openIndex === index ? <FiMinus className="text-xl cursor-pointer" /> : <FiPlus className="text-xl cursor-pointer" />}
                             </button>
@@ -34,6 +38,10 @@ const CommonAccordion = ({ data, extraClass }) => {
                                     overflow: "hidden",
                                 }}
                             >
+<<<<<<< HEAD
+=======
+                                <div className="text-gray-700 pt-4 text-justify common_pera">{item.content}</div>
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                                 <div className="text-gray-700 pt-4 text-justify">{item.answer}</div>
                             </div>
                         </div>

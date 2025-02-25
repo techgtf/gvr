@@ -2,6 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useState, useRef, useEffect, memo, useMemo } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
+import { DATA_ASSET_URL } from "../../../../config";
 
 const projects = [
   {
@@ -471,7 +474,10 @@ const OurJourney = () => {
   const elementRef = useRef(null);
   const imgClusterRef = useRef(null);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
   const [data, setData,] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -487,7 +493,10 @@ const OurJourney = () => {
         setLoading(false);
       });
   }, []);
+<<<<<<< HEAD
 >>>>>>> 762603e (journey)
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(1); // State to hold the selected project
 
@@ -535,10 +544,15 @@ const OurJourney = () => {
   }, [selectedProjectIndex]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   console.log(data,"datadatadatadata")
 >>>>>>> 762603e (journey)
+=======
+
+  console.log(data,"datadatadatadata")
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
       <h3 className="sectionHeading text-center xl:text-left tracking-[5px] text-[black] midlandfontmedium">
@@ -547,9 +561,13 @@ const OurJourney = () => {
       <div className="flex justify-between items-center flex-wrap">
         {/* we have two design, i,e. we have 1 project and  other when we have multiple project*/}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         {/* {item.records.length === 1 ? ( */}
 >>>>>>> 762603e (journey)
+=======
+        {/* {item.records.length === 1 ? ( */}
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
         {projects[selectedProjectIndex].project.length === 1 ? (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "

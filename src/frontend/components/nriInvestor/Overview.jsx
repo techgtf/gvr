@@ -20,14 +20,18 @@ const nriOverview = ({data}) => {
         <div className="flex items-center justify-between md:flex-row flex-col-reverse flex-wrap gap-[30px] md:gap-[50px]">
           <div className="basis-[100%] xl:basis-[calc(60%-50px)] flex-none">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <CommonHeading TagName="h1" HeadingText=" Great Value Realty Welcomes NRI Investors" />
 =======
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
             {heading &&(
               <h2 className="sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
               {heading}
               </h2>
             )}
             {description && (
+<<<<<<< HEAD
 >>>>>>> d1980c8 (api with navbar scroll)
             <p
               className="my-[1rem] text-justify common_pera xl:!mt-[30px] poppins-regular text-black font-[300]"
@@ -37,11 +41,18 @@ const nriOverview = ({data}) => {
 =======
              {description}
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+            <p
+              className="my-[1rem] text-justify common_pera xl:!mt-[30px] poppins-regular text-black font-[300]"
+            >
+             {description}
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
             </p>
           )}
           </div>
           <div className="xl:basis-[calc(40%-50px)]">
             <img
+<<<<<<< HEAD
 <<<<<<< HEAD
               // "assets/frontend/images/aboutus/verticals/vertical-1.webp"
               src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/nri-investor/sideImg.webp`}
@@ -52,6 +63,11 @@ const nriOverview = ({data}) => {
               alt={heading || "overview image"}
               className=" reveal flex-none"
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+              src={`${CONFIG.VITE_APP_STORAGE}${image || ""}`}
+              alt={heading || "overview image"}
+              className=" reveal flex-none"
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
             />
           </div>
 

@@ -29,6 +29,7 @@ class PageSeeder extends Seeder
             // 6
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             ['name' => 'ESG'],
 =======
             ['name' => 'CSR', 'type' => null],
@@ -36,6 +37,9 @@ class PageSeeder extends Seeder
 =======
             ['name' => 'ESG', 'type' => null],
 >>>>>>> d495d8b (pages section)
+=======
+            ['name' => 'ESG', 'type' => null],
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
             // 7
             ['name' => 'Home Loans', 'type' => null],
             // 8

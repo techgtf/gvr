@@ -7,16 +7,22 @@ import SlideIn from "../components/Animations/SlideIn";
 import { Slide } from "react-toastify";
 import CommonPera from "../components/commonPera";
 
+<<<<<<< HEAD
 =======
 import useFetchData from "../apiHooks/useFetchData";
 import Loader from "../../common/Loader/loader";
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
 
 const ProperyInvestment = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
   useImageReveal(".reveal");
 =======
@@ -42,6 +48,8 @@ const ProperyInvestment = () => {
     if (pageDataError) return <p className="text-red-500">Property Investment Error loading Banner: {pageDataError}</p>;
   
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
   return (
     <>
       <Helmet>

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import NriCornerIndex from '../components/NriCorner'
 import HeroSectionAboutUs from "../components/aboutUs/HeroSectionAboutUs"
@@ -42,6 +43,17 @@ import { Helmet } from 'react-helmet';
 import useFetchData from '../apiHooks/useFetchData';
 
 export default function NriCorner() {
+=======
+import React from 'react';
+import NriCornerIndex from '../components/NriCorner';
+import HeroSectionAboutUs from "../components/aboutUs/HeroSectionAboutUs";
+import * as CONFIG from "../../../config";
+import Loader from "../../common/Loader/loader";
+import { Helmet } from 'react-helmet';
+import useFetchData from '../apiHooks/useFetchData';
+
+export default function NriCorner() {
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
     // Fetch FAQs & Banner Data
     const { data: faqs, loading: faqLoading, error: faqError } = useFetchData("faqs", "nri-corner");
     const { data: banner, loading: bannerLoading, error: bannerError } = useFetchData("page-sections", "11");
@@ -64,7 +76,10 @@ export default function NriCorner() {
     const { image: bannerImage, heading: bannerHeading } = extractBannerData(banner);
 
 
+<<<<<<< HEAD
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
     return (
         <>
             <Helmet>
@@ -77,10 +92,14 @@ export default function NriCorner() {
                     extraClassesImg="objectRight"
                 />
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <NriCornerIndex data={data} />
 =======
                 <NriCornerIndex data={faqs} />
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+                <NriCornerIndex data={faqs} />
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
             </div>
         </>
     );

@@ -51,15 +51,25 @@ const Index = ({ data, nextBlog }) => {
           </div>
 
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
+<<<<<<< HEAD
           <FadeIn SlideIn duration={0} delay={0.5}>
             <h4 className=" md:mb-[30px]  mb-[20px] mt-4 lg:leading-[30px] leading-[28px] text-[16px]">
+=======
+          <FadeIn SlideIn duration={1} delay={0.5}>
+            <h4 className=" md:mb-[30px]  mb-[20px] mt-4 text-[16px] text-[#143C5E] capitalize">
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
               {heading}
             </h4>
           </FadeIn>
           {description && (
             <>
+<<<<<<< HEAD
               <FadeIn SlideIn duration={0} delay={0.5}>
                 <p className="opacity-70 text-justify common_pera">{description}</p>
+=======
+              <FadeIn SlideIn duration={1} delay={0.5}>
+                <p className="opacity-70 text-justify">{description}</p>
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
               </FadeIn>
             </>
           )}
@@ -67,13 +77,21 @@ const Index = ({ data, nextBlog }) => {
           {blog_details?.length > 0 && (
             <>
               <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
+<<<<<<< HEAD
               <FadeIn SlideIn duration={0} delay={0.5}>
+=======
+              <FadeIn SlideIn duration={1} delay={0.5}>
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                 {blog_details.map(({ heading, description }, index) => (
                   <React.Fragment key={index}>
                     <h4 className="mb-4 mt-4 text-[14px] text-[#143C5E] capitalize">
                       {heading}
                     </h4>
+<<<<<<< HEAD
                     <p className="opacity-70 text-justify common_pera">{description}</p>
+=======
+                    <p className="opacity-70 text-justify">{description}</p>
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                   </React.Fragment>
                 ))}
               </FadeIn>
@@ -91,8 +109,14 @@ const Index = ({ data, nextBlog }) => {
                   }
                 }}
                 disabled={!nextBlog}
+<<<<<<< HEAD
                 className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${nextBlog ? "" : "text-gray-400"
                   }`}
+=======
+                className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${
+                  nextBlog ? "" : "text-gray-400"
+                }`}
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
               >
                 Next
               </button>
@@ -114,11 +138,19 @@ const Index = ({ data, nextBlog }) => {
         <ul>
           {latestBlog.map((item, index) => (
             <React.Fragment key={index}>
+<<<<<<< HEAD
               <li className="mt-3 first:mt-0 last:mb-0">
                 <SlideIn SlideIn duration={0} delay={0.5}>
                   <Link to={`${BASE_ROOT}blog/${item.slug}`} key={item.id}>
                     <div className="ListCard">
                       <h4 className="ListHeading font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[30px] leading-[27px] tracking-[0.4px] capitalize">
+=======
+              <li className="mt-3  last:mb-0  first:mt-0 last:mb-0">
+                <SlideIn SlideIn duration={1} delay={0.5}>
+                  <Link to={`${BASE_ROOT}blog/${item.slug}`} key={item.id}>
+                    <div className="ListCard">
+                      <h4 className="ListHeading text-[#000] font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[34px] leading-[20px] tracking-[0.4px] capitalize">
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
                         {item.heading}
                       </h4>
                       <p className="mt-[20px] mb-[20px] opacity-70 text-justify common_pera">

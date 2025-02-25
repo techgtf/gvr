@@ -3,6 +3,7 @@ import { DATA_ASSET_URL } from "../../../config";
 import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
+import * as CONFIG from "../../../config";
 import { Helmet } from "react-helmet";
 import * as CONFIG from "../../../config";
 const HeroSectionAboutUs = lazy(() =>
@@ -50,18 +51,26 @@ const Aboutus = () => {
     const journey = data?.["about-our-journey"] || {};
     const verticals = data?.["about-our-verticals"] || {};
 <<<<<<< HEAD
+<<<<<<< HEAD
 console.log(banner.image,"banner")
 =======
 
 >>>>>>> 37f6116 (about us api)
+=======
+
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
 const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
   
   return (
     <>
-      <Helmet>
+
+    <Helmet>
         <title>Great Value Realty | About-Us</title>
       </Helmet>
+<<<<<<< HEAD
 
+=======
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
     {banner && 
       <HeroSectionAboutUs
         img={`${CONFIG.VITE_APP_STORAGE}${banner.image}`}
@@ -99,7 +108,11 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
       {vision && <OurVisionSection visionData={vision} missionData={mission}/>}
       {team && <OurTeamSection data={team}/>}
       {journey && <OurJourneySection data={journey}/>}
+<<<<<<< HEAD
       {verticals && <OurVerticalsSection />}
+=======
+      {verticals && <OurVerticalsSection data={verticals}/>}
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
     </>
   );
 };

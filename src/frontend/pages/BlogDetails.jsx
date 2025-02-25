@@ -1,4 +1,5 @@
-import React, { lazy } from 'react'
+
+import React, { lazy, useEffect, useState } from 'react'
 import * as CONFIG from "../../../config";
 import Index from '../components/blogs/Index';
 const HeroSectionAboutUs = lazy(() =>
@@ -7,10 +8,18 @@ const HeroSectionAboutUs = lazy(() =>
 import { DATA_ASSET_URL } from "../../../config";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+<<<<<<< HEAD
 import { Helmet } from 'react-helmet';
 import useFetchData from '../apiHooks/useFetchData';
 import Loader from '../../common/Loader/loader';
 
+=======
+
+import { useLocation } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+import useFetchData from '../apiHooks/useFetchData';
+import Loader from '../../common/Loader/loader';
+>>>>>>> caf9b310f90eb14c1c810cf45623f463f545996f
 
 
 const BlogDetails = () => {
