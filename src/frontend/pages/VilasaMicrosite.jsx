@@ -167,20 +167,20 @@ function VilasaMicrosite() {
 
 
                 <script type="application/ld+json">
-                    {`{
+                {JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Realty Vilasa Sector 6, Sohna",
                     "alternateName": "Great Value Realty Vilasa",
                     "url": "https://greatvaluerealty.com/vilasa",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                     "contactPoint":[ {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                     }}`}
+                     }]})}
                 </script>
             </Helmet>
             <HeroSection

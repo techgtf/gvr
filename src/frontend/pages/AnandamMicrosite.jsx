@@ -241,20 +241,20 @@ function AnandamMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`{
+                {JSON.stringify({
                    "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Anandam Sector 107, Noida",
                     "alternateName": "Great Value Anandam Noida",
                     "url": "https://greatvaluerealty.com/anandam",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
-                    "contactPoint": {
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                    "contactPoint": [{
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }}`}
+                    }]})}
                 </script>
             </Helmet>
             <HeroSection
