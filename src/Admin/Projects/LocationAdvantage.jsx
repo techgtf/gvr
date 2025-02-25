@@ -15,6 +15,7 @@ import Loader from "common/Loader/loader";
 
 import "react-quill/dist/quill.snow.css";
 import "../assets/css/admin.css";
+import Request from "../../config/Request";
 
 const locationTypes = [
   { label: "Drive", value: "drive" },
@@ -54,6 +55,7 @@ const LocationAdvantage = () => {
     type: "",
     distance: "",
     name: "",
+    icons:null,
   });
   const navigate = useNavigate();
   const searchLocation = async () => {
@@ -217,19 +219,26 @@ const LocationAdvantage = () => {
       type: "",
       distance: "",
       name: "",
+      icons:null
     });
   };
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
-    const updatedData = { ...locationData, project_id: projectid };
+    debugger
+    // const updatedData = { ...locationData, project_id: projectid };
+    const formData = new FormData();
+    formData.append("project_id", projectid);
+    formData.append("name", locationData.name);
+    formData.append("type", locationData.type);
+    formData.append("icons", locationData.icons);
 
     try {
-      var response = await JsonRequest(
+      var response = await Request(
         "admin/projectdata/location-advantage",
         "POST",
-        updatedData
+        formData
       );
 
       if (response.status && response.statusCode == 200) {
@@ -252,11 +261,19 @@ const LocationAdvantage = () => {
   };
 
   const changeHandler = (e) => {
+    debugger
     const { name, value } = e.target;
-    setLocationData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    if(name=="icons"){
+      setLocationData((prevState) => ({
+        icons:e.target.files[0]
+      }));
+    }else{
+      setLocationData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+    
   };
 
   const updateSubmitHandler = async (event) => {
