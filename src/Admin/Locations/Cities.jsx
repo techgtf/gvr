@@ -101,7 +101,7 @@ const Cities = ()=> {
                                             {item.city}
                                         </td>
                                         <td>
-                                            <Link to={`${CONFIG.BASE_URL}admin/localities/${item.id}`} className="btn btn_primary btn_sm">
+                                            <Link to={`${CONFIG.ADMIN_ROOT}localities/${item.id}`} className="btn btn_primary btn_sm">
                                             Localities
                                             </Link>
                                         </td>

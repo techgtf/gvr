@@ -228,7 +228,7 @@ const ProjectLocation = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="mb_20">
                     <label className="block text-sm font-medium mb-2">
-                      Project City*
+                      Project Location*
                     </label>
                     <SearchLocation
                       onLocationSelect={handlePlaceSelect}
