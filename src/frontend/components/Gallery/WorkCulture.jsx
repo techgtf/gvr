@@ -61,17 +61,15 @@ function WorkCulture() {
 
       <div className="tabs flex gap-6 w-full justify-center py-4 mt-4 md:mt-0">
         <button
-          className={`px-6 py-1 rounded text-[14px] ${
-            activeTab === "images" ? "bg-[#33638B] text-white" : "bg-white"
-          }`}
+          className={`px-6 py-1 rounded text-[14px] ${activeTab === "images" ? "bg-[#33638B] text-white" : "bg-white"
+            }`}
           onClick={() => setActiveTab("images")}
         >
           IMAGES
         </button>
         <button
-          className={`px-6 py-1 rounded text-[14px] ${
-            activeTab === "videos" ? "bg-[#33638B] text-white" : "bg-white"
-          }`}
+          className={`px-6 py-1 rounded text-[14px] ${activeTab === "videos" ? "bg-[#33638B] text-white" : "bg-white"
+            }`}
           onClick={() => setActiveTab("videos")}
         >
           VIDEOS
@@ -81,23 +79,25 @@ function WorkCulture() {
       {activeTab === "images" ? (
         <>
           <SlideIn duration={2} delay={0.3}>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <div className="flex flex-wrap gap-4 mt-6 justify-center">
               {mediaData
                 .filter((item) => item.type === "image")
                 .slice(0, visibleImageCount)
                 .map((image, index) => (
-                  <img
-                    key={index}
-                    src={image.src}
-                    alt={`Work Culture Image ${index + 1}`}
-                    className="w-full h-[350px] object-cover cursor-pointer"
-                    onClick={() => {
-                      setLightboxIndex(index);
-                      setLightboxOpen(true);
-                    }}
-                  />
+                  <div key={index} className="w-[calc(100%/2-16px)] sm:w-[calc(100%/4-16px)]">
+                    <img
+                      src={image.src}
+                      alt={`Work Culture Image ${index + 1}`}
+                      className="w-full h-[350px] object-cover cursor-pointer"
+                      onClick={() => {
+                        setLightboxIndex(index);
+                        setLightboxOpen(true);
+                      }}
+                    />
+                  </div>
                 ))}
             </div>
+
           </SlideIn>
 
           {visibleImageCount < totalImages && (

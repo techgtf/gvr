@@ -166,13 +166,13 @@ function SanctuaryMicrosite() {
                 <meta property="og:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/sanctuary" />
                 <meta property="og:site_name" content="Great Value Realty Sanctuary Sector 105" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
                 <meta name="twitter:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
@@ -182,7 +182,7 @@ function SanctuaryMicrosite() {
                         "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
                         "alternateName": "Great Value Realty Sanctuary Gurugram",
                         "url": "https://greatvaluerealty.com/sanctuary",
-                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                         "contactPoint": {
                             "@type": "ContactPoint",
                             "telephone": "+91 7777079770",

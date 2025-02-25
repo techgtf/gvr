@@ -210,13 +210,13 @@ function GvHomesMicrosite() {
                 <meta property="og:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta property="og:url" content="https://greatvaluerealty.com/casa-uday" />
                 <meta property="og:site_name" content="Great Value Realty 31 Casa Uday Park" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Great Value Casa Uday | Modern Homes in Uday Park" />
                 <meta name="twitter:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
                 <script type="application/ld+json">
                     {`{
@@ -225,7 +225,7 @@ function GvHomesMicrosite() {
                     "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
                     "alternateName": "Great Value Realty Casa Uday",
                     "url": "https://greatvaluerealty.com/casa-uday",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
                     "contactPoint": {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",

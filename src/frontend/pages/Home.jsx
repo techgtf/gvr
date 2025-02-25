@@ -35,14 +35,14 @@ export default function Home() {
                 <meta property="og:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta property="og:url" content="https://greatvaluerealty.com/" />
                 <meta property="og:site_name" content="Great Value Realty Noida" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <link rel="canonical" href="https://greatvaluerealty.com/" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Great Value Realty| Home" />
                 <meta name="twitter:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
@@ -52,7 +52,7 @@ export default function Home() {
                     "name": "Great Value Realty",
                     "alternateName": "GVR",
                     "url": "https://greatvaluerealty.com/",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                     "contactPoint": {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
@@ -71,12 +71,12 @@ export default function Home() {
                     "address": "DSC - 319, DLF South Court, Saket New Delhi - 110017",
                     "alternateName": "GVR",
                     "description": "Real Estate Developer",
-                    "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "image": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                     "keywords": "https://greatvaluerealty.com/",
                     "knowsLanguage": "English",
                     "legalName": "Great Value Realty",
                     "location": "India",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                     "longitude": "917777079770"F
                     `}
                 </script>

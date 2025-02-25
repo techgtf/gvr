@@ -156,13 +156,13 @@ function VilasaMicrosite() {
                 <meta property="og:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/vilasa" />
                 <meta property="og:site_name" content="Great Value Realty Vilasa" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna" />
                 <meta name="twitter:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
 
@@ -173,7 +173,7 @@ function VilasaMicrosite() {
                     "name": "Great Value Realty Vilasa Sector 6, Sohna",
                     "alternateName": "Great Value Realty Vilasa",
                     "url": "https://greatvaluerealty.com/vilasa",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
                     "contactPoint":[ {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",

@@ -16,7 +16,35 @@ const ProperyInvestment = () => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty | property investment</title>
+        <title>Great Value Realty Property Investment | Secure Real Estate Opportunities</title>
+        <meta name="keywords" content="Great Value Realty property investment, real estate investment, best property investments, high ROI real estate, real estate opportunities" />
+        <meta name="description" content="Invest wisely with Great Value Realty. Explore high-value property investment opportunities with expert guidance to maximize returns and secure your future." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/property-investment" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty Property Investment | Secure Real Estate Opportunities" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty Property Investment | Secure Real Estate Opportunities" />
+        <meta property="og:description" content="Invest wisely with Great Value Realty. Explore high-value property investment opportunities with expert guidance to maximize returns and secure your future." />
+        <meta property="og:url" content="https://greatvaluerealty.com/property-investment" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty Property Investment | Secure Real Estate Opportunities" />
+        <meta name="twitter:description" content="Invest wisely with Great Value Realty. Explore high-value property investment opportunities with expert guidance to maximize returns and secure your future." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
       </Helmet>
       <section className="bg-[#EFF5FA]">
         <HeroSectionAboutUs
@@ -58,7 +86,7 @@ const ProperyInvestment = () => {
           <div className="relative">
             <SlideIn duration={2} delay={0.5}>
               <p className="absolute top-[30px] xl:left-[7.5%] left-[8%] bg-[#EFF5FA] xl:px-[60px] px-[30px] py-[20px] w-[85%] text-center ">
-              <CommonPera PeraText={"The Delhi National Capital Region (NCR) has been a focal point for real estate investments, with Noida standing out as a prime destination due to its strategic location, infrastructure development, and economic opportunities."} />              
+                <CommonPera PeraText={"The Delhi National Capital Region (NCR) has been a focal point for real estate investments, with Noida standing out as a prime destination due to its strategic location, infrastructure development, and economic opportunities."} />
               </p>
             </SlideIn>
             <img
@@ -77,7 +105,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading xl:mb-[37px] mb-[24px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Real Estate Investment In India
               </h2>
-              <CommonPera PeraText={"Noida has experienced a substantial increase in housing prices. Data from Anarock indicates that average housing prices along the Noida Expressway rose by 66% over the past five years, reaching Rs 8,400 per square foot as of September 2024. This surge is attributed to enhanced connectivity and the establishment of commercial hubs in the vicinity."} />             
+              <CommonPera PeraText={"Noida has experienced a substantial increase in housing prices. Data from Anarock indicates that average housing prices along the Noida Expressway rose by 66% over the past five years, reaching Rs 8,400 per square foot as of September 2024. This surge is attributed to enhanced connectivity and the establishment of commercial hubs in the vicinity."} />
             </SlideIn>
           </div>
           <img
@@ -104,7 +132,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading mb-[37px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Luxury Segment Expansion
               </h2>
-              <CommonPera PeraText={"The luxury housing segment in Noida has seen remarkable growth. For instance, Sector 150 witnessed a 12% year-on-year increase in monthly rentals for luxury properties in the first half of 2024. This trend reflects the rising demand for premium residences equipped with modern amenities."} />                
+              <CommonPera PeraText={"The luxury housing segment in Noida has seen remarkable growth. For instance, Sector 150 witnessed a 12% year-on-year increase in monthly rentals for luxury properties in the first half of 2024. This trend reflects the rising demand for premium residences equipped with modern amenities."} />
             </SlideIn>
           </div>
         </div>
@@ -114,7 +142,7 @@ const ProperyInvestment = () => {
               <h2 className="sectionHeading mb-[37px] tracking-[5px] text-black midlandfontmedium text-[14px]">
                 Infrastructure Development
               </h2>
-              <CommonPera PeraText={" Ongoing infrastructure projects, such as the development of the Noida International Airport and the expansion of metro connectivity, have significantly bolstered Noida's real estate appeal. These developments are anticipated to further drive property values and attract both investors and end-users."} />               
+              <CommonPera PeraText={" Ongoing infrastructure projects, such as the development of the Noida International Airport and the expansion of metro connectivity, have significantly bolstered Noida's real estate appeal. These developments are anticipated to further drive property values and attract both investors and end-users."} />
             </SlideIn>
           </div>
           <img
@@ -132,7 +160,7 @@ const ProperyInvestment = () => {
             <h3 className="sectionHeading mb-[37px] mt-[40px] tracking-[5px] text-black midlandfontmedium text-[14px]">
               Conclusion
             </h3>
-            <CommonPera PeraText={" The upward trajectory of India's real estate sector, particularly in regions like Noida within the Delhi NCR, presents lucrative opportunities for investors. Factors such as escalating property prices, burgeoning demand in the luxury segment, and continuous infrastructure advancements contribute to Noida's prominence as a preferred investment hub. As the market evolves, stakeholders are advised to stay informed and consider strategic investments to capitalize on the region's growth potential."} />           
+            <CommonPera PeraText={" The upward trajectory of India's real estate sector, particularly in regions like Noida within the Delhi NCR, presents lucrative opportunities for investors. Factors such as escalating property prices, burgeoning demand in the luxury segment, and continuous infrastructure advancements contribute to Noida's prominence as a preferred investment hub. As the market evolves, stakeholders are advised to stay informed and consider strategic investments to capitalize on the region's growth potential."} />
           </SlideIn>
         </div>
       </section>

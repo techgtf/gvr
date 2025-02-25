@@ -137,35 +137,35 @@ const projects = [
 const mediaData = [
   {
     name: "caterpillar",
-    imgSrc: "caterpillar.jpg",
+    imgSrc: "caterpillar.webp",
   },
   {
     name: "good worth",
-    imgSrc: "good_worth.png",
+    imgSrc: "good_worth.webp",
   },
   {
     name: "jaina_logo_master",
-    imgSrc: "Jaina_logo_master.png",
+    imgSrc: "Jaina_logo_master.webp",
   },
   {
     name: "logo_manitou_group",
-    imgSrc: "logo_manitou_group.png",
+    imgSrc: "logo_manitou_group.webp",
   },
   {
     name: "pg electro",
-    imgSrc: "pg_electro.png",
+    imgSrc: "pg_electro.webp",
   },
   {
     name: "reliance retails",
-    imgSrc: "reliance_retails.png",
+    imgSrc: "reliance_retails.webp",
   },
   {
     name: "samsung logo",
-    imgSrc: "samsung_logo.png",
+    imgSrc: "samsung_logo.webp",
   },
   {
     name: "sansui logo",
-    imgSrc: "sansui_logo.png",
+    imgSrc: "sansui_logo.webp",
   },
 ];
 
@@ -218,11 +218,10 @@ const CommercialProjects = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${
-          window.innerWidth <= 768
-            ? "commercial_banner_mb.jpg"
-            : "commercial_banner.jpg"
-        }`}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${window.innerWidth <= 768
+          ? "commercial_banner_mb.jpg"
+          : "commercial_banner.jpg"
+          }`}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
@@ -350,7 +349,36 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty | commercial projects</title>
+        <title>Great Value Realty Commercial Projects | Premium Business Spaces</title>
+        <meta name="keywords" content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties" />
+        <meta name="description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/commercial-projects" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty Commercial Projects| Premium Business Spaces" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
+        <meta property="og:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta property="og:url" content="https://greatvaluerealty.com/commercial-projects" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
+        <meta name="twitter:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
       </Helmet>
       <section
         key={project.id}
@@ -372,7 +400,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
           <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
             <div className="about_desc">
               <SlideIn duration={0.8} delay={0.2}>
-                 <CommonPera PeraText={project.description} />                
+                <CommonPera PeraText={project.description} />
               </SlideIn>
             </div>
 
@@ -446,11 +474,10 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                           to={proj.link}
                           onClick={() => openNewBackgroundTab(proj.link)}
                           rel="noopener noreferrer"
-                          className={`${
-                            proj.name === "Moser Baer Solar Ltd / Warehouse"
-                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
-                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
-                          } `}
+                          className={`${proj.name === "Moser Baer Solar Ltd / Warehouse"
+                            ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
+                            : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                            } `}
                         >
                           {["Tavru Sohna", "Moserbear Part 2"].includes(
                             proj.name

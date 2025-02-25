@@ -33,11 +33,11 @@ export default function FooterBottom() {
         {/* ✅ Social Media Links Fixed */}
         <div className="socLinks flex lg:gap-x-6 lg:gap-0 gap-4 lg:pt-0 pt-3">
           {[
-            { href: "https://www.facebook.com/greatvaluerealty/", icon: "fb.png", alt: "Facebook" },
-            { href: "https://www.instagram.com/greatvalue_realty/", icon: "instagram.png", alt: "Instagram" },
-            { href: "https://x.com/GreatValueGroup", icon: "twitter.png", alt: "Twitter" },
-            { href: "https://www.linkedin.com/company/greatvaluerealty/", icon: "linkedin.png", alt: "LinkedIn" },
-            { href: "https://www.youtube.com/@greatvaluerealty", icon: "youtube.png", alt: "YouTube" },
+            { href: "https://www.facebook.com/greatvaluerealty/", icon: "fb.webp", alt: "Facebook" },
+            { href: "https://www.instagram.com/greatvalue_realty/", icon: "instagram.webp", alt: "Instagram" },
+            { href: "https://x.com/GreatValueGroup", icon: "twitter.webp", alt: "Twitter" },
+            { href: "https://www.linkedin.com/company/greatvaluerealty/", icon: "linkedin.webp", alt: "LinkedIn" },
+            { href: "https://www.youtube.com/@greatvaluerealty", icon: "youtube.webp", alt: "YouTube" },
           ].map(({ href, icon, alt }) => (
             <a
               key={alt}

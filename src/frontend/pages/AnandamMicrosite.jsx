@@ -231,13 +231,13 @@ function AnandamMicrosite() {
                 <meta property="og:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
                 <meta property="og:site_name" content="Great Value Anandam" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
                 <meta name="twitter:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
@@ -247,7 +247,7 @@ function AnandamMicrosite() {
                     "name": "Great Value Anandam Sector 107, Noida",
                     "alternateName": "Great Value Anandam Noida",
                     "url": "https://greatvaluerealty.com/anandam",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
                     "contactPoint": {
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
