@@ -11,4 +11,6 @@ class CsrGallery extends Model
 
     protected $fillable = ['image', 'alt'];
     
+    protected $table = "esg_galleries";
+
 }

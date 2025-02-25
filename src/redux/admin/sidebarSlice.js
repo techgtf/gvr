@@ -11,17 +11,29 @@ const sidebarSlice = createSlice({
   name:'sideMenu',
   initialState,
   reducers:{
-    shortCount:()=>{
-
+    shortCount:(state, action)=>{
+      return{
+        ...state,
+        toggleCount:[0, 1]
+      }
     },
-    normalCount:()=>{
-
+    normalCount:(state, action)=>{
+      return{
+        ...state,
+        toggleCount:[0, 1, 2]
+      }
     },
-    toggleMenuCount:()=>{
-
+    toggleMenuCount:(state,action)=>{
+      return{
+        ...state,
+        currentMenuCount:action.payload
+      }
     },
-    toggleAscending:()=>{
-
+    toggleAscending:(state)=>{
+      return{
+        ...state,
+        isAscending:!state.isAscending
+      }
     },
     setCurrentPage:(state, action)=>{
       console.log('working');

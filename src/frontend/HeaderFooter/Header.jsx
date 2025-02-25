@@ -125,9 +125,13 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timeoutId); // Cleanup on unmount
     };
+<<<<<<< HEAD
   }, [activeItem]);  // Depend on activeItem to avoid unintended resets
   
 
+=======
+  }, []); // Empty dependency array runs only once on mount
+>>>>>>> 58e727d761921927021e53bca1984c069d39ef75
   return (
     <>
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>

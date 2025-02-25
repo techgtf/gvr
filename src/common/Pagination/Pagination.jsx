@@ -13,29 +13,43 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav>
-      <ul className="pagination">
-        <li className='page-item'>
-          <button className={`page-link ${currentPage === 1 ? 'disabled' : ''}`}>
-            {/* <img src={chevronLeftIcon} alt="left icon" className='img-fluid' /> */}
-            <FaAngleLeft />
-          </button>
-        </li>
-        {pages.map((page) => (
-          <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
-            <button className="page-link" onClick={() => onPageChange(page)}>
-              {page}
-            </button>
-          </li>
-        ))}
-        <li className='page-item'>
-          <button className={`page-link ${currentPage === totalPages ? 'disabled' : ''}`}>
-            {/* <img src={chevronRightIcon} alt="right icon" className='img-fluid' /> */}
-            <FaAngleRight />
-          </button>
-        </li>
-      </ul>
-    </nav>
+    <div>
+  <ul className="pagination flex items-center space-x-2">
+    <li className="page-item">
+      <button
+        className={`page-link flex items-center justify-center w-10 h-10 border rounded bg-none ${
+          currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+        }`}
+        disabled={currentPage === 1}
+      >
+        <FaAngleLeft />
+      </button>
+    </li>
+    {pages.map((page) => (
+      <li key={page} className={`page-item ${currentPage === page ? "active" : ""}`}>
+        <button
+          className={`page-link flex items-center justify-center w-10 h-10 border rounded ${
+            currentPage === page ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+          }`}
+          onClick={() => onPageChange(page)}
+        >
+          {page}
+        </button>
+      </li>
+    ))}
+    <li className="page-item">
+      <button
+        className={`page-link flex items-center justify-center w-10 h-10 border rounded ${
+          currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+        }`}
+        disabled={currentPage === totalPages}
+      >
+        <FaAngleRight />
+      </button>
+    </li>
+  </ul>
+</div>
+
   );
 };
 

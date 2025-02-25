@@ -10,7 +10,7 @@ class Verticals extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'short_description', 'description', 'price'];
+    protected $fillable = ['name', 'short_description', 'image', 'description', 'price'];
     
     protected $dates = ['deleted_at'];
 

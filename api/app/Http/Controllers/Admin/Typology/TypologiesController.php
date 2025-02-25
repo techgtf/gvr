@@ -60,8 +60,6 @@ class TypologiesController extends Controller
             'typology.unique' => 'This Typology is Already Exists',
             'image.required' => 'Image is required',
             'image.mimes' => 'only allowed png,jpg,jpeg',
-
-
         ]);
 
         if($validator->fails()){
@@ -75,13 +73,11 @@ class TypologiesController extends Controller
 
         }else{
             try{
-                
-                
-                
+
                 $typology = new Typology();
                 $typology->slug = $request->typology;
                 $typology->typology = $request->typology;
-
+                $typology->description = $request->description;
 
                 if($request->file('image')){
                     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
@@ -201,6 +197,7 @@ class TypologiesController extends Controller
                  
                 $getrecord->slug = $request->typology;
                 $getrecord->typology = $request->typology;
+                $getrecord->description = $request->description;
 
                 if($request->file('image')){
                     dltSingleImgFile($getrecord->image);

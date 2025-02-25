@@ -7,7 +7,7 @@
   --futura_bt_book:'Futura_Bt_book';
   --futura_bt_medium:'Futura_Bt_medium';
   --theme_primary_color:#f4d966;
-  --theme_primary_dark_color:#8b5e10;
+  --theme_primary_dark_color:#33638b;
   --theme_secondary_color:#0158c7;
   --theme_secondary_dark_color:#003f8f;
   --theme_orange_color:#dca004;
@@ -468,8 +468,8 @@
 
 
 
-.btn_primary{
-    background:var(--theme_primary_color);
+.btn.btn_primary{
+    background:var(--theme_primary_dark_color);
     color:#fff;
     border:none;
   }

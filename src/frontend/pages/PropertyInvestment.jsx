@@ -6,13 +6,14 @@ import SlideIn from "../components/Animations/SlideIn";
 import { Slide } from "react-toastify";
 import CommonPera from "../components/commonPera";
 
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
 );
 
 const ProperyInvestment = () => {
-  useImageReveal(".reveal");
   return (
     <>
       <Helmet>
@@ -20,7 +21,8 @@ const ProperyInvestment = () => {
       </Helmet>
       <section className="bg-[#EFF5FA]">
         <HeroSectionAboutUs
-          img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/propertyInvestment/property-investment.webp`}
+          img={banner.image}
+          heading={banner.heading}
         />
         <div className="flex xl:mt-[4rem] mt-[2rem] flex-wrap justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0">
           {" "}

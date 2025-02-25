@@ -12,6 +12,9 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import * as CONFIG from "../../../config";
 import { Link } from "react-router-dom";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const statusOptions = [
   { label: "Active", value: "active" },
   { label: "Hide", value: "hide" },
@@ -87,12 +90,11 @@ const Typologies = () => {
   const addSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
-    var typologyVal = typologyRef.current.value;
     try {
       const formData = new FormData();
-      formData.append("typology", typologyVal);
-      formData.append("image", imageRef.current.files[0]);
+      formData.append("typology", typologyRef.current.value);
       const response = await Request("admin/typology", "POST", formData);
+
       if (response.status && response.statusCode == 403) {
         setErrors(response.errors);
         throw new Error("Please fill required fields");
@@ -115,14 +117,9 @@ const Typologies = () => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
 
-    var typologyVal = typologyRef.current.value;
-
     try {
       const formData = new FormData();
-      formData.append("typology", typologyVal);
-      if (imageRef.current.files[0]) {
-        formData.append("image", imageRef.current.files[0]);
-      }
+      formData.append("typology", typologyRef.current.value);
       const response = await Request(
         "admin/typology/" + editId + "/update",
         "POST",
@@ -195,7 +192,7 @@ const Typologies = () => {
       <div className="flex items-center justify-between">
         <h4 className="text-lg font-semibold">Typologies</h4>
         <Button
-          className="btn btn-primary btn-sm ml-auto"
+          className="btn ml-auto btn_primary btn-sm"
           onClick={addDeveloperHandler}
         >
           Add Typology
@@ -220,6 +217,7 @@ const Typologies = () => {
             <tr className="bg-gray-100 text-left">
               <th className="p-3 border">Name</th>
               <th className="p-3 border">Sub Typology</th>
+              <th className="p-3 border">Gallery</th>
               <th className="p-3 border">Status</th>
               <th className="p-3 border">Actions</th>
             </tr>
@@ -227,8 +225,10 @@ const Typologies = () => {
           <tbody>
             {isLoadingTableData && (
               <tr>
-                <td colSpan={4} className="text-center py-4">
-                  <ScaleLoader color="#ddd" />
+                <td colSpan={4}>
+                  <div className="text-center py-4">
+                    <ScaleLoader color="#ddd" className="w-full" />
+                  </div>
                 </td>
               </tr>
             )}
@@ -246,6 +246,14 @@ const Typologies = () => {
                       </Link>
                     </td>
                     <td className="p-3 border">
+                      <Link
+                        className="btn btn-primary btn-sm"
+                        to={`${CONFIG.ADMIN_ROOT}typology/${item.id}/gallery`}
+                      >
+                        View Gallery
+                      </Link>
+                    </td>
+                    <td className="p-3 border">
                       <CustomDropdown
                         className="form-select"
                         defaultVal="Select --"
@@ -258,11 +266,13 @@ const Typologies = () => {
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_ASSETS + "icons/edit.svg"}
-                          alt="edit icon"
-                          className="w-5 h-5"
-                        />
+                        <AiOutlineEdit size={22} />
+                      </button>
+                      <button
+                        className="btn action_btn"
+                        onClick={() => deleteHandler(item.id)}
+                      >
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
                       </button>
                     </td>
                   </tr>
@@ -294,12 +304,12 @@ const Typologies = () => {
               onSubmit={enableEdit ? updateHandler : addSubmitHandler}
               isLoading={isSitebarFormButtonLoading}
             >
-              <Form>
-                <Form.Group className="mb-4">
-                  <Form.Label>Typology Name*</Form.Label>
-                  <Form.Control
+              <form>
+                <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Typology Name*</label>
+                  <input
                     ref={typologyRef}
-                    className="form-input px-3 py-2 border rounded-md"
+                    className="border rounded px-3 py-2 w-full"
                     placeholder="Enter typology name"
                     required
                     type="text"
@@ -309,8 +319,8 @@ const Typologies = () => {
                       {errors.typology}
                     </div>
                   )}
-                </Form.Group>
-              </Form>
+                </div>
+              </form>
             </SideModal>
           </SidebarPortal>
           <BackdropPortal className="show" />

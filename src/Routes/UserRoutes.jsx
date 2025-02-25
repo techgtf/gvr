@@ -246,7 +246,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}blog/:id`,
+        path: `${BASE_ROOT}blog/:slug`,
         element: (
           // <Suspense fallback={<Loader />}>
             <Layout>
