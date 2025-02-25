@@ -59,10 +59,28 @@ const AddProjects = () => {
     debugger
 
     var formData = new FormData();
+
     formData.append("categorie_id", checkedCategory);
     formData.append("typologie_id", checkedTypology);
-    // formData.append("ivr_no", ivr.current.value);
+    formData.append("sub_typologie_id", checkedSubTypology);
     formData.append("name", name.current.value);
+    formData.append("project_status", checkedStatus);
+
+    if (e.target["image"]) {
+      if (e.target["image"].files[0]) {
+        formData.append("image", e.target["image"].files[0]);
+      }
+    }
+
+    if (e.target["thumbnail"]) {
+      if (e.target["thumbnail"].files[0]) {
+        formData.append("thumbnail", e.target["thumbnail"].files[0]);
+      }
+    }
+
+    
+
+    // formData.append("ivr_no", ivr.current.value);
     // formData.append("whatsapp", whatsapp.current.value);
     // formData.append("payment_plan", paymentplan.current.value);
 
@@ -73,32 +91,24 @@ const AddProjects = () => {
     // formData.append("head_data", head_data.current.value);
 
     // formData.append("rera_no", rera_no.current.value);
-    formData.append("sub_typologie_id", checkedSubTypology);
-    formData.append("project_status", checkedStatus);
     // formData.append("short_description", short_description.current.value);
 
-    if (e.target["image"]) {
-      if (e.target["image"].files[0]) {
-        formData.append("image", e.target["image"].files[0]);
-      }
-    }
+    // if (e.target["brochure"]) {
+    //   if (e.target["brochure"].files[0]) {
+    //     formData.append("brochure", e.target["brochure"].files[0]);
+    //   }
+    // }
 
-    if (e.target["brochure"]) {
-      if (e.target["brochure"].files[0]) {
-        formData.append("brochure", e.target["brochure"].files[0]);
-      }
-    }
-
-    if (e.target["logo"]) {
-      if (e.target["logo"].files[0]) {
-        formData.append("logo", e.target["logo"].files[0]);
-      }
-    }
-    if (e.target["brochure"]) {
-      if (e.target["brochure"].files[0]) {
-        formData.append("brochure", e.target["brochure"].files[0]);
-      }
-    }
+    // if (e.target["logo"]) {
+    //   if (e.target["logo"].files[0]) {
+    //     formData.append("logo", e.target["logo"].files[0]);
+    //   }
+    // }
+    // if (e.target["brochure"]) {
+    //   if (e.target["brochure"].files[0]) {
+    //     formData.append("brochure", e.target["brochure"].files[0]);
+    //   }
+    // }
 
     var response = await Request("admin/project", "POST", formData);
     if (response.status && response.statusCode === 403) {
