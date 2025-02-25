@@ -106,14 +106,14 @@ export default function Header() {
 
   useEffect(() => {
     let timeoutId;
-  
+
     const handleScroll = () => {
       setDropdown(false);
       setHoveringNav(false);
-  
+
       // Clear any existing timeout to prevent early resets
       clearTimeout(timeoutId);
-  
+
       // Set a timeout to remove activeItem after 3 seconds
       timeoutId = setTimeout(() => {
         setActiveItem(null);
@@ -130,14 +130,15 @@ export default function Header() {
       setHoveringNav(false);
 >>>>>>> 895946c (workculture)
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
 <<<<<<< HEAD
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timeoutId); // Cleanup on unmount
     };
+<<<<<<< HEAD
   }, [activeItem]);  // Depend on activeItem to avoid unintended resets
   
 
@@ -146,6 +147,9 @@ export default function Header() {
     };
   }, []); // Empty dependency array runs only once on mount
 >>>>>>> d1980c8 (api with navbar scroll)
+=======
+  }, []); // Empty dependency array runs only once on mount
+>>>>>>> caf9b31 (resolved)
   return (
     <>
       <header className={`app_header ${isFixed ? "fixed active" : "relative"} top-0 left-0 w-full !z-20 ${hoveringNav ? "bg-[#EFF5FA]" : ""}`}>
