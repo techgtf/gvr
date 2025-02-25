@@ -19,10 +19,13 @@ use App\Http\Controllers\Admin\PageSectionController;
 
 
 Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
-    Route::group(['middleware' => ['admin.auth']], function () {
+    // Route::group(['middleware' => ['admin.auth']], function () {
+        Route::get('distinct-all-pages', [PageSectionController::class,'DistinctPages']);
+        
         Route::apiResource('page/page-sections', PageSectionController::class);
         Route::resource('page-meta', PageMetaController::class);
         Route::get('distinct-pages', [PageMetaController::class,'DistinctPages']);
+
         Route::get('page/{id}', [PageSectionController::class,'getSecionList']);
-    });
+    // });
 });

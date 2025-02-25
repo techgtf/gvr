@@ -82,6 +82,7 @@ class Projects extends Model
         'rera_no',
         'logo',
         'feature_image',
+        'thumbnail',
         'short_description',
         'brochure',
         'meta_title',

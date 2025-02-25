@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\Category\CategoryTypologyController;
+use App\Http\Controllers\Admin\Typology\TypologiesGalleriesController;
 use App\Http\Controllers\Admin\Typology\TypologySubTypologyController;
+use App\Http\Controllers\Admin\Typology\TypologyTypoGalleriesController;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin\Typology\TypologiesController;
 use  App\Http\Controllers\Admin\Typology\SubTypologiesController;
@@ -39,8 +41,17 @@ Route::group(['prefix'=>'admin'],function(){
 
         
 
+        // typologies galleries
+        Route::resource('typology-galleries', TypologiesGalleriesController::class)->except('update');
+        Route::post('typology-galleries/{id}/update', [TypologiesGalleriesController::class,'update']);
 
 
+        Route::apiResource('typology-sub-gallery', TypologyTypoGalleriesController::class)->except(['update']);
+        Route::post('typology-sub-gallery/{id}/update', [TypologyTypoGalleriesController::class,'update']);
+        Route::get('all-typology-galleries-typology', [TypologyTypoGalleriesController::class,'allindex']);
+        
+        
+        Route::get('get-all-galleries-by-typology/{id}', [TypologyTypoGalleriesController::class,'getAllgalleriesByTypology']);
 
     });
 });

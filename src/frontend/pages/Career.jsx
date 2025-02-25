@@ -4,6 +4,8 @@ import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
 import { Helmet } from "react-helmet";
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -15,6 +17,29 @@ const WorkCultureSection = lazy(() =>
 const JobFormSection = lazy(() => import("../components/career/JobForm"));
 
 const Career = () => {
+  const { data: pageData, loading: pageDataLoading, error: pageDataError } = useFetchData("page-sections", "5");
+
+  // 🔹 Extract Banner Data Safely
+  const extractPageData = (pageData) => {
+      if (!pageData) return { banner: { image: "", heading: "Default Heading" }, workCulture: {} };
+  
+      const pageValues = Object.values(pageData); 
+      return {
+          banner: {
+              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              heading: pageValues[0]?.heading || "Default Heading"
+          },
+          workCulture: pageValues[1] || {} 
+      };
+  };
+  
+  const { banner, workCulture } = extractPageData(pageData);
+  // Handle Loading and Errors
+  if (pageDataLoading) return <Loader />;
+  if (pageDataError) return <p className="text-red-500">Error loading Banner: {pageDataError}</p>;
+
+
+  console.log(workCulture,"workCultureworkCulture")
   return (
     <>
       <Helmet>
@@ -25,8 +50,8 @@ const Career = () => {
 
         // "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739359233/career_xzpgfz.webp"
         // }
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/career/career.webp`}
-        heading={"CAREER"}
+        img={banner.image}
+        heading={banner.heading}
         extraClassesImg={"objectRight"}
       />
       <div
@@ -62,7 +87,7 @@ const Career = () => {
         </SlideIn>
       </div>
       <JobFormSection />
-      <WorkCultureSection />
+      <WorkCultureSection data={workCulture}/>
     </>
   );
 };

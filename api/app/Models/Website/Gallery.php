@@ -10,7 +10,7 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    protected $table = 'csr_galleries';
+    protected $table = 'esg_galleries';
 
     public function getImageAttribute()
     {

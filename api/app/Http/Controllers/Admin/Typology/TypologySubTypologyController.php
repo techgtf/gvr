@@ -22,13 +22,13 @@ class TypologySubTypologyController extends Controller
         //
 
         $validator = Validator::make($request->all(), 
-        [
-            'typologies_id' => 'required|exists:typologies,id', 
-        ],
-        [
-            'typologies_id.required' => 'This field is required.',
-            'typologies_id.exists' => 'Invalid typology.',
-        ]
+            [
+                'typologies_id' => 'required|exists:typologies,id', 
+            ],
+            [
+                'typologies_id.required' => 'This field is required.',
+                'typologies_id.exists' => 'Invalid typology.',
+            ]
         );
 
     if($validator->fails()){

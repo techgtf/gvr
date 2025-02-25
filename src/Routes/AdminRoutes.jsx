@@ -4,73 +4,79 @@ import { ADMIN_ROOT } from "../../config";
 import Loader from "../Loader/loader";
 import Layout from "../frontend/Layout";
 import PageNotFound from "../frontend/PageNotFound/PageNotFound";
+import ProtectedRoute from "../admin/components/ProtectedRoute/Index";
 import Dashboard from "../admin/Dashboard";
 import { elements } from "chart.js";
 import AdminLayout from "../admin/components/Layout/Index";
 import PlatterPage from "../admin/PlatterPage/Index";
 import AddPlatterPage from "../admin/PlatterPage/AddPlatter";
-import States from '../admin/Locations/States';
-import Login from '../admin/Login';
-import EditPlatter from '../admin/PlatterPage/EditPlatter';
-import PlatterBanners from '../admin/PlatterPage/PlatterBanners';
-import Projects from '../admin/Projects/Index';
-import AddProject from '../admin/Projects/Add';
-import EditProject from '../admin/Projects/EditProject';
+import States from "../admin/Locations/States";
+import Login from "../admin/Login";
+import EditPlatter from "../admin/PlatterPage/EditPlatter";
+import PlatterBanners from "../admin/PlatterPage/PlatterBanners";
+import Projects from "../admin/Projects/Index";
+import AddProject from "../admin/Projects/Add";
+import EditProject from "../admin/Projects/EditProject";
 
-import ProjectLocation from '../admin/Projects/Location'
-import ProjectOverview from '../admin/Projects/Overview'
-import FloorPlan from '../admin/Projects/FloorPlan'
-import Gallery from '../admin/Projects/Gallery'
-import Banner from '../admin/Projects/Banner'
+import ProjectLocation from "../admin/Projects/Location";
+import ProjectOverview from "../admin/Projects/Overview";
+import FloorPlan from "../admin/Projects/FloorPlan";
+import Gallery from "../admin/Projects/Gallery";
+import Banner from "../admin/Projects/Banner";
 
-import ProjectAmenities from '../admin/Projects/Amenities'
-import ProjectMasterPlan from '../admin/Projects/MasterPlan'
-import ProjectLocationAdvantage from '../admin/Projects/LocationAdvantage'
-import ProjectFaq from '../admin/Projects/Faq'
-import Highlights from '../admin/Projects/Highlights'
-import MicroForm from '../admin/Projects/MicroForm'
+import ProjectAmenities from "../admin/Projects/Amenities";
+import ProjectMasterPlan from "../admin/Projects/MasterPlan";
+import ProjectLocationAdvantage from "../admin/Projects/LocationAdvantage";
+import ProjectFaq from "../admin/Projects/Faq";
+import Highlights from "../admin/Projects/Highlights";
+import MicroForm from "../admin/Projects/MicroForm";
 
-import Forgot from '../admin/Forgot';
-import Cities from '../admin/Locations/Cities';
-import HomeBanner from '../admin/HomeBanner/Index';
-import Amenities from '../admin/Amenities';
-import Developers from '../admin/Developers/Index';
-import Category from '../admin/Category/Index';
-import Typologies from '../admin/Typologies/Index';
-import PageMetas from '../admin/PageMeta/Index';
-import TypologiesSubTypologies from '../admin/Typologies/SubTypology';
-import CategoryTypology from '../admin/Category/CategoryTypology';
+import Forgot from "../admin/Forgot";
+import Cities from "../admin/Locations/Cities";
+import HomeBanner from "../admin/HomeBanner/Index";
+import Amenities from "../admin/Amenities";
+import Developers from "../admin/Developers/Index";
+import Category from "../admin/Category/Index";
+import Typologies from "../admin/Typologies/Index";
+import PageMetas from "../admin/PageMeta/Index";
+import TypologiesSubTypologies from "../admin/Typologies/SubTypology";
+import CategoryTypology from "../admin/Category/CategoryTypology";
 // import SubTypologies from '../../admin/Subtypology/Index';
-import BlogCategory from '../admin/Blogs/BlogCategory';
-import Blogs from '../admin/Blogs';
-import AddBlog from '../admin/Blogs/Add';
-import EditBlog from '../admin/Blogs/Edit';
-import Careers from '../admin/Careers/Index';
-import AddCareer from '../admin/Careers/Add';
-import UpdateCareer from '../admin/Careers/Update';
-import Localities from '../admin/Locations/Localities';
-import Process from '../admin/Process/Index';
-import TopCities from '../admin/Topcities/Index';
-import Testimonials from '../admin/Testimonials';
-import Enquiry from '../admin/Enquiry/Index';
-import ProjectsQuery from '../admin/Enquiry/Projects';
-import ProjectQuery from '../admin/Enquiry/Project';
-import JobApplications from '../admin/Enquiry/JobApplications';
-import Offers from '../admin/Offers'
+import BlogCategory from "../admin/Blogs/BlogCategory";
+import Blogs from "../admin/Blogs";
+import AddBlog from "../admin/Blogs/Add";
+import EditBlog from "../admin/Blogs/Edit";
+import Careers from "../admin/Careers/Index";
+import AddCareer from "../admin/Careers/Add";
+import UpdateCareer from "../admin/Careers/Update";
+import Localities from "../admin/Locations/Localities";
+import Process from "../admin/Process/Index";
+import TopCities from "../admin/Topcities/Index";
+import Testimonials from "../admin/Testimonials";
+import Enquiry from "../admin/Enquiry/Index";
+import ProjectsQuery from "../admin/Enquiry/Projects";
+import ProjectQuery from "../admin/Enquiry/Project";
+import JobApplications from "../admin/Enquiry/JobApplications";
+import Offers from "../admin/Offers";
+import HomePageOverview from "../admin/components/homepage/overview/Index";
+import OtherVerticals from "../admin/components/homepage/otherVerticals/Index";
+import Timeline from "../admin/components/timeline/Index";
+import EditTimeline from "../admin/components/timeline/Edit";
+import AddTimeline from "../admin/components/timeline/Add";
+import AboutPage from "../admin/AboutPage";
+import OurTeam from "../admin/components/about/team/Index";
+import TimelineImages from "../admin/components/timeline/images/Index";
+import Faqs from "../admin/components/faq/Index";
+import EsgSocial from "../admin/components/esg/social/Index";
+import EsgEnvironment from "../admin/components/esg/environment/Index";
+import EsgGallery from "../admin/components/esg/gallery/Index";
+import SubTypologies from "../admin/Typologies/SubTypology";
+import SubTypologiesPage from "../admin/Subtypology/Index";
+import TypologyGallery from "../admin/typologyGallery/Index";
+import SingleTypologyGallery from "../admin/Typologies/Gallery";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
-  {
-    path: `${ADMIN_ROOT}`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Dashboard />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
   {
     path: `${ADMIN_ROOT}login`,
     // element:<AdminLayout />,
@@ -136,7 +142,7 @@ export const AdminRoutes = [
     ),
   },
   {
-    path: `${ADMIN_ROOT}projects/add`,
+    path: `${ADMIN_ROOT}project/add`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
@@ -367,12 +373,67 @@ export const AdminRoutes = [
     ),
   },
   {
+    path: `${ADMIN_ROOT}sub-typologies`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SubTypologiesPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}typologies/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TypologyGallery />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
     path: `${ADMIN_ROOT}page-meta`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <PageMetas />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}home-overview`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomePageOverview />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}other-verticals`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OtherVerticals />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}team`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <OurTeam />
         </Suspense>
       </AdminLayout>
     ),
@@ -417,6 +478,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <TypologiesSubTypologies />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}typology/:id/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SingleTypologyGallery />
         </Suspense>
       </AdminLayout>
     ),
@@ -552,6 +624,130 @@ export const AdminRoutes = [
           <Testimonials />
         </Suspense>
       </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}timeline`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Timeline />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}timeline/add`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AddTimeline />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}timeline/edit/:id`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EditTimeline />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}timeline/images`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TimelineImages />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}esg/social`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgSocial />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}esg/environment`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgEnvironment />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+
+  {
+    path: `${ADMIN_ROOT}esg/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgGallery />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}page/:pageId`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AboutPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}about`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AboutPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}faqs`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Faqs />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}`,
+    // element:<AdminLayout />,
+    element: (
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
 ];

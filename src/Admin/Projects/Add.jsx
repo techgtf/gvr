@@ -56,25 +56,15 @@ const AddProjects = () => {
 
   const basicSubmitHandler = async (e) => {
     e.preventDefault();
+    debugger
 
     var formData = new FormData();
+
     formData.append("categorie_id", checkedCategory);
     formData.append("typologie_id", checkedTypology);
-    formData.append("ivr_no", ivr.current.value);
-    formData.append("name", name.current.value);
-    formData.append("whatsapp", whatsapp.current.value);
-    formData.append("payment_plan", paymentplan.current.value);
-
-    formData.append("meta_title", meta_title.current.value);
-    formData.append("meta_keyword", meta_keyword.current.value);
-    formData.append("meta_description", meta_description.current.value);
-    formData.append("footer_data", footer_data.current.value);
-    formData.append("head_data", head_data.current.value);
-
-    formData.append("rera_no", rera_no.current.value);
     formData.append("sub_typologie_id", checkedSubTypology);
+    formData.append("name", name.current.value);
     formData.append("project_status", checkedStatus);
-    formData.append("short_description", short_description.current.value);
 
     if (e.target["image"]) {
       if (e.target["image"].files[0]) {
@@ -82,22 +72,43 @@ const AddProjects = () => {
       }
     }
 
-    if (e.target["brochure"]) {
-      if (e.target["brochure"].files[0]) {
-        formData.append("brochure", e.target["brochure"].files[0]);
+    if (e.target["thumbnail"]) {
+      if (e.target["thumbnail"].files[0]) {
+        formData.append("thumbnail", e.target["thumbnail"].files[0]);
       }
     }
 
-    if (e.target["logo"]) {
-      if (e.target["logo"].files[0]) {
-        formData.append("logo", e.target["logo"].files[0]);
-      }
-    }
-    if (e.target["brochure"]) {
-      if (e.target["brochure"].files[0]) {
-        formData.append("brochure", e.target["brochure"].files[0]);
-      }
-    }
+    
+
+    // formData.append("ivr_no", ivr.current.value);
+    // formData.append("whatsapp", whatsapp.current.value);
+    // formData.append("payment_plan", paymentplan.current.value);
+
+    // formData.append("meta_title", meta_title.current.value);
+    // formData.append("meta_keyword", meta_keyword.current.value);
+    // formData.append("meta_description", meta_description.current.value);
+    // formData.append("footer_data", footer_data.current.value);
+    // formData.append("head_data", head_data.current.value);
+
+    // formData.append("rera_no", rera_no.current.value);
+    // formData.append("short_description", short_description.current.value);
+
+    // if (e.target["brochure"]) {
+    //   if (e.target["brochure"].files[0]) {
+    //     formData.append("brochure", e.target["brochure"].files[0]);
+    //   }
+    // }
+
+    // if (e.target["logo"]) {
+    //   if (e.target["logo"].files[0]) {
+    //     formData.append("logo", e.target["logo"].files[0]);
+    //   }
+    // }
+    // if (e.target["brochure"]) {
+    //   if (e.target["brochure"].files[0]) {
+    //     formData.append("brochure", e.target["brochure"].files[0]);
+    //   }
+    // }
 
     var response = await Request("admin/project", "POST", formData);
     if (response.status && response.statusCode === 403) {
@@ -141,7 +152,6 @@ const AddProjects = () => {
   };
   const getSubTypologyByTypologyList = async (event) => {
     setCheckedTypology(event.target.value);
-    debugger;
 
     var response = await getAllSubTypologyByTypology(event.target.value);
     if (response.status && response.statusCode === 200) {
@@ -177,26 +187,30 @@ const AddProjects = () => {
       </div>
 
       <div className="property_wizard_listing">
-        <div className="px-0 form_col w-full">
+        <div className="!px-0 form_col !w-full">
           <form onSubmit={basicSubmitHandler}>
             <h6 className="labelTitle">What kind of property do you have?</h6>
 
-            <div className="radio_design mb_20 flex">
-              {categorylist
-                ? categorylist.map((item, key) => (
-                    <CustomRadio
-                      className="radioItem mr_20"
-                      name="propertyType"
-                      id={`propertyType${item.id}`}
-                      label={`${item.name}`}
-                      key={key}
-                      value={item.id}
-                      checked={checkedCategory == item.id}
-                      onChange={fetchtypologyHandle}
-                    />
-                  ))
-                : ""}
-              {errors.categorie_id}
+            <div className="mb_20">
+              <div className="radio_design flex">
+                {categorylist
+                  ? categorylist.map((item, key) => (
+                      <CustomRadio
+                        className="radioItem mr_20"
+                        name="propertyType"
+                        id={`propertyType${item.id}`}
+                        label={`${item.name}`}
+                        key={key}
+                        value={item.id}
+                        checked={checkedCategory == item.id}
+                        onChange={fetchtypologyHandle}
+                      />
+                    ))
+                  : ""}
+              </div>
+              {errors.categorie_id && (
+                <div className="errMsg">{errors.categorie_id}</div>
+              )}
             </div>
 
             <div className="radio_design1 mb_20">
@@ -214,7 +228,6 @@ const AddProjects = () => {
                     />
                   ))
                 : ""}
-              {errors.typologie_id}
             </div>
 
             <div className="radio_design1 mb_20">
@@ -268,46 +281,16 @@ const AddProjects = () => {
               </div>
 
               <div className="mb_20">
-                <label className="block">Project IVR No.*</label>
+                <label className="block">
+                  Thumbnail Image*{" "}
+                  <small className="size">(Size 800px x 650px)</small>
+                </label>
                 <input
-                  type="text"
+                  type="file"
                   className="w-full p-2 border rounded"
-                  placeholder="Enter IVR no."
-                  ref={ivr}
+                  name="thumbnail"
                 />
-                {errors.ivr_no && <div className="errMsg">{errors.ivr_no}</div>}
-              </div>
-
-              <div className="mb_20">
-                <label className="block">Project Whatsapp No.</label>
-                <input
-                  type="text"
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter whatsapp no."
-                  ref={whatsapp}
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="mb_20">
-                <label className="block">Payment Plan</label>
-                <input
-                  type="text"
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter payment plan"
-                  ref={paymentplan}
-                />
-              </div>
-
-              <div className="mb_20">
-                <label className="block">RERA No.</label>
-                <input
-                  type="text"
-                  className="w-full p-2 border rounded"
-                  placeholder="Enter Rera No"
-                  ref={rera_no}
-                />
+                {errors.thumbnail && <div className="errMsg">{errors.thumbnail}</div>}
               </div>
 
               <div className="mb_20">
@@ -322,9 +305,52 @@ const AddProjects = () => {
                 />
                 {errors.image && <div className="errMsg">{errors.image}</div>}
               </div>
+
+              {/* <div className="mb_20">
+                <label className="block">Project IVR No.*</label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter IVR no."
+                  ref={ivr}
+                />
+                {errors.ivr_no && <div className="errMsg">{errors.ivr_no}</div>}
+              </div> */}
+
+              {/* <div className="mb_20">
+                <label className="block">Project Whatsapp No.</label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter whatsapp no."
+                  ref={whatsapp}
+                />
+              </div> */}
             </div>
 
-            <h6 className="labelTitle mt_30">Page Details</h6>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* <div className="mb_20">
+                <label className="block">Payment Plan</label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter payment plan"
+                  ref={paymentplan}
+                />
+              </div> */}
+
+              {/* <div className="mb_20">
+                <label className="block">RERA No.</label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter Rera No"
+                  ref={rera_no}
+                />
+              </div> */}
+            </div>
+
+            {/* <h6 className="labelTitle mt_30">Page Details</h6>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb_20">
                 <label className="block">Meta Title</label>
@@ -379,7 +405,7 @@ const AddProjects = () => {
                 ref={footer_data}
                 name="footer_data"
               />
-            </div>
+            </div> */}
 
             <button className="btn btn_primary mt_20" type="submit">
               Next

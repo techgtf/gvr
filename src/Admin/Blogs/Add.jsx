@@ -104,12 +104,6 @@ const AddBlog = () => {
     <>
       <div className="title_col flex justify-between items-center">
         <h4 className="page_title">Add Blog</h4>
-        <button
-          className="btn btn_primary btn-sm ml-auto"
-          onClick={addCategoryHandler}
-        >
-          Add Blog
-        </button>
       </div>
 
       <div className="card mt-4 card_style1 bg-white">
@@ -123,7 +117,7 @@ const AddBlog = () => {
             <input
               ref={titleRef}
               type="text"
-              placeholder="Enter Blog Title"
+              placeholder="Enter Title"
               className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-transparent"
             />
             {errors.heading && (
@@ -132,7 +126,7 @@ const AddBlog = () => {
           </div>
 
           <div className="mb_15 form-group">
-            <label className="block font-medium">Short Description*</label>
+            <label className="block font-medium">Short Description</label>
             <textarea
               ref={shortDescriptionRef}
               required
@@ -187,9 +181,6 @@ const AddBlog = () => {
             {errors.thumbnail && (
               <div className="errMsg text-red-500">{errors.thumbnail}</div>
             )}
-            {showEditEnableImage && (
-              <img width="100" src={showEditEnableImage} />
-            )}
           </div>
 
           <div className="mb_15 form-group">
@@ -205,16 +196,13 @@ const AddBlog = () => {
             {errors.image && (
               <div className="errMsg text-red-500">{errors.image}</div>
             )}
-            {showEditEnableImage && (
-              <img width="100" src={showEditEnableImage} />
-            )}
           </div>
 
           <button
             type="submit"
             className="btn btn_primary px-4 py-2 rounded text-white bg-blue-600 hover:bg-blue-700"
           >
-            Add
+            Save
           </button>
         </form>
       </div>

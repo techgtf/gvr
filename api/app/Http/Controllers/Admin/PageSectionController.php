@@ -9,6 +9,7 @@ use App\Models\Admin\Amenities;
 use App\Models\Admin\PageSection;
 use App\Models\Admin\PageSectionList;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admin\Page;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 
@@ -325,5 +326,28 @@ class PageSectionController extends Controller
         return $result;
     }
 
+
+    public function  DistinctPages(){
+        $data = Page::get();
+        $platterArray = [];
+        $otherRecords = [];
+
+        foreach ($data as $record) {
+            if (isset($record->type) && $record->type === 'platter') {
+                $platterArray[] = $record;
+            } else {
+                $otherRecords[] = $record;
+            }
+        }
+        return response()->json([
+            'status'=>true,
+            'statusCode'=>200,
+            'message'=>"Success ",
+            'data' => [
+                'platter' => $platterArray,
+                'data' => $otherRecords,
+            ],
+        ]);
+    }
 
 }

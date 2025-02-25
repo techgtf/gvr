@@ -17,26 +17,20 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    //
-
+    
     public function index(Request $request){
 
 
         $perPage = $request->input('per_page', 4); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-        
-
+         
         $category = $request->input('category');
-
-
-
-
-        // category
-
+  
         $project = Projects::with(['location','typologie','developer','category','subtypologie','startingSize'=>function($query){
                 $query->min('size');
             }
         ]);
+        
         $project->when($request->budget,function($q,$budget){
             $q->whereHas('startingPrice', function($query) use ($budget) {
                 $query->selectRaw('min(price) as min_price, project_id')

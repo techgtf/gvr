@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('project_location_advantages', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id')->nullable();
-            $table->string('name');
             $table->string('type')->nullable();
+            $table->string('icons');
+            $table->string('name');
             $table->string('distance')->nullable();
             $table->timestamps();
         });

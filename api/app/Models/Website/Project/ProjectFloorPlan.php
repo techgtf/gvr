@@ -12,7 +12,7 @@ class ProjectFloorPlan extends Model
 {
     use HasFactory,SoftDeletes;
    
-    protected $hidden=['sub_typology','project_id','created_at','updated_at','deleted_at','status','size_type'];
+    protected $hidden=['sub_typology','project_id','created_at','updated_at','deleted_at','status','sizes_type'];
     public function subTypology(){
         return $this->belongsTo(SubTypology::class,'sub_typology','id');
     }
@@ -21,11 +21,10 @@ class ProjectFloorPlan extends Model
 
     
     public function getsizeAttribute()
-    {
-   
-                if(!empty($this->attributes['size'])){
+    {        
+        if(!empty($this->attributes['size'])){
 
-             return  round(measurmentConvert($this->attributes['size'],2,$this->attributes['size_type'])).' '.sizeType($this->attributes['size_type']);
+            return  round(measurmentConvert($this->attributes['size'],2,$this->attributes['sizes_type'])).' '.sizeType($this->attributes['sizes_type']);
 
         }
         // Perform your conversion operation here

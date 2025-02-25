@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import CustomRadio from "common/CustomRadio/Index";
 import Button from "common/Button/Button";
 import ProjectSteps from "../components/ProjectSteps/Index";
@@ -136,7 +136,7 @@ const AddPlatter = () => {
           <div className="steps_col">
             <div className="step filled">
               <NavLink
-                to={`${CONFIG.ADMIN_ROOT}platter-page/${platterid}/edit`}
+                to={`${CONFIG.ADMIN_ROOT}platter-page/add`}
                 className="step-trigger"
               >
                 <span className="circle">
@@ -151,7 +151,7 @@ const AddPlatter = () => {
 
             <div className="step">
               <NavLink
-                to={`${CONFIG.ADMIN_ROOT}platter-page/${platterid}/banner`}
+                to={`${CONFIG.ADMIN_ROOT}platter-page/banner`}
                 className="step-trigger"
               >
                 <span className="circle">
@@ -170,13 +170,13 @@ const AddPlatter = () => {
           "Loading ..... "
         ) : (
           <div className="px-12 form_col">
-            <form onSubmit={UpdateSubmitHandler} className="space-y-4">
-              <div className="card mb-4 p-4">
+            <form onSubmit={basicSubmitHandler} className="space-y-4">
+              <div className="card bg-white mb-4 p-4">
                 <div className="card-body grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="mb_20">
                     <label className="block">Category</label>
                     <select
-                      className="form-control"
+                      className="border rounded px-3 py-2 w-full"
                       value={formFields.category}
                       onChange={fetchtypologyHandle}
                     >
@@ -194,18 +194,18 @@ const AddPlatter = () => {
                   <div className="mb_20">
                     <label className="block">Developer</label>
                     <select
-                      className="form-control"
+                      className="border rounded px-3 py-2 w-full"
                       name="developer"
                       value={formFields.developer}
                       onChange={handleChange}
                     >
                       <option value="">Select Developer</option>
-                      {developerList &&
+                      {/* {developerList &&
                         developerList.map((item, key) => (
                           <option key={key} value={item.id}>
                             {item.name}
                           </option>
-                        ))}
+                        ))} */}
                     </select>
                     {errors.developer_id}
                   </div>

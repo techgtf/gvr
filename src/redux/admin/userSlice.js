@@ -9,11 +9,17 @@ const userSlice = createSlice({
   name:'user',
   initialState,
   reducers:{
-    setLogin:()=>{
-
+    setLogin:(state, action)=>{
+      return {
+        ...state,
+        isLogin: true,
+      }
     },
-    setLogout:()=>{
-
+    setLogout:(state)=>{
+      return{
+        ...state,
+        isLogin:false,
+      }
     },
   }
 })
