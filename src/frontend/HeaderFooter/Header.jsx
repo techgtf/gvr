@@ -76,8 +76,8 @@ export default function Header() {
     { name: "ESG", link: "esg", hasMenus: false },
   ];
 
-  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
-  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.webp`;
+  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`;
 
 
   const logoOnePages = [

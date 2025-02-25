@@ -35,14 +35,14 @@ export default function Home() {
                 <meta property="og:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta property="og:url" content="https://greatvaluerealty.com/" />
                 <meta property="og:site_name" content="Great Value Realty Noida" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <link rel="canonical" href="https://greatvaluerealty.com/" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Great Value Realty| Home" />
                 <meta name="twitter:description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">

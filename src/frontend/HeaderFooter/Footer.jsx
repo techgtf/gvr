@@ -51,7 +51,7 @@ export default function Footer() {
               >
                 <img
                   className="h-[65px]"
-                  src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`}
+                  src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.webp`}
                   alt="Great Value Realty Logo"
                 />
               </Link>

@@ -200,13 +200,13 @@ function Microsite() {
         <meta property="og:description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta property="og:url" content="https://greatvaluerealty.com/sharanam" />
         <meta property="og:site_name" content="Great Value Sharanam Noida" />
-        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@GreatValueGroup" />
         <meta name="twitter:title" content="Sharanam by Great Value | Premium 2 & 3 BHK Homes" />
         <meta name="twitter:description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta name="twitter:creator" content="@GreatValueGroup" />
-        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
         {/* <!--End of Twitter TH data --> */}
 
         <script type="application/ld+json">

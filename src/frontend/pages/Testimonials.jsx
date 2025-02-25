@@ -13,7 +13,34 @@ const Testimonials = () => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty | Testimonials</title>
+        <title>Great Value Realty Testimonials | Hear from Our Happy Clients</title>
+        <meta name="keywords" content="Great Value Realty testimonials, client reviews, real estate feedback, customer experiences, homebuyer testimonials, investor reviews" />
+        <meta name="description" content="See what our satisfied clients say about Great Value Realty! Read testimonials from homeowners and investors who trust us for their real estate needs." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/testimonials" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="YahooSeeker" content="index, follow" />
+        <meta name="msnbot" content="index, follow" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="safe for kids" />
+
+        {/* Open Graph (OG) Meta Tags for Social Sharing */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty Testimonials | Hear from Our Happy Clients" />
+        <meta property="og:description" content="See what our satisfied clients say about Great Value Realty! Read testimonials from homeowners and investors who trust us for their real estate needs." />
+        <meta property="og:url" content="https://greatvaluerealty.com/testimonials" />
+        <meta property="og:site_name" content="Great Value Realty Testimonials" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty Testimonials | Hear from Our Happy Clients" />
+        <meta name="twitter:description" content="See what our satisfied clients say about Great Value Realty! Read testimonials from homeowners and investors who trust us for their real estate needs." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
       </Helmet>
       <HeroSectionAboutUs
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/banner.webp`}

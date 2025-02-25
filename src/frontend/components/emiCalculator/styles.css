@@ -12,7 +12,7 @@
 .emiCalculator input[type="range"]:active::-moz-range-thumb {box-shadow: 0 0 0 13px rgba(81, 113, 105, 0.3)}
 .emiCalculator input[type="range"]:focus::-moz-range-thumb {box-shadow: 0 0 0 13px rgba(81, 113, 105, 0.3)}
 
-.emiCalculator .type_num{background:#fff url('assets/frontend/images/icons/rupee.png') no-repeat 10px 10px; background-size: 18px; padding-left: 35px;}
+.emiCalculator .type_num{background:#fff url('assets/frontend/images/icons/rupee.webp') no-repeat 10px 10px; background-size: 18px; padding-left: 35px;}
 
 @media (max-width:767px) {
     .emiCalculator .type_num{background-size: 15px; background-position: 10px center; padding-left: 30px;}

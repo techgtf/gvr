@@ -62,7 +62,7 @@ function SideMenu({ setOpenSidebar }) {
       >
         <img
           className="h-[50px]"
-          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`}
+          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`}
           alt="Great Value Realty Logo"
         />
       </Link>

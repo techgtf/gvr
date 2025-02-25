@@ -63,7 +63,7 @@ const Header = (props)=>{
 
                 <div className="ml-auto flex items-center gap-6">
                     <div className="max-w-[100px]">
-                        <img src={CONFIG.ADMIN_ASSETS + "images/logo.png"} alt="logo" className="w-full" />
+                        <img src={CONFIG.ADMIN_ASSETS + "images/logo.webp"} alt="logo" className="w-full" />
                     </div>
 
                     <div className="user">
