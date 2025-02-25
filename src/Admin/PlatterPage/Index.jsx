@@ -155,44 +155,48 @@ const PlatterPage = () => {
         </Link>
       </div>
 
-      <div className="card mt-4 p-4">
+      <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
           <h5 className="mb-0">Platter Pages</h5>
           <div className="ml-auto">
             <input
               type="text"
-              className="form-control"
+              className="border rounded px-3 py-2 w-full"
               placeholder="Search by name"
               onChange={findHandler}
             />
           </div>
         </div>
 
-        <table className="mt-4 w-full">
+        <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr>
-              <th>Platter Name</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Active</th>
-              <th>Actions</th>
+              <th className="border border-gray-300 p-2 text-left">
+                Platter Name
+              </th>
+              <th className="border border-gray-300 p-2 text-left">Type</th>
+              <th className="border border-gray-300 p-2 text-left">Status</th>
+              <th className="border border-gray-300 p-2 text-left">Active</th>
+              <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
             {isLoading && (
-              <tr>
-                <td colSpan={5} className="text-center">
-                  <ScaleLoader color="#ddd" className="w-full" />
+              <tr className="border-b border-gray-200">
+                <td colSpan={5}>
+                  <div className="text-center py-4">
+                    <ScaleLoader color="#ddd" className="w-full" />
+                  </div>
                 </td>
               </tr>
             )}
             {!isLoading && list.length ? (
               list.map((item) => (
-                <tr key={item.id}>
-                  <td>
+                <tr key={item.id} className="border-b">
+                  <td className="py-2 px-4">
                     <h6 className="pr_name">{item.name}</h6>
                   </td>
-                  <td>
+                  <td className="py-2 px-4">
                     {item.category?.name}
                     <br />
                     {item.developer?.developer}
@@ -203,7 +207,7 @@ const PlatterPage = () => {
                     <br />
                     {item.cities?.city}
                   </td>
-                  <td>
+                  <td className="py-2 px-4">
                     <CustomDropdown
                       className="form-control"
                       defaultVal={item.status}
@@ -213,7 +217,7 @@ const PlatterPage = () => {
                       }
                     />
                   </td>
-                  <td>
+                  <td className="py-2 px-4">
                     <CustomObjectDropdown
                       className="form-control"
                       defaultVal={item.type}
@@ -223,7 +227,7 @@ const PlatterPage = () => {
                       }
                     />
                   </td>
-                  <td>
+                  <td className="py-2 px-4">
                     <NavLink
                       to={`${CONFIG.ADMIN_ROOT}platter-page/${item.id}/edit`}
                       className="action_btn"
@@ -239,8 +243,10 @@ const PlatterPage = () => {
               ))
             ) : !isLoading ? (
               <tr>
-                <td colSpan="5" className="text-center">
-                  No Projects Found!
+                <td colSpan="5">
+                  <h5 className="no_record text-center py-4">
+                    No Projects Found!
+                  </h5>
                 </td>
               </tr>
             ) : null}

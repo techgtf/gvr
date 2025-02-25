@@ -62,7 +62,7 @@ const Sidebar = (props) => {
 
   useEffect(() => {
     const getAllPages = async () => {
-      var response = await Request("admin/distinct-pages", "GET");
+      var response = await Request("admin/distinct-all-pages", "GET");
       if (response.status && response.statusCode == 200) {
         setPages(response.data);
       }
@@ -136,7 +136,7 @@ const Sidebar = (props) => {
 
           <Link
             className="sidebar_link hasSubMenu "
-            onClick={() => props.toggleSubMenusHandler("projects")}
+            onClick={(e) => props.toggleSubMenusHandler(e, "projects")}
           >
             <span className="icon">
               <TbBoxMultiple size={26} />
@@ -250,200 +250,51 @@ const Sidebar = (props) => {
                     );
                   })
                 : null)}
-            {currentPage == "pages" &&
-              pages.length &&
-              pages.map((page) => (
-                <React.Fragment key={page.id}>
-                  <NavLink
-                    exact
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "page/" + page.id}
-                  >
-                    <span className="icon">
-                      <ImPageBreak size={16} />
-                    </span>
-                    <span>{page.name}</span>
-                  </NavLink>
 
-                  {/* <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "page-meta"}
-                  >
-                    <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
-                    </span>
-                    <span>Meta Details</span>
-                  </NavLink>
+            {currentPage == "pages" && Object.keys(pages).length > 0 && (
+              <>
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Platter Page
+                  </span>
+                </div>
+                {pages.platter.map((page) => (
+                  <React.Fragment key={page.id}>
+                    <NavLink
+                      exact
+                      className="sub_menu_link"
+                      to={CONFIG.ADMIN_ROOT + "page/" + page.id}
+                    >
+                      <span className="icon">
+                        <ImPageBreak size={16} />
+                      </span>
+                      <span>{page.name}</span>
+                    </NavLink>
+                  </React.Fragment>
+                ))}
 
-                  <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "page/1"}
-                  >
-                    <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
-                    </span>
-                    <span>Home Page</span>
-                  </NavLink>
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Other Pages
+                  </span>
+                </div>
 
-                  <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "page/2"}
-                  >
-                    <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
-                    </span>
-                    <span>About Page</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "home-overview"}
-                  >
-                    <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
-                    </span>
-                    <span>Home Overview</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "about"}
-                  >
-                    <span className="icon">
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial.png"}
-                        alt="commercial icon"
-                        className="img-fluid default"
-                      />
-                      <img
-                        src={ADMIN_ASSETS + "icons/commercial_color.png"}
-                        alt="commercial icon"
-                        className="img-fluid color"
-                      />
-                    </span>
-                    <span>About Company</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={CONFIG.ADMIN_ROOT + "careers"}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>Career</span>
-                  </NavLink>
-
-                  <NavLink className="sub_menu_link">
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>NRI Services</span>
-                  </NavLink>
-
-                  
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={`${CONFIG.ADMIN_ROOT}blogs`}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>Blogs</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={`${CONFIG.ADMIN_ROOT}contact-us`}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>Contact Us</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={`${CONFIG.ADMIN_ROOT}contact-us`}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>User Agreement</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={`${CONFIG.ADMIN_ROOT}contact-us`}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>Privacy Policy</span>
-                  </NavLink>
-
-                  <NavLink
-                    className="sub_menu_link"
-                    to={`${CONFIG.ADMIN_ROOT}contact-us`}
-                  >
-                    <img
-                      src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                      alt="dashboard icon"
-                      className="img-fluid icon"
-                    />
-                    <span>How To Buy</span>
-                  </NavLink> */}
-                </React.Fragment>
-              ))}
+                {pages.data.map((page) => (
+                  <React.Fragment key={page.id}>
+                    <NavLink
+                      exact
+                      className="sub_menu_link"
+                      to={CONFIG.ADMIN_ROOT + "page/" + page.id}
+                    >
+                      <span className="icon">
+                        <ImPageBreak size={16} />
+                      </span>
+                      <span>{page.name}</span>
+                    </NavLink>
+                  </React.Fragment>
+                ))}
+              </>
+            )}
 
             {currentPage == "typologies" && (
               <>
@@ -463,6 +314,15 @@ const Sidebar = (props) => {
                 >
                   <PiResize size={20} className="mr-2" />
                   <span>Sub Typologies</span>
+                </NavLink>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}typologies/gallery`}
+                >
+                  <PiResize size={20} className="mr-2" />
+                  <span>Typology Gallery</span>
                 </NavLink>
               </>
             )}

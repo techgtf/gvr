@@ -13,13 +13,14 @@ import Request from "root/config/Request";
 import { toast } from "react-toastify";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from "common/Pagination/Pagination";
+import * as CONFIG from '../../../config'
 
 const statusOptions = [
   { label: "Active", value: "active" },
   { label: "Hide", value: "hide" },
 ];
 
-const SubTypologies = () => {
+const SingleTypologyGallery = () => {
   // pagination1
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); // Current page state
@@ -68,7 +69,7 @@ const SubTypologies = () => {
 
   const list = async (search = "") => {
     const response = await Request(
-      `admin/getSubTypologyDistinct/${typology_id}?page=${currentPage}&search=${search}`,
+      `admin/typology-galleries?page=${currentPage}&search=${search}`,
       "GET"
     );
     if (response.status && response.statusCode == 200) {
@@ -147,14 +148,16 @@ const SubTypologies = () => {
       toast.success(response.message);
     }
   };
-  const addInTypology = async (sub_typologies_id) => {
-    setIsTargeting(sub_typologies_id);
+
+  
+  const addInTypology = async (gallery_id) => {
+    setIsTargeting(gallery_id);
     const object = {
       typologies_id: typology_id,
-      sub_typologies_id: sub_typologies_id,
+      galleries_id: gallery_id,
     };
     const response = await JsonRequest(
-      "admin/typology-sub-typology",
+      "admin/typology-sub-gallery",
       "POST",
       object
     );
@@ -189,7 +192,7 @@ const SubTypologies = () => {
         <div className="px-4 w-full md:w-1/2">
           <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
             <div className="flex items-center justify-between">
-              <h5 className="mb-0">All Sub Typologies</h5>
+              <h5 className="mb-0">All Gallery Images</h5>
               <div className="searchInput ml-auto">
                 <input
                   type="text"
@@ -203,7 +206,7 @@ const SubTypologies = () => {
             <table className="mt_40 w-full border-collapse border border-gray-300">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="p-3 border border-gray-300">Name</th>
+                  <th className="p-3 border border-gray-300">Thumbnail</th>
                   <th className="p-3 border border-gray-300">Transfer</th>
                 </tr>
               </thead>
@@ -221,7 +224,13 @@ const SubTypologies = () => {
                     {data?.length > 0 ? (
                       data.map((item, index) => (
                         <tr key={index} className="border border-gray-300">
-                          <td className="p-3">{item.typology}</td>
+                          <td className="p-3">
+                            <img
+                                                      src={CONFIG.VITE_APP_STORAGE + item.file}
+                                                      alt={item.typology}
+                                                      className="w-[50px] h-[50px] object-contain"
+                                                    />
+                          </td>
                           <td className="p-3">
                             <button
                               className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -262,7 +271,7 @@ const SubTypologies = () => {
         <div className="px-4 w-full md:w-1/2">
           <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
             <div className="flex items-center justify-between">
-              <h5>{typologydata.typology} Typology</h5>
+              <h5>{typologydata.typology} Gallery Images</h5>
               <div className="searchInput ml-auto">
                 <input
                   type="text"
@@ -354,4 +363,4 @@ const SubTypologies = () => {
   );
 };
 
-export default SubTypologies;
+export default SingleTypologyGallery;

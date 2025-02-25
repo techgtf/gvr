@@ -215,7 +215,7 @@ const Category = () => {
                   <td className="p-2 border border-gray-300">
                     <Link
                       className="bg-blue-500 text-white px-3 py-1 rounded"
-                      to={`/category/typology/${item.id}`}
+                      to={`${CONFIG.ADMIN_ROOT}category/typology/${item.id}`}
                     >
                       View Typology
                     </Link>
