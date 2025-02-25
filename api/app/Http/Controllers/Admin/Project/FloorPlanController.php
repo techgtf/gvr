@@ -84,11 +84,14 @@ class FloorPlanController extends Controller
         
             'project_id' => 'required|exists:projects,id',  
             'sub_typology' => 'required|exists:sub_typologies,id',
+            'type' => 'required',
 
         ],[
         
             'project_id.required' => 'Project  is required',
             'project_id.exists' => 'Project is not exist in record',
+
+            'type.required' => 'Type field is required',
 
             
             'sub_typology.required' => 'Sub Tyology  is required',
@@ -110,7 +113,7 @@ class FloorPlanController extends Controller
                 'statusCode' => 403,
                 'message' => "Please Fill Mandatory Fields",
                 'errors'=>$validator->errors()
-            ]); 
+            ]);
 
         }else{
             try{
@@ -123,6 +126,7 @@ class FloorPlanController extends Controller
             
                 
                 $floorplans->project_id = $request->project_id;
+                $floorplans->type = $request->type;
                 $floorplans->sub_typology = $request->sub_typology;
                 $floorplans->more_typology = $request->more_typology;
                 $floorplans->price = $request->price;
@@ -216,12 +220,13 @@ class FloorPlanController extends Controller
         [
         
             'sub_typology' => 'required|exists:sub_typologies,id',  
-           
+           'type' => 'requiired',
         ],[
         
             'sub_typology.required' => 'sub Typology  is required',
             'sub_typology.exists' => 'sub Typology is not exist in record',
 
+            'type.required' => 'Type field is required',
 
             'price.integer' => 'Only Integet is Allowed',
             'size.integer' => 'Only Integer is Allowed',
@@ -288,6 +293,9 @@ class FloorPlanController extends Controller
                             $floorplans->more_typology = $request->more_typology;
                         }
 
+                        if($request->type){
+                            $floorplans->type = $request->type;
+                        }
                       
                     if($floorplans->save()){              
                         return response()->json([
@@ -316,7 +324,7 @@ class FloorPlanController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage(),
                 ]);
             }
         }

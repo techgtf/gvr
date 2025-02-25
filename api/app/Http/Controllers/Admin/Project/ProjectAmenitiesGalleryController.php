@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Project\ProjectFloorPlan;
-use App\Models\Admin\Project\ProjectGallery;
+use App\Models\Admin\Project\ProjectAmenitiesGallery;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
-class ProjectGalleryController extends Controller
+class ProjectAmenitiesGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +22,6 @@ class ProjectGalleryController extends Controller
         
             'project_id' => 'required|exists:projects,id',  
         ],[
-        
             'project_id.required' => 'Project  is required',
             'project_id.exists' => 'Project is not exist in record',
         ]);
@@ -44,15 +40,8 @@ class ProjectGalleryController extends Controller
 
         $perPage = $request->input('per_page', 5); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-
-        // Fetch products with pagination
-
-
-
-
-
-        $result = ProjectGallery::where('project_id',$request->project_id)->orderBy('id','DESC')->paginate($perPage, ['*'], 'page', $page);
-             
+ 
+        $result = ProjectAmenitiesGallery::where('project_id',$request->project_id)->orderBy('id','DESC')->paginate($perPage, ['*'], 'page', $page);
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -84,14 +73,10 @@ class ProjectGalleryController extends Controller
         [
         
             'project_id' => 'required|exists:projects,id',  
-            'type' => 'required|in:image,url,video',  
             'image' => 'required|mimes:png,jpg,jpeg,webp,svg|max:2048',
         ],[
         
             'project_id.required' => 'Project  is required',
-            'type.required' => 'type  is required',
-            'type.in' => 'only allowed(image,url,video)',
-
             'project_id.exists' => 'Project is not exist in record',
             'image.max' => 'Maximum image size limit of 2 MB',            
             'image.required' => 'Image  is required',
@@ -110,15 +95,14 @@ class ProjectGalleryController extends Controller
 
         }else{
             try{
-                $floorplans = new ProjectGallery();
+                $floorplans = new ProjectAmenitiesGallery();
                 if($request->hasFile('image')){
                     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('project/gallery', $name, 'public');
+                    $path = $request->file('image')->storeAs('project/amenities', $name, 'public');
                     $floorplans->image = $path;
                 }
                 $floorplans->project_id = $request->project_id;
                 $floorplans->alt_text = $request->alt_text;
-                $floorplans->type = $request->type;
 
 
                 if($floorplans->save()){              
@@ -141,7 +125,7 @@ class ProjectGalleryController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e->getMessage(),
+                    'error' => $e
                 ]);
             }
         }
@@ -169,7 +153,7 @@ class ProjectGalleryController extends Controller
     {
         //
 
-        $result =ProjectGallery::find($id);
+        $result = ProjectAmenitiesGallery::find($id);
         if($result){
             return response()->json([
               'status'=>true,
@@ -203,12 +187,8 @@ class ProjectGalleryController extends Controller
         $validator = Validator::make($request->all(),
         [ 
             'image' => 'nullable|mimes:png,jpg,jpeg,webp,svg|max:2048',
-            'type' => 'required|in:image,url,video',  
         ],[
             'image.required' => 'Image  is required',
-            'type.required' => 'type  is required',
-            'type.in' => 'only allowed(image,url,video)',
-
             'image.max' => 'Maximum image size limit of 2 MB',            
             'image.mimes' => 'Only Allowed  png,jpg,jpeg,webp,svg',           
         ]);
@@ -225,16 +205,15 @@ class ProjectGalleryController extends Controller
 
         }else{
             try{
-                $result = ProjectGallery::find($id);
+                $result = ProjectAmenitiesGallery::find($id);
                 if($result){
                     if($request->hasFile('image')){
                         dltSingleImgFile($result->image);
                         $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                        $path = $request->file('image')->storeAs('project/gallery', $name, 'public');
+                        $path = $request->file('image')->storeAs('project/amenities', $name, 'public');
                         $result->image = $path;
                     }
                     $result->alt_text = $request->alt_text;
-                    $result->type = $request->type;
 
                     if($result->save()){              
                         return response()->json([
@@ -277,7 +256,7 @@ class ProjectGalleryController extends Controller
      */
     public function destroy($id)
     {
-        $getrecord = ProjectGallery::find($id);
+        $getrecord = ProjectAmenitiesGallery::find($id);
         if($getrecord){
             dltSingleImgFile($getrecord->image);
             if($getrecord->delete()){

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ProjectLocationAdvantage extends Model
 {
     use HasFactory;
-    protected $fillable = ['project_id','type','distance','name'];
+    protected $fillable = ['project_id','type','distance','name','icons'];
 
    
 }

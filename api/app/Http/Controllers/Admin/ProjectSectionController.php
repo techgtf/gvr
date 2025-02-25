@@ -67,15 +67,11 @@ class ProjectSectionController extends Controller
      */
     public function store(Request $request)
     {
-    
-
         $validator = Validator::make($request->all(),
         [
             'heading' => 'required',
             'project_id' => 'required|exists:projects,id',  
-           
-
-
+            
             'section_type' => [
                 'required','exists:project_sections_list,id',
                 Rule::unique('project_sections')->where(function ($query) use ($request) {
@@ -105,6 +101,7 @@ class ProjectSectionController extends Controller
 
         }else{
             try{
+
                 $projectSection = new ProjectSection();
                 if($request->hasFile('image')){
                     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
@@ -117,7 +114,6 @@ class ProjectSectionController extends Controller
                 $projectSection->section_type = $request->section_type;
                 $projectSection->heading = $request->heading;
                 $projectSection->sub_heading = $request->sub_heading;
-      
                 $projectSection->image_alt = $request->image_alt;
                 $projectSection->description = $request->description;
                 
@@ -125,12 +121,7 @@ class ProjectSectionController extends Controller
 
                     $projectSection->seq = $request->seq;
                 }
-                
-
-
-                
-
-
+                 
                 if($projectSection->save()){              
                     return response()->json([
                         'status'=>true,

@@ -9,6 +9,6 @@ class ProjectSpecificationList extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['spec_id', 'title', 'value'];
+    protected $fillable = ['spec_id', 'icons', 'alt', 'short_description'];
 
 }

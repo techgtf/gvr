@@ -19,7 +19,6 @@ class ProjectSpecificationListController extends Controller
 
         $validator = Validator::make($request->all(),
         [
-        
             'spec_id' => 'required|exists:projects,id',
         ],[
         
@@ -71,17 +70,17 @@ class ProjectSpecificationListController extends Controller
 
         $validator = Validator::make($request->all(),
         [
-            'spec_id' => 'required|exists:projects,id',  
-            'title' => 'required',
-            'value' => 'required',
-
+            'spec_id' => 'required|exists:projects,id',
+            'short_description' => 'required',
+            'icons' => 'required|mimes:png,jpg,jpeg,webp,svg|max:2048',
         ],[
         
             'spec_id.required' => 'Project  is required',
             'spec_id.exists' => 'Project is not exist in record',
-            'title' => 'This field is required',
-            'value' => 'This field is required',
-
+         
+            'short_description' => 'This field is required',
+            'icons.max' => 'Maximum icons size limit of 2 MB',
+            'icons.required' => 'Icons  is required',
         ]);
 
 
@@ -96,10 +95,19 @@ class ProjectSpecificationListController extends Controller
 
         }else{
             try{
+
                 $specificationlist = new ProjectSpecificationList();
+
+                if($request->hasFile('icons')){
+                    $name = now()->timestamp.".{$request->icons->getClientOriginalName()}";
+                    $path = $request->file('icons')->storeAs('project/specification', $name, 'public');
+                    $specificationlist->icons = $path;
+                }
+
                 $specificationlist->spec_id = $request->spec_id;
-                $specificationlist->title = $request->title;
-                $specificationlist->value = $request->value;
+                $specificationlist->alt = $request->alt;
+                $specificationlist->short_description = $request->short_description;
+
                 if($specificationlist->save()){              
                     return response()->json([
                         'status'=>true,
@@ -179,10 +187,12 @@ class ProjectSpecificationListController extends Controller
         
             'title' => 'required',  
             'value' => 'required',  
-
+            'icons' => 'nullable|mimes:png,jpg,jpeg,webp,svg|max:2048',
         ],[
             'title' => 'This field is required',
             'value' => 'This field is required',
+            'icons.max' => 'Maximum icons size limit of 2 MB',            
+            'icons.mimes' => 'Only Allowed  png,jpg,jpeg,webp,svg',           
         ]);
 
         if($validator->fails()){
@@ -198,8 +208,15 @@ class ProjectSpecificationListController extends Controller
             try{
                 $Specificationlist = ProjectSpecificationList::find($id);
                 if($Specificationlist){
+                    if($request->hasFile('icons')){
+                        dltSingleImgFile($Specificationlist->icons);
+                        $name = now()->timestamp.".{$request->icons->getClientOriginalName()}";
+                        $path = $request->file('icons')->storeAs('project/specification', $name, 'public');
+                        $Specificationlist->icons = $path;
+                    }
                     $Specificationlist->title = $request->title;
                     $Specificationlist->value = $request->value;
+
                     if($Specificationlist->save()){              
                         return response()->json([
                             'status'=>true,
@@ -227,7 +244,7 @@ class ProjectSpecificationListController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage(),
                 ]);
             }
         }
