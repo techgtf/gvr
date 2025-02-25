@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectHighlight extends Model
 {
-    use HasFactory;   
-     protected $fillable = ['project_id', 'highlight'];
+    use HasFactory;
+
+    protected $hidden = ['project_id', 'created_at', 'updated_at', 'key_highlight'];
+
 }

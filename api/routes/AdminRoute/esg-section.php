@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers\Admin\CsrCommunitiesController;
+use  App\Http\Controllers\Admin\EsgCommunitiesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,8 +15,10 @@ use  App\Http\Controllers\Admin\CsrCommunitiesController;
 
 Route::group(['prefix'=>'admin'],function(){
     Route::group(['middleware' => ['admin.auth']], function () {
-        Route::apiResource('communities', CsrCommunitiesController::class)->except(['update']);
-        Route::post('communities/{id}/update', [CsrCommunitiesController::class,'update']);
-        Route::post('communities/{id}/status', [CsrCommunitiesController::class,'status']);
+        Route::apiResource('esg-data-list', EsgCommunitiesController::class)->except(['update']);
+        Route::post('esg-data-list/{id}/update', [EsgCommunitiesController::class,'update']);
+        Route::post('esg-data-list/{id}/status', [EsgCommunitiesController::class,'status']);
+    
+        Route::get('esg-data-list/{type}/type', [EsgCommunitiesController::class,'getEsgListTypeData']);
     });
 });
