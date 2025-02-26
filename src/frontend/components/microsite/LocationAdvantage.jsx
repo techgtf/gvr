@@ -46,7 +46,7 @@ function LocationAdvantage({
     }, listRef);
 
     return () => ctx.revert();
-  }, [activeTab]); // Animation sirf data par lagega, tab switch pe effect nahi hoga
+  }, [activeTab]);
 
   useImageReveal(".reveal");
 
@@ -73,7 +73,7 @@ function LocationAdvantage({
             <CommonHeading HeadingText="Location Advantage" />
           </FadeIn>
           <div className="location_map py-10  w-full md:w-[80%]" onClick={() => openLightbox(0)}>
-            <img src={locationImage} alt="Location" className="cursor-pointer w-full" />
+            <img src={locationImage} alt="Location" className="cursor-pointer aspect-[5/3] w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
             <p className="md:w-96">{description}</p>
@@ -88,7 +88,7 @@ function LocationAdvantage({
               }`}
               onClick={() => handleTabClick("drive")}
             >
-              <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8" />
+              <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8 h-8 object-contain" />
               DRIVE
             </button>
             <button
@@ -97,7 +97,7 @@ function LocationAdvantage({
               }`}
               onClick={() => handleTabClick("walk")}
             >
-              <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8" />
+              <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8 h-8 object-contain" />
               WALK
             </button>
           </div>
@@ -106,12 +106,12 @@ function LocationAdvantage({
             <span className="mr-4">{activeTab === "drive" ? "BY DRIVE" : "BY WALK"}</span>
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
-          <SlideIn duration={2} delay={0.5}>
+          <SlideIn duration={2} delay={0.2}>
           <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" ref={listRef}>
             {(activeTab === "drive" ? driveData : walkData).map((item, index) => (
               <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
                 <div className="icon">
-                  <img src={item.image} alt="Icon" />
+                  <img src={item.image} alt="Icon" className="w-[50px] h-[50px] object-contain" />
                 </div>
                 <div className="text w-72">
                   <p>{item.text}</p>

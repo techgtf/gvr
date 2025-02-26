@@ -74,7 +74,7 @@ function Plans({ masterPlanData, unitData }) {
             </FadeIn>
             <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 "
               onClick={() => openLightbox(0, true)}>
-              <img src={masterPlanData[0]?.image} alt={masterPlanData[0]?.alt} className="cursor-pointer w-full" />
+              <img src={masterPlanData[0]?.image} alt={masterPlanData[0]?.alt} className="cursor-pointer w-full" width={350} height={375} />
             </div>
           </div>
         )}
@@ -120,7 +120,7 @@ function Plans({ masterPlanData, unitData }) {
                   <SlideIn key={index} duration={2} delay={0.5}>
                   <div  className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                     <img src={plan.image} alt={`plan ${index + 1}`}
-                      className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
+                      className="w-[80%] mx-auto md:w-[30%] h-auto aspect-[4/3] object-cover cursor-pointer"
                       onClick={() => openLightbox(index)} />
                     <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
                       <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>

@@ -48,7 +48,7 @@ function MediaCenter() {
 
             </Helmet>
             <HeroSectionAboutUs
-                img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/hero.jpg`}
+                img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/hero.webp`}
                 heading={"MEDIA CENTER"}
                 extraClassesImg={"objectRight"}
             />

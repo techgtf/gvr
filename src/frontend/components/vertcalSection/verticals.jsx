@@ -37,7 +37,7 @@ export default function Verticals() {
             <div className='section_in xl:max-w-[80%] m-auto max-w-[100%]'>
                 <WaterMarkHeading
                     // sectionHeading='Building Futures, Financing Dreams, Beyond Real Estate'
-                    sectionHeading='Others Verticals'
+                    sectionHeading='Other Verticals'
                     animationConfig={animationConfig}
                 />
                 <div className='flex_div flex justify-between flex-wrap 2xl:mt-16 xl:mt-14 mt-[40px] xl:gap-0 gap-[44px] lg:px-0 px-4'>

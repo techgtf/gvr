@@ -28,7 +28,7 @@ import Highlights from "../components/microsite/HighlightsSpecifications/Highlig
 import About from "../components/microsite/About";
 import { useLocation } from "react-router-dom";
 
-import aboutImg from "/assets/frontend/images/microsite/about.jpg"
+import aboutImg from "/assets/frontend/images/microsite/about.webp"
 
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
@@ -56,6 +56,7 @@ function Microsite() {
         carpetArea: "752 Sq.Ft.",
         balconyArea: "69 Sq.Ft.",
         totalArea: "1139 Sq.Ft.",
+        buildArea: "--"
       },
       {
         image: plan3,
@@ -63,6 +64,7 @@ function Microsite() {
         carpetArea: "1080 Sq. Ft.",
         balconyArea: "145 Sq. Ft.",
         totalArea: "1647 Sq. Ft.",
+        buildArea: "--"
       },
 
     ],
@@ -74,6 +76,7 @@ function Microsite() {
         carpetArea: "873 Sq.Ft.",
         balconyArea: "81 Sq.Ft.",
         totalArea: "1295 Sq.Ft.",
+        buildArea: "--"
       },
       {
         image: plan4,
@@ -81,6 +84,7 @@ function Microsite() {
         carpetArea: "1186 Sq. Ft.",
         balconyArea: "145 Sq. Ft.",
         totalArea: "1791 Sq. Ft.",
+        buildArea: "--"
       },
     ],
   };
@@ -89,8 +93,8 @@ function Microsite() {
   const highlightsData = [
     "3 sides open corner plot",
     "Proposed Metro station in Sector-108",
-    "Fully inhabited residential area.",
-    "Schools, Hospitals, Malls etc. nearby On 70m wide & straight road from Kalindi Kunj, Situated alone of the most prime location of Noida.",
+    "Entirely inhabited residential area.",
+    "Schools, Hospitals, Malls etc. Located on 70m wide & straight road from Kalindi Kunj, Situated along one of the most prime location of Noida.",
     "In close vicinity to Delhi (15 min. drive to DND & Kalandi Kunj)",
     "Close to Noida Expressway & Yamuna Expressway.",
     "Easy access to Metro Station, connecting to metro network all around NCR.",
@@ -106,13 +110,13 @@ function Microsite() {
     {
       title: "Flooring",
       items: [
-        { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in kitchen, balconies, and toilets." },
+        { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in the kitchen, balconies, and toilets." },
       ],
     },
     {
       title: "Wall Finishes",
       items: [
-        { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchen." },
+        { image: "assets/frontend/images/microsite/specifications/wall.webp", description: "OBD for interiors, weatherproof paint for exteriors, and ceramic tiles in toilets and kitchens." },
       ],
     },
     {
@@ -150,17 +154,17 @@ function Microsite() {
   const customPriceListData = [
     {
       area: "2 BHK",
-      size: "1139 sq.ft",
+      size: "1139 Sq Ft",
       price: "₹ 74 Lacs*",
     },
     {
       area: "3 BHK ",
-      size: "1647 sq.ft",
+      size: "1647 Sq Ft",
       price: "₹ 1.07 CR*",
     },
     {
       area: "4 BHK ",
-      size: "2283 sq.ft",
+      size: "2283 Sq Ft",
       price: "₹ 1.48 CR*",
     },
   ];

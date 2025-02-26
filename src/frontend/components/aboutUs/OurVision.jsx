@@ -49,7 +49,7 @@ const OurVision = () => {
                 delivering world-class infrastructure and financial services. We
                 are committed to building a future where innovation meets
                 excellence, fostering economic growth while creating enduring
-                value for our customers, communities
+                value for our customers, communities.
               </p>
             </div>
           {/* </SlideIn> */}

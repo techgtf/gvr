@@ -33,8 +33,6 @@ import park from "/assets/frontend/images/microsite/amentities/icons/park.webp";
 import { useLocation } from 'react-router-dom'
 
 import aboutImg from "/assets/frontend/images/microsite/anandam/about/about.webp"
-// import heroImg from "/assets/frontend/images/microsite/anandam/hero/hero.webp"
-// import heroMobImg from "/assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
 
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
@@ -69,17 +67,17 @@ function AnandamMicrosite() {
     const customPriceListData = [
         {
             area: "2 BHK",
-            size: "1350 Sq. Ft",
+            size: "1350 Sq Ft",
             price: "₹ 86.13 Lacs*",
         },
         {
             area: "3 BHK ",
-            size: "1700 Sq. Ft",
+            size: "1700 Sq Ft",
             price: "₹ 1.08 CR*",
         },
         {
             area: "3 BHK + STUDY",
-            size: "1840 Sq. Ft",
+            size: "1840 Sq Ft",
             price: "₹ 1.17 CR*",
         },
     ];
@@ -241,25 +239,25 @@ function AnandamMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`{
+                {JSON.stringify({
                    "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Anandam Sector 107, Noida",
                     "alternateName": "Great Value Anandam Noida",
                     "url": "https://greatvaluerealty.com/anandam",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp"
-                    "contactPoint": {
+                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                    "contactPoint": [{
                         "@type": "ContactPoint",
                         "telephone": "+91 7777079770",
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }}`}
+                    }]})}
                 </script>
             </Helmet>
             <HeroSection
-                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"
-                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342186/hero-mobile_edjbo7.webp"
+               desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342190/hero_wlxqxm.webp"
+               mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342186/hero-mobile_edjbo7.webp"              
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}

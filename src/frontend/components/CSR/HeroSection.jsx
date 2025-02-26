@@ -16,7 +16,7 @@ function HeroSection() {
             />
             {/* Mobile Image */}
             <img
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/csr/csr_mobile.jpg`}
+                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/csr/csr_mobile.webp`}
                 alt="esg"
                 className="lg:hidden h-[40vh] object-cover w-[100%]"
             />

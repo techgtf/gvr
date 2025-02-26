@@ -37,12 +37,12 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           {specifications.map((spec, index) => (
             <div key={index} className="col-span-12 lg:col-span-6">
               {isDesktop ? (
-                <SlideIn delay={0.5}>
+                <SlideIn delay={0.2}>
                   <h4 className="font-semibold">{spec.title}</h4>
                   {spec.items?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex gap-3 py-5">
                       <div className="icon">
-                        <img src={item.image} alt={item.description || "Specification image"} className="h-[80%]" />
+                        <img src={item.image} alt={item.description || "Specification image"} className="w-[50px] h-[50px] object-contain" />
                       </div>
                       <p className="w-60">{item.description}</p>
                     </div>
@@ -54,7 +54,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
                   {spec.items?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex gap-3 py-5">
                       <div className="icon">
-                        <img src={item.image} alt={item.description || "Specification image"} className="h-[80%]" />
+                        <img src={item.image} alt={item.description || "Specification image"} className="w-[50px] h-[50px] object-contain" />
                       </div>
                       <p className="w-60">{item.description}</p>
                     </div>

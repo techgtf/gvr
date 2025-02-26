@@ -30,12 +30,6 @@ import warehouse3 from "/assets/frontend/images/commercialProjects/warehouse/war
 import warehouse4 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-4.webp";
 import warehouse5 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-5.webp";
 
-import mall1 from "/assets/frontend/images/commercialProjects/mall/mall-1.webp";
-import mall2 from "/assets/frontend/images/commercialProjects/mall/mall-2.webp";
-import mall3 from "/assets/frontend/images/commercialProjects/mall/mall-3.webp";
-import mall4 from "/assets/frontend/images/commercialProjects/mall/mall-4.webp";
-import mall5 from "/assets/frontend/images/commercialProjects/mall/mall-5.webp";
-
 import retail1 from "/assets/frontend/images/commercialProjects/retail/gap-log-img.jpg";
 import retail2 from "/assets/frontend/images/commercialProjects/retail/retail-2.webp";
 import retail3 from "/assets/frontend/images/commercialProjects/retail/retail-3.webp";
@@ -44,7 +38,6 @@ import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.
 import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
-//
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -228,6 +221,7 @@ const CommercialProjects = () => {
           ? "commercial_banner_mb.jpg"
           : "commercial_banner.jpg"
           }`}
+          alt={"Great Value Commercial Project"}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}

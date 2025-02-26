@@ -55,7 +55,9 @@ function About({
                   <img
                     src={imageSrc}
                     alt={alt || "img"}
-                    className="object-cover"
+                    className="object-cover w-full"
+                    width={800}
+                    height={400}
                   />
                 </ZoomOut>
               </div>

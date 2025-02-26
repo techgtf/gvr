@@ -48,7 +48,7 @@ export default function FooterBottom() {
              focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:bg-blue-200 rounded-md transition-all"
             >
               <img
-                className="lg:h-7 h-5"
+                className="w-5 h-5 lg:w-7 lg:h-7 object-contain"
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/${icon}`}
                 alt={alt}
                 onError={(e) => console.error(`Image failed to load: ${e.target.src}`)} // Debugging

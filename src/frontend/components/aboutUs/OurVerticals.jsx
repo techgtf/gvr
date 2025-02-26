@@ -50,7 +50,7 @@ const OurVerticals = () => {
                 <div className="basis-[65%]">
                   <p className="common_pera text-justify">
                     GV Finance delivers tailored financial solutions that
-                    empower businesses and individuals to optimize cash flow,
+                    empower businesses and individuals to optimize cash flow and
                     secure investments.
                   </p>
                   {/* <p className="text-[12px]">
@@ -98,7 +98,7 @@ const OurVerticals = () => {
               investments, empowering visionary entrepreneurs to scale and
               innovate. Beyond funding, we provide deep industry insights,
               mentorship, and long-term partnerships to drive sustainable
-              growth. Our focus is on businesses that create meaningful impact,
+              growth. We focus on businesses that create meaningful impact,
               leveraging smart capital to unlock potential and shape the future.
             </p>
             {/* <p className="mb-[1rem] text-[14px]">
