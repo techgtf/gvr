@@ -74,6 +74,7 @@ import SubTypologies from "../admin/Typologies/SubTypology";
 import SubTypologiesPage from "../admin/Subtypology/Index";
 import TypologyGallery from "../admin/typologyGallery/Index";
 import SingleTypologyGallery from "../admin/Typologies/Gallery";
+import ProjectLayout from "../admin/components/Layout/ProjectLayout/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -158,18 +159,23 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <EditProject />
+          <ProjectLayout>
+            <EditProject />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
   },
+  // path: `${ADMIN_ROOT}project/:projectid/overview/:section`,
   {
-    path: `${ADMIN_ROOT}project/:projectid/location/:section`,
+    path: `${ADMIN_ROOT}project/:projectid/location`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLocation />
+          <ProjectLayout>
+            <ProjectLocation />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -180,7 +186,48 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <ProjectOverview />
+          <ProjectLayout>
+            <ProjectOverview />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/amenities/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectAmenities />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <Highlights />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/master-plan/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectMasterPlan />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -191,7 +238,22 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <FloorPlan />
+          <ProjectLayout>
+            <FloorPlan />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/location-advantage/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectLocationAdvantage />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -219,56 +281,12 @@ export const AdminRoutes = [
     ),
   },
   {
-    path: `${ADMIN_ROOT}project/:projectid/amenities/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectAmenities />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/master-plan/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectMasterPlan />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/location-advantage/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLocationAdvantage />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
     path: `${ADMIN_ROOT}project/:projectid/faq/:section`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <ProjectFaq />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Highlights />
         </Suspense>
       </AdminLayout>
     ),

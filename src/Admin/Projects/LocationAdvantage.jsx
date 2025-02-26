@@ -15,16 +15,11 @@ import Loader from "common/Loader/loader";
 
 import "react-quill/dist/quill.snow.css";
 import "../assets/css/admin.css";
+import Request from "../../config/Request";
 
-const sizeOptions = [
-  { label: "sq.mt.", value: "active" },
-  { label: "sq.ft.", value: "hide" },
-  { label: "sq.yd.", value: "hide" },
-];
-
-const priceOptions = [
-  { label: "lacs", value: "active" },
-  { label: "cr", value: "hide" },
+const locationTypes = [
+  { label: "Drive", value: "drive" },
+  { label: "Walk", value: "walk" },
 ];
 
 const LocationAdvantage = () => {
@@ -38,7 +33,6 @@ const LocationAdvantage = () => {
   const [enableEdit, setenableEdit] = useState(false);
   const [showEditEnableImage, setEditEnableImage] = useState(null);
   const [places, setPlaces] = useState([]);
-  const [locationTypes, setLocationTypes] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [allLocationAdvantage, setAllLocationAdvantage] = useState([]);
   const [locationtype, setLocationtype] = useState([]);
@@ -61,6 +55,7 @@ const LocationAdvantage = () => {
     type: "",
     distance: "",
     name: "",
+    icons:null,
   });
   const navigate = useNavigate();
   const searchLocation = async () => {
@@ -132,24 +127,23 @@ const LocationAdvantage = () => {
     setBoxLoding(false);
   };
 
-  const getLocationTypes = async () => {
-    try {
-      var response = await JsonRequest("location-advantage-type", "GET");
+  // const getLocationTypes = async () => {
+  //   try {
+  //     var response = await JsonRequest("location-advantage-type", "GET");
 
-      if (response.status && response.statusCode == 200) {
-        setLocationTypes(response.data);
-      } else {
-        setLocationTypes([]);
-      }
-    } catch (err) {
-      console.log("error while fetching location types", err);
-    }
-  };
+  //     if (response.status && response.statusCode == 200) {
+  //       setLocationTypes(response.data);
+  //     } else {
+  //       setLocationTypes([]);
+  //     }
+  //   } catch (err) {
+  //     console.log("error while fetching location types", err);
+  //   }
+  // };
 
   useEffect(() => {
     // locationdata()
     locationAdvntge();
-    getLocationTypes();
     // getLocationType()
   }, []);
 
@@ -206,11 +200,11 @@ const LocationAdvantage = () => {
       var response = await JsonRequest("location-advantage-type", "GET");
 
       if (response.status && response.statusCode == 200) {
-        setLocationTypes(response.data);
+        // setLocationTypes(response.data);
         setShowAddSidebar(!showSidebar);
         setIsSitebarFormButtonLoading(false);
       } else {
-        setLocationTypes([]);
+        // setLocationTypes([]);
         setShowAddSidebar(!showSidebar);
       }
     } catch (err) {
@@ -225,19 +219,26 @@ const LocationAdvantage = () => {
       type: "",
       distance: "",
       name: "",
+      icons:null
     });
   };
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
-    const updatedData = { ...locationData, project_id: projectid };
+    debugger
+    // const updatedData = { ...locationData, project_id: projectid };
+    const formData = new FormData();
+    formData.append("project_id", projectid);
+    formData.append("name", locationData.name);
+    formData.append("type", locationData.type);
+    formData.append("icons", locationData.icons);
 
     try {
-      var response = await JsonRequest(
+      var response = await Request(
         "admin/projectdata/location-advantage",
         "POST",
-        updatedData
+        formData
       );
 
       if (response.status && response.statusCode == 200) {
@@ -247,7 +248,7 @@ const LocationAdvantage = () => {
         await locationAdvntge();
         toast.success(response.message);
       } else {
-        setLocationTypes([]);
+        // setLocationTypes([]);
         setShowAddSidebar(!showSidebar);
         setShowAddSidebar(false);
       }
@@ -260,11 +261,19 @@ const LocationAdvantage = () => {
   };
 
   const changeHandler = (e) => {
+    debugger
     const { name, value } = e.target;
-    setLocationData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    if(name=="icons"){
+      setLocationData((prevState) => ({
+        icons:e.target.files[0]
+      }));
+    }else{
+      setLocationData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+    
   };
 
   const updateSubmitHandler = async (event) => {
@@ -293,33 +302,34 @@ const LocationAdvantage = () => {
           sub_heading
         />
 
-        <div className="card card_style1 mt_40">
-          <div className="d-flex align-items-center">
-            <h5>All Project Locations</h5>
+        <div className="card bg-white mt-4 card_style1">
+          <div className="flex title_col justify-between items-center">
+            <h5 className="">All Project Locations</h5>
             <button
-              className="btn ms-auto btn_primary btn-sm"
+              className="btn ml-auto btn_primary btn-sm"
               onClick={addLocationHandler}
             >
               Add Location Advantage
             </button>
           </div>
 
-          <table className="w-100 mt_30">
+          <table className="mt_40 w-full border-collapse border border-gray-200">
             <thead>
-              <tr>
-                <th>Title</th>
-                <th>Distance</th>
-                <th>Type</th>
-                <th>Actions</th>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2 text-left">Icon</th>
+                <th className="border border-gray-300 p-2 text-left">Name</th>
+                <th className="border border-gray-300 p-2 text-left">Distance</th>
+                <th className="border border-gray-300 p-2 text-left">Type</th>
+                <th className="border border-gray-300 p-2 text-left">Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {isLoadingTableData && (
-                <tr>
-                  <td colSpan={4}>
-                    <div className="text-center">
-                      <ScaleLoader color="#ddd" className="w-100" />
+                <tr className="border-b border-gray-200">
+                  <td colSpan={5}>
+                    <div className="text-center py-4">
+                      <ScaleLoader color="#ddd" className="w-full" />
                     </div>
                   </td>
                 </tr>
@@ -327,10 +337,10 @@ const LocationAdvantage = () => {
 
               {!isLoadingTableData && allLocationAdvantage.length
                 ? allLocationAdvantage.map((item, key) => (
-                    <tr key={key++}>
-                      <td>{item.name}</td>
-                      <td>{item.distance}</td>
-                      <td>
+                    <tr key={key++} className="border-b">
+                      <td className="py-2 px-4">{item.name}</td>
+                      <td className="py-2 px-4">{item.distance}</td>
+                      <td className="py-2 px-4">
                         {locationTypes?.find((type) => type.id == item.type) ? (
                           <span key={item.type}>
                             {
@@ -343,7 +353,7 @@ const LocationAdvantage = () => {
                         )}
                       </td>
 
-                      <td>
+                      <td className="py-2 px-4">
                         <button
                           type="button"
                           onClick={() => deleteLocationAdvantafe(item.id)}
@@ -354,7 +364,13 @@ const LocationAdvantage = () => {
                     </tr>
                   ))
                 : !isLoadingTableData
-                ? "not found"
+                ? <tr>
+                    <td colSpan="5">
+                      <h5 className="no_record text-center py-4">
+                        No Data Found!
+                      </h5>
+                    </td>
+                  </tr>
                 : null}
             </tbody>
           </table>
@@ -373,15 +389,15 @@ const LocationAdvantage = () => {
                 <div className="mb_20">
                   <label className="block font-medium">Location Type*</label>
                   <select
-                    defaultValue={locationData.type}
+                    // defaultValue={locationTypes.type}
                     className="w-full border p-2"
                     name="type"
                     onChange={changeHandler}
                   >
-                    <option value="">Select Location Type</option>
+                    <option value="" disabled>Select Location Type</option>
                     {locationTypes.length &&
                       locationTypes.map((item) => (
-                        <option value={item.id}>{item.name}</option>
+                        <option value={item.value}>{item.label}</option>
                       ))}
                   </select>
                   {errors.distance && (
@@ -390,11 +406,24 @@ const LocationAdvantage = () => {
                 </div>
 
                 <div className="mb_20">
+                  <label className="block font-medium">Icons*</label>
+                  <input
+                    className="w-full border p-2"
+                    type="file"
+                    name="icons"
+                    onChange={changeHandler}
+                  />
+                  {errors.icons && (
+                    <span className="text-danger">{errors.icons}</span>
+                  )}
+                </div>
+
+                <div className="mb_20">
                   <label className="block font-medium">Name*</label>
                   <input
                     className="w-full border p-2"
                     type="text"
-                    placeholder="Enter Location Name"
+                    placeholder="Enter Name"
                     name="name"
                     value={locationData.name}
                     onChange={changeHandler}

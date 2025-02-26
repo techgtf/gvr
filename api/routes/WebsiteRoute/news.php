@@ -1,5 +1,6 @@
 <?php
- 
+
+use App\Http\Controllers\Website\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
-Route::get('/esg-list/{type}',[\App\Http\Controllers\Website\EsgController::class,'EsgDataList']);
-Route::get('/gallery',[\App\Http\Controllers\Website\EsgController::class,'Gallery']);
+Route::get('/news',[NewsController::class,'index']);

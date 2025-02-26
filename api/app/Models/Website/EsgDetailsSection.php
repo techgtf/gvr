@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 
-class Communities extends Model
+class EsgDetailsSection extends Model
 {
     use HasFactory;
 
-    protected $table = 'esg_social';
+    protected $table = 'esg_details_section';
 
     public function getImageAttribute()
     {

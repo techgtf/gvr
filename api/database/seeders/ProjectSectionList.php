@@ -55,11 +55,6 @@ class ProjectSectionList extends Seeder
 
             ], 
             [
-                'name' => 'Location',
-                'slug' => 'location',
-
-            ],
-            [
                 'name' => 'Gallery',
                 'slug' => 'gallery',
 

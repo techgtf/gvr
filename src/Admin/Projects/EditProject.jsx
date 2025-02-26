@@ -361,52 +361,52 @@ const EditProject = () => {
               {errors.project_status}
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label>Project Name*</label>
+              <div className="mb-2">
+                <label className="block">Project Name*</label>
                 <input
                   type="text"
                   placeholder="Enter project name"
                   value={sectionFormdata.nameRef}
                   name="nameRef"
                   onChange={handleChange}
-                  className="input"
+                  className="w-full p-2 border rounded"
                 />
                 {errors.name}
               </div>
-              <div>
-                <label>Project IVR No.</label>
+              <div className="mb-2">
+                <label className="block">Project IVR No.</label>
                 <input
                   type="text"
                   placeholder="Enter IVR no."
                   value={sectionFormdata?.ivr || ""}
                   name="ivr"
                   onChange={handleChange}
-                  className="input"
+                  className="w-full p-2 border rounded"
                 />
                 {errors.ivr_no}
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label>Project Whatsapp No.</label>
+              <div className="mb-2">
+                <label className="block">Project Whatsapp No.</label>
                 <input
                   type="text"
                   placeholder="Enter whatsapp no."
                   value={sectionFormdata?.whatsapp || ""}
                   name="whatsapp"
                   onChange={handleChange}
-                  className="input"
+                  className="w-full p-2 border rounded"
                 />
               </div>
-              <div>
-                <label>Payment Plan</label>
+              <div className="mb-2">
+                <label className="block">Payment Plan</label>
                 <input
                   type="text"
                   placeholder="Enter payment plan"
                   value={sectionFormdata?.paymentplan || ""}
                   name="paymentplan"
                   onChange={handleChange}
-                  className="input"
+                  className="w-full p-2 border rounded"
                 />
               </div>
             </div>

@@ -26,3 +26,4 @@ Route::get('/offer',[\App\Http\Controllers\Website\BannerOfferController::class,
 Route::get('/loan',[\App\Http\Controllers\Website\LoanController::class,'index']);
 
 
+Route::get('/media',[\App\Http\Controllers\Website\HomePageController::class,'MediaLogo']);

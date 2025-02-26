@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Admin\CsrCommunities;
+use App\Models\Admin\EsgDetailsSection;
 
-class CsrCommunitiesController extends Controller
+class EsgCommunitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class CsrCommunitiesController extends Controller
         }
         $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
-        $record = CsrCommunities::search($search)->paginate($perPage, ['*'], 'page', $page);
+        $record = EsgDetailsSection::search($search)->paginate($perPage, ['*'], 'page', $page);
              
         return response()->json([
             'status'=>true,
@@ -55,12 +55,14 @@ class CsrCommunitiesController extends Controller
             'name' => 'required',
             'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'short_description' => 'required',
+            'type' => 'required',
         ],[
             'name.required' => 'The Name field is required.',
             'image.required' => 'The Image field is required.',
             'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'short_description.required' => 'This Field is required.',
+            'type' => 'This field is required'
         ]);
 
         if($validator->fails()){
@@ -78,7 +80,8 @@ class CsrCommunitiesController extends Controller
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
                 $path = $request->file('image')->storeAs('communities', $name, 'public');
                 
-                $communities = new CsrCommunities();
+                $communities = new EsgDetailsSection();
+                $communities->type = $request->type;
                 $communities->name = $request->name;
                 $communities->image = $path;
                 $communities->short_description = $request->short_description;
@@ -122,7 +125,7 @@ class CsrCommunitiesController extends Controller
      */
     public function show($id)
     {
-        $result = CsrCommunities::find($id);
+        $result = EsgDetailsSection::find($id);
         if(!empty($result)){
             return response()->json([
                 'status' => true,
@@ -184,7 +187,7 @@ class CsrCommunitiesController extends Controller
 
         }else{
 
-            $getrecord = CsrCommunities::find($id);
+            $getrecord = EsgDetailsSection::find($id);
             
             if(!$getrecord){
                 return response()->json([
@@ -229,7 +232,7 @@ class CsrCommunitiesController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage()
                 ]);
             }
         }
@@ -243,7 +246,7 @@ class CsrCommunitiesController extends Controller
      */
     public function destroy($id)
     {
-        $result = CsrCommunities::find($id);
+        $result = EsgDetailsSection::find($id);
 
         if(!empty($result)){
 
@@ -289,5 +292,24 @@ class CsrCommunitiesController extends Controller
         return $result;
     }
 
+    public function getEsgListTypeData($type)
+    {
+ 
+        $result = EsgDetailsSection::where('type', $type)->get();
+        if(!empty($result)){
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'messageg' => 'Get Single Record',                
+                'data' => $result,
+            ]);
+        } else {
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => 'Matching Record not found',
+            ]);
+        }
+    }
 
 }
