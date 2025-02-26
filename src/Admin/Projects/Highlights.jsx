@@ -194,9 +194,7 @@ const Highlights = () => {
         <Sections
           projectid={projectid}
           section_type={section_id}
-          sub_heading
           seq
-          image
         />
         <div className="card bg-white card_style1 mt-10">
           <div className="flex items-center justify-between">

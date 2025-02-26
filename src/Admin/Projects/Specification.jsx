@@ -1,305 +1,469 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as CONFIG from 'root/config';
-
-import SidebarPortal from "common/Portal/SidebarPortal";
-import BackdropPortal from 'common/Portal/Backdrop'
 import SideModal from "../components/Modal/SideModal/Index";
-import Sections from '../components/Project/Sections';
-import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
+import SidebarPortal from "common/Portal/SidebarPortal";
+import BackdropPortal from "common/Portal/Backdrop";
+import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
+
+import CustomRadio from "common/CustomRadio/Index";
+import Button from "common/Button/Button";
+import Request from "root/config/Request";
+import * as CONFIG from "../../../config";
+import numDifferentiation from "common/NumberConversion";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import Form from 'react-bootstrap/Form';
-import JsonRequest from 'root/config/JsonRequest';
-import Pagination from 'common/Pagination/Pagination';
+import "../assets/css/admin.css";
+import Sections from "../components/Project/Sections";
+import { getSubtypology } from "../../config/Function";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-import Request from 'root/config/Request'
+const statusOptions = [
+  { label: "Active", value: "1" },
+  { label: "Hide", value: "0" },
+];
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Button from 'common/Button/Button'
-import 'react-quill/dist/quill.snow.css';
-import '../assets/css/admin.css';
+const planTypeOptions = [
+  { label: "Unit 1", value: "unit1" },
+  { label: "Unit 2", value: "unit2" },
+  { label: "Unit 3", value: "unit3" },
+  { label: "Unit 4", value: "unit4" },
+  { label: "Unit 5", value: "unit5" },
+];
 
-const Specification = () => {
-    const [currentPage, setCurrentPage] = useState(1); // Current page state
-    const [totalPage, setTotalPage] = useState(0);
-    const projectid = useParams().projectid;
-    const section_id = useParams().section;
-    const [selectedStatus, setSelectedStatus] = useState(null);
-    const [isLoadingTableData, setIsLoadingTableData] = useState(false);
-    const [isSitebarFormButtonLoading, setIsSitebarFormButtonLoading] = useState(false);
-    const [lastPage, setLastPage] = useState(1);
+const Specifications = React.memo(() => {
+  const projectid = useParams().projectid;
+  const section_id = useParams().section;
 
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingTableData, setIsLoadingTableData] = useState(false);
+  const [isSitebarFormButtonLoading, setIsSitebarFormButtonLoading] =
+    useState(false);
 
-    const [editId, setEditId] = useState(false);
+  const [showAddSidebar, setShowAddSidebar] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [showSidebar, setShowSidebar] = useState(false);
 
-    const [showSidebar, setShowSidebar] = useState(false);
-    const [enableEdit, setenableEdit] = useState(false);
-    const [list, setList] = useState([]);
+  const [enableEdit, setenableEdit] = useState(false);
+  const [editId, setEditId] = useState(false);
 
-    const [formField, setFormField] = useState({
-        highlight: "",
+  const [subTypologyList, setSubTypologyList] = useState([]);
+  const [specificationLists, setSpecificationLists] = useState(null);
+  const [list, setList] = useState([]);
+
+  const navigate = useNavigate();
+  const icons = useRef(null);
+
+  const [sectionFormdata, setSectionFormdata] = useState({
+    // Initialize your form data state
+    sub_typology: null,
+    size: null,
+    size_type: null,
+    icons: null,
+    project_id: null,
+    image_preview: null,
+    price: null,
+    type: null,
+    carpet_area: null,
+    balcony_area: null,
+    super_area: null,
+  });
+
+  const resetfields = () => {
+    setSectionFormdata({
+      sub_typology: null,
+      size: null,
+      size_type: null,
+      icons: null,
+      image_preview: null,
+
+      project_id: null,
     });
+  };
 
-    const navigate = useNavigate();
-
-
-
-    const addSubmitHandler = async (event) => {
-        setIsSitebarFormButtonLoading(true);
-        var response = await JsonRequest('admin/projectdata/specification?project_id=' + projectid, 'POST', formField);
-        if (response.status && response.statusCode == 200) {
-            setFormField({
-                highlight: "",
-            });
-            await getlist()
-            setShowSidebar(false);
-            toast.success(response.message);
-        }
-        else {
-            toast.error(response.message);
-        }
-        setIsSitebarFormButtonLoading(false);
+  const handleSectionChange = (e) => {
+    if (e.target.name == "icons") {
+        setSectionFormdata({ ...sectionFormdata, icons: e.target.files[0] });
+    }else{
+        setSectionFormdata({ ...sectionFormdata, [e.target.name]: e.target.value });
     }
+  };
 
-    const editHandler = async (id) => {
-        setShowSidebar(true)
+  const handleStatusSelect = async (selectedValue, id) => {
+    setSelectedStatus(selectedValue);
+    await updateStatusHandler(id, selectedValue);
+  };
 
-        var response = await JsonRequest('admin/projectdata/specification/' + id + '/edit', 'GET');
-        if (response.status && response.statusCode === 200) {
-            setenableEdit(true);
-            setEditId(id);
-            var result = response.data;
-            setFormField({
-                highlight: result.highlight,
-            });
-            await getlist()
-        }
+  const updateStatusHandler = async (id, selectedStatus) => {
+    setIsSitebarFormButtonLoading(true);
 
+    const formData = new FormData();
+    formData.append("status", selectedStatus);
+
+    var response = await Request(
+      "admin/projectdata/floor-plan/" + id + "/status",
+      "POST",
+      formData
+    );
+
+    if (response.status && response.statusCode == 403) {
+      setErrors(response.errors);
+      toast.error(response.message);
+    } else if (response.status && response.statusCode == 200) {
+      toast.success(response.message);
     }
+    setIsSitebarFormButtonLoading(false);
+  };
 
+  const addAmenityHandler = () => {
+    setShowAddSidebar(!showSidebar);
+  };
+  const cancelHandler = () => {
+    resetfields();
 
-    const getlist = async () => {
-        setIsLoadingTableData(true);
+    setShowSidebar(false);
+    setShowAddSidebar(false);
+  };
 
+  const addSubmitHandler = async (e) => {
+    e.preventDefault();
+    setIsSitebarFormButtonLoading(true);
+    debugger;
 
+    const formData = new FormData();
+    formData.append("alt", sectionFormdata.alt);
+    formData.append("short_description", sectionFormdata.short_description);
+    formData.append("spec_id", sectionFormdata.spec_id);
 
-        var response = await JsonRequest(`admin/projectdata/specification?page=${currentPage}&project_id=${projectid}`, 'GET');
-        if (response.status && response.statusCode == 200) {
-            setList(response.data.data);
-            setLastPage(response.data.last_page)
-
-        }
-        setIsLoadingTableData(false);
+    if (icons.current.files[0]) {
+      formData.append("icons", icons.current.files[0]);
     }
-    const updateHandler = async () => {
+    var response = await Request(
+      "admin/projectdata/specificationlist",
+      "POST",
+      formData
+    );
+    if (response.status && response.statusCode === 403) {
+      toast.error(response.message);
 
+      setErrors(response.errors);
+    } else if (response.status && response.statusCode === 200) {
+      getlist();
+      cancelHandler();
+      toast.success(response.message);
 
-        setIsSitebarFormButtonLoading(true);
-        var response = await JsonRequest('admin/projectdata/specification/' + editId + '/update', 'POST', formField);
-        if (response.status && response.statusCode == 200) {
-            setFormField({
-                highlight: "",
-            });
-            setShowSidebar(false);
-            getlist();
-            toast.success(response.message);
-        }
-        else {
-            toast.error(response.message);
-        }
-        setIsSitebarFormButtonLoading(false);
+      resetfields();
+    } else {
+      toast.error(response.message);
     }
+    setIsSitebarFormButtonLoading(false);
+  };
 
-    const AddHighlightHandler = () => {
-        setShowSidebar(true)
+  const updateSubmitHandler = async (e) => {
+    e.preventDefault();
+    setIsSitebarFormButtonLoading(true);
+
+    const formData = new FormData();
+    formData.append("sub_typology", sectionFormdata.sub_typology);
+    formData.append("type", sectionFormdata.type);
+    formData.append("carpet_area", sectionFormdata.carpet_area);
+    formData.append("balcony_area", sectionFormdata.balcony_area);
+    formData.append("super_area", sectionFormdata.super_area);
+
+    if (sectionFormdata.size) {
+      formData.append("size", sectionFormdata.size);
     }
-
-    const cancelHandler = () => {
-        setShowSidebar(false)
+    if (sectionFormdata.size_type) {
+      formData.append("size_type", sectionFormdata.size_type);
     }
-
-    const backHandler = () => {
-
+    if (sectionFormdata.price) {
+      formData.append("price", sectionFormdata.price);
     }
-
-
-
-    const handleChange = (e) => {
-
-        setFormField({ ...formField, [e.target.name]: e.target.value });
+    if (icons.current.files[0]) {
+      formData.append("icons", icons.current.files[0]);
     }
-
-
-    const deleteHandler = async (id) => {
-
-        setIsLoadingTableData(true);
-        var response = await JsonRequest('admin/projectdata/specification/' + id + '/delete', 'POST');
-        if (response.status && response.statusCode == 200) {
-            getlist();
-            toast.success(response.message);
-
-        } else {
-            toast.error(response.message);
-
-        }
-        setIsLoadingTableData(false);
-
-
+    var response = await Request(
+      "admin/projectdata/floor-plan/" + editId + "/update",
+      "POST",
+      formData
+    );
+    if (response.status && response.statusCode === 403) {
+      setErrors(response.errors);
+    } else if (response.status && response.statusCode == 200) {
+      getlist();
+      cancelHandler();
+      resetfields();
     }
+    toast.success(response.message);
+    setIsSitebarFormButtonLoading(false);
+  };
+  const editHandler = async (id) => {
+    setShowSidebar(true);
+    setShowAddSidebar(true);
 
-    const statusOptions = [
-        { label: 'Yes', value: 1 },
-        { label: 'No', value: 0 },
-    ];
+    var response = await Request(
+      "admin/projectdata/floor-plan/" + id + "/edit",
+      "GET"
+    );
+    if (response.status && response.statusCode === 200) {
+      setenableEdit(true);
+      setEditId(id);
 
+      var result = response.data;
 
+      setSectionFormdata({
+        sub_typology: result.sub_typology,
+        size: result.size,
+        size_type: result.size_type,
+        image_preview: CONFIG.VITE_APP_STORAGE + result.icons,
+        price: result.price,
+        type: result.type,
+        carpet_area: result.carpet_area,
+        balcony_area: result.balcony_area,
+        super_area: result.super_area,
+      });
 
-
-    const handleStatusSelect = async (selectedValue, id) => {
-        setSelectedStatus(selectedValue);
-        await updateStatusHandler(id, selectedValue);
+      // setCheckedCategory(result.size_type);
     }
+  };
 
+  const deleteHandler = async (id) => {
+    var response = await Request(
+      "admin/projectdata/floor-plan/" + id + "/delete",
+      "POST"
+    );
+    if (response.status && response.statusCode) {
+      getlist();
+      toast.success(response.message);
+    } else {
+      toast.error(response.message);
+    }
+  };
 
-    const updateStatusHandler = async (id, selectedStatus) => {
-        // setIsLoading(true);
+  const backHandler = () => {};
 
+  const listSpecifications = async () => {
+    debugger
+    var response = await Request("admin/projectdata/specification", "GET");
+    setSpecificationLists(response.data.data);
+  };
 
-        const formData = new FormData();
-        formData.append('status', selectedStatus);
-        var response = await Request('admin/projectdata/highlights/' + id + '/keyhighlight', 'POST', formData);
+  const getProjectData = async () => {
+    var response = await Request("admin/project/" + projectid + "/edit", "GET");
+  };
 
-        // setIsLoading(false);
+  const getlist = async () => {
+    // setIsLoading(true);
+    setIsLoadingTableData(true);
+    var response = await Request(
+      "admin/projectdata/floor-plan?project_id=" + projectid,
+      "GET"
+    );
+    if (response.status && response.statusCode == 200) {
+      setList(response.data.data);
+    }
+    setIsLoadingTableData(false);
+  };
 
-        if (response.status && response.statusCode == 403) {
+  useEffect(() => {
+    listSpecifications();
+    getProjectData();
+    getlist();
+  }, []);
 
-            setErrors(response.errors);
-            toast.error(response.message);
+  return (
+    <>
+      <div className="px_50 form_col">
+        <Button className="btn btn_outline" onClick={backHandler}>
+          Back
+        </Button>
+        <Sections
+          projectid={projectid}
+          section_type={section_id}
+          title="Specifications"
+        />
+        <div className="card bg-white mt-6 card_style1">
+          <div className="flex items-center">
+            <h5 className="mb-0">All Specifications</h5>
+            <button
+              className="btn ml-auto btn_primary btn-sm"
+              onClick={addAmenityHandler}
+            >
+              Add Specification Point
+            </button>
+          </div>
 
-        } else if (response.status && response.statusCode == 200) {
-            toast.success(response.message);
-        }
-
-    };
-
-
-
-
-
-
-
-    const handlePageChange = (page) => {
-
-        setCurrentPage(page);
-    };
-
-
-
-
-    useEffect(() => {
-
-        getlist()
-    }, [currentPage, totalPage]);
-
-
-
-    return (
-        <>
-            <div className="px_50 form_col">
-                <Button className="btn btn_outline" onClick={backHandler}>Back</Button>
-                <Sections projectid={projectid} section_type={section_id} />
-                <div className="card card_style1 mt_40">
-                    <div className="d-flex align-items-center justify-content-between">
-                        <h5>All Specification</h5>
-                        <Button className="btn btn_primary" onClick={AddHighlightHandler}>Add Highlight</Button>
+          <table className="mt_40 w-full border-collapse border border-gray-200">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2 text-left">Icon</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Total Super Area
+                </th>
+                <th className="border border-gray-300 p-2 text-left">Price</th>
+                <th className="border border-gray-300 p-2 text-left">Status</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {isLoadingTableData && (
+                <tr>
+                  <td colSpan={5}>
+                    <div className="text-center">
+                      <ScaleLoader color="#ddd" className="w-full" />
                     </div>
+                  </td>
+                </tr>
+              )}
 
-                    <table className="w-100 mt_30">
-                        <thead>
-                            <tr>
-                                <th>
-                                    List
-                                </th>
+              {list ? (
+                list.map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      <div className="thumb icon">
+                        {item.icons ? (
+                          <img
+                            src={CONFIG.VITE_APP_STORAGE + item.icons}
+                            alt=""
+                            className="img-fluid"
+                          />
+                        ) : (
+                          "No Image "
+                        )}
+                      </div>
+                    </td>
+                    <td>{item.super_area ? item.super_area : "On Request"}</td>
+                    <td>{item.price ? item.price : "On Request"}</td>
+                    <td>
+                      <CustomDropdown
+                        className="border rounded px-3 py-2 w-full"
+                        defaultVal={item.status}
+                        options={statusOptions}
+                        onSelect={(selectedValue) =>
+                          handleStatusSelect(selectedValue, item.id)
+                        }
+                      />
+                    </td>
+                    <td>
+                      <button
+                        className="btn action_btn"
+                        onClick={() => editHandler(item.id)}
+                      >
+                        <AiOutlineEdit size={22} />
+                      </button>
+                      <button
+                        className="btn action_btn"
+                        onClick={() => deleteHandler(item.id)}
+                      >
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="2">
+                    <h5 className="no_record">No More Found!</h5>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-                                <th>
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
+      {showAddSidebar && (
+        <>
+          <SidebarPortal className="portal">
+            <SideModal
+              onCancel={cancelHandler}
+              onSubmit={enableEdit ? updateSubmitHandler : addSubmitHandler}
+              isLoading={isSitebarFormButtonLoading}
+            >
+              <form>
+                <div className="mb-2">
+                  <label className="block font-medium">Select Specification*</label>
 
-                        <tbody>
-
-
-                            {isLoadingTableData && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <div className="text-center">
-                                            <ScaleLoader
-                                                color="#ddd"
-                                                className="w-100"
-                                            />
-                                        </div>
-                                    </td>
-                                </tr>
-                            )}
-
-                            {
-                                (list ? list && list.map(item => (
-                                    <tr key={item.id}>
-                                        <td>
-                                            {item.heading}
-                                        </td>
-
-
-
-                                        <td>
-                                            <button className="btn action_btn" onClick={() => editHandler(item.id)}>
-                                                <img src={CONFIG.ADMIN_IMG_URL + 'icons/edit.svg'} alt="edit icon" className="img-fluid icon" />
-                                            </button>
-
-                                            <button className="btn action_btn" onClick={() => deleteHandler(item.id)}>
-                                                <img src={CONFIG.ADMIN_IMG_URL + 'icons/delete_color.svg'} alt="delete icon" className="img-fluid icon delete" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )) : <tr><td colspan="2"><h5 className="no_record">No  More  Found!</h5></td></tr>
-                                )
-
-                            }
-
-
-                        </tbody>
-
-                    </table>
-
-                    {!isLoading && list.length ? <Pagination currentPage={currentPage} totalPages={lastPage} onPageChange={handlePageChange} /> : null}
-
+                  <select
+                    className="border rounded px-3 py-2 w-full"
+                    name="spec_id"
+                    onChange={handleSectionChange}
+                  >
+                    <option value="">Select Type</option>
+                    {specificationLists && specificationLists.length > 0 && specificationLists.map((item, index) => (
+                      <option
+                        value={item.id}
+                        key={index}
+                        selected={sectionFormdata.spec_id == item.id}
+                      >
+                        {item.heading}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.size}
+                  {errors.type}
                 </div>
-            </div>
 
-            {showSidebar && (
-                <>
-                    <SidebarPortal className="portal">
-                        <SideModal onCancel={cancelHandler} onSubmit={(enableEdit ? updateHandler : addSubmitHandler)} isLoading={isSitebarFormButtonLoading}>
-                            <Form >
-                                <Form.Group className="mb_20">
-                                    <Form.Label>Title*</Form.Label>
-                                    <Form.Control className="" value={formField.highlight} type="text" placeholder="Enter Highlight" name="highlight" onChange={handleChange} />
-                                </Form.Group>
+                <div className="mb-2">
+                  <label className="block font-medium">Select Icon*</label>
+                  <input
+                    type="file"
+                    className="border rounded px-3 py-2 w-full"
+                    name="icons"
+                    ref={icons}
+                    onChange={handleSectionChange}
+                  />
+                  {errors.icons}
+                  {sectionFormdata.image_preview ? (
+                    <img width="100" src={`${sectionFormdata.image_preview}`} />
+                  ) : null}
+                </div>
 
+                <div className="grid grid-cols-1 gap-2">
+                  <div className="mb-2">
+                    <label className="block font-medium">Alt Text*</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter Alt Text"
+                        value={sectionFormdata.alt}
+                        name="alt"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.alt}
+                  </div>
 
-                            </Form>
-                        </SideModal>
-                    </SidebarPortal>
-                    <BackdropPortal className="show" />
-                </>
-            )}
-
+                  <div className="mb-2">
+                    <label className="block font-medium">
+                      Short Description*
+                    </label>
+                    <div className="flex items-center space-x-2">
+                      <textarea
+                        type="text"
+                        placeholder="Enter Short Description"
+                        value={sectionFormdata.balcony_area}
+                        name="short_description"
+                        onChange={handleSectionChange}
+                        rows={3}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.short_description}
+                  </div>
+                </div>
+              </form>
+            </SideModal>
+          </SidebarPortal>
+          <BackdropPortal className="show" />
         </>
-    )
-}
+      )}
+    </>
+  );
+});
 
-export default Specification;
+export default Specifications;
