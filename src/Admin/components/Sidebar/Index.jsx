@@ -147,12 +147,12 @@ const Sidebar = (props) => {
           <NavLink
             exact
             className="sidebar_link hasSubMenu"
-            to={`${CONFIG.ADMIN_ROOT}platter-page`}
+            to={`${CONFIG.ADMIN_ROOT}specifications`}
           >
             <span className="icon">
               <BiCategoryAlt size={26} />
             </span>
-            <span>Platter Page</span>
+            <span>Specifications</span>
           </NavLink>
 
           <NavLink

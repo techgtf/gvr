@@ -75,6 +75,8 @@ import SubTypologiesPage from "../admin/Subtypology/Index";
 import TypologyGallery from "../admin/typologyGallery/Index";
 import SingleTypologyGallery from "../admin/Typologies/Gallery";
 import ProjectLayout from "../admin/components/Layout/ProjectLayout/Index";
+import PriceList from "../admin/Projects/PriceList";
+import Specifications from "../admin/Specifications";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -207,6 +209,19 @@ export const AdminRoutes = [
     ),
   },
   {
+    path: `${ADMIN_ROOT}project/:projectid/price-list/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <PriceList />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
     path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
     // element:<AdminLayout />,
     element: (
@@ -264,7 +279,9 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <Gallery />
+          <ProjectLayout>
+            <Gallery />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -309,6 +326,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <HomeBanner />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}specifications`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Specifications />
         </Suspense>
       </AdminLayout>
     ),

@@ -65,6 +65,7 @@ const AddProjects = () => {
     formData.append("sub_typologie_id", checkedSubTypology);
     formData.append("name", name.current.value);
     formData.append("project_status", checkedStatus);
+    formData.append("short_description", short_description.current.value);
 
     if (e.target["image"]) {
       if (e.target["image"].files[0]) {
@@ -91,7 +92,6 @@ const AddProjects = () => {
     // formData.append("head_data", head_data.current.value);
 
     // formData.append("rera_no", rera_no.current.value);
-    // formData.append("short_description", short_description.current.value);
 
     // if (e.target["brochure"]) {
     //   if (e.target["brochure"].files[0]) {
@@ -115,7 +115,7 @@ const AddProjects = () => {
       setErrors(response.errors);
     } else if (response.status && response.statusCode === 200) {
       navigate(
-        CONFIG.ADMIN_ROOT + "project/" + response.data.id + "/location/" + 5
+        CONFIG.ADMIN_ROOT + "project/" + response.data.id + "/location/"
       );
     }
   };
@@ -327,6 +327,18 @@ const AddProjects = () => {
                 />
               </div> */}
             </div>
+              
+              <div className="mb_20">
+                <label className="block">Short Description*</label>
+                <textarea
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter project name"
+                  ref={short_description}
+                  rows={4}
+                />
+                {errors.short_description && <div className="errMsg">{errors.short_description}</div>}
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* <div className="mb_20">
