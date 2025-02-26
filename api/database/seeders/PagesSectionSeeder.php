@@ -213,7 +213,7 @@ class PagesSectionSeeder extends Seeder
                 'name' => 'esg-governance-center',
                 'page_type_id' => '6', // esg governance
                 'title'=>'Governance Center',
-                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'true','heading'=>'true']),
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'false','heading'=>'true']),
                 'fields_name'=>json_encode(['heading'=>'Section Heading','sub_heading'=>'Title','image'=>'Image','alt'=>'Alt text','description'=>'Short Description'])
 
             ],
@@ -338,16 +338,8 @@ class PagesSectionSeeder extends Seeder
 
             ],
             [
-                'name' => 'blogs-banner',
-                'page_type_id' => '17', // Blogs
-                'title'=>'overview',
-                'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false','heading'=>'false']),
-                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
-
-            ],
-            [
                 'name' => 'residential-banner',
-                'page_type_id' => '18', // Residential
+                'page_type_id' => '17', // Residential
                 'title'=>'Banner',
                 'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false','heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
@@ -355,14 +347,14 @@ class PagesSectionSeeder extends Seeder
             ],
             [
                 'name' => 'residential-overview',
-                'page_type_id' => '18', // Residential
+                'page_type_id' => '17', // Residential
                 'title'=>'Overview',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false','heading'=>'true']),
                 'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
 
             ],[
                 'name' => 'commercial-banner',
-                'page_type_id' => '19', // Commercial
+                'page_type_id' => '18', // Commercial
                 'title'=>'Banner',
                 'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false','heading'=>'false']),
                 'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
@@ -370,9 +362,48 @@ class PagesSectionSeeder extends Seeder
             ],
             [
                 'name' => 'commercial-overview',
-                'page_type_id' => '19', // Commercial
+                'page_type_id' => '18', // Commercial
                 'title'=>'Overview',
                 'section_permissions'=>json_encode(['description'=>'true','image'=>'true','sub_heading'=>'false','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],[
+                'name' => 'gallery-banner',
+                'page_type_id' => '19', // gallery
+                'title'=>'Banner',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false','heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'gallery-overview',
+                'page_type_id' => '19', // gallery
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'false','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'media-banner',
+                'page_type_id' => '20', // Media
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'true','sub_heading'=>'false','heading'=>'false']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'media-overview',
+                'page_type_id' => '20', // Media
+                'title'=>'Overview',
+                'section_permissions'=>json_encode(['description'=>'true','image'=>'false','sub_heading'=>'false','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'media-center',
+                'page_type_id' => '20', // Media
+                'title'=>'Press Center',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'true','heading'=>'true']),
                 'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
 
             ],

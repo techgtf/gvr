@@ -49,17 +49,25 @@ class PageSeeder extends Seeder
             // 16
             ['name' => 'Testimonials', 'type' => null],
             // 17
-            ['name' => 'Blogs', 'type' => null],
-            // 18
             [
                 'name' => 'Residential',
                 'type' => 'platter',
             ],
-            //19
+            //18
             [
                 'name' => 'Commercial',
                 'type' => 'platter',
             ],
+            // 19
+            [
+                'name' => 'Gallery',
+                'type' => null,
+            ],
+            // 20
+            [
+                'name' => 'Media',
+                'type' => null
+            ]
 
             // Add more data here
         ]);
