@@ -305,7 +305,6 @@ const FloorPlan = React.memo(() => {
         <Sections
           projectid={projectid}
           section_type={section_id}
-          sub_heading
           title="Floor Plans"
         />
         <div className="card bg-white mt-6 card_style1">

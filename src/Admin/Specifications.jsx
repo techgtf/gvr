@@ -93,9 +93,8 @@ const Specifications = () => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
-    formData.append("image", fileRef.current.files[0]);
-    formData.append("title", headingRef.current.value);
-    var response = await Request("admin/amenities", "POST", formData);
+    formData.append("heading", headingRef.current.value);
+    var response = await Request("admin/projectdata/specification", "POST", formData);
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
       toast.error(response.message);
@@ -113,13 +112,10 @@ const Specifications = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/amenities/" + id, "GET");
+    var response = await Request("admin/projectdata/specification/" + id + "/edit", "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
-      if (response.data.icons) {
-        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.icons);
-      }
       headingRef.current.value = response.data.heading;
     }
     setIsSitebarFormButtonLoading(false);
@@ -132,7 +128,7 @@ const Specifications = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/amenities/" + id, "DELETE");
+    var response = await Request("admin/projectdata/specification/" + id + "/delete", "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -145,7 +141,10 @@ const Specifications = () => {
   const listHandler = async (search = "") => {
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/projectdata/specification?search=" + search + "&page=" + currentPage,
+      "admin/projectdata/specification?search=" +
+        search +
+        "&page=" +
+        currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -155,18 +154,15 @@ const Specifications = () => {
     setIsLoadingTableData(false);
   };
 
-  const updateAmenityHandler = async (event) => {
+  const updateSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
 
     const formData = new FormData();
-    if (fileRef.current.files[0]) {
-      formData.append("image", fileRef.current.files[0]);
-    }
-    formData.append("title", headingRef.current.value);
+    formData.append("heading", headingRef.current.value);
 
     var response = await Request(
-      "admin/amenities/" + editId + "/update",
+      "admin/projectdata/specification/" + editId + "/update",
       "POST",
       formData
     );
@@ -219,7 +215,7 @@ const Specifications = () => {
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2 text-left">Heading</th>
-              <th className="border border-gray-300 p-2 text-left">Status</th>
+              {/* <th className="border border-gray-300 p-2 text-left">Status</th> */}
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -227,7 +223,7 @@ const Specifications = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={3}>
+                <td colSpan={2}>
                   <div className="text-center py-4">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -239,7 +235,7 @@ const Specifications = () => {
                   data.map((item) => (
                     <tr key={item.id} className="border-b">
                       <td className="py-2 px-4">{item.heading}</td>
-                      <td className="py-2 px-4">
+                      {/* <td className="py-2 px-4">
                         <CustomDropdown
                           className="border rounded px-3 py-2 w-full"
                           defaultVal={item.status}
@@ -248,7 +244,7 @@ const Specifications = () => {
                             handleStatusSelect(selectedValue, item.id)
                           }
                         />
-                      </td>
+                      </td> */}
                       <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
@@ -260,7 +256,10 @@ const Specifications = () => {
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin6Line size={18} className="text-red-500" />
+                          <RiDeleteBin6Line
+                            size={18}
+                            className="text-red-500"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -293,7 +292,7 @@ const Specifications = () => {
           <SidebarPortal className="portal">
             <SideModal
               onCancel={cancelHandler}
-              onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}
+              onSubmit={enableEdit ? updateSubmitHandler : addSubmitHandler}
               isLoading={isSitebarFormButtonLoading}
             >
               <form>

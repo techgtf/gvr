@@ -77,6 +77,7 @@ import SingleTypologyGallery from "../admin/Typologies/Gallery";
 import ProjectLayout from "../admin/components/Layout/ProjectLayout/Index";
 import PriceList from "../admin/Projects/PriceList";
 import Specifications from "../admin/Specifications";
+import Specification from "../admin/Projects/Specification";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -229,6 +230,19 @@ export const AdminRoutes = [
         <Suspense fallback={<div>Loading...</div>}>
           <ProjectLayout>
             <Highlights />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/specifications/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <Specification />
           </ProjectLayout>
         </Suspense>
       </AdminLayout>

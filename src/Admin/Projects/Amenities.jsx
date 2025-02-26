@@ -259,11 +259,8 @@ const Amenities = () => {
 
         <Sections
           projectid={projectid}
-          image
           section_type={section_id}
-          textarea
           title="Amenities"
-          sub_heading
         />
 
         <div className="card rounded-lg shadow-md bg-white p-6 mt-5">
