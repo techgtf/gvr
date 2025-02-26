@@ -65,9 +65,9 @@ const Specifications = React.memo(() => {
     image_preview: null,
     price: null,
     type: null,
-    carpet_area: null,
-    balcony_area: null,
-    super_area: null,
+    alt:null,
+    short_description:null,
+    spec_id:null
   });
 
   const resetfields = () => {
@@ -77,8 +77,9 @@ const Specifications = React.memo(() => {
       size_type: null,
       icons: null,
       image_preview: null,
-
+    alt:null,
       project_id: null,
+      short_description:null,
     });
   };
 
@@ -129,9 +130,9 @@ const Specifications = React.memo(() => {
   const addSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
-    debugger;
 
     const formData = new FormData();
+    formData.append("project_id", projectid);
     formData.append("alt", sectionFormdata.alt);
     formData.append("short_description", sectionFormdata.short_description);
     formData.append("spec_id", sectionFormdata.spec_id);
@@ -163,28 +164,19 @@ const Specifications = React.memo(() => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
 
     const formData = new FormData();
-    formData.append("sub_typology", sectionFormdata.sub_typology);
-    formData.append("type", sectionFormdata.type);
-    formData.append("carpet_area", sectionFormdata.carpet_area);
-    formData.append("balcony_area", sectionFormdata.balcony_area);
-    formData.append("super_area", sectionFormdata.super_area);
+    formData.append("alt", sectionFormdata.alt);
+    formData.append("short_description", sectionFormdata.short_description);
+    formData.append("spec_id", sectionFormdata.spec_id);
 
-    if (sectionFormdata.size) {
-      formData.append("size", sectionFormdata.size);
-    }
-    if (sectionFormdata.size_type) {
-      formData.append("size_type", sectionFormdata.size_type);
-    }
-    if (sectionFormdata.price) {
-      formData.append("price", sectionFormdata.price);
-    }
     if (icons.current.files[0]) {
       formData.append("icons", icons.current.files[0]);
     }
+
     var response = await Request(
-      "admin/projectdata/floor-plan/" + editId + "/update",
+      "admin/projectdata/specificationlist/" + editId + "/update",
       "POST",
       formData
     );
@@ -198,12 +190,14 @@ const Specifications = React.memo(() => {
     toast.success(response.message);
     setIsSitebarFormButtonLoading(false);
   };
+
+
   const editHandler = async (id) => {
     setShowSidebar(true);
     setShowAddSidebar(true);
 
     var response = await Request(
-      "admin/projectdata/floor-plan/" + id + "/edit",
+      "admin/projectdata/specificationlist/" + id + "/edit",
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -213,15 +207,10 @@ const Specifications = React.memo(() => {
       var result = response.data;
 
       setSectionFormdata({
-        sub_typology: result.sub_typology,
-        size: result.size,
-        size_type: result.size_type,
         image_preview: CONFIG.VITE_APP_STORAGE + result.icons,
-        price: result.price,
-        type: result.type,
-        carpet_area: result.carpet_area,
-        balcony_area: result.balcony_area,
-        super_area: result.super_area,
+        alt:result.alt,
+        short_description:result.short_description,
+        spec_id:result.spec_id,
       });
 
       // setCheckedCategory(result.size_type);
@@ -230,8 +219,8 @@ const Specifications = React.memo(() => {
 
   const deleteHandler = async (id) => {
     var response = await Request(
-      "admin/projectdata/floor-plan/" + id + "/delete",
-      "POST"
+      "admin/projectdata/specificationlist/" + id + "/delete",
+      "DELETE"
     );
     if (response.status && response.statusCode) {
       getlist();
@@ -244,7 +233,6 @@ const Specifications = React.memo(() => {
   const backHandler = () => {};
 
   const listSpecifications = async () => {
-    debugger
     var response = await Request("admin/projectdata/specification", "GET");
     setSpecificationLists(response.data.data);
   };
@@ -257,7 +245,7 @@ const Specifications = React.memo(() => {
     // setIsLoading(true);
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/projectdata/floor-plan?project_id=" + projectid,
+      "admin/projectdata/specificationlist?project_id=" + projectid,
       "GET"
     );
     if (response.status && response.statusCode == 200) {
@@ -298,11 +286,7 @@ const Specifications = React.memo(() => {
             <thead>
               <tr className="bg-gray-100">
                 <th className="border border-gray-300 p-2 text-left">Icon</th>
-                <th className="border border-gray-300 p-2 text-left">
-                  Total Super Area
-                </th>
-                <th className="border border-gray-300 p-2 text-left">Price</th>
-                <th className="border border-gray-300 p-2 text-left">Status</th>
+                <th className="border border-gray-300 p-2 text-left">Description</th>
                 <th className="border border-gray-300 p-2 text-left">
                   Actions
                 </th>
@@ -335,9 +319,8 @@ const Specifications = React.memo(() => {
                         )}
                       </div>
                     </td>
-                    <td>{item.super_area ? item.super_area : "On Request"}</td>
-                    <td>{item.price ? item.price : "On Request"}</td>
-                    <td>
+                    <td>{item.short_description}</td>
+                    {/* <td>
                       <CustomDropdown
                         className="border rounded px-3 py-2 w-full"
                         defaultVal={item.status}
@@ -346,7 +329,7 @@ const Specifications = React.memo(() => {
                           handleStatusSelect(selectedValue, item.id)
                         }
                       />
-                    </td>
+                    </td> */}
                     <td>
                       <button
                         className="btn action_btn"
@@ -391,13 +374,13 @@ const Specifications = React.memo(() => {
                     className="border rounded px-3 py-2 w-full"
                     name="spec_id"
                     onChange={handleSectionChange}
+                    value={sectionFormdata?.spec_id}
                   >
                     <option value="">Select Type</option>
                     {specificationLists && specificationLists.length > 0 && specificationLists.map((item, index) => (
                       <option
                         value={item.id}
                         key={index}
-                        selected={sectionFormdata.spec_id == item.id}
                       >
                         {item.heading}
                       </option>
@@ -446,7 +429,7 @@ const Specifications = React.memo(() => {
                       <textarea
                         type="text"
                         placeholder="Enter Short Description"
-                        value={sectionFormdata.balcony_area}
+                        value={sectionFormdata.short_description}
                         name="short_description"
                         onChange={handleSectionChange}
                         rows={3}
