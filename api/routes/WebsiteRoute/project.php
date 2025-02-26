@@ -44,7 +44,7 @@ Route::get('/project/{section_id}/faq',[ProjectController::class,'getFaq']);
 
 
 
-
+Route::get('/get-all-projectImages', [ProjectController::class, 'ProjectImages']);
 
 
 
