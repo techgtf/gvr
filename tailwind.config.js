@@ -23,6 +23,15 @@ export default {
         "2xl": "1330px",
         "3xl": "1440px",
       },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-1000px 0' },
+          '100%': { backgroundPosition: '1000px 0' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 1.5s infinite linear',
+      },
     },
   },
   plugins: [],

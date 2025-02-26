@@ -15,7 +15,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Testimonial() {
-    const slidesData = TestimonialsData;
+    const { data } = TestimonialsData();
+    const slidesData = data;
+
     const testimonialRef = useRef(null);
     const swiperContainerRef = useRef(null);
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -56,11 +58,11 @@ export default function Testimonial() {
                         }}
                         className="testimonialSwiper lg:mt-20 mt-10"
                     >
-                        {slidesData.map((item, index) => (
+                        {slidesData && slidesData.map((item, index) => (
                             <SwiperSlide key={index} className="panel">
                                 <div className='flex_div flex flex-wrap justify-between'>
                                     <div className='posterSide relative lg:w-[45%] w-full'>
-                                        <img src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`} alt={`${item.alt}`} />
+                                        <img src={item.image} alt={`${item.alt}`} />
                                         {/* <video
                                             ref={(el) => (videoRefs.current[index] = el)}
                                             poster={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/${item.thumbs}`}
@@ -69,10 +71,9 @@ export default function Testimonial() {
                                         ></video> */}
                                         <button
                                             className="playbtn absolute top-[50%] left-[50%] z-[1] cursor-pointer "
-                                            onClick={() => setSelectedVideo(getEmbedUrl(item.video))}
+                                            onClick={() => setSelectedVideo(getEmbedUrl(item.iframe_url))}
                                             aria-label="Play Video"
                                         >
-
                                             <img
                                                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/play-button.webp`}
                                                 className="cursor-pointer lg:h-[44px] h-[30px]"
@@ -83,7 +84,7 @@ export default function Testimonial() {
                                     </div>
                                     <div className='borderline w-[18%] relative lg:block hidden'></div>
                                     <div className='content_div flex flex-col lg:w-[37%] w-full lg:pl-6 lg:pt-11 pt-5'>
-                                        <p className='desc lg:text-[17px] text-[14px] tracking-[2px]'>{item.desc}</p>
+                                        <p className='desc lg:text-[17px] text-[14px] tracking-[2px]'>{item.description}</p>
                                         <div className='name text-[16px] relative capitalize tracking-[2px] flex items-center lg:gap-3 gap-3'>
                                             <small className='line'></small> {item.name}
                                         </div>
