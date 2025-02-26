@@ -16,6 +16,10 @@ import Loader from "common/Loader/loader";
 import "react-quill/dist/quill.snow.css";
 import "../assets/css/admin.css";
 import Request from "../../config/Request";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
+import * as CONFIG from "../../../config";
 
 const locationTypes = [
   { label: "Drive", value: "drive" },
@@ -55,8 +59,10 @@ const LocationAdvantage = () => {
     type: "",
     distance: "",
     name: "",
-    icons:null,
+    icons: null,
   });
+  const [editId, setEditId] = useState(false);
+  
   const navigate = useNavigate();
   const searchLocation = async () => {
     setBoxLodingSearch(true);
@@ -161,39 +167,6 @@ const LocationAdvantage = () => {
     });
   };
 
-  // const addLocationAdvantafe=async (place_id,distance,name)=>{
-  //     setIsLoadingTableData(true);
-
-  //     const objecdata={
-  //         place_id:place_id,
-  //         project_id:projectid,
-  //         distance:distance,
-  //         type:searchLocationdata.type,
-  //         name:name
-
-  //     }
-  //     var response=await JsonRequest('admin/projectdata/location-advantage','POST',objecdata);
-
-  //     if (response.status && response.statusCode === 200) {
-  //         locationAdvntge();
-  //     }
-  //     setIsLoadingTableData(false);
-
-  // }
-
-  const deleteLocationAdvantafe = async (id) => {
-    setIsLoading(true);
-
-    var response = await JsonRequest(
-      "admin/projectdata/location-advantage/" + id + "/delete",
-      "POST"
-    );
-    if (response.status && response.statusCode === 200) {
-      locationAdvntge();
-    }
-    setIsLoading(false);
-  };
-
   const addLocationHandler = async () => {
     setIsSitebarFormButtonLoading(true);
     try {
@@ -219,20 +192,21 @@ const LocationAdvantage = () => {
       type: "",
       distance: "",
       name: "",
-      icons:null
+      icons: null,
     });
   };
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
-    debugger
+    debugger;
     // const updatedData = { ...locationData, project_id: projectid };
     const formData = new FormData();
     formData.append("project_id", projectid);
     formData.append("name", locationData.name);
     formData.append("type", locationData.type);
     formData.append("icons", locationData.icons);
+    formData.append("distance", locationData.distance);
 
     try {
       var response = await Request(
@@ -260,30 +234,97 @@ const LocationAdvantage = () => {
     }
   };
 
+  const editHandler = async (id) => {
+      setShowSidebar(true);
+      setShowAddSidebar(true);
+      setIsSitebarFormButtonLoading(true);
+  
+      var response = await Request("admin/projectdata/location-advantage/" + id + "/edit", "GET");
+      if (response.status && response.statusCode === 200) {
+        setenableEdit(true);
+        setEditId(id);
+        if (response.data.icons) {
+          setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.icons);
+        }
+        setLocationData(prevState=>({
+          ...prevState,
+          name:response.data.name,
+          type:response.data.type,
+          distance:response.data.distance,
+        }))
+      }
+      setIsSitebarFormButtonLoading(false);
+    };
+
   const changeHandler = (e) => {
-    debugger
     const { name, value } = e.target;
-    if(name=="icons"){
+    if (name == "icons") {
       setLocationData((prevState) => ({
-        icons:e.target.files[0]
+        ...prevState,
+        icons: e.target.files[0],
       }));
-    }else{
+    } else {
       setLocationData((prevState) => ({
         ...prevState,
         [name]: value,
       }));
     }
-    
   };
 
   const updateSubmitHandler = async (event) => {
     event.preventDefault();
+    setIsSitebarFormButtonLoading(true);
+
+    const formData = new FormData();
+    if(locationData.icons instanceof File){
+      formData.append("icons", locationData.icons);
+    }
+    formData.append("project_id", projectid);
+    formData.append("name", locationData.name);
+    formData.append("type", locationData.type);
+    formData.append("distance", locationData.distance);
+
+    try {
+      var response = await Request(
+        "admin/projectdata/location-advantage/" + editId + "/update",
+        "POST",
+        formData
+      );
+
+      if (response.status && response.statusCode == 200) {
+        await emptyLocationData();
+        setIsSitebarFormButtonLoading(false);
+        setShowAddSidebar(false);
+        await locationAdvntge();
+        toast.success(response.message);
+      } else {
+        // setLocationTypes([]);
+        setShowAddSidebar(!showSidebar);
+        setShowAddSidebar(false);
+      }
+
+      setIsSitebarFormButtonLoading(false);
+    } catch (err) {
+      console.log(err);
+      toast.error(response.err);
+    }
   };
 
   const cancelHandler = () => {
     setShowSidebar(false);
     setShowAddSidebar(false);
   };
+
+  const deleteHandler = async (id) => {
+      var response = await Request("admin/projectdata/location-advantage/" + id+"/delete", "DELETE");
+      if (response.status && response.statusCode === 200) {
+        toast.success(response.message);
+        locationAdvntge();
+  
+      } else {
+        toast.error(response.message);
+      }
+    };
 
   if (isLoading) {
     return <Loader />; // Use the Loader component
@@ -295,12 +336,7 @@ const LocationAdvantage = () => {
         <Button className="btn btn_outline" onClick={backHandler}>
           Back
         </Button>
-        <Sections
-          projectid={projectid}
-          image
-          section_type={section_id}
-          sub_heading
-        />
+        <Sections projectid={projectid} image section_type={section_id} />
 
         <div className="card bg-white mt-4 card_style1">
           <div className="flex title_col justify-between items-center">
@@ -318,9 +354,13 @@ const LocationAdvantage = () => {
               <tr className="bg-gray-100">
                 <th className="border border-gray-300 p-2 text-left">Icon</th>
                 <th className="border border-gray-300 p-2 text-left">Name</th>
-                <th className="border border-gray-300 p-2 text-left">Distance</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Distance
+                </th>
                 <th className="border border-gray-300 p-2 text-left">Type</th>
-                <th className="border border-gray-300 p-2 text-left">Actions</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Actions
+                </th>
               </tr>
             </thead>
 
@@ -335,43 +375,44 @@ const LocationAdvantage = () => {
                 </tr>
               )}
 
-              {!isLoadingTableData && allLocationAdvantage.length
-                ? allLocationAdvantage.map((item, key) => (
-                    <tr key={key++} className="border-b">
-                      <td className="py-2 px-4">{item.name}</td>
-                      <td className="py-2 px-4">{item.distance}</td>
-                      <td className="py-2 px-4">
-                        {locationTypes?.find((type) => type.id == item.type) ? (
-                          <span key={item.type}>
-                            {
-                              locationTypes.find((type) => type.id == item.type)
-                                ?.name
-                            }
-                          </span>
-                        ) : (
-                          ""
-                        )}
-                      </td>
-
-                      <td className="py-2 px-4">
-                        <button
-                          type="button"
-                          onClick={() => deleteLocationAdvantafe(item.id)}
-                        >
-                          Delete{" "}
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                : !isLoadingTableData
-                ? <tr>
-                    <td colSpan="5">
-                      <h5 className="no_record text-center py-4">
-                        No Data Found!
-                      </h5>
+              {!isLoadingTableData && allLocationAdvantage.length ? (
+                allLocationAdvantage.map((item, key) => (
+                  <tr key={key++} className="border-b">
+                    <td className="py-2 px-4">
+                      <img
+                        src={CONFIG.VITE_APP_STORAGE + item.icons}
+                        alt=""
+                        className="w-100 h-100"
+                      />
+                    </td>
+                    <td className="py-2 px-4">{item.name}</td>
+                    <td className="py-2 px-4">{item.distance}</td>
+                    <td className="py-2 px-4">{item.type}</td>
+                    <td className="py-2 px-4">
+                      <button
+                        className="btn action_btn"
+                        onClick={() => editHandler(item.id)}
+                      >
+                        <AiOutlineEdit size={22} />
+                      </button>
+                      <button
+                        className="btn action_btn"
+                        onClick={() => deleteHandler(item.id)}
+                      >
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
+                      </button>
                     </td>
                   </tr>
-                : null}
+                ))
+              ) : !isLoadingTableData ? (
+                <tr>
+                  <td colSpan="5">
+                    <h5 className="no_record text-center py-4">
+                      No Data Found!
+                    </h5>
+                  </td>
+                </tr>
+              ) : null}
             </tbody>
           </table>
         </div>
@@ -389,15 +430,17 @@ const LocationAdvantage = () => {
                 <div className="mb_20">
                   <label className="block font-medium">Location Type*</label>
                   <select
-                    // defaultValue={locationTypes.type}
+                    value={locationData.type}
                     className="w-full border p-2"
                     name="type"
                     onChange={changeHandler}
                   >
-                    <option value="" disabled>Select Location Type</option>
+                    <option value="" selected disabled>
+                      Select Location Type
+                    </option>
                     {locationTypes.length &&
-                      locationTypes.map((item) => (
-                        <option value={item.value}>{item.label}</option>
+                      locationTypes.map((item, index) => (
+                        <option key={index} value={item.value}>{item.label}</option>
                       ))}
                   </select>
                   {errors.distance && (
@@ -415,6 +458,9 @@ const LocationAdvantage = () => {
                   />
                   {errors.icons && (
                     <span className="text-danger">{errors.icons}</span>
+                  )}
+                  {showEditEnableImage && (
+                    <img src={showEditEnableImage} width="50" />
                   )}
                 </div>
 
