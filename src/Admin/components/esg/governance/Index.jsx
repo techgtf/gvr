@@ -3,24 +3,27 @@ import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
 import SideModal from "../../Modal/SideModal/Index";
+import * as CONFIG from "../../../../../config";
 import { toast } from "react-toastify";
 import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 import Request from "../../../../config/Request";
-import * as CONFIG from "../../../../../config";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 import "../../../assets/css/admin.css";
 
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+
 const statusOptions = [
   { label: "Active", value: "1" },
   { label: "Hide", value: "0" },
 ];
 
-const EsgSocial = () => {
+const EsgGovernance = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -102,7 +105,7 @@ const EsgSocial = () => {
 
     formData.append("image", fileRef.current.files[0]);
     formData.append("name", titleRef.current.value);
-    formData.append("type", "social");
+    formData.append("type", 'governance');
     formData.append("short_description", descriptionRef.current.value);
 
     var response = await Request("admin/esg-data-list", "POST", formData);
@@ -118,7 +121,7 @@ const EsgSocial = () => {
     }
     setIsSitebarFormButtonLoading(false);
   };
- 
+
   const editHandler = async (id) => {
     setShowSidebar(true);
     setShowAddSidebar(true);
@@ -158,7 +161,7 @@ const EsgSocial = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/esg-data-list/social/type?search=" + search + "&page=" + currentPage,
+      "admin/esg-data-list/governance/type?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -206,18 +209,18 @@ const EsgSocial = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Social</h4>
+        <h4 className="page_title">Governance</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Social
+          Add Governance
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">Social</h5>
+          <h5 className="mb-0">Governance</h5>
 
           <div className="searchInput ml-auto">
             <input
@@ -284,7 +287,7 @@ const EsgSocial = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4">
+                    <td colSpan="5">
                       <h5 className="no_record text-center py-4">
                         No Data Found!
                       </h5>
@@ -316,13 +319,12 @@ const EsgSocial = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Thumbnail*
+                    Select Image*
                   </label>
                   <input
                     ref={fileRef}
                     className="border rounded px-3 py-2 w-full"
                     type="file"
-                    placeholder="Enter Title"
                   />
                   {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
                   {errors.image && (
@@ -372,4 +374,4 @@ const EsgSocial = () => {
   );
 };
 
-export default EsgSocial;
+export default EsgGovernance;
