@@ -52,7 +52,7 @@ const projects = [
         category: "Jharkhand Bhawan, Vasant Kunj, Delhi",
 
         description:
-          "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
+          "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq ft into a modern, sustainable architectural space.",
       },
     ],
   },
@@ -190,7 +190,7 @@ const projects = [
 
         category: "Office Property, Worli, Mumbai",
         description:
-          "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
+          "Acquired a premium 3,095 sq ft office space in a prime business district.",
       },
       {
         year: 2022,

@@ -10,9 +10,9 @@ export default function Index() {
     const pageData = [
         {
             content: [
-                "All The reputed banks have authorized our projects for loan availability.",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos inventore iusto aspernatur ea consequatur perferendis ut rerum unde velit odit accusamus mollitia cumque eius tempore qui eveniet, blanditiis quia eos! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum ipsa voluptates necessitatibus rem ipsum dolor sit amet consectetur, adipisicing elit. Eum ipsa voluptates necessitatibus alias suscipit placeat vel assumenda? Et error aliquam adipisci consequatur at perspiciatis quia inventore ad. Aperiam, culpa deleniti.",
-                "All qui eveniet, blanditiis quia eos! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum ipsa voluptates necessitatibus rem ipsum dolor sit amet consectetur, adipisicing elit.",
+                "Unlock the door to your dream home – with the perfect home loan!",
+                "Buying a home is one of life’s biggest milestones, and we’re here to make it effortless. With our tailored home loan options, competitive interest rates, and expert guidance, we ensure a seamless journey from application to approval. Whether you're a first-time buyer or upgrading to your dream home, we help you secure the best financing solution that fits your needs. No hidden fees, no complicated terms, just a smooth, stress-free experience.",
+                "Navigating home loans can feel overwhelming, but not with us by your side. Our team simplifies the process, providing personalized support, transparent terms, and hassle-free loan approvals. Let’s turn your homeownership dream into reality, because the right home deserves the right loan! Start your journey today and move one step closer to your perfect home.",
             ]
         },
         {

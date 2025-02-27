@@ -53,18 +53,16 @@ function Microsite() {
       {
         image: plan1,
         type: "TypeA: 2B/R",
-        carpetArea: "752 Sq.Ft.",
-        balconyArea: "69 Sq.Ft.",
-        totalArea: "1139 Sq.Ft.",
-        buildArea: "--"
+        carpetArea: "752 Sq Ft.",
+        balconyArea: "69 Sq Ft.",
+        totalArea: "1139 Sq Ft.",
       },
       {
         image: plan3,
         type: "TypeC: 3B+R",
-        carpetArea: "1080 Sq. Ft.",
-        balconyArea: "145 Sq. Ft.",
-        totalArea: "1647 Sq. Ft.",
-        buildArea: "--"
+        carpetArea: "1080 Sq Ft",
+        balconyArea: "145 Sq Ft",
+        totalArea: "1647 Sq Ft",
       },
 
     ],
@@ -73,18 +71,16 @@ function Microsite() {
       {
         image: plan2,
         type: "TypeB: 2B/R+S",
-        carpetArea: "873 Sq.Ft.",
-        balconyArea: "81 Sq.Ft.",
-        totalArea: "1295 Sq.Ft.",
-        buildArea: "--"
+        carpetArea: "873 Sq Ft",
+        balconyArea: "81 Sq Ft",
+        totalArea: "1295 Sq Ft",
       },
       {
         image: plan4,
         type: "Type D: 3B/R+S",
-        carpetArea: "1186 Sq. Ft.",
-        balconyArea: "145 Sq. Ft.",
-        totalArea: "1791 Sq. Ft.",
-        buildArea: "--"
+        carpetArea: "1186 Sq Ft",
+        balconyArea: "145 Sq Ft",
+        totalArea: "1791 Sq Ft",
       },
     ],
   };
@@ -94,7 +90,7 @@ function Microsite() {
     "3 sides open corner plot",
     "Proposed Metro station in Sector-108",
     "Entirely inhabited residential area.",
-    "Schools, Hospitals, Malls etc. Located on 70m wide & straight road from Kalindi Kunj, Situated along one of the most prime location of Noida.",
+    "Schools, hospitals, malls, etc, are situated along a 70m wide, straight road from Kalindi Kunj, in one of Noida’s most prime locations.",
     "In close vicinity to Delhi (15 min. drive to DND & Kalandi Kunj)",
     "Close to Noida Expressway & Yamuna Expressway.",
     "Easy access to Metro Station, connecting to metro network all around NCR.",
@@ -110,7 +106,7 @@ function Microsite() {
     {
       title: "Flooring",
       items: [
-        { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in living, dining, and bedrooms; anti-skid tiles in the kitchen, balconies, and toilets." },
+        { image: "assets/frontend/images/microsite/specifications/flooring.webp", description: "Vitrified tiles in the living, dining, and bedrooms; anti-skid tiles in the kitchen, balconies, and toilets." },
       ],
     },
     {
@@ -169,7 +165,7 @@ function Microsite() {
     },
   ];
 
-  const images = [
+  const   images = [
     { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Great Value Sharanam Sector 107, Noida" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },

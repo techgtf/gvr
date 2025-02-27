@@ -11,7 +11,7 @@ const latestBlog = [
       subtitles:[
         {
           title: " Investment Potential and Property Appreciation",
-          description: "Buying a property in Sector 107 offers significant long-term benefits, especially if you are looking to invest. The area has witnessed a steady rise in property prices, with the average rate ranging from ₹5,000 to ₹13,000 per sq. ft., depending on the project and its proximity to main roads. According to real estate experts, the region's price trend has been upward, with some areas witnessing growth rates of 5-7% annually​. For instance, luxury properties like a 3BHK flat in Mahagun Medalleo are priced at around ₹3.7 crore, equating to ₹21,600 per sq. ft., indicating a prime location's premium​. Buying a property now could lead to substantial capital gains in the future.",
+          description: "Buying a property in Sector 107 offers significant long-term benefits, especially if you are looking to invest. The area has witnessed a steady rise in property prices, with the average rate ranging from ₹5,000 to ₹13,000 per sq ft, depending on the project and its proximity to main roads. According to real estate experts, the region's price trend has been upward, with some areas witnessing growth rates of 5-7% annually​. For instance, luxury properties like a 3BHK flat in Mahagun Medalleo are priced at around ₹3.7 crore, equating to ₹21,600 per sq ft, indicating a prime location's premium​. Buying a property now could lead to substantial capital gains in the future.",
         },
         {
           title: "Rental Demand and Affordable Option",

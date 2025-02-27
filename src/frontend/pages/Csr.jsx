@@ -1,7 +1,6 @@
 import React from 'react'
 import HeroSection from '../components/CSR/HeroSection'
 import OverviewSection from '../components/overviewSection/overviewSection'
-import CareCommunities from '../components/CSR/CC/CareCommunities'
 import CharityInitiatives from '../components/CSR/CharityInitiatives/CharityInitiatives'
 import SocialDetails from '../components/CSR/SocialDetails/SocialDetails'
 import { Helmet } from 'react-helmet'

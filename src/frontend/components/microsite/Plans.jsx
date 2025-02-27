@@ -99,9 +99,8 @@ function Plans({ masterPlanData, unitData }) {
                 Object.keys(unitData).map((unit) => (
                   <button
                     key={unit}
-                    className={`px-6 py-1 text-[14px] ${
-                      activeUnit === unit ? "bg-[#33638B] text-white" : "bg-transparent border border-black"
-                    }`}
+                    className={`px-6 py-1 text-[14px] ${activeUnit === unit ? "bg-[#33638B] text-white" : "bg-transparent border border-black"
+                      }`}
                     onClick={() => handleUnitChange(unit)}
                   >
                     {unit.toUpperCase()}
@@ -112,33 +111,34 @@ function Plans({ masterPlanData, unitData }) {
           </div>
 
           {!isUnitDataEmpty && (
-            
+
             <div className="slider">
-              
+
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
                   <SlideIn key={index} duration={2} delay={0.5}>
-                  <div  className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
-                    <img src={plan.image} alt={`plan ${index + 1}`}
-                      className="w-[80%] mx-auto md:w-[30%] h-auto aspect-[4/3] object-cover cursor-pointer"
-                      onClick={() => openLightbox(index)} />
-                    <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
-                      <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
-                      <p>Carpet Area: {plan.carpetArea}</p>
-                      <p>Balcony Area: {plan.balconyArea}</p>
-                      <p>Total Super Area: {plan.totalArea}</p>
-                      <p>Built-Up Area: {plan.buildArea}</p>
+                    <div className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
+                      <img src={plan.image} alt={`plan ${index + 1}`}
+                        className="w-[80%] mx-auto md:w-[30%] h-auto aspect-[4/3] object-cover cursor-pointer"
+                        onClick={() => openLightbox(index)} />
+                      <div className="flex flex-col gap-2 mt-5 pr-10 tracking-wider uppercase md:mt-0">
+                        <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
+                        {plan.carpetArea && <p>Carpet Area: {plan.carpetArea}</p>}
+                        {plan.balconyArea && <p>Balcony Area: {plan.balconyArea}</p>}
+                        {plan.totalArea && <p>Total Super Area: {plan.totalArea}</p>}
+                        {plan.buildArea && <p>Built-Up Area: {plan.buildArea}</p>}
+
+                      </div>
                     </div>
-                  </div>
                   </SlideIn>
                 ))
               ) : (
                 <div className="flex justify-center">
                   <SlideIn duration={2} delay={0.5}>
-                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" /></SlideIn>
+                    <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" /></SlideIn>
                 </div>
               )}
-            </div>           
+            </div>
           )}
         </div>
       </div>

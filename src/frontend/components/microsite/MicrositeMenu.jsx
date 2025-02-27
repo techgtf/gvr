@@ -8,7 +8,7 @@ function MicrositeMenu() {
 
   const menu = [
     { name: "OVERVIEW", id: "overview" },
-    { name: "AMENTITIES", id: "amentities" },
+    { name: "AMENITIES", id: "amenities" },
     { name: "PRICE LIST", id: "pricelist" },
     { name: "HIGHLIGHTS & SPECIFICATIONS", id: "highlightsSpecifications" },
     { name: "FLOOR PLAN", id: "plan" },

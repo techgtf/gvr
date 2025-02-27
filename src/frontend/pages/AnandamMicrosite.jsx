@@ -95,30 +95,30 @@ function AnandamMicrosite() {
             {
                 image: plan1,
                 type: "3 BHK + STUDY + 4T",
-                carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-                balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-                buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-                totalArea: "170.94 Sqm. (1840 Sq.Ft)",
+                carpetArea: "109.68 Sqm. (1181 Sq Ft)",
+                balconyArea: "13.24 Sqm. (143 Sq Ft)",
+                buildArea: "131.45 Sqm. (1415 SqFt)",
+                totalArea: "170.94 Sqm. (1840 SqFt)",
             },
         ],
         unit2: [
             {
                 image: plan2,
                 type: "3 BHK + 3T",
-                carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-                balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-                buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-                totalArea: "157.94 Sqm. (1700 Sq.Ft)",
+                carpetArea: "100.12 Sqm. (1078 Sq Ft)",
+                balconyArea: "13.26 Sqm. (143 Sq Ft)",
+                buildArea: "121.50 Sqm. (1308 Sq Ft)",
+                totalArea: "157.94 Sqm. (1700 Sq Ft)",
             },
         ],
         unit34: [
             {
                 image: plan3,
                 type: "2 BHK + STUDY + 2T",
-                carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-                balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-                buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-                totalArea: "125.42 Sqm. (1350 Sq.Ft)",
+                carpetArea: "81.51 Sqm. (877 Sq Ft)",
+                balconyArea: "8.07 Sqm. (87 Sq Ft)",
+                buildArea: "96.37 Sqm. (1037 Sq Ft)",
+                totalArea: "125.42 Sqm. (1350 Sq Ft)",
             },
         ],
     };
@@ -272,7 +272,7 @@ function AnandamMicrosite() {
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
-                descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering thoughtfully designed 2 and 3 BHK apartments, it combines luxury with convenience, providing residents with a serene and opulent living experience. "
+                descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering 2 and 3 BHK apartments thoughtfully designed to blend luxury with convenience, providing residents with a serene and opulent living experience."
                 reverseWatermark={true}
             />
 

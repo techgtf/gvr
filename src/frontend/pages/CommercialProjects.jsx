@@ -256,10 +256,10 @@ const CommercialProjects = () => {
       </div>
       <div className="text-[11px] flex xl:justify-center pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
         <h3 className="uppercase midlandfontmedium tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
-          2,000,000 sq ft.
+          2,000,000 sq ft
         </h3>
         <h3 className="uppercase midlandfontmedium tracking-[2px]">
-          2,000,000 sq ft.
+          2,000,000 sq ft
         </h3>
       </div>
       {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
@@ -379,7 +379,6 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
         <meta name="twitter:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
         <meta name="twitter:creator" content="@GreatValueGroup" />
         <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
-
       </Helmet>
       <section
         key={project.id}

@@ -30,7 +30,7 @@ function Amentities({
     { name: "Park", image: park, alt : "Park" },
   ], 
   images = [], 
-  headingText = "Amentities" 
+  headingText = "Amenities" 
 }) {
   const sectionRef = useRef(null);
   const location = useLocation(); // ✅ Track route changes
@@ -63,7 +63,7 @@ function Amentities({
   }, [location.pathname]); // ✅ Ensures animation resets when route changes
 
   return (
-    <section className="amentities relative py-10 md:py-14" id="amentities" ref={sectionRef}>
+    <section className="amentities relative py-10 md:py-14" id="amenities" ref={sectionRef}>
       <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
         <div className="sm:col-span-3 col-span-12">
           <div className="about_heading text-center md:text-start">

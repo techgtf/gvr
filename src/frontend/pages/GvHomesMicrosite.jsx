@@ -79,17 +79,11 @@ function GvHomesMicrosite() {
             {
                 image: plan1,
                 type: "Ground Floor Civil Plan",
-                carpetArea: "---",
-                balconyArea: "---",
-                buildArea: "---",
                 totalArea: "1937 Sq Ft",
             },
             {
                 image: plan2,
                 type: "First Floor Civil Plan",
-                carpetArea: "---",
-                balconyArea: "---",
-                buildArea: "---",
                 totalArea: "1937 Sq Ft",
             },
         ],
@@ -103,7 +97,7 @@ function GvHomesMicrosite() {
         "Italian marble flooring, false ceilings, and designer finishes for a sophisticated ambiance.",
         "Built with high-quality materials ensuring, safety and durability.",
         "Italian-style kitchen with stainless steel accessories, chimney, and geyser.",
-        "High-end fittings, toughened glass partitions, and geysers are available all bathrooms.",
+        "High-end fittings, toughened glass partitions, and geysers are available in all bathrooms.",
     ];
 
     // Specifications data 
@@ -166,7 +160,7 @@ function GvHomesMicrosite() {
         {
             title: "Customization",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/customization.webp", description: "Buyer preferences accommodated with flexible designs." },
+                { image: "assets/frontend/images/microsite/gv/specifications/customization.webp", description: "Buyer preferences are accommodated with flexible designs." },
             ],
         },
     ];
