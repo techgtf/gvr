@@ -248,19 +248,25 @@ const CommercialProjects = () => {
               PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure. it’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether it's high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
+                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure. It’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether it's high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
               }
             />
           </div>
         </SlideIn>
       </div>
-      <div className="text-[11px] flex xl:justify-center pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
-        <h3 className="uppercase midlandfontmedium tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
+      <div className="text-[11px] flex xl:justify-center gap-16  pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
+        <div className="text-center">
+        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
+        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
           2,000,000 sq ft
         </h3>
-        <h3 className="uppercase midlandfontmedium tracking-[2px]">
+        </div>
+        <div className="text-center">
+        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
+        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
           2,000,000 sq ft
         </h3>
+        </div>
       </div>
       {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
         {projects.map((project) => {

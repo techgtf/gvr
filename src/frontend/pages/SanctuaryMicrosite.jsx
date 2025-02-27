@@ -98,7 +98,7 @@ function SanctuaryMicrosite() {
         {
             title: "Walls",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Walls are finished with Oil Bound Distemper for a smooth and refined look." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "The walls are finished with Oil Bound Distemper for a smooth and refined look." },
             ],
         },
         {
