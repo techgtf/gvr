@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 import useFetchData from "../apiHooks/useFetchData";
 import Loader from "../../common/Loader/loader";
 import * as CONFIG from "../../../config";
+import EnvironmentSection from "../components/CSR/governance/GovernanceSection";
+import GovernanceSection from "../components/CSR/governance/GovernanceSection";
 
 function Csr() {
   const { data: pageData, loading: pageLoading, error: pageError } = useFetchData("page-sections", "6");
@@ -51,8 +53,9 @@ function Csr() {
         }
         showKnowMore={false}
       />
-      <SocialDetails data={esgSocial} />
-      {/* <CareCommunities/> */}
+      <SocialDetails data={esgSocial} apiName="social" />
+      <SocialDetails data={esgEnvironment} className="bg-white"  apiName="environment" />
+      <GovernanceSection data={esgGovernance} apiName="governance" />
       <CharityInitiatives />
     </>
   );
