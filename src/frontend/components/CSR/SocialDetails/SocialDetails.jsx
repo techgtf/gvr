@@ -5,7 +5,7 @@ import SlideIn from "../../Animations/SlideIn";
 import { useImageReveal } from "../../useImageReveal";
 import CommonPera from '../../commonPera'
 
-function SocialDetails() {
+function SocialDetails({data}) {
     useImageReveal(".reveal")
     const tabData = {
         social: {

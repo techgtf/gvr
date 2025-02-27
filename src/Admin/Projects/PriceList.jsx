@@ -217,8 +217,8 @@ const PriceList = React.memo(() => {
 
   const deleteHandler = async (id) => {
     var response = await Request(
-      "admin/projectdata/floor-plan/" + id + "/delete",
-      "POST"
+      "admin/projectdata/price/" + id,
+      "DELETE"
     );
     if (response.status && response.statusCode) {
       getlist();
@@ -348,12 +348,12 @@ const PriceList = React.memo(() => {
                       >
                         <AiOutlineEdit size={22} />
                       </button>
-                      {/* <button
+                      <button
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >
                         <RiDeleteBin6Line size={18} className="text-red-500" />
-                      </button> */}
+                      </button>
                     </td>
                   </tr>
                 ))
