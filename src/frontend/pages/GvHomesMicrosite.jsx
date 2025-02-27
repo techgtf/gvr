@@ -34,8 +34,8 @@ import servant from "/assets/frontend/images/microsite/gv/amentities/icons/serva
 import { useLocation } from 'react-router-dom'
 
 import aboutImg from "/assets/frontend/images/microsite/gv/about/about.webp"
-import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
-import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+// import heroImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
+// import heroMobImg from "/assets/frontend/images/microsite/gv/hero/hero.webp"
 
 // location drive and walk images 
 import school from "/assets/frontend/images/microsite/gv/location/icons/school.webp"
@@ -188,7 +188,7 @@ function GvHomesMicrosite() {
         <>
 
             <Helmet>
-                <title> Great Value Realty Casa 31 Uday Park, New Delhi </title>
+                <title>Great Value Casa Uday | Modern Homes in Uday Park</title>
                 <meta name="keywords" content="Great Value realty, Great Value Realty Casa Uday, Casa Uday Delhi, Luxury apartments Casa Uday Delhi , Great Value Realty projects Delhi NCR, Casa Uday residential project" />
                 <meta name="description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
@@ -206,20 +206,20 @@ function GvHomesMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Realty 31 Casa Uday Park" />
-                <meta property="og:description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces. ." />
+                <meta property="og:title" content="Great Value Casa Uday | Modern Homes in Uday Park" />
+                <meta property="og:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta property="og:url" content="https://greatvaluerealty.com/casa-uday" />
                 <meta property="og:site_name" content="Great Value Realty 31 Casa Uday Park" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Realty 31 Casa Uday Park" />
-                <meta name="twitter:description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces." />
+                <meta name="twitter:title" content="Great Value Casa Uday | Modern Homes in Uday Park" />
+                <meta name="twitter:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}
                 <script type="application/ld+json">
-                    {`
+                    {`{
                     "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
@@ -232,7 +232,7 @@ function GvHomesMicrosite() {
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                    }}`}
                 </script>
             </Helmet>
             <HeroSection

@@ -12,8 +12,8 @@ import Request from "../../../../config/Request";
 
 import "../../../assets/css/admin.css";
 
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
@@ -46,7 +46,7 @@ const EsgGallery = () => {
   const fileRef = useRef(null);
   const titleRef = useRef(null);
   const nameRef = useRef(null);
-  const descriptionRef = useRef(null);
+  const altRef = useRef(null);
   const designationRef = useRef(null);
   const shortDescriptionRef = useRef(null);
   const messageRef = useRef(null);
@@ -76,7 +76,7 @@ const EsgGallery = () => {
     const formData = new FormData();
     formData.append("status", selectedStatus);
     var response = await Request(
-      "admin/amenities/" + id + "/status",
+      "admin/gallery/" + id + "/status",
       "POST",
       formData
     );
@@ -104,7 +104,7 @@ const EsgGallery = () => {
     // formData.append("name", titleRef.current.value);
     formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/education/", "POST", formData);
+    var response = await Request("admin/gallery/", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -123,7 +123,7 @@ const EsgGallery = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/education/" + id, "GET");
+    var response = await Request("admin/gallery/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
@@ -131,7 +131,7 @@ const EsgGallery = () => {
         setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
       }
       // titleRef.current.value = response.data.name;
-      descriptionRef.current.value = response.data.short_description;
+      altRef.current.value = response.data.alt;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -143,7 +143,7 @@ const EsgGallery = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/education/" + id, "DELETE");
+    var response = await Request("admin/gallery/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -157,7 +157,7 @@ const EsgGallery = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/education/?search=" + search + "&page=" + currentPage,
+      "admin/gallery?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -175,11 +175,10 @@ const EsgGallery = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    // formData.append("name", titleRef.current.value);
-    formData.append("short_description", descriptionRef.current.value);
+    formData.append("alt", altRef.current.value);
 
     var response = await Request(
-      "admin/education/" + editId + "/update",
+      "admin/gallery/" + editId + "/update",
       "POST",
       formData
     );
@@ -231,13 +230,9 @@ const EsgGallery = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">
-                Thumbnail
-              </th>
+              <th className="border border-gray-300 p-2 text-left">Image</th>
               {/* <th className="border border-gray-300 p-2 text-left">Title</th> */}
-              <th className="border border-gray-300 p-2 text-left">
-                Description
-              </th>
+              <th className="border border-gray-300 p-2 text-left">Alt</th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -245,7 +240,7 @@ const EsgGallery = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={4}>
+                <td colSpan={3}>
                   <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -263,20 +258,22 @@ const EsgGallery = () => {
                           alt={item.name}
                         />
                       </td>
-                      {/* <td className="py-2 px-4">{item.name}</td> */}
-                      <td className="py-2 px-4">{item.short_description}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4">{item.alt}</td>
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line
+                            size={18}
+                            className="text-red-500"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -323,7 +320,12 @@ const EsgGallery = () => {
                     type="file"
                     placeholder="Enter Title"
                   />
-                  {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
+                  {showEditEnableImage && (
+                    <img
+                      src={showEditEnableImage}
+                      className="h-[80px] w-[80px] object-contain border mt-1"
+                    />
+                  )}
                   {errors.image && (
                     <span className="text-red-500">{errors.image}</span>
                   )}
@@ -351,16 +353,17 @@ const EsgGallery = () => {
                     Alt Text*
                   </label>
                   <input
-                    ref={descriptionRef}
+                    ref={altRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
                     placeholder="Enter Alt Text"
                   />
                   {errors.short_description && (
-                    <span className="text-red-500">The Description field is required</span>
+                    <span className="text-red-500">
+                      The Description field is required
+                    </span>
                   )}
                 </div>
-
               </form>
             </SideModal>
           </SidebarPortal>

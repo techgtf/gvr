@@ -11,25 +11,12 @@ import { Helmet } from 'react-helmet'
 
 export default function Home() {
 
-    // const arr = [12, 5, 7, 7, 6, 4, 58, 8];
-
-    // function giveUniqNumber(arr) {
-    //     if (arr.length < 0) return;
-    //     let uniqeArr = arr[0]
-    //     for (let i = 0; i < arr.length; i++) {
-    //         if (arr[i] === uniqeArr) { 
-    //             uniqeArr
-    //         }
-    //     }
-    // }
-
-
     return (
         <>
             <Helmet>
                 <title> Great Value Realty | Your Trusted Real Estate Partner</title>
                 <meta name="keywords" content="Great Value realty, Great Value Sharanam Noida, Great Value Anandam Noida, Sector 107 Noida,  Great Value Anandam, Great Value Sharanam Sector 107 Noida, Best Casa Uday Delhi, Great Value Realty Vilasa, Best Sanctuary residential project sector 105 " />
-                <meta name="description" content="At Great Value Realty, we go beyond building homes—we build trust, deliver exceptional value, and create lasting experiences." />
+                <meta name="description" content="Great Value Realty brings you luxurious & affordable homes in NCR, Noida & Gurugram. Experience unmatched quality & trust in real estate." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <meta name="distribution" content="Global" />
                 <meta name="Language" content="English" />
@@ -59,40 +46,44 @@ export default function Home() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty",
-                    "alternateName": "GVR",
-                    "url": "https://greatvaluerealty.com/",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }`}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty",
+                        "alternateName": "GVR",
+                        "url": "https://greatvaluerealty.com/",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "contactPoint": [
+                            {
+                                "@type": "ContactPoint",
+                                "telephone": "+91 7777079770",
+                                "contactType": "customer service",
+                                "areaServed": "IN",
+                                "availableLanguage": "en"
+                            }
+                        ]
+                    })}
                 </script>
 
-                <script type="application/ld+json" class="schemantra">
-                    {`
-                    "@context": "https://schema.org",
-                    "@type": "RealEstateAgent",
-                    "@id": "RealEstateAgent",
-                    "actionableFeedbackPolicy": "https://greatvaluerealty.com/",
-                    "address": "DSC - 319, DLF South Court, Saket New Delhi - 110017",
-                    "alternateName": "GVR",
-                    "description": "Real Estate Developer",
-                    "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "keywords": "https://greatvaluerealty.com/",
-                    "knowsLanguage": "English",
-                    "legalName": "Great Value Realty",
-                    "location": "India",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                    "longitude": "917777079770"F
-                    `}
+                <script type="application/ld+json" className="schemantra">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "RealEstateAgent",
+                        "@id": "RealEstateAgent",
+                        "actionableFeedbackPolicy": "https://greatvaluerealty.com/",
+                        "address": "DSC - 319, DLF South Court, Saket, New Delhi - 110017",
+                        "alternateName": "GVR",
+                        "description": "Real Estate Developer",
+                        "image": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "keywords": "https://greatvaluerealty.com/",
+                        "knowsLanguage": "English",
+                        "legalName": "Great Value Realty",
+                        "location": "India",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "longitude": "917777079770"
+                    })}
                 </script>
+
             </Helmet>
             <div className='homepage'>
                 <Hero />

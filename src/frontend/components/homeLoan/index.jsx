@@ -28,7 +28,7 @@ export default function Index({data}) {
                             detailsArray && detailsArray.map((text, index) => (
                                 <SlideIn duration={2} delay={0.7}>
                                     <p
-                                        className='w-full lg:text-justify text-center lg:tracking-[1px] tracking-[0]'
+                                        className='w-full lg:text-justify text-center common_pera'
                                         key={index}
                                     >{text}</p>
                                 </SlideIn>

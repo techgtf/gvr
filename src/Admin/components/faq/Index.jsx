@@ -12,8 +12,8 @@ import Request from "../../../config/Request";
 
 import "../../assets/css/admin.css";
 
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const typeOptions = [
   { label: "FAQ", value: "faq" },
@@ -97,7 +97,7 @@ const Faqs = () => {
     formData.append("answer", answerRef.current.value);
     formData.append("type", selectedType);
 
-    var response = await Request("admin/pagesfaq/", "POST", formData);
+    var response = await Request("admin/pagesfaq", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -112,11 +112,10 @@ const Faqs = () => {
   };
 
   const editHandler = async (id) => {
-    
     setIsSitebarFormButtonLoading(true);
     setShowSidebar(true);
     setShowAddSidebar(true);
-    
+
     var response = await Request("admin/pagesfaq/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setSelectedType(response.data.type);
@@ -124,7 +123,6 @@ const Faqs = () => {
       setEditId(id);
       questionRef.current.value = response.data.question;
       answerRef.current.value = response.data.answer;
-
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -149,7 +147,7 @@ const Faqs = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/pagesfaq/?search=" + search + "&page=" + currentPage,
+      "admin/pagesfaq?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -252,18 +250,21 @@ const Faqs = () => {
                       <td className="py-2 px-4">{item.question}</td>
                       <td className="py-2 px-4">{item.answer}</td>
                       <td className="py-2 px-4">{item.type}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line
+                            size={18}
+                            className="text-red-500"
+                          />
                         </button>
                       </td>
                     </tr>

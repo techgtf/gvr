@@ -58,7 +58,7 @@ const OurTeam = ({data}) => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           {data.heading}
         </h3>
-        <p className="text-black xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
+        <p className="common_pera xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
           {description}
         </p>
       </div>

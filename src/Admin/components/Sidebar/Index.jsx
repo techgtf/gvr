@@ -155,7 +155,7 @@ const Sidebar = (props) => {
             <span>Specifications</span>
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             exact
             className="sidebar_link hasSubMenu"
             to={`${CONFIG.ADMIN_ROOT}states`}
@@ -164,7 +164,7 @@ const Sidebar = (props) => {
               <TbCurrentLocation size={26} />
             </span>
             <span>Locations</span>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             exact
@@ -442,6 +442,14 @@ const Sidebar = (props) => {
 
                 <NavLink
                   className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}esg/governance`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Governance</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}esg/gallery`}
                 >
                   <MdOutlineSettingsInputComponent size={16} className="mr-2" />
@@ -478,11 +486,7 @@ const Sidebar = (props) => {
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}job-application`}
                 >
-                  <img
-                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                    alt="dashboard icon"
-                    className="img-fluid icon"
-                  />
+                  <TiMessages size={18} className="mr-2" />
                   <span>Job Application</span>
                 </NavLink>
 
@@ -490,11 +494,7 @@ const Sidebar = (props) => {
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}contact-query`}
                 >
-                  <img
-                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                    alt="dashboard icon"
-                    className="img-fluid icon"
-                  />
+                  <TiMessages size={18} className="mr-2" />
                   <span>Contact Query</span>
                 </NavLink>
 
@@ -502,11 +502,7 @@ const Sidebar = (props) => {
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}projects-query`}
                 >
-                  <img
-                    src={ADMIN_ASSETS + "icons/dashboard.svg"}
-                    alt="dashboard icon"
-                    className="img-fluid icon"
-                  />
+                  <TiMessages size={18} className="mr-2" />
                   <span>Projects Query</span>
                 </NavLink>
               </>

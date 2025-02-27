@@ -7,7 +7,6 @@ const CustomPortal = ({ children }) => {
   useEffect(() => {
     let container = document.getElementById("portal-root");
 
-    // If portal root doesn't exist, create it
     if (!container) {
       container = document.createElement("div");
       container.id = "portal-root";
@@ -17,14 +16,11 @@ const CustomPortal = ({ children }) => {
     setPortalRoot(container);
 
     return () => {
-      // Ensure safe cleanup
-      if (container && document.body.contains(container)) {
-        document.body.removeChild(container);
-      }
+      container.innerHTML = "";
     };
   }, []);
 
-  if (!portalRoot) return null; // Prevent errors before mounting
+  if (!portalRoot) return null;
 
   return ReactDOM.createPortal(children, portalRoot);
 };

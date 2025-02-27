@@ -9,6 +9,7 @@ export default {
       },
       objectPosition: {
         custom: "0px -63px",
+        customMb: "-43px 0px"
       },
       writingMode: {
         "vertical-rl": "vertical-rl",
@@ -21,6 +22,15 @@ export default {
         xl: "1200px",
         "2xl": "1330px",
         "3xl": "1440px",
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-1000px 0' },
+          '100%': { backgroundPosition: '1000px 0' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 1.5s infinite linear',
       },
     },
   },
