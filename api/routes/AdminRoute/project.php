@@ -138,7 +138,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
         // location advantage 
         Route::resource('projectdata/location-advantage', ProjectLocationAdvantageController::class)->except(['update','destroy']);
         Route::post('projectdata/location-advantage/{id}/update', [ProjectLocationAdvantageController::class,'update']);
-        Route::post('projectdata/location-advantage/{id}/delete', [ProjectLocationAdvantageController::class,'destroy']);
+        Route::delete('projectdata/location-advantage/{id}/delete', [ProjectLocationAdvantageController::class,'destroy']);
 
     
     });

@@ -19,11 +19,11 @@ class ProjectSpecificationListController extends Controller
 
         $validator = Validator::make($request->all(),
         [
-            'spec_id' => 'required|exists:projects,id',
+            'project_id' => 'required|exists:projects,id',
         ],[
         
-            'spec_id.required' => 'Project  is required',
-            'spec_id.exists' => 'Project is not exist in record',
+            'project_id.required' => 'Project  is required',
+            'project_id.exists' => 'Project is not exist in record',
         ]);
 
 
@@ -38,9 +38,9 @@ class ProjectSpecificationListController extends Controller
 
         }
 
-        $perPage = $request->input('per_page', 5); // Number of products per page
+        $perPage = $request->input('per_page', 10); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-        $amenitis = ProjectSpecificationList::where('spec_id',$request->project_id)->paginate($perPage, ['*'], 'page', $page); 
+        $amenitis = ProjectSpecificationList::where('project_id',$request->project_id)->paginate($perPage, ['*'], 'page', $page); 
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -70,14 +70,18 @@ class ProjectSpecificationListController extends Controller
 
         $validator = Validator::make($request->all(),
         [
-            'spec_id' => 'required|exists:projects,id',
+            'spec_id' => 'required|exists:project_specifications,id',
+            'project_id' => 'required|exists:projects,id',
             'short_description' => 'required',
             'icons' => 'required|mimes:png,jpg,jpeg,webp,svg|max:2048',
         ],[
         
-            'spec_id.required' => 'Project  is required',
-            'spec_id.exists' => 'Project is not exist in record',
-         
+            'spec_id.required' => 'specifications  is required',
+            'spec_id.exists' => 'specifications is not exist in record',
+
+            'project_id.required' => 'Project  is required',
+            'project_id.exists' => 'Project is not exist in record',
+
             'short_description' => 'This field is required',
             'icons.max' => 'Maximum icons size limit of 2 MB',
             'icons.required' => 'Icons  is required',
@@ -105,6 +109,7 @@ class ProjectSpecificationListController extends Controller
                 }
 
                 $specificationlist->spec_id = $request->spec_id;
+                $specificationlist->project_id = $request->project_id;
                 $specificationlist->alt = $request->alt;
                 $specificationlist->short_description = $request->short_description;
 
@@ -184,16 +189,16 @@ class ProjectSpecificationListController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-        
-            'title' => 'required',  
-            'value' => 'required',  
+             
+            'short_description' => 'required',
             'icons' => 'nullable|mimes:png,jpg,jpeg,webp,svg|max:2048',
         ],[
-            'title' => 'This field is required',
-            'value' => 'This field is required',
-            'icons.max' => 'Maximum icons size limit of 2 MB',            
-            'icons.mimes' => 'Only Allowed  png,jpg,jpeg,webp,svg',           
+         
+            'short_description' => 'This field is required',
+            'icons.max' => 'Maximum icons size limit of 2 MB',
+            'icons.required' => 'Icons  is required',
         ]);
+
 
         if($validator->fails()){
 
@@ -214,9 +219,10 @@ class ProjectSpecificationListController extends Controller
                         $path = $request->file('icons')->storeAs('project/specification', $name, 'public');
                         $Specificationlist->icons = $path;
                     }
-                    $Specificationlist->title = $request->title;
-                    $Specificationlist->value = $request->value;
-
+                    
+                    $Specificationlist->alt = $request->alt;
+                    $Specificationlist->short_description = $request->short_description;
+    
                     if($Specificationlist->save()){              
                         return response()->json([
                             'status'=>true,

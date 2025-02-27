@@ -154,6 +154,22 @@ class PagesSectionSeeder extends Seeder
 
             ],
             [
+                'name' => 'contact-address',
+                'page_type_id' => '4', // contact-us
+                'title'=>'Address',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'true','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Corporate Address','sub_heading'=>'Noida Site Address','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'contact-get-touch',
+                'page_type_id' => '4', // contact-us
+                'title'=>'Get In Touch',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'true','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Email','sub_heading'=>'Phone Number','image'=>'Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
                 'name' => 'career-banner',
                 'page_type_id' => '5', // career
                 'title'=>'banner',
