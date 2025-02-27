@@ -70,11 +70,11 @@ const projects = [
                 solutions tailored to modern supply chain requirements.
                 Strategically located in key industrial zones, these
                 warehouses ensure smooth transportation, efficient inventory
-                management, and maximum operational efficiency. With large
+                management, and maximum operational efficiency. With ample
                 land parcels, robust security infrastructure, and scalable
                 storage capacities, our warehouses are designed to support
                 growing industries, e-commerce businesses, and large-scale
-                manufacturing units`,
+                manufacturing units.`,
     images: [warehouse1, warehouse2, warehouse3, warehouse4, warehouse5],
     totalProjects: 3,
   },
@@ -87,7 +87,7 @@ const projects = [
         link: "https://greatmallofaligarh.com",
         name: "GREAT VALUE MALL",
         address: "Ram Ghat Road, Aligarh",
-        landArea: '2 Acre land (Covered area 2 lac Sq.Ft) '
+        landArea: '2 Acre land (Covered area 2 lac Sq Ft) '
       },
     ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
@@ -104,13 +104,13 @@ const projects = [
         name: "PERNIA'S POP-UP STUDIO",
         link: "",
         address: "Mehrauli, New Delhi",
-        landArea: '790 Sq.Yrd Plot'
+        landArea: '790 Sq Yds Plot'
       },
       {
         name: "GAP",
         link: "",
         address: "Saket, New Delhi",
-        landArea: '47086 Sq.Ft',
+        landArea: '47086 Sq Ft',
       },
 
       {
@@ -124,7 +124,7 @@ const projects = [
         name: "COMPLEX MADANGIR",
         link: "",
         address: "Madangir, New Delhi",
-        landArea: '47086 Sq.Ft',
+        landArea: '47086 Sq Ft',
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -248,7 +248,7 @@ const CommercialProjects = () => {
               PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure, it’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether its high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
+                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure. it’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether it's high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
               }
             />
           </div>
@@ -256,10 +256,10 @@ const CommercialProjects = () => {
       </div>
       <div className="text-[11px] flex xl:justify-center pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
         <h3 className="uppercase midlandfontmedium tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
-          2,000,000 sq. ft.
+          2,000,000 sq ft.
         </h3>
         <h3 className="uppercase midlandfontmedium tracking-[2px]">
-          2,000,000 sq. ft.
+          2,000,000 sq ft.
         </h3>
       </div>
       {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">

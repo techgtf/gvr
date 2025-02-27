@@ -82,7 +82,7 @@ function GvHomesMicrosite() {
                 carpetArea: "---",
                 balconyArea: "---",
                 buildArea: "---",
-                totalArea: "1937 Sq. Ft.",
+                totalArea: "1937 Sq Ft",
             },
             {
                 image: plan2,
@@ -90,7 +90,7 @@ function GvHomesMicrosite() {
                 carpetArea: "---",
                 balconyArea: "---",
                 buildArea: "---",
-                totalArea: "1937 Sq. Ft.",
+                totalArea: "1937 Sq Ft",
             },
         ],
 
@@ -99,11 +99,11 @@ function GvHomesMicrosite() {
     // Highlishts data 
 
     const highlightsData = [
-        "Situated in 31 Uday Park, New Delhi, offering unmatched connectivity and prestige.",
+        "Situated at 31 Uday Park, New Delhi, offering unmatched connectivity and prestige.",
         "Italian marble flooring, false ceilings, and designer finishes for a sophisticated ambiance.",
-        "Built with high-quality materials ensuring safety and durability.",
+        "Built with high-quality materials ensuring, safety and durability.",
         "Italian-style kitchen with stainless steel accessories, chimney, and geyser.",
-        "High-end fittings, toughened glass partitions, and geysers in all bathrooms.",
+        "High-end fittings, toughened glass partitions, and geysers are available all bathrooms.",
     ];
 
     // Specifications data 

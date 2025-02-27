@@ -127,7 +127,7 @@ function Plans({ masterPlanData, unitData }) {
                       <p>Carpet Area: {plan.carpetArea}</p>
                       <p>Balcony Area: {plan.balconyArea}</p>
                       <p>Total Super Area: {plan.totalArea}</p>
-                      <p>Built Up Area: {plan.buildArea}</p>
+                      <p>Built-Up Area: {plan.buildArea}</p>
                     </div>
                   </div>
                   </SlideIn>

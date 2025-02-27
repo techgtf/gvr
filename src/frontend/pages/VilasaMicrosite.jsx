@@ -66,17 +66,17 @@ function VilasaMicrosite() {
         "Customizable Plots –Design your dream villa or Stilt + 4 floors.",
         "Gated Community – Secure, well-planned, and exclusive living.",
         "Premium Amenities – Clubhouse, banquet, sports courts, and golf greens.",
-        "Great Connectivity – Near Aravalli Hills and Damdama Lake.",
-        "Scenic Surroundings –122-172 sq. yds.",
+        "Excellent Connectivity – Near Aravalli Hills and Damdama Lake.",
+        "Scenic Surroundings –122-172 sq yds",
     ];
 
     // Specifications data 
 
-    const specificationsData = [
+    const specificationsData = [    
         {
             title: "Plot Sizes",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.webp", description: "Ranging from 122 sq. yds. to 172 sq. yds" },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.webp", description: "Ranging from 122 sq yds to 172 sq yds" },
             ],
         },
         {

@@ -65,7 +65,7 @@ function SanctuaryMicrosite() {
         "Luxury & Convenience – A perfect blend of modern living and comfort.",
         "Serene Environment – Designed for a peaceful and fulfilling lifestyle.",
         "Diverse Unit Options – Offers multiple configurations to suit different needs.",
-        "Premium Specifications – Master Bedroom Walls: Oil Bound Distemper for a refined finish.",
+        "Premium Specifications – The master bedroom walls feature an oil-bound distemper finish for a refined finish.",
     ];
 
     // Specifications data 
@@ -74,13 +74,13 @@ function SanctuaryMicrosite() {
         {
             title: "Master Bedroom-Walls",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Master Bedroom walls finished with Oil Bound Distemper for a smooth and elegant look." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Master bedroom walls are finished with oil-bound dust to give them a smooth and elegant look." },
             ],
         },
         {
             title: "Master Bedroom-Flooring",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/flooring.webp", description: "Master Bedroom flooring adorned with durable and stylish Vitrified Tiles." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/flooring.webp", description: "Master bedroom flooring is adorned with durable and stylish Vitrified tiles." },
             ],
         },
         {
@@ -98,7 +98,7 @@ function SanctuaryMicrosite() {
         {
             title: "Walls",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Walls finished with Oil Bound Distemper for a smooth and refined look." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Walls are finished with Oil Bound Distemper for a smooth and refined look." },
             ],
         },
         {
@@ -209,7 +209,7 @@ function SanctuaryMicrosite() {
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
-                descriptionText="Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbour. An address seamlessly blends the contrasting elements of art, architecture, and nature."
+                descriptionText="Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbor. An address seamlessly blends the contrasting elements of art, architecture, and nature."
                 reverseWatermark={true}
             />
 
@@ -233,7 +233,7 @@ function SanctuaryMicrosite() {
                 locationImage={loaction}
                 driveData={[
                     { image: hospital, text: 'Chetanya Hospital', time: '1 min' },
-                    { image: road, text: 'Gurgaon, Old Railway Rd,', time: '1 min' },
+                    { image: road, text: 'Gurgaon, Old Railway Rd', time: '1 min' },
                     { image: bank, text: 'Bank Of Baroda,', time: '2 min' },
                     { image: school, text: 'Happy High School', time: '4 min' },
                     { image: buildings, text: 'WTC Plaza', time: '11 min' },
@@ -252,7 +252,7 @@ function SanctuaryMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="Sanctuary 105 is nestled in sector 105, gurugram, offering a perfect blend of urban convenience and natural tranquility."
+                description="Sanctuary 105 is nestled in Sector 105, Gurugram, offering a perfect blend of urban convenience and natural tranquility."
             />
 
             <ProjectGallery

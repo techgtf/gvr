@@ -55,7 +55,7 @@ const Testimonials = () => {
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading
             HeadingText={
-              `Voices of Trust, Stories of Excellence, Legacies Built Together" Introduction`
+              `Voices of Trust, Stories of Excellence, Legacies Built Together Introduction`
             }
             HeadingClass="xl:text-center text-center xl:pb-[0px] pb-[35px]"
           />

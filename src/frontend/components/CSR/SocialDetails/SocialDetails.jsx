@@ -10,7 +10,7 @@ function SocialDetails() {
     const tabData = {
         social: {
             heading: "SOCIAL",
-            description: "At Great Value Realty, we believe in building not just homes, but also thriving communities. Our commitment to drive our social initiatives, ensuring access to healthcare, education, and skill development for all.",
+            description: "At Great Value Realty, we believe in building not just homes, but also thriving communities. Our commitment is to drive our social initiatives, ensuring access to healthcare, education, and skill development for all.",
             details: [
                 { title: "GVR Accessible Healthcare Program", content: "RSD Dispensaries in Sangam Vihar, Tughlakabad, Dakshin Puri, and Ratiya Marg offer free or affordable medical treatments, including X-rays, pathology, physiotherapy, and multi-specialist consultations.", img: "assets/frontend/images/csr/social/social/1.webp" },
                 { title: "GVR Health & Wellness Camps", content: "Eye camps, blood donation drives, and dental health programs are organised through RSD Charitable Trust, collaborating with Divya Prem Seva Mission, Seva Bharti, and Khushali Foundation to reach underserved communities.", img: "assets/frontend/images/csr/social/social/2.webp" },
@@ -37,7 +37,7 @@ function SocialDetails() {
                 { title: "Code of Ethics & Business Conduct", content: "Our Code of Ethics & Business Conduct Policy ensures fair business practices, anti-corruption measures, and compliance with legal and regulatory frameworks, promoting a culture of honesty.", img: "assets/frontend/images/csr/social/governance/1.webp" },
                 { title: "Corporate Transparency & Compliance Policy", content: "We adhere to strict corporate governance norms, financial transparency regulations, and risk management protocols, ensuring compliance with national and international real estate laws.", img: "assets/frontend/images/csr/social/governance/2.webp" },
                 { title: "Data Privacy & Cybersecurity Policy", content: "Our Data Privacy & Cybersecurity Policy enforces strict data encryption, customer confidentiality, and digital security measures to prevent unauthorized access and cyber threats.", img: "assets/frontend/images/csr/social/governance/3.webp" },
-                { title: "Diversity & Inclusion Policy", content: "Through our Diversity & Inclusion Policy, we promote equal opportunities, anti-discrimination practices, and gender diversity at all organizational levels, ensuring an inclusive work culture.", img: "assets/frontend/images/csr/social/governance/4.webp" },
+                { title: "Diversity & Inclusion Policy", content: "Our Diversity & Inclusion Policy promotes equal opportunities, anti-discrimination practices, and gender diversity at all organizational levels, ensuring an inclusive work culture.", img: "assets/frontend/images/csr/social/governance/4.webp" },
                 { title: "Stakeholder Engagement & CSR Policy", content: "We implement the Stakeholder Engagement & CSR Policy, ensuring open communication with investors, ethical supply chain management, and community-driven corporate social responsibility initiatives.", img: "assets/frontend/images/csr/social/governance/5.webp" },
             ],
         },
