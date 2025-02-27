@@ -11,7 +11,7 @@
 .testimonialSwiper .borderline{height: 2px; background: rgba(0, 0, 0, 0.2); margin-top: 172px;}
 .testimonialSwiper .desc{color: var(--secondary); line-height: 37px;}
 .testimonialSwiper .name{color: var(--gray); margin-top: 43px; margin-bottom: 90px;}
-.testimonialSwiper .name::after{content: ''; position: absolute; right: 0; background: url(/assets/frontend/images/icons/quotes.png) no-repeat;width: 68px;height: 55px;}
+.testimonialSwiper .name::after{content: ''; position: absolute; right: 0; background: url(/assets/frontend/images/icons/quotes.webp) no-repeat;width: 68px;height: 55px;}
 .testimonialSwiper .name .line{height: 2px; width: 70px; background-color: rgb(0 0 0 / 28%);}
 
 
@@ -39,7 +39,7 @@
 .testimonialSwiper .borderline{height: 1px; background: rgba(0, 0, 0, 0.2); margin-left: -30px; margin-top: 12.3%;}
 .testimonialSwiper .desc{color: var(--secondary); font-size: 14px; line-height: 37px;}
 .testimonialSwiper .name{color: var(--gray); font-size: 18px; margin-top: 43px; margin-bottom: 90px;}
-.testimonialSwiper .name::after{content: ''; position: absolute; right: 15px; background: url(/assets/frontend/images/icons/quotes.png);width: 68px;height: 55px;}
+.testimonialSwiper .name::after{content: ''; position: absolute; right: 15px; background: url(/assets/frontend/images/icons/quotes.webp);width: 68px;height: 55px;}
 .testimonialSwiper .name .line{height: 2px; width: 70px; background-color: rgb(0 0 0 / 14%);} */
 
 @media (max-width:767px) {

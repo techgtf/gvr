@@ -117,8 +117,8 @@ function Plans({ masterPlanData, unitData }) {
               
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
-                  <SlideIn duration={2} delay={0.5}>
-                  <div key={index} className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
+                  <SlideIn key={index} duration={2} delay={0.5}>
+                  <div  className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                     <img src={plan.image} alt={`plan ${index + 1}`}
                       className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                       onClick={() => openLightbox(index)} />

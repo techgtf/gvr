@@ -84,7 +84,7 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
             className="content !px-0 !py-[35px] lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px] lg:mb-[50px] mb-[20px] text-center"
           >
             <CommonPera
-              PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
+              PeraClass="text-justify xl:text-center !p-[0px]"
               PeraText={overviewDescription }
             />
           </div>

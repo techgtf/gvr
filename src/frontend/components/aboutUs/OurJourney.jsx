@@ -52,7 +52,7 @@ const projects = [
     year: 2008,
     project: [
       {
-        category: "Jharkhand Bhawan",
+        category: "Jharkhand Bhawan, Vasant Kunj, Delhi",
 
         description:
           "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
@@ -64,19 +64,19 @@ const projects = [
     timelineImg: "2009-1.webp",
     images: ["2009-1.webp", "2009-2.webp", "2009-3.webp", "2009-4.webp"],
     project: [
-      {
-        year: 2009,
+      // {
+      //   year: 2009,
 
-        category: "Great Value Mall",
-        description:
-          "Revolutionized retail in Aligarh with cutting-edge concepts and immersive experiences.",
-      },
+      //   category: "Great Value Mall",
+      //   description:
+      //     "Revolutionized retail in Aligarh with cutting-edge concepts and immersive experiences.",
+      // },
       {
         year: 2009,
         category: "Real Estate",
 
         description:
-          "Diversified into real estate development to create impactful spaces.",
+          "Diversified into real estate development with Great Value Mall, Aligarh",
       },
     ],
   },
@@ -86,7 +86,7 @@ const projects = [
     images: ["2010-1.webp", "2010-2.png ", "2010-3.png ", "2010-4.png "],
     project: [
       {
-        category: "Great Value Sharanam",
+        category: "Great Value Sharanam, Sector 107, Noida",
         description:
           "A luxurious residential project spread across 16 acres, featuring 16 towers with world-class amenities.",
       },
@@ -98,7 +98,7 @@ const projects = [
     timelineImg: "2011-1.webp",
     project: [
       {
-        category: "1000 Trees",
+        category: "1000 Trees, Dwarka Expressway",
 
         description:
           "An eco-conscious residential project promoting sustainability by integrating nature into modern living.",
@@ -111,7 +111,7 @@ const projects = [
     timelineImg: "2012-1.webp",
     project: [
       {
-        category: "Commercial Complex",
+        category: "Commercial Complex, Madangir",
 
         description:
           "A premium office complex in South Delhi, blending functional design with luxury.",
@@ -124,10 +124,10 @@ const projects = [
     timelineImg: "2018-1.webp",
     project: [
       {
-        category: "Residential Floors",
+        category: "Residential Floors, Uday Park",
 
         description:
-          "Elegant G+3 residential units in South Delhi, combining sophistication with premium finishes.",
+          "Elegant G+3 residential units, combining sophistication with premium finishes.",
       },
     ],
   },
@@ -142,32 +142,32 @@ const projects = [
 
         category: "Distressed Asset Reconstruction",
         description:
-          "Initiated efforts to convert distressed properties into valuable assets.",
+          "Led efforts to turn distressed properties into valuable assets through projects like the Logistics & Industrial Park, Megasoft Infrastructure, and East Coast Thermal Plant.",
       },
       {
         year: 2019,
-        category: "Logistics & Industrial Park, Greater Noida",
-        description:
-          "Converted a 67-acre distressed property into a thriving park hosting 14 multinational companies.",
-      },
-      {
-        year: 2019,
-        category: "Great Value Anandam",
+        category: "Great Value Anandam, Sector 107, Noida",
         description:
           "An iconic 30-story tower offering contemporary design and space-efficient layouts.",
       },
-      {
-        year: 2019,
-        category: "Megasoft Infrastructure",
-        description:
-          "Acquired 4,615 sqm of institutional land for future commercial and mixed-use projects.",
-      },
-      {
-        year: 2019,
-        category: "East Coast Thermal Plant",
-        description:
-          "Acquired a distressed thermal plant for potential redevelopment.",
-      },
+      // {
+      //   year: 2019,
+      //   category: "Logistics & Industrial Park, Greater Noida",
+      //   description:
+      //     "Converted a 67-acre distressed property into a thriving park hosting 14 multinational companies.",
+      // },
+      // {
+      //   year: 2019,
+      //   category: "Megasoft Infrastructure",
+      //   description:
+      //     "Acquired 4,615 sqm of institutional land for future commercial and mixed-use projects.",
+      // },
+      // {
+      //   year: 2019,
+      //   category: "East Coast Thermal Plant",
+      //   description:
+      //     "Acquired a distressed thermal plant for potential redevelopment.",
+      // },
     ],
   },
   {
@@ -176,7 +176,7 @@ const projects = [
     timelineImg: "2020-1.webp",
     project: [
       {
-        category: "Moser Baer Solar Ltd",
+        category: "Moser Baer Solar Ltd, Greater Noida",
         description:
           "Secured 33 acres of industrial land, paving the way for redevelopment and optimization.",
       },
@@ -186,12 +186,12 @@ const projects = [
   {
     year: 2022,
     images: ["2022-1.webp", "2022-2.webp", "2022-3.webp", "2022-4.webp"],
+    timelineImg: "2022-1.webp",
     project: [
       {
         year: 2022,
 
-        timelineImg: "2022-1.webp",
-        category: "Office Property",
+        category: "Office Property, Worli, Mumbai",
         description:
           "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
       },
@@ -206,9 +206,9 @@ const projects = [
   {
     year: 2023,
     images: ["2023-1.webp", "2023-2.webp", "2023-3.webp", "2023-4.webp"],
+    timelineImg: "2023-1.webp",
     project: [
       {
-        timelineImg: "2023-1.webp",
         year: 2023,
 
         category: "Alternative Investment Fund (AIF)",
@@ -218,7 +218,7 @@ const projects = [
       {
         year: 2023,
         timelineImg: "2023-1.webp",
-        category: "Hindon River Mill Ltd",
+        category: "Hindon River Mill Ltd, Dasna, Ghaziabad",
         description:
           "Acquired 48.26 acres for an upscale villa complex in a prime location.",
       },
@@ -320,10 +320,10 @@ const OurJourney = () => {
             <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
               {projects[selectedProjectIndex].year}
             </h4>
-            <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
+            <p className="midlandfontmedium text-primary tracking-[4px] !text-[11px] mb-[1.3rem]">
               {projects[selectedProjectIndex].project[0].category}
             </p>
-            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+            <p className="common_pera mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
               {projects[selectedProjectIndex].project[0].description}
             </p>
           </div>

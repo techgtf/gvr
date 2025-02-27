@@ -37,7 +37,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
           {specifications.map((spec, index) => (
             <div key={index} className="col-span-12 lg:col-span-6">
               {isDesktop ? (
-                <SlideIn duration={2} delay={0.5}>
+                <SlideIn delay={0.5}>
                   <h4 className="font-semibold">{spec.title}</h4>
                   {spec.items?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex gap-3 py-5">

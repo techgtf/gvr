@@ -7,7 +7,7 @@ import SearchGlobalPortal from './SearchGlobalPortal';
 
 
 export default function SearchGlobal({
-    headerFixed
+    headerFixed, hoveringNav
 }) {
     const [toggleModal, setToggleModal] = useState(false);
 
@@ -19,7 +19,7 @@ export default function SearchGlobal({
                 aria-label="Open search"
                 title="Open search"
             >
-                <IoIosSearch className={`cursor-pointer text-[20px] ${headerFixed ? 'text-black' : 'text-white'}`} />
+                <IoIosSearch className={`cursor-pointer text-[20px] ${headerFixed || hoveringNav ? 'text-black' : 'text-white'}`} />
             </button>
 
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useImageReveal } from "../useImageReveal";
 import * as CONFIG from "../../../../config";
+import CommonHeading from "../commonHeading";
 
 const nriOverview = ({data}) => {
   const {heading,description,image}=data;
@@ -25,7 +26,7 @@ const nriOverview = ({data}) => {
             )}
             {description && (
             <p
-              className="my-[1rem] text-justify text-[13px] xl:!mt-[30px] poppins-regular text-black font-[300]"
+              className="my-[1rem] text-justify common_pera xl:!mt-[30px] poppins-regular text-black font-[300]"
             >
              {description}
             </p>
@@ -38,7 +39,7 @@ const nriOverview = ({data}) => {
               className=" reveal flex-none"
             />
           </div>
-          
+
         </div>
       </div>
     </>

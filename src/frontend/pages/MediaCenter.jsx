@@ -34,17 +34,18 @@ function MediaCenter() {
                 showKnowMore={false}
             />
 
-            <section className="download relative px-5 md:px-12 py-10 md:py-14">
+            <section className="download relative px-5 md:px-12 py-5 md:py-14">
                 <div className="grid grid-cols-12 gap-3 ">
                     {/* Left Section */}
                     <div className="headline col-span-12 md:col-span-3">
-                        <div className="topLine uppercase tracking-[3px] py-3 mt-8 font-[300]">document</div>
+                        <div className="topLine uppercase tracking-[3px] py-3 lg:mt-8 font-[300]">document</div>
                         <FadeIn duration={2} delay={0.5}>
                             <CommonHeading HeadingText="PRESS CENTRE" />
                         </FadeIn>
                     </div>
+                    {/* border-[#0061ab63]  border*/}
                     <div className="greatValue flex items-center col-span-12 md:col-span-4">
-                        <div className="box border bg-[#EFF5FA] border-[#0061ab63] p-[1.5rem] flex flex-col  ">
+                        <div className="box  bg-[#EFF5FA]  p-[1.5rem] flex flex-col  ">
                             <h3 className="uppercase text-[17px] tracking-[1px] ">Download Great Value Logo</h3>
                             <div className="logo items-center pt-5 mt-10 flex justify-between">
                                 <img

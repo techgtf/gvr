@@ -7,7 +7,7 @@ const SearchField = ({ searchTerm, setSearchTerm , customClass}) => {
       <input
         type="text"
         placeholder="SEARCH HERE"
-        className="w-full h-[50px] px-4 pr-10 text-[14px] border-[0.5px] border-solid border-[#000] text-[#615B5B] focus:outline-none focus:ring-0 focus:border-[#000] placeholder:uppercase"
+        className="w-full h-[50px] px-4 pr-10 text-[14px] border-[0.5px] border-solid border-[#ddd] rounded text-[#615B5B] placeholder:uppercase"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)} 
       />

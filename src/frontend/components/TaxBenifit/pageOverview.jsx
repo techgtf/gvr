@@ -12,7 +12,7 @@ export default function PageOverview({data}) {
             <div className='wrapper lg:max-w-[95%] lg:px-0 px-[15px] w-full m-auto lg:mb-[70px] mb-[20px]'>
                 {heading && (
                 <SlideIn duration={2} delay={0.7}>
-                    <p className='text-justify'>{heading}</p>
+                    <p className='text-justify common_pera'>{heading}</p>
                 </SlideIn>
                 )}
                 <div className='grid_div lg:mt-[50px] grid lg:grid-cols-2 lg:gap-[50px] overflow-hidden'>
@@ -22,8 +22,8 @@ export default function PageOverview({data}) {
                         </ZoomOut>
                     </div>
                     <div className='contetn_div flex flex-col justify-center lg:gap-[55px] gap-[15px]'>
-                        {description && <p className='text-justify'>{description}</p>}
-                        {sub_heading && <p className='text-justify'>{sub_heading}</p>}
+                        {description && <p className='text-justify common_pera'>{description}</p>}
+                        {sub_heading && <p className='text-justify common_pera'>{sub_heading}</p>}
                     </div>
                 </div>
             </div>

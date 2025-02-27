@@ -338,7 +338,7 @@
     display: inline-block;
     border-radius: 100%;
     z-index: 1;
-    left: 2
+    left: 2px;
 }
 
 .admin_body .steps_col .active .circle,

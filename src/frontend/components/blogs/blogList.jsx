@@ -13,17 +13,17 @@ import useFetchData from "../../apiHooks/useFetchData";
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-   const { latestBlog } = useContext(LatestBlogContext);
+  const { latestBlog } = useContext(LatestBlogContext);
 
-   const { data: blogs, loading: logoLoading, error: logoError } = useFetchData("blogs");
-   // Handle Loading and Errors
-   if (logoLoading) return <Loader />;
-   if (logoError) return <p className="text-red-500">Error loading Home Loan Logos: {logoError}</p>;
+  const { data: blogs, loading: logoLoading, error: logoError } = useFetchData("blogs");
+  // Handle Loading and Errors
+  if (logoLoading) return <Loader />;
+  if (logoError) return <p className="text-red-500">Error loading Home Loan Logos: {logoError}</p>;
 
 
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[98px] lg:mb-[98px] mt-[0px] mb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[80px] lg:pb-[70px] mt-[0px] pb-[50px] py-4  px-4 sm:px-6 lg:px-8 xl:px-12">
       <div className="lg:col-span-8">
         <SearchField
           customClass={"block lg:hidden mt-[5px] mb-[20px]"}
@@ -68,9 +68,9 @@ const BlogList = () => {
 
         <ul>
           {latestBlog.length > 0 ? (
-            latestBlog.map((item,index) => (
+            latestBlog.map((item, index) => (
               <li key={item.id} className="mt-5">
-                <SlideIn duration={1} delay={0.5}>
+                <SlideIn duration={0} delay={0.5}>
                   <Link to={`${BASE_ROOT}blog/${item.slug}`}>
                     <p className="cursor-pointer name  text-[#0061AB]  text-[14px] font-normal md:font-light leading-[20px] md:leading-[25px] lg:leading-[29px]">
                       {" "}
@@ -79,11 +79,10 @@ const BlogList = () => {
                         : item.heading}{" "}
                     </p>
                     <div
-                      className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] mt-2 ${
-                        item?.length > 100
+                      className={`cursor-pointer type uppercase text-left text-[#2b2b2b94] mt-2 ${item?.length > 100
                           ? "lg:mt-[-18px] mt-[-20px]"
                           : "lg:mt-[5px]"
-                      } tracking-[1px]`}
+                        } tracking-[1px]`}
                     >
                       {" "}
                       {dayjs(item.created_at).format("YYYY-MM-DD")}

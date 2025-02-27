@@ -10,6 +10,7 @@ import { LatestBlogContext } from '../../context/LatestBlogContext'
 
 export default function BlogSection() {
     const { latestBlog } = useContext(LatestBlogContext);
+    
 
     return (
         <div className='blogSection 2xl:py-16 xl:py-8 py-[50px]'>

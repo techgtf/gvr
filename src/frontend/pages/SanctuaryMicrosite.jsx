@@ -9,7 +9,6 @@ import Specifications from '../components/microsite/HighlightsSpecifications/Spe
 import Plans from '../components/microsite/Plans';
 import LocationAdvantage from '../components/microsite/LocationAdvantage';
 import ProjectGallery from '../components/microsite/ProjectGallery/ProjectGallery';
-
 import reflexology from "/assets/frontend/images/microsite/sanctuary/amentities/icons/reflexology.webp";
 import master_plan_img from "/assets/frontend/images/microsite/sanctuary/plans/masterplan.webp";
 import loaction from "/assets/frontend/images/microsite/sanctuary/location/location.webp";
@@ -20,7 +19,6 @@ import walkActive from "/assets/frontend/images/microsite/location/walkActive.we
 import gallery1 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery1.webp"
 import gallery2 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery2.webp"
 import gallery3 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery3.webp"
-import actual4 from "/assets/frontend/images/microsite/vilasa/gallery/actual/actual4.webp"
 import club from "/assets/frontend/images/microsite/vilasa/amentities/icons/club.webp";
 import basketball from "/assets/frontend/images/microsite/vilasa/amentities/icons/basketball.webp";
 import power from "/assets/frontend/images/microsite/sanctuary/amentities/icons/power.webp";
@@ -39,7 +37,6 @@ import buildings from "/assets/frontend/images/microsite/location/walkIcons/buil
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
 import road from "/assets/frontend/images/microsite/vilasa/amentities/icons/road.webp";
 
-
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -56,8 +53,7 @@ function SanctuaryMicrosite() {
         { name: "Power Backup", image: power },
         { name: "Gated community", image: guard },
         { name: "Car Parking", image: car },
-    ]
-
+    ];
 
     const masterPlanData = [
         { image: master_plan_img, alt: "Master Plan" },
@@ -144,12 +140,13 @@ function SanctuaryMicrosite() {
         { image: "assets/frontend/images/microsite/sanctuary/amentities/slider/slide8.webp", alt: "Car Parking" },
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
+
     return (
         <>
             <Helmet>
-                <title> Great Value Realty Sanctuary Sector 105, Gurugram </title>
+                <title> Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram</title>
                 <meta name="keywords" content="Great Value realty, Great Value Realty Sanctuary Sector 105, Great Value Realty Sanctuary Gurugram, Sanctuary 105 Gurugram , Sanctuary by Great Value Realty, Sanctuary residential project Gurugram" />
-                <meta name="description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle.s" />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/sanctuary" />
                 <meta name="distribution" content="Global" />
@@ -165,34 +162,34 @@ function SanctuaryMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Realty Sanctuary Sector 105" />
-                <meta property="og:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta property="og:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
+                <meta property="og:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/sanctuary" />
                 <meta property="og:site_name" content="Great Value Realty Sanctuary Sector 105" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Realty Sanctuary Sector 105" />
-                <meta name="twitter:description" content="Great Value Realty Sanctuary in Sector 105, Gurugram offers an exclusive living experience. With only one neighbor per residence, it’s a peaceful retreat where art, architecture, and nature seamlessly converge for a perfect escape from city life." />
+                <meta name="twitter:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
+                <meta name="twitter:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
-                    "alternateName": "Great Value Realty Sanctuary Gurugram",
-                    "url": "https://greatvaluerealty.com/sanctuary",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }`}
+                    {`{
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
+                        "alternateName": "Great Value Realty Sanctuary Gurugram",
+                        "url": "https://greatvaluerealty.com/sanctuary",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                    }}`}
                 </script>
             </Helmet>
             <HeroSection
