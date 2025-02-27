@@ -20,9 +20,9 @@ const nriOverview = ({data}) => {
         <div className="flex items-center justify-between md:flex-row flex-col-reverse flex-wrap gap-[30px] md:gap-[50px]">
           <div className="basis-[100%] xl:basis-[calc(60%-50px)] flex-none">
             {heading &&(
-              <h2 className="sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
+              <h1 className="common_heading sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[12px] midlandfontmedium uppercase">
               {heading}
-              </h2>
+              </h1>
             )}
             {description && (
             <p

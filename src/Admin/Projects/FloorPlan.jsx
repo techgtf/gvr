@@ -69,6 +69,7 @@ const FloorPlan = React.memo(() => {
     carpet_area:null,
     balcony_area:null,
     super_area:null,
+    more_typology:null
   });
 
   const resetfields = () => {
@@ -78,7 +79,7 @@ const FloorPlan = React.memo(() => {
       size_type: null,
       image: null,
       image_preview: null,
-
+      more_typology:null,
       project_id: null,
     });
   };
@@ -137,6 +138,7 @@ const FloorPlan = React.memo(() => {
     formData.append("carpet_area", sectionFormdata.carpet_area);
     formData.append("balcony_area", sectionFormdata.balcony_area);
     formData.append("super_area", sectionFormdata.super_area);
+    formData.append("more_typology", sectionFormdata.more_typology);
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
     }
@@ -175,6 +177,7 @@ const FloorPlan = React.memo(() => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
 
     const formData = new FormData();
     formData.append("sub_typology", sectionFormdata.sub_typology);
@@ -182,6 +185,7 @@ const FloorPlan = React.memo(() => {
     formData.append("carpet_area", sectionFormdata.carpet_area);
     formData.append("balcony_area", sectionFormdata.balcony_area);
     formData.append("super_area", sectionFormdata.super_area);
+    formData.append("more_typology", sectionFormdata.more_typology);
 
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
@@ -192,9 +196,9 @@ const FloorPlan = React.memo(() => {
     if (sectionFormdata.price) {
       formData.append("price", sectionFormdata.price);
     }
-    if (image.current.files[0]) {
-      formData.append("image", image.current.files[0]);
-    }
+    // if (image.current.files[0]) {
+    //   formData.append("image", image.current.files[0]);
+    // }
     var response = await Request(
       "admin/projectdata/floor-plan/" + editId + "/update",
       "POST",
@@ -234,6 +238,7 @@ const FloorPlan = React.memo(() => {
         carpet_area: result.carpet_area,
         balcony_area: result.balcony_area,
         super_area: result.super_area,
+        more_typology: result.more_typology,
       });
 
       // setCheckedCategory(result.size_type);
@@ -439,6 +444,21 @@ const FloorPlan = React.memo(() => {
                     <img width="100" src={`${sectionFormdata.image_preview}`} />
                   ) : null}
                 </div>
+
+                <div className="mb-2">
+                    <label className="block font-medium">Title*</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter Title"
+                        value={sectionFormdata.more_typology}
+                        name="more_typology"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.size}
+                  </div>
 
                 <div className="mb-2">
                     <label className="block font-medium">Plan Type</label>
