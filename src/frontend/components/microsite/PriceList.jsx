@@ -9,7 +9,7 @@ import FadeIn from "../Animations/FadeIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
+function PriceList({ priceListData = [], headingText = "" }) {
   const { showEnquiryForm, openEnquiryForm } = useContext(Context);
   const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
@@ -17,18 +17,18 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
   useEffect(() => {
     if (!tableRef.current) return;
-  
+
     const tableElements = tableRef.current.querySelectorAll(".row_1");
-  
+
     if (tableElements.length === 0) {
       console.warn("⚠️ No table elements found for animation!");
       return;
     }
-  
+
     // ✅ Wrap GSAP animations in a requestAnimationFrame
     requestAnimationFrame(() => {
       gsap.set(tableElements, { opacity: 0, y: 50 });
-  
+
       const animation = gsap.to(tableElements, {
         opacity: 1,
         y: 0,
@@ -40,14 +40,14 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
           toggleActions: "play none none none",
         },
       });
-  
+
       return () => {
         animation.kill();
         ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
       };
     });
-  }, [location.pathname]); 
-  
+  }, [location.pathname]);
+
   // const handleTooltipToggle = (index) => {
   //   setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
   // };
@@ -63,12 +63,11 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
         {/* Desktop view */}
         <div className="hidden md:block table w-full mt-10" ref={tableRef}>
-          {priceListData.length > 0 ? (
-            priceListData.map((item, i) => (
+          {priceListData?.length > 0 ? (
+            priceListData?.map((item, i) => (
               <div key={i} className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400">
                 <div className="flex justify-center  sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
-                  <p>{item.area}</p>
-
+                  <p>{item['sub_typology'].typology}</p>
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                   <p>{item.size}</p>
@@ -77,7 +76,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                   <p>{item.price}</p>
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center">
-                  <button className="bg-transparent text-[#33638B] uppercase" disabled   onClick={openEnquiryForm}>
+                  <button className="bg-transparent text-[#33638B] uppercase" disabled onClick={openEnquiryForm}>
                     SOLD OUT </button>
                 </div>
               </div>
@@ -89,7 +88,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
         {/* Mobile view */}
         <div className="block md:hidden table w-full mt-10">
-          {priceListData.length > 0 ? (
+          {priceListData?.length > 0 ? (
             priceListData.map((item, i) => (
               <div key={i} className="row_1 py-0 md:py-5">
                 <div className="grid grid-cols-4 border-b border-gray-300 py-3">
@@ -107,7 +106,7 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
                       SOLD OUT
                     </div>
                   </div>
-                </div>              
+                </div>
               </div>
             ))
           ) : (
