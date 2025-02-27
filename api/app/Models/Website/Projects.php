@@ -61,7 +61,7 @@ class Projects extends Model
         return  asset('default/default_project.jpg');
     }
 
-    public function getThumbnailImageAttribute()
+    public function getThumbnailAttribute()
     {
         if(!empty($this->attributes['thumbnail'])){
             if(File::exists(public_path('storage/'.$this->attributes['thumbnail']))){

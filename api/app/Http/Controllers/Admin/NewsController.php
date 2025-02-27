@@ -179,16 +179,6 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
 
-        // $validator = Validator::make($request->all(), [
-        //     'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
-        //     'heading' => ['required',Rule::unique('news')->ignore($request->id)]
-        // ], [
-        //     'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
-        //     'image.max' => 'The image may not be greater than 2048 kilobytes.',
-        //     'heading.required' => 'The heading field is required.',
-        //     'heading.unique' => 'heading Already Exists.',
-        // ]);
-
         $validator = Validator::make($request->all(),[
             'file' => ['nullable|required',
                 function ($attribute, $value, $fail) use ($request) {
@@ -234,14 +224,14 @@ class NewsController extends Controller
         }
 
       
-        if($request->file('image')){
+        if($request->file('file')){
           
-            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->icons);
+            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->file);
             dltSingleImgFile($imagesurl);
             
-            $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('news', $name, 'public');
-            $getrecord->image=$path;
+            $name = now()->timestamp.".{$request->file->getClientOriginalName()}";
+            $path = $request->file('file')->storeAs('news', $name, 'public');
+            $getrecord->file=$path;
         }
 
         $getrecord->heading = $request->heading;

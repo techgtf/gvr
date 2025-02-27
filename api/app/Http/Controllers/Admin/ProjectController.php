@@ -315,7 +315,7 @@ class ProjectController extends Controller
             $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
             $path = $request->file('thumbnail')->storeAs('project/feature-thumbnail', $name, 'public');
             dltSingleImgFile($saverecord->thumbnail);
-            $saverecord->thumbnail = $path;
+            $saverecord->thumbnails=$path;
         }
 
         if($request->hasFile('brochure')){
@@ -351,7 +351,13 @@ class ProjectController extends Controller
             if($request->footer_data){
                 $saverecord->footer_data=$request->footer_data;
             }
-    
+   
+            
+
+        
+
+
+
         $saverecord->short_description=$request->short_description;
         $saverecord->sub_typologie_id=$request->sub_typologie_id;
         $saverecord->whatsapp_no=$request->whatsapp_no;
