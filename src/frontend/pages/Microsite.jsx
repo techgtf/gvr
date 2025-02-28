@@ -23,7 +23,7 @@ function Microsite() {
   const [priceData, setPriceData] = useState(null);
   const [highlightsData, setHighlightsData] = useState(null);
   const [specificationsData, setSpecificationsData] = useState(null);
-  // const [masterPlanData, setMasterPlanData] = useState(null);
+  const [unitData, setUnitData] = useState(null);
 
   useEffect(() => {
     axios.get(`${API_URL}project`)
@@ -70,11 +70,13 @@ function Microsite() {
     if (sectionData.some((item) => item.section_type === '5')) { // get specifications
       fetchSectionData('specifications', setSpecificationsData);
     }
+    if (sectionData.some((item) => item.section_type === "7")) { // get floor-pans
+      fetchSectionData('floor-plan', setUnitData)
+    }
 
   }, [sectionData, basicDetails?.id])
 
-  // console.log('sectionData', sectionData);
-
+  // console.log('unitData', unitData);
 
 
   if (loading) return <div>Loading...</div>;
@@ -100,7 +102,7 @@ function Microsite() {
       {sectionData &&
         sectionData.map((dataItem) => {
           switch (dataItem.section_type) {
-            case "1": // About Us
+            case "1": // About Us **************** section_type: '1', heading: 'ABOUT US',
               return (
                 <About
                   key={dataItem.id}
@@ -112,7 +114,7 @@ function Microsite() {
                 />
               );
 
-            case "2": // Amenities
+            case "2": // Amenities ****************  section_type: '2', heading: 'Amentities',
               return (
                 <Amentities
                   key={dataItem.id}
@@ -121,7 +123,7 @@ function Microsite() {
                 />
               );
 
-            case "3": // PriceList
+            case "3": // PriceList **************** section_type: '3', heading: 'Price List',
               return (
                 <PriceList
                   priceListData={priceData}
@@ -129,20 +131,22 @@ function Microsite() {
               );
 
 
-            case "4":
+            case "4": // **************** section_type: '4', heading: 'Highlights', || section_type: '5', heading: 'Specifications',
               return (
                 <HighlightsSpecifications
                   highlightsData={highlightsData}
                   specificationsData={specificationsData} // ***************** pending from backend *******************
                 />
               )
-            case "6":
+            case "5":  // ****************   section_type: '6', heading: 'Master Plan', || section_type: '7', heading: 'Floor Plans',
               return (
                 <Plans
                   masterPlanData={sectionData[5]}
-                // unitData={unitData}
+                  unitData={unitData}
                 />
               )
+            case "6": //  section_type: '8', heading: 'Location Advantage',
+            case "7":  // section_type: '9', heading: 'Project Gallery',
 
             default:
               return null;
