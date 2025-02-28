@@ -28,6 +28,8 @@ import charity8 from "/assets/frontend/images/csr/charity/images/charity8.webp";
 
 import Initiatives from './Initiatives';
 import InitiativesDesc from './InitiativesDesc';
+import useFetchData from '../../../apiHooks/useFetchData';
+import Loader from '../../../../common/Loader/loader';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,6 +88,15 @@ function CharityInitiatives() {
         setOpen(true);
     };
 
+    // calling api
+
+    const { data: galleryData, loading: galleryLoading, error: galleryError } = useFetchData("gallery");
+
+    console.log('galleryData',galleryData);
+    // Handle Loading and Errors
+    if (galleryLoading) return <Loader />;
+    if (galleryError) return <p className="text-red-500">Error while loading Gallery: {logoError}</p>;
+
     return (
         <>
             <section className="charity bg-[#EFF5FA] relative px-5 md:px-12 pb-16">
@@ -123,11 +134,11 @@ function CharityInitiatives() {
                             modules={[Autoplay, Navigation]}
                             className="mySwiper"
                         >
-                            {images.map((item, i) => (
+                            {galleryData?.map((item, i) => (
                                 <SwiperSlide key={i}>
                                     <img
-                                        src={item}
-                                        alt={`Charity Image ${i + 1}`}
+                                        src={item.image}
+                                        alt={item.alt}
                                         className="w-full md:w-[350px] h-[250px] object-cover cursor-pointer"
                                         onClick={() => openLightbox(i)}
                                     />
@@ -140,7 +151,7 @@ function CharityInitiatives() {
                                 open={open}
                                 close={() => setOpen(false)}
                                 index={currentIndex}
-                                slides={images.map((item, index) => ({ src: item, title: `Image ${index + 1}` }))}
+                                slides={galleryData?.map((item, index) => ({ src: item.image, title: item.alt }))}
                                 plugins={[Fullscreen, Zoom]}
                             />
                         )}
