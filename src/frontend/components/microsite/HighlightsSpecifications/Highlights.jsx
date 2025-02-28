@@ -7,7 +7,7 @@ import SlideIn from "../../Animations/SlideIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Highlights({ title = "Highlights", highlights = [] }) {
+function Highlights({ title = "Highlights", highlightsData = [] }) {
   useEffect(() => {
     setTimeout(() => {
       ScrollTrigger.refresh(); // ✅ Ensure animations detect the new elements
@@ -21,16 +21,16 @@ function Highlights({ title = "Highlights", highlights = [] }) {
           <CommonHeading HeadingText={title} />
         </FadeIn>
         <ol className="pt-8" >
-          {highlights.map((highlight, index) => (
+          {highlightsData?.map((highlight, index) => (
             <React.Fragment key={index}>
               <SlideIn duration={2} delay={0.5}>
-            <li  className="flex gap-3 items-start py-2">
-              <div className="num bg-[#749CBE] rounded-full text-white w-6 h-6 leading-6 text-center flex-shrink-0">
-                {index + 1}
-              </div>
-              {highlight}
-            </li>
-            </SlideIn>
+                <li className="flex gap-3 items-start py-2">
+                  <div className="num bg-[#749CBE] rounded-full text-white w-6 h-6 leading-6 text-center flex-shrink-0">
+                    {index + 1}
+                  </div>
+                  {highlight.highlight}
+                </li>
+              </SlideIn>
             </React.Fragment>
           ))}
         </ol>

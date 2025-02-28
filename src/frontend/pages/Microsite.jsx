@@ -22,8 +22,8 @@ function Microsite() {
   const [sectionData, setSectionData] = useState(null);
   const [amenitiesData, setAmenitiesData] = useState(null);
   const [priceData, setPriceData] = useState(null);
-  const [highlights, setHighlights] = useState(null);
-  const [specifications, setSpecifications] = useState(null);
+  const [highlightsData, setHighlightsData] = useState(null);
+  const [specificationsData, setSpecificationsData] = useState(null);
 
   useEffect(() => {
     axios.get(`${API_URL}project`)
@@ -65,13 +65,17 @@ function Microsite() {
       fetchSectionData('price', setPriceData);
     }
     if (sectionData.some((item) => item.section_type === '4')) { // get highlights
-      fetchSectionData('highlights', setHighlights);
+      fetchSectionData('highlights', setHighlightsData);
     }
     if (sectionData.some((item) => item.section_type === '5')) { // get specifications
-      fetchSectionData('specifications', setSpecifications);
+      fetchSectionData('specifications', setSpecificationsData);
     }
 
   }, [sectionData, basicDetails?.id])
+
+  // console.log('highlightsData', highlightsData);
+  console.log('specificationsData', specificationsData);
+
 
 
   if (loading) return <div>Loading...</div>;
@@ -125,52 +129,21 @@ function Microsite() {
                   headingText={dataItem.heading} />
               );
 
-            // case "4": // Highlights
-            // case "5": // Specifications
-            //   if (dataItem.section_type === "4") {
-            //     // Fetch highlights data
-            //     axios.get(`${API_URL}project/${basicDetails.id}/highlights`)
-            //       .then((r) => setHighlights(r.data.data));
-            //   } else {
-            //     // Fetch specifications data
-            //     axios.get(`${API_URL}project/${basicDetails.id}/specifications`)
-            //       .then((r) => setSpecifications(r.data.data));
-            //   }
 
-            //   return (
-            //     <HighlightsSpecifications
-            //       key={dataItem.id}
-            //       highlightsComponent={
-            //         dataItem.section_type === "4" ? () => <Highlights title={dataItem.heading}  /> : null
-            //       }
-            //       specificationsComponent={
-            //         dataItem.section_type === "5" ? () => <Specifications title={dataItem.heading} /> : null
-            //       }
-            //     />
-            //   );
-
+            case "4":
+              return (
+                <HighlightsSpecifications
+                  highlightsData={highlightsData}
+                  specificationsData={specificationsData} // ***************** pending from backend *******************
+                />
+              )
             default:
               return null;
           }
         })}
 
 
-      {/* 
-        
-        <HighlightsSpecifications
-                    key={dataItem.id}
-                    highlightsComponent={() => <Highlights
-                      title={dataItem.heading}
-                      highlights={highlights} />}
-
-                    specificationsComponent={() => <Specifications
-                      title={dataItem.heading}
-                      specifications={specifications}
-                    />}
-        */}
-
-
-      {/* 
+      {/*
 
       <Plans masterPlanData={masterPlanData} unitData={unitData} />
 
