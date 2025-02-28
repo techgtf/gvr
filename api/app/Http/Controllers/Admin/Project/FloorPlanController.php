@@ -83,9 +83,14 @@ class FloorPlanController extends Controller
         [
         
             'project_id' => 'required|exists:projects,id',  
-            'sub_typology' => 'required|exists:sub_typologies,id',
+            'sub_typology' => 'nullable|exists:sub_typologies,id',
             'type' => 'required',
-
+            'price' => 'integer',
+            'size' => 'integer',
+            'carpet_area' => 'integer',
+            'balcony_area' => 'integer',
+            'super_area' => 'integer',
+            'size_type' => 'integer',
         ],[
         
             'project_id.required' => 'Project  is required',

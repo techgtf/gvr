@@ -31,11 +31,17 @@ class NewsController extends Controller
             $search = $request->search; 
         }
         
-        $perPage = $request->input('per_page', 10); // Number of products per page
-        $page = $request->input('page', 1); // Current page number
- 
-        $media = News::search($search)->paginate($perPage, ['*'], 'page', $page);
-             
+        
+        
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1);
+
+        $media = News::search($search)
+        ->when($request->type, function ($query, $type) {
+            return $query->where('type', $type);
+        })
+        ->paginate($perPage, ['*'], 'page', $page);
+    
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -79,7 +85,10 @@ class NewsController extends Controller
                 'max:2048'],
            
             'type' => 'required|in:logo,docs,news',
-            'heading' => 'required|unique:news,heading',
+            'heading' => [
+                'required',
+                Rule::unique('news')->whereNull('deleted_at'), // Ignore soft-deleted records
+            ],
         ],
         [
             'file.required' => 'This field is required.',
@@ -195,7 +204,10 @@ class NewsController extends Controller
                 'max:2048'],
            
             'type' => 'required|in:logo,docs,news',
-            'heading' => 'required|unique:news,heading',
+            'heading' => [
+                'required',
+                Rule::unique('news')->whereNull('deleted_at'),
+            ],
         ],
         [
             'file.required' => 'This field is required.',
