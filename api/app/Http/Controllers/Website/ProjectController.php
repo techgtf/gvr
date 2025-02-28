@@ -14,6 +14,7 @@ use App\Models\Website\Project\ProjectSection;
 use App\Models\Website\Project\ProjectHighlight;
 use App\Models\Website\Project\ProjectGallery;
 use App\Models\Website\Project\ProjectSpecification;
+use App\Models\Website\Project\ProjectSpecificationList;
 use App\Models\Website\Projects;
 use Illuminate\Http\Request;
 use Livewire\ComponentConcerns\RendersLivewireComponents;
@@ -341,8 +342,12 @@ class ProjectController extends Controller
 
     public function Specifications ($project_id){
 
-        $specifications = ProjectSpecification::with('ProjectSpecificationList')->where('project_id',$project_id)->get();
-
+        $specifications = ProjectSpecification::with('ProjectSpecificationList')
+        ->whereHas('ProjectSpecificationList', function ($query) use ($project_id) {
+            $query->where('project_id', $project_id);
+        })
+        ->get();
+    
         if($specifications){
             return response()->json([
                 'status'=>true,

@@ -9,6 +9,6 @@ class TimelineImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year', 'image'];
+    protected $fillable = ['year', 'image', 'alt'];
     
 }
