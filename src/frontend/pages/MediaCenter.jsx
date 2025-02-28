@@ -13,6 +13,8 @@ import { Helmet } from 'react-helmet';
 gsap.registerPlugin(ScrollTrigger);
 function MediaCenter() {
 
+    const altForall = 'Great Value news'
+
     return (
         <>
             <Helmet>
@@ -51,6 +53,7 @@ function MediaCenter() {
                 img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/media/hero.webp`}
                 heading={"MEDIA CENTER"}
                 extraClassesImg={"objectRight"}
+                alt={altForall}
             />
 
             <OverviewSection

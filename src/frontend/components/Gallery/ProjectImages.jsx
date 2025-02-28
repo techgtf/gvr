@@ -40,8 +40,8 @@ function ProjectImages({ images }) {
           {images.slice(0, visibleCount).map((image, index) => (
             <div key={index} className="w-[calc(100%/2-16px)] sm:w-[calc(100%/4-16px)]">
               <img
-                src={image}
-                alt={`Project ${index + 1}`}
+                src={image.image}
+                alt={image.alt || + "Project" + index + 1}
                 className="w-[400px] h-[250px] object-cover cursor-pointer"
                 onClick={() => openLightbox(index)}
               />

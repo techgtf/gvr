@@ -165,7 +165,7 @@ function Microsite() {
     },
   ];
 
-  const   images = [
+  const images = [
     { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Great Value Sharanam Sector 107, Noida" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
@@ -174,6 +174,33 @@ function Microsite() {
     { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Beautiful Scenery 6" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
   ];
+
+  const galleryData = [
+    {
+      "image": gallery1,
+      "alt": 'Residential apartments'
+    },
+    {
+      "image": gallery2,
+      "alt": 'Luxury residential flats'
+    },
+    {
+      "image": gallery3,
+      "alt": 'Residential property'
+    },
+    {
+      "image": gallery4,
+      "alt": 'Sharanam apartments'
+    },
+    {
+      "image": gallery5,
+      "alt": 'Sharanam flats '
+    },
+    {
+      "image": gallery6,
+      "alt": 'Luxury apartments'
+    },
+  ]
 
   return (
     <>
@@ -283,7 +310,7 @@ function Microsite() {
       />
 
       <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+        actualImages={galleryData}
       />
     </>
   );

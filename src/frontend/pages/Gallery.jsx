@@ -28,7 +28,93 @@ import { Helmet } from 'react-helmet'
 
 function Gallery() {
 
-  const projectImagesData = [project1, project2, project3, project4, project5, project6, project7, project8, project9, project10, project11, project12, project13, project14, project15, project16, project17, project18, project19, project20, project21]
+  const projectImagesData = [
+    {
+      image: project1,
+      alt: 'Residential apartments',
+    },
+    {
+      image: project2,
+      alt: 'Luxury residential flats',
+    },
+    {
+      image: project3,
+      alt: 'Residential property',
+    },
+    {
+      image: project4,
+      alt: 'Apartment Buildings',
+    },
+    {
+      image: project5,
+      alt: 'Luxury residential complex',
+    },
+    {
+      image: project6,
+      alt: 'Modern residential apartments',
+    },
+    {
+      image: project7,
+      alt: 'High-rise apartment',
+    },
+    {
+      image: project8,
+      alt: 'Residential apartments',
+    },
+    {
+      image: project9,
+      alt: 'Clubhouse dining',
+    },
+    {
+      image: project10,
+      alt: 'Modern luxury living room',
+    },
+    {
+      image: project11,
+      alt: 'Modern luxury kitchen',
+    },
+    {
+      image: project12,
+      alt: 'Residential garden',
+    },
+    {
+      image: project13,
+      alt: 'Luxurious living room',
+    },
+    {
+      image: project14,
+      alt: 'Elegant luxury living room',
+    },
+    {
+      image: project15,
+      alt: 'Modern minimalist kitchen',
+    },
+    {
+      image: project16,
+      alt: 'Elegant living and dining area',
+    },
+    {
+      image: project17,
+      alt: 'Car parked',
+    },
+    {
+      image: project18,
+      alt: 'Spacious apartment balcony',
+    },
+    {
+      image: project19,
+      alt: 'High-rise apartment towers',
+    },
+    {
+      image: project20,
+      alt: 'Luxury residential complex',
+    },
+    {
+      image: project21,
+      alt: 'Luxury residential high-rise',
+    },
+
+  ]
   return (
     <>
       <Helmet>

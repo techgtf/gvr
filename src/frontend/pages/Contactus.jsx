@@ -52,6 +52,7 @@ const ContactUs = () => {
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/contact-us-img.webp`}
         heading={"CONTACT US"}
         extraClassesImg={"objectRight"}
+        alt={'Productive workspace'}
       />
       <AddressSection />
       <EnquiryFormSection />

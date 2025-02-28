@@ -25,6 +25,7 @@ const BlogDetails = () => {
         parentLink={"blogs"}
         parentTitle={"BLOGS"}
         extraClassesImg={"objectRight"}
+        alt={'Browsing a real estate'}
       />
       <Index data={blog} latestBlogData={latestBlog} />
     </>

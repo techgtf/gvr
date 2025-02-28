@@ -178,6 +178,36 @@ function GvHomesMicrosite() {
         { image: "assets/frontend/images/microsite/gv/amentities/slider/slide8.webp", alt: "Servant Quarters" },
     ];
 
+
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'Luxurious living room'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Residential garden'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Modern luxury kitchen'
+        },
+        {
+            "image": gallery4,
+            "alt": 'Modern luxury living room'
+        },
+        {
+            "image": gallery5,
+            "alt": 'Elegant luxury living room'
+        },
+        {
+            "image": gallery6,
+            "alt": 'Modern minimalist kitchen'
+        },
+    ]
+
+
+
     return (
         <>
 
@@ -214,24 +244,25 @@ function GvHomesMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
                 <script type="application/ld+json">
                     {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
-                    "alternateName": "Great Value Realty Casa Uday",
-                    "url": "https://greatvaluerealty.com/casa-uday",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
-                    "contactPoint": [{
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }]})}
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
+                        "alternateName": "Great Value Realty Casa Uday",
+                        "url": "https://greatvaluerealty.com/casa-uday",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-                 desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"
-                 mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"                
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -248,6 +279,7 @@ function GvHomesMicrosite() {
                 headingText="ABOUT US"
                 descriptionText="CASA UDAY, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
+                alt={'Stylish living and dining area'}
             />
 
             <Amentities
@@ -301,7 +333,7 @@ function GvHomesMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+                actualImages={galleryData}
             />
         </>
     )
