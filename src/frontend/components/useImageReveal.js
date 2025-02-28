@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function useImageReveal(selector) {
+export function useImageReveal(selector, dependency) {
     const scrollTriggersRef = useRef([]);
     const location = useLocation();
 
@@ -39,7 +39,7 @@ export function useImageReveal(selector) {
             scrollTriggersRef.current.forEach(trigger => trigger.kill());
             scrollTriggersRef.current = [];
         };
-    }, [selector, location.pathname]);
+    }, [selector, location.pathname, dependency]);
 
     return null;
 }

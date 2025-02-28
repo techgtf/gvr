@@ -159,7 +159,7 @@ const Projects = () => {
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2 text-left">Project</th>
               <th className="border border-gray-300 p-2 text-left">Status</th>
-              <th className="border border-gray-300 p-2 text-left">Featured</th>
+              {/* <th className="border border-gray-300 p-2 text-left">Featured</th> */}
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -167,7 +167,7 @@ const Projects = () => {
           <tbody>
             {isLoading && (
               <tr className="border-b border-gray-200">
-                <td colSpan={4}>
+                <td colSpan={3}>
                 <div className="text-center py-4">
                   <ScaleLoader color="#ddd" className="w-full" />
                 </div>
@@ -206,14 +206,14 @@ const Projects = () => {
                       onSelect={handleStatusSelect}
                     />
                   </td>
-                  <td className="py-2 px-4">
+                  {/* <td className="py-2 px-4">
                     <CustomSwitch
                       className="w-full"
                       id={item.id}
                       toggleSwitch={toggleSwitch}
                       isChecked={item.is_feature}
                     />
-                  </td>
+                  </td> */}
                   <td className="py-2 px-4">
                     <NavLink
                       to={`${CONFIG.ADMIN_ROOT}project/${item.id}/edit`}

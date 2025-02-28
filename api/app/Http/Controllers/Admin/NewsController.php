@@ -64,15 +64,31 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
-            'heading' => 'required|unique:news,heading'
+            'file' => ['required',
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->type === 'docs') {
+                        if ($value->getClientOriginalExtension() !== "pdf") {
+                            $fail('Only PDF files are allowed.');
+                        }
+                    } else {
+                        if (!in_array($value->getClientOriginalExtension(), ['png', 'jpg', 'jpeg', 'webp'])) {
+                            $fail('Invalid file type. Only allowed: png, jpg, jpeg, webp.');
+                        }
+                    }
+                },
+                'max:2048'],
+           
+            'type' => 'required|in:logo,docs,news',
+            'heading' => 'required|unique:news,heading',
         ],
         [
-            'image.required' => 'The image field is required.',
-            'image.mimes' => 'Invalid Image type only aloowed (png,jpg,jpeg)',
+            'file.required' => 'This field is required.',
+            'file.mimes' => 'Invalid file type only aloowed (png,jpg,jpeg,webp)',
             'heading.required' => 'This heading field is required.',
             'heading.unique' => 'heading Already Exists.',
+            'type.in' => 'Invalid type selected.'
         ]);
+
 
         if($validator->fails()){
             return response()->json([
@@ -81,21 +97,19 @@ class NewsController extends Controller
                 'message' => "success",
                 'errors'=>$validator->errors()->toArray()
             ]);
-
-
-        
-
+ 
         }else{
 
             try{
                 
-                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('news', $name, 'public');
+                $name = now()->timestamp.".{$request->file->getClientOriginalName()}";
+                $path = $request->file('file')->storeAs('news', $name, 'public');
                 $mediadata = new News();
-                $mediadata->image = $path;
-                $mediadata->heading=$request->heading;
-                $mediadata->alt_tag=$request->alt_tag;
-                $mediadata->cdn=$request->cdn;
+                $mediadata->file = $path;
+                $mediadata->heading = $request->heading;
+                $mediadata->alt_tag = $request->alt_tag;
+                $mediadata->cdn = $request->cdn;
+                $mediadata->type = $request->type;
                 
                 if($mediadata->save()){              
                     return response()->json([
@@ -164,15 +178,43 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
-            'heading' => ['required',Rule::unique('news')->ignore($request->id)]
-        ], [
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'heading.required' => 'The heading field is required.',
+
+        // $validator = Validator::make($request->all(), [
+        //     'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+        //     'heading' => ['required',Rule::unique('news')->ignore($request->id)]
+        // ], [
+        //     'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
+        //     'image.max' => 'The image may not be greater than 2048 kilobytes.',
+        //     'heading.required' => 'The heading field is required.',
+        //     'heading.unique' => 'heading Already Exists.',
+        // ]);
+
+        $validator = Validator::make($request->all(),[
+            'file' => ['nullable|required',
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->type === 'docs') {
+                        if ($value->getClientOriginalExtension() !== "pdf") {
+                            $fail('Only PDF files are allowed.');
+                        }
+                    } else {
+                        if (!in_array($value->getClientOriginalExtension(), ['png', 'jpg', 'jpeg', 'webp'])) {
+                            $fail('Invalid file type. Only allowed: png, jpg, jpeg, webp.');
+                        }
+                    }
+                },
+                'max:2048'],
+           
+            'type' => 'required|in:logo,docs,news',
+            'heading' => 'required|unique:news,heading',
+        ],
+        [
+            'file.required' => 'This field is required.',
+            'file.mimes' => 'Invalid file type only aloowed (png,jpg,jpeg,webp)',
+            'heading.required' => 'This heading field is required.',
             'heading.unique' => 'heading Already Exists.',
+            'type.in' => 'Invalid type selected.'
         ]);
+
         if($validator->fails()){
             return response()->json([
                 'status'=>true,
@@ -205,6 +247,7 @@ class NewsController extends Controller
         $getrecord->heading = $request->heading;
         $getrecord->alt_tag = $request->alt_tag;
         $getrecord->cdn = $request->cdn;
+        $getrecord->type = $request->type;
 
         if($getrecord->save()){
             return response()->json([

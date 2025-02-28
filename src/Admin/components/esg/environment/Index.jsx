@@ -104,10 +104,11 @@ const EsgEnvironment = () => {
     const formData = new FormData();
 
     formData.append("image", fileRef.current.files[0]);
-    // formData.append("name", titleRef.current.value);
+    formData.append("name", titleRef.current.value);
+    formData.append("type", 'environment');
     formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/education", "POST", formData);
+    var response = await Request("admin/esg-data-list", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -126,14 +127,14 @@ const EsgEnvironment = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/education/" + id, "GET");
+    var response = await Request("admin/esg-data-list/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
       if (response.data.image) {
         setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
       }
-      // titleRef.current.value = response.data.name;
+      titleRef.current.value = response.data.name;
       descriptionRef.current.value = response.data.short_description;
     }
     setIsSitebarFormButtonLoading(false);
@@ -146,7 +147,7 @@ const EsgEnvironment = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/education/" + id, "DELETE");
+    var response = await Request("admin/esg-data-list/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -160,11 +161,11 @@ const EsgEnvironment = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/education?search=" + search + "&page=" + currentPage,
+      "admin/esg-data-list/environment/type?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
-      setData(response.data.data);
+      setData(response.data);
       // setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
@@ -178,11 +179,11 @@ const EsgEnvironment = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    // formData.append("name", titleRef.current.value);
+    formData.append("name", titleRef.current.value);
     formData.append("short_description", descriptionRef.current.value);
 
     var response = await Request(
-      "admin/education/" + editId + "/update",
+      "admin/esg-data-list/" + editId + "/update",
       "POST",
       formData
     );
@@ -237,7 +238,7 @@ const EsgEnvironment = () => {
               <th className="border border-gray-300 p-2 text-left">
                 Thumbnail
               </th>
-              {/* <th className="border border-gray-300 p-2 text-left">Title</th> */}
+              <th className="border border-gray-300 p-2 text-left">Title</th>
               <th className="border border-gray-300 p-2 text-left">
                 Description
               </th>
@@ -266,7 +267,7 @@ const EsgEnvironment = () => {
                           alt={item.name}
                         />
                       </td>
-                      {/* <td className="py-2 px-4">{item.name}</td> */}
+                      <td className="py-2 px-4">{item.name}</td>
                       <td className="py-2 px-4">{item.short_description}</td>
                       <td className="py-2 px-4 ">
                         <button
@@ -318,13 +319,12 @@ const EsgEnvironment = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Thumbnail*
+                    Select Image*
                   </label>
                   <input
                     ref={fileRef}
                     className="border rounded px-3 py-2 w-full"
                     type="file"
-                    placeholder="Enter Title"
                   />
                   {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
                   {errors.image && (
@@ -332,7 +332,7 @@ const EsgEnvironment = () => {
                   )}
                 </div>
 
-                {/* <div className="mb-4">
+                <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
                     Title*
                   </label>
@@ -347,7 +347,7 @@ const EsgEnvironment = () => {
                       {errors.name && "The Title field is required"}
                     </span>
                   )}
-                </div> */}
+                </div>
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">

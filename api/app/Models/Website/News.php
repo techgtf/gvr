@@ -11,7 +11,7 @@ class News extends Model
     use HasFactory;
     protected $table="news";
    
-    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['updated_at', 'deleted_at'];
  
 
     

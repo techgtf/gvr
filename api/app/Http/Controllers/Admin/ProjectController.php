@@ -232,7 +232,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-   
+
         $validator = Validator::make($request->all(), 
         [
             'categorie_id' => 'required|exists:categories,id',
@@ -252,7 +252,7 @@ class ProjectController extends Controller
             ],
 
             // 'ivr_no' => 'required|integer',
-            'project_status' => 'required|integer',            
+            // 'project_status' => 'required|integer',            
         ],
             [
                 'categorie_id.required' => 'This field is required.',
@@ -300,7 +300,7 @@ class ProjectController extends Controller
 
         if($request->hasFile('image')){
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('feature-image', $name, 'public');
+            $path = $request->file('image')->storeAs('project/feature-image', $name, 'public');
             $saverecord->feature_image = $path;
         }
 
@@ -309,9 +309,14 @@ class ProjectController extends Controller
             $path = $request->file('logo')->storeAs('project-logo', $name, 'public');
             dltSingleImgFile($saverecord->logo);
             $saverecord->logo=$path;
-
         }
-    
+
+        if($request->hasFile('thumbnail')){
+            $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
+            $path = $request->file('thumbnail')->storeAs('project/feature-thumbnail', $name, 'public');
+            dltSingleImgFile($saverecord->thumbnail);
+            $saverecord->thumbnail = $path;
+        }
 
         if($request->hasFile('brochure')){
             $name = now()->timestamp.".{$request->brochure->getClientOriginalName()}";
@@ -346,13 +351,7 @@ class ProjectController extends Controller
             if($request->footer_data){
                 $saverecord->footer_data=$request->footer_data;
             }
-   
-            
-
-        
-
-
-
+    
         $saverecord->short_description=$request->short_description;
         $saverecord->sub_typologie_id=$request->sub_typologie_id;
         $saverecord->whatsapp_no=$request->whatsapp_no;

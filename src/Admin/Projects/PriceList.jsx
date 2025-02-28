@@ -160,13 +160,10 @@ const PriceList = React.memo(() => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
 
     const formData = new FormData();
     formData.append("sub_typology", sectionFormdata.sub_typology);
-    formData.append("type", sectionFormdata.type);
-    formData.append("carpet_area", sectionFormdata.carpet_area);
-    formData.append("balcony_area", sectionFormdata.balcony_area);
-    formData.append("super_area", sectionFormdata.super_area);
 
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
@@ -177,11 +174,9 @@ const PriceList = React.memo(() => {
     if (sectionFormdata.price) {
       formData.append("price", sectionFormdata.price);
     }
-    if (image.current.files[0]) {
-      formData.append("image", image.current.files[0]);
-    }
+
     var response = await Request(
-      "admin/projectdata/floor-plan/" + editId + "/update",
+      "admin/projectdata/price/" + editId + "/update",
       "POST",
       formData
     );
@@ -200,7 +195,7 @@ const PriceList = React.memo(() => {
     setShowAddSidebar(true);
 
     var response = await Request(
-      "admin/projectdata/floor-plan/" + id + "/edit",
+      "admin/projectdata/price/" + id + "/edit",
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -213,12 +208,7 @@ const PriceList = React.memo(() => {
         sub_typology: result.sub_typology,
         size: result.size,
         size_type: result.size_type,
-        image_preview: CONFIG.VITE_APP_STORAGE + result.image,
         price: result.price,
-        type:result.type,
-        carpet_area: result.carpet_area,
-        balcony_area: result.balcony_area,
-        super_area: result.super_area,
       });
 
       // setCheckedCategory(result.size_type);
@@ -227,8 +217,8 @@ const PriceList = React.memo(() => {
 
   const deleteHandler = async (id) => {
     var response = await Request(
-      "admin/projectdata/floor-plan/" + id + "/delete",
-      "POST"
+      "admin/projectdata/price/" + id,
+      "DELETE"
     );
     if (response.status && response.statusCode) {
       getlist();
@@ -410,6 +400,7 @@ const PriceList = React.memo(() => {
                         className="border rounded px-3 py-2 w-full"
                         name="size_type"
                         onChange={handleSectionChange}
+                        value={sectionFormdata.size_type}
                       >
                         <option value="">Select Type</option>
                         {sizeType.map((item, index) => (
