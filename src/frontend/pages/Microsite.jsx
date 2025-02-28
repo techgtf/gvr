@@ -9,8 +9,7 @@ import About from "../components/microsite/About";
 import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
 import HighlightsSpecifications from "../components/microsite/HighlightsSpecifications/HighlightsSpecifications";
-import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
-import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
+import Plans from "../components/microsite/Plans";
 
 
 function Microsite() {
@@ -24,6 +23,7 @@ function Microsite() {
   const [priceData, setPriceData] = useState(null);
   const [highlightsData, setHighlightsData] = useState(null);
   const [specificationsData, setSpecificationsData] = useState(null);
+  // const [masterPlanData, setMasterPlanData] = useState(null);
 
   useEffect(() => {
     axios.get(`${API_URL}project`)
@@ -73,8 +73,7 @@ function Microsite() {
 
   }, [sectionData, basicDetails?.id])
 
-  // console.log('highlightsData', highlightsData);
-  console.log('specificationsData', specificationsData);
+  // console.log('sectionData', sectionData);
 
 
 
@@ -137,6 +136,14 @@ function Microsite() {
                   specificationsData={specificationsData} // ***************** pending from backend *******************
                 />
               )
+            case "6":
+              return (
+                <Plans
+                  masterPlanData={sectionData[5]}
+                // unitData={unitData}
+                />
+              )
+
             default:
               return null;
           }
@@ -145,7 +152,6 @@ function Microsite() {
 
       {/*
 
-      <Plans masterPlanData={masterPlanData} unitData={unitData} />
 
       <LocationAdvantage
         locationImage={loaction}
