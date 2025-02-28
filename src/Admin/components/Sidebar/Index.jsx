@@ -477,6 +477,14 @@ const Sidebar = (props) => {
                   <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Blogs</span>
                 </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}media-centre`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Media Centre</span>
+                </NavLink>
               </>
             )}
 
