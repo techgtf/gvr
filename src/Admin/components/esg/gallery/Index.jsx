@@ -101,10 +101,10 @@ const EsgGallery = () => {
     const formData = new FormData();
 
     formData.append("image", fileRef.current.files[0]);
-    // formData.append("name", titleRef.current.value);
-    formData.append("short_description", descriptionRef.current.value);
+    formData.append("alt", altRef.current.value);
+    // formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/gallery/", "POST", formData);
+    var response = await Request("admin/gallery", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);

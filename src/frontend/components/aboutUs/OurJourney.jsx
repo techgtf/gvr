@@ -238,15 +238,15 @@ const projects = [
   },
 ];
 
-const OurJourney = () => {
+const OurJourney = ({ data: pageData }) => {
   const elementRef = useRef(null);
   const imgClusterRef = useRef(null);
-  const [data, setData,] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
     axios
-      .get(`${DATA_ASSET_URL}timeline`) 
+      .get(`${DATA_ASSET_URL}timeline`)
       .then((response) => {
         setData(response.data.data); // Set the blog data
         setLoading(false);
@@ -302,13 +302,13 @@ const OurJourney = () => {
     };
   }, [selectedProjectIndex]);
 
-
-  console.log(data,"datadatadatadata")
+  console.log(data, "datadatadatadata");
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
       <h3 className="sectionHeading text-center xl:text-left tracking-[5px] text-[black] midlandfontmedium">
-        OUR JOURNEY
+        {pageData.heading}
       </h3>
+
       <div className="flex justify-between items-center flex-wrap">
         {/* we have two design, i,e. we have 1 project and  other when we have multiple project*/}
         {/* {item.records.length === 1 ? ( */}

@@ -64,7 +64,7 @@ const Sections = React.memo((props)=>{
         if (e.target['image_alt']) {
             formData.append('image_alt', e.target['image_alt'].value);
         }
-        formData.append('description', content);
+        formData.append('description', content?.replace(/<[^>]+>/g, ""));
         var response=await Request(`admin/page/page-sections`,'POST',formData);
         if(response.status && response.statusCode === 200){
             getsectionHandler()
