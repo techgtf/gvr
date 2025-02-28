@@ -57,15 +57,17 @@ function Slider({ images = [] }) {
         modules={[Autoplay, Navigation]}
         className="mySwiper"
       >
-        {images.map((item, index) => (
-          <SwiperSlide key={index}>
-            <img
-              src={item.image}
-              alt={item.alt}
-              className="w-full md:!w-[350px] !h-[250px] !object-cover cursor-pointer"
-              onClick={() => openLightbox(index)}
-            />
-          </SwiperSlide>
+        {images && images.amenities_galleries.map((item, index) => (
+          <>
+            <SwiperSlide key={item.id}>
+              <img
+                src={item.image}
+                alt={`${item.alt_text} img`}
+                className="w-full md:!w-[350px] !h-[250px] !object-cover cursor-pointer"
+                onClick={() => openLightbox(index)}
+              />
+            </SwiperSlide>
+          </>
         ))}
       </Swiper>
 
@@ -74,7 +76,7 @@ function Slider({ images = [] }) {
           open={open}
           close={() => setOpen(false)}
           index={currentIndex}
-          slides={images.map((item) => ({ src: item.image, title: item.alt }))}
+          slides={images.amenities_galleries.map((item) => ({ src: item.image, title: item.alt }))}
           plugins={[Fullscreen, Zoom]}
         />
       )}
