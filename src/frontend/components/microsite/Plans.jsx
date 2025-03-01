@@ -13,12 +13,16 @@ import SlideIn from "../Animations/SlideIn";
 
 function Plans({ masterPlanData, unitData }) {
   const [open, setOpen] = useState(false);
-  const [activeUnit, setActiveUnit] = useState(unitData && Object.keys(unitData)[0]);
+  const [activeUnit, setActiveUnit] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
 
   const sectionRef = useRef(null);
   const location = useLocation();
+
+  useEffect(()=>{
+    setActiveUnit(unitData && Object.keys(unitData)[0])
+  },[unitData])
 
   useEffect(() => {
     let ctx = gsap.context(() => {

@@ -10,6 +10,7 @@ import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
 import HighlightsSpecifications from "../components/microsite/HighlightsSpecifications/HighlightsSpecifications";
 import Plans from "../components/microsite/Plans";
+import LocationAdvantage from "../components/microsite/LocationAdvantage";
 
 
 function Microsite() {
@@ -76,7 +77,7 @@ function Microsite() {
 
   }, [sectionData, basicDetails?.id])
 
-  // console.log('unitData', unitData);
+  // console.log('specificationsData', specificationsData);
 
 
   if (loading) return <div>Loading...</div>;
@@ -135,7 +136,7 @@ function Microsite() {
               return (
                 <HighlightsSpecifications
                   highlightsData={highlightsData}
-                  specificationsData={specificationsData} // ***************** pending from backend *******************
+                  specificationsData={specificationsData}
                 />
               )
             case "5":  // ****************   section_type: '6', heading: 'Master Plan', || section_type: '7', heading: 'Floor Plans',
@@ -146,6 +147,9 @@ function Microsite() {
                 />
               )
             case "6": //  section_type: '8', heading: 'Location Advantage',
+              return (
+                <LocationAdvantage />
+              )
             case "7":  // section_type: '9', heading: 'Project Gallery',
 
             default:
@@ -155,8 +159,6 @@ function Microsite() {
 
 
       {/*
-
-
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
