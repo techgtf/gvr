@@ -117,25 +117,25 @@ function sizeType($value = '')
         
 
         $result=$number;
-        if($from==1 && $to==2){
-            $result=($number*0.092903); // conversion square feet to square meter
+        // if($from==1 && $to==2){
+        //     $result=($number*0.092903); // conversion square feet to square meter
 
-        }elseif($from==2 && $to==1){
-            $result=($number/0.092903); // conversion square meter  to square feet
+        // }elseif($from==2 && $to==1){
+        //     $result=($number/0.092903); // conversion square meter  to square feet
 
-        }elseif($from==3 && $to==2){
-            $result=($number*0.83612); // conversion square yard to square meter
+        // }elseif($from==3 && $to==2){
+        //     $result=($number*0.83612); // conversion square yard to square meter
 
-        }elseif($from==2 && $to==3){
-            $result=($number/0.83612); // conversion square meter to square yard
+        // }elseif($from==2 && $to==3){
+        //     $result=($number/0.83612); // conversion square meter to square yard
 
-        }elseif($from==3 && $to==1){
-            $result=($number*9); // square yard to square feet
+        // }elseif($from==3 && $to==1){
+        //     $result=($number*9); // square yard to square feet
 
-        }elseif($from==1 && $to==3){
-            $result=($number/9); // square feet to  square yard 
+        // }elseif($from==1 && $to==3){
+        //     $result=($number/9); // square feet to  square yard 
             
-        }
+        // }
         return $result;
         
     }

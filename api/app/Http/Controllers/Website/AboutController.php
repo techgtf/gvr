@@ -29,7 +29,7 @@ class AboutController extends Controller
                     'year' => $year,
                     'image' => TimelineImage::where('year', $year)->value('image'), // Get first timeline image
                     'records' => Timeline::where('year', $year)->get(['id', 'title', 'year', 'location', 'status', 'created_at']),
-                    'images' => TimelineImage::where('year', $year)->pluck('image')->toArray(),
+                    'images' => TimelineImage::where('year', $year)->get(['image', 'alt'])->toArray(),
                 ];
             });
 

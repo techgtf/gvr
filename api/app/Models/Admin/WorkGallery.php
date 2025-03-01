@@ -5,10 +5,10 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TimelineImage extends Model
+class WorkGallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year', 'image', 'alt'];
+    protected $fillable = ['image', 'alt_tag', 'cdn', 'type'];
     
 }

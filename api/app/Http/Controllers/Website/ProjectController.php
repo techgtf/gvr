@@ -14,8 +14,10 @@ use App\Models\Website\Project\ProjectSection;
 use App\Models\Website\Project\ProjectHighlight;
 use App\Models\Website\Project\ProjectGallery;
 use App\Models\Website\Project\ProjectSpecification;
+use App\Models\Website\Project\ProjectSpecificationList;
 use App\Models\Website\Projects;
 use Illuminate\Http\Request;
+use Livewire\ComponentConcerns\RendersLivewireComponents;
 
 class ProjectController extends Controller
 {
@@ -239,29 +241,45 @@ class ProjectController extends Controller
 
     }
 
-    public function Amenities($project_id){
+    // public function Amenities($project_id){
     
-        $floorplans=ProjectAmenities::with('Amenities')->where('project_id',$project_id)->get();
-        return response()->json([
-            'status'=>true,
-            'statusCode'=>200,
-            'message'=>"Success ",
-            'data'=>$floorplans
-        ]);
+    //     $floorplans = ProjectAmenities::with('Amenities')->where('project_id',$project_id)->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'statusCode'=>200,
+    //         'message'=>"Success ",
+    //         'data'=>$floorplans
+    //     ]);
 
-    }
+    // }
 
-    public function AmenitiesGalleries($project_id){
+    // public function AmenitiesGalleries($project_id){
     
-        $floorplans=ProjectAmenitiesGallery::where('project_id',$project_id)->get();
-        return response()->json([
-            'status'=>true,
-            'statusCode'=>200,
-            'message'=>"Success ",
-            'data'=>$floorplans
-        ]);
+    //     $floorplans=ProjectAmenitiesGallery::where('project_id',$project_id)->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'statusCode'=>200,
+    //         'message'=>"Success ",
+    //         'data'=>$floorplans
+    //     ]);
 
+    // }
+
+    public function Amenities($project_id) {
+        $amenities = ProjectAmenities::with('Amenities')->where('project_id', $project_id)->get();
+        $amenitiesGalleries = ProjectAmenitiesGallery::where('project_id', $project_id)->get();
+    
+        return response()->json([
+            'status' => true,
+            'statusCode' => 200,
+            'message' => "Success",
+            'data' => [
+                'amenities_icons' => $amenities,
+                'amenities_galleries' => $amenitiesGalleries
+            ]
+        ]);
     }
+    
 
     public function getFaq($project_id){
     
@@ -292,12 +310,13 @@ class ProjectController extends Controller
     
 
     public function projectSections($project_id){
-        $projectgallery=ProjectSection::where('project_id',$project_id)->orderBy('seq','ASC')->get();
+        
+        $projectSection = ProjectSection::where('project_id',$project_id)->orderBy('seq','ASC')->get();
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
             'message'=>"Success ",
-            'data'=>$projectgallery
+            'data'=>$projectSection
         ]);
 
     }
@@ -323,8 +342,12 @@ class ProjectController extends Controller
 
     public function Specifications ($project_id){
 
-        $specifications = ProjectSpecification::with('ProjectSpecificationList')->where('project_id',$project_id)->get();
-
+        $specifications = ProjectSpecification::with('ProjectSpecificationList')
+        ->whereHas('ProjectSpecificationList', function ($query) use ($project_id) {
+            $query->where('project_id', $project_id);
+        })
+        ->get();
+    
         if($specifications){
             return response()->json([
                 'status'=>true,
@@ -342,9 +365,30 @@ class ProjectController extends Controller
     }
 
 
-    public function ProjectImages() {
-        dd('get all project -images ');
-    }
+    public function ProjectImages(Request $request) {
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1);
 
+        try {
+
+            $projectgallery=ProjectGallery::paginate($perPage, ['*'], 'page', $page);
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>200,
+                'message'=>"Success ",
+                'data'=>$projectgallery
+            ]);
+
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => 'Something went wrong!',
+                'errors' => $th->getMessage(),
+            ]);
+            
+        }
+    }
 
 }

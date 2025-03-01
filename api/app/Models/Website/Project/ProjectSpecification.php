@@ -17,7 +17,7 @@ class ProjectSpecification extends Model
    
     public function ProjectSpecificationList()
     {
-        return $this->hasMany(ProjectSpecificationList::class, 'spec_id', 'id');
+        return $this->hasMany(ProjectSpecificationList::class,  'spec_id', 'id');
     }
     
 }

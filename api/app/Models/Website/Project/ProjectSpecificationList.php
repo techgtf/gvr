@@ -16,7 +16,7 @@ class ProjectSpecificationList extends Model
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
 
-    public function getImageAttribute()
+    public function getIconsAttribute()
     {
         if(!empty($this->attributes['icons'])){
             if(File::exists(public_path('storage/'.$this->attributes['icons']))){
