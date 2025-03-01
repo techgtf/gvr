@@ -1,21 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./projects.css"
 import AnimatedHeading from '../Animations/AnimatedHeading'
 import { Link } from 'react-router-dom'
 import * as CONFIG from '../../../../config';
 import { useImageReveal } from '../useImageReveal';
+import Loader from '../../../common/Loader/loader';
+import useFetchData from '../../apiHooks/useFetchData';
 
 
-export default function Projects() {
+export default function Projects({heading}) {
+    const [data, setData] = useState(null);
 
 
     const animationConfig = { // passing animation as prop for WaterMarkHeading
         // from: { y: 100, opacity: 0 }, to: { y: 0, opacity: 1, duration: 1 },
         from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1, duration: 1 },
     };
-
-
     useImageReveal(".reveal")
+
+    // calling api
+
+    const { data: categoryData, loading: categoryLoading, error: categoryError } = useFetchData("getCategory");
+
+
+    useState(()=>{
+        setData(categoryData)
+    }, [categoryData])
+
+
+    console.log('categoryData',data);
+    // Handle Loading and Errors
+    if (categoryLoading) return <Loader />;
+    if (categoryError) return <p className="text-red-500">Error while loading Gallery: {categoryError}</p>;
 
     const projectData = [
         {
@@ -43,7 +59,7 @@ export default function Projects() {
             <AnimatedHeading
                 // textWaterMark={"Explore Properties"}
                 // sectionHeading={"Spaces Crafted with Value and Trust"}
-                sectionHeading={"EXplore Properties"}
+                sectionHeading={heading}
                 animationConfig={animationConfig}
                 // lineLeft={false}
                 // lineRight={false}

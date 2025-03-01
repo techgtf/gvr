@@ -8,8 +8,36 @@ const MediaCoverage = lazy(() => import('../components/MediaCoverage/MediaCovera
 const BlogSection = lazy(() => import('../components/BlogSection/BlogSection'))
 import { BASE_ROOT } from '../../../config'
 import { Helmet } from 'react-helmet'
+import useFetchData from '../apiHooks/useFetchData'
+import Loader from '../../common/Loader/loader'
 
 export default function Home() {
+    const { data: pageData, loading: pageLoading, error: pageError } = useFetchData("page-sections", "1");
+
+  // Handle Loading and Errors
+  if (pageLoading) return <Loader />;
+  if (pageError)
+    return <p className="text-red-500">Error loading Banner: {pageError}</p>;
+
+  // 🔹 Extract Banner Data Safely
+  const extractBannerData = (pageData) => {
+    // debugger
+    if (!pageData) return { homeAbout: null, ourProjects: null, ourVerticals:null, homeTestimonials:null,homeMedia :null, homeBlogs:null };
+
+    // const pageData = Object.values(pageData)?.[0] || {};
+
+    return {
+      homeAbout: pageData['home-about'],
+      ourProjects: pageData['our-projects'],
+      ourVerticals: pageData['our-verticals'],
+      homeTestimonials: pageData['home-testimonial'],
+      homeMedia: pageData['home-media'],
+      homeBlogs: pageData['home-blogs'],
+    };
+  };
+
+  const {homeAbout, ourProjects, ourVerticals, homeTestimonials, homeMedia, homeBlogs} = extractBannerData(pageData);
+
 
     return (
         <>
@@ -89,17 +117,27 @@ export default function Home() {
                 <Hero />
 
                 <OverviewSection
-                    heading={' Creating A Legacy Of True Abundance'}
-                    paragraph={'At Great Value Realty, we create more than just homes—we cultivate trust, deliver unmatched value, and craft lasting experiences. Since our inception in 1970, the Great Value Group has transformed industries, managing assets exceeding ₹1,300 crores. Guided by a vision rooted in innovation, integrity, and ambition, we are dedicated to building timeless excellence, enriching lives, and shaping a brighter future.'}
+                    heading={homeAbout.heading}
+                    paragraph={homeAbout.sub_heading}
                     showKnowMore={true}
                     pageLink={`${BASE_ROOT}about-us`}
                     tag="h1"
                 />
-                <Projects />
-                <Verticals />
-                <Testimonial />
-                <MediaCoverage />
-                <BlogSection />
+                <Projects
+                    heading={ourProjects.heading}
+                />
+                <Verticals 
+                    heading={ourVerticals.heading}
+                />
+                <Testimonial 
+                    heading={homeTestimonials.heading}
+                />
+                <MediaCoverage
+                    heading={homeMedia.heading}
+                />
+                <BlogSection
+                    heading={homeBlogs.heading}
+                />
             </div>
         </>
     )

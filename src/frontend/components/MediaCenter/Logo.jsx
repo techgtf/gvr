@@ -2,6 +2,7 @@ import React from "react";
 import * as CONFIG from "../../../../config";
 import Loader from "../../../common/Loader/loader";
 import useFetchData from "../../apiHooks/useFetchData";
+import { Link } from "react-router-dom";
 
 const MediaCentreLogo = () => {
 
@@ -13,6 +14,24 @@ const MediaCentreLogo = () => {
   // Handle Loading and Errors
   if (logoLoading) return <Loader />;
   if (logoError) return <p className="text-red-500">Error while loading Gallery: {logoError}</p>;
+
+  const handleDownload = async(item)=>{
+    try{
+      const fileUrl =  `${CONFIG.VITE_APP_STORAGE}${item.file}`;
+      const response = await fetch(fileUrl, {mode:"no-cors"})
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `logo.${item?.heading?.toLowerCase()}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }  catch(err){
+      alert("Download Failed:" ,err);
+    }
+  }
 
 
   return (
@@ -34,13 +53,14 @@ const MediaCentreLogo = () => {
               {logoData && logoData.map((item, index)=>(
                 <>
                   <span>
-                    <a
-                      href={`${CONFIG.VITE_APP_STORAGE}${item.file}`}
-                      download={`logo.${item?.heading?.toLowerCase()}`}
+                    <Link
+                      onClick={()=>handleDownload(item)}
+                      // to={`${CONFIG.VITE_APP_STORAGE}${item.file}`}
+                      // download={item.heading && `logo.${item?.heading?.toLowerCase()}`}
                       className="text-[16px]"
                     >
                       {item.heading}
-                    </a>
+                    </Link>
                   </span>{" "}
                   |
                 </>
