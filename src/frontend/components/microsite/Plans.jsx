@@ -13,12 +13,16 @@ import SlideIn from "../Animations/SlideIn";
 
 function Plans({ masterPlanData, unitData }) {
   const [open, setOpen] = useState(false);
-  const [activeUnit, setActiveUnit] = useState(unitData && Object.keys(unitData)[0]);
+  const [activeUnit, setActiveUnit] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
 
   const sectionRef = useRef(null);
   const location = useLocation();
+
+  useEffect(()=>{
+    setActiveUnit(unitData && Object.keys(unitData)[0])
+  },[unitData])
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -67,14 +71,14 @@ function Plans({ masterPlanData, unitData }) {
   return (
     <section ref={sectionRef} className="plans bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14 relative" id="plan">
       <div className="grid lg:grid-cols-2 grid-cols-1">
-        {masterPlanData?.length > 0 && (
+        {masterPlanData && (
           <div className="master_plan">
             <FadeIn duration={2} delay={0.5}>
-              <CommonHeading HeadingText="Master Plan" />
+              <CommonHeading HeadingText={masterPlanData.heading} />
             </FadeIn>
             <div className="master_plan_img bg-white p-2 md:p-8 flex justify-center w-full md:w-[65%] mt-8 "
               onClick={() => openLightbox(0, true)}>
-              <img src={masterPlanData[0]?.image} alt={masterPlanData[0]?.alt} className="cursor-pointer w-full" />
+              <img src={masterPlanData?.image} alt={masterPlanData?.alt} className="cursor-pointer w-full" />
             </div>
           </div>
         )}
@@ -99,9 +103,8 @@ function Plans({ masterPlanData, unitData }) {
                 Object.keys(unitData).map((unit) => (
                   <button
                     key={unit}
-                    className={`px-6 py-1 text-[14px] ${
-                      activeUnit === unit ? "bg-[#33638B] text-white" : "bg-transparent border border-black"
-                    }`}
+                    className={`px-6 py-1 text-[14px] ${activeUnit === unit ? "bg-[#33638B] text-white" : "bg-transparent border border-black"
+                      }`}
                     onClick={() => handleUnitChange(unit)}
                   >
                     {unit.toUpperCase()}
@@ -112,33 +115,33 @@ function Plans({ masterPlanData, unitData }) {
           </div>
 
           {!isUnitDataEmpty && (
-            
+
             <div className="slider">
-              
+
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
                   <SlideIn key={index} duration={2} delay={0.5}>
-                  <div  className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
-                    <img src={plan.image} alt={`plan ${index + 1}`}
-                      className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
-                      onClick={() => openLightbox(index)} />
-                    <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
-                      <h5 className="font-semibold text-[16px] mb-4">{plan.type}</h5>
-                      <p>Carpet Area: {plan.carpetArea}</p>
-                      <p>Balcony Area: {plan.balconyArea}</p>
-                      <p>Total Super Area: {plan.totalArea}</p>
-                      <p>Built Up Area: {plan.buildArea}</p>
+                    <div className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
+                      <img src={plan.image} alt={`plan ${index + 1}`}
+                        className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
+                        onClick={() => openLightbox(index)} />
+                      <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
+                        <h5 className="font-semibold text-[16px] mb-4">Type {index+1} : {plan.more_typology}</h5>
+                        <p>Carpet Area: {plan.carpet_area} Sq.Ft</p>
+                        <p>Balcony Area: {plan.balcony_area} Sq.Ft</p>
+                        <p>Total Super Area: {plan.totalArea} Sq.Ft</p>
+                        <p>Built Up Area: {plan.buildArea} Sq.Ft</p>
+                      </div>
                     </div>
-                  </div>
                   </SlideIn>
                 ))
               ) : (
                 <div className="flex justify-center">
                   <SlideIn duration={2} delay={0.5}>
-                  <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" /></SlideIn>
+                    <img className="mt-5 lg:mt-10" src="assets/frontend/images/microsite/vilasa/plans/alt.webp" alt="Alt Image" /></SlideIn>
                 </div>
               )}
-            </div>           
+            </div>
           )}
         </div>
       </div>
@@ -148,12 +151,18 @@ function Plans({ masterPlanData, unitData }) {
           open={open}
           close={closeLightbox}
           index={currentIndex}
-          slides={(isMasterPlanOpen ? masterPlanData : unitData[activeUnit])?.map((item) => ({
+          slides={(isMasterPlanOpen
+            ? [masterPlanData] // Wrap masterPlanData in an array since it's a single object
+            : Array.isArray(unitData[activeUnit]) ? unitData[activeUnit] : [] // Ensure unitData[activeUnit] is an array
+          ).map((item) => ({
             src: item.image,
             title: item.type || item.alt,
             description: "Click to open in full view",
           }))}
-          thumbs={(isMasterPlanOpen ? masterPlanData : unitData[activeUnit])?.map((item) => ({
+          thumbs={(isMasterPlanOpen
+            ? [masterPlanData] // Wrap masterPlanData in an array
+            : Array.isArray(unitData[activeUnit]) ? unitData[activeUnit] : [] // Ensure it's an array
+          ).map((item) => ({
             src: item.image,
             title: item.type || item.alt,
           }))}
