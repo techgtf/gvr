@@ -119,6 +119,7 @@ class NewsController extends Controller
                 $mediadata->alt_tag = $request->alt_tag;
                 $mediadata->cdn = $request->cdn;
                 $mediadata->type = $request->type;
+                $mediadata->date = $request->date;
                 
                 if($mediadata->save()){              
                     return response()->json([
@@ -206,7 +207,8 @@ class NewsController extends Controller
             'type' => 'required|in:logo,docs,news',
             'heading' => [
                 'required',
-                Rule::unique('news')->whereNull('deleted_at'),
+                Rule::unique('news')->whereNull('deleted_at')
+                ->ignore($id),
             ],
         ],
         [
@@ -250,6 +252,7 @@ class NewsController extends Controller
         $getrecord->alt_tag = $request->alt_tag;
         $getrecord->cdn = $request->cdn;
         $getrecord->type = $request->type;
+        $getrecord->date = $request->date;
 
         if($getrecord->save()){
             return response()->json([

@@ -10,9 +10,15 @@ class WorkGallery extends Controller
 {
     public function index (Request $request)
     {   
+
+        $type = "";
+        if(!empty($request->type)){
+            $type = $request->type;
+        }
+
         $perPage = $request->input('per_page', 3);
         $page = $request->input('page', 1);
-        $record = WorkGalleryModel::paginate($perPage, ['*'], 'page', $page);
+        $record = WorkGalleryModel::where('type', $type)->paginate($perPage, ['*'], 'page', $page);
     
         return response()->json([
             'status' => true,
