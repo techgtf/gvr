@@ -26,13 +26,7 @@ const OurVerticals = () => {
             </h2>
             <p
               className="my-[1rem] text-justify xl:!mt-[2.7rem] common_pera">
-              GV Finance delivers tailored financial solutions that empower
-              businesses and individuals to optimize cash flow, secure
-              investments, and scale with confidence. From structured lending to
-              wealth management, we simplify finance, offering intelligent
-              strategies to drive financial stability and long-term success. Our
-              goal is to transform capital into confidence, enabling sustainable
-              growth.
+              Greatvalue Finance, operating under the brand Dhansamrishi, is a Non-Banking Financial Company (NBFC), empowers businesses with large-ticket enterprise financing designed for growth. By combining strategic capital solutions, tailored loan structures, and risk-optimized lending, we help enterprises scale with confidence.
             </p>
             {/* <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
@@ -40,24 +34,24 @@ const OurVerticals = () => {
               scrambled it to make a type specimen book.
             </p> */}
             <div>
-              <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
-                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
-                  5 CR
-                  <span className="block text-right xl:mr-[2.45rem] mr-[1.2rem] text-[10px] tracking-[0.5px]">
-                    Ownwards
-                  </span>
+              <div>
+                
+                <div className="flex justify-between items-center flex-wrap ">
+                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">Asset Under Management</span>
+                  500 CR
+                
                 </h3>
                 <div className="basis-[65%]">
                   <p className="common_pera text-justify">
-                    GV Finance delivers tailored financial solutions that
-                    empower businesses and individuals to optimize cash flow and
-                    secure investments.
+                  Our expertise lies in enterprise financing, structured lending, and financial stability, ensuring businesses have the capital they need to thrive.
                   </p>
                   {/* <p className="text-[12px]">
                     GV Finance delivers tailored financial solutions that
                     empower businesses and individuals to optimize cash flow,
                     secure investments.
                   </p> */}
+                </div>
                 </div>
               </div>
             </div>
@@ -94,12 +88,7 @@ const OurVerticals = () => {
               GV CAPITAL
             </h2>
             <p className="my-[1rem] text-justify !mt-[2.7rem] common_pera">
-              GV Capital fuels high-potential businesses with strategic
-              investments, empowering visionary entrepreneurs to scale and
-              innovate. Beyond funding, we provide deep industry insights,
-              mentorship, and long-term partnerships to drive sustainable
-              growth. We focus on businesses that create meaningful impact,
-              leveraging smart capital to unlock potential and shape the future.
+            Greatvalue Capital is dedicated to revitalizing distressed assets, turning financial setbacks into opportunities. Through strategic restructuring, risk mitigation, and value-driven asset management, we optimize returns for stakeholders and drive long-term growth.
             </p>
             {/* <p className="mb-[1rem] text-[14px]">
               Lorem Ipsum has been the industry's standard dummy text ever since
@@ -108,16 +97,14 @@ const OurVerticals = () => {
             </p> */}
             <div>
               <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
-                <h3 className="sectionHeading  flex flex-col justify-center border-opacity-[0.5] h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
-                  2 CR
-                  <span className="block xl:mr-[2.45rem] mr-[1.2rem] text-right text-[10px] tracking-[0.5px]">
-                    Ownwards
-                  </span>
+                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">Asset Under Management</span>
+                  2.5 CR
+                 
                 </h3>
                 <div className="basis-[65%]">
                   <p className="common_pera text-justify">
-                    GV Capital fuels high-potential businesses with strategic
-                    investments.
+                  We specialize in asset restructuring, financial recovery, and unlocking potential, ensuring every asset reaches its highest value.
                   </p>
                   {/* <p className="text-[12px]">
                     Empowering visionary entrepreneurs to scale and innovate.

@@ -38,7 +38,7 @@ const Aboutus = () => {
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading
             HeadingText={
-              "Great Value Industries: Shaping Excellence Across Industries – From Quality Packaging to Premium Living,"
+              "Great Value Realty: Shaping Excellence Across Industries – From Quality Packaging to Premium Living,"
             }
             HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
           />

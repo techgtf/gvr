@@ -66,23 +66,23 @@ function MediaCenter() {
                 showKnowMore={false}
             />
 
-            <section className="download relative px-5 md:px-12 py-5 md:py-14">
+            <section className="download relative px-5 md:px-12 pb-5 md:pb-14">
                 <div className="grid grid-cols-12 gap-3 ">
                     {/* Left Section */}
-                    <div className="headline col-span-12 md:col-span-3">
+                    <div className="headline col-span-12 md:col-span-6">
                         <div className="topLine uppercase tracking-[3px] py-3 lg:mt-8 font-[300]">document</div>
                         <FadeIn duration={2} delay={0.5}>
                             <CommonHeading HeadingText="PRESS CENTRE" />
                         </FadeIn>
                     </div>
                     {/* border-[#0061ab63]  border*/}
-                    <div className="greatValue flex items-center col-span-12 md:col-span-4">
-                        <div className="box  bg-[#EFF5FA]  p-[1.5rem] flex flex-col  ">
+                    <div className="greatValue flex items-center col-span-12 md:col-span-6">
+                        <div className="box  bg-[#EFF5FA] w-full  p-[1.5rem] flex flex-col  ">
                             <h3 className="uppercase text-[17px] tracking-[1px] ">Download Great Value Logo</h3>
                             <div className="logo items-center pt-5 mt-10 flex justify-between">
                                 <img
                                     src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`}
-                                    alt="Great Value Realty Logo" className='w-[40%]'
+                                    alt="Great Value Realty Logo" className='w-[30%]'
                                 />
 
                                 <ul>
@@ -111,8 +111,7 @@ function MediaCenter() {
                     </div>
 
                     {/* Right Section */}
-                    <div className="download_sec px-8  col-span-12 md:col-span-5">
-                        {/* Download Logo Types */}
+                    {/* <div className="download_sec px-8  col-span-12 md:col-span-5">
 
                         <div className="logo_types  w-full flex justify-center">
                             <ul className=' w-full'>
@@ -136,7 +135,7 @@ function MediaCenter() {
                             </ul>
                         </div>
 
-                    </div>
+                    </div> */}
                 </div>
             </section>
 

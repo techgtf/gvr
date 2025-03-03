@@ -20,14 +20,14 @@ export default function Verticals() {
             title: 'GV Capital',
             imgSrc: 'capital.webp',
             alt: "Gread Value Captial",
-            description: 'GV Capital is a dedicated Asset Reconstruction Fund committed to revitalizing distressed assets and optimizing returns for our stakeholders. With an Asset Under Management (AUM) base exceeding INR 2,500 crore, we focus on unlocking the latent potential of underperforming assets through rigorous due diligence, strategic restructuring, and active portfolio management.',
+            description: 'GV Capital transforms challenges into opportunities, revitalizing distressed assets with strategic precision. With over INR 2,500 crore in assets under management, we specialize in reviving underperforming investments, mitigating risks, and enhancing stakeholder value. Our focus on strategic restructuring and data-driven insights turns financial obstacles into pathways for growth.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
         {
             title: 'GV Finance',
             imgSrc: 'finance.webp',
             alt: "Gread Value Finance",
-            description: 'GV Finance, operating under the brand name Dhansamrishi, is a Non-Banking Financial Company (NBFC) committed to empowering businesses through accessible, large-ticket enterprise financing solutions. With an Asset Under Management (AUM) of over INR 500 crore +, we provide the capital and guidance that growing enterprises need to reach their full potential in today’s competitive marketplace.',
+            description: 'GV Finance, under the brand Dhansamrishi, is a Non-Banking Financial Company (NBFC) that acts as a financial catalyst, facilitating enterprise growth through significant financing solutions. With over INR 500 crore in assets under management, we deliver tailored capital solutions and strategic financial guidance.',
             link: `${CONFIG.BASE_ROOT}coming-soon`
         },
     ];
