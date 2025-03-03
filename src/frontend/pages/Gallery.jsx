@@ -24,29 +24,149 @@ import project18 from "/assets/frontend/images/microsite/vilasa/gallery/actual/a
 import project19 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery1.webp"
 import project20 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery2.webp"
 import project21 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery3.webp"
+import { Helmet } from 'react-helmet'
 
 function Gallery() {
 
-    const projectImagesData = [project1, project2, project3, project4, project5, project6, project7, project8, project9, project10, project11, project12, project13, project14, project15, project16, project17, project18, project19, project20, project21]
+  const projectImagesData = [
+    {
+      image: project1,
+      alt: 'Residential apartments',
+    },
+    {
+      image: project2,
+      alt: 'Luxury residential flats',
+    },
+    {
+      image: project3,
+      alt: 'Residential property',
+    },
+    {
+      image: project4,
+      alt: 'Apartment Buildings',
+    },
+    {
+      image: project5,
+      alt: 'Luxury residential complex',
+    },
+    {
+      image: project6,
+      alt: 'Modern residential apartments',
+    },
+    {
+      image: project7,
+      alt: 'High-rise apartment',
+    },
+    {
+      image: project8,
+      alt: 'Residential apartments',
+    },
+    {
+      image: project9,
+      alt: 'Clubhouse dining',
+    },
+    {
+      image: project10,
+      alt: 'Modern luxury living room',
+    },
+    {
+      image: project11,
+      alt: 'Modern luxury kitchen',
+    },
+    {
+      image: project12,
+      alt: 'Residential garden',
+    },
+    {
+      image: project13,
+      alt: 'Luxurious living room',
+    },
+    {
+      image: project14,
+      alt: 'Elegant luxury living room',
+    },
+    {
+      image: project15,
+      alt: 'Modern minimalist kitchen',
+    },
+    {
+      image: project16,
+      alt: 'Elegant living and dining area',
+    },
+    {
+      image: project17,
+      alt: 'Car parked',
+    },
+    {
+      image: project18,
+      alt: 'Spacious apartment balcony',
+    },
+    {
+      image: project19,
+      alt: 'High-rise apartment towers',
+    },
+    {
+      image: project20,
+      alt: 'Luxury residential complex',
+    },
+    {
+      image: project21,
+      alt: 'Luxury residential high-rise',
+    },
+
+  ]
   return (
     <>
+      <Helmet>
+        <title>Property Gallery | Explore Stunning Real Estate Images | Great Value Realty</title>
+        <meta name="keywords" content="real estate gallery, property images, luxury homes, Great Value Realty gallery, real estate photography, premium property visuals" />
+        <meta name="description" content="Browse the Great Value Realty gallery to explore stunning real estate images. Discover luxurious properties, modern interiors, and breathtaking landscapes that define premium living." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/gallery" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty| Explore Stunning Real Estate Images | Property Gallery" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty | Explore Stunning Real Estate Images | Property Gallery" />
+        <meta property="og:description" content="Browse the Great Value Realty gallery to explore stunning real estate images. Discover luxurious properties, modern interiors, and breathtaking landscapes that define premium living." />
+        <meta property="og:url" content="https://greatvaluerealty.com/gallery" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty | Explore Stunning Real Estate Images | Property Gallery" />
+        <meta name="twitter:description" content="Browse the Great Value Realty gallery to explore stunning real estate images. Discover luxurious properties, modern interiors, and breathtaking landscapes that define premium living." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
+
+      </Helmet>
       <HeroSectionAboutUs
-       img={
-        "assets/frontend/images/gallery/hero.webp"
-      }
+        img={
+          "assets/frontend/images/gallery/hero.webp"
+        }
       />
-       <div className="overview_section py-20">
+      <div className="overview_section py-20">
         <div className="headingWrap max-w-[85%] max-w-[100%] m-auto text-center">
           <CommonHeading
             HeadingText={
-              "Building a Future Where Sustainability, Community, and Integrity Thrive Introduction"
+              "Moments Captured, Excellence Framed, Legacies in Focus"
             }
           />
         </div>
-       
+
       </div>
 
-      <WorkCulture/>
+      <WorkCulture />
       <ProjectImages images={projectImagesData} />;
     </>
   )

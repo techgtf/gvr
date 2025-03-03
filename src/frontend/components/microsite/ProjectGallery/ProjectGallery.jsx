@@ -30,6 +30,9 @@ function ProjectGallery({ actualImages, renderImages }) {
 
   const imageData = activeTab === "actual" ? actualImages : renderImages;
 
+  console.log(actualImages);
+
+
   return (
     <section
       ref={projectRef}
@@ -44,23 +47,23 @@ function ProjectGallery({ actualImages, renderImages }) {
         </div>
 
         <div className="slider mt-10">
-        <SlideIn duration={2} delay={0.3}>
+          <SlideIn duration={2} delay={0.3}>
             {Array.from({ length: Math.ceil(imageData.length / 3) }).map((_, slideIndex) => (
-                <div key={slideIndex} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {imageData
-                    .slice(slideIndex * 3, slideIndex * 3 + 3)
-                    .map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`slide ${slideIndex * 3 + index + 1}`}
-                        className="w-[400px] h-[250px] my-3 object-cover"
-                        onClick={() => openLightbox(slideIndex * 4 + index)}
-                      />
-                    ))}
-                </div>
+              <div key={slideIndex} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {imageData
+                  .slice(slideIndex * 3, slideIndex * 3 + 3)
+                  .map((item, index) => (
+                    <img
+                      key={index}
+                      src={item.image}
+                      alt={item.alt}
+                      className="w-[400px] h-[250px] my-3 object-cover"
+                      onClick={() => openLightbox(slideIndex * 4 + index)}
+                    />
+                  ))}
+              </div>
             ))}
-            </SlideIn>
+          </SlideIn>
         </div>
 
         {open && (

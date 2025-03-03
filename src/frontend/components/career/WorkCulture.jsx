@@ -13,12 +13,12 @@ import workPlaceImg6 from "../../../../public/assets/frontend/images/career/work
 
 const WorkCulture = ({data}) => {
   const images = [
-    workPlaceImg1,
-    workPlaceImg2,
-    workPlaceImg3,
-    workPlaceImg4,
-    workPlaceImg5,
-    workPlaceImg6,
+    { img: workPlaceImg1, alt: 'Work culture' },
+    { img: workPlaceImg2, alt: 'Work culture' },
+    { img: workPlaceImg3, alt: 'Inclusive work culture' },
+    { img: workPlaceImg4, alt: 'Work culture' },
+    { img: workPlaceImg5, alt: 'Work culture' },
+    { img: workPlaceImg6, alt: 'Work culture' },
   ];
   const [imageScreen, setImageScreen] = useState(true);
   const containerRef = useRef(null);
@@ -66,19 +66,21 @@ const WorkCulture = ({data}) => {
           {imageScreen ? (
             <>
               <img
-                src={`${CONFIG.VITE_APP_STORAGE}${data.image}`}
-                alt={data.heading}
+                // src={`${CONFIG.VITE_APP_STORAGE}${data.image}`}
+                // alt={data.heading}
+                src={images[0].img}
+                alt={images[0].alt}
                 className="basis-[60%] h-[320px] object-cover"
               />
               <div className="xl:w-[38%] w-[100%] flex xl:flex-col xl:mt-0 mt-[20px] flex-row justify-between">
                 <img
-                  src={images[1]}
-                  alt="img-2"
+                  src={images[1].img}
+                  alt={images[1].alt}
                   className="h-[155px]  xl:w-[100%] w-[47%] object-cover"
                 />
                 <img
-                  src={images[2]}
-                  alt="img-3"
+                  src={images[2].img}
+                  alt={images[2].alt}
                   className="h-[155px] 2xl:h-[150px] w-[47%] xl:w-[100%] object-cover"
                 />
               </div>
@@ -86,19 +88,19 @@ const WorkCulture = ({data}) => {
           ) : (
             <>
               <img
-                src={images[3]}
-                alt="img-1"
+                src={images[3].img}
+                alt={images[3].alt}
                 className="basis-[60%] h-[320px] object-cover"
               />
               <div className="xl:w-[38%] w-[100%] flex xl:flex-col xl:mt-0 mt-[20px] flex-row justify-between">
                 <img
-                  src={images[4]}
-                  alt="img-2"
+                  src={images[4].img}
+                  alt={images[4].alt}
                   className="h-[155px]  xl:w-[100%] w-[47%] object-cover"
                 />
                 <img
-                  src={images[5]}
-                  alt="img-3"
+                  src={images[5].img}
+                  alt={images[5].alt}
                   className="h-[155px] 2xl:h-[150px] w-[47%] xl:w-[100%] object-cover"
                 />
               </div>

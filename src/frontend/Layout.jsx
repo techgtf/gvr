@@ -71,8 +71,9 @@ function Layout({ children }) {
   const showMicrositeMenu =
     location.pathname === `${BASE_ROOT}sharanam` ||
     location.pathname === `${BASE_ROOT}anandam` ||
-    location.pathname === `${BASE_ROOT}gv-homes` ||
-    location.pathname === `${BASE_ROOT}vilasa`;
+    location.pathname === `${BASE_ROOT}casa-uday` ||
+    location.pathname === `${BASE_ROOT}vilasa` ||
+    location.pathname === `${BASE_ROOT}sanctuary`
 
 
   return (

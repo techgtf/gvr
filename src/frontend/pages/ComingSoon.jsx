@@ -11,7 +11,7 @@ const ComingSoon = () => {
       header.classList.add('active_1')
     }
     let logo_img = document.getElementsByClassName("logo_img")[0]
-    logo_img.src = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`
+    logo_img.src = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`
   }, [])
 
   return (

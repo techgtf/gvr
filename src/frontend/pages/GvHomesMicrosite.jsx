@@ -79,18 +79,12 @@ function GvHomesMicrosite() {
             {
                 image: plan1,
                 type: "Ground Floor Civil Plan",
-                carpetArea: "---",
-                balconyArea: "---",
-                buildArea: "---",
-                totalArea: "1937 Sq. Ft.",
+                totalArea: "1937 Sq Ft",
             },
             {
                 image: plan2,
                 type: "First Floor Civil Plan",
-                carpetArea: "---",
-                balconyArea: "---",
-                buildArea: "---",
-                totalArea: "1937 Sq. Ft.",
+                totalArea: "1937 Sq Ft",
             },
         ],
 
@@ -99,11 +93,11 @@ function GvHomesMicrosite() {
     // Highlishts data 
 
     const highlightsData = [
-        "Situated in 31 Uday Park, New Delhi, offering unmatched connectivity and prestige.",
+        "Situated at 31 Uday Park, New Delhi, offering unmatched connectivity and prestige.",
         "Italian marble flooring, false ceilings, and designer finishes for a sophisticated ambiance.",
-        "Built with high-quality materials ensuring safety and durability.",
+        "Built with high-quality materials ensuring, safety and durability.",
         "Italian-style kitchen with stainless steel accessories, chimney, and geyser.",
-        "High-end fittings, toughened glass partitions, and geysers in all bathrooms.",
+        "High-end fittings, toughened glass partitions, and geysers are available in all bathrooms.",
     ];
 
     // Specifications data 
@@ -166,7 +160,7 @@ function GvHomesMicrosite() {
         {
             title: "Customization",
             items: [
-                { image: "assets/frontend/images/microsite/gv/specifications/customization.webp", description: "Buyer preferences accommodated with flexible designs." },
+                { image: "assets/frontend/images/microsite/gv/specifications/customization.webp", description: "Buyer preferences are accommodated with flexible designs." },
             ],
         },
     ];
@@ -183,6 +177,36 @@ function GvHomesMicrosite() {
         { image: "assets/frontend/images/microsite/gv/amentities/slider/slide7.webp", alt: "Basement Car Parking" },
         { image: "assets/frontend/images/microsite/gv/amentities/slider/slide8.webp", alt: "Servant Quarters" },
     ];
+
+
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'Luxurious living room'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Residential garden'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Modern luxury kitchen'
+        },
+        {
+            "image": gallery4,
+            "alt": 'Modern luxury living room'
+        },
+        {
+            "image": gallery5,
+            "alt": 'Elegant luxury living room'
+        },
+        {
+            "image": gallery6,
+            "alt": 'Modern minimalist kitchen'
+        },
+    ]
+
+
 
     return (
         <>
@@ -210,34 +234,35 @@ function GvHomesMicrosite() {
                 <meta property="og:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta property="og:url" content="https://greatvaluerealty.com/casa-uday" />
                 <meta property="og:site_name" content="Great Value Realty 31 Casa Uday Park" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Great Value Casa Uday | Modern Homes in Uday Park" />
                 <meta name="twitter:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
                 <script type="application/ld+json">
-                    {`{
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
-                    "alternateName": "Great Value Realty Casa Uday",
-                    "url": "https://greatvaluerealty.com/casa-uday",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }}`}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
+                        "alternateName": "Great Value Realty Casa Uday",
+                        "url": "https://greatvaluerealty.com/casa-uday",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
-                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342334/hero_wnps4k.webp"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342334/hero_wnps4k.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -254,6 +279,7 @@ function GvHomesMicrosite() {
                 headingText="ABOUT US"
                 descriptionText="CASA UDAY, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
+                alt={'Stylish living and dining area'}
             />
 
             <Amentities
@@ -307,7 +333,7 @@ function GvHomesMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+                actualImages={galleryData}
             />
         </>
     )

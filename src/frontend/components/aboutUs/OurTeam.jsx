@@ -156,7 +156,7 @@ const OurTeam = ({data}) => {
                   </div>
                   <div onClick={() => handleBio(index)}>
                     <img
-                      src="assets/frontend/images/icons/plus.png"
+                      src="assets/frontend/images/icons/plus.webp"
                       alt="plus-icon"
                       className="h-[14px w-[14px] inline-block"
                     />

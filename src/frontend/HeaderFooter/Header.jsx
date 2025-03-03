@@ -76,8 +76,8 @@ export default function Header() {
     { name: "ESG", link: "esg", hasMenus: false },
   ];
 
-  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.png`;
-  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`;
+  const whiteLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo.webp`;
+  const coloredLogo = `${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`;
 
 
   const logoOnePages = [
@@ -136,7 +136,7 @@ export default function Header() {
               className="focus-visible:outline-transparent focus-visible:ring-0"
             >
               <img
-                className="w-[50%] sm:w-[70%] cursor-pointer logo_img"
+                className="w-[50%] sm:w-[70%] h-auto max-w-[200px] sm:max-w-[300px] object-contain cursor-pointer logo_img"
                 src={getLogoSrc()}
                 alt="Great Value Realty Logo"
               />
@@ -218,7 +218,7 @@ export default function Header() {
 
                   <img
                     className={`cursor-pointer ${isFixed ? "whiteIcon" : "coloredIcon"
-                      } w-[80%]`}
+                      } w-[4  0px] h-[40px]`}
                     src={
                       isFixed || activeItem
                         ? `${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/menu1.webp`

@@ -84,6 +84,33 @@ function Microsite() {
   if (error) return <div>Something went wrong: {error.message}</div>;
   if (!basicDetails) return <PageNotFound />;
 
+  const galleryData = [
+    {
+      "image": gallery1,
+      "alt": 'Residential apartments'
+    },
+    {
+      "image": gallery2,
+      "alt": 'Luxury residential flats'
+    },
+    {
+      "image": gallery3,
+      "alt": 'Residential property'
+    },
+    {
+      "image": gallery4,
+      "alt": 'Sharanam apartments'
+    },
+    {
+      "image": gallery5,
+      "alt": 'Sharanam flats '
+    },
+    {
+      "image": gallery6,
+      "alt": 'Luxury apartments'
+    },
+  ]
+
   return (
     <>
       <HeroSection

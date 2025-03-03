@@ -66,8 +66,8 @@ function VilasaMicrosite() {
         "Customizable Plots –Design your dream villa or Stilt + 4 floors.",
         "Gated Community – Secure, well-planned, and exclusive living.",
         "Premium Amenities – Clubhouse, banquet, sports courts, and golf greens.",
-        "Great Connectivity – Near Aravalli Hills and Damdama Lake.",
-        "Scenic Surroundings –122-172 sq. yds.",
+        "Excellent Connectivity – Near Aravalli Hills and Damdama Lake.",
+        "Scenic Surroundings –122-172 sq yds",
     ];
 
     // Specifications data 
@@ -76,7 +76,7 @@ function VilasaMicrosite() {
         {
             title: "Plot Sizes",
             items: [
-                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.webp", description: "Ranging from 122 sq. yds. to 172 sq. yds" },
+                { image: "assets/frontend/images/microsite/vilasa/specifications/plot.webp", description: "Ranging from 122 sq yds to 172 sq yds" },
             ],
         },
         {
@@ -131,6 +131,22 @@ function VilasaMicrosite() {
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
 
+
+    const galleryData = [
+        {
+            "image": actual1,
+            "alt": 'Elegant living and dining area'
+        },
+        {
+            "image": actual2,
+            "alt": 'Car parked'
+        },
+        {
+            "image": actual3,
+            "alt": 'Spacious apartment balcony'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -156,36 +172,37 @@ function VilasaMicrosite() {
                 <meta property="og:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/vilasa" />
                 <meta property="og:site_name" content="Great Value Realty Vilasa" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna" />
                 <meta name="twitter:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
 
                 <script type="application/ld+json">
-                    {`{
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Vilasa Sector 6, Sohna",
-                    "alternateName": "Great Value Realty Vilasa",
-                    "url": "https://greatvaluerealty.com/vilasa",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint":[ {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                     }}`}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Vilasa Sector 6, Sohna",
+                        "alternateName": "Great Value Realty Vilasa",
+                        "url": "https://greatvaluerealty.com/vilasa",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-                desktopBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
-                mobileBg={'https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342283/hero_upnmgx.webp'}
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -252,7 +269,7 @@ function VilasaMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[actual1, actual2, actual3]}
+                actualImages={galleryData}
             />
         </>
     )

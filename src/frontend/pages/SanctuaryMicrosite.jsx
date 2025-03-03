@@ -65,7 +65,7 @@ function SanctuaryMicrosite() {
         "Luxury & Convenience – A perfect blend of modern living and comfort.",
         "Serene Environment – Designed for a peaceful and fulfilling lifestyle.",
         "Diverse Unit Options – Offers multiple configurations to suit different needs.",
-        "Premium Specifications – Master Bedroom Walls: Oil Bound Distemper for a refined finish.",
+        "Premium Specifications – The master bedroom walls feature an oil-bound distemper finish for a refined finish.",
     ];
 
     // Specifications data 
@@ -74,13 +74,13 @@ function SanctuaryMicrosite() {
         {
             title: "Master Bedroom-Walls",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Master Bedroom walls finished with Oil Bound Distemper for a smooth and elegant look." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Master bedroom walls are finished with oil-bound dust to give them a smooth and elegant look." },
             ],
         },
         {
             title: "Master Bedroom-Flooring",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/flooring.webp", description: "Master Bedroom flooring adorned with durable and stylish Vitrified Tiles." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/flooring.webp", description: "Master bedroom flooring is adorned with durable and stylish Vitrified tiles." },
             ],
         },
         {
@@ -98,7 +98,7 @@ function SanctuaryMicrosite() {
         {
             title: "Walls",
             items: [
-                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "Walls finished with Oil Bound Distemper for a smooth and refined look." },
+                { image: "assets/frontend/images/microsite/sanctuary/specifications/walls.webp", description: "The walls are finished with Oil Bound Distemper for a smooth and refined look." },
             ],
         },
         {
@@ -141,6 +141,21 @@ function SanctuaryMicrosite() {
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
 
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'High-rise apartment towers'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Luxury residential complex'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Luxury residential high-rise'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -166,30 +181,31 @@ function SanctuaryMicrosite() {
                 <meta property="og:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/sanctuary" />
                 <meta property="og:site_name" content="Great Value Realty Sanctuary Sector 105" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Sanctuary | Premium 2 & 3 BHK Homes in Gurugram" />
                 <meta name="twitter:description" content="Find your ideal home at Sanctuary by Great Value in Sector 105, Gurugram. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`{
+                    {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Organization",
                         "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
                         "alternateName": "Great Value Realty Sanctuary Gurugram",
                         "url": "https://greatvaluerealty.com/sanctuary",
-                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
-                        "contactPoint": {
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
                             "@type": "ContactPoint",
                             "telephone": "+91 7777079770",
                             "contactType": "customer service",
                             "areaServed": "IN",
                             "availableLanguage": "en"
-                    }}`}
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
@@ -209,7 +225,7 @@ function SanctuaryMicrosite() {
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
-                descriptionText="Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbour. An address seamlessly blends the contrasting elements of art, architecture, and nature."
+                descriptionText="Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbor. An address seamlessly blends the contrasting elements of art, architecture, and nature."
                 reverseWatermark={true}
             />
 
@@ -233,7 +249,7 @@ function SanctuaryMicrosite() {
                 locationImage={loaction}
                 driveData={[
                     { image: hospital, text: 'Chetanya Hospital', time: '1 min' },
-                    { image: road, text: 'Gurgaon, Old Railway Rd,', time: '1 min' },
+                    { image: road, text: 'Gurgaon, Old Railway Rd', time: '1 min' },
                     { image: bank, text: 'Bank Of Baroda,', time: '2 min' },
                     { image: school, text: 'Happy High School', time: '4 min' },
                     { image: buildings, text: 'WTC Plaza', time: '11 min' },
@@ -252,11 +268,11 @@ function SanctuaryMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="Sanctuary 105 is nestled in sector 105, gurugram, offering a perfect blend of urban convenience and natural tranquility."
+                description="Sanctuary 105 is nestled in Sector 105, Gurugram, offering a perfect blend of urban convenience and natural tranquility."
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3]}
+                actualImages={galleryData}
             />
         </>
     )

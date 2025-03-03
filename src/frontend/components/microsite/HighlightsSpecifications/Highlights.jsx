@@ -17,7 +17,7 @@ function Highlights({ title = "Highlights", highlightsData = [] }) {
   return (
     <div className="col-span-4">
       <div className="about_heading">
-        <FadeIn duration={2} delay={0.5}>
+        <FadeIn duration={2} delay={0.2}>
           <CommonHeading HeadingText={title} />
         </FadeIn>
         <ol className="pt-8" >

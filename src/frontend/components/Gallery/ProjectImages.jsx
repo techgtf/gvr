@@ -36,17 +36,19 @@ function ProjectImages({ images }) {
 
       {/* Gallery Grid */}
       <SlideIn duration={2} delay={0.3}>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="flex flex-wrap gap-4 justify-center mt-6">
           {images.slice(0, visibleCount).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Project ${index + 1}`}
-              className="w-[400px] h-[250px]  object-cover cursor-pointer"
-              onClick={() => openLightbox(index)}
-            />
+            <div key={index} className="w-[calc(100%/2-16px)] sm:w-[calc(100%/4-16px)]">
+              <img
+                src={image.image}
+                alt={image.alt || + "Project" + index + 1}
+                className="w-[400px] h-[250px] object-cover cursor-pointer"
+                onClick={() => openLightbox(index)}
+              />
+            </div>
           ))}
         </div>
+
       </SlideIn>
 
       {/* Load More Button */}

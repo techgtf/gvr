@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "common/Button/Button";
 import "react-quill/dist/quill.snow.css";
 import "../assets/css/admin.css";
+import { Helmet } from "react-helmet";
 
 const FAQ = () => {
   const [isSitebarFormButtonLoading, setIsSitebarFormButtonLoading] =
@@ -129,7 +130,7 @@ const FAQ = () => {
     resetfields();
   };
 
-  const backHandler = () => {};
+  const backHandler = () => { };
 
   const handleChange = (e) => {
     setFormField({ ...formField, [e.target.name]: e.target.value });
@@ -161,6 +162,38 @@ const FAQ = () => {
 
   return (
     <>
+
+      <Helmet>
+        <title>Great Value Realty FAQs | Get Answers to Your Real Estate Questions</title>
+        <meta name="keywords" content="Great Value Realty FAQs, real estate questions, home buying FAQs, property investment queries, real estate help" />
+        <meta name="description" content="Find answers to all your real estate queries with Great Value Realty FAQs. Get expert insights on buying, selling, home loans, investments, and more." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/faqs" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty FAQs | Get Answers to Your Real Estate Questions" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty FAQs | Get Answers to Your Real Estate Questions" />
+        <meta property="og:description" content="Find answers to all your real estate queries with Great Value Realty's FAQs. Get expert insights on buying, selling, home loans, investments, and more." />
+        <meta property="og:url" content="https://greatvaluerealty.com/faqs" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty FAQs | Get Answers to Your Real Estate Questions" />
+        <meta name="twitter:description" content="Find answers to all your real estate queries with Great Value Realty's FAQs. Get expert insights on buying, selling, home loans, investments, and more." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
+      </Helmet>
       <div className="px-12 form_col">
         <Button className="btn btn_outline" onClick={backHandler}>
           Back

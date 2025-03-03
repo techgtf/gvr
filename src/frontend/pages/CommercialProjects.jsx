@@ -30,12 +30,6 @@ import warehouse3 from "/assets/frontend/images/commercialProjects/warehouse/war
 import warehouse4 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-4.webp";
 import warehouse5 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-5.webp";
 
-import mall1 from "/assets/frontend/images/commercialProjects/mall/mall-1.webp";
-import mall2 from "/assets/frontend/images/commercialProjects/mall/mall-2.webp";
-import mall3 from "/assets/frontend/images/commercialProjects/mall/mall-3.webp";
-import mall4 from "/assets/frontend/images/commercialProjects/mall/mall-4.webp";
-import mall5 from "/assets/frontend/images/commercialProjects/mall/mall-5.webp";
-
 import retail1 from "/assets/frontend/images/commercialProjects/retail/gap-log-img.jpg";
 import retail2 from "/assets/frontend/images/commercialProjects/retail/retail-2.webp";
 import retail3 from "/assets/frontend/images/commercialProjects/retail/retail-3.webp";
@@ -44,7 +38,6 @@ import retail5 from "/assets/frontend/images/commercialProjects/retail/retail-5.
 import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
-//
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -77,11 +70,11 @@ const projects = [
                 solutions tailored to modern supply chain requirements.
                 Strategically located in key industrial zones, these
                 warehouses ensure smooth transportation, efficient inventory
-                management, and maximum operational efficiency. With large
+                management, and maximum operational efficiency. With ample
                 land parcels, robust security infrastructure, and scalable
                 storage capacities, our warehouses are designed to support
                 growing industries, e-commerce businesses, and large-scale
-                manufacturing units`,
+                manufacturing units.`,
     images: [warehouse1, warehouse2, warehouse3, warehouse4, warehouse5],
     totalProjects: 3,
   },
@@ -94,7 +87,7 @@ const projects = [
         link: "https://greatmallofaligarh.com",
         name: "GREAT VALUE MALL",
         address: "Ram Ghat Road, Aligarh",
-        landArea: '2 Acre land (Covered area 2 lac Sq.Ft) '
+        landArea: '2 Acre land (Covered area 2 lac Sq Ft) '
       },
     ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
@@ -111,13 +104,13 @@ const projects = [
         name: "PERNIA'S POP-UP STUDIO",
         link: "",
         address: "Mehrauli, New Delhi",
-        landArea: '790 Sq.Yrd Plot'
+        landArea: '790 Sq Yds Plot'
       },
       {
         name: "GAP",
         link: "",
         address: "Saket, New Delhi",
-        landArea: '47086 Sq.Ft',
+        landArea: '47086 Sq Ft',
       },
 
       {
@@ -131,7 +124,7 @@ const projects = [
         name: "COMPLEX MADANGIR",
         link: "",
         address: "Madangir, New Delhi",
-        landArea: '47086 Sq.Ft',
+        landArea: '47086 Sq Ft',
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -143,35 +136,35 @@ const projects = [
 const mediaData = [
   {
     name: "caterpillar",
-    imgSrc: "caterpillar.jpg",
+    imgSrc: "caterpillar.webp",
   },
   {
     name: "good worth",
-    imgSrc: "good_worth.png",
+    imgSrc: "good_worth.webp",
   },
   {
     name: "jaina_logo_master",
-    imgSrc: "Jaina_logo_master.png",
+    imgSrc: "Jaina_logo_master.webp",
   },
   {
     name: "logo_manitou_group",
-    imgSrc: "logo_manitou_group.png",
+    imgSrc: "logo_manitou_group.webp",
   },
   {
     name: "pg electro",
-    imgSrc: "pg_electro.png",
+    imgSrc: "pg_electro.webp",
   },
   {
     name: "reliance retails",
-    imgSrc: "reliance_retails.png",
+    imgSrc: "reliance_retails.webp",
   },
   {
     name: "samsung logo",
-    imgSrc: "samsung_logo.png",
+    imgSrc: "samsung_logo.webp",
   },
   {
     name: "sansui logo",
-    imgSrc: "sansui_logo.png",
+    imgSrc: "sansui_logo.webp",
   },
 ];
 
@@ -228,6 +221,7 @@ const CommercialProjects = () => {
           ? "commercial_banner_mb.jpg"
           : "commercial_banner.jpg"
           }`}
+          alt={"Great Value Commercial Project"}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
@@ -254,19 +248,25 @@ const CommercialProjects = () => {
               PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure, it’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether its high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
+                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure. It’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether it's high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
               }
             />
           </div>
         </SlideIn>
       </div>
-      <div className="text-[11px] flex xl:justify-center pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
-        <h3 className="uppercase midlandfontmedium tracking-[2px] xl:mr-[2rem] mb-[2rem] xl:mb-[0px]">
-          2,000,000 sq. ft.
+      <div className="text-[11px] flex xl:justify-center gap-16  pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
+        <div className="text-center">
+        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
+        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
+        2,000,000 sq ft
         </h3>
-        <h3 className="uppercase midlandfontmedium tracking-[2px]">
-          2,000,000 sq. ft.
+        </div>
+        <div className="text-center">
+        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
+        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
+        5,000,000 sq ft
         </h3>
+        </div>
       </div>
       {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
         {projects.map((project) => {
@@ -356,7 +356,35 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty | commercial projects</title>
+        <title>Great Value Realty Commercial Projects | Premium Business Spaces</title>
+        <meta name="keywords" content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties" />
+        <meta name="description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/commercial-projects" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Great Value Realty Commercial Projects| Premium Business Spaces" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
+        <meta property="og:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta property="og:url" content="https://greatvaluerealty.com/commercial-projects" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
+        <meta name="twitter:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
       </Helmet>
       <section
         key={project.id}

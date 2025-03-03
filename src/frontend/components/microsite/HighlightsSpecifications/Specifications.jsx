@@ -59,7 +59,7 @@ function Specifications({ title = "Specifications", specifications = [], altImag
                   {spec.items?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex gap-3 py-5">
                       <div className="icon">
-                        <img src={item.image} alt={item.description || "Specification image"} className="h-[80%]" />
+                        <img src={item.image} alt={item.description || "Specification image"} className="w-[50px] h-[50px] object-contain" />
                       </div>
                       <p className="w-60">{item.description}</p>
                     </div>

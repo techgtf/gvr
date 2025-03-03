@@ -33,11 +33,11 @@ export default function FooterBottom() {
         {/* ✅ Social Media Links Fixed */}
         <div className="socLinks flex lg:gap-x-6 lg:gap-0 gap-4 lg:pt-0 pt-3">
           {[
-            { href: "https://www.facebook.com/greatvaluerealty/", icon: "fb.png", alt: "Facebook" },
-            { href: "https://www.instagram.com/greatvalue_realty/", icon: "instagram.png", alt: "Instagram" },
-            { href: "https://x.com/GreatValueGroup", icon: "twitter.png", alt: "Twitter" },
-            { href: "https://www.linkedin.com/company/greatvaluerealty/", icon: "linkedin.png", alt: "LinkedIn" },
-            { href: "https://www.youtube.com/@greatvaluerealty", icon: "youtube.png", alt: "YouTube" },
+            { href: "https://www.facebook.com/greatvaluerealty/", icon: "fb.webp", alt: "Facebook" },
+            { href: "https://www.instagram.com/greatvalue_realty/", icon: "instagram.webp", alt: "Instagram" },
+            { href: "https://x.com/GreatValueGroup", icon: "twitter.webp", alt: "Twitter" },
+            { href: "https://www.linkedin.com/company/greatvaluerealty/", icon: "linkedin.webp", alt: "LinkedIn" },
+            { href: "https://www.youtube.com/@greatvaluerealty", icon: "youtube.webp", alt: "YouTube" },
           ].map(({ href, icon, alt }) => (
             <a
               key={alt}
@@ -48,7 +48,7 @@ export default function FooterBottom() {
              focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:bg-blue-200 rounded-md transition-all"
             >
               <img
-                className="lg:h-7 h-5"
+                className="w-5 h-5 lg:w-7 lg:h-7 object-contain"
                 src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/icons/${icon}`}
                 alt={alt}
                 onError={(e) => console.error(`Image failed to load: ${e.target.src}`)} // Debugging

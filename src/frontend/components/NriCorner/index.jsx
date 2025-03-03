@@ -6,7 +6,7 @@ import './styles.css'
 export default function Index({data}) {
     const accData = [
         {
-            title: "Q1: Do Non-Resident Indian nationals need Reserve Bank of India's permission to acquire property in India?",
+            title: "Q1: Do Non-Resident Indian nationals need The Reserve Bank of India's permission to acquire property in India?",
             content: "Ans: No, NRIs don't require RBI permission to buy property in India."
         },
         {
@@ -19,7 +19,7 @@ export default function Index({data}) {
         },
         {
             title: "Q4: Are there formalities for foreign nationals of Indian origin to complete when buying property in India?",
-            content: "Ans: Yes, they need to file Form IPI 7 with RBI within 90 days of the purchase, along with necessary documents and a bank certificate."
+            content: "Ans: Yes, they must to file Form IPI 7 with RBI within 90 days of the purchase, along with the necessary documents and a bank certificate."
         },
         {
             title: "Q5: Can such property be sold without RBI permission?",
@@ -38,12 +38,12 @@ export default function Index({data}) {
             content: "Ans: For residential properties purchased after May 26, 1993, sale proceeds up to the consideration amount remitted in foreign exchange can be repatriated. Other proceeds must be credited to the owner's non-resident rupee account."
         },
         {
-            title: "Q9: What conditions must be met for repatriation of sale proceeds?",
+            title: "Q9: What conditions must be met for the repatriation of sale proceeds?",
             content: "Ans: The sale must occur at least three years after the purchase deed or the payment of final consideration, whichever is later."
         },
         {
             title: "Q10: What is the procedure for seeking repatriation?",
-            content: "Ans: Application in Form IPI 8 should be made to RBI's Central Office in Mumbai within 90 days of property sale."
+            content: "Ans: Application in Form IPI 8 should be made to RBI's Central Office in Mumbai within 90 days of a property sale."
         },
     ];
     return (

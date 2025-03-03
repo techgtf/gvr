@@ -55,7 +55,7 @@ const projects = [
         category: "Jharkhand Bhawan, Vasant Kunj, Delhi",
 
         description:
-          "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
+          "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq ft into a modern, sustainable architectural space.",
       },
     ],
   },
@@ -193,7 +193,7 @@ const projects = [
 
         category: "Office Property, Worli, Mumbai",
         description:
-          "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
+          "Acquired a premium 3,095 sq ft office space in a prime business district.",
       },
       {
         year: 2022,
@@ -448,7 +448,7 @@ const OurJourney = ({ data: pageData }) => {
 
         <div className="swiper-button-prev xl:!left-[-4%] absolute xl:!top-[50%]  !top-[39%] !left-[-9%]">
           <img
-            src="assets/frontend/images/icons/left_arrow.png"
+            src="assets/frontend/images/icons/left_arrow.webp"
             alt="Previous"
             className="!w-[15px] !h-[15px]"
             style={{ cursor: "pointer" }}
@@ -456,7 +456,7 @@ const OurJourney = ({ data: pageData }) => {
         </div>
         <div className="swiper-button-next xl:!right-[-4%] absolute xl:!top-[50%] !top-[39%] !right-[-9%]">
           <img
-            src="assets/frontend/images/icons/right_arrow.png"
+            src="assets/frontend/images/icons/right_arrow.webp"
             alt="Next"
             className="!w-[15px] !h-[15px]"
             style={{ cursor: "pointer" }}

@@ -43,7 +43,36 @@ const Career = () => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty | Career</title>
+        <title>Careers at Great Value Realty | Join Our Real Estate Team</title>
+        <meta name="keywords" content="Great Value Realty careers, real estate jobs, property industry careers, real estate career opportunities, job openings at Great Value Realty" />
+        <meta name="description" content="Explore exciting career opportunities at Great Value Realty. Join our team of real estate experts and build a successful career in the dynamic property industry. Apply today!" />
+        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
+        <link rel="canonical" href="https://greatvaluerealty.com/career" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Careers at Great Value Realty | Join Our Real Estate Team" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="rating" content="general" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Careers at Great Value Realty | Join Our Real Estate Team" />
+        <meta property="og:description" content="Explore exciting career opportunities at Great Value Realty. Join our team of real estate experts and build a successful career in the dynamic property industry. Apply today!" />
+        <meta property="og:url" content="https://greatvaluerealty.com/career" />
+        <meta property="og:site_name" content="Great Value Realty" />
+        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@GreatValueGroup" />
+        <meta name="twitter:title" content="Careers at Great Value Realty | Join Our Real Estate Team" />
+        <meta name="twitter:description" content="Explore exciting career opportunities at Great Value Realty. Join our team of real estate experts and build a successful career in the dynamic property industry. Apply today!" />
+        <meta name="twitter:creator" content="@GreatValueGroup" />
+        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+
       </Helmet>
       <HeroSectionAboutUs
         // img={
@@ -53,6 +82,8 @@ const Career = () => {
         img={banner.image}
         heading={banner.heading}
         extraClassesImg={"objectRight"}
+        alt={'Ambition in the real estate'}
+
       />
       <div
         className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"

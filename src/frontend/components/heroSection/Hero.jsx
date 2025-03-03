@@ -20,11 +20,8 @@ export default function Hero() {
 
   return (
     <div
-      className="hero_vdo_div lg:h-[auto] h-[auto] relative w-full] bg-cover"
-      style={{
-        background:
-          "url(assets/frontend/images/home/hero.webp) no-repeat center",
-      }}
+      className="hero_vdo_div lg:h-[auto] h-[auto] relative w-full] bg-cover bg-[url('/assets/frontend/images/home/heroMob.webp')] 
+                 md:bg-[url('/assets/frontend/images/home/hero.webp')]"    
     >
       {/* <LoadAnimation /> */}
       <video

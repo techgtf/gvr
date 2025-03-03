@@ -3,9 +3,9 @@ import BannerDetails from "./BannerDetails";
 import ZoomOut from "../Animations/ZoomOut";
 
 function HeroSection({ 
-  desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342571/hero_yhnarx.webp", 
-  mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342571/hero_yhnarx.webp", 
-  scrollText = "SCROLL DOWN", 
+  desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342571/hero_yhnarx.webp",  
+  mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342571/hero_yhnarx.webp",  
+  scrollText = "SCROLL DOWN",
   sectionId = "overview", 
   initialScale = 1.5, 
   duration = 2,
@@ -17,12 +17,9 @@ function HeroSection({
   // Function to check screen size and set background accordingly
   useEffect(() => {
     const updateBackground = () => {
-      if (window.innerWidth < 768) {
-        setBackgroundImage(mobileBg); // Mobile background
-      } else {
-        setBackgroundImage(desktopBg); // Desktop background
-      }
+      setBackgroundImage(window.innerWidth < 768 ? mobileBg : desktopBg);
     };
+
 
     updateBackground(); // Initial check
     window.addEventListener("resize", updateBackground); // Listen for window resize

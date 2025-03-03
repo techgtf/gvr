@@ -8,7 +8,6 @@ import * as CONFIG from "../../../../config";
 import logo1 from "/assets/frontend/images/media/news/logos/1.webp"
 import logo2 from "/assets/frontend/images/media/news/logos/2.webp"
 import logo3 from "/assets/frontend/images/media/news/logos/3.webp"
-import logo4 from "/assets/frontend/images/media/news/logos/4.webp"
 import logo5 from "/assets/frontend/images/media/news/logos/5.webp"
 import logo6 from "/assets/frontend/images/media/news/logos/6.webp"
 import logo7 from "/assets/frontend/images/media/news/logos/7.webp"
@@ -23,6 +22,8 @@ import useFetchData from "../../apiHooks/useFetchData";
 import Loader from "../../../common/Loader/loader";
 
 function News() {
+    const altForall = 'Great Value news'
+
 
     // calling api
 

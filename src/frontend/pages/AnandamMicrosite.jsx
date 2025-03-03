@@ -19,8 +19,8 @@ import driveActive from "/assets/frontend/images/microsite/location/driveActive.
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1.webp";
-import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
-import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
+import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
+import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.webp";
@@ -33,8 +33,6 @@ import park from "/assets/frontend/images/microsite/amentities/icons/park.webp";
 import { useLocation } from 'react-router-dom'
 
 import aboutImg from "/assets/frontend/images/microsite/anandam/about/about.webp"
-// import heroImg from "/assets/frontend/images/microsite/anandam/hero/hero.webp"
-// import heroMobImg from "/assets/frontend/images/microsite/anandam/hero/hero-mobile.jpg"
 
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
@@ -69,17 +67,17 @@ function AnandamMicrosite() {
     const customPriceListData = [
         {
             area: "2 BHK",
-            size: "1350 Sq. Ft",
+            size: "1350 Sq Ft",
             price: "₹ 86.13 Lacs*",
         },
         {
             area: "3 BHK ",
-            size: "1700 Sq. Ft",
+            size: "1700 Sq Ft",
             price: "₹ 1.08 CR*",
         },
         {
             area: "3 BHK + STUDY",
-            size: "1840 Sq. Ft",
+            size: "1840 Sq Ft",
             price: "₹ 1.17 CR*",
         },
     ];
@@ -97,30 +95,30 @@ function AnandamMicrosite() {
             {
                 image: plan1,
                 type: "3 BHK + STUDY + 4T",
-                carpetArea: "109.68 Sqm. (1181 Sq. Ft)",
-                balconyArea: "13.24 Sqm. (143 Sq. Ft)",
-                buildArea: "131.45 Sqm. (1415 Sq.Ft)",
-                totalArea: "170.94 Sqm. (1840 Sq.Ft)",
+                carpetArea: "109.68 Sqm. (1181 Sq Ft)",
+                balconyArea: "13.24 Sqm. (143 Sq Ft)",
+                buildArea: "131.45 Sqm. (1415 SqFt)",
+                totalArea: "170.94 Sqm. (1840 SqFt)",
             },
         ],
         unit2: [
             {
                 image: plan2,
                 type: "3 BHK + 3T",
-                carpetArea: "100.12 Sqm. (1078 Sq. Ft)",
-                balconyArea: "13.26 Sqm. (143 Sq. Ft)",
-                buildArea: "121.50 Sqm. (1308 Sq.Ft)",
-                totalArea: "157.94 Sqm. (1700 Sq.Ft)",
+                carpetArea: "100.12 Sqm. (1078 Sq Ft)",
+                balconyArea: "13.26 Sqm. (143 Sq Ft)",
+                buildArea: "121.50 Sqm. (1308 Sq Ft)",
+                totalArea: "157.94 Sqm. (1700 Sq Ft)",
             },
         ],
         unit34: [
             {
                 image: plan3,
                 type: "2 BHK + STUDY + 2T",
-                carpetArea: "81.51 Sqm. (877 Sq. Ft)",
-                balconyArea: "8.07 Sqm. (87 Sq. Ft)",
-                buildArea: "96.37 Sqm. (1037 Sq.Ft)",
-                totalArea: "125.42 Sqm. (1350 Sq.Ft)",
+                carpetArea: "81.51 Sqm. (877 Sq Ft)",
+                balconyArea: "8.07 Sqm. (87 Sq Ft)",
+                buildArea: "96.37 Sqm. (1037 Sq Ft)",
+                totalArea: "125.42 Sqm. (1350 Sq Ft)",
             },
         ],
     };
@@ -206,6 +204,22 @@ function AnandamMicrosite() {
         { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
     ];
 
+
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'High-rise apartment'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Residential apartment'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Clubhouse dining'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -231,35 +245,36 @@ function AnandamMicrosite() {
                 <meta property="og:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
                 <meta property="og:site_name" content="Great Value Anandam" />
-                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
                 <meta name="twitter:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
                 <meta name="twitter:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
-                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+                <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`{
-                   "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Anandam Sector 107, Noida",
-                    "alternateName": "Great Value Anandam Noida",
-                    "url": "https://greatvaluerealty.com/anandam",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png"
-                    "contactPoint": {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }}`}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Anandam Sector 107, Noida",
+                        "alternateName": "Great Value Anandam Noida",
+                        "url": "https://greatvaluerealty.com/anandam",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"
-                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342186/hero-mobile_edjbo7.webp"
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342190/hero_wlxqxm.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342186/hero-mobile_edjbo7.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -274,7 +289,7 @@ function AnandamMicrosite() {
             <About
                 imageSrc={aboutImg}
                 headingText="ABOUT US"
-                descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering thoughtfully designed 2 and 3 BHK apartments, it combines luxury with convenience, providing residents with a serene and opulent living experience. "
+                descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering 2 and 3 BHK apartments thoughtfully designed to blend luxury with convenience, providing residents with a serene and opulent living experience."
                 reverseWatermark={true}
             />
 
@@ -293,28 +308,28 @@ function AnandamMicrosite() {
             />
 
             <Plans masterPlanData={masterPlanData} unitData={unitData} />
-            
+
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                  { image: store, text: 'Sector 104 Market', time: '4 min' },
-                            { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
-                            { image: school, text: 'Pathways School Noida', time: '5 min' },
-                            { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
-                            { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
-                            { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
-                            { image: mall, text: 'DLF Mall of India', time: '15 min' },
-                            { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
-                            { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
-                            { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
+                    { image: store, text: 'Sector 104 Market', time: '4 min' },
+                    { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
+                    { image: school, text: 'Pathways School Noida', time: '5 min' },
+                    { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
+                    { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
+                    { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
+                    { image: mall, text: 'DLF Mall of India', time: '15 min' },
+                    { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+                    { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
+                    { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
                 ]}
                 walkData={[
                     { image: mall, text: 'Starling Mall, Plot no 1A, Hazipur, Sector 104, Noida, Uttar Pradesh 201301', time: '8 min' },
-                             { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
-                             { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
-                             { image: school, text: 'Pathways School Noida', time: '14 min' },
-                             { image: store, text: 'Sector 104 Market', time: '15 min' },
-                             { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
+                    { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
+                    { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
+                    { image: school, text: 'Pathways School Noida', time: '14 min' },
+                    { image: store, text: 'Sector 104 Market', time: '15 min' },
+                    { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
@@ -325,7 +340,7 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery4, gallery3,]}
+                actualImages={galleryData}
             />
         </>
     )
