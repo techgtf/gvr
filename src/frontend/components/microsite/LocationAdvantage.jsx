@@ -13,15 +13,15 @@ import FadeIn from "../Animations/FadeIn";
 gsap.registerPlugin(ScrollTrigger);
 
 function LocationAdvantage({
-  locationImage,
+  locationData,
+  locationAdvData,
   driveData,
   walkData,
   driveTabIcon,
   driveTabActiveIcon,
   walkTabIcon,
   walkTabActiveIcon,
-  lightboxImages,
-  description
+  description,
 }) {
   const [activeTab, setActiveTab] = useState("drive");
   const [open, setOpen] = useState(false);
@@ -65,15 +65,16 @@ function LocationAdvantage({
     document.body.classList.remove("lightbox-open");
   };
 
+
   return (
     <section className="advantage px-5 md:px-12 py-10 md:py-14 flex items-center" id="advantage">
       <div className="grid sm:grid-cols-2 grid-cols-1 w-full">
         <div className="brief md:border-r-2 border-gray-200">
           <FadeIn duration={2} delay={0.5}>
-            <CommonHeading HeadingText="Location Advantage" />
+            <CommonHeading HeadingText={locationData.heading || "Location Advantage"} />
           </FadeIn>
           <div className="location_map py-10  w-full md:w-[80%]" onClick={() => openLightbox(0)}>
-            <img src={locationImage} alt="Location" className="cursor-pointer w-full" />
+            <img src={locationData.image} alt="Location" className="cursor-pointer w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
             <p className="md:w-96">{description}</p>
@@ -83,18 +84,16 @@ function LocationAdvantage({
         <div className="route md:ps-10 mt-10 sm:m-0">
           <div className="tabs flex gap-12">
             <button
-              className={`cursor-pointer flex gap-3 text-[16px] items-center ${
-                activeTab === "drive" ? "text-black" : "text-gray-300"
-              }`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "drive" ? "text-black" : "text-gray-300"
+                }`}
               onClick={() => handleTabClick("drive")}
             >
               <img src={activeTab === "drive" ? driveTabActiveIcon : driveTabIcon} alt="drive icon" className="w-8" />
               DRIVE
             </button>
             <button
-              className={`cursor-pointer flex gap-3 text-[16px] items-center ${
-                activeTab === "walk" ? "text-black" : "text-gray-300"
-              }`}
+              className={`cursor-pointer flex gap-3 text-[16px] items-center ${activeTab === "walk" ? "text-black" : "text-gray-300"
+                }`}
               onClick={() => handleTabClick("walk")}
             >
               <img src={activeTab === "walk" ? walkTabActiveIcon : walkTabIcon} alt="walk icon" className="w-8" />
@@ -107,21 +106,21 @@ function LocationAdvantage({
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
           <SlideIn duration={2} delay={0.5}>
-          <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" ref={listRef}>
-            {(activeTab === "drive" ? driveData : walkData)?.map((item, index) => (
-              <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
-                <div className="icon">
-                  <img src={item.image} alt="Icon" />
-                </div>
-                <div className="text w-72">
-                  <p>{item.text}</p>
-                </div>
-                <div className="time">
-                  <p>{item.time}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+            <ul className="w-full overflow-y-scroll h-[350px] pr-5 md:pr-20" ref={listRef}>
+              {(activeTab === "drive" ? locationAdvData?.drive : locationAdvData?.walk)?.map((item, index) => (
+                <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
+                  <div className="icon">
+                    <img src={item.icons} alt="Icon" />
+                  </div>
+                  <div className="text w-72">
+                    <p>{item.name}</p>
+                  </div>
+                  <div className="time">
+                    <p>{item.distance}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </SlideIn>
         </div>
       </div>
@@ -130,11 +129,11 @@ function LocationAdvantage({
         <Lightbox
           open={open}
           close={closeLightbox}
-          slides={lightboxImages?.map((item) => ({
-            src: item.image,
-            title: item.alt,
+          slides={[{
+            src: locationData.image,
+            title: locationData.image_alt,
             description: "Click to open in full view",
-          }))}
+          }]}
           index={currentIndex}
           plugins={[Fullscreen, Zoom]}
           zoom={true}
