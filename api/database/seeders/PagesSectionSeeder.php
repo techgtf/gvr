@@ -400,6 +400,22 @@ class PagesSectionSeeder extends Seeder
 
             ],
             [
+                'name' => 'gallery-work-culture',
+                'page_type_id' => '19', // gallery
+                'title'=>'Culture Heading',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'false','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
+                'name' => 'gallery-project-images',
+                'page_type_id' => '19', // gallery
+                'title'=>'Gallery Heading',
+                'section_permissions'=>json_encode(['description'=>'false','image'=>'false','sub_heading'=>'false','heading'=>'true']),
+                'fields_name'=>json_encode(['heading'=>'Heading','sub_heading'=>'Section Sub Heading','image'=>'Banner Image','alt'=>'Alt text','description'=>'Description'])
+
+            ],
+            [
                 'name' => 'media-banner',
                 'page_type_id' => '20', // Media
                 'title'=>'Overview',

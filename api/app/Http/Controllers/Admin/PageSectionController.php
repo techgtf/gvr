@@ -117,7 +117,7 @@ class PageSectionController extends Controller
         }else{
             try{
                 
-                $records=PageSectionList::where('page_id',$request->page_id)
+                $records = PageSectionList::where('page_id',$request->page_id)
                 ->where('page_section',$request->page_section)->first();
 
                 if(empty($records)){
@@ -137,10 +137,14 @@ class PageSectionController extends Controller
                     $records->image = $path;
                 }
 
+                if(!empty($request->image_alt)) {
+                    $records->image_alt = $request->image_alt;
+                }
 
                 if(!empty($request->description)){
                     $records->description=$request->description;
                 }
+
                 if(!empty($request->sub_heading)){
                     $records->sub_heading=$request->sub_heading;
                 }

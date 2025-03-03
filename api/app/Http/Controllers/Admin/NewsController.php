@@ -31,11 +31,17 @@ class NewsController extends Controller
             $search = $request->search; 
         }
         
-        $perPage = $request->input('per_page', 10); // Number of products per page
-        $page = $request->input('page', 1); // Current page number
- 
-        $media = News::search($search)->paginate($perPage, ['*'], 'page', $page);
-             
+        
+        
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1);
+
+        $media = News::search($search)
+        ->when($request->type, function ($query, $type) {
+            return $query->where('type', $type);
+        })
+        ->paginate($perPage, ['*'], 'page', $page);
+    
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -79,7 +85,10 @@ class NewsController extends Controller
                 'max:2048'],
            
             'type' => 'required|in:logo,docs,news',
-            'heading' => 'required|unique:news,heading',
+            'heading' => [
+                'required',
+                Rule::unique('news')->whereNull('deleted_at'), // Ignore soft-deleted records
+            ],
         ],
         [
             'file.required' => 'This field is required.',
@@ -179,16 +188,6 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
 
-        // $validator = Validator::make($request->all(), [
-        //     'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
-        //     'heading' => ['required',Rule::unique('news')->ignore($request->id)]
-        // ], [
-        //     'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
-        //     'image.max' => 'The image may not be greater than 2048 kilobytes.',
-        //     'heading.required' => 'The heading field is required.',
-        //     'heading.unique' => 'heading Already Exists.',
-        // ]);
-
         $validator = Validator::make($request->all(),[
             'file' => ['nullable|required',
                 function ($attribute, $value, $fail) use ($request) {
@@ -205,7 +204,10 @@ class NewsController extends Controller
                 'max:2048'],
            
             'type' => 'required|in:logo,docs,news',
-            'heading' => 'required|unique:news,heading',
+            'heading' => [
+                'required',
+                Rule::unique('news')->whereNull('deleted_at'),
+            ],
         ],
         [
             'file.required' => 'This field is required.',
@@ -234,14 +236,14 @@ class NewsController extends Controller
         }
 
       
-        if($request->file('image')){
+        if($request->file('file')){
           
-            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->icons);
+            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->file);
             dltSingleImgFile($imagesurl);
             
-            $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('news', $name, 'public');
-            $getrecord->image=$path;
+            $name = now()->timestamp.".{$request->file->getClientOriginalName()}";
+            $path = $request->file('file')->storeAs('news', $name, 'public');
+            $getrecord->file=$path;
         }
 
         $getrecord->heading = $request->heading;
