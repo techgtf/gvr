@@ -56,7 +56,7 @@ const ProperyInvestment = () => {
             <h2 className="sectionHeading xl:mb-[37px] mb-[24px] tracking-[5px] text-black midlandfontmedium text-[14px]">
               Real Estate Investment In India
             </h2>
-            <CommonPera PeraText={"India's real estate sector has witnessed significant growth in recent years, emerging as a pivotal component of the nation's economy. In 2024, the market thrived with record office leases, robust residential sales, and substantial foreign investments. The industry's expansion is further underscored by projections indicating a market volume of approximately USD 51.54 trillion by 2029, reflecting a compound annual growth rate (CAGR) of 2.46% from 2025 to 2029.."} />
+            <CommonPera PeraText={"India's real estate sector has witnessed significant growth in recent years, emerging as a pivotal component of the nation's economy. In 2024, the market thrived with record office leases, robust residential sales, and substantial foreign investments. The industry's expansion is further underscored by projections indicating a market volume of approximately USD 51.54 trillion by 2029, reflecting a compound annual growth rate (CAGR) of 2.46% from 2025 to 2029."} />
             {/* <p className="text-[#666] text-justify">
               India's real estate sector has witnessed significant growth in
               recent years, emerging as a pivotal component of the nation's
