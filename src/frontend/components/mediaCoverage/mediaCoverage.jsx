@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css/free-mode";
 
-export default function MediaCoverage() {
+export default function MediaCoverage({heading}) {
   const mediaData = [
     {
       // name: "sky news",
@@ -67,7 +67,7 @@ export default function MediaCoverage() {
       <SlideIn duration={2} delay={0.5}>
         <WaterMarkHeading
           // sectionHeading='Media Vault - Our Journey Unveiled'
-          sectionHeading="Our media coverage"
+          sectionHeading={heading}
         />
         <div className="lg:max-w-[61%] max-w-[95%] m-auto lg:pt-24 pt-12">
           <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">

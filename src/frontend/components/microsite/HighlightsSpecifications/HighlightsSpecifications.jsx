@@ -3,10 +3,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLocation } from "react-router-dom";
 import Highlights from "./Highlights";
+import Specifications from "./Specifications";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HighlightsSpecifications = ({ highlightsData, specificationsComponent }) => {
+const HighlightsSpecifications = ({ highlightsData, specificationsData }) => {
   const sectionRef = useRef(null);
   const specificationsRef = useRef(null);
   const location = useLocation();
@@ -73,7 +74,7 @@ const HighlightsSpecifications = ({ highlightsData, specificationsComponent }) =
           ref={specificationsRef}
           className="col-span-12 md:col-span-8 overflow-y-auto h-[450px] pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent"
         >
-          {/* {specificationsComponent()} */}
+          <Specifications specifications={specificationsData} />
         </div>
       </div>
     </section>
