@@ -258,13 +258,13 @@ const CommercialProjects = () => {
         <div className="text-center">
         <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
         <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
-        2,000,000 sq ft
+        2 million sq ft
         </h3>
         </div>
         <div className="text-center">
         <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
         <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
-        5,000,000 sq ft
+        5 million sq ft
         </h3>
         </div>
       </div>

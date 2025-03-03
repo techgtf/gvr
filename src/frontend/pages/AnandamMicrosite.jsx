@@ -320,7 +320,7 @@ function AnandamMicrosite() {
                     { image: store, text: 'Serene Clothing, Sector 107, Noida', time: '6 min' },
                     { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
                     { image: mall, text: 'DLF Mall of India', time: '15 min' },
-                    { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+                    { image: hospital, text: 'Max Super Speciality Hospital, Noida Sector 128', time: '16 min' },
                     { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
                     { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
                     { image: buildings , text: 'SkymarkOne Sector 98', time: '7 min' },
