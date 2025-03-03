@@ -17,7 +17,9 @@ class ContactController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required|integer',
-            'message' => 'required'
+            'message' => 'required',
+            'country_code' => 'required',
+
         ],[
             'name.required' => 'The Name field is required',
             'email.required' => 'The Email field is required',
@@ -27,6 +29,7 @@ class ContactController extends Controller
             'phone.integer' => 'Only Integer is allowed',
 
             'message.required' => 'The Message field is required',
+            'country_code.required' => 'This field is required'
         ]);
 
         if($validator->fails()){
@@ -46,6 +49,7 @@ class ContactController extends Controller
                 $record->phone = $request->phone;
                 $record->email = $request->email;
                 $record->message = $request->message;
+                $record->country_code = $request->country_code;
                
 
                 if($record->save()){              

@@ -401,9 +401,11 @@ class ProjectController extends Controller
     public function getCommercialPlatter ($request) {
         $records = "";
 
-        $getAllTypologies = Categories::where('slug', $request->category)->get();
+        $getAllTypologies = \App\Models\Website\Categories::with('getTypologies')
+        ->whereHas('getTypologies')
+        ->get();
         dd($getAllTypologies);
-        
+
         if(!$records){
             return response()->json([
                 'status'=>true,
