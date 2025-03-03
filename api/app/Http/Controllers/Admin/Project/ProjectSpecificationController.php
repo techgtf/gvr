@@ -42,7 +42,7 @@ class ProjectSpecificationController extends Controller
 
         $perPage = $request->input('per_page', 5); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-        $amenitis = ProjectSpecification::paginate($perPage, ['*'], 'page', $page); 
+        $amenitis = ProjectSpecification::all(); 
         return response()->json([
             'status'=>true,
             'statusCode'=>200,

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Typology;
+namespace App\Models\Website;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,18 +10,10 @@ class TypologyTypoGallery extends Model
 {
     use HasFactory,SoftDeletes;
     
-    protected $fillable = ['galleries_id', 'typologies_id'];
+    protected $hidden = ['typologies_id', 'created_at', 'updated_at', 'deleted_at'];
 
     protected $table = "typology_typo_galleries";
-
-    public function typologies(){
-        return $this->belongsTo(Typology::class,'typologies_id');
-    }
-
-    public function subtypology() {
-        return $this->belongsTo(TypologiesGallery::class,'sub_typologies_id');
-    }
-
+ 
 
     public function getTypologiesImages() {
         return $this->belongsTo(TypologiesGallery::class,'galleries_id');

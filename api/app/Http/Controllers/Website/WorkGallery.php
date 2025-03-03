@@ -16,7 +16,7 @@ class WorkGallery extends Controller
             $type = $request->type;
         }
 
-        $perPage = $request->input('per_page', 3);
+        $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
         $record = WorkGalleryModel::where('type', $type)->paginate($perPage, ['*'], 'page', $page);
     

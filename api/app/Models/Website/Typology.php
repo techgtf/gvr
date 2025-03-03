@@ -3,6 +3,7 @@
 namespace App\Models\Website;
 
 use App\Models\Admin\CategoryTypology;
+use App\Models\Website\TypologyTypoGallery;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -54,6 +55,12 @@ class Typology extends Model
     public function TypologyOfCategory()
     {
         return $this->hasMany(CategoryTypology::class,'typologies_id');
+    }
+
+    public function TypologyOfGalleries () 
+    {
+        return $this->hasMany(TypologyTypoGallery::class, 'typologies_id')->with('getTypologiesImages');
+
     }
 
     public function getImageAttribute()

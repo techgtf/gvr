@@ -26,7 +26,7 @@ class Projects extends Model
         return $this->belongsTo(ProjectCategory::class,'categorie_id')->select('id','slug','name');
     }
     public function typologie(){
-        return $this->belongsTo(Typology::class,'typologie_id')->select('id','slug','typology','image');
+        return $this->belongsTo(Typology::class,'typologie_id')->select('id','slug','typology','image')->with('TypologyOfGalleries');
     }
 
 
