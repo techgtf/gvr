@@ -530,6 +530,21 @@ const FloorPlan = React.memo(() => {
                   </div>
 
                   <div className="mb-2">
+                    <label className="block font-medium">Built Up Area</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter Built Up Area"
+                        value={sectionFormdata.super_area}
+                        name="super_area"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.super_area}
+                  </div>
+
+                  <div className="mb-2">
                     <label className="block font-medium">Floor Price</label>
                     <input
                       type="number"
