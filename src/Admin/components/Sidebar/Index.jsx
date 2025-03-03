@@ -520,13 +520,13 @@ const Sidebar = (props) => {
                   <span>Contact Query</span>
                 </NavLink>
 
-                <NavLink
+                {/* <NavLink
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}projects-query`}
                 >
                   <TiMessages size={18} className="mr-2" />
                   <span>Projects Query</span>
-                </NavLink>
+                </NavLink> */}
               </>
             )}
           </div>
