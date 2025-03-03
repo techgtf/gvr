@@ -11,7 +11,7 @@ class News extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable = ['headingg', 'image', 'alt_tag', 'cdn'];
+    protected $fillable = ['headingg', 'image', 'alt_tag', 'cdn', 'date'];
 
 
     public static function search($query)
