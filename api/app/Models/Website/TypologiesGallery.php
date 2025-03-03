@@ -12,7 +12,7 @@ class TypologiesGallery extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'id', 'pivot' ];
 
     protected $table = "typologies_galleries";
 
@@ -26,6 +26,12 @@ class TypologiesGallery extends Model
             }
         }
         return  asset('default/default_project.jpg');
+    }
+
+
+    public function typologies()
+    {
+        return $this->belongsToMany(Typology::class, 'typology_typo_galleries', 'galleries_id', 'typologies_id');
     }
 
 

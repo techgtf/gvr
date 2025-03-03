@@ -28,7 +28,7 @@ class ProjectController extends Controller
     public function index(Request $request){
 
         if($request->category == 'commercial'){
-            $this->getCommercialPlatter($request);
+            return $this->getCommercialPlatter($request);
         }
         
         $perPage = $request->input('per_page', 4); // Number of products per page
@@ -401,12 +401,25 @@ class ProjectController extends Controller
     public function getCommercialPlatter ($request) {
         $records = "";
 
-        $getAllTypologies = \App\Models\Website\Categories::with('getTypologies')
-        ->whereHas('getTypologies')
-        ->get();
-        dd($getAllTypologies);
+        // $category = \App\Models\Website\Categories::with('typologies.galleries')->find(2);
+        // if (!$category) {
+        //     dd("Category not found!");
+        // }
+        // $typologiesWithGalleries = $category->typologies;
+        // dd($typologiesWithGalleries);
 
-        if(!$records){
+        $category = \App\Models\Website\Categories::with('typologies.galleries')->find(2);
+        $typologiesWithGroupedGalleries = $category->typologies->map(function ($typology) {
+            return [
+                'typologies' => [
+                    'name' => $typology->typology,
+                    'description' => $typology->description,
+                ],
+                'galleries' => $typology->galleries->groupBy('type') // Group galleries by type
+            ];
+        });
+
+        if(!$typologiesWithGroupedGalleries){
             return response()->json([
                 'status'=>true,
                 'statusCode'=>400,
@@ -417,7 +430,7 @@ class ProjectController extends Controller
             'status'=>true,
             'statusCode'=>200,
             'message'=>"Success",
-            'data'=>$records
+            'data'=>$typologiesWithGroupedGalleries
         ]);
 
     }

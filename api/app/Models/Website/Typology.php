@@ -76,4 +76,15 @@ class Typology extends Model
     }
 
     
+
+    public function categories()
+    {
+        return $this->belongsToMany(Categories::class, 'category_typologies', 'typologies_id', 'categories_id');
+    }
+
+    public function galleries () 
+    {
+        return $this->belongsToMany(TypologiesGallery::class, 'typology_typo_galleries', 'typologies_id', 'galleries_id');
+    }
+
 }
