@@ -19,15 +19,19 @@ import { Link } from "react-router-dom";
 import "./gallery.css"
 
 function News() {
+    const altForall = 'Great Value news'
+
 
     const onlineNews = [
         {
+            alt:altForall,
             heading : "The Economic Times Hindi Budget",
             logo : logo1,
             date : "01/02/2025",
             link : "https://hindi.economictimes.com/budget/live-union-budget-2025-26-nirmala-sitharaman-budget-2005-speech-income-tax-slab-budget-2025-26-highlights-industry-and-market-demand/liveblog/117812842.cms#:~:tex"
         },
         {
+            alt:altForall,
             heading : "Budget 2025 में टैक्सपेयर को मिली बड़ी राहत, बजट में एलान के बाद दिग्गजों ने दिया रिएक्शन",
             lang : "hindi",
             logo : logo2,
@@ -35,6 +39,7 @@ function News() {
             link : "https://bazaar.businesstoday.in/budget/story/budget-2025-income-tax-rule-what-did-the-expert-say-after-the-changes-in-tax-related-rules-in-budget-2025-1164739-2025-02-02"
         },
         {
+            alt:altForall,
             heading : "Budget 2025 Highlights: GYAN के साथ मिडिल क्लास का भी ध्यान, बजट में किसे क्या मिला",
             logo : logo3,
             lang : "hindi",
@@ -42,18 +47,21 @@ function News() {
             link : "https://hindi.moneycontrol.com/budget/budget-2025-live-updates-fm-nirmala-sitharaman-speech-key-announcement-on-union-budget-india-liveblog-1954492.html"
         },
         {
+            alt:altForall,
             heading : "8 benefits of living in Noida’s luxury housing developments",
             logo : logo7,
             date : "14/01/2025",
             link : "https://www.constructionweekonline.in/people/8-benefits-of-living-in-noidas-luxury-housing-developments"
         },
         {
+            alt:altForall,
             heading : "Budget 2025 Expectations highlights: Sitharaman likely to cut income tax for individuals",
             logo : logo5,
             date : "25/01/2025",
             link : "https://www.etnownews.com/budget/budget-expectations-2025-real-estate-sector-property-players-seek-higher-pmay-funds-tax-rebates-gstreformandmore-article-117545376"
         },
         {
+            alt:altForall,
             heading : "Union Budget: सभी सेक्टर को है बजट से बड़ी उम्मीद, यहां जानें क्या है दिग्गजों की राय",
             logo : logo2,
             lang : "hindi",
@@ -61,6 +69,7 @@ function News() {
             link : "https://bazaar.businesstoday.in/budget/story/union-budget-2025-budget-2025-expectation-industry-has-these-expectations-from-the-budget-1155597-2025-01-16"
         },
         {
+            alt:altForall,
             heading : "Budget 2025: स्टार्टअप इकोसिस्टम के दिग्गजों को बजट से क्या उम्मीदें?",
             logo : logo6,
             lang : "hindi",
@@ -68,24 +77,28 @@ function News() {
             link : "https://yourstory.com/hindi/budget-2025-startup-ecosystem-entrepreneurs-founders-expectations-fm-nirmala-sitharaman"
         },
         {
+            alt:altForall,
             heading : "8 benefits of living in Noida’s luxury housing developments",
             logo : logo1,
             date : "14/01/2025",
             link : "https://www.constructionweekonline.in/people/8-benefits-of-living-in-noidas-luxury-housing-developments"
         },
         {
+            alt:altForall,
             heading : "Outlook 2025: Evolving consumer preferences will shape future housing projects",
             logo : logo8,
             date : "16/01/2025",
             link : "https://www.epcworld.in/p/post/outlook-2025-evolving-consumer-preferences-will-shape-future-housing-projects"
         },
         {
+            alt:altForall,
             heading : "Why Your Next Home Should Be In Noida",
             logo : logo9,
             date : "22/01/2025",
             link : "https://www.rprealtyplus.com/interviews/why-your-next-home-should-be-in-noida-118484.html"
         },
         {
+            alt:altForall,
             heading : "2025 में क्या पूरा होगा घर खरीदने का सपना, Property Prices में कमी आएगी या उछाल?",
             logo : logo11,
             lang : "hindi",
@@ -93,12 +106,14 @@ function News() {
             link : "https://www.jagran.com/business/biz-home-buying-2025-dream-of-buying-a-home-come-true-in-2025-will-property-prices-drop-or-rise-details-here-23856776.html"
         },
         {
+            alt:altForall,
             heading : "Top Real Estate Companies Redefining Profitable Investments in 2025",
             logo : logo12,
             date : "19/12/2024",
             link : "https://propertyhome.in/top-real-estate-companies-redefining-profitable-investments-2025/"
         },
         {
+            alt:altForall,
             heading : "Top Real Estate Companies Redefining Profitable Investments in 2025",
             logo : logo13,
             date : "20/12/2024",

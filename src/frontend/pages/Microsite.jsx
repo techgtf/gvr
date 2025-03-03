@@ -175,6 +175,33 @@ function Microsite() {
     { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Basket ball" },
   ];
 
+  const galleryData = [
+    {
+      "image": gallery1,
+      "alt": 'Residential apartments'
+    },
+    {
+      "image": gallery2,
+      "alt": 'Luxury residential flats'
+    },
+    {
+      "image": gallery3,
+      "alt": 'Residential property'
+    },
+    {
+      "image": gallery4,
+      "alt": 'Sharanam apartments'
+    },
+    {
+      "image": gallery5,
+      "alt": 'Sharanam flats '
+    },
+    {
+      "image": gallery6,
+      "alt": 'Luxury apartments'
+    },
+  ]
+
   return (
     <>
       <Helmet>
@@ -283,7 +310,7 @@ function Microsite() {
       />
 
       <ProjectGallery
-        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+        actualImages={galleryData}
       />
     </>
   );

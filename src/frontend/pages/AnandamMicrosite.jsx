@@ -19,8 +19,8 @@ import driveActive from "/assets/frontend/images/microsite/location/driveActive.
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
 import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1.webp";
-import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
-import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
+import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
+import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
 import Highlights from '../components/microsite/HighlightsSpecifications/Highlights'
 import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.webp";
@@ -204,6 +204,22 @@ function AnandamMicrosite() {
         { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
     ];
 
+
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'High-rise apartment'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Residential apartment'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Clubhouse dining'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -239,25 +255,26 @@ function AnandamMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                {JSON.stringify({
-                   "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Anandam Sector 107, Noida",
-                    "alternateName": "Great Value Anandam Noida",
-                    "url": "https://greatvaluerealty.com/anandam",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
-                    "contactPoint": [{
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                    }]})}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Anandam Sector 107, Noida",
+                        "alternateName": "Great Value Anandam Noida",
+                        "url": "https://greatvaluerealty.com/anandam",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-               desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342190/hero_wlxqxm.webp"
-               mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342186/hero-mobile_edjbo7.webp"              
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342190/hero_wlxqxm.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342186/hero-mobile_edjbo7.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -292,28 +309,28 @@ function AnandamMicrosite() {
             />
 
             <Plans masterPlanData={masterPlanData} unitData={unitData} />
-            
+
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                  { image: store, text: 'Sector 104 Market', time: '4 min' },
-                            { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
-                            { image: school, text: 'Pathways School Noida', time: '5 min' },
-                            { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
-                            { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
-                            { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
-                            { image: mall, text: 'DLF Mall of India', time: '15 min' },
-                            { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
-                            { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
-                            { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
+                    { image: store, text: 'Sector 104 Market', time: '4 min' },
+                    { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
+                    { image: school, text: 'Pathways School Noida', time: '5 min' },
+                    { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
+                    { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
+                    { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
+                    { image: mall, text: 'DLF Mall of India', time: '15 min' },
+                    { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+                    { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
+                    { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
                 ]}
                 walkData={[
                     { image: mall, text: 'Starling Mall, Plot no 1A, Hazipur, Sector 104, Noida, Uttar Pradesh 201301', time: '8 min' },
-                             { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
-                             { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
-                             { image: school, text: 'Pathways School Noida', time: '14 min' },
-                             { image: store, text: 'Sector 104 Market', time: '15 min' },
-                             { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
+                    { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
+                    { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
+                    { image: school, text: 'Pathways School Noida', time: '14 min' },
+                    { image: store, text: 'Sector 104 Market', time: '15 min' },
+                    { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}
@@ -324,7 +341,7 @@ function AnandamMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery4, gallery3,]}
+                actualImages={galleryData}
             />
         </>
     )

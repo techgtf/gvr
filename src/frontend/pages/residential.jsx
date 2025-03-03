@@ -37,7 +37,7 @@ export default function Residential() {
       typology: "Luxury and Modern Builder Floors",
       overview: "GV Homes offers a luxury modern builders floor with a uniquely fashioned and perfectly placed to embrace the culture of Great Value. Our product proposition is predicated on design-led innovation that is based on research. We design homes that ensure trust for generations. Some of the key themes in our approach include creating a sense of place, brighter living experience, technological innovation, thoughtful amenities, and much more.",
       pageLink: `${CONFIG.BASE_ROOT}casa-uday`,
-      alt: "CASA UDAY"
+      alt: "Casa uday park New Delhi"
     },
     {
       name: "Vilasa",
@@ -47,7 +47,7 @@ export default function Residential() {
       typology: "Luxury Residential Plots",
       overview: "Vilasa is an exclusive residential plotted development in Sector 6, Sohna, offering customizable plots in a secure gated community. With premium amenities, excellent connectivity to Gurgaon, and scenic views of the Aravalli Hills, it presents a perfect opportunity for investors and homeowners to build their dream space in a rapidly growing location.",
       pageLink: `${CONFIG.BASE_ROOT}vilasa`,
-      alt: "Vilasa"
+      alt: "Vilasa sector 6 Sohna"
     },
     {
       name: "Sanctuary 105",
@@ -57,7 +57,7 @@ export default function Residential() {
       typology: "3 & 4 BHK Apartments",
       overview: "Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbour. An address seamlessly blends the contrasting elements of art, architecture, and nature.",
       pageLink: `${CONFIG.BASE_ROOT}sanctuary`,
-      alt: "Sanctuary 105"
+      alt: "Sanctuary sector 105 Gurugram"
     },
   ]
 

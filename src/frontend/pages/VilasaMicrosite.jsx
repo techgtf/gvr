@@ -72,7 +72,7 @@ function VilasaMicrosite() {
 
     // Specifications data 
 
-    const specificationsData = [    
+    const specificationsData = [
         {
             title: "Plot Sizes",
             items: [
@@ -131,6 +131,22 @@ function VilasaMicrosite() {
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
 
+
+    const galleryData = [
+        {
+            "image": actual1,
+            "alt": 'Elegant living and dining area'
+        },
+        {
+            "image": actual2,
+            "alt": 'Car parked'
+        },
+        {
+            "image": actual3,
+            "alt": 'Spacious apartment balcony'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -167,25 +183,26 @@ function VilasaMicrosite() {
 
 
                 <script type="application/ld+json">
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Great Value Realty Vilasa Sector 6, Sohna",
-                    "alternateName": "Great Value Realty Vilasa",
-                    "url": "https://greatvaluerealty.com/vilasa",
-                    "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
-                    "contactPoint":[ {
-                        "@type": "ContactPoint",
-                        "telephone": "+91 7777079770",
-                        "contactType": "customer service",
-                        "areaServed": "IN",
-                        "availableLanguage": "en"
-                     }]})}
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "Great Value Realty Vilasa Sector 6, Sohna",
+                        "alternateName": "Great Value Realty Vilasa",
+                        "url": "https://greatvaluerealty.com/vilasa",
+                        "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
+                        "contactPoint": [{
+                            "@type": "ContactPoint",
+                            "telephone": "+91 7777079770",
+                            "contactType": "customer service",
+                            "areaServed": "IN",
+                            "availableLanguage": "en"
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
-                desktopBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"
-                mobileBg = "https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"               
+                desktopBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"
+                mobileBg="https://res.cloudinary.com/dx3l6id8r/image/upload/f_auto,q_auto/v1739342283/hero_upnmgx.webp"
                 scrollText="SCROLL DOWN"
                 sectionId="overview"
                 initialScale={1.5}
@@ -253,7 +270,7 @@ function VilasaMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[actual1, actual2, actual3]}
+                actualImages={galleryData}
             />
         </>
     )

@@ -44,6 +44,7 @@ const Blogs = () => {
         img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/banner.webp`}
         heading={"BLOGS"}
         extraClassesImg={"objectRight"}
+        alt={'Browsing a real estate'}
       />
       <div className='bg-[#EFF5FA]'>
         <BlogList />

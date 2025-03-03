@@ -141,6 +141,21 @@ function SanctuaryMicrosite() {
         { image: "assets/frontend/images/microsite/vilasa/amentities/slider/slide9.webp", alt: "Basketball court" },
     ];
 
+    const galleryData = [
+        {
+            "image": gallery1,
+            "alt": 'High-rise apartment towers'
+        },
+        {
+            "image": gallery2,
+            "alt": 'Luxury residential complex'
+        },
+        {
+            "image": gallery3,
+            "alt": 'Luxury residential high-rise'
+        },
+    ]
+
     return (
         <>
             <Helmet>
@@ -176,7 +191,7 @@ function SanctuaryMicrosite() {
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                {JSON.stringify({
+                    {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Organization",
                         "name": "Great Value Realty Sanctuary Sector 105, Gurugram",
@@ -189,7 +204,8 @@ function SanctuaryMicrosite() {
                             "contactType": "customer service",
                             "areaServed": "IN",
                             "availableLanguage": "en"
-                    }]})}
+                        }]
+                    })}
                 </script>
             </Helmet>
             <HeroSection
@@ -257,7 +273,7 @@ function SanctuaryMicrosite() {
             />
 
             <ProjectGallery
-                actualImages={[gallery1, gallery2, gallery3]}
+                actualImages={galleryData}
             />
         </>
     )
