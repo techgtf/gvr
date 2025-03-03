@@ -6,15 +6,14 @@ import { Context } from "../../context/context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
-import { IoCloseOutline } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
+function PriceList({ priceListData = [], headingText = "" }) {
   const { showEnquiryForm, openEnquiryForm } = useContext(Context);
   const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null);
   const tableRef = useRef(null);
-  const location = useLocation(); // ✅ Track route changes
+  const location = useLocation();
 
   useEffect(() => {
     if (!tableRef.current) return;
@@ -26,30 +25,32 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
       return;
     }
 
-    // ✅ Reset animation state before running new animation
-    gsap.set(tableElements, { opacity: 0, y: 50 });
+    // ✅ Wrap GSAP animations in a requestAnimationFrame
+    requestAnimationFrame(() => {
+      gsap.set(tableElements, { opacity: 0, y: 50 });
 
-    const animation = gsap.to(tableElements, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: tableRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
+      const animation = gsap.to(tableElements, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: tableRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      return () => {
+        animation.kill();
+        ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
+      };
     });
+  }, [location.pathname]);
 
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach((st) => st.kill()); // ✅ Proper cleanup
-    };
-  }, [location.pathname]); // ✅ Animation resets on route change
-
-  const handleTooltipToggle = (index) => {
-    setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
+  // const handleTooltipToggle = (index) => {
+  //   setVisibleTooltipIndex((prevIndex) => (prevIndex === index ? null : index));
+  // };
 
   return (
     <>
@@ -62,12 +63,11 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
         {/* Desktop view */}
         <div className="hidden md:block table w-full mt-10" ref={tableRef}>
-          {priceListData.length > 0 ? (
-            priceListData.map((item, i) => (
+          {priceListData?.length > 0 ? (
+            priceListData?.map((item, i) => (
               <div key={i} className="row_1 grid grid-cols-4 py-5 border-b-2 border-gray-400">
                 <div className="flex justify-center  sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
-                  <p>{item.area}</p>
-
+                  <p>{item['sub_typology'].typology}</p>
                 </div>
                 <div className="flex justify-center sm:gap-10 gap-3 items-center border-r-2 border-gray-400">
                   <p>{item.size}</p>
@@ -88,23 +88,21 @@ function PriceList({ priceListData = [], headingText = "PRICE LIST" }) {
 
         {/* Mobile view */}
         <div className="block md:hidden table w-full mt-10">
-          {priceListData.length > 0 ? (
+          {priceListData?.length > 0 ? (
             priceListData.map((item, i) => (
               <div key={i} className="row_1 py-0 md:py-5">
-                <div className="grid grid-cols-3 border-b border-gray-300 py-3">
+                <div className="grid grid-cols-4 border-b border-gray-300 py-3">
                   <div className="flex relative justify-center sm:gap-10 gap-2 items-center border-r border-gray-300 font-semibold">
                     <p>{item.area}</p>
                   </div>
                   <div className="md:flex text-center py-2 md:py-0 justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.size}</p>
                   </div>
-                  <div className="flex text-center justify-center sm:gap-10 gap-3 items-center font-semibold">
+                  <div className="flex text-center justify-center sm:gap-10 gap-3 items-center border-r border-gray-300 font-semibold">
                     <p>{item.price}</p>
                   </div>
-                </div>
-                <div className="justify-center flex py-3">
                   <div className="w-full flex text-center justify-center sm:gap-10 gap-3 items-center">
-                    <div className="bg-transparent tracking-wide text-[#33638B] uppercase" onClick={openEnquiryForm}>
+                    <div className="bg-transparent tracking-wide text-[#33638B] uppercase" disabled onClick={openEnquiryForm}>
                       SOLD OUT
                     </div>
                   </div>

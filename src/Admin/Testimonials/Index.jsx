@@ -11,11 +11,8 @@ import Request from "root/config/Request";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
-
-const statusOptions = [
-  { label: "Active", value: "1" },
-  { label: "Hide", value: "0" },
-];
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Testimonials = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,11 +41,11 @@ const Testimonials = () => {
     listHandler();
   }, [currentPage]);
 
-  const listHandler = async (search='') => {
+  const listHandler = async (search = "") => {
     try {
       setIsLoading(true);
       var response = await Request(
-        "admin/testimonials?search="+search+"&page=" + currentPage,
+        "admin/testimonials?search=" + search + "&page=" + currentPage,
         "GET"
       );
       if (response.statusCode !== 200) {
@@ -106,7 +103,6 @@ const Testimonials = () => {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
-    debugger
 
     const formData = new FormData();
     formData.append("name", nameRef.current.value);
@@ -239,8 +235,9 @@ const Testimonials = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">Image</th>
-              <th className="border border-gray-300 p-2 text-left">Video</th>
+              <th className="border border-gray-300 p-2 text-left">
+                Thumbnail
+              </th>
               <th className="border border-gray-300 p-2 text-left">Name</th>
               <th className="border border-gray-300 p-2 text-left">
                 Designation
@@ -248,9 +245,7 @@ const Testimonials = () => {
               <th className="border border-gray-300 p-2 text-left">
                 Description
               </th>
-              <th className="border border-gray-300 p-2 text-left">
-                Iframe
-              </th>
+              <th className="border border-gray-300 p-2 text-left">Iframe</th>
               {/* <th className="border border-gray-300 p-2 text-left">Show</th> */}
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
@@ -259,7 +254,7 @@ const Testimonials = () => {
           <tbody>
             {isLoading && (
               <tr className="border-b border-gray-200">
-                <td colSpan={7}>
+                <td colSpan={6}>
                   <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -271,51 +266,39 @@ const Testimonials = () => {
               ? data.map((item) => (
                   <tr key={item.id} className="border-b">
                     <td className="py-2 px-4">
-                      <img
-                        src={CONFIG.VITE_APP_STORAGE + item.image}
-                        className="w-[60px] h-[60px] object-contain border"
-                        alt={item.name + "image"}
-                      />
-                    </td>
-                    <td className="py-2 px-4">
-                      {item.video ? (
-                        <video className="w-[200px] h-[80px] object-contain border" src={CONFIG.VITE_APP_STORAGE + item.video} alt={item.name + "image"} controls />
-                      ) : 'No Video Found'}
+                      {item.image ? (
+                        <img
+                          src={CONFIG.VITE_APP_STORAGE + item.image}
+                          className="w-[60px] h-[60px] object-contain border"
+                          alt={item.name + " image"}
+                        />
+                      ) : (
+                        <video
+                          className="w-[200px] h-[80px] object-contain border"
+                          src={CONFIG.VITE_APP_STORAGE + item.video}
+                          alt={item.name + " video"}
+                          controls
+                        />
+                      )}
                     </td>
                     <td className="py-2 px-4">{item.name}</td>
                     <td className="py-2 px-4">{item.destination}</td>
                     <td className="py-2 px-4">{item.description}</td>
-                    <td className="py-2 px-4">{item.iframe_url}</td>
-                    {/* <td className="py-2 px-4">
-                      <CustomDropdown
-                        className="w-full border rounded p-1"
-                        defaultVal={item.status}
-                        options={statusOptions}
-                        onSelect={(selectedValue) =>
-                          handleStatusSelect(selectedValue, item.id)
-                        }
-                      />
-                    </td> */}
-                    <td className="py-2 px-4 flex gap-2">
+                    <td className="py-2 px-4">
+                      {item.iframe_url ? item.iframe_url : "Not Available"}
+                    </td>
+                    <td className="py-2 px-4">
                       <button
-                        className="bg-gray-200 p-1 rounded"
+                        className="btn action_btn"
                         onClick={() => editHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
-                          alt="edit icon"
-                          className="w-5 h-5"
-                        />
+                        <AiOutlineEdit size={22} />
                       </button>
                       <button
-                        className="bg-red-500 p-1 rounded text-white"
+                        className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/delete_color.svg"}
-                          alt="delete icon"
-                          className="w-5 h-5"
-                        />
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
                       </button>
                     </td>
                   </tr>
@@ -350,8 +333,10 @@ const Testimonials = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Thumbnail*
-                    <small class="size block font-[400] text-[#888]">(Size 1600px x 400px)</small>
+                    Select Thumbnail
+                    <small class="size block font-[400] text-[#888]">
+                      (Size 1600px x 400px)
+                    </small>
                   </label>
                   <input
                     ref={imageRef}
@@ -372,7 +357,7 @@ const Testimonials = () => {
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Video*
+                  Select Video
                     {/* <small class="size block font-[400] text-[#888]">(Size 1600px x 400px)</small> */}
                   </label>
                   <input
@@ -395,7 +380,7 @@ const Testimonials = () => {
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Iframe
+                    Video Id
                   </label>
                   <input
                     ref={iframeRef}
@@ -403,9 +388,9 @@ const Testimonials = () => {
                     type="text"
                     placeholder="Enter Video Iframe Url"
                   />
-                  {errors.name && (
+                  {errors.iframe_url && (
                     <span className="text-red-500">
-                      {errors.name && "The Name field is required"}
+                      {errors.iframe_url && "The Iframe field is required"}
                     </span>
                   )}
                 </div>
@@ -438,25 +423,31 @@ const Testimonials = () => {
                     placeholder="Enter Designation"
                   />
                   {errors.destination && (
-                    <span className="text-red-500">{errors.destination && "The Designation field is required"}</span>
+                    <span className="text-red-500">
+                      {errors.destination &&
+                        "The Designation field is required"}
+                    </span>
                   )}
                 </div>
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Description*
+                    Message*
                   </label>
-                  <input
+                  <textarea
                     ref={descriptionRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Description"
+                    placeholder="Enter Message"
+                    rows={3}
                   />
                   {errors.description && (
-                    <span className="text-red-500">{errors.description && "The Description field is required"}</span>
+                    <span className="text-red-500">
+                      {errors.description &&
+                        "The Message field is required"}
+                    </span>
                   )}
                 </div>
-
               </form>
             </SideModal>
           </SidebarPortal>

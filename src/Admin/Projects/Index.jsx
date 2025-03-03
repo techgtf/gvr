@@ -134,41 +134,43 @@ const Projects = () => {
       <div className="flex title_col justify-between items-center">
         <h4 className="page_title">{categoryData.name} Projects</h4>
         <Link
-          className="btn btn_primary"
+          className="btn ml-auto btn_primary btn-sm"
           to={`${CONFIG.ADMIN_ROOT}project/add`}
         >
           Add New Project
         </Link>
       </div>
 
-      <div className="card mt-4 card_style1">
+      <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
           <h5 className="mb-0">{categoryData.name} Projects</h5>
           <div className="searchInput ml-auto">
             <input
               type="text"
-              className="form-input"
+              className="border rounded px-3 py-2 w-full"
               placeholder="Search by name"
               onChange={findHandler}
             />
           </div>
         </div>
 
-        <table className="mt-10 w-full border-collapse">
+        <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
-            <tr className="border-b">
-              <th className="p-2">Project</th>
-              <th className="p-2">Status</th>
-              <th className="p-2">Featured</th>
-              <th className="p-2">Actions</th>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 p-2 text-left">Project</th>
+              <th className="border border-gray-300 p-2 text-left">Status</th>
+              {/* <th className="border border-gray-300 p-2 text-left">Featured</th> */}
+              <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             {isLoading && (
-              <tr>
-                <td colSpan={4} className="text-center p-4">
+              <tr className="border-b border-gray-200">
+                <td colSpan={3}>
+                <div className="text-center py-4">
                   <ScaleLoader color="#ddd" className="w-full" />
+                </div>
                 </td>
               </tr>
             )}
@@ -176,11 +178,11 @@ const Projects = () => {
             {!isLoading && list.length ? (
               list.map((item) => (
                 <tr key={item.id} className="border-b">
-                  <td className="p-2">
+                  <td className="py-2 px-4">
                     <div className="flex items-center">
                       <div className="thumb w-16 h-16 overflow-hidden">
                         <img
-                          src={CONFIG.VITE_APP_STORAGE + item.feature_image}
+                          src={CONFIG.VITE_APP_STORAGE + item.thumbnail}
                           alt="property"
                           className="w-full h-full object-cover"
                           onError={handleImageError}
@@ -196,22 +198,23 @@ const Projects = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="p-2">
+                  <td className="py-2 px-4">
                     <CustomDropdown
-                      className="form-input"
+                      className="border rounded px-3 py-2 w-full"
                       defaultVal="Select --"
                       options={statusOptions}
                       onSelect={handleStatusSelect}
                     />
                   </td>
-                  <td className="p-2">
+                  {/* <td className="py-2 px-4">
                     <CustomSwitch
+                      className="w-full"
                       id={item.id}
                       toggleSwitch={toggleSwitch}
                       isChecked={item.is_feature}
                     />
-                  </td>
-                  <td className="p-2">
+                  </td> */}
+                  <td className="py-2 px-4">
                     <NavLink
                       to={`${CONFIG.ADMIN_ROOT}project/${item.id}/edit`}
                       className="action_btn"

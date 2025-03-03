@@ -18,9 +18,7 @@ import drive from "/assets/frontend/images/microsite/location/drive.webp";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
-
 import gallery1 from "/assets/frontend/images/microsite/anandam/gallery/actual/1.webp";
-import gallery2 from "/assets/frontend/images/microsite/anandam/gallery/actual/2.webp";
 import gallery3 from "/assets/frontend/images/microsite/anandam/gallery/actual/3.webp";
 import gallery4 from "/assets/frontend/images/microsite/anandam/gallery/actual/4.webp";
 import Specifications from '../components/microsite/HighlightsSpecifications/Specifications'
@@ -41,8 +39,13 @@ import aboutImg from "/assets/frontend/images/microsite/anandam/about/about.webp
 // location drive and walk images 
 import mall from "/assets/frontend/images/microsite/location/walkIcons/mall.webp"
 import school from "/assets/frontend/images/microsite/location/walkIcons/school.webp"
-import musicschool from "/assets/frontend/images/microsite/location/walkIcons/musicschool.webp"
-import buildings from "/assets/frontend/images/microsite/location/walkIcons/buildings.webp"
+import stadium from "/assets/frontend/images/microsite/gv/location/icons/auditorium.webp"
+import hospital from "/assets/frontend/images/microsite/gv/location/icons/hospital.webp"
+import store from "/assets/frontend/images/microsite/gv/location/icons/shopping.webp"
+import airport from "/assets/frontend/images/microsite/vilasa/location/icons/airport.webp"
+import college from "/assets/frontend/images/microsite/gv/location/icons/college.webp"
+import cafe from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
+import railway from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
 
 
 function AnandamMicrosite() {
@@ -205,11 +208,10 @@ function AnandamMicrosite() {
 
     return (
         <>
-
             <Helmet>
-                <title>Great Value Anandam Sector 107, Noida</title>
+                <title>Explore Anandam Noida – Luxury Residences by Great Value</title>
                 <meta name="keywords" content="Great Value realty, Anandam Sector 107 Noida, Great Value Anandam, Sector 107 Noida,Great Value Anandam Noida, Best Great Value Anandam" />
-                <meta name="description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
                 <link rel="canonical" href="https://greatvaluerealty.com/anandam" />
                 <meta name="distribution" content="Global" />
@@ -225,21 +227,21 @@ function AnandamMicrosite() {
                 <meta name="rating" content="safe for kids" />
                 <meta name="expires" content="never" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Great Value Anandam Noida" />
-                <meta property="og:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta property="og:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
+                <meta property="og:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
                 <meta property="og:site_name" content="Great Value Anandam" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@GreatValueGroup" />
-                <meta name="twitter:title" content="Great Value Anandam" />
-                <meta name="twitter:description" content="Explore Great Value Anandam in Sector 107, Noida – a premier residential project offering spacious homes, modern amenities, and a serene living environment." />
+                <meta name="twitter:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
+                <meta name="twitter:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="twitter:creator" content="@GreatValueGroup" />
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
                 {/* <!--End of Twitter TH data --> */}
 
                 <script type="application/ld+json">
-                    {`
+                    {`{
                    "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Great Value Anandam Sector 107, Noida",
@@ -252,7 +254,7 @@ function AnandamMicrosite() {
                         "contactType": "customer service",
                         "areaServed": "IN",
                         "availableLanguage": "en"
-                    }`}
+                    }}`}
                 </script>
             </Helmet>
             <HeroSection
@@ -268,7 +270,6 @@ function AnandamMicrosite() {
                     description: "2 & 3 BHK LUXURY RESIDENTIAL APARTMENTS",
                 }}
             />
-
 
             <About
                 imageSrc={aboutImg}
@@ -291,20 +292,29 @@ function AnandamMicrosite() {
                 specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
             />
 
-            <Plans masterPlanData={masterPlanData} unitData={unitData} />;
+            <Plans masterPlanData={masterPlanData} unitData={unitData} />
+            
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '3 min' },
-                    { image: school, text: 'Pathway School , Noida', time: '5 min' },
-                    { image: musicschool, text: 'Oasis Noida', time: '10 min' },
-                    { image: buildings, text: 'Greater Noida Expressway', time: '15 min' },
+                  { image: store, text: 'Sector 104 Market', time: '4 min' },
+                            { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
+                            { image: school, text: 'Pathways School Noida', time: '5 min' },
+                            { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
+                            { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
+                            { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
+                            { image: mall, text: 'DLF Mall of India', time: '15 min' },
+                            { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+                            { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
+                            { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
                 ]}
                 walkData={[
-                    { image: mall, text: 'Starling Edge Mall, Fern Residency', time: '5 min' },
-                    { image: school, text: 'Pathway School Noida', time: '10 min' },
-                    { image: musicschool, text: 'Mayoor School of Music', time: '15 min' },
-                    { image: buildings, text: 'Oasis Noida', time: '20 min' },
+                    { image: mall, text: 'Starling Mall, Plot no 1A, Hazipur, Sector 104, Noida, Uttar Pradesh 201301', time: '8 min' },
+                             { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
+                             { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
+                             { image: school, text: 'Pathways School Noida', time: '14 min' },
+                             { image: store, text: 'Sector 104 Market', time: '15 min' },
+                             { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
                 ]}
                 driveTabIcon={drive}
                 driveTabActiveIcon={driveActive}

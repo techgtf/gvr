@@ -32,7 +32,7 @@ const ProjectLocation = ()=>{
 
             <div className="px_50 form_col">
                 <Button className="btn btn_outline" onClick={backHandler}>Back</Button>
-                <Sections projectid={projectid} section_type={section_id} textarea image   title="Project Overview" sub_heading />
+                <Sections projectid={projectid} section_type={section_id} textarea image title="Project Overview" sub_heading />
             </div>
 
         </>

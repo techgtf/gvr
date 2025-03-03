@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, memo, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
-import { DATA_ASSET_URL } from "../../../../config";
+import { DATA_ASSET_URL, VITE_APP_STORAGE } from "../../../../config";
 
 const projects = [
   {
@@ -52,7 +52,7 @@ const projects = [
     year: 2008,
     project: [
       {
-        category: "Jharkhand Bhawan",
+        category: "Jharkhand Bhawan, Vasant Kunj, Delhi",
 
         description:
           "Turnkey Project with Engineers India Ltd: Transformed 19,000 sq. ft. into a modern, sustainable architectural space.",
@@ -64,19 +64,19 @@ const projects = [
     timelineImg: "2009-1.webp",
     images: ["2009-1.webp", "2009-2.webp", "2009-3.webp", "2009-4.webp"],
     project: [
-      {
-        year: 2009,
+      // {
+      //   year: 2009,
 
-        category: "Great Value Mall",
-        description:
-          "Revolutionized retail in Aligarh with cutting-edge concepts and immersive experiences.",
-      },
+      //   category: "Great Value Mall",
+      //   description:
+      //     "Revolutionized retail in Aligarh with cutting-edge concepts and immersive experiences.",
+      // },
       {
         year: 2009,
         category: "Real Estate",
 
         description:
-          "Diversified into real estate development to create impactful spaces.",
+          "Diversified into real estate development with Great Value Mall, Aligarh",
       },
     ],
   },
@@ -86,7 +86,7 @@ const projects = [
     images: ["2010-1.webp", "2010-2.png ", "2010-3.png ", "2010-4.png "],
     project: [
       {
-        category: "Great Value Sharanam",
+        category: "Great Value Sharanam, Sector 107, Noida",
         description:
           "A luxurious residential project spread across 16 acres, featuring 16 towers with world-class amenities.",
       },
@@ -98,7 +98,7 @@ const projects = [
     timelineImg: "2011-1.webp",
     project: [
       {
-        category: "1000 Trees",
+        category: "1000 Trees, Dwarka Expressway",
 
         description:
           "An eco-conscious residential project promoting sustainability by integrating nature into modern living.",
@@ -111,7 +111,7 @@ const projects = [
     timelineImg: "2012-1.webp",
     project: [
       {
-        category: "Commercial Complex",
+        category: "Commercial Complex, Madangir",
 
         description:
           "A premium office complex in South Delhi, blending functional design with luxury.",
@@ -124,10 +124,10 @@ const projects = [
     timelineImg: "2018-1.webp",
     project: [
       {
-        category: "Residential Floors",
+        category: "Residential Floors, Uday Park",
 
         description:
-          "Elegant G+3 residential units in South Delhi, combining sophistication with premium finishes.",
+          "Elegant G+3 residential units, combining sophistication with premium finishes.",
       },
     ],
   },
@@ -142,32 +142,32 @@ const projects = [
 
         category: "Distressed Asset Reconstruction",
         description:
-          "Initiated efforts to convert distressed properties into valuable assets.",
+          "Led efforts to turn distressed properties into valuable assets through projects like the Logistics & Industrial Park, Megasoft Infrastructure, and East Coast Thermal Plant.",
       },
       {
         year: 2019,
-        category: "Logistics & Industrial Park, Greater Noida",
-        description:
-          "Converted a 67-acre distressed property into a thriving park hosting 14 multinational companies.",
-      },
-      {
-        year: 2019,
-        category: "Great Value Anandam",
+        category: "Great Value Anandam, Sector 107, Noida",
         description:
           "An iconic 30-story tower offering contemporary design and space-efficient layouts.",
       },
-      {
-        year: 2019,
-        category: "Megasoft Infrastructure",
-        description:
-          "Acquired 4,615 sqm of institutional land for future commercial and mixed-use projects.",
-      },
-      {
-        year: 2019,
-        category: "East Coast Thermal Plant",
-        description:
-          "Acquired a distressed thermal plant for potential redevelopment.",
-      },
+      // {
+      //   year: 2019,
+      //   category: "Logistics & Industrial Park, Greater Noida",
+      //   description:
+      //     "Converted a 67-acre distressed property into a thriving park hosting 14 multinational companies.",
+      // },
+      // {
+      //   year: 2019,
+      //   category: "Megasoft Infrastructure",
+      //   description:
+      //     "Acquired 4,615 sqm of institutional land for future commercial and mixed-use projects.",
+      // },
+      // {
+      //   year: 2019,
+      //   category: "East Coast Thermal Plant",
+      //   description:
+      //     "Acquired a distressed thermal plant for potential redevelopment.",
+      // },
     ],
   },
   {
@@ -176,7 +176,7 @@ const projects = [
     timelineImg: "2020-1.webp",
     project: [
       {
-        category: "Moser Baer Solar Ltd",
+        category: "Moser Baer Solar Ltd, Greater Noida",
         description:
           "Secured 33 acres of industrial land, paving the way for redevelopment and optimization.",
       },
@@ -186,12 +186,12 @@ const projects = [
   {
     year: 2022,
     images: ["2022-1.webp", "2022-2.webp", "2022-3.webp", "2022-4.webp"],
+    timelineImg: "2022-1.webp",
     project: [
       {
         year: 2022,
 
-        timelineImg: "2022-1.webp",
-        category: "Office Property",
+        category: "Office Property, Worli, Mumbai",
         description:
           "Acquired a premium 3,095 sq. ft. office space in a prime business district.",
       },
@@ -206,9 +206,9 @@ const projects = [
   {
     year: 2023,
     images: ["2023-1.webp", "2023-2.webp", "2023-3.webp", "2023-4.webp"],
+    timelineImg: "2023-1.webp",
     project: [
       {
-        timelineImg: "2023-1.webp",
         year: 2023,
 
         category: "Alternative Investment Fund (AIF)",
@@ -218,7 +218,7 @@ const projects = [
       {
         year: 2023,
         timelineImg: "2023-1.webp",
-        category: "Hindon River Mill Ltd",
+        category: "Hindon River Mill Ltd, Dasna, Ghaziabad",
         description:
           "Acquired 48.26 acres for an upscale villa complex in a prime location.",
       },
@@ -238,15 +238,16 @@ const projects = [
   },
 ];
 
-const OurJourney = () => {
+const OurJourney = ({ data: pageData }) => {
   const elementRef = useRef(null);
   const imgClusterRef = useRef(null);
-  const [data, setData,] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     axios
-      .get(`${DATA_ASSET_URL}timeline`) 
+      .get(`${DATA_ASSET_URL}timeline`)
       .then((response) => {
         setData(response.data.data); // Set the blog data
         setLoading(false);
@@ -302,29 +303,28 @@ const OurJourney = () => {
     };
   }, [selectedProjectIndex]);
 
-
-  console.log(data,"datadatadatadata")
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
       <h3 className="sectionHeading text-center xl:text-left tracking-[5px] text-[black] midlandfontmedium">
-        OUR JOURNEY
+        {pageData.heading}
       </h3>
+
       <div className="flex justify-between items-center flex-wrap">
         {/* we have two design, i,e. we have 1 project and  other when we have multiple project*/}
         {/* {item.records.length === 1 ? ( */}
-        {projects[selectedProjectIndex].project.length === 1 ? (
+        {data && data[selectedProjectIndex].records.length === 1 ? (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
             ref={elementRef}
           >
             <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
-              {projects[selectedProjectIndex].year}
+              {data[selectedProjectIndex].records[0].year}
             </h4>
-            <p className="midlandfontmedium text-primary tracking-[4px] !text-[13px] mb-[1.3rem]">
-              {projects[selectedProjectIndex].project[0].category}
+            <p className="midlandfontmedium text-primary tracking-[4px] !text-[11px] mb-[1.3rem]">
+              {data[selectedProjectIndex].records[0].title}
             </p>
-            <p className="mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-              {projects[selectedProjectIndex].project[0].description}
+            <p className="common_pera mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
+              {data[selectedProjectIndex].records[0].location}
             </p>
           </div>
         ) : (
@@ -360,7 +360,7 @@ const OurJourney = () => {
           ref={imgClusterRef}
           className="xl:basis-[50%] basis-[100%] xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
         >
-          {projects[selectedProjectIndex].images.map((img, index) => {
+          {data && data[selectedProjectIndex].images.map((imageData, index) => {
             // Dynamic positioning based on the index
             const positionClasses = [
               "absolute top-[8%] xl:top-0 left-[25%] z-[1]", // Index 0
@@ -372,8 +372,8 @@ const OurJourney = () => {
             return (
               <img
                 key={index}
-                src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
-                alt={`${projects[selectedProjectIndex].year}${index}.img`}
+                src={imageData.image}
+                alt={imageData.alt}
                 className={`xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] ${positionClasses[index]}`}
               />
             );
@@ -410,10 +410,10 @@ const OurJourney = () => {
           className="relative"
         >
           <div className="absolute opacity-[0.5] left-[10%] xl:top-[50%] top-[39%] h-[1px] w-[85%] bg-[#B1B1B1]" />
-          {projects.map((project, index) => {
+          {data && data.map((project, index) => {
             // Dynamically determine the year and image path based on the special projects
             const projectYear = project.year;
-            const timelineImg = project.timelineImg;
+            const timelineImg = project.image;
             return (
               <SwiperSlide key={project.year}>
                 <div
@@ -427,7 +427,7 @@ const OurJourney = () => {
                     }`}
                   >
                     <img
-                      src={`assets/frontend/images/aboutus/ourJourney/${projectYear}/${timelineImg}`}
+                      src={timelineImg}
                       alt="timeline"
                       className="xl:w-[7.5rem] object-cover xl:h-[7.5rem] w-[3.5rem] h-[3.5rem] rounded-full"
                     />

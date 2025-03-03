@@ -9,28 +9,49 @@ import TestimonialGrid from "../components/testimonials/Index";
 
 import * as CONFIG from "../../../config";
 import { Helmet } from "react-helmet";
+import useFetchData from "../apiHooks/useFetchData";
 const Testimonials = () => {
+
+  const { data: testimonialdata, loading: bannerLoading, error: bannerError } = useFetchData("page-sections", "16");
+
+    // 🔹 Extract Banner Data Safely
+    const extractBannerData = (pageData) => {
+      // debugger
+      if (!pageData) return { testimonialBanner: null, testimonialOverview: null };
+
+      // const pageData = Object.values(pageData)?.[0] || {};
+
+      return {
+        testimonialBanner: pageData['testimonials-banner'],
+        testimonialOverview: pageData['testimonials-overview'],
+      };
+    };
+
+    const {testimonialBanner, testimonialOverview} = extractBannerData(testimonialdata);
+
+
   return (
     <>
       <Helmet>
         <title>Great Value Realty | Testimonials</title>
       </Helmet>
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/home/testimonials/banner.webp`}
-        heading={"Testimonials"}
+        img={`${CONFIG.VITE_APP_STORAGE}${testimonialBanner?.image}`}
+        alt={testimonialBanner?.image_alt}
+        heading={testimonialBanner?.heading}
         extraClassesImg={"objectRight"}
       />
       <div
-        className="overview_section 2xl:pt-[80px] px-[30px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
+        className="overview_section 2xl:pt-[80px] lg:px-[30px] px-[15px] xl:pt-[40px] pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]"
       // data-speed="clamp(.9)"
       // ref={sectionRef}
       >
         <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
           <CommonHeading
             HeadingText={
-              `Voices of Trust, Stories of Excellence, Legacies Built Together" Introduction`
+              testimonialOverview?.heading
             }
-            HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
+            HeadingClass="xl:text-center text-center xl:pb-[0px] pb-[35px]"
           />
         </div>
         <SlideIn duration={2} delay={0.5}>
@@ -42,10 +63,10 @@ const Testimonials = () => {
             className="content !px-0 !py-[35px] lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px]  text-center"
           >
             <CommonPera
-              PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
+              PeraClass="fontItalic text-center xl:text-center !p-[0px]"
               //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
               PeraText={
-                `At Great Value Realty, every home, office, and commercial space is more than just a structure—it is a milestone in someone’s journey. Our Testimonials Section brings to life the experiences of those who have found success, comfort, and growth with us. From homeowners to businesses, every story is a testament to our commitment to quality, integrity, and lasting relationships. Hear firsthand how we turn visions into reality and spaces into legacies.`
+                testimonialOverview?.description
               }
             />
           </div>

@@ -14,6 +14,10 @@ import "../../../assets/css/admin.css";
 
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "2023", value: '2023' },
@@ -23,6 +27,7 @@ const statusOptions = [
 const TimelineImages = () => {
   const [data, setData] = useState([]);
   const [selectedYear, setSelectedYear] = useState('2024');
+  const [yearOptions, setYearOptions] = useState(null);
 
   // pagination
   const [totalPage, setTotalPage] = useState(0);
@@ -62,28 +67,8 @@ const TimelineImages = () => {
     setenableEdit(false);
   };
 
-  const handleStatusSelect = async (selectedValue, id) => {
+  const handleStatusSelect = async (selectedValue) => {
     setSelectedYear(selectedValue);
-  };
-
-  const updateStatusHandler = async (id, selectedStatus) => {
-    setIsSitebarFormButtonLoading(true);
-
-    const formData = new FormData();
-    formData.append("status", selectedStatus);
-    var response = await Request(
-      "admin/amenities/" + id + "/status",
-      "POST",
-      formData
-    );
-
-    if (response.status && response.statusCode == 403) {
-      setErrors(response.errors);
-      toast.error(response.message);
-    } else if (response.status && response.statusCode == 200) {
-      toast.success(response.message);
-    }
-    setIsSitebarFormButtonLoading(false);
   };
 
   const addAmenityHandler = () => {
@@ -99,7 +84,7 @@ const TimelineImages = () => {
     formData.append("year", selectedYear);
     formData.append("image", fileRef.current.files[0]);
 
-    var response = await Request("admin/timeline-preview/", "POST", formData);
+    var response = await Request("admin/timeline-preview", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -151,16 +136,16 @@ const TimelineImages = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/timeline-preview/?search=" + search + "&page=" + currentPage,
+      "admin/timeline-preview?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
       setData(response.data.data);
-      // setLastPage(response.data.last_page);
+      setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };
-
+ 
   const updateSubmitHandler = async (event) => {
     event.preventDefault();
     setIsSitebarFormButtonLoading(true);
@@ -197,17 +182,34 @@ const TimelineImages = () => {
     listHandler(searchTerm);
   };
 
+  useEffect(()=>{
+    const fetchImagesYears = async()=>{
+      var response = await Request(
+        "admin/distinct-timeline",
+        "GET"
+      );
+  
+      if (response.status && response.statusCode === 200) {
+        setYearOptions(response.data);
+      } else if (response.status && response.statusCode === 403) {
+        toast.error(response.message);
+      }
+    }
+
+    fetchImagesYears()
+  }, [])
+
   return (
     <>
       <div className="flex title_col justify-between items-center">
         <h4 className="page_title">Timeline Images</h4>
         <div className="flex gap-3">
-          <button
+          <Link
             className="btn ml-auto btn_primary btn-sm"
-            onClick={addAmenityHandler}
+            to={`${CONFIG.ADMIN_ROOT}timeline`}
           >
             Back To Timeline
-          </button>
+          </Link>
           <button
             className="btn ml-auto btn_primary btn-sm"
             onClick={addAmenityHandler}
@@ -262,18 +264,18 @@ const TimelineImages = () => {
                         />
                       </td>
                       <td className="py-2 px-4">{item.year}</td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>
@@ -337,10 +339,10 @@ const TimelineImages = () => {
                   </label>
                   <CustomDropdown
                     className="border rounded px-3 py-2 w-full"
-                    defaultVal={selectedYear}
-                    options={statusOptions}
+                    select={selectedYear}
+                    options={yearOptions}
                     onSelect={(selectedValue) =>
-                      handleStatusSelect(selectedValue, item.id)
+                      handleStatusSelect(selectedValue)
                     }
                   />
                   {errors.name && (

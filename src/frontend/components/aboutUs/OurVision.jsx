@@ -29,14 +29,14 @@ const missionDescription = missionData.description.replace(/<\/?[^>]+(>|$)/g, ""
           className="xl:basis-[60%] basis-[100%] xl:mt-0 mt-[1.5rem]"
           // ref={sectionRef}
         >
-          <SlideIn>
+          {/* <SlideIn> */}
             <div className="xl:mb-[3.5rem]  mb-[2rem]">
               {visionData.heading &&
               (<h3 className="midlandfontmedium text-[11px] text-primary tracking-[2px]">
                 { visionData.heading}
               </h3>)}
              {visionDescription &&
-             (<p className="text-[13px] text-justify mt-[1rem] poppins-regular text-black font-[300]">
+             (<p className="text-[13px] text-justify mt-[1rem] poppins-regular common_pera font-[300]">
                 {visionDescription}
               </p>)} 
             </div>
@@ -46,11 +46,11 @@ const missionDescription = missionData.description.replace(/<\/?[^>]+(>|$)/g, ""
                 {missionData.heading}
               </h3>)} 
               {missionDescription &&
-              (<p className="text-[13px] text-justify mt-[1rem] text-black poppins-regular font-[300]">
+              (<p className="text-[13px] text-justify mt-[1rem] poppins-regular common_pera font-[300]">
                 {missionDescription}
               </p>)}
             </div>
-          </SlideIn>
+          {/* </SlideIn> */}
         </div>
       </div>
     </div>

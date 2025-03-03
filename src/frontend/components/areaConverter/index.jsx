@@ -49,7 +49,7 @@ export default function Index() {
                     </div>
 
                     <div className="relative">
-                        <label className="block font-semibold mt-4 mb-2">From Unit</label>
+                        <label className="block font-[400] mt-4 mb-2">From Unit</label>
                         <button
                             onClick={() => setOpenDropdown(openDropdown === "from" ? null : "from")}
                             className="w-full border border-solid border-[#ddd] rounded px-4 py-[6px] flex justify-between items-center text-[14px] hover:bg-gray-100 uppercase"
@@ -75,7 +75,7 @@ export default function Index() {
                     </div>
 
                     <div className="relative">
-                        <label className="block font-semibold mt-4 mb-2">To Unit:</label>
+                        <label className="block font-[400] mt-4 mb-2">To Unit:</label>
                         <button
                             onClick={() => setOpenDropdown(openDropdown === "to" ? null : "to")}
                             className="w-full border border-solid border-[#ddd] rounded px-4 py-[6px] flex justify-between items-center text-[14px] hover:bg-gray-100 uppercase"

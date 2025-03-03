@@ -1,30 +1,27 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./footer.css";
-import FooterLinks from "./FooterLinks";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import * as CONFIG from "../../../config";
 import { BASE_ROOT } from "../../../config";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LiaAngleDownSolid, LiaAngleUpSolid } from "react-icons/lia";
 import FooterBottom from "./FooterBottom";
+import FooterLinks from "./FooterLinks";
+import FooterLinksMob from "./FooterLinksMob";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function Footer() {
   const [toggelLinks, setToggelLinks] = useState(false);
-  const [footerHeight, setFooterHeight] = useState(0);
-  const footerRef = useRef(null);
-  const gsapTimeline = useRef(null); // Store GSAP timeline
-  const location = useLocation();
-  const navigate = useNavigate();
+
+  const GiveFooterLinks = window.innerWidth > 767 ? <FooterLinks toggelLinks={toggelLinks} /> : <FooterLinksMob toggelLinks={toggelLinks} />
 
   return (
     <>
       <section id="mainfooter">
         <footer
-          ref={footerRef}
-          className="footermain bg-slate-700 text-center text-white lg:pt-10 pt-5 relative"
+          className="footermain bg-slate-700 text-center text-white lg:pt-10 pt-7 relative"
         >
           <button
             className="toggelButton absolute left-0 right-0 lg:top-[-28px] top-[-22px] flex w-fit m-auto justify-center bg-white text-black items-center rounded-full lg:p-[8px] p-[6px] focus-visible:outline-none focus-visible:ring-0"
@@ -47,7 +44,7 @@ export default function Footer() {
           </button>
 
           <div className="footer_container max-w-[95%] m-auto">
-            <div className="block md:flex justify-between items-center lg:pb-8 pb-5">
+            <div className="block md:flex justify-between items-center lg:pb-8 pb-6">
               <Link
                 to={`${CONFIG.BASE_ROOT}`}
                 className="lg:flex hidden justify-center md:block focus-visible:outline-none focus-visible:ring-0"
@@ -59,43 +56,51 @@ export default function Footer() {
                 />
               </Link>
 
-              <ul className="grid md:grid-cols-5 grid-cols-2 lg:justify-between justify-center lg:gap-4 gap-2 mt-4 md:mt-0 uppercase tracking-[1px]">
-                <li>
+              <ul className="flex flex-wrap lg:justify-between justify-center lg:gap-5 gap-[18px] mt-4 md:mt-0 uppercase tracking-[1px]">
+                <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${BASE_ROOT}residential`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Residential
                   </Link>
                 </li>
-                <li>
+                <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${BASE_ROOT}commercial-projects`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Commercial
                   </Link>
                 </li>
-                <li>
+                <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${BASE_ROOT}media`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Media Centre
                   </Link>
                 </li>
-                <li>
+                <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${BASE_ROOT}about-us`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
-                    Our Profile
+                    about us
                   </Link>
                 </li>
-                <li>
+                <li className="lg:w-[auto] w-[30%]">
+                  <Link
+                    to={`${BASE_ROOT}esg`}
+                    className="xl:text-[13px] lg:hidden block text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
+                  >
+                    esg
+                  </Link>
+                </li>
+                <li className="lg:w-[auto] w-[30%]">
                   <Link
                     to={`${CONFIG.BASE_ROOT}contact-us`}
-                    className="xl:text-[14px] text-[12px] tracking-[2px] focus-visible:outline-none focus-visible:ring-0"
+                    className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Contact Us
                   </Link>
@@ -105,7 +110,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <FooterLinks toggelLinks={toggelLinks} />
+          {GiveFooterLinks}
         </footer>
         <FooterBottom />
       </section>

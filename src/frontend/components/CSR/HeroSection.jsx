@@ -23,7 +23,7 @@ function HeroSection({data}) {
            </ZoomOut>
         </div>
 
-      <Breadcrumb currentPage="ESG" linkPath={`${CONFIG.BASE_ROOT}csr`} />
+      {/* <Breadcrumb currentPage="ESG" linkPath={`${CONFIG.BASE_ROOT}csr`} /> */}
     </>
   );
 }

@@ -8,27 +8,55 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css/free-mode";
 
-export default function MediaCoverage() {
+export default function MediaCoverage({heading}) {
   const mediaData = [
     {
-      name: "sky news",
-      imgSrc: "sky-news.webp",
+      // name: "sky news",
+      imgSrc: "bt-logo-img-Photoroom.webp",
     },
     {
-      name: "global news",
-      imgSrc: "global-news.webp",
+      // name: "global news",
+      imgSrc: "construction-week-img-Photoroom.webp",
     },
     {
-      name: "nbc sports group",
-      imgSrc: "nbc-group.webp",
+      // name: "nbc sports group",
+      imgSrc: "dainik-jagran-logo-img-Photoroom.webp",
     },
     {
-      name: "corel draw news",
-      imgSrc: "core-draw-news.webp",
+      // name: "corel draw news",
+      imgSrc: "epc-world-img-Photoroom.webp",
     },
     {
-      name: "breaking news",
-      imgSrc: "breaking-news.webp",
+      // name: "breaking news",
+      imgSrc: "et-2-logo-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "et-logo-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "money-control-logo-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "realty&more-logo-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "realty-buzz-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "the-property-logo-img-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "yourstory-Photoroom.webp",
+    },
+    {
+      // name: "breaking news",
+      imgSrc: "zee-business-img-Photoroom.webp",
     },
   ];
 
@@ -39,7 +67,7 @@ export default function MediaCoverage() {
       <SlideIn duration={2} delay={0.5}>
         <WaterMarkHeading
           // sectionHeading='Media Vault - Our Journey Unveiled'
-          sectionHeading="Our media coverage"
+          sectionHeading={heading}
         />
         <div className="lg:max-w-[61%] max-w-[95%] m-auto lg:pt-24 pt-12">
           <div className="flexbox flex flex-wrap justify-center lg:gap-x-16 gap-x-8 lg:gap-y-0 gap-y-[40px] items-center">

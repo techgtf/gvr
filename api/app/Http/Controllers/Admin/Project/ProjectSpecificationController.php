@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Project\ProjectSpecification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProjectSpecificationController extends Controller
 {
@@ -17,31 +18,31 @@ class ProjectSpecificationController extends Controller
     public function index(Request $request)
     {
 
-        $validator = Validator::make($request->all(),
-        [
+        // $validator = Validator::make($request->all(),
+        // [
         
-            'project_id' => 'required|exists:projects,id',  
-        ],[
+        //     'project_id' => 'required|exists:projects,id',  
+        // ],[
         
-            'project_id.required' => 'Project  is required',
-            'project_id.exists' => 'Project is not exist in record',
-        ]);
+        //     'project_id.required' => 'Project  is required',
+        //     'project_id.exists' => 'Project is not exist in record',
+        // ]);
 
 
-        if($validator->fails()){
+        // if($validator->fails()){
 
-            return response()->json([
-                'status' => true,
-                'statusCode' => 403,
-                'message' => "success",
-                'errors'=>$validator->errors()
-            ]); 
+        //     return response()->json([
+        //         'status' => true,
+        //         'statusCode' => 403,
+        //         'message' => "success",
+        //         'errors'=>$validator->errors()
+        //     ]); 
 
-        }
+        // }
 
         $perPage = $request->input('per_page', 5); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-        $amenitis = ProjectSpecification::where('project_id',$request->project_id)->paginate($perPage, ['*'], 'page', $page); 
+        $amenitis = ProjectSpecification::paginate($perPage, ['*'], 'page', $page); 
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -71,15 +72,15 @@ class ProjectSpecificationController extends Controller
 
         $validator = Validator::make($request->all(),
         [
-            'project_id' => 'required|exists:projects,id',  
-            'heading' => 'required',  
+            // 'project_id' => 'required|exists:projects,id', 
+            'heading' => 'required|unique:project_specifications,heading',
 
         ],[
         
-            'project_id.required' => 'Project  is required',
-            'project_id.exists' => 'Project is not exist in record',
+            // 'project_id.required' => 'Project  is required',
+            // 'project_id.exists' => 'Project is not exist in record',
             'heading' => 'This field is required',
-
+            'heading.unique' => 'This heading already exists',
         ]);
 
 
@@ -95,7 +96,7 @@ class ProjectSpecificationController extends Controller
         }else{
             try{
                 $specification = new ProjectSpecification();
-                $specification->project_id = $request->project_id;
+                // $specification->project_id = $request->project_id;
                 $specification->heading = $request->heading;
                 if($specification->save()){              
                     return response()->json([
@@ -178,14 +179,17 @@ class ProjectSpecificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(),
-        [
-        
-            'heading' => 'required',  
-
-        ],[
-            'heading' => 'This field is required',
+        $validator = Validator::make($request->all(), [
+            'heading' => ['required',Rule::unique('project_specifications')->ignore($request->id)]
+        ], [
+            'heading.required' => 'This field is required',
+            'heading.unique' => 'This heading Already Exists',
         ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        
 
         if($validator->fails()){
 
@@ -205,7 +209,7 @@ class ProjectSpecificationController extends Controller
                         return response()->json([
                             'status'=>true,
                             'statusCode'=>200,
-                            'message'=>"Highlight Update Sucessfully ",
+                            'message'=>"Specification Update Sucessfully ",
                             'data'=>$Specification
                         ]);
                     }else{
@@ -228,7 +232,7 @@ class ProjectSpecificationController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage(),
                 ]);
             }
         }
@@ -265,19 +269,5 @@ class ProjectSpecificationController extends Controller
         ]);
       
     }
-
-
-    public function keyhighlightupdate(Request $request, $id)
-    {
-        $table = [
-            'tableName' => 'project_highlights',
-            'keyColumnName' => 'id',
-            'keyColumnId' => $id,
-            'updateColumnName' => 'key_highlight',
-            'updatecolumnVal' => $request->status
-        ];
-        
-        $result = updateSingleRecord($table);
-        return $result;
-    }
+ 
 }

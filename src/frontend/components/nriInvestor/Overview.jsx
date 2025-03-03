@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useImageReveal } from "../useImageReveal";
 import * as CONFIG from "../../../../config";
+import CommonHeading from "../commonHeading";
 
 const nriOverview = ({data}) => {
   const {heading,description,image}=data;
@@ -19,13 +20,13 @@ const nriOverview = ({data}) => {
         <div className="flex items-center justify-between md:flex-row flex-col-reverse flex-wrap gap-[30px] md:gap-[50px]">
           <div className="basis-[100%] xl:basis-[calc(60%-50px)] flex-none">
             {heading &&(
-              <h2 className="sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[16px] midlandfontmedium text-primary">
+              <h1 className="common_heading sectionHeading text-left tracking-[0px] md:tracking-[4px] leading-[24px] md:leading-[40px] text-[14px] xl:!text-[12px] midlandfontmedium uppercase">
               {heading}
-              </h2>
+              </h1>
             )}
             {description && (
             <p
-              className="my-[1rem] text-justify text-[13px] xl:!mt-[30px] poppins-regular text-black font-[300]"
+              className="my-[1rem] text-justify common_pera xl:!mt-[30px] poppins-regular text-black font-[300]"
             >
              {description}
             </p>
@@ -38,7 +39,7 @@ const nriOverview = ({data}) => {
               className=" reveal flex-none"
             />
           </div>
-          
+
         </div>
       </div>
     </>

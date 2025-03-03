@@ -1,7 +1,5 @@
 import React, { useLayoutEffect, useRef } from "react";
-import CommonHeading from "../components/commonHeading";
 import { Link, useNavigate } from "react-router-dom";
-import { SlClose } from "react-icons/sl";
 import gsap from "gsap";
 import { BASE_ROOT } from "../../../config";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,7 +13,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
             gsap.fromTo(
                 dropdownRef.current,
                 { y: -100, opacity: 0 },
-                { y: 0, opacity: 0.9, duration: 0.8 }
+                { y: 0, opacity: 0.9, duration: 0 }
             );
         }, dropdownRef);
 
@@ -37,7 +35,7 @@ function NavDropdown({ setDropdown, setActiveItem }) {
         gsap.to(dropdownRef.current, {
             y: -100,
             opacity: 0,
-            duration: 0.8,
+            duration: 0,
             onComplete: () => {
                 setDropdown(false);
                 setActiveItem(null);

@@ -70,6 +70,16 @@ import Faqs from "../admin/components/faq/Index";
 import EsgSocial from "../admin/components/esg/social/Index";
 import EsgEnvironment from "../admin/components/esg/environment/Index";
 import EsgGallery from "../admin/components/esg/gallery/Index";
+import SubTypologies from "../admin/Typologies/SubTypology";
+import SubTypologiesPage from "../admin/Subtypology/Index";
+import TypologyGallery from "../admin/typologyGallery/Index";
+import SingleTypologyGallery from "../admin/Typologies/Gallery";
+import ProjectLayout from "../admin/components/Layout/ProjectLayout/Index";
+import PriceList from "../admin/Projects/PriceList";
+import Specifications from "../admin/Specifications";
+import Specification from "../admin/Projects/Specification";
+import EsgGovernance from "../admin/components/esg/governance/Index";
+import MediaCentre from "../admin/components/media-centre/Index";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -138,7 +148,7 @@ export const AdminRoutes = [
     ),
   },
   {
-    path: `${ADMIN_ROOT}projects/add`,
+    path: `${ADMIN_ROOT}project/add`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
@@ -154,18 +164,23 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <EditProject />
+          <ProjectLayout>
+            <EditProject />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
   },
+  // path: `${ADMIN_ROOT}project/:projectid/overview/:section`,
   {
-    path: `${ADMIN_ROOT}project/:projectid/location/:section`,
+    path: `${ADMIN_ROOT}project/:projectid/location`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLocation />
+          <ProjectLayout>
+            <ProjectLocation />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -176,7 +191,74 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <ProjectOverview />
+          <ProjectLayout>
+            <ProjectOverview />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/amenities/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectAmenities />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/price-list/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <PriceList />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <Highlights />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/specifications/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <Specification />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/master-plan/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectMasterPlan />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -187,7 +269,22 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <FloorPlan />
+          <ProjectLayout>
+            <FloorPlan />
+          </ProjectLayout>
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}project/:projectid/location-advantage/:section`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectLayout>
+            <ProjectLocationAdvantage />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -198,7 +295,9 @@ export const AdminRoutes = [
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
-          <Gallery />
+          <ProjectLayout>
+            <Gallery />
+          </ProjectLayout>
         </Suspense>
       </AdminLayout>
     ),
@@ -215,56 +314,12 @@ export const AdminRoutes = [
     ),
   },
   {
-    path: `${ADMIN_ROOT}project/:projectid/amenities/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectAmenities />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/master-plan/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectMasterPlan />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/location-advantage/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLocationAdvantage />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
     path: `${ADMIN_ROOT}project/:projectid/faq/:section`,
     // element:<AdminLayout />,
     element: (
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <ProjectFaq />
-        </Suspense>
-      </AdminLayout>
-    ),
-  },
-  {
-    path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
-    // element:<AdminLayout />,
-    element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Highlights />
         </Suspense>
       </AdminLayout>
     ),
@@ -287,6 +342,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <HomeBanner />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}specifications`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Specifications />
         </Suspense>
       </AdminLayout>
     ),
@@ -364,6 +430,28 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <Typologies />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}sub-typologies`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SubTypologiesPage />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}typologies/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TypologyGallery />
         </Suspense>
       </AdminLayout>
     ),
@@ -452,6 +540,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <TypologiesSubTypologies />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}typology/:id/gallery`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SingleTypologyGallery />
         </Suspense>
       </AdminLayout>
     ),
@@ -655,7 +754,17 @@ export const AdminRoutes = [
       </AdminLayout>
     ),
   },
-
+  {
+    path: `${ADMIN_ROOT}esg/governance`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <EsgGovernance />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
   {
     path: `${ADMIN_ROOT}esg/gallery`,
     // element:<AdminLayout />,
@@ -663,6 +772,17 @@ export const AdminRoutes = [
       <AdminLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <EsgGallery />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}media-centre`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <MediaCentre />
         </Suspense>
       </AdminLayout>
     ),

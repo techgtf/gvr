@@ -16,6 +16,8 @@ const NriInvestor = () => {
       if (!pageData) return { banner: { image: "", heading: "Default Heading" }, overview: {} };
   
       const pageValues = Object.values(pageData); 
+      debugger
+
       return {
           banner: {
               image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,

@@ -83,12 +83,20 @@ class FloorPlanController extends Controller
         [
         
             'project_id' => 'required|exists:projects,id',  
-            'sub_typology' => 'required|exists:sub_typologies,id',
-
+            'sub_typology' => 'nullable|exists:sub_typologies,id',
+            'type' => 'required',
+            'price' => 'integer',
+            'size' => 'integer',
+            'carpet_area' => 'integer',
+            'balcony_area' => 'integer',
+            'super_area' => 'integer',
+            'size_type' => 'integer',
         ],[
         
             'project_id.required' => 'Project  is required',
             'project_id.exists' => 'Project is not exist in record',
+
+            'type.required' => 'Type field is required',
 
             
             'sub_typology.required' => 'Sub Tyology  is required',
@@ -110,7 +118,7 @@ class FloorPlanController extends Controller
                 'statusCode' => 403,
                 'message' => "Please Fill Mandatory Fields",
                 'errors'=>$validator->errors()
-            ]); 
+            ]);
 
         }else{
             try{
@@ -123,6 +131,7 @@ class FloorPlanController extends Controller
             
                 
                 $floorplans->project_id = $request->project_id;
+                $floorplans->type = $request->type;
                 $floorplans->sub_typology = $request->sub_typology;
                 $floorplans->more_typology = $request->more_typology;
                 $floorplans->price = $request->price;
@@ -212,24 +221,27 @@ class FloorPlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(),
-        [
-        
+        $validator = Validator::make($request->all(), [
             'sub_typology' => 'required|exists:sub_typologies,id',  
-           
-        ],[
-        
-            'sub_typology.required' => 'sub Typology  is required',
-            'sub_typology.exists' => 'sub Typology is not exist in record',
-
-
-            'price.integer' => 'Only Integet is Allowed',
-            'size.integer' => 'Only Integer is Allowed',
-            'carpet_area.integer' => 'Only Integer is Allowed',
-            'balcony_area.integer' => 'Only Integer is Allowed',
-            'super_area.integer' => 'Only Integer is Allowed',
-            'size_type.integer' => 'Only Integer is Allowed',
+            'type' => 'required',
+            'price' => 'integer',
+            'size' => 'integer',
+            'carpet_area' => 'integer',
+            'balcony_area' => 'integer',
+            'super_area' => 'integer',
+            'size_type' => 'integer',
+        ], [
+            'sub_typology.required' => 'Sub Typology is required.',
+            'sub_typology.exists' => 'Sub Typology does not exist in records.',
+            'type.required' => 'Type field is required.',
+            'price.integer' => 'Only integers are allowed for Price.',
+            'size.integer' => 'Only integers are allowed for Size.',
+            'carpet_area.integer' => 'Only integers are allowed for Carpet Area.',
+            'balcony_area.integer' => 'Only integers are allowed for Balcony Area.',
+            'super_area.integer' => 'Only integers are allowed for Super Area.',
+            'size_type.integer' => 'Only integers are allowed for Size Type.',
         ]);
+        
 
 
         if($validator->fails()){
@@ -241,85 +253,88 @@ class FloorPlanController extends Controller
                 'errors'=>$validator->errors()
             ]); 
 
-        }else{
+        } 
             
-            try{
-                $floorplans = ProjectFloorPlan::find($id);
- 
-                if($floorplans){
-                    if($request->hasFile('image')){
-                        dltSingleImgFile($floorplans->image);
-                        $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                        $path = $request->file('image')->storeAs('project/floor-plans', $name, 'public');
-                        $floorplans->image = $path;
-                    }
-                
-                        if($request->sub_typology){
+        try{
+            $floorplans = ProjectFloorPlan::find($id);
 
-                            $floorplans->sub_typology = $request->sub_typology;
-                        }
-
-                        if($request->size_type){
-
-                            $floorplans->sizes_type = $request->size_type;
-                            if(!empty($request->size)){                                    
-                                $floorplans->size = $request->size;
-                            }
-
-                            if(!empty($request->carpet_area)){
-                                $floorplans->carpet_area = $request->carpet_area;                               
-                            }
-
-                            if(!empty($request->balcony_area)){
-                                $floorplans->balcony_area = $request->balcony_area; 
-                            }
-
-                            if(!empty($request->super_area)){
-                                $floorplans->super_area = $request->super_area;
-                            }
-
-                        }
-
-                        if($request->price){
-                            $floorplans->price = $request->price;
-                        }
-                        
-                        if($request->more_typology) {
-                            $floorplans->more_typology = $request->more_typology;
-                        }
-
-                      
-                    if($floorplans->save()){              
-                        return response()->json([
-                            'status'=>true,
-                            'statusCode'=>200,
-                            'message'=>"Update Sucessfully ",
-                            'data'=>$floorplans
-                        ]);
-                    }else{
-                        return response()->json([
-                            'status'=>true,
-                            'statusCode'=>400,
-                            'message'=>"Failed to Update Floor Plans"
-                        ]);
-                    }
+            if($floorplans){
+                if($request->hasFile('image')){
+                    dltSingleImgFile($floorplans->image);
+                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+                    $path = $request->file('image')->storeAs('project/floor-plans', $name, 'public');
+                    $floorplans->image = $path;
                 }
-                return response()->json([
-                    'status'=>true,
-                    'statusCode'=>404,
-                    'message'=>"Not found"
-                ]);
-                
-    
-            }catch(\Exception $e){
-                return response()->json([
-                    'status'=>false,
-                    'statusCode'=>500,
-                    'message'=>"Something went wrong",
-                    'error' => $e
-                ]);
+            
+                    if($request->sub_typology){
+
+                        $floorplans->sub_typology = $request->sub_typology;
+                    }
+
+                    if($request->size_type){
+
+                        $floorplans->sizes_type = $request->size_type;
+                        if(!empty($request->size)){                                    
+                            $floorplans->size = $request->size;
+                        }
+
+                        if(!empty($request->carpet_area)){
+                            $floorplans->carpet_area = $request->carpet_area;                               
+                        }
+
+                        if(!empty($request->balcony_area)){
+                            $floorplans->balcony_area = $request->balcony_area; 
+                        }
+
+                        if(!empty($request->super_area)){
+                            $floorplans->super_area = $request->super_area;
+                        }
+
+                    }
+
+                    if($request->price){
+                        $floorplans->price = $request->price;
+                    }
+                    
+                    if($request->more_typology) {
+                        $floorplans->more_typology = $request->more_typology;
+                    }
+
+                    if($request->type){
+                        $floorplans->type = $request->type;
+                    }
+                    
+                if($floorplans->save()){              
+                    return response()->json([
+                        'status'=>true,
+                        'statusCode'=>200,
+                        'message'=>"Update Sucessfully ",
+                        'data'=>$floorplans
+                    ]);
+                }else{
+                    return response()->json([
+                        'status'=>true,
+                        'statusCode'=>400,
+                        'message'=>"Failed to Update Floor Plans"
+                    ]);
+                }
             }
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>404,
+                'message'=>"Not found"
+            ]);
+            
+
+        }catch(\Exception $e){
+            return response()->json([
+                'status'=>false,
+                'statusCode'=>500,
+                'message'=>"Something went wrong",
+                'error' => $e->getMessage(),
+            ]);
         }
+       
     }
 
     /**

@@ -178,8 +178,8 @@ class BlogController extends Controller
         [
             
             'heading' => 'required',
-            'image' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
-            'thumbnail' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
+            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
+            'thumbnail' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'description' => 'required',
             
         ],[
@@ -214,13 +214,15 @@ class BlogController extends Controller
 
             try{
 
+
+
                 if($request->file('image')){
           
                     $imagesurl = $getrecord->image;
                     dltSingleImgFile($imagesurl);
                     
                     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('blog', $name, 'public');
+                    $path = $request->file('image')->storeAs('blog-image', $name, 'public');
                     $getrecord->image = $path;
                 }
 
@@ -230,14 +232,14 @@ class BlogController extends Controller
                     dltSingleImgFile($imagesurl);
                     
                     $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
-                    $path = $request->file('thumbnail')->storeAs('blog', $name, 'public');
+                    $path = $request->file('thumbnail')->storeAs('blog-thumbnail', $name, 'public');
                     $getrecord->thumbnail = $path;
                 }
 
                 $getrecord->slug = $request->heading;
                 $getrecord->heading = $request->heading;
                 $getrecord->description = $request->description;
-                
+ 
                 if($getrecord->save()){              
                     return response()->json([
                         'status'=>true,

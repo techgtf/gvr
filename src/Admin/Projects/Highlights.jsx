@@ -19,8 +19,8 @@ import Button from "common/Button/Button";
 import "react-quill/dist/quill.snow.css";
 import "../assets/css/admin.css";
 
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Highlights = () => {
   const [currentPage, setCurrentPage] = useState(1); // Current page state
@@ -194,11 +194,9 @@ const Highlights = () => {
         <Sections
           projectid={projectid}
           section_type={section_id}
-          sub_heading
           seq
-          image
         />
-        <div className="card card_style1 mt-10">
+        <div className="card bg-white card_style1 mt-10">
           <div className="flex items-center justify-between">
             <h5>All Highlights</h5>
             <Button className="btn btn_primary" onClick={AddHighlightHandler}>
@@ -206,19 +204,19 @@ const Highlights = () => {
             </Button>
           </div>
 
-          <table className="w-full mt-8 border-collapse">
+          <table className="mt-8 w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="border-b">
-                <th className="p-2">Highlight</th>
-                <th className="p-2">Key Highlight</th>
-                <th className="p-2">Actions</th>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2 text-left">Highlight</th>
+                {/* <th className="border border-gray-300 p-2 text-left">Key Highlight</th> */}
+                <th className="border border-gray-300 p-2 text-left">Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {isLoadingTableData && (
-                <tr>
-                  <td colSpan={3}>
+                <tr className="border-b border-gray-200">
+                  <td colSpan={2}>
                     <div className="text-center py-4">
                       <ScaleLoader color="#ddd" className="w-full" />
                     </div>
@@ -229,8 +227,8 @@ const Highlights = () => {
               {list ? (
                 list.map((item) => (
                   <tr key={item.id} className="border-b">
-                    <td className="p-2">{item.highlight}</td>
-                    <td className="p-2">
+                    <td className="py-2 px-4">{item.highlight}</td>
+                    {/* <td className="py-2 px-4">
                       <CustomDropdown
                         className="form-control"
                         defaultVal={item.key_highlight}
@@ -239,19 +237,19 @@ const Highlights = () => {
                           handleStatusSelect(selectedValue, item.id)
                         }
                       />
-                    </td>
-                    <td className="p-2 flex gap-2">
+                    </td> */}
+                    <td className="py-2 px-4">
                       <button
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
                       >
-                        <FaEdit />
+                        <AiOutlineEdit size={22} />
                       </button>
                       <button
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >
-                        <RiDeleteBin5Fill />
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
                       </button>
                     </td>
                   </tr>

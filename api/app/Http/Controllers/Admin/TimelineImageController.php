@@ -87,7 +87,8 @@ class TimelineImageController extends Controller
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
                 $path = $request->file('image')->storeAs('timeline', $name, 'public');
                 $amenitiesdata=new TimelineImage();
-                $amenitiesdata->image=$path;
+                $amenitiesdata->image = $path;
+                $amenitiesdata->alt = $request->alt;
                 $amenitiesdata->year=$request->year;
 
                 if($amenitiesdata->save()){              
@@ -109,7 +110,7 @@ class TimelineImageController extends Controller
                 return response()->json([
                     'status'=>false,
                     'statusCode'=>500,
-                    'message'=>$e
+                    'message'=>$e->getMessage(),
                 ]);
             }
         }
@@ -187,17 +188,16 @@ class TimelineImageController extends Controller
       
         if($request->file('image')){
           
-            $imagesurl=str_replace(env('ASSET_URL'), "",$getrecord->image);
+            $imagesurl = str_replace(env('ASSET_URL'), "",$getrecord->image);
             dltSingleImgFile($imagesurl);
             
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
             $path = $request->file('image')->storeAs('timeline', $name, 'public');
-            $getrecord->image=$path;
+            $getrecord->image = $path;
         }
-        $getrecord->title=$request->title;
-        $getrecord->year=$request->year;
-        $getrecord->location=$request->location;
 
+        $getrecord->year = $request->year;
+        $getrecord->alt = $request->alt;
 
         if($getrecord->save()){
             return response()->json([

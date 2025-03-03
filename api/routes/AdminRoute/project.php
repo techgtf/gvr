@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Project\FloorPlanController;
 use App\Http\Controllers\Admin\Project\ProjectAmenitiesController;
+use App\Http\Controllers\Admin\Project\ProjectAmenitiesGalleryController;
 use App\Http\Controllers\Admin\Project\ProjectBannerController;
 use App\Http\Controllers\Admin\Project\ProjectEnquiryController;
 use App\Http\Controllers\Admin\Project\ProjectFaqController;
@@ -42,6 +43,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
         Route::post('show-by-project-with-sectionType', [ProjectSectionController::class,'showByProjectWithSectionType']);
         
         
+
+
         // project crud 
         Route::resource('project', ProjectController::class)->except(['update']);
         Route::post('project/{id}/update', [ProjectController::class,'update']);
@@ -53,15 +56,23 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
 
 
         
-        // amenities  
+
+
+        // amenities && amenities gallery  
         Route::resource('projectdata/amenities', ProjectAmenitiesController::class)->names([
             'index' => 'amenities.index', // Rename the conflicting route name
         ])->except(['update']);
         Route::post('projectdata/amenities/{id}/update', [ProjectAmenitiesController::class,'update']);
+        
+        
+        Route::resource('projectdata/amenities-gallery', ProjectAmenitiesGalleryController::class)->except(['update','destroy']);
+        Route::post('projectdata/amenities-gallery/{id}/update', [ProjectAmenitiesGalleryController::class,'update']);
+        Route::post('projectdata/amenities-gallerydelete/{id}', [ProjectAmenitiesGalleryController::class,'destroy']);
         // end amenities  
+        
 
 
-
+        
         // faq 
         Route::resource('projectdata/faq', ProjectFaqController::class)->except(['update','destroy']);
         Route::post('projectdata/faq/{id}/update', [ProjectFaqController::class,'update']);
@@ -127,7 +138,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
         // location advantage 
         Route::resource('projectdata/location-advantage', ProjectLocationAdvantageController::class)->except(['update','destroy']);
         Route::post('projectdata/location-advantage/{id}/update', [ProjectLocationAdvantageController::class,'update']);
-        Route::post('projectdata/location-advantage/{id}/delete', [ProjectLocationAdvantageController::class,'destroy']);
+        Route::delete('projectdata/location-advantage/{id}/delete', [ProjectLocationAdvantageController::class,'destroy']);
 
     
     });

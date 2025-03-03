@@ -27,6 +27,10 @@ export default function MbTabLinks() {
                         onClick={() => { setIsVisible(false) }}
                         to={`${BASE_ROOT}commercial-projects`}
                         className="uppercase w-[49%] tracking-[2px] text-center text-[13px] px-5 py-3 bg-[#eff5fa] border-l border-gray-300">Commercial</Link>
+                    <Link
+                        onClick={() => { setIsVisible(false) }}
+                        to={`${BASE_ROOT}esg`}
+                        className="uppercase w-[49%] tracking-[2px] text-center text-[13px] px-5 py-3 bg-[#eff5fa] border-l border-gray-300">Esg</Link>
                 </div>
                 {/* h-full bg-[#00000094] */}
                 <div style={Styles.drpDiv} className={`fixed flex flex-col justify-end left-0 right-0 ${isVisible ? "bottom-0" : "bottom-[-100%]"} transition-all`}>
@@ -40,7 +44,7 @@ export default function MbTabLinks() {
                             { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
                             { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
                             { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" },
-                            { name: "Sanctuary 105", path: "vilasa", location: "sector 6, gurugram" }
+                            { name: "Sanctuary 105", path: "sanctuary", location: "sector 6, gurugram" }
                         ].map(({ name, path, location }) => (
                             <li key={path} className="px-8 pt-6 pb-4 mb-1 border-b last:border-b-0">
                                 <Link

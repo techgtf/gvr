@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Project\ProjectFloorPlan;
-use App\Models\Admin\Project\ProjectLocation;
 use App\Models\Admin\Project\ProjectLocationAdvantage;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class ProjectLocationAdvantageController extends Controller
 {
@@ -97,7 +93,7 @@ class ProjectLocationAdvantageController extends Controller
             'project_id' => 'required|exists:projects,id',
             'type' => 'required',
             'name' => 'required',
-
+            'icons' => 'required|mimes:png,jpg,jpeg,webp,svg|max:2048',
 
             // Check uniqueness based on both project_id and place_id
         ], [
@@ -106,8 +102,10 @@ class ProjectLocationAdvantageController extends Controller
             'type.required' => 'Type is required',
             'name.required' => 'name is required',
             'project_id.exists' => 'Project does not exist in the records',
-     
+            'icons.max' => 'Maximum icons size limit of 2 MB',
+            'icons.required' => 'Icons  is required',
         ]);
+
         if($validator->fails()){
 
             return response()->json([
@@ -120,6 +118,13 @@ class ProjectLocationAdvantageController extends Controller
         }else{
             try{
                 $locationadvantage = new ProjectLocationAdvantage();
+
+                if($request->hasFile('icons')){
+                    $name = now()->timestamp.".{$request->icons->getClientOriginalName()}";
+                    $path = $request->file('icons')->storeAs('project/location', $name, 'public');
+                    $locationadvantage->icons = $path;
+                }
+
                 $locationadvantage->project_id = $request->project_id;
                 $locationadvantage->type = $request->type;
                 if(!empty($request->distance)){
@@ -241,15 +246,15 @@ class ProjectLocationAdvantageController extends Controller
            
             'type' => 'required',
             'name' => 'required',
-
-
-            // Check uniqueness based on both project_id and place_id
+            'icons' => 'nullable|mimes:png,jpg,jpeg,webp,svg|max:2048',
+ 
         ], [
             'distance.required' => 'Distance is required',
             'type.required' => 'Type is required',
             'name.required' => 'name is required',
             'project_id.exists' => 'Project does not exist in the records',
-     
+            'icons.max' => 'Maximum icons size limit of 2 MB',            
+            'icons.mimes' => 'Only Allowed  png,jpg,jpeg,webp,svg',           
         ]);
 
         if($validator->fails()){
@@ -263,6 +268,12 @@ class ProjectLocationAdvantageController extends Controller
             try{
                 $locationadvantage = ProjectLocationAdvantage::find($id);
                 if($locationadvantage){
+                    if($request->hasFile('icons')){
+                        dltSingleImgFile($locationadvantage->icons);
+                        $name = now()->timestamp.".{$request->icons->getClientOriginalName()}";
+                        $path = $request->file('icons')->storeAs('project/specification', $name, 'public');
+                        $locationadvantage->icons = $path;
+                    }
                     $locationadvantage->type = $request->type;
                     if(!empty($request->distance)){
 
@@ -296,7 +307,7 @@ class ProjectLocationAdvantageController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage(),
                 ]);
             }
         }
