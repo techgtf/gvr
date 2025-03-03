@@ -91,6 +91,11 @@ function Microsite() {
   }, [sectionData, basicDetails?.id])
 
 
+  // console.log(sectionData);
+  console.log(basicDetails);
+  
+
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong: {error.message}</div>;
   if (!basicDetails) return <PageNotFound />;
@@ -98,7 +103,7 @@ function Microsite() {
   return (
     <>
       <HeroSection
-        desktopBg={basicDetails.thumbnail}
+        desktopBg={basicDetails.feature_image}
         mobileBg={basicDetails.thumbnail}
         scrollText="SCROLL DOWN"
         sectionId="overview"
@@ -175,7 +180,6 @@ function Microsite() {
                   galleryData={galleryData}
                 />
               )
-
 
             default:
               return null;

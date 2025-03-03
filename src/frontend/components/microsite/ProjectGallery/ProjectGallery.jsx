@@ -32,7 +32,7 @@ function ProjectGallery({ galleryData, sectionHeading, actualImages, renderImage
 
   const imageData = activeTab === "actual" ? galleryData?.data : renderImages;
 
-  console.log(imageData);
+  // console.log(imageData);
 
 
   return (
