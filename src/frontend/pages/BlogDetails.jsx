@@ -40,6 +40,8 @@ const BlogDetails = () => {
   }, [slug]);
 
 
+
+
   // blog data from slug start
   // blog data from slug start
   

@@ -29,6 +29,11 @@ const Index = ({ data, nextBlog }) => {
   const navigate = useNavigate();
   // const currentId = parseInt(id);
   const date = dayjs(created_at).format("YYYY-MM-DD");
+
+
+
+  console.log(data,"data description");
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[80px] lg:pb-[70px] mt-[0px] mb-[50px] px-0 sm:px-5 lg:px-8 xl:px-12">
       {/* Left side card */}
@@ -56,15 +61,17 @@ const Index = ({ data, nextBlog }) => {
               {heading}
             </h4>
           </FadeIn>
+          
+          <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
           {description && (
             <>
               <FadeIn SlideIn duration={0} delay={0.5}>
-                <p className="opacity-70 text-justify common_pera">{description}</p>
+                <div className="Blog_Description" dangerouslySetInnerHTML={{ __html: description }} />
               </FadeIn>
             </>
           )}
 
-          {blog_details?.length > 0 && (
+          {/* {blog_details?.length > 0 && (
             <>
               <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
               <FadeIn SlideIn duration={1} delay={0.5}>
@@ -73,13 +80,14 @@ const Index = ({ data, nextBlog }) => {
                     <h4 className="mb-4 mt-4 text-[14px] text-[#143C5E] capitalize">
                       {heading}
                     </h4>
-                    <p className="opacity-70 text-justify common_pera">{description}</p>
+                    <p className="opacity-70 text-justify common_pera">
+                      {description}
+                    </p>
                   </React.Fragment>
                 ))}
               </FadeIn>
             </>
-          )
-          }
+          )} */}
 
           {/*  Fixed: Conditionally disable "Next" button */}
           <FadeIn SlideIn duration={0} delay={0.5}>
@@ -92,15 +100,16 @@ const Index = ({ data, nextBlog }) => {
                   }
                 }}
                 disabled={!nextBlog}
-                className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${nextBlog ? "" : "text-gray-400"
-                  }`}
+                className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${
+                  nextBlog ? "" : "text-gray-400"
+                }`}
               >
                 Next
               </button>
             </div>
           </FadeIn>
-        </div >
-      </div >
+        </div>
+      </div>
 
       {/* Right side list start*/}
       {/* latest blog start */}
@@ -122,12 +131,16 @@ const Index = ({ data, nextBlog }) => {
                       <h4 className="ListHeading font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[30px] leading-[27px] tracking-[0.4px] capitalize">
                         {item.heading}
                       </h4>
-                      <p className="mt-[20px] mb-[20px] opacity-70 text-justify common_pera">
-                        {" "}
-                        {item.description?.length > 150
-                          ? `${item.description.slice(0, 150)}...`
-                          : item.description}{" "}
-                      </p>
+
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            item.description?.length > 150
+                              ? `${item.description.slice(0, 150)}...`
+                              : item.description,
+                        }}
+                      />
+
                       <CommonBtn className="text-[14px]">
                         Know more <MdArrowOutward />
                       </CommonBtn>

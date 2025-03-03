@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import * as CONFIG from "../../../../config";
 import FadeIn from "../Animations/FadeIn";
 import CommonHeading from "../commonHeading";
 import SlideIn from "../Animations/SlideIn";
@@ -6,6 +7,7 @@ import { VideoModal, getEmbedUrl } from "../testimonialSection/testimonialsVideo
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
+import useFetchData from "../../apiHooks/useFetchData";
 
 function WorkCulture() {
   const [activeTab, setActiveTab] = useState("images");
@@ -15,31 +17,7 @@ function WorkCulture() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const totalImages = 17;
-
-  const mediaData = [
-    ...Array.from({ length: totalImages }, (_, index) => ({
-      type: "image",
-      src: `/assets/frontend/images/gallery/workculture/images/${index + 1}.webp`,
-    })),
-    ...[
-      "cLHnb0yNkq4",
-      "pBh9RW3wbYg",
-      "pp3hb7WPJPU",
-      "avP9-coXRiA",
-      "fGwiSG4MySY",
-      "I2J3qovmAH0",
-      "D1nicFW--xk",
-      "xMfZWSEcWgU",
-    ].map((videoId) => ({
-      type: "video",
-      src: `https://www.youtube.com/embed/${videoId}`,
-      poster: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-    })),
-  ];
-
-  const loadMoreImages = () => setVisibleImageCount((prev) => prev + 8);
-  const loadMoreVideos = () => setVisibleVideoCount((prev) => prev + 8);
+ const limit = 8;
 
   const openVideoModal = (videoId) => {
     setSelectedVideo(getEmbedUrl(videoId));
@@ -50,6 +28,28 @@ function WorkCulture() {
     setSelectedVideo(null);
     document.body.classList.remove("modal-open");
   }, []);
+
+
+  // --------------------------------------------------------- //
+  // fetching data start //
+
+// gallery images start
+    const { data: images,loading, error, loadMore ,totalLength } = useFetchData("work-culture?type=image", "", limit, true);
+// gallery video start
+    const { data: videos,loading:videoLoading, error:videoError} = useFetchData("work-culture?type=video","", limit, true);
+
+    // errors
+
+    console.log(images,"images images");
+    if (loading) return <p className="text-red-500">Data loading....</p>;
+    if (error) return <p className="text-red-500">Error loading data: {error}</p>;
+    if (videoLoading) return <p className="text-red-500">Gallery Data loading....</p>;
+    if (videoError) return <p className="text-red-500">Gallery Error : {error}</p>;
+
+
+  // fetching data end //
+  // --------------------------------------------------------- //
+
 
   return (
     <section className="work_culture bg-[#EFF5FA] py-10 px-5 md:px-12">
@@ -79,32 +79,34 @@ function WorkCulture() {
       {activeTab === "images" ? (
         <>
           <SlideIn duration={2} delay={0.3}>
-            <div className="flex flex-wrap gap-4 mt-6 justify-center">
-              {mediaData
-                .filter((item) => item.type === "image")
-                .slice(0, visibleImageCount)
-                .map((image, index) => (
-                  <div key={index} className="w-[calc(100%/2-16px)] sm:w-[calc(100%/4-16px)]">
-                    <img
-                      src={image.src}
-                      alt={`Work Culture Image ${index + 1}`}
-                      className="w-full h-[350px] object-cover cursor-pointer"
-                      onClick={() => {
-                        setLightboxIndex(index);
-                        setLightboxOpen(true);
-                      }}
-                    />
-                  </div>
-                ))}
+            <div className="flex flex-wrap gap-4 mt-6 justify-start">
+              {images?.length > 0 ? (
+                
+                images.map((item, index) => (
+                <div key={index} className="w-[calc(100%/2-16px)] sm:w-[calc(100%/4-16px)]">
+                  <img
+                    src={item?.image}
+                    alt={item?.alt_tag || "Work Culture Image"}
+                    className="w-full h-[350px] object-cover cursor-pointer"
+                    onClick={() => {
+                      setLightboxIndex(index);
+                      setLightboxOpen(true);
+                    }}
+                  />
+                </div>
+              ))
+               ) : (
+                <p>No data Available.</p>
+               )}
             </div>
 
           </SlideIn>
 
-          {visibleImageCount < totalImages && (
+          {images?.length < totalLength && (
             <div className="flex justify-center mt-6">
               <button
                 className="fullBtn text-white w-fit flex items-center gap-3 lg:py-[10px] lg:px-[25px] px-[18px] py-[7px] focus-visible:outline-none focus-visible:ring-0"
-                onClick={loadMoreImages}
+                onClick={loadMore}
               >
                 <span className="tracking-[2px] uppercase text-[12px]">Load more</span>
                 <span className="line inline-block w-[16px] h-[2px] bg-white"></span>
@@ -115,17 +117,15 @@ function WorkCulture() {
       ) : (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-6">
-            {mediaData
-              .filter((item) => item.type === "video")
-              .slice(0, visibleVideoCount)
-              .map((video, index) => (
+            {videos?.length > 0 ? (
+              videos.map((video, index) => (
                 <div
                   key={index}
                   className="relative cursor-pointer"
-                  onClick={() => openVideoModal(video.src)}
+                  onClick={() => openVideoModal(video?.cdn)}
                 >
                   <img
-                    src={video.poster}
+                    src={video?.image}
                     alt={`Video Thumbnail ${index + 1}`}
                     className="w-full h-[350px] object-cover"
                   />
@@ -133,7 +133,10 @@ function WorkCulture() {
                     ▶
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <p>No Video Available.</p>
+            )}
           </div>
         </>
       )}
@@ -141,7 +144,7 @@ function WorkCulture() {
       <Lightbox
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
-        slides={mediaData.filter((item) => item.type === "image").map((image) => ({ src: image.src }))}
+        slides={videos.filter((item) => item.type === "image").map((image) => ({ src: image.cdn }))}
         index={lightboxIndex}
         plugins={[Fullscreen, Zoom]}
       />
