@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Amentities({ 
   AmentitiesData = [
-    { name: "Swimming Pool", image: swimmingPool, alt : "Swimming-Pool" },
+    { name: "Swimming Pool", image: swimmingPool, alt : "Swimming Pool" },
     { name: "Yoga & Aerobics Hall", image: yoga, alt : "Yoga" },
     { name: "Gymnasium", image: gymnasium, alt : "Gymnasium" },
     { name: "Mini Home Theater", image: theater, alt : "Theater" },
@@ -80,7 +80,7 @@ function Amentities({
                 className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
               >
                 <div className="icon">
-                  <img src={item.image} alt={item.alt} className="w-10 h-10 object-contain" />
+                  <img src={item.image} alt={item.name} className="w-10 h-10 object-contain" />
                 </div>
                 <div className="text uppercase text-center md:text-start">
                   <p>{item.name}</p>

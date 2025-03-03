@@ -208,6 +208,7 @@ function SanctuaryMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Luxury Residential Apartments"}
                 headingText="ABOUT US"
                 descriptionText="Sanctuary 105 is more than just an address; it’s an open escape, offering the perfect retreat from the hustle and bustle of real Gurugram, designed to provide each resident with a single neighbor. An address seamlessly blends the contrasting elements of art, architecture, and nature."
                 reverseWatermark={true}

@@ -271,6 +271,7 @@ function AnandamMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Great value Anandam"}
                 headingText="ABOUT US"
                 descriptionText="Anandam by Great Value Realty is an exquisite residential project located in Sector 107, Noida. Offering 2 and 3 BHK apartments thoughtfully designed to blend luxury with convenience, providing residents with a serene and opulent living experience."
                 reverseWatermark={true}

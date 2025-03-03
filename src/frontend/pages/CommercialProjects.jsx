@@ -221,7 +221,7 @@ const CommercialProjects = () => {
           ? "commercial_banner_mb.jpg"
           : "commercial_banner.jpg"
           }`}
-          alt={"Great Value Commercial Project"}
+          alt={"Great value commercial project"}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}

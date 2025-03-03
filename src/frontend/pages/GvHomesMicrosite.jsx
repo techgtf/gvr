@@ -245,6 +245,7 @@ function GvHomesMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Stylish living and dining area"}
                 headingText="ABOUT US"
                 descriptionText="CASA UDAY, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}

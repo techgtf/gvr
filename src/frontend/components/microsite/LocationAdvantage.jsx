@@ -111,7 +111,7 @@ function LocationAdvantage({
             {(activeTab === "drive" ? driveData : walkData).map((item, index) => (
               <li key={index} className="locationTab flex justify-between gap-4 border-b border-gray-200 py-5">
                 <div className="icon">
-                  <img src={item.image} alt="Icon" className="w-[50px] h-[50px] object-contain" />
+                  <img src={item.image} alt={item.text} className="w-[50px] h-[50px] object-contain" />
                 </div>
                 <div className="text w-72">
                   <p>{item.text}</p>

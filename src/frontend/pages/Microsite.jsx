@@ -166,13 +166,13 @@ function Microsite() {
   ];
 
   const   images = [
-    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Great Value Sharanam Sector 107, Noida" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Beautiful Scenery 2" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Beautiful Scenery 3" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Beautiful Scenery 4" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide5.webp", alt: "Beautiful Scenery 5" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Beautiful Scenery 6" },
-    { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Beautiful Scenery 7" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide1.webp", alt: "Gynasium" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide2.webp", alt: "Theatre" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide3.webp", alt: "Swimming Pool" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide4.webp", alt: "Park" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide5.webp", alt: "Running Track" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Yoga" },
+    { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Basket ball" },
   ];
 
   return (
@@ -234,7 +234,7 @@ function Microsite() {
 
       <About
         imageSrc={aboutImg}
-        alt={"Sharanam Sector 107 Noida"}
+        alt={"Great value home"}
         headingText="ABOUT US"
         descriptionText="A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
         reverseWatermark={true}

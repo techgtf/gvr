@@ -199,6 +199,7 @@ function VilasaMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Investors and Home Owners"}
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
