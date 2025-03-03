@@ -36,7 +36,7 @@ function Csr() {
   };
 
   const {esgBanner, esgOverview, esgSocial, esgEnvironment, esgGovernance} = extractBannerData(pageData);
-
+ 
   return (
     <>
       <Helmet>
