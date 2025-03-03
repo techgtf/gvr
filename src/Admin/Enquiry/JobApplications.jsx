@@ -52,38 +52,49 @@ const JobApplications = ()=>{
 
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
+            <div className="flex title_col justify-between items-center">
                 <h4 className="page_title">Job Applications</h4>
             </div>
 
-            <div className="card mt-4 card_style1">
-                <div className="d-flex align-items-center">
+            <div className="card bg-white mt-4 card_style1">
+                <div className="flex items-center">
                     <h5 className="mb-0">All Job Applications</h5>
 
-                    <div className="searchInput ms-auto">
-                        <input type="text" className="form-control" placeholder="Search by name" onChange={findHandler} />
+                    <div className="searchInput ml-auto">
+                    <input
+                        type="text"
+                        className="border rounded px-3 py-2 w-full"
+                        placeholder="Search by name"
+                        onChange={findHandler}
+                        />
                     </div>
                 </div>
 
-                <table className="mt_40">
+                <table className="mt_40 w-full border-collapse border border-gray-200">
                     <thead>
-                        <tr>
-                            <th>
+                        <tr className="bg-gray-100">
+                            <th className="border border-gray-300 p-2 text-left">
                                 Candidate Name
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Email
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Phone
                             </th>
-                            <th>
-                                Job Title
+                            <th className="border border-gray-300 p-2 text-left">
+                                Designation
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
+                                Experience
+                            </th>
+                            <th className="border border-gray-300 p-2 text-left">
+                                Message
+                            </th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 CV
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Date
                             </th>
                         </tr>
@@ -91,13 +102,13 @@ const JobApplications = ()=>{
 
                     <tbody>
                         {isLoading && 
-                        <tr>
+                        <tr className="border-b border-gray-200">
                             <td colSpan={8}>
-                                <div className="text-center">
-                                <ScaleLoader 
-                                    color="#ddd"
-                                    className="w-100"
-                                /> 
+                                <div className="text-center py-4">
+                                    <ScaleLoader 
+                                        color="#ddd"
+                                        className="w-full"
+                                    /> 
                                 </div>
                             </td>
                         </tr>
@@ -105,25 +116,31 @@ const JobApplications = ()=>{
                         
                         {!isLoading && filteredData?.length ? (
                             filteredData.map((item)=>(
-                                <tr key={item.id}>
-                                    <td>
+                                <tr key={item.id} className="border-b">
+                                    <td className="py-2 px-4">
                                         {item.name}
                                     </td>
-                                    <td>
+                                    <td className="py-2 px-4">
                                         {item.email}
                                     </td>
-                                    <td>
+                                    <td className="py-2 px-4">
                                         {item.phone}
                                     </td>
-                                    <td>
-                                        {item.destination}
+                                    <td className="py-2 px-4">
+                                        {item.designation}
                                     </td>
-                                    <td>
-                                        <a href={CONFIG.VITE_APP_STORAGE + item.resume} download={item.name + '-resume'}>
-                                            <img src={CONFIG.ADMIN_ASSETS + 'icons/pdf.svg'} alt="pdf icon" className="img-fluid" width="40" />
+                                    <td className="py-2 px-4">
+                                        {item.experience + " Years"}
+                                    </td>
+                                    <td className="py-2 px-4">
+                                        {item.message}
+                                    </td>
+                                    <td className="py-2 px-4">
+                                        <a href={CONFIG.VITE_APP_STORAGE + item.resume} download={item.name + '-resume'} target="_blank">
+                                            <img src={CONFIG.ADMIN_IMG_URL + 'icons/pdf.svg'} alt="pdf icon" className="img-fluid" width="40" />
                                         </a>
                                     </td>
-                                    <td>
+                                    <td className="py-2 px-4">
                                         {new Date(item.created_at).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute: '2-digit', second: '2-digit' })}
                                     </td>
                                 </tr>

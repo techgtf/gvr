@@ -845,4 +845,15 @@ export const AdminRoutes = [
       </ProtectedRoute>
     ),
   },
+  {
+    path: `${ADMIN_ROOT}job-application`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <JobApplications />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
 ];
