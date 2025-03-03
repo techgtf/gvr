@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { useLocation, useParams } from "react-router-dom";
+import { data, useLocation, useParams } from "react-router-dom";
 import { API_URL, VITE_APP_STORAGE } from "../../../config";
 import { Helmet } from 'react-helmet'
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollSmoother from "gsap/ScrollSmoother";
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 import drive from "/assets/frontend/images/microsite/location/drive.webp";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
@@ -24,7 +28,7 @@ function Microsite() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [mainData, setMainData] = useState(null);
-  const [sectionData, setSectionData] = useState(null);
+  const [sectionData, setSectionData] = useState([]);
   const [amenitiesData, setAmenitiesData] = useState(null);
   const [priceData, setPriceData] = useState(null);
   const [highlightsData, setHighlightsData] = useState(null);
@@ -32,68 +36,84 @@ function Microsite() {
   const [unitData, setUnitData] = useState(null);
   const [locationAdvData, setLocationAdvData] = useState(null);
   const [galleryData, setGalleryData] = useState(null);
+  const sectionOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   useEffect(() => {
+    let isMounted = true;
+
     axios.get(`${API_URL}project`)
       .then((r) => {
-        setMainData(r.data.data.data);
-        setLoading(false);
+        if (isMounted) {
+          setMainData(r.data?.data.data || []);
+          setLoading(false);
+        }
       })
       .catch((err) => {
-        setError(err);
-        setLoading(false);
+        if (isMounted) {
+          setError(err);
+          setLoading(false);
+        }
       });
+
+    return () => { isMounted = false };
   }, [location.pathname]);
 
-  const basicDetails = mainData?.find((item) => item.slug === slug);
+
+  const basicDetails = mainData?.find((item) => item.slug === slug) || null;
 
   useEffect(() => {
     if (basicDetails?.id) {
-      axios.get(`${API_URL}project/${basicDetails.id}/project-sections`)
-        .then((r) => setSectionData(r.data.data))
+      axios
+        .get(`${API_URL}project/${basicDetails.id}/project-sections`)
+        .then((r) => setSectionData(r.data.data || []))
         .catch((err) => console.error("Error fetching sections:", err));
+    } else {
+      setSectionData([]);
     }
   }, [basicDetails?.id]);
 
-
-  // function for get specific section data
-  const fetchSectionData = (endpoint, setter) => {
-    axios.get(`${API_URL}project/${basicDetails.id}/${endpoint}`)
-      .then((r) => setter(r.data.data))
+  const fetchSectionData = useMemo(() => (endpoint, setter) => {
+    if (!basicDetails?.id) return;
+    axios
+      .get(`${API_URL}project/${basicDetails.id}/${endpoint}`)
+      .then((r) => setter(r.data.data || null))
       .catch((err) => console.error(`Error fetching ${endpoint}:`, err));
-  };
+  }, [basicDetails?.id]);
 
-  // pass endpoint to get section data
   useEffect(() => {
-    if (!sectionData || !basicDetails.id) return;
-    if (sectionData?.some((item) => item.section_type === '2')) { // get amenities data
-      fetchSectionData('amenities', setAmenitiesData);
-    }
-    if (sectionData.some((item) => item.section_type === '3')) { // get priceing
-      fetchSectionData('price', setPriceData);
-    }
-    if (sectionData.some((item) => item.section_type === '4')) { // get highlights
-      fetchSectionData('highlights', setHighlightsData);
-    }
-    if (sectionData.some((item) => item.section_type === '5')) { // get specifications
-      fetchSectionData('specifications', setSpecificationsData);
-    }
-    if (sectionData.some((item) => item.section_type === "7")) { // get floor-pans
-      fetchSectionData('floor-plan', setUnitData)
-    }
-    if (sectionData.some((item) => item.section_type === "8")) { // get location advantages
-      fetchSectionData('location-advantage', setLocationAdvData)
-    }
-    if (sectionData.some((item) => item.section_type === "9")) { // get gallery
-      fetchSectionData('gallery', setGalleryData)
-    }
+    if (!sectionData.length || !basicDetails?.id) return;
+    fetchSectionData("amenities", setAmenitiesData);
+    fetchSectionData("price", setPriceData);
+    fetchSectionData("highlights", setHighlightsData);
+    fetchSectionData("specifications", setSpecificationsData);
+    fetchSectionData("floor-plan", setUnitData);
+    fetchSectionData("location-advantage", setLocationAdvData);
+    fetchSectionData("gallery", setGalleryData);
+  }, [sectionData, basicDetails?.id, fetchSectionData]);
 
-  }, [sectionData, basicDetails?.id])
+  const sortedSections = sectionData.length
+    ? [...sectionData].sort(
+      (a, b) => sectionOrder.indexOf(a.section_type) - sectionOrder.indexOf(b.section_type)
+    )
+    : [];
 
 
-  // console.log(sectionData);
-  console.log(basicDetails);
-  
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    let smoother = ScrollSmoother.create({
+      smooth: 1.2,
+      effects: true,
+    });
+
+    ScrollTrigger.refresh();
+
+    return () => {
+      smoother.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [location.pathname]);
+
 
 
   if (loading) return <div>Loading...</div>;
@@ -101,7 +121,7 @@ function Microsite() {
   if (!basicDetails) return <PageNotFound />;
 
   return (
-    <>
+    <React.Fragment key={slug}>
       <HeroSection
         desktopBg={basicDetails.feature_image}
         mobileBg={basicDetails.thumbnail}
@@ -116,8 +136,8 @@ function Microsite() {
         }}
       />
 
-      {sectionData &&
-        sectionData.map((dataItem) => {
+      {sortedSections &&
+        sortedSections.map((dataItem) => {
           switch (dataItem.section_type) {
             case "1": // About Us **************** section_type: '1', ABOUT US',
               return (
@@ -133,11 +153,12 @@ function Microsite() {
 
             case "2": // Amenities ****************  section_type: '2', Amentities,
               return (
-                <Amentities
-                  key={dataItem.id}
-                  headingText={dataItem.heading}
-                  AmentitiesData={amenitiesData}
-                />
+                <React.Fragment key={dataItem.id}>
+                  <Amentities
+                    headingText={dataItem.heading}
+                    AmentitiesData={amenitiesData}
+                  />
+                </React.Fragment>
               );
 
             case "3": // PriceList **************** section_type: '3', Price List,
@@ -150,43 +171,50 @@ function Microsite() {
 
             case "4": // **************** section_type: '4', Highlights', || section_type: '5', Specifications,
               return (
-                <HighlightsSpecifications
-                  highlightsData={highlightsData}
-                  specificationsData={specificationsData}
-                />
+                <React.Fragment key={dataItem.id}>
+                  <HighlightsSpecifications
+                    highlightsData={highlightsData}
+                    specificationsData={specificationsData}
+                  />
+                </React.Fragment>
               )
             case "6":  // ****************   section_type: '6', Master Plan', || section_type: '7', Floor Plans,
               return (
-                <Plans
-                  masterPlanData={dataItem}
-                  unitData={unitData}
-                />
+                <React.Fragment key={dataItem.id}>
+                  <Plans
+                    masterPlanData={dataItem}
+                    unitData={unitData}
+                  />
+                </React.Fragment>
               )
             case "8": //  section_type: '8', Location Advantage,
               return (
-                <LocationAdvantage
-                  locationData={dataItem}
-                  locationAdvData={locationAdvData}
-                  driveTabIcon={drive}
-                  driveTabActiveIcon={driveActive}
-                  walkTabIcon={walk}
-                  walkTabActiveIcon={walkActive}
-                />
+                <React.Fragment key={dataItem.id}>
+                  <LocationAdvantage
+                    locationData={dataItem}
+                    locationAdvData={locationAdvData}
+                    driveTabIcon={drive}
+                    driveTabActiveIcon={driveActive}
+                    walkTabIcon={walk}
+                    walkTabActiveIcon={walkActive}
+                  />
+                </React.Fragment>
               )
             case "9":  // section_type: '9', Project Gallery,
               return (
-                <ProjectGallery
-                  sectionHeading={dataItem.heading}
-                  galleryData={galleryData}
-                />
+                <React.Fragment key={dataItem.id}>
+                  <ProjectGallery
+                    sectionHeading={dataItem.heading}
+                    galleryData={galleryData}
+                  />
+                </React.Fragment>
               )
 
             default:
               return null;
           }
         })}
-
-    </>
+    </React.Fragment>
   );
 }
 
