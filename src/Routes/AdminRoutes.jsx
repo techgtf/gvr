@@ -79,6 +79,8 @@ import PriceList from "../admin/Projects/PriceList";
 import Specifications from "../admin/Specifications";
 import Specification from "../admin/Projects/Specification";
 import EsgGovernance from "../admin/components/esg/governance/Index";
+import MediaCentre from "../admin/components/media-centre/Index";
+import WorkCulture from "../admin/components/gallery/WorkCulture";
 // import "../frontend/styles.css"
 
 export const AdminRoutes = [
@@ -776,6 +778,28 @@ export const AdminRoutes = [
     ),
   },
   {
+    path: `${ADMIN_ROOT}gallery/work-culture`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <WorkCulture />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}media-centre`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <MediaCentre />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
+  {
     path: `${ADMIN_ROOT}page/:pageId`,
     // element:<AdminLayout />,
     element: (
@@ -819,6 +843,17 @@ export const AdminRoutes = [
           </Suspense>
         </AdminLayout>
       </ProtectedRoute>
+    ),
+  },
+  {
+    path: `${ADMIN_ROOT}job-application`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <JobApplications />
+        </Suspense>
+      </AdminLayout>
     ),
   },
 ];

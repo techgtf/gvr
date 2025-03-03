@@ -79,36 +79,35 @@ class FloorPlanController extends Controller
     public function store(Request $request)
     {
        
-        $validator = Validator::make($request->all(),
-        [
-        
-            'project_id' => 'required|exists:projects,id',  
+        $validator = Validator::make($request->all(), [
+            'project_id' => 'required|exists:projects,id',
             'sub_typology' => 'nullable|exists:sub_typologies,id',
             'type' => 'required',
-            'price' => 'integer',
-            'size' => 'integer',
-            'carpet_area' => 'integer',
-            'balcony_area' => 'integer',
-            'super_area' => 'integer',
-            'size_type' => 'integer',
-        ],[
+            'price' => 'numeric',  
+            'size' => 'numeric',  
+            'carpet_area' => 'numeric',  
+            'balcony_area' => 'numeric',  
+            'super_area' => 'numeric',  
+            'size_type' => 'numeric',
+            'build_up_area' => 'numeric',
+        ], [
+            'project_id.required' => 'Project is required',
+            'project_id.exists' => 'Project does not exist in records',
         
-            'project_id.required' => 'Project  is required',
-            'project_id.exists' => 'Project is not exist in record',
-
             'type.required' => 'Type field is required',
-
-            
-            'sub_typology.required' => 'Sub Tyology  is required',
-            'sub_typology.exists' => 'Sub Tyology is not exist in record',
-            
-            'price.integer' => 'Only Integer is Allowed',
-            'size.integer' => 'Only Integer is Allowed',
-            'carpet_area.integer' => 'Only Integer is Allowed',
-            'balcony_area.integer' => 'Only Integer is Allowed',
-            'super_area.integer' => 'Only Integer is Allowed',
-            'size_type.integer' => 'Only Integer is Allowed',
+        
+            'sub_typology.required' => 'Sub Typology is required',
+            'sub_typology.exists' => 'Sub Typology does not exist in records',
+        
+            'price.numeric' => 'Only numeric values are allowed',
+            'size.numeric' => 'Only numeric values are allowed',
+            'carpet_area.numeric' => 'Only numeric values are allowed',
+            'balcony_area.numeric' => 'Only numeric values are allowed',
+            'super_area.numeric' => 'Only numeric values are allowed',
+            'size_type.numeric' => 'Only numeric values are allowed',
+            'build_up_area.numeric' => 'Only numeric values are allowed',
         ]);
+        
 
 
         if($validator->fails()){
@@ -140,6 +139,7 @@ class FloorPlanController extends Controller
                 $floorplans->balcony_area = $request->balcony_area;
                 $floorplans->super_area = $request->super_area;
                 $floorplans->sizes_type = $request->size_type;
+                $floorplans->build_up_area = $request->build_up_area;
                 
           
                 if($floorplans->save()){              
@@ -162,7 +162,7 @@ class FloorPlanController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage()
                 ]);
             }
         }
@@ -222,25 +222,34 @@ class FloorPlanController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'sub_typology' => 'required|exists:sub_typologies,id',  
+            'sub_typology' => 'nullable|exists:sub_typologies,id',
             'type' => 'required',
-            'price' => 'integer',
-            'size' => 'integer',
-            'carpet_area' => 'integer',
-            'balcony_area' => 'integer',
-            'super_area' => 'integer',
-            'size_type' => 'integer',
+            'price' => 'numeric',  
+            'size' => 'numeric',  
+            'carpet_area' => 'numeric',  
+            'balcony_area' => 'numeric',  
+            'super_area' => 'numeric',  
+            'size_type' => 'numeric',
+            'build_up_area' => 'numeric',
         ], [
-            'sub_typology.required' => 'Sub Typology is required.',
-            'sub_typology.exists' => 'Sub Typology does not exist in records.',
-            'type.required' => 'Type field is required.',
-            'price.integer' => 'Only integers are allowed for Price.',
-            'size.integer' => 'Only integers are allowed for Size.',
-            'carpet_area.integer' => 'Only integers are allowed for Carpet Area.',
-            'balcony_area.integer' => 'Only integers are allowed for Balcony Area.',
-            'super_area.integer' => 'Only integers are allowed for Super Area.',
-            'size_type.integer' => 'Only integers are allowed for Size Type.',
+            'project_id.required' => 'Project is required',
+            'project_id.exists' => 'Project does not exist in records',
+        
+            'type.required' => 'Type field is required',
+        
+            'sub_typology.required' => 'Sub Typology is required',
+            'sub_typology.exists' => 'Sub Typology does not exist in records',
+        
+            'price.numeric' => 'Only numeric values are allowed',
+            'size.numeric' => 'Only numeric values are allowed',
+            'carpet_area.numeric' => 'Only numeric values are allowed',
+            'balcony_area.numeric' => 'Only numeric values are allowed',
+            'super_area.numeric' => 'Only numeric values are allowed',
+            'size_type.numeric' => 'Only numeric values are allowed',
+            'build_up_area.numeric' => 'Only numeric values are allowed',
+
         ]);
+        
         
 
 
@@ -302,6 +311,10 @@ class FloorPlanController extends Controller
 
                     if($request->type){
                         $floorplans->type = $request->type;
+                    }
+
+                    if($request->build_up_area){
+                        $floorplans->build_up_area = $request->build_up_area;
                     }
                     
                 if($floorplans->save()){              

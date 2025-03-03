@@ -2,25 +2,33 @@ import React, { useEffect, useRef, useState } from "react";
 import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
-import SideModal from "../../Modal/SideModal/Index";
-import * as CONFIG from "../../../../../config";
+import SideModal from "../Modal/SideModal/Index";
+import * as CONFIG from "../../../../config";
 import { toast } from "react-toastify";
 import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import Request from "../../../../config/Request";
-
-import "../../../assets/css/admin.css";
+import Request from "../../../config/Request";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const statusOptions = [
-  { label: "Active", value: "1" },
-  { label: "Hide", value: "0" },
-];
+const newsTypes = [
+  {
+    value:'logo',
+    label:'Logo',
+  },
+  {
+    value:'docs',
+    label:'PDF',
+  },
+  {
+    value:'news',
+    label:'News',
+  }
+]
 
-const OtherVerticals = () => {
+const MediaCentre = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -45,9 +53,16 @@ const OtherVerticals = () => {
 
   const fileRef = useRef(null);
   const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
+  const nameRef = useRef(null);
+  const altRef = useRef(null);
+  const designationRef = useRef(null);
   const shortDescriptionRef = useRef(null);
+  const messageRef = useRef(null);
   const priceRef = useRef(null);
+  const typeRef = useRef(null);
+  const cdnRef = useRef(null);
+  
+  
 
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
@@ -73,7 +88,7 @@ const OtherVerticals = () => {
     const formData = new FormData();
     formData.append("status", selectedStatus);
     var response = await Request(
-      "admin/amenities/" + id + "/status",
+      "admin/gallery/" + id + "/status",
       "POST",
       formData
     );
@@ -97,13 +112,15 @@ const OtherVerticals = () => {
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
 
-    formData.append("name", titleRef.current.value);
-    formData.append("image", fileRef.current.files[0]);
-    formData.append("description", descriptionRef.current.value);
-    formData.append("short_description", shortDescriptionRef.current.value);
-    formData.append("price", priceRef.current.value);
+    formData.append("file", fileRef.current.files[0]);
+    formData.append("heading", titleRef.current.value);
+    formData.append("alt_tag", altRef.current.value);
+    formData.append("type", typeRef.current.value);
+    formData.append("cdn", cdnRef.current.value);
+    
+    // formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/verticals", "POST", formData);
+    var response = await Request("admin/news", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -122,17 +139,15 @@ const OtherVerticals = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/verticals/" + id, "GET");
+    var response = await Request("admin/gallery/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
       if (response.data.image) {
         setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
       }
-      titleRef.current.value = response.data.name;
-      shortDescriptionRef.current.value = response.data.short_description;
-      descriptionRef.current.value = response.data.description;
-      priceRef.current.value = response.data.price;
+      // titleRef.current.value = response.data.name;
+      altRef.current.value = response.data.alt;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -144,7 +159,7 @@ const OtherVerticals = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/verticals/" + id, "DELETE");
+    var response = await Request("admin/news/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -158,12 +173,12 @@ const OtherVerticals = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/verticals?search=" + search + "&page=" + currentPage,
+      "admin/news?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
       setData(response.data.data);
-      // setLastPage(response.data.last_page);
+      setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };
@@ -176,13 +191,10 @@ const OtherVerticals = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    formData.append("name", titleRef.current.value);
-    formData.append("description", descriptionRef.current.value);
-    formData.append("short_description", shortDescriptionRef.current.value);
-    formData.append("price", priceRef.current.value);
+    formData.append("alt", altRef.current.value);
 
     var response = await Request(
-      "admin/verticals/" + editId + "/update",
+      "admin/gallery/" + editId + "/update",
       "POST",
       formData
     );
@@ -191,10 +203,8 @@ const OtherVerticals = () => {
     if (response.status && response.statusCode === 200) {
       listHandler();
       cancelHandler();
-      toast.success(response.message);
     } else if (response.status && response.statusCode === 403) {
       setErrors(response.errors);
-      toast.error(response.message);
     }
   };
 
@@ -210,18 +220,18 @@ const OtherVerticals = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Other Verticals</h4>
+        <h4 className="page_title">Media Centre</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Vertical
+          Add Data
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">Other Verticals</h5>
+          <h5 className="mb-0">All Media Centre Data</h5>
 
           <div className="searchInput ml-auto">
             <input
@@ -236,17 +246,10 @@ const OtherVerticals = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">
-                Thumbnail
-              </th>
+              <th className="border border-gray-300 p-2 text-left">Image</th>
+              <th className="border border-gray-300 p-2 text-left">Type</th>
               <th className="border border-gray-300 p-2 text-left">Title</th>
-              <th className="border border-gray-300 p-2 text-left">
-                Short Description
-              </th>
-              <th className="border border-gray-300 p-2 text-left">
-                Description
-              </th>
-              <th className="border border-gray-300 p-2 text-left">Price</th>
+              <th className="border border-gray-300 p-2 text-left">CDN</th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -254,7 +257,7 @@ const OtherVerticals = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={6}>
+                <td colSpan={5}>
                   <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -262,21 +265,20 @@ const OtherVerticals = () => {
               </tr>
             ) : (
               <>
-                {data && Array.isArray(data) && data.length > 0 ? (
+                {data && data.length > 0 ? (
                   data.map((item) => (
                     <tr className="border-b">
                       <td className="py-2 px-4">
                         <img
-                          src={CONFIG.VITE_APP_STORAGE + item.image}
-                          className="w-[100px] h-[100px] object-contain"
-                          alt={item.name}
+                          src={CONFIG.VITE_APP_STORAGE + item.file}
+                          className="w-[80px] h-[80px] object-contain border"
+                          alt={item.alt_tag}
                         />
                       </td>
-                      <td className="py-2 px-4">{item.name}</td>
-                      <td className="py-2 px-4">{item.short_description}</td>
-                      <td className="py-2 px-4">{item.description}</td>
-                      <td className="py-2 px-4">{item.price}</td>
-                      <td className="py-2 px-4">
+                      <td className="py-2 px-4">{item.type}</td>
+                      <td className="py-2 px-4">{item.heading}</td>
+                      <td className="py-2 px-4">{item.cdn ? item.cdn : "Not Found"}</td>
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
@@ -287,7 +289,10 @@ const OtherVerticals = () => {
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin6Line size={18} className="text-red-500" />
+                          <RiDeleteBin6Line
+                            size={18}
+                            className="text-red-500"
+                          />
                         </button>
                       </td>
                     </tr>
@@ -326,7 +331,24 @@ const OtherVerticals = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Thumbnail*
+                    Select Type*
+                  </label>
+                  <select ref={typeRef} className="border rounded px-3 py-2 w-full">
+                    <option value="" selected disabled>--Select--</option>
+                    {newsTypes && newsTypes.map((type, index)=>(
+                      <option value={type.value}>{type.label}</option>
+                    ))}
+                  </select>
+                  {errors.short_description && (
+                    <span className="text-red-500">
+                      The Description field is required
+                    </span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Select File*
                   </label>
                   <input
                     ref={fileRef}
@@ -334,11 +356,34 @@ const OtherVerticals = () => {
                     type="file"
                     placeholder="Enter Title"
                   />
-                  {showEditEnableImage && <img src={showEditEnableImage} className="h-[80px] w-[80px] object-contain border mt-1" />}
+                  {showEditEnableImage && (
+                    <img
+                      src={showEditEnableImage}
+                      className="h-[80px] w-[80px] object-contain border mt-1"
+                    />
+                  )}
                   {errors.image && (
                     <span className="text-red-500">{errors.image}</span>
                   )}
                 </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Alt Text*
+                  </label>
+                  <input
+                    ref={altRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter Alt Text"
+                  />
+                  {errors.short_description && (
+                    <span className="text-red-500">
+                      The Description field is required
+                    </span>
+                  )}
+                </div>
+                
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
@@ -359,48 +404,21 @@ const OtherVerticals = () => {
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Short Description*
+                    CDN
                   </label>
                   <input
-                    ref={shortDescriptionRef}
+                    ref={cdnRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Short Description"
+                    placeholder="Enter CDN"
                   />
-                  {errors.description && (
-                    <span className="text-red-500">{errors.description}</span>
+                  {errors.cdn && (
+                    <span className="text-red-500">
+                      {errors.cdn && "The Title field is required"}
+                    </span>
                   )}
                 </div>
 
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Description*
-                  </label>
-                  <input
-                    ref={descriptionRef}
-                    className="border rounded px-3 py-2 w-full"
-                    type="text"
-                    placeholder="Enter Description"
-                  />
-                  {errors.description && (
-                    <span className="text-red-500">{errors.description}</span>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Price*
-                  </label>
-                  <input
-                    ref={priceRef}
-                    className="border rounded px-3 py-2 w-full"
-                    type="text"
-                    placeholder="Enter Price"
-                  />
-                  {errors.description && (
-                    <span className="text-red-500">{errors.description}</span>
-                  )}
-                </div>
               </form>
             </SideModal>
           </SidebarPortal>
@@ -411,4 +429,4 @@ const OtherVerticals = () => {
   );
 };
 
-export default OtherVerticals;
+export default MediaCentre;

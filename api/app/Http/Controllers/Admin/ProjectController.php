@@ -128,25 +128,36 @@ class ProjectController extends Controller
             'ivr_no'=>$request->ivr_no,
             'slug'=>$request->name,
         ];
+
         if(!empty($request->project_status)){
            $data['project_status']=$request->project_status;
         }
+
         if($request->sub_typologie_id){
             $data['sub_typologie_id']=$request->sub_typologie_id;
         }
+
         if($request->whatsapp_no){
             $data['whatsapp_no']=$request->whatsapp_no;
         }
+
         if($request->payment_plan){
             $data['payment_plan']=$request->payment_plan;
         }
+
         if($request->rera_no){
             $data['rera_no']=$request->rera_no;
         }
+
         if($request->short_description){
             $data['short_description']=$request->short_description;
         }
 
+
+        if($request->cdn){
+            $data['cdn']=$request->cdn;
+        }
+        
 
         if($request->hasFile('image')){
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
@@ -352,11 +363,10 @@ class ProjectController extends Controller
                 $saverecord->footer_data=$request->footer_data;
             }
    
-            
-
-        
-
-
+            if($request->cdn){
+                $saverecord->cdn=$request->cdn;
+            }
+ 
 
         $saverecord->short_description=$request->short_description;
         $saverecord->sub_typologie_id=$request->sub_typologie_id;

@@ -14,7 +14,7 @@ import { VideoModal, getEmbedUrl } from "./testimonialsVideoModal";
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function Testimonial() {
+export default function Testimonial({heading}) {
     const { data } = TestimonialsData();
     const slidesData = data;
 
@@ -35,7 +35,7 @@ export default function Testimonial() {
         <div ref={testimonialRef} className="testimonialSection lg:pt-[120px] lg:pb-[90px] pt-[50px] pb-[50px]">
             <div className="max-w-[90%] mx-auto relative">
                 <AnimatedHeading
-                    sectionHeading='testimonials'
+                    sectionHeading={heading}
                     justifyContent='justify-left'
                     lineRight={true}
                 />

@@ -19,9 +19,9 @@ class CareerController extends Controller
             'email' => 'required|email',
             'phone' => 'required|integer',
             'file' => 'required|mimes:pdf',
-            'destination' => 'required',
-            'experience' => 'required'
-
+            'designation' => 'required',
+            'experience' => 'required',
+            'message' => 'required',
         ],[
             'name.required' => 'The Name field is required',
             'email.required' => 'The Email field is required',
@@ -31,8 +31,9 @@ class CareerController extends Controller
             'phone.integer' => 'Only Integer is allowed',
             'file.required' => 'This field is required',
             'file.mimes' => "Allow only pdf file selected",
-            'destination.required' => 'This field is required',
+            'designation.required' => 'This field is required',
             'experience.required' => 'This field is required',
+            'message.required' => 'This field is required',
 
         ]);
 
@@ -59,7 +60,8 @@ class CareerController extends Controller
                 $record->phone = $request->phone;
                 $record->email = $request->email;
                 $record->resume = $path;
-                $record->destination = $request->destination;
+                $record->designation = $request->designation;
+                $record->message = $request->message;
                
 
                 if($record->save()){              

@@ -89,7 +89,8 @@ class Projects extends Model
         'meta_keyword',
         'meta_description',
         'head_data',
-        'footer_data'
+        'footer_data',
+        'cdn'
     ];
 
 

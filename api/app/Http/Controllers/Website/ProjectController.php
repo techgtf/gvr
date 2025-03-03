@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Categories;
 use App\Models\Admin\Project\ProjectPrice;
 use App\Models\Website\Project\ProjectBanner;
 use App\Models\Website\Project\ProjectLocationAdvantage;
@@ -16,6 +17,8 @@ use App\Models\Website\Project\ProjectGallery;
 use App\Models\Website\Project\ProjectSpecification;
 use App\Models\Website\Project\ProjectSpecificationList;
 use App\Models\Website\Projects;
+use App\Models\Website\TypologiesGallery;
+use App\Models\Website\Typology;
 use Illuminate\Http\Request;
 use Livewire\ComponentConcerns\RendersLivewireComponents;
 
@@ -24,7 +27,10 @@ class ProjectController extends Controller
     
     public function index(Request $request){
 
-
+        if($request->category == 'commercial'){
+            $this->getCommercialPlatter($request);
+        }
+        
         $perPage = $request->input('per_page', 4); // Number of products per page
         $page = $request->input('page', 1); // Current page number
          
@@ -137,9 +143,8 @@ class ProjectController extends Controller
     }
 
     public function details($slug,Request $request){
-
         $categoryUrl=$request->category;
-        $project = Projects::with(['category','location','typologie','subtypologie','developer','startingPrice'=>function($query){
+        $project = Projects::with(['category','location','typologie.TypologyOfGalleries.getTypologiesImages','subtypologie','developer','startingPrice'=>function($query){
             $query->min('price');
         }        
         ,'startingSize'=>function($query){
@@ -366,6 +371,7 @@ class ProjectController extends Controller
 
 
     public function ProjectImages(Request $request) {
+        
         $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
 
@@ -389,6 +395,31 @@ class ProjectController extends Controller
             ]);
             
         }
+    }
+
+
+    public function getCommercialPlatter ($request) {
+        $records = "";
+
+        $getAllTypologies = \App\Models\Website\Categories::with('getTypologies')
+        ->whereHas('getTypologies')
+        ->get();
+        dd($getAllTypologies);
+
+        if(!$records){
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>400,
+                'message'=>"Not found ",
+            ]);
+        }
+        return response()->json([
+            'status'=>true,
+            'statusCode'=>200,
+            'message'=>"Success",
+            'data'=>$records
+        ]);
+
     }
 
 }

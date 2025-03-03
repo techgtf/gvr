@@ -48,3 +48,6 @@ Route::get('/get-all-projectImages', [ProjectController::class, 'ProjectImages']
 // sections
 Route::get('/project/{project_id}/project-sections',[ProjectController::class,'projectSections']);
 Route::get('/project/{section_id}/section',[ProjectController::class,'projectSectionsData']);
+
+
+ 

@@ -142,13 +142,14 @@ const Specifications = () => {
     setIsLoadingTableData(true);
     var response = await Request(
       "admin/projectdata/specification?search=" +
-        search +
-        "&page=" +
-        currentPage,
+        search,
+        //  +
+        // "&page=" +
+        // currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
-      setData(response.data.data);
+      setData(response.data);
       setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
@@ -268,7 +269,7 @@ const Specifications = () => {
                   <tr>
                     <td colSpan="4">
                       <h5 className="no_record text-center py-4">
-                        No Amenities Found!
+                        No Specifications Found!
                       </h5>
                     </td>
                   </tr>

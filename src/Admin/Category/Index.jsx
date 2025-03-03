@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import ReactPaginate from "react-paginate";
 import * as CONFIG from "../../../config";
+import { AiOutlineEdit } from "react-icons/ai";
+
 import { Link } from "react-router-dom";
 
 const statusOptions = [
@@ -28,6 +30,10 @@ const Category = () => {
   const [currentPage, setCurrentPage] = useState(1); // Current page state
   const [totalPage, setTotalPage] = useState(0);
   const [editId, setEditId] = useState(false);
+  const [sidebarData, setSidebarData] = useState({
+    name:'',
+
+  });
   const [checkboxes, setCheckboxes] = useState([]);
 
   const typologyRef = useRef(null);
@@ -183,42 +189,66 @@ const Category = () => {
     return <Loader />; // Use the Loader component
   }
 
+  const changeHandler = (e)=>{
+    const {name, value} = e.target;
+
+    setSidebarData((state)=>({
+    ...state,
+    [name]: value,
+  }))
+  }
+
   return (
     <>
-      <div className="flex justify-between items-center">
-        <h4 className="text-xl font-semibold">Category</h4>
+      <div className="flex title_col justify-between items-center">
+        <h4 className="page_title">Category</h4>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg p-4 mt-4">
-        <div className="flex">
-          <h5 className="text-lg font-semibold">All Category</h5>
+      <div className="card bg-white mt-4 card_style1">
+        <div className="flex items-center">
+          <h5 className="mb-0">All Category</h5>
         </div>
 
-        <table className="w-full mt-4 border-collapse border border-gray-300">
+        <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="p-2 border border-gray-300">Name</th>
-              <th className="p-2 border border-gray-300">Typology</th>
+              <th className="border border-gray-300 p-2 text-left">Name</th>
+              <th className="border border-gray-300 p-2 text-left">Thumbnail</th>
+              <th className="border border-gray-300 p-2 text-left">Typology</th>
+              <th className="border border-gray-300 p-2 text-left">Action</th>
             </tr>
           </thead>
           <tbody>
             {!data.length && dataLoading ? (
               <tr>
-                <td colSpan={4} className="text-center p-4">
-                  <ScaleLoader color="#ddd" />
+                <td colSpan={4}>
+                  <div className="text-center py-4">
+                    <ScaleLoader color="#ddd" />
+                  </div>
                 </td>
               </tr>
             ) : (
               data.map((item, index) => (
                 <tr key={index} className="border border-gray-300">
-                  <td className="p-2 border border-gray-300">{item.name}</td>
-                  <td className="p-2 border border-gray-300">
+                  <td className="border border-gray-300 p-2 text-left">{item.name}</td>
+                  <td className="border border-gray-300 p-2 text-left">
+                    <img src={CONFIG.VITE_APP_STORAGE+item.image} alt="" className="w-[100px]" />
+                  </td>
+                  <td className="border border-gray-300 p-2 text-left">
                     <Link
                       className="bg-blue-500 text-white px-3 py-1 rounded"
                       to={`${CONFIG.ADMIN_ROOT}category/typology/${item.id}`}
                     >
                       View Typology
                     </Link>
+                  </td>
+                  <td className="border border-gray-300 p-2 text-left">
+                    <button
+                      className="btn action_btn"
+                      onClick={() => editHandler(item.id)}
+                    >
+                      <AiOutlineEdit size={22} />
+                    </button>
                   </td>
                 </tr>
               ))
@@ -249,14 +279,18 @@ const Category = () => {
             <SideModal
               onCancel={cancelHandler}
               onSubmit={enableEdit ? updateHandler : addSubmitHandler}
+              isEnableEdit={enableEdit}
             >
               <div className="mb-4">
-                <label className="block font-medium mb-1">Typology Name*</label>
+                <label className="block font-medium mb-1">Name*</label>
                 <input
                   type="text"
-                  placeholder="Enter typology name"
+                  placeholder="Enter Name"
+                  name="name"
+                  value={sidebarData.name}
                   required
                   className="w-full border p-2 rounded"
+                  onChange={changeHandler}
                 />
                 {errors.typology && (
                   <div className="text-red-500 text-sm">{errors.typology}</div>
@@ -264,7 +298,7 @@ const Category = () => {
               </div>
 
               <div className="mb-4">
-                <label className="block font-medium mb-1">Icons*</label>
+                <label className="block font-medium mb-1">Thumbnail*</label>
                 <input
                   type="file"
                   required
@@ -276,7 +310,7 @@ const Category = () => {
               </div>
             </SideModal>
           </SidebarPortal>
-          <BackdropPortal />
+          <BackdropPortal  className="show" />
         </>
       )}
     </>
