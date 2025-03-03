@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
  
-Route::get('/communities',[\App\Http\Controllers\Website\CsrController::class,'Communities']);
-Route::get('/education',[\App\Http\Controllers\Website\CsrController::class,'Education']);
-Route::get('/gallery',[\App\Http\Controllers\Website\CsrController::class,'Gallery']);
+Route::get('/esg-list/{type}',[\App\Http\Controllers\Website\EsgController::class,'EsgDataList']);
+Route::get('/gallery',[\App\Http\Controllers\Website\EsgController::class,'Gallery']);

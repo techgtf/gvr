@@ -54,7 +54,7 @@ class TestimonialsController extends Controller
         $validator = Validator::make($request->all(),
         [
             'name' => 'required',
-            'image' => 'required|nullable|mimes:png,jpg,jpeg|max:2048',
+            'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'destination' => 'required',
             'description' => 'required',
           
@@ -62,7 +62,7 @@ class TestimonialsController extends Controller
         ],[
             'name.required' => 'The Name field is required.',
             'image.required' => 'The Image field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
+            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'destination.required' => 'This Field is required.',
             'description.required' => 'This Field is required',
@@ -80,14 +80,13 @@ class TestimonialsController extends Controller
 
         }else{
             try{
-                
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
                 $path = $request->file('image')->storeAs('testimonials', $name, 'public');
                 
                 $video = null;
                 if($request->hasFile('video')){
-                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $video = $request->file('video')->storeAs('testimonials', $name, 'public');
+                    $videoName = now()->timestamp.".{$request->video->getClientOriginalName()}";
+                    $video = $request->file('video')->storeAs('testimonials', $videoName, 'public');
                 }
 
 

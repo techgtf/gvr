@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Website\Communities;
-use App\Models\Website\Education;
+use App\Models\Website\EsgDetailsSection;
+ 
 use App\Models\Website\Gallery;
 
-class CsrController extends Controller
+class EsgController extends Controller
 {
-    public function Communities (Request $request){
+    public function EsgDataList ($type){
+
         try {
-            $record = Communities::all();
+            $record = EsgDetailsSection::where('type', $type)->get();
 
             return response()->json([
                 'status' => true,
@@ -29,27 +30,7 @@ class CsrController extends Controller
             ]);
         }
     }
-
-
-    public function education () {
-        try {
-            $record = Education::all();
-
-            return response()->json([
-                'status' => true,
-                'statusCode' => 200,
-                'message' => 'Success',
-                'data' => $record,
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'statusCode' => 500,
-                'message' => 'Failed',
-                'errors' => $th->getMessage(),
-            ]);
-        }
-    }
+ 
 
     public function gallery () {
         try {

@@ -1,11 +1,8 @@
 
 import React, { useRef, useState,useEffect } from "react";
 
-import Form from 'react-bootstrap/Form';
 import ReactQuill from 'react-quill';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import * as CONFIG from 'root/config';
+import * as CONFIG from '../../../../config';
 import Button from 'common/Button/Button'
 import Request from 'root/config/Request';
 import JsonRequest from 'root/config/JsonRequest';
@@ -67,7 +64,7 @@ const Sections = React.memo((props)=>{
         if (e.target['image_alt']) {
             formData.append('image_alt', e.target['image_alt'].value);
         }
-        formData.append('description', content);
+        formData.append('description', content?.replace(/<[^>]+>/g, ""));
         var response=await Request(`admin/page/page-sections`,'POST',formData);
         if(response.status && response.statusCode === 200){
             getsectionHandler()
@@ -90,7 +87,6 @@ const Sections = React.memo((props)=>{
             'page_id':page_id,
         }
         var response=await JsonRequest('admin/page/page-sections/'+page_section,'GET');
-        debugger;
       
         // setIsLoading(false);
 
@@ -162,86 +158,138 @@ const Sections = React.memo((props)=>{
 
     return(
         <>
-        <div className="card mt-3">
-            <div className="card-body ">
-
-            <Form onSubmit={ basicSubmitHandler }>
-                        
-                        <h6 className="labelTitle">{sectiontitle}</h6>
-                        
-            
-                        <Row>
-                            <Form.Group as={Col} md="6" className="mb_20" >
-                                <Form.Label>{props.fields.heading}*</Form.Label>
-                                <Form.Control  type="text" name="heading" value={sectionFormdata.heading}  placeholder="Enter section heading" onChange={handleSectionChange}  />
-                                {errors.heading}
-                            </Form.Group>
-                            {props.sub_heading && (
-                            <Form.Group as={Col} md="6" className="mb_20">
-                                <Form.Label>{props.fields.sub_heading}</Form.Label>
-                                <Form.Control  type="text" name="sub_heading" value={sectionFormdata.sub_heading} placeholder="Enter section sub heading" onChange={handleSectionChange}  />
-                                {errors.sub_heading}
-
-                            </Form.Group>
-                            )}
-            
-                            {props.textarea && (
-                                <>
-                                <Form.Group  as={Col} md="12" className="mb_20" >
-                                    <Form.Label> {props.fields.description}*</Form.Label>
-                                    <ReactQuill ref={props.ref} name="description"   value={content} onChange={handleChange}   />
-                                 {errors.description}
-                                </Form.Group>
-                              
-                                 
-                                </>
-                            )}
-            
-                            {props.image && (
-            
-                          <>
-                            <Form.Group as={Col} md="6" className="mb_20">
-                                <Form.Label> {props.fields.image}*</Form.Label>
-                                <Form.Control className="form-control"  type="file" name="image"  />
-                                {errors.image}
-
-                              
-
-                                {sectionFormdata.image_preview && (
-    <img width="100" src={sectionFormdata.image_preview} alt="Preview" />
-)}
-
-
-                            </Form.Group>
-
-                                <Form.Group as={Col} md="6" className="mb_20">
-                                <Form.Label>Image Alt</Form.Label>
-                                <Form.Control  type="text" name="image_alt" value={sectionFormdata.image_alt} placeholder="Enter section sub heading" onChange={handleSectionChange}  />
-                                {errors.image_alt}
-
-                                </Form.Group>
-                                
-                                </>
-                            )}
-            
-                        </Row>
-                        {
-                        
-                        submitLoading ? <>    <Button className="btn btn_primary mt_20" type="button" disabled>Please Wait ..</Button></>  :    <Button className="btn btn_primary mt_20" type="submit">Save Section</Button>
-                          
-                        }
-
-
-
-                     
-                    </Form>
-
-
-
-            </div>
-               
-           </div>
-        </>
+        <div className="card mt-3 bg-white shadow-md rounded-lg">
+          <div className="card-body p-6">
+            <form onSubmit={basicSubmitHandler}>
+              <h6 className="labelTitle text-lg font-semibold mb-4">{sectiontitle}</h6>
+      
+              <div className="flex flex-wrap -mx-4">
+                {/* Heading Field */}
+                <div className="w-full md:w-1/2 px-4 mb-5">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {props.fields.heading}*
+                  </label>
+                  <input
+                    type="text"
+                    name="heading"
+                    value={sectionFormdata.heading}
+                    placeholder="Enter section heading"
+                    onChange={handleSectionChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                  />
+                  {errors.heading && (
+                    <p className="text-red-500 text-sm mt-1">{errors.heading}</p>
+                  )}
+                </div>
+      
+                {/* Sub-Heading Field */}
+                {props.sub_heading && (
+                  <div className="w-full md:w-1/2 px-4 mb-5">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {props.fields.sub_heading}
+                    </label>
+                    <input
+                      type="text"
+                      name="sub_heading"
+                      value={sectionFormdata.sub_heading}
+                      placeholder="Enter section sub heading"
+                      onChange={handleSectionChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    />
+                    {errors.sub_heading && (
+                      <p className="text-red-500 text-sm mt-1">{errors.sub_heading}</p>
+                    )}
+                  </div>
+                )}
+      
+                {/* Textarea Field */}
+                {props.textarea && (
+                  <div className="w-full px-4 mb-5">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {props.fields.description}*
+                    </label>
+                    <ReactQuill
+                      ref={props.ref}
+                      name="description"
+                      value={content}
+                      onChange={handleChange}
+                      className="border border-gray-300 rounded-md shadow-sm"
+                    />
+                    {errors.description && (
+                      <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+                    )}
+                  </div>
+                )}
+      
+                {/* Image Field */}
+                {props.image && (
+                  <>
+                    <div className="w-full md:w-1/2 px-4 mb-5">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {props.fields.image}*
+                      </label>
+                      <input
+                        type="file"
+                        name="image"
+                        onChange={handleSectionChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                      />
+                      {errors.image && (
+                        <p className="text-red-500 text-sm mt-1">{errors.image}</p>
+                      )}
+      
+                      {sectionFormdata.image_preview && (
+                        <img
+                          width="100"
+                          src={sectionFormdata.image_preview}
+                          alt="Preview"
+                          className="mt-2 rounded-md shadow-sm border"
+                        />
+                      )}
+                    </div>
+      
+                    {/* Image Alt Field */}
+                    <div className="w-full md:w-1/2 px-4 mb-5">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Image Alt
+                      </label>
+                      <input
+                        type="text"
+                        name="image_alt"
+                        value={sectionFormdata.image_alt}
+                        placeholder="Enter image alt text"
+                        onChange={handleSectionChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                      />
+                      {errors.image_alt && (
+                        <p className="text-red-500 text-sm mt-1">{errors.image_alt}</p>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+      
+              {/* Submit Button */}
+              {submitLoading ? (
+                <button
+                  className="btn_primary mt_20 bg-blue-500 text-white px-6 py-2 rounded-md shadow-sm hover:bg-blue-600 transition disabled:opacity-50"
+                  type="button"
+                  disabled
+                >
+                  Please Wait ..
+                </button>
+              ) : (
+                <button
+                  className="btn_primary mt_20 bg-blue-500 text-white px-6 py-2 rounded-md shadow-sm hover:bg-blue-600 transition"
+                  type="submit"
+                >
+                  Save Section
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
+      </>
     )
 })
 

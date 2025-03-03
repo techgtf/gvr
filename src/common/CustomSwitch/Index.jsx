@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './customSwitch.css';
 
 
-const CustomSwitch = ({ id, toggleSwitch, isChecked })=>{
+const CustomSwitch = ({ id, toggleSwitch, isChecked, className })=>{
 
     // State variable to track the switch state
     // const [isChecked, setIsChecked] = useState(initialState || false);
@@ -16,7 +16,7 @@ const CustomSwitch = ({ id, toggleSwitch, isChecked })=>{
         <>
             {/* checked={isChecked ? isChecked == id : false} */}
             <input type="checkbox" id={id} hidden onChange={toggleSwitch} checked={isChecked == 1 ? true : false} />
-            <label htmlFor={id} className={`customSwitch`}>
+            <label htmlFor={id} className={`customSwitch ${className}`}>
                 <div className="slider"></div>
             </label>
         </>

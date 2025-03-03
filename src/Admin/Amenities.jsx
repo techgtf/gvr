@@ -13,8 +13,8 @@ import Request from "../config/Request";
 
 import "./assets/css/admin.css";
 
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
@@ -201,7 +201,7 @@ const Amenities = () => {
         </button>
       </div>
 
-      <div className="card mt-4 card_style1">
+      <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
           <h5 className="mb-0">Amenities</h5>
 
@@ -215,19 +215,19 @@ const Amenities = () => {
           </div>
         </div>
 
-        <table className="mt_40 w-full border-collapse">
+        <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
-            <tr className="border-b">
-              <th className="py-2 px-4 text-left">Name</th>
-              <th className="py-2 px-4 text-left">Icons</th>
-              <th className="py-2 px-4 text-left">Status</th>
-              <th className="py-2 px-4 text-left">Actions</th>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 p-2 text-left">Name</th>
+              <th className="border border-gray-300 p-2 text-left">Icons</th>
+              <th className="border border-gray-300 p-2 text-left">Status</th>
+              <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             {isLoadingTableData ? (
-              <tr>
+              <tr className="border-b border-gray-200">
                 <td colSpan={4}>
                   <div className="text-center py-4">
                     <ScaleLoader color="#ddd" className="w-full" />
@@ -255,18 +255,18 @@ const Amenities = () => {
                           }
                         />
                       </td>
-                      <td className="py-2 px-4 flex gap-2">
+                      <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
                           onClick={() => editHandler(item.id)}
                         >
-                          <FaEdit />
+                          <AiOutlineEdit size={22} />
                         </button>
                         <button
                           className="btn action_btn"
                           onClick={() => deleteHandler(item.id)}
                         >
-                          <RiDeleteBin5Fill />
+                          <RiDeleteBin6Line size={18} className="text-red-500" />
                         </button>
                       </td>
                     </tr>

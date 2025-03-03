@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('project_specification_lists', function (Blueprint $table) {
             $table->id();
             $table->integer('spec_id');
-            $table->string('title');
-            $table->string('value');
+            $table->string('icons');
+            $table->string('alt');
+            $table->string('short_description');
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

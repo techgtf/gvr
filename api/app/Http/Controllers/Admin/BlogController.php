@@ -56,7 +56,6 @@ class BlogController extends Controller
             'heading' => 'required',
             'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'thumbnail' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
-            'short_description' => 'required',
             'description' => 'required',
             
         ],[
@@ -67,7 +66,6 @@ class BlogController extends Controller
             'thumbnail.required' => 'The Image field is required.',
             'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
-            'short_description.required' => "This Field is required",
             'description.required' => 'This Field is required',
         ]);
 
@@ -96,10 +94,8 @@ class BlogController extends Controller
                     $blogdat->thumbnail = $lispath;
                 }
                 
-       
                 $blogdat->slug = $request->heading;
                 $blogdat->heading = $request->heading;
-                $blogdat->short_description = $request->short_description;
                 $blogdat->description = $request->description;
                 
                 if($blogdat->save()){              
@@ -182,9 +178,8 @@ class BlogController extends Controller
         [
             
             'heading' => 'required',
-            'image' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
-            'thumbnail' => 'nullable|mimes:png,jpg,jpeg, webp|max:2048',
-            'short_description' => 'required',
+            'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
+            'thumbnail' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
             'description' => 'required',
             
         ],[
@@ -193,9 +188,7 @@ class BlogController extends Controller
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'thumbnail.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
             'thumbnail.max' => 'The image may not be greater than 2048 kilobytes.',
-            'short_description.required' => "This Field is required",
             'description.required' => 'This Field is required',
-             
         ]);
 
         if($validator->fails()){
@@ -221,13 +214,15 @@ class BlogController extends Controller
 
             try{
 
+
+
                 if($request->file('image')){
           
                     $imagesurl = $getrecord->image;
                     dltSingleImgFile($imagesurl);
                     
                     $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('blog', $name, 'public');
+                    $path = $request->file('image')->storeAs('blog-image', $name, 'public');
                     $getrecord->image = $path;
                 }
 
@@ -237,15 +232,14 @@ class BlogController extends Controller
                     dltSingleImgFile($imagesurl);
                     
                     $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
-                    $path = $request->file('thumbnail')->storeAs('blog', $name, 'public');
+                    $path = $request->file('thumbnail')->storeAs('blog-thumbnail', $name, 'public');
                     $getrecord->thumbnail = $path;
                 }
 
                 $getrecord->slug = $request->heading;
                 $getrecord->heading = $request->heading;
-                $getrecord->short_description = $request->short_description;
                 $getrecord->description = $request->description;
-                
+ 
                 if($getrecord->save()){              
                     return response()->json([
                         'status'=>true,

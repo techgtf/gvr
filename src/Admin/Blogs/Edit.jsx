@@ -10,6 +10,9 @@ import * as CONFIG from "../../../config";
 
 const EditBlog = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [thumbnailPreview, setThumbnailPreview] = useState(null); 
+  const [imagePreview, setImagePreview] = useState(null); 
+
   const [data, setData] = useState({
     heading: "",
     short_description: "",
@@ -46,9 +49,11 @@ const EditBlog = () => {
           setData((prevData) => ({
             ...prevData,
             ...response.data,
-            thumbnailImage: response.data.thumbnail,
-            previewImage: response.data.image,
+            thumbnail: response.data.thumbnail,
+            image: response.data.image,
           }));
+          setThumbnailPreview(CONFIG.VITE_APP_STORAGE + response.data.thumbnail);
+          setImagePreview(CONFIG.VITE_APP_STORAGE + response.data.image);
           setIsLoading(false);
         } else {
           setData({});
@@ -69,10 +74,16 @@ const EditBlog = () => {
     try {
       const formData = new FormData();
       formData.append("heading", data.heading);
-      formData.append("short_description", data.short_description);
       formData.append("description", data.description);
       formData.append("category", data.category);
-      formData.append("image", data.image);
+      
+      if(data.image instanceof File){
+        formData.append("image", data.image);
+      }
+
+      if(data.thumbnail instanceof File){
+        formData.append("thumbnail", data.thumbnail);
+      }
 
       var response = await Request(
         `admin/blog/${params}/update`,
@@ -98,13 +109,24 @@ const EditBlog = () => {
 
   const changeHandler = (e) => {
     const { name, value, files } = e.target;
+    debugger
 
     if (files && files.length) {
-      setData((prevData) => ({
-        ...prevData,
-        image: files[0],
-        previewImage: "",
-      }));
+      if(name === 'thumbnail'){
+        setData((prevData) => ({
+          ...prevData,
+          thumbnail: files[0],
+        }));
+        setThumbnailPreview(URL.createObjectURL(files[0]))
+      }
+      if(name === 'image'){
+        setData((prevData) => ({
+          ...prevData,
+          image: files[0],
+          previewImage: "",
+        }));
+        setImagePreview(URL.createObjectURL(files[0]))
+      }
     } else {
       setData((prevData) => ({
         ...prevData,
@@ -159,22 +181,6 @@ const EditBlog = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Short Description*
-            </label>
-            <textarea
-              name="short_description"
-              placeholder="Enter Short Description"
-              value={data.short_description}
-              onChange={changeHandler}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
-            />
-            {errors.short_description && (
-              <p className="text-red-500 text-sm">{errors.short_description}</p>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
               Description*
             </label>
             <ReactQuill
@@ -188,29 +194,7 @@ const EditBlog = () => {
               <p className="text-red-500 text-sm">{errors.description}</p>
             )}
           </div>
-
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Blog Category*
-            </label>
-            <select
-              name="category"
-              defaultValue={data.category}
-              onChange={changeHandler}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
-            >
-              <option disabled>Select Blog Category</option>
-              {blogCategory?.map((category, index) => (
-                <option key={index} value={category.id}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-            {errors.category && (
-              <p className="text-red-500 text-sm">{errors.category}</p>
-            )}
-          </div> */}
-
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Thumbnail*{" "}
@@ -220,16 +204,16 @@ const EditBlog = () => {
             </label>
             <input
               type="file"
-              name="image"
+              name="thumbnail"
               onChange={changeHandler}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary p-2"
             />
             {errors.thumbnail && (
               <p className="text-red-500 text-sm">{errors.thumbnail}</p>
             )}
-            {data.thumbnailImage && (
+            {thumbnailPreview && (
               <img
-                src={CONFIG.VITE_APP_STORAGE + data.thumbnailImage}
+                src={thumbnailPreview}
                 alt="Preview"
                 className="mt-2 w-24 h-auto rounded-md shadow-sm"
               />
@@ -252,9 +236,9 @@ const EditBlog = () => {
             {errors.image && (
               <p className="text-red-500 text-sm">{errors.image}</p>
             )}
-            {data.previewImage && (
+            {imagePreview && (
               <img
-                src={CONFIG.VITE_APP_STORAGE + data.previewImage}
+                src={imagePreview}
                 alt="Preview"
                 className="mt-2 w-24 h-auto rounded-md shadow-sm"
               />

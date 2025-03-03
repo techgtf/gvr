@@ -26,11 +26,10 @@ class HelperController extends Controller
             'message'=>"Success ",
             'data'=>$data,
         ]);
-
-         
     }
+
     public function  getCategoryBySlug($slug){
-        $data=ProjectCategory::where('slug',$slug)->first();
+        $data = ProjectCategory::where('slug',$slug)->first();
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -48,6 +47,7 @@ class HelperController extends Controller
             'data'=>$data,
         ]);
     }
+    
     public function  getAllCity(){
         $data=City::where('status',1)
         ->orderBy('city', 'ASC')

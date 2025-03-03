@@ -193,9 +193,7 @@ class PriceController extends Controller
      */
     public function edit($id)
     {
-        //
-
-        $floorplan = DB::table('project_price')
+        $floorplan = DB::table('project_prices')
                 ->select('*')
                 ->where('id', $id)
                 ->first();
@@ -215,11 +213,7 @@ class PriceController extends Controller
             'statusCode'=>404,
             'message'=>"success",
         ]); 
-
-
-
-
-
+ 
     }
 
     /**

@@ -54,7 +54,7 @@ class CareerController extends Controller
                 }
 
                 $record = new JobApplication();
-                $record->experience_id = $request->experience;
+                $record->experience = $request->experience;
                 $record->name = $request->name;
                 $record->phone = $request->phone;
                 $record->email = $request->email;

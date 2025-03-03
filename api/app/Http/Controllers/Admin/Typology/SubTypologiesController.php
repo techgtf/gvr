@@ -54,7 +54,7 @@ class SubTypologiesController extends Controller
         $validator = Validator::make($request->all(),
         [
             'typology' => ['required',
-                Rule::unique('sub_typologies')
+                Rule::unique(table: 'sub_typologies')
                     ->where(function ($query) use ($request) {
                     $query->where('typology', $request->name)
                         ->WhereNull('deleted_at');

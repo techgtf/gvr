@@ -1,33 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
+import { API_URL, VITE_APP_STORAGE } from "../../../config";
 import { Helmet } from 'react-helmet'
 import HeroSection from "../components/microsite/HeroSection";
+import PageNotFound from "../PageNotFound/PageNotFound";
+import About from "../components/microsite/About";
 import Amentities from "../components/microsite/Amentities";
 import PriceList from "../components/microsite/PriceList";
 import HighlightsSpecifications from "../components/microsite/HighlightsSpecifications/HighlightsSpecifications";
 import Plans from "../components/microsite/Plans";
 import LocationAdvantage from "../components/microsite/LocationAdvantage";
-import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGallery";
-import master_plan_img from "/assets/frontend/images/microsite/plans/masterplan.webp";
-import plan1 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-1.webp";
-import plan2 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-1.webp";
-import plan3 from "/assets/frontend/images/microsite/plans/floor_plans/unit1-2.webp";
-import plan4 from "/assets/frontend/images/microsite/plans/floor_plans/unit2-2.webp";
-import loaction from "/assets/frontend/images/microsite/location/location.webp";
-import drive from "/assets/frontend/images/microsite/location/drive.webp";
-import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
-import walk from "/assets/frontend/images/microsite/location/walk.webp";
-import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
-import gallery1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
-import gallery2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
-import gallery3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
-import gallery4 from "/assets/frontend/images/microsite/gallery/gallery4.webp";
-import gallery5 from "/assets/frontend/images/microsite/gallery/gallery5.webp";
-import gallery6 from "/assets/frontend/images/microsite/gallery/gallery6.webp";
-import Specifications from "../components/microsite/HighlightsSpecifications/Specifications";
-import Highlights from "../components/microsite/HighlightsSpecifications/Highlights";
-import About from "../components/microsite/About";
-import { useLocation } from "react-router-dom";
 
+<<<<<<< HEAD
 import aboutImg from "/assets/frontend/images/microsite/about.webp"
 
 // location drive and walk images 
@@ -40,14 +25,35 @@ import airport from "/assets/frontend/images/microsite/vilasa/location/icons/air
 import college from "/assets/frontend/images/microsite/gv/location/icons/college.webp"
 import cafe from "/assets/frontend/images/microsite/gv/location/icons/hauzkhas.webp"
 import railway from "/assets/frontend/images/microsite/vilasa/location/icons/metro.webp"
+=======
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
 function Microsite() {
   const location = useLocation();
+  const { slug } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [mainData, setMainData] = useState(null);
+  const [sectionData, setSectionData] = useState(null);
+  const [amenitiesData, setAmenitiesData] = useState(null);
+  const [priceData, setPriceData] = useState(null);
+  const [highlightsData, setHighlightsData] = useState(null);
+  const [specificationsData, setSpecificationsData] = useState(null);
+  const [unitData, setUnitData] = useState(null);
 
-  const masterPlanData = [
-    { image: master_plan_img, alt: "Master Plan" },
-  ];
+  useEffect(() => {
+    axios.get(`${API_URL}project`)
+      .then((r) => {
+        setMainData(r.data.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
+  }, [location.pathname]);
 
+<<<<<<< HEAD
   const unitData = {
     unit1: [
       {
@@ -64,10 +70,19 @@ function Microsite() {
         balconyArea: "145 Sq Ft",
         totalArea: "1647 Sq Ft",
       },
+=======
+  const basicDetails = mainData?.find((item) => item.slug === slug);
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
-    ],
-    unit2: [
+  useEffect(() => {
+    if (basicDetails?.id) {
+      axios.get(`${API_URL}project/${basicDetails.id}/project-sections`)
+        .then((r) => setSectionData(r.data.data))
+        .catch((err) => console.error("Error fetching sections:", err));
+    }
+  }, [basicDetails?.id]);
 
+<<<<<<< HEAD
       {
         image: plan2,
         type: "TypeB: 2B/R+S",
@@ -83,9 +98,36 @@ function Microsite() {
         totalArea: "1791 Sq Ft",
       },
     ],
+=======
+
+  // function for get specific section data
+  const fetchSectionData = (endpoint, setter) => {
+    axios.get(`${API_URL}project/${basicDetails.id}/${endpoint}`)
+      .then((r) => setter(r.data.data))
+      .catch((err) => console.error(`Error fetching ${endpoint}:`, err));
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
   };
 
+  // pass endpoint to get section data
+  useEffect(() => {
+    if (!sectionData || !basicDetails.id) return;
+    if (sectionData?.some((item) => item.section_type === '2')) { // get amenities data
+      fetchSectionData('amenities', setAmenitiesData);
+    }
+    if (sectionData.some((item) => item.section_type === '3')) { // get priceing
+      fetchSectionData('price', setPriceData);
+    }
+    if (sectionData.some((item) => item.section_type === '4')) { // get highlights
+      fetchSectionData('highlights', setHighlightsData);
+    }
+    if (sectionData.some((item) => item.section_type === '5')) { // get specifications
+      fetchSectionData('specifications', setSpecificationsData);
+    }
+    if (sectionData.some((item) => item.section_type === "7")) { // get floor-pans
+      fetchSectionData('floor-plan', setUnitData)
+    }
 
+<<<<<<< HEAD
   const highlightsData = [
     "3 sides open corner plot",
     "Proposed Metro station in Sector-108",
@@ -174,6 +216,16 @@ function Microsite() {
     { image: "assets/frontend/images/microsite/amentities/slider/slide6.webp", alt: "Yoga" },
     { image: "assets/frontend/images/microsite/amentities/slider/slide7.webp", alt: "Basket ball" },
   ];
+=======
+  }, [sectionData, basicDetails?.id])
+
+  // console.log('specificationsData', specificationsData);
+
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Something went wrong: {error.message}</div>;
+  if (!basicDetails) return <PageNotFound />;
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
   const galleryData = [
     {
@@ -204,6 +256,7 @@ function Microsite() {
 
   return (
     <>
+<<<<<<< HEAD
       <Helmet>
         <title>Sharanam by Great Value | Premium 2 & 3 BHK Homes</title>
         <meta name="keywords" content="Great Value realty, Great Value Sharanam, Great Value Sharanam Noida, Sector 107 Noida, Sharanam Sector 107 Noida, Great Value Sharanam Sector 107 Noida" />
@@ -265,20 +318,81 @@ function Microsite() {
         headingText="ABOUT US"
         descriptionText="A serene haven in Noida offering ready-to-move flats that rejuvenate your soul. Thoughtfully crafted, it’s more than a home; it’s your family’s tranquil retreat that seamlessly combines modern amenities, excellent connectivity, and a vibrant community to deliver a living experience like no other."
         reverseWatermark={true}
+=======
+      <HeroSection
+        desktopBg={basicDetails.thumbnail}
+        mobileBg={basicDetails.thumbnail}
+        scrollText="SCROLL DOWN"
+        sectionId="overview"
+        initialScale={1.5}
+        duration={2}
+        bannerDetailsProps={{
+          heading: basicDetails.name,
+          location: basicDetails?.location?.address,
+          description: basicDetails?.subtypologie?.typology,
+        }}
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
       />
 
-      <Amentities images={images} />
+      {sectionData &&
+        sectionData.map((dataItem) => {
+          switch (dataItem.section_type) {
+            case "1": // About Us **************** section_type: '1', heading: 'ABOUT US',
+              return (
+                <About
+                  key={dataItem.id}
+                  imageSrc={dataItem.image}
+                  alt={`${basicDetails.name} ${basicDetails?.location?.address}`}
+                  headingText={dataItem.heading}
+                  descriptionText={<div dangerouslySetInnerHTML={{ __html: dataItem.description }} />}
+                  reverseWatermark={true}
+                />
+              );
 
-      <PriceList priceListData={customPriceListData} headingText="Price List" />
+            case "2": // Amenities ****************  section_type: '2', heading: 'Amentities',
+              return (
+                <Amentities
+                  key={dataItem.id}
+                  headingText={dataItem.heading}
+                  AmentitiesData={amenitiesData}
+                />
+              );
 
-      <HighlightsSpecifications
-        key={location.pathname}
-        highlightsComponent={() => <Highlights title="Highlights" highlights={highlightsData} />}
-        specificationsComponent={() => <Specifications title="Specifications" specifications={specificationsData} altImage="assets/frontend/images/microsite/specifications/alt.webp" />}
-      />
+            case "3": // PriceList **************** section_type: '3', heading: 'Price List',
+              return (
+                <PriceList
+                  priceListData={priceData}
+                  headingText={dataItem.heading} />
+              );
 
-      <Plans masterPlanData={masterPlanData} unitData={unitData} />
 
+            case "4": // **************** section_type: '4', heading: 'Highlights', || section_type: '5', heading: 'Specifications',
+              return (
+                <HighlightsSpecifications
+                  highlightsData={highlightsData}
+                  specificationsData={specificationsData}
+                />
+              )
+            case "5":  // ****************   section_type: '6', heading: 'Master Plan', || section_type: '7', heading: 'Floor Plans',
+              return (
+                <Plans
+                  masterPlanData={sectionData[5]}
+                  unitData={unitData}
+                />
+              )
+            case "6": //  section_type: '8', heading: 'Location Advantage',
+              return (
+                <LocationAdvantage />
+              )
+            case "7":  // section_type: '9', heading: 'Project Gallery',
+
+            default:
+              return null;
+          }
+        })}
+
+
+      {/*
       <LocationAdvantage
         locationImage={loaction}
         driveData={[
@@ -310,8 +424,13 @@ function Microsite() {
       />
 
       <ProjectGallery
+<<<<<<< HEAD
         actualImages={galleryData}
       />
+=======
+        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+      /> */}
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
     </>
   );
 }

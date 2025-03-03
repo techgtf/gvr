@@ -3,6 +3,7 @@ import CommonBtn from "../commonBtn";
 import { BsArrowUpRight } from "react-icons/bs";
 import FadeIn from "../Animations/FadeIn";
 import CommonHeading from "../commonHeading";
+import * as CONFIG from "../../../../config";
 
 import logo1 from "/assets/frontend/images/media/news/logos/1.webp"
 import logo2 from "/assets/frontend/images/media/news/logos/2.webp"
@@ -17,11 +18,14 @@ import logo12 from "/assets/frontend/images/media/news/logos/12.webp"
 import logo13 from "/assets/frontend/images/media/news/logos/13.webp"
 import { Link } from "react-router-dom";
 import "./gallery.css"
+import useFetchData from "../../apiHooks/useFetchData";
+import Loader from "../../../common/Loader/loader";
 
 function News() {
     const altForall = 'Great Value news'
 
 
+<<<<<<< HEAD
     const onlineNews = [
         {
             alt:altForall,
@@ -120,6 +124,26 @@ function News() {
             link : "https://www.realtybuzz.in/top-real-estate-companies-to-redefine-profitable-investments-in-2025/"
         },
     ]
+=======
+    // calling api
+
+    const { data: newsData, loading: newsLoading, error: newsError } = useFetchData("news/news");
+
+    // Handle Loading and Errors
+    if (newsLoading) return <Loader />;
+    if (newsError) return <p className="text-red-500">Error while loading Gallery: {newsError}</p>;
+
+    function formatDate(dateString) {
+        if (!dateString) return ''; // handle empty date case
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
     return (
         <section className="news_sec bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14">
             {/* Grid container with 12 columns */}
@@ -176,10 +200,10 @@ function News() {
                         </FadeIn>
                     </div>
                     <div className="online bg-white px-[34px] ">
-                       {onlineNews && onlineNews.length > 0 ? onlineNews.map((item, i)=> <div key={i} className="news grid grid-cols-12 lg:gap-8  py-[34px] border-b border-gray-300">
+                       {newsData && newsData.length > 0 ? newsData.map((item, i)=> <div key={i} className="news grid grid-cols-12 lg:gap-8  py-[34px] border-b border-gray-300">
                             {/* Image */}
                             <div className="newsImg col-span-12 lg:col-span-4 px-4 flex items-center justify-center bg-[#EFF5FA]">
-                                <img src={item?.logo} alt={item?.alt} className="w-[150px] " />
+                                <img src={CONFIG.VITE_APP_STORAGE + item?.file} alt={item?.alt_tag} className="w-[150px] " />
                             </div>
                             {/* Text Content */}
                             {/*  */}
@@ -187,8 +211,8 @@ function News() {
                             <div className="details col-span-12 lg:col-span-8 mt-4 lg:mt-0">
                                 <div className={`heading   py-2 text-[10px] leading-[3]  uppercase ${item?.lang === 'hindi' ? 'hind-regular tracking-[2.5px]' : 'midlandfontmedium tracking-[3.5px]'}`}>{item?.heading}</div>
 
-                                <div className="date  pb-3 text-primary">{item?.date}</div>
-                               <Link to={item?.link} target="_blank"> <button className="common_btn uppercase cursor-pointer focus-visible:outline-none focus-visible:ring-0" >
+                                <div className="date  pb-3 text-primary">{formatDate(item?.created_at)}</div>
+                               <Link to={item?.cdn} target="_blank"> <button className="common_btn uppercase cursor-pointer focus-visible:outline-none focus-visible:ring-0" >
                                     Know More <BsArrowUpRight />
                                 </button></Link>
                             </div>

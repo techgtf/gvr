@@ -69,20 +69,21 @@ class Platter extends Model
     public function developer(){
         return $this->belongsTo(Developer::class,'developer');
     }
+
     public function category(){
         return $this->belongsTo(ProjectCategory::class,'category');
     }
+
     public function typology(){
         return $this->belongsTo(Typology::class,'typology');
     }
+
     public function sub_typology(){
         return $this->belongsTo(SubTypology::class,'sub_typology');
     }
+
     public function cities(){
         return $this->belongsTo(City::class,'cities');
     }
-
-
-
 
 }

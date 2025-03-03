@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('designation');
             $table->string('image');
+            $table->longText('bio');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

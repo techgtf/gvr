@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react";
 import * as CONFIG from "../../../config";
+<<<<<<< HEAD
 import HeroSectionAboutUs from '../components/aboutUs/HeroSectionAboutUs'
 import OverviewSection from '../components/overviewSection/overviewSection';
 import { BsFileEarmarkPdf } from 'react-icons/bs';
@@ -10,9 +11,30 @@ import { Link } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import { Helmet } from 'react-helmet';
+=======
+import HeroSectionAboutUs from "../components/aboutUs/HeroSectionAboutUs";
+import OverviewSection from "../components/overviewSection/overviewSection";
+import News from "../components/MediaCenter/News";
+import FadeIn from "../components/Animations/FadeIn";
+import CommonHeading from "../components/commonHeading";
+import { Link } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import { Helmet } from "react-helmet";
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
+import MediaCentreLogo from "../components/MediaCenter/Logo";
+import MediaCentrePdf from "../components/MediaCenter/Pdf";
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 gsap.registerPlugin(ScrollTrigger);
 function MediaCenter() {
+  const {
+    data: pageData,
+    loading: pageLoading,
+    error: pageError,
+  } = useFetchData("page-sections", "20");
 
+<<<<<<< HEAD
     const altForall = 'Great Value news'
 
     return (
@@ -55,17 +77,20 @@ function MediaCenter() {
                 extraClassesImg={"objectRight"}
                 alt={altForall}
             />
+=======
+  // Handle Loading and Errors
+  if (pageLoading) return <Loader />;
+  if (pageError)
+    return <p className="text-red-500">Error loading Banner: {pageError}</p>;
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
-            <OverviewSection
-                heading={
-                    "Making Headlines, Sharing Stories, Showcasing Impact"
-                }
-                paragraph={
-                    "The Media Section is where Great Value Realty’s vision meets the spotlight. From press releases to industry features, online highlights to on-ground events, every update captures our journey of innovation and impact. Stay tuned as we build, transform, and make headlines."
-                }
-                showKnowMore={false}
-            />
+  // 🔹 Extract Banner Data Safely
+  const extractBannerData = (pageData) => {
+    // debugger
+    if (!pageData)
+      return { mediaBanner: null, mediaOverview: null, mediaCentre: null };
 
+<<<<<<< HEAD
             <section className="download relative px-5 md:px-12 py-5 md:py-14">
                 <div className="grid grid-cols-12 gap-3 ">
                     {/* Left Section */}
@@ -104,47 +129,69 @@ function MediaCenter() {
                                         </span>
                                     </li>
                                 </ul>
+=======
+    // const pageData = Object.values(pageData)?.[0] || {};
 
-                            </div>
+    return {
+      mediaBanner: pageData["media-banner"],
+      mediaOverview: pageData["media-overview"],
+      mediaCentre: pageData["media-center"],
+    };
+  };
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
-                        </div>
-                    </div>
+  const { mediaBanner, mediaOverview, mediaCentre } = extractBannerData(pageData);
 
-                    {/* Right Section */}
-                    <div className="download_sec px-8  col-span-12 md:col-span-5">
-                        {/* Download Logo Types */}
+  return (
+    <>
+      <Helmet>
+        <title>Great Value Realty | media-center</title>
+      </Helmet>
 
-                        <div className="logo_types  w-full flex justify-center">
-                            <ul className=' w-full'>
-                                <Link to={`${CONFIG.BASE_ROOT}coming-soon`}> <li className='flex justify-between border-b border-gray-300 items-center py-4'>
-                                    <h3 className="tracking-[3.5px] text-[8px] leading-[3] midlandfontmedium ">Spokesperson Photo</h3>
-                                    <BsFileEarmarkPdf className='text-xl' />
-                                </li>
-                                </Link>
-                                <Link to={`${CONFIG.BASE_ROOT}coming-soon`} >
-                                    <li className='flex justify-between border-b border-gray-300 items-center py-4'>
-                                        <h3 className="tracking-[3.5px] text-[8px] leading-[3] midlandfontmedium">Spokesperson Profile</h3>
-                                        <BsFileEarmarkPdf className='text-xl' />
-                                    </li>
-                                </Link>
-                                <Link to={`${CONFIG.BASE_ROOT}coming-soon`}>
-                                    <li className='flex justify-between border-b border-gray-300 items-center py-4'>
-                                        <h3 className="tracking-[3.5px] text-[8px] leading-[3] midlandfontmedium">Company Profile</h3>
-                                        <BsFileEarmarkPdf className='text-xl' />
-                                    </li>
-                                </Link>
-                            </ul>
-                        </div>
+      <HeroSectionAboutUs
+        img={CONFIG.VITE_APP_STORAGE+mediaBanner.image}
+        heading={mediaBanner.heading}
+        extraClassesImg={"objectRight"}
+      />
 
-                    </div>
-                </div>
-            </section>
+      <OverviewSection
+        heading={mediaOverview.heading}
+        paragraph={
+            mediaOverview.description
+        }
+        showKnowMore={false}
+      />
 
-            <News />
+      <section className="download relative px-5 md:px-12 py-5 md:py-14">
+        <div className="grid grid-cols-12 gap-3 ">
+          {/* Left Section */}
+          <div className="headline col-span-12 md:col-span-3">
+            <div className="topLine uppercase tracking-[3px] py-3 lg:mt-8 font-[300]">
+              {mediaCentre.sub_heading}
+            </div>
+            <FadeIn duration={2} delay={0.5}>
+              <CommonHeading HeadingText={mediaCentre.heading} />
+            </FadeIn>
+          </div>
 
+
+<<<<<<< HEAD
 
         </>
     )
+=======
+          <MediaCentreLogo />
+
+          <MediaCentrePdf />
+
+
+        </div>
+      </section>
+
+      <News />
+    </>
+  );
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 }
 
-export default MediaCenter
+export default MediaCenter;

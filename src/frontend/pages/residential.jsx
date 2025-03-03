@@ -4,10 +4,12 @@ import * as CONFIG from "../../../config"
 import ProjectBox from '../components/residential/projectBox'
 import "../components/residential/styles.css"
 import { Helmet } from 'react-helmet'
+import useFetchData from '../apiHooks/useFetchData'
 const OverviewSection = lazy(() => import("../components/overviewSection/overviewSection"))
 
 
 export default function Residential() {
+<<<<<<< HEAD
   const projectsData = [
     {
       name: "sharanam",
@@ -60,6 +62,23 @@ export default function Residential() {
       alt: "Sanctuary sector 105 Gurugram"
     },
   ]
+=======
+  const { data: bannerData, loading: bannerLoading } = useFetchData('page-sections/17');
+
+  const { data: detailPageData, loading, error } = useFetchData('project?category=residentials')
+  const projectsData = detailPageData;
+
+  if (bannerLoading) {
+    return <div className="w-full min-h-[60vh] bg-gray-200 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer rounded-md"></div>;
+  }
+  if (!bannerData) {
+    return <div className='p-10'>No Data Available</div>;
+  }
+
+  const bannerData1 = bannerData["residential-banner"];
+  const overviewData = bannerData["residential-overview"];
+
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
   return (
     <>
@@ -96,21 +115,27 @@ export default function Residential() {
 
       </Helmet>
       <div className='residential_page bg-[#EFF5FA] lg:pb-[80px] pb-[40px]'>
+
         <HeroSectionAboutUs
+<<<<<<< HEAD
           img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/projects/residential/banner.webp`}
           // img={"https://res.cloudinary.com/dx3l6id8r/image/upload/v1739342190/hero_wlxqxm.webp"}
+=======
+          img={`${CONFIG.VITE_APP_STORAGE}${bannerData1.image}`}
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
           alt={"Great Value Residential Project"}
         />
         {/* <div className='overview_wrap bg-white' style={{background:"linear-gradient(1deg, #eff5fa, #ffffff)"}}> */}
         <OverviewSection
-          heading={'Where Luxury Meets Comfort, Life Flourishes Brightly'}
-          paragraph={'Discover residences that seamlessly blend luxury with comfort, offering serene sanctuaries tailored to your lifestyle.'}
+          heading={overviewData?.heading}
+          paragraph={<div dangerouslySetInnerHTML={{ __html: overviewData?.description }} />}
           showKnowMore={false}
           pageLink={`${CONFIG.BASE_ROOT}about-us`}
           bgColor='bg-white'
         />
+
         {/* </div> */}
-        <ProjectBox projectsData={projectsData} />
+        <ProjectBox projectsData={projectsData} loading={loading} error={error} />
       </div>
     </>
   )

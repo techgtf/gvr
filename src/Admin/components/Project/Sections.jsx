@@ -318,14 +318,14 @@ const Sections = React.memo((props) => {
               <button
                 type="button"
                 disabled
-                className="w-full bg-gray-400 text-white py-2 rounded-md cursor-not-allowed"
+                className="bg-gray-400 text-white py-2 px-4 rounded-md cursor-not-allowed"
               >
                 Please Wait...
               </button>
             ) : (
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition duration-200"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-200"
               >
                 Save Section
               </button>

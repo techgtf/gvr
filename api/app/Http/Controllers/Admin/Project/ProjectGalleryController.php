@@ -141,7 +141,7 @@ class ProjectGalleryController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    'error' => $e->getMessage(),
                 ]);
             }
         }

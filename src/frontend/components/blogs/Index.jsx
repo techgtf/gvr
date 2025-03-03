@@ -10,19 +10,25 @@ import CommonBtn from "../commonBtn";
 import Divider from "./Divider";
 import SlideIn from "../Animations/SlideIn";
 import { LatestBlogContext } from "../../context/LatestBlogContext";
+import dayjs from "dayjs";
 
+const Index = ({ data, nextBlog }) => {
+  const {
+    heading,
+    description,
+    image,
+    thumbnail,
+    created_at,
+    blog_details,
+  } = data;
 
-const Index = ({ data }) => {
-  const { title, desc, desktopImg, mobileImg, date, pera, id, subtitles } =
-    data;
+  const { latestBlog, loading, error } = useContext(LatestBlogContext);
 
-  const { latestBlog } = useContext(LatestBlogContext);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   const navigate = useNavigate();
-  const currentId = parseInt(id);
-
-  // Check if next blog exists in latestBlogData array
-  const hasNextBlog = latestBlog.some((blog) => blog.id === currentId + 1);
-
+  // const currentId = parseInt(id);
+  const date = dayjs(created_at).format("YYYY-MM-DD");
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-20 gap-12 xl:pt-[80px] lg:pb-[70px] mt-[0px] mb-[50px] px-0 sm:px-5 lg:px-8 xl:px-12">
       {/* Left side card */}
@@ -33,11 +39,11 @@ const Index = ({ data }) => {
               {/* Mobile Image */}
               <source
                 media="(max-width: 768px)"
-                srcSet={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/${mobileImg}`}
+                srcSet={`${CONFIG.VITE_APP_STORAGE}${thumbnail}`}
               />
               {/* Desktop Image */}
               <img
-                src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/blogs/${desktopImg}`}
+                src={`${CONFIG.VITE_APP_STORAGE}${image}`}
                 alt="Blog Image"
                 className="relative w-full h-full sm:object-contain object-cover z-[2]"
               />
@@ -46,49 +52,55 @@ const Index = ({ data }) => {
 
           <p className="BlogDate mt-[25px] text-[#6B6B6B] ">{date}</p>
           <FadeIn SlideIn duration={0} delay={0.5}>
-            <h4 className=" md:mb-[30px]  mb-[20px] mt-4 lg:leading-[30px] leading-[28px] text-[16px] text-[#143C5E] capitalize">
-              {title}
+            <h4 className="md:mb-[30px]  mb-[20px] mt-4 lg:leading-[30px] leading-[28px] text-[16px] text-[#143C5E] capitalize">
+              {heading}
             </h4>
           </FadeIn>
-          {desc && (
+          {description && (
             <>
               <FadeIn SlideIn duration={0} delay={0.5}>
-                <p className="opacity-70 text-justify common_pera">{desc}</p>
+                <p className="opacity-70 text-justify common_pera">{description}</p>
               </FadeIn>
-              <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
             </>
           )}
 
-          {subtitles?.length > 0 && (
-            <FadeIn SlideIn duration={0} delay={0.5}>
-              {subtitles.map(({ title, description }, index) => (
-                <React.Fragment key={index}>
-                  <h4 className="mb-4 mt-4 text-[14px] text-[#143C5E] capitalize">
-                    {title}
-                  </h4>
-                  <p className="opacity-70 text-justify common_pera">{description}</p>
-                </React.Fragment>
-              ))}
-            </FadeIn>
-          )}
+          {blog_details?.length > 0 && (
+            <>
+              <Divider className="md:mt-[38px] md:mb-[38px] mt-[20px] mb-[20px]" />
+              <FadeIn SlideIn duration={1} delay={0.5}>
+                {blog_details.map(({ heading, description }, index) => (
+                  <React.Fragment key={index}>
+                    <h4 className="mb-4 mt-4 text-[14px] text-[#143C5E] capitalize">
+                      {heading}
+                    </h4>
+                    <p className="opacity-70 text-justify common_pera">{description}</p>
+                  </React.Fragment>
+                ))}
+              </FadeIn>
+            </>
+          )
+          }
 
           {/*  Fixed: Conditionally disable "Next" button */}
           <FadeIn SlideIn duration={0} delay={0.5}>
             <div className="flex justify-between">
               {/* Other content */}
               <button
-                onClick={() => navigate(`${BASE_ROOT}blog/${currentId + 1}`)}
-                disabled={!hasNextBlog}
-                className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${
-                  hasNextBlog ? "" : "text-gray-400"
-                }`}
+                onClick={() => {
+                  if (nextBlog) {
+                    navigate(`${BASE_ROOT}blog/${nextBlog}`);
+                  }
+                }}
+                disabled={!nextBlog}
+                className={`md:mt-5 mt-3 ml-auto px-4 py-2 md:text-[16px] text-[14px] uppercase ${nextBlog ? "" : "text-gray-400"
+                  }`}
               >
                 Next
               </button>
             </div>
           </FadeIn>
-        </div>
-      </div>
+        </div >
+      </div >
 
       {/* Right side list start*/}
       {/* latest blog start */}
@@ -103,18 +115,18 @@ const Index = ({ data }) => {
         <ul>
           {latestBlog.map((item, index) => (
             <React.Fragment key={index}>
-              <li  className="mt-3  last:mb-0  first:mt-0 last:mb-0">
+              <li className="mt-3 first:mt-0 last:mb-0">
                 <SlideIn SlideIn duration={0} delay={0.5}>
-                  <Link to={`${BASE_ROOT}blog/${item.id}`} key={item.id}  state={{ blog: item}}>
+                  <Link to={`${BASE_ROOT}blog/${item.slug}`} key={item.id}>
                     <div className="ListCard">
                       <h4 className="ListHeading font-poppins md:text-[16px] text-[14px] text-[#143C5E] font-normal md:leading-[30px] leading-[27px] tracking-[0.4px] capitalize">
-                        {item.title}
+                        {item.heading}
                       </h4>
                       <p className="mt-[20px] mb-[20px] opacity-70 text-justify common_pera">
                         {" "}
-                        {item.desc?.length > 200
-                          ? `${item.desc.slice(0, 200)}...`
-                          : item.desc}{" "}
+                        {item.description?.length > 150
+                          ? `${item.description.slice(0, 150)}...`
+                          : item.description}{" "}
                       </p>
                       <CommonBtn className="text-[14px]">
                         Know more <MdArrowOutward />

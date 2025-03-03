@@ -53,6 +53,7 @@ const EditProject = () => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
     setSubmitLoading(true);
+    debugger
 
     var formData = new FormData();
 
@@ -61,6 +62,12 @@ const EditProject = () => {
     formData.append("ivr_no", sectionFormdata.ivr);
     formData.append("name", sectionFormdata.nameRef);
     formData.append("payment_plan", sectionFormdata.paymentplan);
+    if(sectionFormdata.thumbnail instanceof File){
+      formData.append("thumbnail", sectionFormdata.thumbnail);
+    }
+    if(sectionFormdata.feature_image instanceof File){
+      formData.append("feature_image", sectionFormdata.feature_image);
+    }
     formData.append(
       "rera_no",
       sectionFormdata.rera_no ? sectionFormdata.rera_no : ""
@@ -90,23 +97,28 @@ const EditProject = () => {
     if (sectionFormdata.footer_data) {
       formData.append("footer_data", sectionFormdata.footer_data);
     }
-    if (e.target["image"]) {
-      if (e.target["image"].files[0]) {
-        formData.append("image", e.target["image"].files[0]);
-      }
-    }
+    // if (e.target["thumbnail"]) {
+    //   if (e.target["thumbnail"].files[0]) {
+    //     formData.append("thumbnail", e.target["thumbnail"].files[0]);
+    //   }
+    // }
+    // if (e.target["feature_image"]) {
+    //   if (e.target["feature_image"].files[0]) {
+    //     formData.append("feature_image", e.target["feature_image"].files[0]);
+    //   }
+    // }
 
-    if (e.target["logo"]) {
-      if (e.target["logo"].files[0]) {
-        formData.append("logo", e.target["logo"].files[0]);
-      }
-    }
+    // if (e.target["logo"]) {
+    //   if (e.target["logo"].files[0]) {
+    //     formData.append("logo", e.target["logo"].files[0]);
+    //   }
+    // }
 
-    if (e.target["brochure"]) {
-      if (e.target["brochure"].files[0]) {
-        formData.append("brochure", e.target["brochure"].files[0]);
-      }
-    }
+    // if (e.target["brochure"]) {
+    //   if (e.target["brochure"].files[0]) {
+    //     formData.append("brochure", e.target["brochure"].files[0]);
+    //   }
+    // }
 
     var response = await Request(
       "admin/project/" + projectid + "/update",
@@ -222,7 +234,8 @@ const EditProject = () => {
         footer_data: result.footer_data,
         image_preview: CONFIG.VITE_APP_STORAGE + result.feature_image,
         brochure_preview: CONFIG.VITE_APP_STORAGE + result.brochure,
-
+        thumbnail:CONFIG.VITE_APP_STORAGE + result.thumbnail,
+        feature_image:CONFIG.VITE_APP_STORAGE + result.feature_image,
         logo_preview: CONFIG.VITE_APP_STORAGE + result.logo,
       });
 
@@ -283,7 +296,24 @@ const EditProject = () => {
   // }
 
   const handleChange = (e) => {
-    setSectionFormdata({ ...sectionFormdata, [e.target.name]: e.target.value });
+    const {name, value} = e.target;
+
+    if(name == 'thumbnail'){
+      setSectionFormdata({ 
+        ...sectionFormdata,
+        thumbnail: e.target.files[0] 
+      });
+    }else if(name == 'feature_image'){
+      setSectionFormdata({ 
+        ...sectionFormdata,
+        feature_image: e.target.files[0] 
+      });
+    }else{
+      setSectionFormdata({ 
+        ...sectionFormdata,
+        [e.target.name]: e.target.value 
+      });
+    }
   };
 
   return (
@@ -361,55 +391,69 @@ const EditProject = () => {
               {errors.project_status}
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label>Project Name*</label>
+              <div className="mb-2">
+                <label className="block">Project Name*</label>
                 <input
                   type="text"
                   placeholder="Enter project name"
                   value={sectionFormdata.nameRef}
                   name="nameRef"
                   onChange={handleChange}
-                  className="input"
+                  className="w-full p-2 border rounded"
                 />
                 {errors.name}
               </div>
-              <div>
-                <label>Project IVR No.</label>
-                <input
-                  type="text"
-                  placeholder="Enter IVR no."
-                  value={sectionFormdata?.ivr || ""}
-                  name="ivr"
-                  onChange={handleChange}
-                  className="input"
-                />
-                {errors.ivr_no}
-              </div>
             </div>
+
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label>Project Whatsapp No.</label>
+              <div className="mb-2">
+                <label className="block">
+                  Thumbnail Image*{" "}
+                  <small className="size">(Size 800px x 650px)</small>
+                </label>
                 <input
-                  type="text"
-                  placeholder="Enter whatsapp no."
-                  value={sectionFormdata?.whatsapp || ""}
-                  name="whatsapp"
+                  type="file"
+                  className="w-full p-2 border rounded"
+                  name="thumbnail"
                   onChange={handleChange}
-                  className="input"
                 />
+                {sectionFormdata.thumbnail && <img src={sectionFormdata.thumbnail} className="w-[100px]" />}
+                {errors.thumbnail && (
+                  <div className="errMsg">{errors.thumbnail}</div>
+                )}
               </div>
-              <div>
-                <label>Payment Plan</label>
+
+              <div className="mb-2">
+                <label className="block">
+                  Featured Image*{" "}
+                  <small className="size">(Size 800px x 650px)</small>
+                </label>
                 <input
-                  type="text"
-                  placeholder="Enter payment plan"
-                  value={sectionFormdata?.paymentplan || ""}
-                  name="paymentplan"
-                  onChange={handleChange}
-                  className="input"
+                  type="file"
+                  className="w-full p-2 border rounded"
+                  name="feature_image"
                 />
+                {sectionFormdata.feature_image && <img src={sectionFormdata.feature_image} className="w-[100px]" />}
+                {errors.image && <div className="errMsg">{errors.image}</div>}
               </div>
             </div>
+
+            <div className="mb_20">
+              <label className="block">Short Description*</label>
+              <textarea
+                type="text"
+                value={sectionFormdata.short_description}
+                name="short_description"
+                className="w-full p-2 border rounded"
+                placeholder="Enter project name"
+                rows={4}
+                onChange={handleChange}
+              />
+              {errors.short_description && (
+                <div className="errMsg">{errors.short_description}</div>
+              )}
+            </div>
+
             <div className="mt_20">
               {submitLoading ? (
                 <button

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Website\Timeline;
+use App\Models\Website\TimelineImage;
 use App\Models\Website\Team;
 use App\Models\Website\Verticals;
 
@@ -20,27 +21,18 @@ class AboutController extends Controller
             }
             $perPage = $request->input('per_page', 10);
             $page = $request->input('page', 1);
-            $record = Timeline::search($search)->select('*')->paginate($perPage, ['*'], 'page', $page);
-            
-            // $groupedRecords = $record->groupBy('year');
 
-            $groupedRecords = $record->groupBy('year')->map(function ($items, $year) {
+            $distinctYears = Timeline::select('year')->distinct()->pluck('year');
+
+            $groupedRecords = $distinctYears->map(function ($year) {
                 return [
                     'year' => $year,
-                    'image' => $items->first()->image,
-                    'records' => $items->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'title' => $item->title,
-                            'location' => $item->location,
-                            'status' => $item->status,
-                            'created_at' => $item->created_at,
-                        ];
-                    })->values(),
+                    'image' => TimelineImage::where('year', $year)->value('image'), // Get first timeline image
+                    'records' => Timeline::where('year', $year)->get(['id', 'title', 'year', 'location', 'status', 'created_at']),
+                    'images' => TimelineImage::where('year', $year)->get(['image', 'alt'])->toArray(),
                 ];
-            })->values();
+            });
 
-            
             return response()->json([
                 'status'=>true,
                 'statusCode'=>200,

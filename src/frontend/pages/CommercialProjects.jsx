@@ -87,7 +87,7 @@ const projects = [
         link: "https://greatmallofaligarh.com",
         name: "GREAT VALUE MALL",
         address: "Ram Ghat Road, Aligarh",
-        landArea: '2 Acre land (Covered area 2 lac Sq Ft) '
+        landArea: "2 Acre land (Covered area 2 lac Sq Ft) ",
       },
     ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
@@ -104,13 +104,13 @@ const projects = [
         name: "PERNIA'S POP-UP STUDIO",
         link: "",
         address: "Mehrauli, New Delhi",
-        landArea: '790 Sq Yds Plot'
+        landArea: "790 Sq Yds Plot",
       },
       {
         name: "GAP",
         link: "",
         address: "Saket, New Delhi",
-        landArea: '47086 Sq Ft',
+        landArea: "47086 Sq Ft",
       },
 
       {
@@ -118,13 +118,13 @@ const projects = [
         link: "",
         address: "Vasant Vihar, New Delhi",
         address: "Vasant Vihar, New Delhi",
-        landArea: '',
+        landArea: "",
       },
       {
         name: "COMPLEX MADANGIR",
         link: "",
         address: "Madangir, New Delhi",
-        landArea: '47086 Sq Ft',
+        landArea: "47086 Sq Ft",
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -217,11 +217,12 @@ const CommercialProjects = () => {
   return (
     <section className="bg-[#EFF5FA]">
       <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${window.innerWidth <= 768
-          ? "commercial_banner_mb.jpg"
-          : "commercial_banner.jpg"
-          }`}
-          alt={"Great value commercial project"}
+        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${
+          window.innerWidth <= 768
+            ? "commercial_banner_mb.jpg"
+            : "commercial_banner.jpg"
+        }`}
+        alt={"Great value commercial project"}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
@@ -256,16 +257,20 @@ const CommercialProjects = () => {
       </div>
       <div className="text-[11px] flex xl:justify-center gap-16  pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
         <div className="text-center">
-        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
-        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
-        2,000,000 sq ft
-        </h3>
+          <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">
+            Existing Area{" "}
+          </h3>
+          <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
+            2,000,000 sq ft
+          </h3>
         </div>
         <div className="text-center">
-        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
-        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
-        5,000,000 sq ft
-        </h3>
+          <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">
+            Planned Expansion{" "}
+          </h3>
+          <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
+            5,000,000 sq ft
+          </h3>
         </div>
       </div>
       {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
@@ -356,16 +361,33 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty Commercial Projects | Premium Business Spaces</title>
-        <meta name="keywords" content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties" />
-        <meta name="description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
-        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-        <link rel="canonical" href="https://greatvaluerealty.com/commercial-projects" />
+        <title>
+          Great Value Realty Commercial Projects | Premium Business Spaces
+        </title>
+        <meta
+          name="keywords"
+          content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties"
+        />
+        <meta
+          name="description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
+        <meta
+          name="google-site-verification"
+          content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8"
+        />
+        <link
+          rel="canonical"
+          href="https://greatvaluerealty.com/commercial-projects"
+        />
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="Great Value Realty Commercial Projects| Premium Business Spaces" />
+        <meta
+          name="author"
+          content="Great Value Realty Commercial Projects| Premium Business Spaces"
+        />
         <meta name="googlebot" content="all, index, follow" />
         <meta name="YahooSeeker" content="all, index, follow" />
         <meta name="msnbot" content="all, index, follow" />
@@ -374,17 +396,38 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
         <meta name="rating" content="general" />
         <meta name="expires" content="never" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
-        <meta property="og:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
-        <meta property="og:url" content="https://greatvaluerealty.com/commercial-projects" />
+        <meta
+          property="og:title"
+          content="Great Value Realty Commercial Projects | Premium Business Spaces"
+        />
+        <meta
+          property="og:description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
+        <meta
+          property="og:url"
+          content="https://greatvaluerealty.com/commercial-projects"
+        />
         <meta property="og:site_name" content="Great Value Realty" />
-        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta
+          property="og:image"
+          content="https://greatvaluerealty.com/assets/frontend/images/logo.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@GreatValueGroup" />
-        <meta name="twitter:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
-        <meta name="twitter:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta
+          name="twitter:title"
+          content="Great Value Realty Commercial Projects | Premium Business Spaces"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
         <meta name="twitter:creator" content="@GreatValueGroup" />
-        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta
+          name="twitter:image"
+          content="https://greatvaluerealty.com/assets/frontend/images/logo.png"
+        />
       </Helmet>
       <section
         key={project.id}
@@ -423,9 +466,17 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                       {proj.name}
                     </p>
                     <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
-                    <p className={`lg:basis-[23%] basis-[100%] lg:pl-[15px]`}>{proj.address}</p>
-                    {proj?.landArea ? <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div> : ''}
-                    <p className="lg:basis-[23%] basis-[100%] lg:pl-[15px]">{proj.landArea}</p>
+                    <p className={`lg:basis-[23%] basis-[100%] lg:pl-[15px]`}>
+                      {proj.address}
+                    </p>
+                    {proj?.landArea ? (
+                      <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
+                    ) : (
+                      ""
+                    )}
+                    <p className="lg:basis-[23%] basis-[100%] lg:pl-[15px]">
+                      {proj.landArea}
+                    </p>
                     <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
 
                     {/* {[
@@ -481,10 +532,11 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                           to={proj.link}
                           onClick={() => openNewBackgroundTab(proj.link)}
                           rel="noopener noreferrer"
-                          className={`${proj.name === "Moser Baer Solar Ltd / Warehouse"
-                            ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
-                            : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
-                            } `}
+                          className={`${
+                            proj.name === "Moser Baer Solar Ltd / Warehouse"
+                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
+                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                          } `}
                         >
                           {["Tavru Sohna", "Moserbear Part 2"].includes(
                             proj.name

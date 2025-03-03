@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FadeIn from "../../Animations/FadeIn";
 import CommonHeading from "../../commonHeading";
 import SlideIn from "../../Animations/SlideIn";
 import { useImageReveal } from "../../useImageReveal";
 import CommonPera from '../../commonPera'
 
+<<<<<<< HEAD
 function SocialDetails() {
     useImageReveal(".reveal")
     const tabData = {
@@ -46,18 +47,39 @@ function SocialDetails() {
             ],
         },
     };
+=======
+function SocialDetails({data, className, apiName}) {
+    const [dataArr, setDataArr] = useState(null)
+
+    useEffect(()=>{
+        const fetchSocialData = async()=>{
+            try{
+                const response = await fetch('https://greatvaluerealty.websitedesigningcompany.co.in/api/esg-list/'+apiName)
+                const responseData = await response.json();
+                setDataArr(responseData.data)
+            }catch(err){
+                console.log(err);
+            }
+        }
+
+        fetchSocialData();
+    }, [apiName])
+
+    // Apply image reveal after dataArr is set
+    useImageReveal(".reveal", dataArr)
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
     return (
         <section className="social_details ">
             {/* Social Section */}
-            <div className="details bg-[#EFF5FA] py-10 px-5 md:px-12 ">
+            <div className={`details bg-[#EFF5FA] py-10 px-5 md:px-12 ${className}`}>
                 <div className="tab_details">
                     <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
-                            <CommonHeading HeadingText={tabData.social.heading} />
+                            <CommonHeading HeadingText={data.heading} />
                         </FadeIn>
                         <SlideIn duration={0.8} delay={0.2}>
-                            <p className="md:w-[45%] mx-auto py-5">{tabData.social.description}</p>
+                            <p className="md:w-[45%] mx-auto py-5">{data.description}</p>
                         </SlideIn>
                     </div>
                     <div className="pipeline relative h-[12vh] flex justify-center">
@@ -66,16 +88,20 @@ function SocialDetails() {
 
                     {/* Social Content Mapping */}
                     <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
-                        {tabData.social.details.map((item, index) => (
-                            <div key={index} className="card max-w-sm overflow-hidden reveal_cut_effect">
+                        {dataArr?.map((item, index) => (
+                            <div key={item.id} className="card max-w-sm overflow-hidden reveal_cut_effect">
                                 <div className="relative group reveal">
+<<<<<<< HEAD
                                     <img className="w-full" src={item.img} alt={item.alt} />
+=======
+                                    <img className="w-full" src={item.image} alt={item.name} />
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
                                     <div className="content absolute bottom-0 left-0 bg-white/70 backdrop-blur-md text-center p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <CommonPera PeraText={item.content} />
+                                        <CommonPera PeraText={item.short_description} />
                                     </div>
                                 </div>
                                 <div className="py-4">
-                                    <div className="text-[8px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.title}</div>
+                                    <div className="text-[8px] text-center tracking-[3.5px] leading-[3] midlandfontmedium uppercase">{item.name}</div>
                                 </div>
                             </div>
                         ))}
@@ -84,7 +110,7 @@ function SocialDetails() {
             </div>
 
             {/* Environment Section */}
-            <div className="details bg-white py-10 px-5 md:px-12">
+            {/*<div className="details bg-white py-10 px-5 md:px-12">
                 <div className="tab_details">
                     <div className="heading text-center flex justify-center py-5 flex-col items-center">
                         <FadeIn duration={2} delay={0.7}>
@@ -98,7 +124,7 @@ function SocialDetails() {
                     <div className="pipeline relative h-[12vh] flex justify-center">
                         <div className="absolute top-0 w-[2px] bg-gray-400 h-[8vh]"></div>
                     </div>
-                    {/* Environment Content Mapping */}
+                    /~ Environment Content Mapping ~/
                     <div className="grid grid-cols-1 !sm:grid-cols-2 !flex !flex-wrap justify-center md:grid-cols-3 gap-4 py-5">
                         {tabData.environment.details.map((item, index) => (
                             <div key={index} className="card max-w-sm overflow-hidden reveal_cut_effect">
@@ -115,6 +141,7 @@ function SocialDetails() {
                         ))}
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
 
             <div className="governance bg-[#EFF5FA] px-5 md:px-12 py-10">
@@ -142,6 +169,9 @@ function SocialDetails() {
                     </div>))}
                 </div>
             </div>
+=======
+            </div>*/}
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
         </section>
     );
 }

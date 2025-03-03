@@ -8,35 +8,33 @@ use App\Models\Website\Project\ProjectBanner;
 use App\Models\Website\Project\ProjectLocationAdvantage;
 use App\Models\Website\Project\ProjectFaq;
 use App\Models\Website\Project\ProjectAmenities;
+use App\Models\Website\Project\ProjectAmenitiesGallery;
 use App\Models\Website\Project\ProjectFloorPlan;
 use App\Models\Website\Project\ProjectSection;
 use App\Models\Website\Project\ProjectHighlight;
 use App\Models\Website\Project\ProjectGallery;
+use App\Models\Website\Project\ProjectSpecification;
+use App\Models\Website\Project\ProjectSpecificationList;
 use App\Models\Website\Projects;
 use Illuminate\Http\Request;
+use Livewire\ComponentConcerns\RendersLivewireComponents;
 
 class ProjectController extends Controller
 {
-    //
-
+    
     public function index(Request $request){
 
 
         $perPage = $request->input('per_page', 4); // Number of products per page
         $page = $request->input('page', 1); // Current page number
-        
-
+         
         $category = $request->input('category');
-
-
-
-
-        // category
-
+  
         $project = Projects::with(['location','typologie','developer','category','subtypologie','startingSize'=>function($query){
                 $query->min('size');
             }
         ]);
+        
         $project->when($request->budget,function($q,$budget){
             $q->whereHas('startingPrice', function($query) use ($budget) {
                 $query->selectRaw('min(price) as min_price, project_id')
@@ -210,7 +208,7 @@ class ProjectController extends Controller
     }
 
     public function highlights($project_id){
-        $highlights=ProjectHighlight::where('project_id',$project_id)->get();
+        $highlights = ProjectHighlight::where('project_id',$project_id)->get();
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -222,12 +220,12 @@ class ProjectController extends Controller
 
     public function FloorPlan($project_id){
     
-        $floorplans=ProjectFloorPlan::with('subTypology')->where('project_id',$project_id)->get();
+        $floorplans = ProjectFloorPlan::with('subTypology')->where('project_id',$project_id)->get()->groupBy('type');
         return response()->json([
-            'status'=>true,
-            'statusCode'=>200,
-            'message'=>"Success ",
-            'data'=>$floorplans
+            'status' => true,
+            'statusCode' => 200,
+            'message' => "Success",
+            'data' => $floorplans
         ]);
 
     }
@@ -243,17 +241,46 @@ class ProjectController extends Controller
 
     }
 
-    public function Amenities($project_id){
+    // public function Amenities($project_id){
     
-        $floorplans=ProjectAmenities::with('Amenities')->where('project_id',$project_id)->get();
-        return response()->json([
-            'status'=>true,
-            'statusCode'=>200,
-            'message'=>"Success ",
-            'data'=>$floorplans
-        ]);
+    //     $floorplans = ProjectAmenities::with('Amenities')->where('project_id',$project_id)->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'statusCode'=>200,
+    //         'message'=>"Success ",
+    //         'data'=>$floorplans
+    //     ]);
 
+    // }
+
+    // public function AmenitiesGalleries($project_id){
+    
+    //     $floorplans=ProjectAmenitiesGallery::where('project_id',$project_id)->get();
+    //     return response()->json([
+    //         'status'=>true,
+    //         'statusCode'=>200,
+    //         'message'=>"Success ",
+    //         'data'=>$floorplans
+    //     ]);
+
+    // }
+
+    public function Amenities($project_id) {
+        $amenities = ProjectAmenities::with('Amenities')->where('project_id', $project_id)->get();
+        $amenitiesGalleries = ProjectAmenitiesGallery::where('project_id', $project_id)->get();
+    
+        return response()->json([
+            'status' => true,
+            'statusCode' => 200,
+            'message' => "Success",
+            'data' => [
+                'amenities_icons' => $amenities,
+                'amenities_galleries' => $amenitiesGalleries
+            ]
+        ]);
     }
+    
+
     public function getFaq($project_id){
     
         $floorplans=ProjectFaq::where('project_id',$project_id)->get();
@@ -269,7 +296,8 @@ class ProjectController extends Controller
 
     public function LocationAdvantage($project_id){
     
-        $floorplans=ProjectLocationAdvantage::where('project_id',$project_id)->get();
+        $floorplans = ProjectLocationAdvantage::where('project_id', $project_id)->get()->groupBy('type');
+
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -282,12 +310,13 @@ class ProjectController extends Controller
     
 
     public function projectSections($project_id){
-        $projectgallery=ProjectSection::where('project_id',$project_id)->orderBy('seq','ASC')->get();
+        
+        $projectSection = ProjectSection::where('project_id',$project_id)->orderBy('seq','ASC')->get();
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
             'message'=>"Success ",
-            'data'=>$projectgallery
+            'data'=>$projectSection
         ]);
 
     }
@@ -308,11 +337,58 @@ class ProjectController extends Controller
                 'message'=>"Success ",
             ]);
         }
-        
-
     }
+
+
+    public function Specifications ($project_id){
+
+        $specifications = ProjectSpecification::with('ProjectSpecificationList')
+        ->whereHas('ProjectSpecificationList', function ($query) use ($project_id) {
+            $query->where('project_id', $project_id);
+        })
+        ->get();
     
+        if($specifications){
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>200,
+                'message'=>"Success ",
+                'data'=>$specifications
+            ]);
+        }else{
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>400,
+                'message'=>"Success ",
+            ]);
+        }
+    }
 
 
+    public function ProjectImages(Request $request) {
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1);
+
+        try {
+
+            $projectgallery=ProjectGallery::paginate($perPage, ['*'], 'page', $page);
+            return response()->json([
+                'status'=>true,
+                'statusCode'=>200,
+                'message'=>"Success ",
+                'data'=>$projectgallery
+            ]);
+
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                'status' => true,
+                'statusCode' => 200,
+                'message' => 'Something went wrong!',
+                'errors' => $th->getMessage(),
+            ]);
+            
+        }
+    }
 
 }

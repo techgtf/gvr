@@ -6,18 +6,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FadeIn from "../Animations/FadeIn";
 
-// Import images
-import swimmingPool from "/assets/frontend/images/microsite/amentities/icons/swimming-pool.webp";
-import yoga from "/assets/frontend/images/microsite/amentities/icons/yoga.webp";
-import gymnasium from "/assets/frontend/images/microsite/amentities/icons/gymnasium.webp";
-import theater from "/assets/frontend/images/microsite/amentities/icons/theater.webp";
-import library from "/assets/frontend/images/microsite/amentities/icons/library.webp";
-import basketballBall from "/assets/frontend/images/microsite/amentities/icons/basketballBall.webp";
-import runningTrack from "/assets/frontend/images/microsite/amentities/icons/running-track.webp";
-import park from "/assets/frontend/images/microsite/amentities/icons/park.webp";
-
 gsap.registerPlugin(ScrollTrigger);
 
+<<<<<<< HEAD
 function Amentities({ 
   AmentitiesData = [
     { name: "Swimming Pool", image: swimmingPool, alt : "Swimming Pool" },
@@ -31,9 +22,15 @@ function Amentities({
   ], 
   images = [], 
   headingText = "Amenities" 
+=======
+function Amentities({
+  AmentitiesData = null,
+  images = [],
+  headingText = "Amentities"
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 }) {
   const sectionRef = useRef(null);
-  const location = useLocation(); // ✅ Track route changes
+  const location = useLocation();
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -74,6 +71,7 @@ function Amentities({
         </div>
         <div className="sm:col-span-9 col-span-12">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-4">
+<<<<<<< HEAD
             {AmentitiesData.map((item, i) => (
               <div
                 key={i}
@@ -81,11 +79,22 @@ function Amentities({
               >
                 <div className="icon">
                   <img src={item.image} alt={item.name} className="w-10 h-10 object-contain" />
+=======
+            {AmentitiesData && AmentitiesData.amenities_icons.map((item, i) => (
+              <>
+                <div
+                  key={i}
+                  className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
+                >
+                  <div className="icon">
+                    <img src={item['amenities'].icons} alt={`${item['amenities'].title} Icon`} className="w-[2.5rem]" />
+                  </div>
+                  <div className="text uppercase text-center md:text-start">
+                    <p>{item['amenities'].title} ffff</p>
+                  </div>
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
                 </div>
-                <div className="text uppercase text-center md:text-start">
-                  <p>{item.name}</p>
-                </div>
-              </div>
+              </>
             ))}
           </div>
         </div>
@@ -93,7 +102,7 @@ function Amentities({
 
       {/* Pass images to Slider */}
       <div className="pt-5 relative">
-        <Slider images={images} />  
+        <Slider images={AmentitiesData} />
       </div>
     </section>
   );

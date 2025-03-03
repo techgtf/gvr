@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('typology');
             $table->string('image')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('primary')->default(0);
-
-
             $table->string('status')->default(1);
             $table->timestamps();
             $table->softDeletes(); // This adds the 'deleted_at' column

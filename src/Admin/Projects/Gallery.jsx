@@ -79,6 +79,8 @@ const Gallery = React.memo(() => {
     formData.append("alt_text", sectionFormdata.alt_text);
     formData.append("project_id", projectid);
     formData.append("image", image.current.files[0]);
+    formData.append("type", 'image');
+
     var response = await Request("admin/projectdata/gallery", "POST", formData);
     if (response.status && response.statusCode === 403) {
       setErrors(response.errors);
@@ -97,6 +99,7 @@ const Gallery = React.memo(() => {
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
     formData.append("alt_text", sectionFormdata.alt_text);
+    formData.append("type", "image");
     if (image.current.files[0]) {
       formData.append("image", image.current.files[0]);
     }
@@ -214,40 +217,41 @@ const Gallery = React.memo(() => {
           projectid={projectid}
           section_type={section_id}
           title="Gallery"
-          sub_heading
         />
 
-        <div className="card card_style1 mt-10 p-4">
+        <div className="card bg-white card_style1 mt-10 p-4">
           <div className="flex justify-between items-center mb-4">
             <h5 className="text-lg font-semibold">Project Gallery</h5>
             <button
-              className="btn btn-primary btn-sm"
+              className="btn ml-auto btn_primary btn-sm"
               onClick={addAmenityHandler}
             >
               Add Gallery
             </button>
           </div>
 
-          <table className="w-full border mt-4">
+          <table className="mt_40 w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="border-b bg-gray-100">
-                <th className="p-2 text-left">Image</th>
-                <th className="p-2 text-left">Alt Text</th>
-                <th className="p-2 text-left">Actions</th>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2 text-left">Image</th>
+                <th className="border border-gray-300 p-2 text-left">Alt Text</th>
+                <th className="border border-gray-300 p-2 text-left">Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {isLoadingTableData ? (
-                <tr>
-                  <td colSpan={3} className="text-center p-4">
-                    <ScaleLoader color="#ddd" />
+                <tr className="border-b border-gray-200">
+                  <td colSpan={3}>
+                  <div className="text-center py-4">
+                    <ScaleLoader color="#ddd" className="w-full" />
+                  </div>
                   </td>
                 </tr>
               ) : list?.length ? (
                 list.map((item) => (
                   <tr key={item.id} className="border-b">
-                    <td className="p-2">
+                    <td className="py-2 px-4">
                       <div className="thumb icon">
                         <img
                           src={CONFIG.VITE_APP_STORAGE + item.image}
@@ -256,8 +260,8 @@ const Gallery = React.memo(() => {
                         />
                       </div>
                     </td>
-                    <td className="p-2">{item.alt_text}</td>
-                    <td className="p-2 flex gap-2">
+                    <td className="py-2 px-4">{item.alt_text}</td>
+                    <td className="py-2 px-4">
                       <button
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
@@ -305,7 +309,7 @@ const Gallery = React.memo(() => {
               <form className="space-y-4">
                 <div className="w-full">
                   <label className="block text-sm font-medium">
-                    Upload Image *
+                    Thumbnail*
                   </label>
                   <input
                     className="w-full border rounded-md p-2"
@@ -326,7 +330,7 @@ const Gallery = React.memo(() => {
                 </div>
 
                 <div className="w-full">
-                  <label className="block text-sm font-medium">Alt Text</label>
+                  <label className="block text-sm font-medium">Alt Text*</label>
                   <input
                     className="w-full border rounded-md p-2"
                     placeholder="Enter Alt text"

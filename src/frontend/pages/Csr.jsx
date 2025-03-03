@@ -1,11 +1,51 @@
+<<<<<<< HEAD
 import React from 'react'
 import HeroSection from '../components/CSR/HeroSection'
 import OverviewSection from '../components/overviewSection/overviewSection'
 import CharityInitiatives from '../components/CSR/CharityInitiatives/CharityInitiatives'
 import SocialDetails from '../components/CSR/SocialDetails/SocialDetails'
 import { Helmet } from 'react-helmet'
+=======
+import React from "react";
+import HeroSection from "../components/CSR/HeroSection";
+import OverviewSection from "../components/overviewSection/overviewSection";
+import CareCommunities from "../components/CSR/CC/CareCommunities";
+import CharityInitiatives from "../components/CSR/CharityInitiatives/CharityInitiatives";
+import SocialDetails from "../components/CSR/SocialDetails/SocialDetails";
+import { Helmet } from "react-helmet";
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
+import * as CONFIG from "../../../config";
+import EnvironmentSection from "../components/CSR/governance/GovernanceSection";
+import GovernanceSection from "../components/CSR/governance/GovernanceSection";
+>>>>>>> be5d48c49e395fd2ab83dd8896572878b61d7f55
 
 function Csr() {
+  const { data: pageData, loading: pageLoading, error: pageError } = useFetchData("page-sections", "6");
+
+  // Handle Loading and Errors
+  if (pageLoading) return <Loader />;
+  if (pageError)
+    return <p className="text-red-500">Error loading Banner: {pageError}</p>;
+
+  // 🔹 Extract Banner Data Safely
+  const extractBannerData = (pageData) => {
+    // debugger
+    if (!pageData) return { csrBanner: null, csrOverview: null };
+
+    // const pageData = Object.values(pageData)?.[0] || {};
+
+    return {
+      esgBanner: pageData['esg-banner'],
+      esgOverview: pageData['esg-overview'],
+      esgSocial: pageData['esg-social'],
+      esgEnvironment: pageData['esg-environment-center'],
+      esgGovernance: pageData['esg-governance-center'],
+    };
+  };
+
+  const {esgBanner, esgOverview, esgSocial, esgEnvironment, esgGovernance} = extractBannerData(pageData);
+
   return (
     <>
       <Helmet>
@@ -44,18 +84,19 @@ function Csr() {
 
       <OverviewSection
         heading={
-          "Building a Future Where Sustainability, Community, and Integrity Thrive"
+          esgOverview?.heading || 'ESG'
         }
         paragraph={
-          "At Great Value Realty, we create spaces that go beyond walls and structures to shape a world where progress is rooted in responsibility. Our commitment to environmental stewardship ensures that every project embraces sustainable practices for a healthier planet. By investing in social initiatives, we empower communities through education, healthcare, and inclusivity. Strong governance policies drive our ethical foundation, fostering transparency, accountability, and long-term trust. Every development reflects a vision where business growth, community well-being, and environmental consciousness come together to build a future that is both dynamic and sustainable."
+          esgOverview?.description || null
         }
         showKnowMore={false}
       />
-      <SocialDetails />
-      {/* <CareCommunities/> */}
+      <SocialDetails data={esgSocial} apiName="social" />
+      <SocialDetails data={esgEnvironment} className="bg-white"  apiName="environment" />
+      <GovernanceSection data={esgGovernance} apiName="governance" />
       <CharityInitiatives />
     </>
-  )
+  );
 }
 
-export default Csr
+export default Csr;

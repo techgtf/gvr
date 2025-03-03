@@ -2,6 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useState, useRef, useEffect, memo, useMemo } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
+import { DATA_ASSET_URL, VITE_APP_STORAGE } from "../../../../config";
 
 const projects = [
   {
@@ -235,9 +238,25 @@ const projects = [
   },
 ];
 
-const OurJourney = () => {
+const OurJourney = ({ data: pageData }) => {
   const elementRef = useRef(null);
   const imgClusterRef = useRef(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${DATA_ASSET_URL}timeline`)
+      .then((response) => {
+        setData(response.data.data); // Set the blog data
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(1); // State to hold the selected project
 
@@ -287,23 +306,25 @@ const OurJourney = () => {
   return (
     <div className="max-w-[100%] mb-[4rem] xl:px-[5rem] px-[2.5rem] py-[3.5rem] xl:py-[5rem] bg-[#EFF5FA]">
       <h3 className="sectionHeading text-center xl:text-left tracking-[5px] text-[black] midlandfontmedium">
-        OUR JOURNEY
+        {pageData.heading}
       </h3>
+
       <div className="flex justify-between items-center flex-wrap">
         {/* we have two design, i,e. we have 1 project and  other when we have multiple project*/}
-        {projects[selectedProjectIndex].project.length === 1 ? (
+        {/* {item.records.length === 1 ? ( */}
+        {data && data[selectedProjectIndex].records.length === 1 ? (
           <div
             className="xl:basis-[50%] basis-[100%]  text-center  xl:px-[2.5rem] "
             ref={elementRef}
           >
             <h4 className="midlandfontbold mt-[3rem] xl:!text-[18px] text-[16px]  xl:mb-[2rem] mb-[1.5rem] sectionHeading tracking-[8px] text-primary">
-              {projects[selectedProjectIndex].year}
+              {data[selectedProjectIndex].records[0].year}
             </h4>
             <p className="midlandfontmedium text-primary tracking-[4px] !text-[11px] mb-[1.3rem]">
-              {projects[selectedProjectIndex].project[0].category}
+              {data[selectedProjectIndex].records[0].title}
             </p>
             <p className="common_pera mt-[1.3rem] text-[13px] font-italic poppins-regular leading-[22px] tracking-[1px]">
-              {projects[selectedProjectIndex].project[0].description}
+              {data[selectedProjectIndex].records[0].location}
             </p>
           </div>
         ) : (
@@ -339,7 +360,7 @@ const OurJourney = () => {
           ref={imgClusterRef}
           className="xl:basis-[50%] basis-[100%] xl:inline-block xl:border-l-[1px] xl:border-l-solid xl:border-l-[#B1B1B1] border-opacity-[0.5] h-[400px] relative flex flex-wrap justify-center"
         >
-          {projects[selectedProjectIndex].images.map((img, index) => {
+          {data && data[selectedProjectIndex].images.map((imageData, index) => {
             // Dynamic positioning based on the index
             const positionClasses = [
               "absolute top-[8%] xl:top-0 left-[25%] z-[1]", // Index 0
@@ -351,8 +372,8 @@ const OurJourney = () => {
             return (
               <img
                 key={index}
-                src={`assets/frontend/images/aboutus/ourJourney/${projects[selectedProjectIndex].year}/${img}`}
-                alt={`${projects[selectedProjectIndex].year}${index}.img`}
+                src={imageData.image}
+                alt={imageData.alt}
                 className={`xl:w-[200px] xl:h-[150px] w-[150px] h-[100px] ${positionClasses[index]}`}
               />
             );
@@ -389,10 +410,10 @@ const OurJourney = () => {
           className="relative"
         >
           <div className="absolute opacity-[0.5] left-[10%] xl:top-[50%] top-[39%] h-[1px] w-[85%] bg-[#B1B1B1]" />
-          {projects.map((project, index) => {
+          {data && data.map((project, index) => {
             // Dynamically determine the year and image path based on the special projects
             const projectYear = project.year;
-            const timelineImg = project.timelineImg;
+            const timelineImg = project.image;
             return (
               <SwiperSlide key={project.year}>
                 <div
@@ -406,7 +427,7 @@ const OurJourney = () => {
                     }`}
                   >
                     <img
-                      src={`assets/frontend/images/aboutus/ourJourney/${projectYear}/${timelineImg}`}
+                      src={timelineImg}
                       alt="timeline"
                       className="xl:w-[7.5rem] object-cover xl:h-[7.5rem] w-[3.5rem] h-[3.5rem] rounded-full"
                     />

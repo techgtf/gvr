@@ -61,6 +61,19 @@ class Projects extends Model
         return  asset('default/default_project.jpg');
     }
 
+    public function getThumbnailAttribute()
+    {
+        if(!empty($this->attributes['thumbnail'])){
+            if(File::exists(public_path('storage/'.$this->attributes['thumbnail']))){
+                return asset('storage/'.$this->attributes['thumbnail']);
+            }else{
+                return  asset('default/default_project.jpg');
+            }
+        }
+        return  asset('default/default_project.jpg');
+    }
+
+
     public function getProjectStatusAttribute($value)
     {
        return  (object) $this->attributes['project_status']=getprojectStatus($this->attributes['project_status']);

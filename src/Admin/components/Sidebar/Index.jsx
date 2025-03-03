@@ -1,60 +1,75 @@
 import React, { useRef, useEffect, useState } from "react";
 import { NavLink, Link, useLocation, useParams } from "react-router-dom";
-import PerfectScrollbar from 'perfect-scrollbar';
+import PerfectScrollbar from "perfect-scrollbar";
 import { useDispatch, useSelector } from "react-redux";
-import * as actionTypes from 'root/store/actions';
-import * as CONFIG from '../../../../config';
-import Request from 'root/config/Request';
-import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import './sidebar.css';
-import  {ADMIN_ASSETS} from '../../../../config' ;
+import * as actionTypes from "root/store/actions";
+import * as CONFIG from "../../../../config";
+import Request from "root/config/Request";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+import "./sidebar.css";
+import { ADMIN_ASSETS } from "../../../../config";
+import { RxDashboard } from "react-icons/rx";
+import { TbBoxMultiple } from "react-icons/tb";
+import { BiCategoryAlt } from "react-icons/bi";
+import { TbCurrentLocation } from "react-icons/tb";
+import { MdOutlineRoomService } from "react-icons/md";
+import { ImPageBreak } from "react-icons/im";
+import { PiResize } from "react-icons/pi";
+import { MdOutlineSettingsInputComponent } from "react-icons/md";
+import { TiMessages } from "react-icons/ti";
 
 const Sidebar = (props) => {
+  const [pages, setPages] = useState(null);
   const containerRef = useRef(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const location = useLocation(); // Get current location
-  const currentPage = useSelector(state => state.sideMenu.currentPage)
+  const currentPage = useSelector((state) => state.sideMenu.currentPage);
   const [categoryList, setCategoryList] = useState([]);
 
-  const currentUrl = location.pathname.split('/admin')[1];
-  const actualUrl = currentUrl.split('/')[1] ? currentUrl.split('/')[1] : '';
+  const currentUrl = location.pathname.split("/admin")[1];
+  const actualUrl = currentUrl.split("/")[1] ? currentUrl.split("/")[1] : "";
 
   useEffect(() => {
-    dispatch(actionTypes.setCurrentPage(actualUrl))
+    dispatch(actionTypes.setCurrentPage(actualUrl));
 
     switch (actualUrl) {
-      case '':
-      case 'states':
-      case 'amenities':
-      case 'developers':
-        dispatch(actionTypes.shortCount())
-        return
+      case "":
+      case "states":
+      case "amenities":
+      case "developers":
+        dispatch(actionTypes.shortCount());
+        return;
 
       default:
-        dispatch(actionTypes.normalCount())
+        dispatch(actionTypes.normalCount());
     }
-
   }, [dispatch, location.pathname]); // Listen for changes in location.pathname
 
-
   const getlist = async () => {
-
-    var response = await Request('admin/category', 'GET');
+    var response = await Request("admin/category", "GET");
     if (response.status && response.statusCode == 200) {
       setCategoryList(response.data.data);
     }
-  }
-
+  };
 
   useEffect(() => {
     const scrollbar = new PerfectScrollbar(containerRef.current);
-    getlist()
+    getlist();
     return () => {
       scrollbar.destroy();
     };
   }, [currentPage]);
 
+  useEffect(() => {
+    const getAllPages = async () => {
+      var response = await Request("admin/distinct-all-pages", "GET");
+      if (response.status && response.statusCode == 200) {
+        setPages(response.data);
+      }
+    };
 
+    getAllPages();
+  }, []);
 
   // useEffect(()=>{
   //   switch(currentMenuCount){
@@ -112,253 +127,396 @@ const Sidebar = (props) => {
 
       <div className={`sidebar`}>
         <div className="main-menu" ref={containerRef}>
-          <NavLink to={`${CONFIG.ADMIN_ROOT}`} className="sidebar_link">
+          <NavLink end to={`${CONFIG.ADMIN_ROOT}`} className="sidebar_link">
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/dashboard.png'} alt="dashboard icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/dashboard_color.png'} alt="dashboard icon" className="img-fluid color" />
+              <RxDashboard size={26} />
             </span>
             <span>Dashboard</span>
           </NavLink>
 
-          <Link className="sidebar_link hasSubMenu" onClick={() => props.toggleSubMenusHandler('projects')}>
+          <Link
+            className="sidebar_link hasSubMenu "
+            onClick={(e) => props.toggleSubMenusHandler(e, "projects")}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/projects.png'} alt="projects icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/projects_color.png'} alt="projects icon" className="img-fluid color" />
+              <TbBoxMultiple size={26} />
             </span>
             <span>Projects</span>
           </Link>
 
-          <NavLink className="sidebar_link hasSubMenu" to={`${CONFIG.ADMIN_ROOT}platter-page`}>
+          <NavLink
+            exact
+            className="sidebar_link hasSubMenu"
+            to={`${CONFIG.ADMIN_ROOT}specifications`}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/platter.png'} alt="platter icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/platter_color.png'} alt="platter icon" className="img-fluid color" />
+              <BiCategoryAlt size={26} />
             </span>
-            <span>Platter Page</span>
+            <span>Specifications</span>
           </NavLink>
 
-
-          <NavLink className="sidebar_link hasSubMenu" to={`${CONFIG.ADMIN_ROOT}states`}>
+          {/* <NavLink
+            exact
+            className="sidebar_link hasSubMenu"
+            to={`${CONFIG.ADMIN_ROOT}states`}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/locations.png'} alt="location icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/locations_color.png'} alt="location icon" className="img-fluid color" />
+              <TbCurrentLocation size={26} />
             </span>
             <span>Locations</span>
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink className="sidebar_link" to={`${CONFIG.ADMIN_ROOT}amenities`}>
+          <NavLink
+            exact
+            className="sidebar_link"
+            to={`${CONFIG.ADMIN_ROOT}amenities`}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/amenities.png'} alt="amenities icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/amenities_color.png'} alt="amenities icon" className="img-fluid color" />
+              <MdOutlineRoomService size={26} />
             </span>
             <span>Amenities</span>
           </NavLink>
 
-          <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'pages')}>
+          <Link
+            className="sidebar_link"
+            onClick={(e) => props.toggleSubMenusHandler(e, "pages")}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/pages.png'} alt="pages icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/pages_color.png'} alt="pages icon" className="img-fluid color" />
+              <ImPageBreak size={26} />
             </span>
             <span>Pages</span>
-          </NavLink>
-
-          <NavLink className="sidebar_link" to={`${CONFIG.ADMIN_ROOT}developers`}>
-            <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/developers.png'} alt="developers icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/developers_color.png'} alt="developers icon" className="img-fluid color" />
-            </span>
-            <span>Developers</span>
-          </NavLink>
+          </Link>
 
           {/* to={`${CONFIG.ADMIN_ROOT}typologies`} */}
-          <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'typologies')}>
+          <Link
+            className="sidebar_link"
+            onClick={(e) => props.toggleSubMenusHandler(e, "typologies")}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/typologies.png'} alt="typologies icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/typologies_color.png'} alt="typologies icon" className="img-fluid color" />
+              <PiResize size={26} />
             </span>
             <span>Typologies</span>
-          </NavLink>
+          </Link>
 
-          <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'cms')}>
+          <Link
+            className="sidebar_link"
+            onClick={(e) => props.toggleSubMenusHandler(e, "cms")}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/cms.png'} alt="cms icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/cms_color.png'} alt="cms icon" className="img-fluid color" />
+              <MdOutlineSettingsInputComponent size={26} />
             </span>
             <span>CMS</span>
-          </NavLink>
+          </Link>
 
-          <NavLink className="sidebar_link" onClick={(e) => props.toggleSubMenusHandler(e, 'enquiry')}>
+          <Link
+            className="sidebar_link"
+            onClick={(e) => props.toggleSubMenusHandler(e, "enquiry")}
+          >
             <span className="icon">
-              <img src={ADMIN_ASSETS + 'images/icons/message.png'} alt="message icon" className="img-fluid default" />
-              <img src={ADMIN_ASSETS + 'images/icons/message_color.png'} alt="message icon" className="img-fluid color" />
+              <TiMessages size={26} />
             </span>
             <span>Enquiry</span>
-          </NavLink>
+          </Link>
         </div>
 
         {props.isSubMenuOpen && (
           <div className="sub-menu">
-            {currentPage === 'projects' && (
-              categoryList ? (
-                categoryList.map((item, index) => {
-                  return <NavLink key={item + index} className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT + 'projects/' + item.slug}`}>
-                    <span className="icon">
-                      <img src={ADMIN_ASSETS + 'images/icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
-                      <img src={ADMIN_ASSETS + 'images/icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
-                    </span>
-                    <span>{item.name}</span>
-                  </NavLink>
-                })
-              ) : (
-                null
-              )
-            )}
-            {currentPage == 'pages' && (
+            {currentPage === "projects" &&
+              (categoryList
+                ? categoryList.map((item, index) => {
+                    return (
+                      <NavLink
+                        exact
+                        key={item + index}
+                        className="sub_menu_link"
+                        to={`${CONFIG.ADMIN_ROOT + "projects/" + item.slug}`}
+                      >
+                        <span className="icon">
+                          <img
+                            src={ADMIN_ASSETS + "images/icons/commercial.png"}
+                            alt="commercial icon"
+                            className="img-fluid default"
+                          />
+                          <img
+                            src={
+                              ADMIN_ASSETS + "images/icons/commercial_color.png"
+                            }
+                            alt="commercial icon"
+                            className="img-fluid color"
+                          />
+                        </span>
+                        <span>{item.name}</span>
+                      </NavLink>
+                    );
+                  })
+                : null)}
+
+            {currentPage == "pages" && Object.keys(pages).length > 0 && (
               <>
-                <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'page-meta'}>
-                  <span className="icon">
-                    <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
-                    <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Platter Page
                   </span>
-                  <span>Meta Details</span>
-                </NavLink>
+                </div>
+                {pages.platter.map((page) => (
+                  <React.Fragment key={page.id}>
+                    <NavLink
+                      exact
+                      className="sub_menu_link"
+                      to={CONFIG.ADMIN_ROOT + "page/" + page.id}
+                    >
+                      <span className="icon">
+                        <ImPageBreak size={16} />
+                      </span>
+                      <span>{page.name}</span>
+                    </NavLink>
+                  </React.Fragment>
+                ))}
 
-                <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'about'}>
-                  <span className="icon">
-                    <img src={ADMIN_ASSETS + 'icons/commercial.png'} alt="commercial icon" className="img-fluid default" />
-                    <img src={ADMIN_ASSETS + 'icons/commercial_color.png'} alt="commercial icon" className="img-fluid color" />
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Other Pages
                   </span>
-                  <span>About Company</span>
-                </NavLink>
+                </div>
 
-                <NavLink className="sub_menu_link" to={CONFIG.ADMIN_ROOT + 'careers'}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Career</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link">
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>NRI Services</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link">
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>FAQs</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}blogs`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Blogs</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}contact-us`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Contact Us</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}contact-us`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>User Agreement</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}contact-us`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Privacy Policy</span>
-                </NavLink>
-
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}contact-us`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>How To Buy</span>
-                </NavLink>
+                {pages.data.map((page) => (
+                  <React.Fragment key={page.id}>
+                    <NavLink
+                      exact
+                      className="sub_menu_link"
+                      to={CONFIG.ADMIN_ROOT + "page/" + page.id}
+                    >
+                      <span className="icon">
+                        <ImPageBreak size={16} />
+                      </span>
+                      <span>{page.name}</span>
+                    </NavLink>
+                  </React.Fragment>
+                ))}
               </>
             )}
 
-            {currentPage == 'typologies' && (
+            {currentPage == "typologies" && (
               <>
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}typologies`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}typologies`}
+                >
+                  <PiResize size={20} className="mr-2" />
                   <span>Typologies</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}sub-typologies`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}sub-typologies`}
+                >
+                  <PiResize size={20} className="mr-2" />
                   <span>Sub Typologies</span>
+                </NavLink>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}typologies/gallery`}
+                >
+                  <PiResize size={20} className="mr-2" />
+                  <span>Typology Gallery</span>
                 </NavLink>
               </>
             )}
 
-            {currentPage == 'cms' && (
+            {currentPage == "cms" && (
               <>
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}home-banner`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Home Page
+                  </span>
+                </div>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}home-banner`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Home Banner</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}category`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Category</span>
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}testimonials`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Testimonials</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}top-cities`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}faqs`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Faqs</span>
+                </NavLink>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}top-cities`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Top Cities</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}offers`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}offers`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Offers</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}process`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}process`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Process</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}blogs/categories`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Blogs Categories</span>
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    About Us
+                  </span>
+                </div>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}team`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Team</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}blogs`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}timeline`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Timeline</span>
+                </NavLink>
+
+                <NavLink
+                  exact
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}other-verticals`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Other Verticals</span>
+                </NavLink>
+
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    ESG
+                  </span>
+                </div>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}esg/social`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Social</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}esg/environment`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Environment</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}esg/governance`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Governance</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}esg/gallery`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Gallery</span>
+                </NavLink>
+
+                <div className="divider w-full block  text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2 uppercase text-[10px]">
+                    Common
+                  </span>
+                </div>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}category`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Category</span>
+                </NavLink>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}blogs`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Blogs</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}testimonials`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Testimonials</span>
-                </NavLink>
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}our-infrastuchture`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Our Infrastuchture</span>
-                </NavLink>
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}ethos`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
-                  <span>Ethos</span>
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}media-centre`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Media Centre</span>
                 </NavLink>
               </>
             )}
 
-            {currentPage == 'enquiry' && (
+            {currentPage == "enquiry" && (
               <>
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}job-application`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}job-application`}
+                >
+                  <TiMessages size={18} className="mr-2" />
                   <span>Job Application</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}contact-query`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}contact-query`}
+                >
+                  <TiMessages size={18} className="mr-2" />
                   <span>Contact Query</span>
                 </NavLink>
 
-                <NavLink className="sub_menu_link" to={`${CONFIG.ADMIN_ROOT}projects-query`}>
-                  <img src={ADMIN_ASSETS + 'icons/dashboard.svg'} alt="dashboard icon" className="img-fluid icon" />
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}projects-query`}
+                >
+                  <TiMessages size={18} className="mr-2" />
                   <span>Projects Query</span>
                 </NavLink>
               </>
             )}
           </div>
         )}
-
       </div>
 
       {/* <button
@@ -367,9 +525,8 @@ const Sidebar = (props) => {
         style={{marginLeft:'auto', display:'table'}}>
           test
       </button> */}
-
     </>
-  )
-}
+  );
+};
 
 export default Sidebar;
