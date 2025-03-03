@@ -456,6 +456,20 @@ const Sidebar = (props) => {
                   <span>Gallery</span>
                 </NavLink>
 
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Gallery
+                  </span>
+                </div>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}gallery/work-culture`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Work Culture</span>
+                </NavLink>
+
                 <div className="divider w-full block  text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
                   <span className="text-center mx-auto table bg-white relative px-2 uppercase text-[10px]">
                     Common

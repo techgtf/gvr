@@ -10,25 +10,23 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 
 import Request from "../../../config/Request";
 
+import "../../assets/css/admin.css";
+
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const newsTypes = [
+const galleryTypes = [
   {
-    value:'logo',
-    label:'Logo',
+    value: "image",
+    label: "Image",
   },
   {
-    value:'docs',
-    label:'PDF',
+    value: "video",
+    label: "Video",
   },
-  {
-    value:'news',
-    label:'News',
-  }
-]
+];
 
-const MediaCentre = () => {
+const WorkCulture = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -61,8 +59,6 @@ const MediaCentre = () => {
   const priceRef = useRef(null);
   const typeRef = useRef(null);
   const cdnRef = useRef(null);
-  
-  
 
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
@@ -112,15 +108,12 @@ const MediaCentre = () => {
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
 
-    formData.append("file", fileRef.current.files[0]);
-    formData.append("heading", titleRef.current.value);
-    formData.append("alt_tag", altRef.current.value);
     formData.append("type", typeRef.current.value);
+    formData.append("image", fileRef.current.files[0]);
+    formData.append("alt_tag", altRef.current.value);
     formData.append("cdn", cdnRef.current.value);
-    
-    // formData.append("short_description", descriptionRef.current.value);
 
-    var response = await Request("admin/news", "POST", formData);
+    var response = await Request("admin/work-culture", "POST", formData);
 
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
@@ -139,15 +132,16 @@ const MediaCentre = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/gallery/" + id, "GET");
+    var response = await Request("admin/work-culture/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
       if (response.data.image) {
         setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
       }
-      // titleRef.current.value = response.data.name;
-      altRef.current.value = response.data.alt;
+      altRef.current.value = response.data.alt_tag;
+      cdnRef.current.value = response.data.cdn;
+      typeRef.current.value = response.data.type;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -159,7 +153,7 @@ const MediaCentre = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/news/" + id, "DELETE");
+    var response = await Request("admin/work-culture/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -173,7 +167,7 @@ const MediaCentre = () => {
     // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/news?search=" + search + "&page=" + currentPage,
+      "admin/work-culture?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
@@ -191,10 +185,12 @@ const MediaCentre = () => {
     if (fileRef.current.files[0]) {
       formData.append("image", fileRef.current.files[0]);
     }
-    formData.append("alt", altRef.current.value);
+    formData.append("alt_tag", altRef.current.value);
+    formData.append("cdn", cdnRef.current.value);
+    formData.append("type", typeRef.current.value);
 
     var response = await Request(
-      "admin/gallery/" + editId + "/update",
+      "admin/work-culture/" + editId + "/update",
       "POST",
       formData
     );
@@ -220,18 +216,18 @@ const MediaCentre = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Media Centre</h4>
+        <h4 className="page_title">Gallery Page</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Data
+          Add Work Culture
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">All Media Centre Data</h5>
+          <h5 className="mb-0">Work Cultures</h5>
 
           <div className="searchInput ml-auto">
             <input
@@ -247,9 +243,8 @@ const MediaCentre = () => {
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2 text-left">Image</th>
+              <th className="border border-gray-300 p-2 text-left">Alt</th>
               <th className="border border-gray-300 p-2 text-left">Type</th>
-              <th className="border border-gray-300 p-2 text-left">Title</th>
-              <th className="border border-gray-300 p-2 text-left">CDN</th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -257,7 +252,7 @@ const MediaCentre = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={5}>
+                <td colSpan={4}>
                   <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -265,19 +260,18 @@ const MediaCentre = () => {
               </tr>
             ) : (
               <>
-                {data && data.length > 0 ? (
+                {data && Array.isArray(data) && data.length > 0 ? (
                   data.map((item) => (
                     <tr className="border-b">
                       <td className="py-2 px-4">
                         <img
-                          src={CONFIG.VITE_APP_STORAGE + item.file}
+                          src={CONFIG.VITE_APP_STORAGE + item.image}
                           className="w-[80px] h-[80px] object-contain border"
-                          alt={item.alt_tag}
+                          alt={item.name}
                         />
                       </td>
+                      <td className="py-2 px-4">{item.alt_tag}</td>
                       <td className="py-2 px-4">{item.type}</td>
-                      <td className="py-2 px-4">{item.heading}</td>
-                      <td className="py-2 px-4">{item.cdn ? item.cdn : "Not Found"}</td>
                       <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
@@ -299,7 +293,7 @@ const MediaCentre = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5">
+                    <td colSpan="4">
                       <h5 className="no_record text-center py-4">
                         No Data Found!
                       </h5>
@@ -333,22 +327,26 @@ const MediaCentre = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     Select Type*
                   </label>
-                  <select ref={typeRef} className="border rounded px-3 py-2 w-full">
-                    <option value="" selected disabled>--Select--</option>
-                    {newsTypes && newsTypes.map((type, index)=>(
-                      <option value={type.value}>{type.label}</option>
-                    ))}
+                  <select
+                    ref={typeRef}
+                    className="border rounded px-3 py-2 w-full"
+                  >
+                    <option value="" selected disabled>
+                      --Select--
+                    </option>
+                    {galleryTypes &&
+                      galleryTypes.map((type, index) => (
+                        <option value={type.value}>{type.label}</option>
+                      ))}
                   </select>
-                  {errors.short_description && (
-                    <span className="text-red-500">
-                      The Description field is required
-                    </span>
+                  {errors.type && (
+                    <span className="text-red-500">{errors.type}</span>
                   )}
                 </div>
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Select File*
+                    Select Thumbnail*
                   </label>
                   <input
                     ref={fileRef}
@@ -369,7 +367,7 @@ const MediaCentre = () => {
 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Alt Text*
+                    Alt Text
                   </label>
                   <input
                     ref={altRef}
@@ -377,29 +375,6 @@ const MediaCentre = () => {
                     type="text"
                     placeholder="Enter Alt Text"
                   />
-                  {errors.short_description && (
-                    <span className="text-red-500">
-                      The Description field is required
-                    </span>
-                  )}
-                </div>
-                
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                    Title*
-                  </label>
-                  <input
-                    ref={titleRef}
-                    className="border rounded px-3 py-2 w-full"
-                    type="text"
-                    placeholder="Enter Title"
-                  />
-                  {errors.name && (
-                    <span className="text-red-500">
-                      {errors.name && "The Title field is required"}
-                    </span>
-                  )}
                 </div>
 
                 <div className="mb-4">
@@ -412,13 +387,7 @@ const MediaCentre = () => {
                     type="text"
                     placeholder="Enter CDN"
                   />
-                  {errors.cdn && (
-                    <span className="text-red-500">
-                      {errors.cdn && "The Title field is required"}
-                    </span>
-                  )}
                 </div>
-
               </form>
             </SideModal>
           </SidebarPortal>
@@ -429,4 +398,4 @@ const MediaCentre = () => {
   );
 };
 
-export default MediaCentre;
+export default WorkCulture;

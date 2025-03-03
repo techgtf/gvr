@@ -66,7 +66,7 @@ const EditProject = () => {
       formData.append("thumbnail", sectionFormdata.thumbnail);
     }
     if(sectionFormdata.feature_image instanceof File){
-      formData.append("feature_image", sectionFormdata.feature_image);
+      formData.append("image", sectionFormdata.feature_image);
     }
     formData.append(
       "rera_no",
@@ -432,6 +432,7 @@ const EditProject = () => {
                   type="file"
                   className="w-full p-2 border rounded"
                   name="feature_image"
+                  onChange={handleChange}
                 />
                 {sectionFormdata.feature_image && <img src={sectionFormdata.feature_image} className="w-[100px]" />}
                 {errors.image && <div className="errMsg">{errors.image}</div>}
