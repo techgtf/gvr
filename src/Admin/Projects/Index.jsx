@@ -12,6 +12,9 @@ import Pagination from "common/Pagination/Pagination";
 import "../assets/css/admin.css";
 import * as CONFIG from "../../../config";
 import { toast } from "react-toastify";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 
 const statusOptions = [
   { label: "Active", value: "active" },
@@ -127,6 +130,18 @@ const Projects = () => {
     getlist(searchTerm);
   };
 
+  const deleteHandler = async (id) => {
+    debugger
+      var response = await Request("admin/project/" + id, "DELETE");
+      if (response.status && response.statusCode === 200) {
+        getlist();
+        toast.success(response.message);
+  
+      } else {
+        toast.error(response.message);
+      }
+    };
+
   const handleStatusSelect = () => {};
 
   return (
@@ -215,16 +230,21 @@ const Projects = () => {
                     />
                   </td> */}
                   <td className="py-2 px-4">
-                    <NavLink
-                      to={`${CONFIG.ADMIN_ROOT}project/${item.id}/edit`}
-                      className="action_btn"
-                    >
-                      <img
-                        src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
-                        alt="edit icon"
-                        className="w-5 h-5"
-                      />
-                    </NavLink>
+                    <div className="flex gap-2">
+                      <NavLink
+                        to={`${CONFIG.ADMIN_ROOT}project/${item.id}/edit`}
+                        className="action_btn"
+                      >
+                        <AiOutlineEdit size={22} />
+                      </NavLink>
+
+                      <button
+                        className="btn action_btn"
+                        onClick={() => deleteHandler(item.id)}
+                      >
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))
