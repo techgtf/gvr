@@ -17,6 +17,7 @@ import { ImPageBreak } from "react-icons/im";
 import { PiResize } from "react-icons/pi";
 import { MdOutlineSettingsInputComponent } from "react-icons/md";
 import { TiMessages } from "react-icons/ti";
+import { MdOutlineCategory } from "react-icons/md";
 
 const Sidebar = (props) => {
   const [pages, setPages] = useState(null);
@@ -143,6 +144,17 @@ const Sidebar = (props) => {
             </span>
             <span>Projects</span>
           </Link>
+
+          <NavLink
+            exact
+            className="sidebar_link hasSubMenu"
+            to={`${CONFIG.ADMIN_ROOT}category`}
+          >
+            <span className="icon">
+              <MdOutlineCategory size={26} />
+            </span>
+            <span>Category</span>
+          </NavLink>
 
           <NavLink
             exact
@@ -476,13 +488,13 @@ const Sidebar = (props) => {
                   </span>
                 </div>
 
-                <NavLink
+                {/* <NavLink
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}category`}
                 >
                   <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Category</span>
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink
                   className="sub_menu_link"

@@ -48,7 +48,7 @@ const EnquiryForm = () => {
   }, []);
 
   const fetchAnotherAPI = async(name, number, email, message)=>{
-    const response = await fetch('https://greatvalue.realeasy.in/IVR_Inbound.aspx?UID=fourqt&PWD=wn9mxO76f34=&f=m&con='+number+'&email='+email+'&name='+name+'&url=&Remark='+message+'&Proj=&src=website&amob=&city=&location=&ch=MS');
+    const response = await fetch('https://greatvalue.realeasy.in/IVR_Inbound.aspx?UID=fourqt&PWD=wn9mxO76f34=&f=m&con='+number+'&email='+email+'&name='+name+'&Remark='+message+'&src=website&ch=MS');
 
     return response
   }
@@ -62,14 +62,15 @@ const EnquiryForm = () => {
   }
 
   const formSubmitHandler = async(e)=>{
-    e.preventDefault();
     debugger
+    e.preventDefault();
 
     const formData = new FormData();
     formData.append('name', formValues.name);
     formData.append('email', formValues.email);
     formData.append('phone', formValues.phone);
     formData.append('message', formValues.message);
+    formData.append('country_code', selectedCountry);
 
     try{
       const response = await fetch(DATA_ASSET_URL+'contact', {
@@ -89,7 +90,14 @@ const EnquiryForm = () => {
       }
 
       if(responseData.status && responseData.statusCode === 200){
+        debugger
         const apiData = await fetchAnotherAPI(formValues.name, formValues.phone, formValues.email, formValues.message);
+        // const apiRespose = await apiData.json();
+        if(apiData.status !== 200 && !apiData.ok){
+          throw new Error('API Error');
+        }
+
+
         alert('Message sent successfully');
         setFormValues({
           name:'',
@@ -183,7 +191,7 @@ const EnquiryForm = () => {
                           onClick={(e) => {
                             console.log(index);
                             e.preventDefault();
-                            setSelectedCountry(country);
+                            setSelectedCountry(country?.countryCallingCode);
                             setIsOpen(false); // Close dropdown after selection
                           }}
                         >
