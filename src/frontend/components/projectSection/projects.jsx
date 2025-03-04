@@ -21,7 +21,7 @@ export default function Projects() {
         {
             type: 'residential',
             imgSrc: 'residential.webp',
-            Link: `${CONFIG.BASE_ROOT}residential`,
+            Link: `${CONFIG.BASE_ROOT}residential-properties-ncr`,
             alt: "Great Value Residential Projects"
         },
         {

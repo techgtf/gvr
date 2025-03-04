@@ -55,7 +55,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}sharanam`,
+        path: `${BASE_ROOT}sharanam-apartments-noida`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -104,7 +104,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}anandam`,
+        path: `${BASE_ROOT}anandam-apartments-noida`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -116,7 +116,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}sanctuary`,
+        path: `${BASE_ROOT}sanctuary-sector-105-gurugram`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -128,7 +128,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}vilasa`,
+        path: `${BASE_ROOT}vilasa-sector-6-sohna`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -152,7 +152,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}casa-uday`,
+        path: `${BASE_ROOT}casa-uday-properties-in-ncr`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -188,7 +188,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}Residential`,
+        path: `${BASE_ROOT}residential-properties-ncr`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}

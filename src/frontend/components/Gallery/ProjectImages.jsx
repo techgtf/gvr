@@ -70,7 +70,7 @@ function ProjectImages({ images }) {
           open={open}
           close={closeLightbox}
           index={currentIndex}
-          slides={images.map((src) => ({ src }))}
+          slides={images.map((img) => ({ src: img.image }))}
           plugins={[Fullscreen, Zoom]}
         />
       )}

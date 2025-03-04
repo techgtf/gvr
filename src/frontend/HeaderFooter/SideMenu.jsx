@@ -77,7 +77,7 @@ function SideMenu({ setOpenSidebar }) {
       <div className="flex flex-col relative items-center gap-1 justify-evenly h-full">
         <ul className="w-full flex flex-col items-center gap-4">
           {[
-            { label: "Residential", path: `${BASE_ROOT}residential` },
+            { label: "Residential", path: `${BASE_ROOT}residential-properties-ncr` },
             { label: "Commercial", path: `${BASE_ROOT}commercial-projects` },
             { label: "About Us", path: `${BASE_ROOT}about-us` },
             { label: "Media Centre", path: `${BASE_ROOT}media` },

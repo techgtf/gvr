@@ -4,6 +4,7 @@ import CommonHeading from "../components/commonHeading";
 import CommonPera from "../components/commonPera";
 import SlideIn from "../components/Animations/SlideIn";
 import { Helmet } from "react-helmet";
+import CoreValues from "../components/career/CoreValues";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -94,6 +95,7 @@ const Career = () => {
       </div>
       <JobFormSection />
       <WorkCultureSection />
+      <CoreValues/>
     </>
   );
 };

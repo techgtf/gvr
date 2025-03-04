@@ -71,7 +71,7 @@ export default function Header() {
   };
 
   const navItems = [
-    { name: "Residential", link: "residential", hasMenus: true },
+    { name: "Residential", link: "residential-properties-ncr", hasMenus: true },
     { name: "Commercial", link: "commercial-projects", hasMenus: false },
     { name: "ESG", link: "esg", hasMenus: false },
   ];
@@ -82,10 +82,10 @@ export default function Header() {
 
   const logoOnePages = [
     `${BASE_ROOT}`,
-    `${BASE_ROOT}sharanam`,
-    `${BASE_ROOT}anandam`,
-    `${BASE_ROOT}vilasa`,
-    `${BASE_ROOT}casa-uday`,
+    `${BASE_ROOT}sharanam-apartments-noida`,
+    `${BASE_ROOT}anandam-apartments-noida`,
+    `${BASE_ROOT}vilasa-sector-6-sohna`,
+    `${BASE_ROOT}casa-uday-properties-in-ncr`,
   ];
 
   const getLogoSrc = () => {

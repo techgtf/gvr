@@ -12,11 +12,11 @@ export default function FooterLinks({ toggelLinks }) {
           <ul className="links_ul uppercase text-white w-[18%]">
             <li>
               <div className="heading-div  midlandfontmedium text-[8px] tracking-[4px] mb-5">Residential</div>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}casa-uday`}>CASA UDAY</Link>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sharanam`}>Sharanam</Link>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}anandam`}>Anandam</Link>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sanctuary`}>Sanctuary 105</Link>
-              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}residential`}>Residential</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}casa-uday-properties-in-ncr`}>CASA UDAY</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sharanam-apartments-noida`}>Sharanam</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}anandam-apartments-noida`}>Anandam</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}sanctuary-sector-105-gurugram`}>Sanctuary 105</Link>
+              <Link className="block tracking-[2px] mb-4" to={`${BASE_ROOT}residential-properties-ncr`}>Residential</Link>
             </li>
           </ul>
 
