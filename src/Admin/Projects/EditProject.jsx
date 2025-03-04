@@ -169,13 +169,14 @@ const EditProject = () => {
     getTypologyByCategoryList(event.target.value);
   };
   const getSubTypologyByTypologyList = async (typology) => {
+    // debugger
     var response = await getAllSubTypologyByTypology(typology);
     if (
       response.status &&
       response.statusCode === 200 &&
-      response.data.length > 0
+      response.data.data.length > 0
     ) {
-      setSubtypologyList(response.data);
+      setSubtypologyList(response.data.data);
     } else {
       setSubtypologyList([]);
       setCheckedSubTypology("");
