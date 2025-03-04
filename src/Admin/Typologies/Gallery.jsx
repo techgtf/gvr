@@ -13,7 +13,7 @@ import Request from "root/config/Request";
 import { toast } from "react-toastify";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import Pagination from "common/Pagination/Pagination";
-import * as CONFIG from '../../../config'
+import * as CONFIG from "../../../config";
 
 const statusOptions = [
   { label: "Active", value: "active" },
@@ -69,7 +69,7 @@ const SingleTypologyGallery = () => {
 
   const list = async (search = "") => {
     const response = await Request(
-      `admin/typology-galleries?page=${currentPage}&search=${search}`,
+      `admin/getSubGalleryDistinct/${typology_id}?page=${currentPage}&search=${search}`,
       "GET"
     );
     if (response.status && response.statusCode == 200) {
@@ -82,7 +82,7 @@ const SingleTypologyGallery = () => {
 
   const typologysubtypologies = async (search = "") => {
     const response = await Request(
-      `admin/typology-sub-typology?typologies_id=${typology_id}&page=${currentPage2}&search=${search}`,
+      `admin/typology-sub-gallery?typologies_id=${typology_id}&page=${currentPage2}&search=${search}`,
       "GET"
     );
     if (response.status && response.statusCode == 200) {
@@ -136,7 +136,7 @@ const SingleTypologyGallery = () => {
     setIsTargeting(id);
 
     var response = await JsonRequest(
-      "admin/typology-sub-typology/" + id,
+      "admin/typology-sub-gallery/" + id,
       "DELETE"
     );
     if (response.status && response.statusCode == 200) {
@@ -149,8 +149,8 @@ const SingleTypologyGallery = () => {
     }
   };
 
-  
-  const addInTypology = async (gallery_id) => {
+  const addInGallery = async (gallery_id) => {
+    debugger
     setIsTargeting(gallery_id);
     const object = {
       typologies_id: typology_id,
@@ -226,15 +226,15 @@ const SingleTypologyGallery = () => {
                         <tr key={index} className="border border-gray-300">
                           <td className="p-3">
                             <img
-                                                      src={CONFIG.VITE_APP_STORAGE + item.file}
-                                                      alt={item.typology}
-                                                      className="w-[50px] h-[50px] object-contain"
-                                                    />
+                              src={CONFIG.VITE_APP_STORAGE + item.file}
+                              alt={item.typology}
+                              className="w-[50px] h-[50px] object-contain"
+                            />
                           </td>
                           <td className="p-3">
                             <button
                               className="bg-blue-500 text-white px-4 py-2 rounded"
-                              onClick={() => addInTypology(item.id)}
+                              onClick={() => addInGallery(item.id)}
                             >
                               {isTargeting === item.id
                                 ? "loading"
@@ -301,7 +301,9 @@ const SingleTypologyGallery = () => {
                 ) : typologySubTypologiesList?.length > 0 ? (
                   typologySubTypologiesList.map((item, index) => (
                     <tr key={index} className="border border-gray-300">
-                      <td className="p-3">{item.sub_typology}</td>
+                      <td className="p-3">
+                        <img src={CONFIG.VITE_APP_STORAGE+item.file} alt="" className="w-[100px]" />
+                      </td>
                       <td className="p-3">
                         <button
                           className="bg-red-500 text-white px-4 py-2 rounded"
