@@ -128,7 +128,7 @@ function Microsite() {
         <meta name="keywords" content="Great Value realty, Great Value Sharanam, Great Value Sharanam Noida, Sector 107 Noida, Sharanam Sector 107 Noida, Great Value Sharanam Sector 107 Noida" />
         <meta name="description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
         <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-        <link rel="canonical" href="https://greatvaluerealty.com/sharanam" />
+        <link rel="canonical" href="https://greatvaluerealty.com/sharanam-apartments-noida" />
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
@@ -144,7 +144,7 @@ function Microsite() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Sharanam by Great Value | Premium 2 & 3 BHK Homes" />
         <meta property="og:description" content="Sharanam by Great Value offers modern homes in Noida Sector 107 with excellent connectivity, premium amenities & a peaceful environment." />
-        <meta property="og:url" content="https://greatvaluerealty.com/sharanam" />
+        <meta property="og:url" content="https://greatvaluerealty.com/sharanam-apartments-noida" />
         <meta property="og:site_name" content="Great Value Sharanam Noida" />
         <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
         <meta name="twitter:card" content="summary" />
@@ -161,7 +161,7 @@ function Microsite() {
             "@type": "Organization",
             "name": "Great Value Sharanam Sector 107,Noida",
             "alternateName": "Great Value Sharanam Noida",
-            "url": "https://greatvaluerealty.com/sharanam",
+            "url": "https://greatvaluerealty.com/sharanam-apartments-noida",
             "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.png",
             "contactPoint": [{
               "@type": "ContactPoint",

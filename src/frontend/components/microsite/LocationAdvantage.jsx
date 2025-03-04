@@ -77,7 +77,7 @@ function LocationAdvantage({
             <img src={locationData?.image} alt="Location" className="cursor-pointer w-full" />
           </div>
           <SlideIn duration={0.8} delay={0.2}>
-            <p className="md:w-96">{description}</p>
+            <p className="pr-10">{description}</p>
           </SlideIn>
         </div>
 

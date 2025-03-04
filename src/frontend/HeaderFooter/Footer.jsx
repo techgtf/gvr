@@ -59,7 +59,7 @@ export default function Footer() {
               <ul className="flex flex-wrap lg:justify-between justify-center lg:gap-5 gap-[18px] mt-4 md:mt-0 uppercase tracking-[1px]">
                 <li className="lg:w-[auto] w-[30%]">
                   <Link
-                    to={`${BASE_ROOT}residential`}
+                    to={`${BASE_ROOT}residential-properties-ncr`}
                     className="xl:text-[13px] text-[12px] tracking-[2px] lg:font-[400] font-[300] focus-visible:outline-none focus-visible:ring-0"
                   >
                     Residential

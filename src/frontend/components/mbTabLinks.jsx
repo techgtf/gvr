@@ -40,11 +40,11 @@ export default function MbTabLinks() {
                     </div>
                     <ul className="bg-[#eff5faf5]">
                         {[
-                            { name: "SHARANAM", path: "sharanam", location: "sector 107, noida" },
-                            { name: "ANANDAM", path: "anandam", location: "sector 107, noida" },
-                            { name: "CASA UDAY", path: "casa-uday", location: "uday park, new delhi" },
-                            { name: "Vilasa", path: "vilasa", location: "sector 6, sohna" },
-                            { name: "Sanctuary 105", path: "sanctuary", location: "sector 6, gurugram" }
+                            { name: "SHARANAM", path: "sharanam-apartments-noida", location: "sector 107, noida" },
+                            { name: "ANANDAM", path: "anandam-apartments-noida", location: "sector 107, noida" },
+                            { name: "CASA UDAY", path: "casa-uday-properties-in-ncr", location: "uday park, new delhi" },
+                            { name: "Vilasa", path: "vilasa-sector-6-sohna", location: "sector 6, sohna" },
+                            { name: "Sanctuary 105", path: "sanctuary-sector-105-gurugram", location: "sector 6, gurugram" }
                         ].map(({ name, path, location }) => (
                             <li key={path} className="px-8 pt-6 pb-4 mb-1 border-b last:border-b-0">
                                 <Link

@@ -6,6 +6,7 @@ import SlideIn from "../components/Animations/SlideIn";
 import { Helmet } from "react-helmet";
 import useFetchData from "../apiHooks/useFetchData";
 import Loader from "../../common/Loader/loader";
+import CoreValues from "../components/career/CoreValues";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -119,6 +120,7 @@ const Career = () => {
       </div>
       <JobFormSection />
       <WorkCultureSection data={workCulture}/>
+      <CoreValues/>
     </>
   );
 };

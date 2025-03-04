@@ -154,7 +154,7 @@ function VilasaMicrosite() {
                 <meta name="keywords" content="Great Value realty, Vilasa by Great Value Realty, Best Vilasa properties in Sohna, Vilasa luxury apartments Sohna , Vilasa residential project Sohna, Great Value Realty Vilasa" />
                 <meta name="description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-                <link rel="canonical" href="https://greatvaluerealty.com/vilasa" />
+                <link rel="canonical" href="https://greatvaluerealty.com/vilasa-sector-6-sohna" />
                 <meta name="distribution" content="Global" />
                 <meta name="Language" content="English" />
                 <meta name="doc-type" content="Public" />
@@ -188,7 +188,7 @@ function VilasaMicrosite() {
                         "@type": "Organization",
                         "name": "Great Value Realty Vilasa Sector 6, Sohna",
                         "alternateName": "Great Value Realty Vilasa",
-                        "url": "https://greatvaluerealty.com/vilasa",
+                        "url": "https://greatvaluerealty.com/vilasa-sector-6-sohna",
                         "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                         "contactPoint": [{
                             "@type": "ContactPoint",
@@ -266,7 +266,7 @@ function VilasaMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="Vilasa is nestled on the Gurgaon-Sohna highway, offering a perfect blend of urban convenience and natural tranquility. Just 15 minutes from Rajiv Chowk and 45 minutes from IGI Airport, it ensures easy access to key commercial and recreational hubs."
+                description="Vilasa, nestled on the Gurgaon-Sohna highway in Sector 6, Sohna, offers a perfect blend of urban convenience and natural tranquility. Just 15 minutes from Rajiv Chowk and 45 minutes from IGI Airport, it provides seamless access to key commercial and recreational hubs while embracing the charm of its prime location."
             />
 
             <ProjectGallery

@@ -32,7 +32,7 @@ export default function Residential() {
         <meta name="keywords" content="Great Value Realty residential projects, luxury homes, affordable homes, modern living, real estate properties, premium residences" />
         <meta name="description" content="Discover Realty Residential Projects. Explore luxury and affordable homes designed for comfort, elegance, and modern living. Find your dream home today!" />
         <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-        <link rel="canonical" href="https://greatvaluerealty.com/residential" />
+        <link rel="canonical" href="https://greatvaluerealty.com/residential-properties-ncr" />
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
@@ -48,7 +48,7 @@ export default function Residential() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Great Value Realty Residential Projects | Luxury & Affordable Homes" />
         <meta property="og:description" content="Discover Great Value Realty Residential Projects. Explore luxury and affordable homes designed for comfort, elegance, and modern living. Find your dream home today!" />
-        <meta property="og:url" content="https://greatvaluerealty.com/residential" />
+        <meta property="og:url" content="https://greatvaluerealty.com/residential-properties-ncr" />
         <meta property="og:site_name" content="Great Value Realty" />
         <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />

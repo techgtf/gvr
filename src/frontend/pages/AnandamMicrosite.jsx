@@ -261,7 +261,7 @@ function AnandamMicrosite() {
                         "@type": "Organization",
                         "name": "Great Value Anandam Sector 107, Noida",
                         "alternateName": "Great Value Anandam Noida",
-                        "url": "https://greatvaluerealty.com/anandam",
+                        "url": "https://greatvaluerealty.com/anandam-apartments-noida",
                         "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                         "contactPoint": [{
                             "@type": "ContactPoint",
@@ -338,7 +338,7 @@ function AnandamMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="A well-connected haven in Noida’s prime locale, where every necessity is just around the corner, and every journey feels effortless."
+                description="A well-connected haven in Sector 107, Noida, where prime location meets seamless convenience, ensuring every necessity is within reach and every journey feels effortless."
             />
 
             <ProjectGallery

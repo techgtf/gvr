@@ -141,7 +141,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}Residential`,
+        path: `${BASE_ROOT}residential-properties-ncr`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}

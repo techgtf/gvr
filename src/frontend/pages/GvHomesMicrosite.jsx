@@ -216,7 +216,7 @@ function GvHomesMicrosite() {
                 <meta name="keywords" content="Great Value realty, Great Value Realty Casa Uday, Casa Uday Delhi, Luxury apartments Casa Uday Delhi , Great Value Realty projects Delhi NCR, Casa Uday residential project" />
                 <meta name="description" content="Explore Great Value Realty Casa 31 Uday Park, New Delhi – luxury modern residences offering eco-friendly designs and spacious living spaces." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-                <link rel="canonical" href="https://greatvaluerealty.com/casa-uday" />
+                <link rel="canonical" href="https://greatvaluerealty.com/casa-uday-properties-in-ncr" />
                 <meta name="distribution" content="Global" />
                 <meta name="Language" content="English" />
                 <meta name="doc-type" content="Public" />
@@ -232,7 +232,7 @@ function GvHomesMicrosite() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Great Value Casa Uday | Modern Homes in Uday Park" />
                 <meta property="og:description" content="Explore Casa Uday by Great Value in Uday Park, New Delhi – luxurious residences designed for comfort, convenience & modern living." />
-                <meta property="og:url" content="https://greatvaluerealty.com/casa-uday" />
+                <meta property="og:url" content="https://greatvaluerealty.com/casa-uday-properties-in-ncr" />
                 <meta property="og:site_name" content="Great Value Realty 31 Casa Uday Park" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />
@@ -248,7 +248,7 @@ function GvHomesMicrosite() {
                         "@type": "Organization",
                         "name": "Great Value Realty Casa 31 Uday Park, New Delhi",
                         "alternateName": "Great Value Realty Casa Uday",
-                        "url": "https://greatvaluerealty.com/casa-uday",
+                        "url": "https://greatvaluerealty.com/casa-uday-properties-in-ncr",
                         "logo": "https://greatvaluerealty.com/assets/frontend/images/logo.webp",
                         "contactPoint": [{
                             "@type": "ContactPoint",
@@ -330,7 +330,7 @@ function GvHomesMicrosite() {
                 walkTabIcon={walk}
                 walkTabActiveIcon={walkActive}
                 lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
-                description="A well-connected haven in Delhi's prime locale, where every necessity is just around the corner, and every journey feels effortless."
+                description="A well-connected haven at 31, Uday Park, New Delhi, where the charm of a prime locale meets seamless convenience, ensuring every necessity is within reach and every journey feels effortless."
             />
 
             <ProjectGallery

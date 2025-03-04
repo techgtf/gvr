@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { BASE_ROOT } from '../../../config';
 
 const defaultResults = [
-    // { text: 'sharnam', pageLink: "sharanam" },
-    // { text: 'Anandam', pageLink: "anandam" },
+    // { text: 'sharnam', pageLink: "sharanam-apartments-noida" },
+    // { text: 'Anandam', pageLink: "anandam-apartments-noida" },
     // { text: 'Gv Homez', pageLink: "gv-homes" },
-    // { text: 'VILASA', pageLink: "vilasa" },
+    // { text: 'VILASA', pageLink: "vilasa-sector-6-sohna" },
 ]
 
 

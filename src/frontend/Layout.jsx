@@ -69,11 +69,11 @@ function Layout({ children }) {
 
 
   const showMicrositeMenu =
-    location.pathname === `${BASE_ROOT}sharanam` ||
-    location.pathname === `${BASE_ROOT}anandam` ||
-    location.pathname === `${BASE_ROOT}casa-uday` ||
-    location.pathname === `${BASE_ROOT}vilasa` ||
-    location.pathname === `${BASE_ROOT}sanctuary`
+    location.pathname === `${BASE_ROOT}sharanam-apartments-noida` ||
+    location.pathname === `${BASE_ROOT}anandam-apartments-noida` ||
+    location.pathname === `${BASE_ROOT}casa-uday-properties-in-ncr` ||
+    location.pathname === `${BASE_ROOT}vilasa-sector-6-sohna` ||
+    location.pathname === `${BASE_ROOT}sanctuary-sector-105-gurugram`
 
 
   return (
@@ -200,10 +200,10 @@ export default Layout;
 //         <Loader />
 //       ) : (
 //         <>
-//           {location.pathname === `${BASE_ROOT}sharanam` ||
-//             location.pathname === `${BASE_ROOT}anandam` ||
+//           {location.pathname === `${BASE_ROOT}sharanam-apartments-noida` ||
+//             location.pathname === `${BASE_ROOT}anandam-apartments-noida` ||
 //             location.pathname === `${BASE_ROOT}gv-homes` ||
-//             location.pathname === `${BASE_ROOT}vilasa` ? <MicrositeMenu /> : null}
+//             location.pathname === `${BASE_ROOT}vilasa-sector-6-sohna` ? <MicrositeMenu /> : null}
 
 //           {/* Custom Cursor */}
 //           <CustomCursor />
