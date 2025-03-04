@@ -234,7 +234,7 @@ const Specifications = React.memo(() => {
 
   const listSpecifications = async () => {
     var response = await Request("admin/projectdata/specification", "GET");
-    setSpecificationLists(response.data.data);
+    setSpecificationLists(response.data);
   };
 
   const getProjectData = async () => {

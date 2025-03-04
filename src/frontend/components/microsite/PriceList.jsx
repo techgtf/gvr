@@ -57,7 +57,7 @@ function PriceList({ priceListData = [], headingText = "" }) {
       <section className="bg-[#EFF5FA] relative sm:px-32 px-5 py-10 md:py-14 flex flex-col justify-center" id="pricelist">
         <div className="headingWrap max-w-[619px] m-auto text-center">
           <FadeIn duration={2} delay={0.5}>
-            <CommonHeading HeadingText={headingText} />
+            <CommonHeading HeadingText={headingText || 'Price List'} />
           </FadeIn>
         </div>
 
