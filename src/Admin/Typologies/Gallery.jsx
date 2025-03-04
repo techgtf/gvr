@@ -69,7 +69,7 @@ const SingleTypologyGallery = () => {
 
   const list = async (search = "") => {
     const response = await Request(
-      `admin/typology-galleries?page=${currentPage}&search=${search}`,
+      `admin/getSubGalleryDistinct/${typology_id}?page=${currentPage}&search=${search}`,
       "GET"
     );
     if (response.status && response.statusCode == 200) {
@@ -136,7 +136,7 @@ const SingleTypologyGallery = () => {
     setIsTargeting(id);
 
     var response = await JsonRequest(
-      "admin/typology-sub-typology/" + id,
+      "admin/typology-sub-gallery/" + id,
       "DELETE"
     );
     if (response.status && response.statusCode == 200) {
