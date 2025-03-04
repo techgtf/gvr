@@ -40,6 +40,7 @@ const AddProjects = () => {
   const [checkedStatus, setCheckedStatus] = useState("");
 
   const name = useRef("");
+  const slug = useRef("");
   const ivr = useRef("");
   const whatsapp = useRef("");
   const paymentplan = useRef("");
@@ -64,6 +65,7 @@ const AddProjects = () => {
     formData.append("typologie_id", checkedTypology);
     formData.append("sub_typologie_id", checkedSubTypology);
     formData.append("name", name.current.value);
+    formData.append("slug", slug.current.value);
     formData.append("project_status", checkedStatus);
     formData.append("short_description", short_description.current.value);
 
@@ -268,7 +270,7 @@ const AddProjects = () => {
               {errors.project_status}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb_20">
                 <label className="block">Project Name*</label>
                 <input
@@ -278,6 +280,17 @@ const AddProjects = () => {
                   ref={name}
                 />
                 {errors.name && <div className="errMsg">{errors.name}</div>}
+              </div>
+
+              <div className="mb_20">
+                <label className="block">Slug*</label>
+                <input
+                  type="text"
+                  className="w-full p-2 border rounded"
+                  placeholder="Enter project Slug"
+                  ref={slug}
+                />
+                {errors.slug && <div className="errMsg">{errors.slug}</div>}
               </div>
 
               <div className="mb_20">

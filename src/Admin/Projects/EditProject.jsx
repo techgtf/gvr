@@ -40,6 +40,7 @@ const EditProject = () => {
     paymentplan: "",
     rera_no: "",
     nameRef: "",
+    slug: "",
     short_description: "",
     logo_preview: "",
     meta_title: "",
@@ -61,6 +62,7 @@ const EditProject = () => {
     formData.append("typologie_id", checkedTypology);
     formData.append("ivr_no", sectionFormdata.ivr);
     formData.append("name", sectionFormdata.nameRef);
+    formData.append("slug", sectionFormdata.slug);
     formData.append("payment_plan", sectionFormdata.paymentplan);
     if(sectionFormdata.thumbnail instanceof File){
       formData.append("thumbnail", sectionFormdata.thumbnail);
@@ -227,6 +229,7 @@ const EditProject = () => {
         paymentplan: result.payment_plan,
         rera_no: result.rera_no,
         nameRef: result.name,
+        slug: result.slug,
         short_description: result.short_description,
         meta_title: result.meta_title,
         meta_keyword: result.meta_keyword,
@@ -404,6 +407,20 @@ const EditProject = () => {
                 />
                 {errors.name}
               </div>
+
+              <div className="mb-2">
+                <label className="block">Slug*</label>
+                <input
+                  type="text"
+                  placeholder="Enter project slug"
+                  value={sectionFormdata.slug}
+                  name="slug"
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded"
+                />
+                {errors.slug}
+              </div>
+
             </div>
 
             <div className="grid grid-cols-2 gap-4">
