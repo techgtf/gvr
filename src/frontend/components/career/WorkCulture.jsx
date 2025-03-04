@@ -54,7 +54,11 @@ const WorkCulture = ({ data }) => {
       <div className="flex  flex-wrap justify-between ">
         <div className="text-justify text-[#333333AB] xl:basis-[29%] basis-[100%] text-[15px] font-[500]">
           {data.description && (
-            <p className="text-justify">{data.description}</p>
+            // <p  >{data.description}</p>
+            <div
+              className="text-justify"
+              dangerouslySetInnerHTML={{ __html: data.description }}
+            />
           )}
         </div>
         <div

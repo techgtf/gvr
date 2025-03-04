@@ -10,7 +10,7 @@ import TeamModal from "../teamModal/TeamModal";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import gsap from "gsap";
 
-const OurTeam = ({data}) => {
+const OurTeam = ({ data }) => {
   const { allProfile, handleNext, handlePrev, handleImageClick, handleBio } =
     useContext(TeamContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -58,7 +58,8 @@ const OurTeam = ({data}) => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           {data.heading}
         </h3>
-        <p className="common_pera xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
+        {/* xl:absolute//  xl:top-[100%] xl:left-[27%]*/}
+        <p className="common_pera  mt-[0.8rem] text-[12px]  xl:w-[500px] w-[100%] text-justify xl:text-left poppins-regular">
           {description}
         </p>
       </div>
@@ -69,7 +70,7 @@ const OurTeam = ({data}) => {
         className="inner-team-swiper-button-prev !cursor-pointer !block absolute z-[99] xl:top-[56%] top-[59%] left-[1%]"
       >
         <img
-          src="assets/frontend/images/icons/left_arrow.png"
+          src="assets/frontend/images/icons/left_arrow.webp"
           alt="Previous"
           className="w-[15px] h-[15px]"
         />
@@ -80,13 +81,13 @@ const OurTeam = ({data}) => {
         className="inner-team-swiper-button-next !cursor-pointer !block z-[99] absolute xl:top-[56%] top-[59%] right-[1%]"
       >
         <img
-          src="assets/frontend/images/icons/right_arrow.png"
+          src="assets/frontend/images/icons/right_arrow.webp"
           alt="Next"
           className="w-[15px] h-[15px]"
         />
       </div>
 
-      <div className="flex justify-between overflow-hidden xl:pt-[190px] pt-[10px] pb-[1rem]  no-scrollbar no-wrap no-scrollbar">
+      <div className="flex justify-between overflow-hidden xl:pt-[90px] pt-[10px] pb-[1rem]  no-scrollbar no-wrap no-scrollbar">
         {allProfile.map((profile, index) => {
           let design =
             "xl:min-w-[270px] 2xl:min-w-[315px] xs:min-w-[339px] min-w-[311px] h-[265px] xl:!mt-[-0.75rem] mr-[4rem] xl:mr-[2rem] flex items-end justify-center relative bg-[#EFF5FA]";
@@ -172,4 +173,3 @@ const OurTeam = ({data}) => {
 };
 
 export default OurTeam;
-

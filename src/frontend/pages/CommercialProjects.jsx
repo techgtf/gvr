@@ -22,6 +22,9 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Fullscreen, Zoom } from "yet-another-react-lightbox/plugins";
 import "swiper/css/free-mode";
+import useFetchData from "../apiHooks/useFetchData";
+import Loader from "../../common/Loader/loader";
+import axios from "axios";
 
 // // Import Images
 import warehouse1 from "/assets/frontend/images/commercialProjects/warehouse/warehouse-1.webp";
@@ -87,7 +90,7 @@ const projects = [
         link: "https://greatmallofaligarh.com",
         name: "GREAT VALUE MALL",
         address: "Ram Ghat Road, Aligarh",
-        landArea: '2 Acre land (Covered area 2 lac Sq Ft) '
+        landArea: "2 Acre land (Covered area 2 lac Sq Ft) ",
       },
     ],
     description: `The Great Value Mall in Aligarh is a vibrant shopping and entertainment destination, bringing together top brands, fine dining, and engaging leisure experiences under one roof. Located in a high-footfall area, it serves as a commercial epicenter, attracting consumers from across the region. Featuring renowned brands like Bikanerwala, Levi’s, Café Coffee Day, Spencer’s, and Cineplex, the mall is designed to provide a seamless shopping experience for families, young professionals, and urban dwellers.`,
@@ -104,13 +107,13 @@ const projects = [
         name: "PERNIA'S POP-UP STUDIO",
         link: "",
         address: "Mehrauli, New Delhi",
-        landArea: '790 Sq Yds Plot'
+        landArea: "790 Sq Yds Plot",
       },
       {
         name: "GAP",
         link: "",
         address: "Saket, New Delhi",
-        landArea: '47086 Sq Ft',
+        landArea: "47086 Sq Ft",
       },
 
       {
@@ -118,13 +121,13 @@ const projects = [
         link: "",
         address: "Vasant Vihar, New Delhi",
         address: "Vasant Vihar, New Delhi",
-        landArea: '',
+        landArea: "",
       },
       {
         name: "COMPLEX MADANGIR",
         link: "",
         address: "Madangir, New Delhi",
-        landArea: '47086 Sq Ft',
+        landArea: "47086 Sq Ft",
       },
     ],
     description: `From exclusive designer boutiques to high-profile corporate offices, Great Value Realty develops premium high street retail & office spaces that cater to businesses of all scales. Our Pernia’s Pop-Up Store in Mehrauli, located on the prestigious Qutub-Mehrauli Road, is a prime example of a luxury retail destination designed for high-end fashion brands. Additionally, our GAP India South Asia Corporate Office in DLF South Court, Saket, provides an ideal business environment for global enterprises. We focus on offering prime locations, modern infrastructure, and cutting-edge amenities to ensure that businesses operate with efficiency, convenience, and prestige.`,
@@ -172,6 +175,55 @@ const CommercialProjects = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
+  const {
+    data: dataForBannerAndOverview,
+    isLoading: loadingForBannerAndOverview,
+    error: errorForBannerAndOverview,
+  } = useFetchData("page-sections", "18");
+  const {
+    data: dataForTypology,
+    isLoading: isLoadingForTypology,
+    error,
+  } = useFetchData("project/commercial-project?category=commercial");
+  const banner = dataForBannerAndOverview?.["commercial-banner"] || {};
+  const overview = dataForBannerAndOverview?.["commercial-overview"] || {};
+
+  const [projects, setProjects] = useState({}); // State to store projects by typology ID
+
+  const fetchAllProjects = async (id) => {
+    try {
+      const response = await axios.get(
+        `${CONFIG.API_URL}project?category=commercial&propertyType=${id}`
+      );
+      return response.data.data.data; // Return the fetched data
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+      return []; // Return an empty array on error
+    }
+  };
+
+  useEffect(() => {
+    if (!isLoadingForTypology && dataForTypology?.length > 0) {
+      const fetchProjects = async () => {
+        const projectsData = await Promise.all(
+          dataForTypology.map((detail) =>
+            fetchAllProjects(detail.typologies.id)
+          )
+        );
+
+        // Update state with fetched projects
+        const projectsByTypologyId = {};
+        projectsData.forEach((projects, index) => {
+          const typologyId = dataForTypology[index].typologies.id;
+          projectsByTypologyId[typologyId] = projects;
+        });
+
+        setProjects(projectsByTypologyId);
+      };
+
+      fetchProjects();
+    }
+  }, [dataForTypology, isLoadingForTypology]);
 
   useEffect(() => {
     if (prevRef.current && nextRef.current && swiperRef.current) {
@@ -214,97 +266,80 @@ const CommercialProjects = () => {
     }, 300);
   }, []);
 
+  if (loadingForBannerAndOverview) return <Loader />;
+
   return (
     <section className="bg-[#EFF5FA]">
-      <HeroSectionAboutUs
-        img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${window.innerWidth <= 768
-          ? "commercial_banner_mb.jpg"
-          : "commercial_banner.jpg"
-          }`}
-          alt={"Great value commercial project"}
-        heading={"COMMERCIAL  PROJECTS"}
-        breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
-        extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
-      />
-      <div className="overview_section 2xl:pt-[80px] px-[30px] pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
-        <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
-          <CommonHeading
-            HeadingText={
-              "Empowering Businesses with Future-Ready Commercial Spaces"
-            }
-            TagName="h1"
-            HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
-          />
-        </div>
-        <SlideIn duration={2} delay={0.5}>
-          <div
-            style={{
-              borderTop: "1px solid #b1b1b1",
-              borderBottom: "1px solid #b1b1b1",
-            }}
-            className="content !px-0 !py-[35px] lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px] lg:mb-[50px] mb-[20px] text-center"
-          >
-            <CommonPera
-              PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
-              //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
-              PeraText={
-                "At Great Value Realty, we believe that commercial real estate is more than just infrastructure. It’s about creating dynamic spaces that drive business success, enhance visibility, and provide sustainable growth. Whether it's high-end designer retail stores, thriving shopping malls, premium corporate offices, or industrial warehouses, each of our developments is crafted to meet the evolving needs of businesses. With strategic locations, state-of-the-art infrastructure, and a deep understanding of market demands, we deliver exceptional commercial spaces that offer both functionality and long-term value."
-              }
+      {banner && (
+        <HeroSectionAboutUs
+          img={banner.image}
+          alt={banner.image_alt}
+          heading={banner?.heading}
+          extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
+        />
+      )}
+
+      {overview && (
+        <div className="overview_section 2xl:pt-[80px] px-[30px] pt-[40px] xl:pt-[30px] lg:pb-0 pb-[0] lg:mb-0 mb-[50px]">
+          <div className="headingWrap lg:max-w-[79%] max-w-[100%] m-auto text-center">
+            <CommonHeading
+              HeadingText={overview.heading}
+              TagName="h1"
+              HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
             />
           </div>
-        </SlideIn>
-      </div>
+          <SlideIn duration={2} delay={0.5}>
+            <div
+              style={{
+                borderTop: "1px solid #b1b1b1",
+                borderBottom: "1px solid #b1b1b1",
+              }}
+              className="content !px-0 !py-[35px] lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px] lg:mb-[50px] mb-[20px] text-center"
+            >
+              <CommonPera
+                PeraClass="fontItalic text-justify xl:text-center !p-[0px]"
+                //   PeraText="The genesis of Great Value Industries dates to 1970 when the group set up its glassware division. In 1990 GVIL diversified into together supplying quality packaging products to prestigious."
+                PeraText={overview.description}
+              />
+            </div>
+          </SlideIn>
+        </div>
+      )}
       <div className="text-[11px] flex xl:justify-center gap-16  pl-[30px] xl:pl-0 items-start mb-[50px]   flex-col xl:flex-row">
         <div className="text-center">
-        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
-        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
-        2,000,000 sq ft
-        </h3>
+          <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">
+            Existing Area{" "}
+          </h3>
+          <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
+            2,000,000 sq ft
+          </h3>
         </div>
         <div className="text-center">
-        <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
-        <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
-        5,000,000 sq ft
-        </h3>
+          <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">
+            Planned Expansion{" "}
+          </h3>
+          <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
+            5,000,000 sq ft
+          </h3>
         </div>
       </div>
-      {/* <div className="xl:p-[70px] xl:pb-[40px] p-[20px]">
-        {projects.map((project) => {
-          return (
-            <div className="text-[14px] xl:flex-row flex-col mb-[2.4rem] pb-[1rem] flex justify-between text-primary border-b-[#ddd] border-b-[1.5px] border-b-solid">
-              <h2 className="midlandfontmedium text-[10px] tracking-[3px] ">
-                {project.name}
-              </h2>
-              <Link to={project.id} smooth={true} duration={800}>
-                <div className="flex items-center xl:mt-[0px] mt-[1rem]">
-                  {" "}
-                  <h3 className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                    TOTAL PROJECTS
-                  </h3>
-                  <p className="midlandfontmedium text-[10px] tracking-[3px] mr-[0.7rem]">
-                    {project.totalProjects}
-                  </p>
-                  <img
-                    src={`${CONFIG.ASSET_IMAGE_URL}/frontend/images/icons/download.png`}
-                    className="w-[25px] h-[25px]"
-                    alt="download"
-                  />
-                </div>
-              </Link>
-            </div>
-          );
-        })}
-      </div> */}
-      {projects.map((project, index) => (
-        <div key={project.id}>
-          <CommercialProjectSection project={project} />
-        </div>
-      ))}
+
+      {dataForTypology?.length > 0 &&
+        Object.keys(projects).length > 0 &&
+        dataForTypology?.map((project, index) => (
+          <div key={project.typologies.id}>
+            <CommercialProjectSection
+              gallery={project.galleries}
+              project={project.typologies}
+              innerProjects={projects}
+            />
+          </div>
+        ))}
     </section>
   );
 };
 
-const CommercialProjectSection = forwardRef(({ project }, ref) => {
+const CommercialProjectSection = ({ project, gallery, innerProjects }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
@@ -356,16 +391,33 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
   return (
     <>
       <Helmet>
-        <title>Great Value Realty Commercial Projects | Premium Business Spaces</title>
-        <meta name="keywords" content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties" />
-        <meta name="description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
-        <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-        <link rel="canonical" href="https://greatvaluerealty.com/commercial-projects" />
+        <title>
+          Great Value Realty Commercial Projects | Premium Business Spaces
+        </title>
+        <meta
+          name="keywords"
+          content="Great Value Realty commercial projects, business spaces, office spaces, retail hubs, commercial real estate, premium commercial properties"
+        />
+        <meta
+          name="description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
+        <meta
+          name="google-site-verification"
+          content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8"
+        />
+        <link
+          rel="canonical"
+          href="https://greatvaluerealty.com/commercial-projects"
+        />
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="Great Value Realty Commercial Projects| Premium Business Spaces" />
+        <meta
+          name="author"
+          content="Great Value Realty Commercial Projects| Premium Business Spaces"
+        />
         <meta name="googlebot" content="all, index, follow" />
         <meta name="YahooSeeker" content="all, index, follow" />
         <meta name="msnbot" content="all, index, follow" />
@@ -374,17 +426,38 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
         <meta name="rating" content="general" />
         <meta name="expires" content="never" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
-        <meta property="og:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
-        <meta property="og:url" content="https://greatvaluerealty.com/commercial-projects" />
+        <meta
+          property="og:title"
+          content="Great Value Realty Commercial Projects | Premium Business Spaces"
+        />
+        <meta
+          property="og:description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
+        <meta
+          property="og:url"
+          content="https://greatvaluerealty.com/commercial-projects"
+        />
         <meta property="og:site_name" content="Great Value Realty" />
-        <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta
+          property="og:image"
+          content="https://greatvaluerealty.com/assets/frontend/images/logo.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@GreatValueGroup" />
-        <meta name="twitter:title" content="Great Value Realty Commercial Projects | Premium Business Spaces" />
-        <meta name="twitter:description" content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success." />
+        <meta
+          name="twitter:title"
+          content="Great Value Realty Commercial Projects | Premium Business Spaces"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore premium commercial projects by Great Value Realty. Discover top business spaces, retail hubs, and office solutions designed for growth and success."
+        />
         <meta name="twitter:creator" content="@GreatValueGroup" />
-        <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
+        <meta
+          name="twitter:image"
+          content="https://greatvaluerealty.com/assets/frontend/images/logo.png"
+        />
       </Helmet>
       <section
         key={project.id}
@@ -400,7 +473,9 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               <CommonHeading HeadingText={project.name} />
             </FadeIn>
             <p className="text-[4vw] left-[5rem] absolute xl:block hidden opacity-[0.017] [writing-mode:sideways-lr] tracking-[8px] midlandfontmedium ">
-              {project.waterMarkHeading}
+              {project.name == "High Street Retail & Office Spaces"
+                ? "Retail"
+                : project.name}
             </p>
           </div>
           <div className="col-span-12 md:col-span-8 mt-4 md:mt-0">
@@ -414,7 +489,7 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               <h3 className="uppercase text-primary border-b-[1px] border-b-primary pb-[0.4rem] text-[16px]">
                 All Projects
               </h3>
-              {project.projects.map((proj) => {
+              {innerProjects[project.id].map((proj) => {
                 return (
                   <div className="flex justify-between flex-wrap items-center border-b-[1px] pb-[0.8rem] lg:mt-[1.5rem] mt-[20px] lg:border-b-primary border-b-[none] lg:bg-transparent bg-white lg:p-0 p-3">
                     <p
@@ -423,43 +498,20 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                       {proj.name}
                     </p>
                     <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
-                    <p className={`lg:basis-[23%] basis-[100%] lg:pl-[15px]`}>{proj.address}</p>
-                    {proj?.landArea ? <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div> : ''}
-                    <p className="lg:basis-[23%] basis-[100%] lg:pl-[15px]">{proj.landArea}</p>
-                    <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
-
-                    {/* {[
-                      "COMPLEX MADANGIR",
-                      "JHARKHAND BHAWAN",
-                      "GAP",
-                      "PERNIA'S POP-UP STUDIO",
-                    ].includes(proj.name) ? (
-                      proj.name === "COMPLEX MADANGIR" ? (
-                        <p className="basis-[25%]">High Street Retail</p>
-                      ) : (
-                        <p className="basis-[25%]">Office Spaces</p>
-                      )
+                    <p className={`lg:basis-[23%] basis-[100%] lg:pl-[15px]`}>
+                      {proj.location.city}
+                    </p>
+                    {proj?.landArea ? (
+                      <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
                     ) : (
-                      <div className="basis-[25%]">
-                        <Link
-                          to={proj.link}
-                          // target="_blank"
-                          onClick={() => openNewBackgroundTab(proj.link)}
-                          rel="noopener noreferrer"
-                          className={`${
-                            proj.name == "Moser Baer Solar Ltd / Warehouse"
-                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary  text-[10px] text-center text-white"
-                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
-                          } `}
-                        >
-                          {["Tavru Sohna", "Moserbear Part 2"].includes(
-                            proj.name
-                          )
-                            ? "COMING SOON"
-                            : "READ MORE"}
-                        </Link>
-                      </div>
-                    )} */}
+                      ""
+                    )}
+                    {
+                      <p className="lg:basis-[23%] basis-[100%] lg:pl-[15px]">
+                        {proj.size}
+                      </p>
+                    }
+                    <div className="lg:h-[40px] lg:my-0 my-2 h-[1px] lg:w-[0.5px] w-full bg-[#ddd]"></div>
 
                     {[
                       "COMPLEX MADANGIR",
@@ -478,13 +530,13 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                     ) : (
                       <div className="lg:basis-[25%] lg:pl-[15px]">
                         <Link
-                          to={proj.link}
+                          to={proj.cdn}
                           onClick={() => openNewBackgroundTab(proj.link)}
-                          rel="noopener noreferrer"
-                          className={`${proj.name === "Moser Baer Solar Ltd / Warehouse"
-                            ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
-                            : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
-                            } `}
+                          className={`${
+                            proj.name === "Moser Baer Solar Ltd / Warehouse"
+                              ? "xl:w-[50%] w-[100%] inline-block p-[3px] bg-primary text-[10px] text-center text-white"
+                              : "bg-primary w-[100%] xl:inline inline-block text-[10px] text-center py-[8px] px-[15px] text-white"
+                          } `}
                         >
                           {["Tavru Sohna", "Moserbear Part 2"].includes(
                             proj.name
@@ -532,13 +584,14 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                     alignItems: "center !important",
                   }}
                 >
-                  {mediaData.map((item, index) => (
+                  {gallery[1]?.map((item, index) => (
                     <React.Fragment key={index}>
                       <SwiperSlide>
                         <img
                           className="lg:w-auto w-[80px]"
-                          src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${item.imgSrc}`}
-                          alt={item.altText || `Media coverage: ${item.title}`}
+                          src={item?.file}
+                          // src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/commercialProjects/${item.imgSrc}`}
+                          alt={`Media coverage: ${item?.index}`}
                         />
                       </SwiperSlide>
                       {/* <div className='box lg:w-auto w-[85px]' key={index}></div> */}
@@ -586,11 +639,11 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
               modules={[Autoplay, Navigation]}
               className="mySwiper"
             >
-              {project.images.map((item, i) => (
+              {gallery[2]?.map((item, i) => (
                 <SwiperSlide key={i}>
                   <img
-                    src={item}
-                    alt={`${project.name} Image ${i + 1}`}
+                    src={item?.file}
+                    alt={`${item?.file + i}`}
                     className="w-full md:w-[350px] h-[250px] object-cover cursor-pointer"
                     onClick={() => openLightbox(i)}
                   />
@@ -603,8 +656,8 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
                 open={open}
                 close={() => setOpen(false)}
                 index={currentIndex}
-                slides={project.images.map((item, index) => ({
-                  src: item,
+                slides={gallery[2]?.map((item, index) => ({
+                  src: item?.file,
                   title: `Image ${index + 1}`,
                 }))}
                 plugins={[Fullscreen, Zoom]}
@@ -615,6 +668,6 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
       </section>
     </>
   );
-});
+};
 
 export default CommercialProjects;
