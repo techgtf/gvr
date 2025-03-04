@@ -15,7 +15,7 @@ const Enquiry = ()=>{
     const [totalPage, setTotalPage] = useState(0)
     const loadEnquiries = async (search="") => {
         setDataLoading(true)
-        const response = await Request(`enquiry?search=${search}&page=${currentPage}`, 'GET');
+        const response = await Request(`admin/contact?search=${search}&page=${currentPage}`, 'GET');
         if(response.status && response.statusCode==200)
         {
             if(!response.data.data.length){
@@ -51,39 +51,44 @@ const Enquiry = ()=>{
 
     return(
         <>
-            <div className="d-flex title_col justify-content-between align-items-center">
+            <div className="flex title_col justify-between items-center">
                 <h4 className="page_title">Contact Query</h4>
             </div>
 
-            <div className="card mt-4 card_style1">
+            <div className="card bg-white mt-4 card_style1">
                
-                <div className="d-flex align-items-center">
+                <div className="flex items-center">
                     <h5 className="mb-0">Contact Queries </h5>
 
                     <div className="searchInput ms-auto">
-                        <input type="text" className="form-control" placeholder="Search by name" onChange={findHandler} />
+                    <input
+              type="text"
+              className="border rounded px-3 py-2 w-full"
+              placeholder="Search by name"
+              onChange={findHandler}
+            />
                     </div>
                 </div>
 
 
 
 
-                <table className="mt_40">
+                <table className="mt_40 w-full border-collapse border border-gray-200">
                     <thead>
-                        <tr>
-                            <th>
+                        <tr  className="bg-gray-100">
+                            <th className="border border-gray-300 p-2 text-left">
                                 Name
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Email
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Phone
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Message
                             </th>
-                            <th>
+                            <th className="border border-gray-300 p-2 text-left">
                                 Date
                             </th>
                         </tr>
@@ -91,17 +96,16 @@ const Enquiry = ()=>{
 
                     <tbody>
                         {!data.length && dataLoading ? 
-                        <tr>
-                            <td colSpan={4}>
-                                <div className="text-center">
+                        <tr className="border-b border-gray-200">
+                            <td colSpan={5}>
+                                <div className="text-center py-4">
                                 <ScaleLoader 
                                     color="#ddd"
-                                    className="w-100"
+                                    className="w-full"
                                 /> 
                                 </div>
                             </td>
                         </tr>
-                        
                         : 
                         data.map((item)=>(
                             <tr key={item.id}>
