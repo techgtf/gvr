@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Request from "root/config/Request";
 import Loader from '../../../common/Loader/loader';
 import * as actionTypes from 'root/store/actions';
+import { setLogin } from "../../../redux/admin/userSlice";
 import * as CONFIG from '../../../../config';
 
 const ProtectedRoute = ({ children }) => {
@@ -15,6 +16,7 @@ const ProtectedRoute = ({ children }) => {
 
     useEffect(() => {
         const validateToken = async () => {
+            // debugger
             try {
                 setIsLoading(true);
                 const response = await Request('admin/validateToken', 'POST');
@@ -25,7 +27,7 @@ const ProtectedRoute = ({ children }) => {
                     navigate(CONFIG.ADMIN_ROOT + "login");
                     throw new Error('Please sign in first');
                 } else {
-                    dispatch(actionTypes.login());
+                    return dispatch(setLogin());
                 }
             } catch (error) {
                 toast.error(error.message);

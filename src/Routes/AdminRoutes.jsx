@@ -88,88 +88,104 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}login`,
     // element:<AdminLayout />,
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Login />
-      </Suspense>
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Login />
+        </Suspense>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}platter-page`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <PlatterPage />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PlatterPage />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}platter-page/add`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AddPlatterPage />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddPlatterPage />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}platter-page/:platterid/edit`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EditPlatter />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EditPlatter />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}platter-page/:platterid/banner`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <PlatterBanners />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PlatterBanners />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}projects/:category`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Projects />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Projects />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/add`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AddProject />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddProject />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/edit`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <EditProject />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <EditProject />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   // path: `${ADMIN_ROOT}project/:projectid/overview/:section`,
@@ -177,339 +193,397 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}project/:projectid/location`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <ProjectLocation />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <ProjectLocation />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/overview/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <ProjectOverview />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <ProjectOverview />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/amenities/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <ProjectAmenities />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <ProjectAmenities />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/price-list/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <PriceList />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <PriceList />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/highlights/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <Highlights />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <Highlights />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/specifications/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <Specification />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <Specification />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/master-plan/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <ProjectMasterPlan />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <ProjectMasterPlan />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/floor-plan/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <FloorPlan />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <FloorPlan />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/location-advantage/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <ProjectLocationAdvantage />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <ProjectLocationAdvantage />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/gallery/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectLayout>
-            <Gallery />
-          </ProjectLayout>
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectLayout>
+              <Gallery />
+            </ProjectLayout>
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/banner`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Banner />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Banner />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/faq/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectFaq />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProjectFaq />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}project/:projectid/form/:section`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <MicroForm />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <MicroForm />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}home-banner`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <HomeBanner />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <HomeBanner />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}specifications`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Specifications />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Specifications />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}cities/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Cities />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cities />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}localities/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Localities />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Localities />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}states`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <States />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <States />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}amenities`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Amenities />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Amenities />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}blogs/categories`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <BlogCategory />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <BlogCategory />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}developers`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Developers />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Developers />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}typologies`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Typologies />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Typologies />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}sub-typologies`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <SubTypologiesPage />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <SubTypologiesPage />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}typologies/gallery`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TypologyGallery />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <TypologyGallery />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}page-meta`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <PageMetas />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageMetas />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}home-overview`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <HomePageOverview />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <HomePageOverview />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}other-verticals`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <OtherVerticals />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <OtherVerticals />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}team`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <OurTeam />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <OurTeam />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}category`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Category />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Category />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   // {
@@ -527,55 +601,65 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}category/typology/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <CategoryTypology />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <CategoryTypology />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}typology/:id/sub`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TypologiesSubTypologies />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <TypologiesSubTypologies />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}typology/:id/gallery`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <SingleTypologyGallery />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <SingleTypologyGallery />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}forgot`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Forgot />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Forgot />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}blog-category`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <BlogCategory />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <BlogCategory />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
 
@@ -583,253 +667,299 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}blogs`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Blogs />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Blogs />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}blogs/add`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AddBlog />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddBlog />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}blogs/edit/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EditBlog />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EditBlog />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}careers`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Careers />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Careers />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}careers/add`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AddCareer />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddCareer />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}careers/update/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <UpdateCareer />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <UpdateCareer />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}offers`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Offers />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Offers />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}process`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Process />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Process />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}top-cities`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TopCities />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <TopCities />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}testimonials`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Testimonials />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Testimonials />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}timeline`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Timeline />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Timeline />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}timeline/add`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AddTimeline />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddTimeline />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}timeline/edit/:id`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EditTimeline />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EditTimeline />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}timeline/images`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TimelineImages />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <TimelineImages />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}esg/social`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EsgSocial />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EsgSocial />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}esg/environment`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EsgEnvironment />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EsgEnvironment />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}esg/governance`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EsgGovernance />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EsgGovernance />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}esg/gallery`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <EsgGallery />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <EsgGallery />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}gallery/work-culture`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <WorkCulture />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <WorkCulture />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}media-centre`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <MediaCentre />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <MediaCentre />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}page/:pageId`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AboutPage />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AboutPage />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}about`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AboutPage />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AboutPage />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}faqs`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Faqs />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Faqs />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
@@ -849,22 +979,26 @@ export const AdminRoutes = [
     path: `${ADMIN_ROOT}job-application`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <JobApplications />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <JobApplications />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
   {
     path: `${ADMIN_ROOT}contact-query`,
     // element:<AdminLayout />,
     element: (
-      <AdminLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Enquiry />
-        </Suspense>
-      </AdminLayout>
+      <ProtectedRoute>
+        <AdminLayout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Enquiry />
+          </Suspense>
+        </AdminLayout>
+      </ProtectedRoute>
     ),
   },
 ];

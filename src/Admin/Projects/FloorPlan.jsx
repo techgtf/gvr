@@ -33,6 +33,12 @@ const planTypeOptions = [
   { label: "Unit 5", value: "unit5" },
 ];
 
+const sizeTypeOptions = [
+  { label: "Sq. Ft.", value: "1" },
+  { label: "Sq. Yd.", value: "2" },
+  { label: "Sq. Mt.", value: "3" },
+];
+
 const FloorPlan = React.memo(() => {
   const projectid = useParams().projectid;
   const section_id = useParams().section;
@@ -58,37 +64,45 @@ const FloorPlan = React.memo(() => {
   const [sectionFormdata, setSectionFormdata] = useState({
     // Initialize your form data state
     sub_typology: null,
-    size: null,
-    size_type: null,
+    // size: null,
+    sizes_type: null,
     image: null,
     project_id: null,
     image_preview: null,
     image: null,
     price: null,
     type:null,
-    carpet_area:null,
-    balcony_area:null,
-    super_area:null,
-    more_typology:null
+    carpet_area:'',
+    balcony_area:'',
+    super_area:'',
+    more_typology:null,
+    build_up_area:''
   });
 
   const resetfields = () => {
     setSectionFormdata({
       sub_typology: null,
-      size: null,
-      size_type: null,
+      // size: null,
+      sizes_type: null,
       image: null,
+      project_id: null,
       image_preview: null,
       more_typology:null,
       project_id: null,
+      price: null,
+      type:null,
+      carpet_area:'',
+      balcony_area:'',
+      super_area:'',
+      build_up_area:''
     });
   };
 
   const handleSectionChange = (e) => {
     setSectionFormdata({ ...sectionFormdata, [e.target.name]: e.target.value });
-    if (e.target.name == "sub_typology") {
-      // setCheckedCategory(e.target.value);
-    }
+    // if (e.target.name == "sub_typology") {
+    //   // setCheckedCategory(e.target.value);
+    // }
   };
 
   const handleStatusSelect = async (selectedValue, id) => {
@@ -138,19 +152,17 @@ const FloorPlan = React.memo(() => {
     formData.append("carpet_area", sectionFormdata.carpet_area);
     formData.append("balcony_area", sectionFormdata.balcony_area);
     formData.append("super_area", sectionFormdata.super_area);
-    formData.append("more_typology", sectionFormdata.more_typology);
     formData.append("build_up_area", sectionFormdata.build_up_area);
-    if (sectionFormdata.size) {
-      formData.append("size", sectionFormdata.size);
-    }
-    if (sectionFormdata.size_type) {
-      formData.append("size_type", sectionFormdata.size_type);
-    }
-    if (sectionFormdata.price) {
+    formData.append("size", sectionFormdata.size);
+    formData.append("sizes_type", sectionFormdata.sizes_type);
+    if(sectionFormdata.price){
       formData.append("price", sectionFormdata.price);
     }
-
+    if(sectionFormdata.more_typology){
+      formData.append("more_typology", sectionFormdata.more_typology);
+    }
     formData.append("project_id", projectid);
+
     if (image.current.files[0]) {
       formData.append("image", image.current.files[0]);
     }
@@ -188,16 +200,10 @@ const FloorPlan = React.memo(() => {
     formData.append("super_area", sectionFormdata.super_area);
     formData.append("more_typology", sectionFormdata.more_typology);
     formData.append("build_up_area", sectionFormdata.build_up_area);
+    formData.append("price", sectionFormdata.price);
+    formData.append("sizes_type", sectionFormdata.sizes_type);
+    // formData.append("size", sectionFormdata.size);
 
-    if (sectionFormdata.size) {
-      formData.append("size", sectionFormdata.size);
-    }
-    if (sectionFormdata.size_type) {
-      formData.append("size_type", sectionFormdata.size_type);
-    }
-    if (sectionFormdata.price) {
-      formData.append("price", sectionFormdata.price);
-    }
     // if (image.current.files[0]) {
     //   formData.append("image", image.current.files[0]);
     // }
@@ -232,8 +238,8 @@ const FloorPlan = React.memo(() => {
 
       setSectionFormdata({
         sub_typology: result.sub_typology,
-        size: result.size,
-        size_type: result.size_type,
+        // size: result.size,
+        sizes_type: result.sizes_type,
         image_preview: CONFIG.VITE_APP_STORAGE + result.image,
         price: result.price,
         type:result.type,
@@ -460,7 +466,7 @@ const FloorPlan = React.memo(() => {
                         className="border rounded px-3 py-2 w-full"
                       />
                     </div>
-                    {errors.size}
+                    {errors.more_typology}
                   </div>
 
                 <div className="mb-2">
@@ -470,20 +476,43 @@ const FloorPlan = React.memo(() => {
                         className="border rounded px-3 py-2 w-full"
                         name="type"
                         onChange={handleSectionChange}
+                        value={sectionFormdata.type}
                       >
                         <option value="">Select Type</option>
                         {planTypeOptions.map((item, index) => (
                           <option
                             value={item.value}
                             key={index}
-                            selected={sectionFormdata.type == item.value}
+                            // selected={sectionFormdata.type == item.value}
                           >
                             {item.label}
                           </option>
                         ))}
                       </select>
-                    {errors.size}
                     {errors.type}
+                  </div>
+
+                  <div className="mb-2">
+                    <label className="block font-medium">Size Type</label>
+                    
+                    <select
+                        className="border rounded px-3 py-2 w-full"
+                        name="sizes_type"
+                        onChange={handleSectionChange}
+                        value={sectionFormdata.sizes_type}
+                      >
+                        <option value="" selected disabled>Select Type</option>
+                        {sizeTypeOptions.map((item, index) => (
+                          <option
+                            value={item.value}
+                            key={index}
+                            // selected={sectionFormdata.type == item.value}
+                          >
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                    {errors.sizes_type}
                   </div>
 
                 <div className="grid grid-cols-1 gap-2">
