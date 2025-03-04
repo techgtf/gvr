@@ -20,9 +20,9 @@ function Plans({ masterPlanData, unitData }) {
   const sectionRef = useRef(null);
   const location = useLocation();
 
-  useEffect(()=>{
+  useEffect(() => {
     setActiveUnit(unitData && Object.keys(unitData)[0])
-  },[unitData])
+  }, [unitData])
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -67,6 +67,8 @@ function Plans({ masterPlanData, unitData }) {
     setOpen(false);
     document.body.classList.remove("lightbox-open");
   };
+
+  // console.log('unitData',unitData);
 
   return (
     <section ref={sectionRef} className="plans bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14 relative" id="plan">
@@ -121,16 +123,25 @@ function Plans({ masterPlanData, unitData }) {
               {unitData[activeUnit]?.length > 0 ? (
                 unitData[activeUnit].map((plan, index) => (
                   <SlideIn key={index} duration={2} delay={0.5}>
+                    {/* {
+                      console.log('carpet_area : ', plan.carpet_area,
+                        'balcony_area :', plan.balcony_area
+                        , 'totalArea :', plan.totalArea
+                        , 'buildArea :', plan.buildArea
+                        , 'super_area :', plan.super_area
+                      )
+                    } */}
                     <div className="unit bg-white p-5 flex flex-col md:flex-row justify-between mt-10 object-cover">
                       <img src={plan.image} alt={`plan ${index + 1}`}
                         className="w-[80%] mx-auto md:w-[30%] cursor-pointer"
                         onClick={() => openLightbox(index)} />
                       <div className="flex flex-col justify-between mt-5 pr-10 tracking-wider uppercase md:mt-0">
-                        <h5 className="font-semibold text-[16px] mb-4">Type {index+1} : {plan.more_typology}</h5>
-                        <p>Carpet Area: {plan.carpet_area} Sq.Ft</p>
-                        <p>Balcony Area: {plan.balcony_area} Sq.Ft</p>
-                        <p>Total Super Area: {plan.totalArea} Sq.Ft</p>
-                        <p>Built Up Area: {plan.buildArea} Sq.Ft</p>
+                        <h5 className="font-semibold text-[16px] mb-4">Type {index + 1} : {plan.more_typology}</h5>
+                        {plan.carpet_area && <p>Carpet Area: {plan.carpet_area} Sq.Ft</p>}
+                        {plan.balcony_area && <p>Balcony Area: {plan.balcony_area} Sq.Ft</p>}
+                        {plan.totalArea && <p>Total Super Area: {plan.totalArea} Sq.Ft</p>}
+                        {plan.buildArea && <p>Built Up Area: {plan.buildArea} Sq.Ft</p>}
+                        {plan.super_area && <p>super Area: {plan.super_area} Sq.Ft</p>}
                       </div>
                     </div>
                   </SlideIn>

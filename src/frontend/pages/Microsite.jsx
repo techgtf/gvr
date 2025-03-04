@@ -23,6 +23,7 @@ import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGaller
 
 
 function Microsite() {
+
   const location = useLocation();
   const { slug } = useParams();
   const [loading, setLoading] = useState(true);
@@ -120,6 +121,9 @@ function Microsite() {
   if (error) return <div>Something went wrong: {error.message}</div>;
   if (!basicDetails) return <PageNotFound />;
 
+  console.log(basicDetails);
+  
+
   return (
     <React.Fragment key={slug}>
       <HeroSection
@@ -132,7 +136,7 @@ function Microsite() {
         bannerDetailsProps={{
           heading: basicDetails.name,
           location: basicDetails?.location?.address,
-          description: basicDetails?.subtypologie?.typology,
+          description: `${basicDetails?.subtypologie?.typology} ${basicDetails?.typologie?.typology}`,
         }}
       />
 
