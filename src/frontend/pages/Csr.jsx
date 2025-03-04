@@ -14,6 +14,8 @@ import GovernanceSection from "../components/CSR/governance/GovernanceSection";
 function Csr() {
   const { data: pageData, loading: pageLoading, error: pageError } = useFetchData("page-sections", "6");
 
+
+  console.log(pageData,"pageData");
   // Handle Loading and Errors
   if (pageLoading) return <Loader />;
   if (pageError)
@@ -71,7 +73,7 @@ function Csr() {
         <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
 
       </Helmet>
-      <HeroSection data={banner}/>
+      <HeroSection data={esgBanner}/>
 
       <OverviewSection
         heading={

@@ -25,7 +25,7 @@ const MediaCentrePdf = () => {
         <ul className=" w-full">
           {PDFData &&
             PDFData.map((item, index) => (
-              <Link key={index} to={`${CONFIG.VITE_APP_STORAGE}${item.file}`} target="_blank">
+              <Link key={index} to={`${item.file}`} target="_blank">
                 <li className="flex justify-between border-b border-gray-300 items-center py-4">
                   <h3 className="tracking-[3.5px] text-[8px] leading-[3] midlandfontmedium ">
                     {item.heading}

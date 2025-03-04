@@ -41,7 +41,7 @@ function Gallery() {
 
       return {
           banner: {
-              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              image: `${pageValues[0]?.image || ""}`,
               heading: pageValues[0]?.heading || "Default Heading"
           },
           overview: pageValues[1] || {} 

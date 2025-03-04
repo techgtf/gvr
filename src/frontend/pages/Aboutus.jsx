@@ -60,7 +60,7 @@ const overviewDescription = overview.description.replace(/<\/?[^>]+(>|$)/g, "");
       </Helmet>
     {banner && 
       <HeroSectionAboutUs
-        img={`${CONFIG.VITE_APP_STORAGE}${banner.image}`}
+        img={`${banner.image}`}
         heading={"ABOUT US"}
         extraClassesImg={"objectRight"}
       />}

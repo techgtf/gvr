@@ -34,7 +34,7 @@ const nriOverview = ({data}) => {
           </div>
           <div className="xl:basis-[calc(40%-50px)]">
             <img
-              src={`${CONFIG.VITE_APP_STORAGE}${image || ""}`}
+              src={`${image || ""}`}
               alt={heading || "overview image"}
               className=" reveal flex-none"
             />

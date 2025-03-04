@@ -44,11 +44,11 @@ const Index = ({ data, nextBlog }) => {
               {/* Mobile Image */}
               <source
                 media="(max-width: 768px)"
-                srcSet={`${CONFIG.VITE_APP_STORAGE}${thumbnail}`}
+                srcSet={`${thumbnail}`}
               />
               {/* Desktop Image */}
               <img
-                src={`${CONFIG.VITE_APP_STORAGE}${image}`}
+                src={`${image}`}
                 alt="Blog Image"
                 className="relative w-full h-full sm:object-contain object-cover z-[2]"
               />

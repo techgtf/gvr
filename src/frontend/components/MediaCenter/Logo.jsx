@@ -17,7 +17,7 @@ const MediaCentreLogo = () => {
 
   const handleDownload = async(item)=>{
     try{
-      const fileUrl =  `${CONFIG.VITE_APP_STORAGE}${item.file}`;
+      const fileUrl =  `${item.file}`;
       const response = await fetch(fileUrl, {mode:"no-cors"})
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -55,7 +55,7 @@ const MediaCentreLogo = () => {
                   <span>
                     <Link
                       onClick={()=>handleDownload(item)}
-                      // to={`${CONFIG.VITE_APP_STORAGE}${item.file}`}
+                      // to={`${item.file}`}
                       // download={item.heading && `logo.${item?.heading?.toLowerCase()}`}
                       className="text-[16px]"
                     >

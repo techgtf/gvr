@@ -66,7 +66,7 @@ const WorkCulture = ({data}) => {
           {imageScreen ? (
             <>
               <img
-                // src={`${CONFIG.VITE_APP_STORAGE}${data.image}`}
+                // src={`${data.image}`}
                 // alt={data.heading}
                 src={images[0].img}
                 alt={images[0].alt}

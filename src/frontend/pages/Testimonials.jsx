@@ -63,7 +63,7 @@ const Testimonials = () => {
         <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
       </Helmet>
       <HeroSectionAboutUs
-        img={`${CONFIG.VITE_APP_STORAGE}${testimonialBanner?.image}`}
+        img={`${testimonialBanner?.image}`}
         alt={testimonialBanner?.image_alt}
         heading={testimonialBanner?.heading}
         extraClassesImg={"objectRight"}
