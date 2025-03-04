@@ -105,7 +105,7 @@ const Testimonials = () => {
         />
       </Helmet>
       <HeroSectionAboutUs
-        img={`${CONFIG.VITE_APP_STORAGE}${testimonialBanner?.image}`}
+        img={`${testimonialBanner?.image}`}
         alt={testimonialBanner?.image_alt}
         heading={testimonialBanner?.heading}
         extraClassesImg={"objectRight"}

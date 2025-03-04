@@ -68,8 +68,10 @@ const WorkCulture = ({ data }) => {
           {imageScreen ? (
             <>
               <img
-                src={`${CONFIG.VITE_APP_STORAGE}${data.image}`}
-                alt={data.heading}
+                // src={`${data.image}`}
+                // alt={data.heading}
+                src={images[0].img}
+                alt={images[0].alt}
                 className="basis-[60%] h-[320px] object-cover"
               />
               <div className="xl:w-[38%] w-[100%] flex xl:flex-col xl:mt-0 mt-[20px] flex-row justify-between">

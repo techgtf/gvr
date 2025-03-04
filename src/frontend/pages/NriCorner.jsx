@@ -21,7 +21,7 @@ export default function NriCorner() {
         if (!banner) return { image: "", heading: "Default Heading" };
         const bannerData = Object.values(banner)?.[0] || {}; 
         return {
-            image: `${CONFIG.VITE_APP_STORAGE}${bannerData.image || ""}`,
+            image: `${bannerData.image || ""}`,
             heading: bannerData.heading || "Default Heading"
         };
     };

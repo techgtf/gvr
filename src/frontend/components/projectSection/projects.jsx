@@ -63,7 +63,7 @@ export default function Projects({ heading, apiName }) {
                             />
                             <img
                                 className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
-                                src={`${CONFIG.VITE_APP_STORAGE}${item.image}`}
+                                src={`${item.image}`}
                                 alt={item.slug}
                             />
 
@@ -113,7 +113,7 @@ export default function Projects({ heading, apiName }) {
                             />
                             <img
                                 className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
-                                src={`${CONFIG.VITE_APP_STORAGE}${item.image}`}
+                                src={`${item.image}`}
                                 alt={item.slug}
                             />
 

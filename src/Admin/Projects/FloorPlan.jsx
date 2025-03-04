@@ -139,6 +139,7 @@ const FloorPlan = React.memo(() => {
     formData.append("balcony_area", sectionFormdata.balcony_area);
     formData.append("super_area", sectionFormdata.super_area);
     formData.append("more_typology", sectionFormdata.more_typology);
+    formData.append("build_up_area", sectionFormdata.build_up_area);
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
     }
@@ -186,6 +187,7 @@ const FloorPlan = React.memo(() => {
     formData.append("balcony_area", sectionFormdata.balcony_area);
     formData.append("super_area", sectionFormdata.super_area);
     formData.append("more_typology", sectionFormdata.more_typology);
+    formData.append("build_up_area", sectionFormdata.build_up_area);
 
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
@@ -239,6 +241,7 @@ const FloorPlan = React.memo(() => {
         balcony_area: result.balcony_area,
         super_area: result.super_area,
         more_typology: result.more_typology,
+        build_up_area: result.build_up_area,
       });
 
       // setCheckedCategory(result.size_type);
@@ -328,7 +331,7 @@ const FloorPlan = React.memo(() => {
               <tr className="bg-gray-100">
                 <th className="border border-gray-300 p-2 text-left">Floor Plan Image</th>
                 <th className="border border-gray-300 p-2 text-left">Total Super Area</th>
-                <th className="border border-gray-300 p-2 text-left">Price</th>
+                {/* <th className="border border-gray-300 p-2 text-left">Price</th> */}
                 <th className="border border-gray-300 p-2 text-left">Status</th>
                 <th className="border border-gray-300 p-2 text-left">Actions</th>
               </tr>
@@ -336,7 +339,7 @@ const FloorPlan = React.memo(() => {
             <tbody>
               {isLoadingTableData && (
                 <tr>
-                  <td colSpan={5}>
+                  <td colSpan={4}>
                     <div className="text-center">
                       <ScaleLoader color="#ddd" className="w-full" />
                     </div>
@@ -361,7 +364,7 @@ const FloorPlan = React.memo(() => {
                       </div>
                     </td>
                     <td>{item.super_area ? item.super_area : "On Request"}</td>
-                    <td>{item.price ? item.price : "On Request"}</td>
+                    {/* <td>{item.price ? item.price : "On Request"}</td> */}
                     <td>
                       <CustomDropdown
                         className="border rounded px-3 py-2 w-full"
@@ -527,6 +530,21 @@ const FloorPlan = React.memo(() => {
                       />
                     </div>
                     {errors.super_area}
+                  </div>
+
+                  <div className="mb-2">
+                    <label className="block font-medium">Built Up Area</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter Built Up Area"
+                        value={sectionFormdata.build_up_area}
+                        name="build_up_area"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.build_up_area}
                   </div>
 
                   <div className="mb-2">

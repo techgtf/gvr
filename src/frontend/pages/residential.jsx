@@ -104,7 +104,7 @@ export default function Residential() {
       </Helmet>
       <div className="residential_page bg-[#EFF5FA] lg:pb-[80px] pb-[40px]">
         <HeroSectionAboutUs
-          img={`${CONFIG.VITE_APP_STORAGE}${bannerData1.image}`}
+          img={`${bannerData1.image}`}
           alt={"Great Value Residential Project"}
         />
         {/* <div className='overview_wrap bg-white' style={{background:"linear-gradient(1deg, #eff5fa, #ffffff)"}}> */}

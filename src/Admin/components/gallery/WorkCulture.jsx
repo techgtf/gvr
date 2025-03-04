@@ -1,27 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
-import CustomDropdown from "../common/Custom_Dropdown/CustomDropdown";
+import CustomDropdown from "common/Custom_Dropdown/CustomDropdown";
 import SidebarPortal from "common/Portal/SidebarPortal";
 import BackdropPortal from "common/Portal/Backdrop";
-import SideModal from "./components/Modal/SideModal/Index";
-import * as CONFIG from "../../config";
-import Loader from "../common/Loader/loader";
+import SideModal from "../Modal/SideModal/Index";
+import * as CONFIG from "../../../../config";
 import { toast } from "react-toastify";
-import Pagination from "../common/Pagination/Pagination";
+import Pagination from "common/Pagination/Pagination";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-import Request from "../config/Request";
+import Request from "../../../config/Request";
 
-import "./assets/css/admin.css";
+import "../../assets/css/admin.css";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const statusOptions = [
-  { label: "Active", value: "1" },
-  { label: "Hide", value: "0" },
+const galleryTypes = [
+  {
+    value: "image",
+    label: "Image",
+  },
+  {
+    value: "video",
+    label: "Video",
+  },
 ];
 
-const Specifications = () => {
+const WorkCulture = () => {
   const [data, setData] = useState([]);
 
   // pagination
@@ -45,7 +50,15 @@ const Specifications = () => {
   const [showEditEnableImage, setEditEnableImage] = useState(null);
 
   const fileRef = useRef(null);
-  const headingRef = useRef(null);
+  const titleRef = useRef(null);
+  const nameRef = useRef(null);
+  const altRef = useRef(null);
+  const designationRef = useRef(null);
+  const shortDescriptionRef = useRef(null);
+  const messageRef = useRef(null);
+  const priceRef = useRef(null);
+  const typeRef = useRef(null);
+  const cdnRef = useRef(null);
 
   const [errors, setErrors] = useState({});
   const [editId, setEditId] = useState(false);
@@ -54,7 +67,7 @@ const Specifications = () => {
 
   const resetFields = () => {
     fileRef.current = null;
-    headingRef.current = null;
+    titleRef.current = null;
     setErrors({});
     setEditId(false);
     setenableEdit(false);
@@ -71,7 +84,7 @@ const Specifications = () => {
     const formData = new FormData();
     formData.append("status", selectedStatus);
     var response = await Request(
-      "admin/amenities/" + id + "/status",
+      "admin/gallery/" + id + "/status",
       "POST",
       formData
     );
@@ -91,10 +104,17 @@ const Specifications = () => {
 
   const addSubmitHandler = async (event) => {
     event.preventDefault();
+
     setIsSitebarFormButtonLoading(true);
     const formData = new FormData();
-    formData.append("heading", headingRef.current.value);
-    var response = await Request("admin/projectdata/specification", "POST", formData);
+
+    formData.append("type", typeRef.current.value);
+    formData.append("image", fileRef.current.files[0]);
+    formData.append("alt_tag", altRef.current.value);
+    formData.append("cdn", cdnRef.current.value);
+
+    var response = await Request("admin/work-culture", "POST", formData);
+
     if (response.status && response.statusCode == 403) {
       setErrors(response.errors);
       toast.error(response.message);
@@ -112,11 +132,16 @@ const Specifications = () => {
     setShowAddSidebar(true);
     setIsSitebarFormButtonLoading(true);
 
-    var response = await Request("admin/projectdata/specification/" + id + "/edit", "GET");
+    var response = await Request("admin/work-culture/" + id, "GET");
     if (response.status && response.statusCode === 200) {
       setenableEdit(true);
       setEditId(id);
-      headingRef.current.value = response.data.heading;
+      if (response.data.image) {
+        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
+      }
+      altRef.current.value = response.data.alt_tag;
+      cdnRef.current.value = response.data.cdn;
+      typeRef.current.value = response.data.type;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -128,7 +153,7 @@ const Specifications = () => {
   };
 
   const deleteHandler = async (id) => {
-    var response = await Request("admin/projectdata/specification/" + id + "/delete", "DELETE");
+    var response = await Request("admin/work-culture/" + id, "DELETE");
     if (response.status && response.statusCode === 200) {
       toast.success(response.message);
 
@@ -139,17 +164,14 @@ const Specifications = () => {
   };
 
   const listHandler = async (search = "") => {
+    // debugger
     setIsLoadingTableData(true);
     var response = await Request(
-      "admin/projectdata/specification?search=" +
-        search,
-         +
-        "&page=" +
-        currentPage,
+      "admin/work-culture?search=" + search + "&page=" + currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {
-      setData(response.data);
+      setData(response.data.data);
       setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
@@ -160,10 +182,15 @@ const Specifications = () => {
     setIsSitebarFormButtonLoading(true);
 
     const formData = new FormData();
-    formData.append("heading", headingRef.current.value);
+    if (fileRef.current.files[0]) {
+      formData.append("image", fileRef.current.files[0]);
+    }
+    formData.append("alt_tag", altRef.current.value);
+    formData.append("cdn", cdnRef.current.value);
+    formData.append("type", typeRef.current.value);
 
     var response = await Request(
-      "admin/projectdata/specification/" + editId + "/update",
+      "admin/work-culture/" + editId + "/update",
       "POST",
       formData
     );
@@ -189,24 +216,24 @@ const Specifications = () => {
   return (
     <>
       <div className="flex title_col justify-between items-center">
-        <h4 className="page_title">Specifications</h4>
+        <h4 className="page_title">Gallery Page</h4>
         <button
           className="btn ml-auto btn_primary btn-sm"
           onClick={addAmenityHandler}
         >
-          Add Specification
+          Add Work Culture
         </button>
       </div>
 
       <div className="card bg-white mt-4 card_style1">
         <div className="flex items-center">
-          <h5 className="mb-0">Specifications</h5>
+          <h5 className="mb-0">Work Cultures</h5>
 
           <div className="searchInput ml-auto">
             <input
               type="text"
               className="border rounded px-3 py-2 w-full"
-              placeholder="Search by name"
+              placeholder="Search by Title"
               onChange={findHandler}
             />
           </div>
@@ -215,8 +242,9 @@ const Specifications = () => {
         <table className="mt_40 w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2 text-left">Heading</th>
-              {/* <th className="border border-gray-300 p-2 text-left">Status</th> */}
+              <th className="border border-gray-300 p-2 text-left">Image</th>
+              <th className="border border-gray-300 p-2 text-left">Alt</th>
+              <th className="border border-gray-300 p-2 text-left">Type</th>
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
           </thead>
@@ -224,8 +252,8 @@ const Specifications = () => {
           <tbody>
             {isLoadingTableData ? (
               <tr className="border-b border-gray-200">
-                <td colSpan={2}>
-                  <div className="text-center py-4">
+                <td colSpan={4}>
+                  <div className="text-center ">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
                 </td>
@@ -234,18 +262,16 @@ const Specifications = () => {
               <>
                 {data && Array.isArray(data) && data.length > 0 ? (
                   data.map((item) => (
-                    <tr key={item.id} className="border-b">
-                      <td className="py-2 px-4">{item.heading}</td>
-                      {/* <td className="py-2 px-4">
-                        <CustomDropdown
-                          className="border rounded px-3 py-2 w-full"
-                          defaultVal={item.status}
-                          options={statusOptions}
-                          onSelect={(selectedValue) =>
-                            handleStatusSelect(selectedValue, item.id)
-                          }
+                    <tr className="border-b">
+                      <td className="py-2 px-4">
+                        <img
+                          src={CONFIG.VITE_APP_STORAGE + item.image}
+                          className="w-[80px] h-[80px] object-contain border"
+                          alt={item.name}
                         />
-                      </td> */}
+                      </td>
+                      <td className="py-2 px-4">{item.alt_tag}</td>
+                      <td className="py-2 px-4">{item.type}</td>
                       <td className="py-2 px-4 ">
                         <button
                           className="btn action_btn"
@@ -269,7 +295,7 @@ const Specifications = () => {
                   <tr>
                     <td colSpan="4">
                       <h5 className="no_record text-center py-4">
-                        No Specifications Found!
+                        No Data Found!
                       </h5>
                     </td>
                   </tr>
@@ -279,13 +305,13 @@ const Specifications = () => {
           </tbody>
         </table>
 
-        {!isLoadingTableData && data && (
+        {!isLoadingTableData && data ? (
           <Pagination
             currentPage={currentPage}
             totalPages={lastPage}
             onPageChange={handlePageChange}
           />
-        )}
+        ) : null}
       </div>
 
       {showAddSidebar && (
@@ -299,17 +325,68 @@ const Specifications = () => {
               <form>
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700">
-                    Specification Title*
+                    Select Type*
+                  </label>
+                  <select
+                    ref={typeRef}
+                    className="border rounded px-3 py-2 w-full"
+                  >
+                    <option value="" selected disabled>
+                      --Select--
+                    </option>
+                    {galleryTypes &&
+                      galleryTypes.map((type, index) => (
+                        <option value={type.value}>{type.label}</option>
+                      ))}
+                  </select>
+                  {errors.type && (
+                    <span className="text-red-500">{errors.type}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Select Thumbnail*
                   </label>
                   <input
-                    ref={headingRef}
+                    ref={fileRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="file"
+                    placeholder="Enter Title"
+                  />
+                  {showEditEnableImage && (
+                    <img
+                      src={showEditEnableImage}
+                      className="h-[80px] w-[80px] object-contain border mt-1"
+                    />
+                  )}
+                  {errors.image && (
+                    <span className="text-red-500">{errors.image}</span>
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Alt Text
+                  </label>
+                  <input
+                    ref={altRef}
                     className="border rounded px-3 py-2 w-full"
                     type="text"
-                    placeholder="Enter Specification Title"
+                    placeholder="Enter Alt Text"
                   />
-                  {errors.heading && (
-                    <span className="text-red-500">{errors.heading}</span>
-                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    CDN
+                  </label>
+                  <input
+                    ref={cdnRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="text"
+                    placeholder="Enter CDN"
+                  />
                 </div>
               </form>
             </SideModal>
@@ -321,4 +398,4 @@ const Specifications = () => {
   );
 };
 
-export default Specifications;
+export default WorkCulture;

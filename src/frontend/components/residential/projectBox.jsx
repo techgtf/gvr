@@ -52,9 +52,9 @@ export default function ProjectBox({ projectsData, loading, error }) {
                                 {/* <ZoomOut initialScale={1.5} duration={2}> */}
                                 {
                                     window.innerWidth > 768 ?
-                                        <img className='lg:min-h-[500px] w-full object-cover' src={`${CONFIG.VITE_APP_STORAGE}${data?.thumbnail}`} alt={`${data?.name} image`} />
+                                        <img className='lg:min-h-[500px] w-full object-cover' src={`${data?.thumbnail}`} alt={`${data?.name} image`} />
                                         :
-                                        <img src={`${CONFIG.VITE_APP_STORAGE}${data?.thumbnail}`} alt={`${data?.name} image`} />
+                                        <img src={`${data?.thumbnail}`} alt={`${data?.name} image`} />
                                 }
                                 {/* </ZoomOut> */}
                             </div>

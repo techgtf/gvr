@@ -1,7 +1,7 @@
 import { IoIosMail } from "react-icons/io";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { useCountries } from "use-react-countries";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import * as CONFIG from "../../../../config";
@@ -180,6 +180,85 @@ const EnquiryForm = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const fetchAnotherAPI = async (name, number, email, message) => {
+    const response = await fetch(
+      "https://greatvalue.realeasy.in/IVR_Inbound.aspx?UID=fourqt&PWD=wn9mxO76f34=&f=m&con=" +
+        number +
+        "&email=" +
+        email +
+        "&name=" +
+        name +
+        "&Remark=" +
+        message +
+        "&src=website&ch=MS"
+    );
+
+    return response;
+  };
+
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setFormValues((state) => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
+  const formSubmitHandler = async (e) => {
+    debugger;
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", formValues.name);
+    formData.append("email", formValues.email);
+    formData.append("phone", formValues.phone);
+    formData.append("message", formValues.message);
+    formData.append("country_code", selectedCountry);
+
+    try {
+      const response = await fetch(DATA_ASSET_URL + "contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      // Check if response is OK before parsing
+      if (!response.ok) {
+        throw new Error(`Request Error`);
+      }
+
+      const responseData = await response.json();
+
+      if (responseData.errors) {
+        setErrors(responseData.errors);
+      }
+
+      if (responseData.status && responseData.statusCode === 200) {
+        debugger;
+        const apiData = await fetchAnotherAPI(
+          formValues.name,
+          formValues.phone,
+          formValues.email,
+          formValues.message
+        );
+        // const apiRespose = await apiData.json();
+        if (apiData.status !== 200 && !apiData.ok) {
+          throw new Error("API Error");
+        }
+
+        alert("Message sent successfully");
+        setFormValues({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        setErrors({});
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   return (
     <section className="plans px-5 md:pr-12 md:pl-[0px] py-10 md:py-20 flex flex-wrap justify-between">

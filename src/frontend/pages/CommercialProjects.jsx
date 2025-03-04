@@ -117,7 +117,7 @@ const projects = [
       },
 
       {
-        name: "JHARKHAND BHAWAN",
+        name: "WORLI MUMBAI",
         link: "",
         address: "Vasant Vihar, New Delhi",
         address: "Vasant Vihar, New Delhi",
@@ -515,12 +515,13 @@ const CommercialProjectSection = ({ project, gallery, innerProjects }) => {
 
                     {[
                       "COMPLEX MADANGIR",
-                      "JHARKHAND BHAWAN",
+                      "WORLI MUMBAI",
                       "GAP",
                       "PERNIA",
                       "PERNIA'S POP-UP STUDIO",
                     ].includes(proj.name) ? (
-                      proj.name === "COMPLEX MADANGIR" ? (
+                      proj.name === "COMPLEX MADANGIR" ||
+                      proj.name === "WORLI MUMBAI" ? (
                         <p className="lg:basis-[25%]">High Street Retail</p>
                       ) : proj.name === "PERNIA'S POP-UP STUDIO" ? (
                         <p className="lg:basis-[25%]">Retail Store</p>

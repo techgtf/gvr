@@ -17,6 +17,7 @@ import { ImPageBreak } from "react-icons/im";
 import { PiResize } from "react-icons/pi";
 import { MdOutlineSettingsInputComponent } from "react-icons/md";
 import { TiMessages } from "react-icons/ti";
+import { MdOutlineCategory } from "react-icons/md";
 
 const Sidebar = (props) => {
   const [pages, setPages] = useState(null);
@@ -143,6 +144,17 @@ const Sidebar = (props) => {
             </span>
             <span>Projects</span>
           </Link>
+
+          <NavLink
+            exact
+            className="sidebar_link hasSubMenu"
+            to={`${CONFIG.ADMIN_ROOT}category`}
+          >
+            <span className="icon">
+              <MdOutlineCategory size={26} />
+            </span>
+            <span>Category</span>
+          </NavLink>
 
           <NavLink
             exact
@@ -456,19 +468,33 @@ const Sidebar = (props) => {
                   <span>Gallery</span>
                 </NavLink>
 
+                <div className="divider w-full block text-xs text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
+                  <span className="text-center mx-auto table bg-white relative px-2">
+                    Gallery
+                  </span>
+                </div>
+
+                <NavLink
+                  className="sub_menu_link"
+                  to={`${CONFIG.ADMIN_ROOT}gallery/work-culture`}
+                >
+                  <MdOutlineSettingsInputComponent size={16} className="mr-2" />
+                  <span>Work Culture</span>
+                </NavLink>
+
                 <div className="divider w-full block  text-[#666] tracking-[3px] my-4 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-px before:bg-[#ccc]">
                   <span className="text-center mx-auto table bg-white relative px-2 uppercase text-[10px]">
                     Common
                   </span>
                 </div>
 
-                <NavLink
+                {/* <NavLink
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}category`}
                 >
                   <MdOutlineSettingsInputComponent size={16} className="mr-2" />
                   <span>Category</span>
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink
                   className="sub_menu_link"
@@ -506,13 +532,13 @@ const Sidebar = (props) => {
                   <span>Contact Query</span>
                 </NavLink>
 
-                <NavLink
+                {/* <NavLink
                   className="sub_menu_link"
                   to={`${CONFIG.ADMIN_ROOT}projects-query`}
                 >
                   <TiMessages size={18} className="mr-2" />
                   <span>Projects Query</span>
-                </NavLink>
+                </NavLink> */}
               </>
             )}
           </div>

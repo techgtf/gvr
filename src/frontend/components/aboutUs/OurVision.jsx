@@ -27,7 +27,7 @@ const OurVision = ({ visionData, missionData }) => {
       <div className="flex justify-between items-center xl:py-[50px] py-[3.5rem] flex-wrap max-w-[85%]">
         <img
           className="w-[350px] h-[350px] reveal w-[100%] object-contain"
-          src={`${CONFIG.VITE_APP_STORAGE}${visionData.image}`}
+          src={`${visionData.image}`}
           // src="assets/frontend/images/aboutus/vision_and_mission.webp"
           alt="vision_and_mission"
         />

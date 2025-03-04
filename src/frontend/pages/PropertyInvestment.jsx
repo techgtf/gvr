@@ -3,6 +3,8 @@ import * as CONFIG from "../../../config";
 import { lazy } from "react";
 import useFetchData from "../apiHooks/useFetchData";
 import Loader from "../../common/Loader/loader";
+import CommonPera from "../components/CommonPera";
+import SlideIn from "../components/Animations/SlideIn";
 
 const HeroSectionAboutUs = lazy(() =>
   import("../components/aboutUs/HeroSectionAboutUs")
@@ -19,7 +21,7 @@ const ProperyInvestment = () => {
       const pageValues = Object.values(pageData); 
       return {
           banner: {
-              image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+              image: `${pageValues[0]?.image || ""}`,
               heading: pageValues[0]?.heading || "Default Heading"
           }
       };
@@ -65,8 +67,8 @@ const ProperyInvestment = () => {
       </Helmet>
       <section className="bg-[#EFF5FA]">
         <HeroSectionAboutUs
-          img={banner.image}
-          heading={banner.heading}
+          img={banner?.image}
+          heading={banner?.heading}
         />
         <div className="flex xl:mt-[4rem] mt-[2rem] flex-wrap justify-between items-center max-w-[90%] xl:max-w-[85%] mx-auto my-0">
           {" "}

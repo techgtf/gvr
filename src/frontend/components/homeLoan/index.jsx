@@ -52,7 +52,7 @@ export default function Index({ data }) {
                       <img
                         className="w-[70%]"
                         src={data?.image || ""}
-                        alt={data.alt || "logos"}
+                        alt={data?.alt || "logos"}
                       />
                     </div>
                   ))}

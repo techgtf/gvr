@@ -53,31 +53,22 @@ const OurVerticals = ({ data: pageData }) => {
                   <p className="my-[1rem] text-justify xl:!mt-[2.7rem] common_pera">
                     {singleData.description ? singleData.description : null}
                   </p>
-                  {/* <p className="mb-[1rem] text-[14px]">
-                    Lorem Ipsum has been the industry's standard dummy text ever since
-                    the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                  </p> */}
                   <div>
-                    <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
-                      <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
-                        {singleData.price || "NA"}
-                        <span className="block text-right xl:mr-[2.45rem] mr-[1.2rem] text-[10px] tracking-[0.5px]">
-                          Ownwards
+                    <div className="flex justify-between items-center flex-wrap ">
+                      <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                        <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">
+                          Asset Under Management
                         </span>
+                        {singleData.price || "NA"}
                       </h3>
                       <div className="basis-[65%]">
                         <p className="common_pera text-justify">
-                          {singleData.short_description}
+                          {singleData?.short_description}
                         </p>
-                        {/* <p className="text-[12px]">
-                          GV Finance delivers tailored financial solutions that
-                          empower businesses and individuals to optimize cash flow,
-                          secure investments.
-                        </p> */}
                       </div>
                     </div>
                   </div>
+
                   <div className="flex justify-center mt-[1rem] w-[92%]">
                     <CommonBtn
                       to={BASE_ROOT + "coming-soon"}
@@ -114,27 +105,17 @@ const OurVerticals = ({ data: pageData }) => {
                   <p className="my-[1rem] text-justify !mt-[2.7rem] common_pera">
                     {singleData.description}
                   </p>
-                  {/* <p className="mb-[1rem] text-[14px]">
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book.
-            </p> */}
-                  <div>
-                    <div className="flex justify-between items-center flex-wrap my-[2.5rem]">
-                      <h3 className="sectionHeading  flex flex-col justify-center border-opacity-[0.5] h-[112px] border-r-[1px] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[17px] midlandfontmedium text-primary">
-                        {singleData.price || "NA"}
-                        <span className="block xl:mr-[2.45rem] mr-[1.2rem] text-right text-[10px] tracking-[0.5px]">
-                          Ownwards
-                        </span>
-                      </h3>
-                      <div className="basis-[65%]">
-                        <p className="common_pera text-justify">
-                          {singleData.short_description}
-                        </p>
-                        {/* <p className="text-[12px]">
-                    Empowering visionary entrepreneurs to scale and innovate.
-                  </p> */}
-                      </div>
+                  <div className="flex justify-between items-center flex-wrap ">
+                    <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                      <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">
+                        Asset Under Management
+                      </span>
+                      {singleData.price || "NA"}
+                    </h3>
+                    <div className="basis-[65%]">
+                      <p className="common_pera text-justify">
+                        {singleData?.short_description}
+                      </p>
                     </div>
                   </div>
                   <div className="flex justify-center mt-[1rem] w-[92%]">

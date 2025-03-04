@@ -48,9 +48,12 @@ const Typologies = () => {
   const [isLoadingTableData, setIsLoadingTableData] = useState(false);
   const [isSitebarFormButtonLoading, setIsSitebarFormButtonLoading] =
     useState(false);
+  const [showEditEnableImage, setEditEnableImage] = useState(null);
 
   const typologyRef = useRef(null);
-  const imageRef = useRef(null);
+  const fileRef = useRef(null);
+  const descriptionRef = useRef(null);
+  
 
   const loadList = async (search = "") => {
     setIsLoadingTableData(true);
@@ -90,9 +93,12 @@ const Typologies = () => {
   const addSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
     try {
       const formData = new FormData();
+      formData.append("image", fileRef.current.files[0]);
       formData.append("typology", typologyRef.current.value);
+      formData.append("description", descriptionRef.current.value);
       const response = await Request("admin/typology", "POST", formData);
 
       if (response.status && response.statusCode == 403) {
@@ -119,7 +125,11 @@ const Typologies = () => {
 
     try {
       const formData = new FormData();
+      if(fileRef.current.files[0]){
+        formData.append("image", fileRef.current.files[0]);
+      }
       formData.append("typology", typologyRef.current.value);
+      formData.append("description", descriptionRef.current.value);
       const response = await Request(
         "admin/typology/" + editId + "/update",
         "POST",
@@ -177,7 +187,11 @@ const Typologies = () => {
       setenableEdit(true);
       setEditId(id);
       var result = response.data;
+      if(response.data.image){
+        setEditEnableImage(CONFIG.VITE_APP_STORAGE + response.data.image);
+      }
       typologyRef.current.value = result.typology;
+      descriptionRef.current.value = result.description;
     }
     setIsSitebarFormButtonLoading(false);
   };
@@ -216,6 +230,7 @@ const Typologies = () => {
           <thead>
             <tr className="bg-gray-100 text-left">
               <th className="p-3 border">Name</th>
+              <th className="p-3 border">Description</th>
               <th className="p-3 border">Sub Typology</th>
               <th className="p-3 border">Gallery</th>
               <th className="p-3 border">Status</th>
@@ -225,7 +240,7 @@ const Typologies = () => {
           <tbody>
             {isLoadingTableData && (
               <tr>
-                <td colSpan={4}>
+                <td colSpan={6}>
                   <div className="text-center py-4">
                     <ScaleLoader color="#ddd" className="w-full" />
                   </div>
@@ -237,6 +252,7 @@ const Typologies = () => {
               ? data.map((item, index) => (
                   <tr key={index} className="border-b">
                     <td className="p-3 border">{item.typology}</td>
+                    <td className="p-3 border max-w-[400px]">{item.description}</td>
                     <td className="p-3 border">
                       <Link
                         className="btn btn-primary btn-sm"
@@ -261,7 +277,7 @@ const Typologies = () => {
                         onSelect={handleStatusSelect()}
                       />
                     </td>
-                    <td className="p-3 border flex space-x-2">
+                    <td className="p-3 border">
                       <button
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
@@ -306,7 +322,23 @@ const Typologies = () => {
             >
               <form>
                 <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Typology Name*</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Select Image
+                  </label>
+                  <input
+                    ref={fileRef}
+                    className="border rounded px-3 py-2 w-full"
+                    type="file"
+                  />
+                  {showEditEnableImage && (
+                    <img src={showEditEnableImage} width="100" />
+                  )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Typology Name*
+                  </label>
                   <input
                     ref={typologyRef}
                     className="border rounded px-3 py-2 w-full"
@@ -319,6 +351,25 @@ const Typologies = () => {
                       {errors.typology}
                     </div>
                   )}
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Typology Description
+                  </label>
+                  <textarea
+                    ref={descriptionRef}
+                    className="border rounded px-3 py-2 w-full"
+                    placeholder="Enter Typology Description"
+                    required
+                    rows={4}
+                    type="text"
+                  />
+                  {/* {errors.typology && (
+                    <div className="text-red-500 text-sm mt-1">
+                      {errors.typology}
+                    </div>
+                  )} */}
                 </div>
               </form>
             </SideModal>

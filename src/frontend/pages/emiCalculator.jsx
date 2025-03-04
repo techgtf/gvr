@@ -17,7 +17,7 @@ export default function miECalculator() {
         const pageValues = Object.values(pageData); 
         return {
             banner: {
-                image: `${CONFIG.VITE_APP_STORAGE}${pageValues[0]?.image || ""}`,
+                image: `${pageValues[0]?.image || ""}`,
                 heading: pageValues[0]?.heading || "Default Heading"
             }
         };

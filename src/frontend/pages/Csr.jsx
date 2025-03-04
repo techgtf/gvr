@@ -18,6 +18,7 @@ function Csr() {
     error: pageError,
   } = useFetchData("page-sections", "6");
 
+  console.log(pageData, "pageData");
   // Handle Loading and Errors
   if (pageLoading) return <Loader />;
   if (pageError)
@@ -47,7 +48,7 @@ function Csr() {
       <Helmet>
         <title>Great Value Realty | CSR</title>
       </Helmet>
-      <HeroSection />
+      <HeroSection data={esgBanner} />
 
       <OverviewSection
         heading={esgOverview?.heading || "ESG"}

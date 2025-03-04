@@ -19,7 +19,7 @@ export default function Faqs() {
         if (!banner) return { image: "", heading: "Default Heading" };
         const bannerData = Object.values(banner)?.[0] || {}; 
         return {
-            image: `${CONFIG.VITE_APP_STORAGE}${bannerData.image || ""}`,
+            image: `${bannerData.image || ""}`,
             heading: bannerData.heading || "Default Heading",
             image_alt: bannerData.image_alt || "default alt tag"
         };

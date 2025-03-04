@@ -11,11 +11,13 @@ import SlideIn from "../../Animations/SlideIn";
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function ProjectGallery({ actualImages, renderImages }) {
+function ProjectGallery({ galleryData, sectionHeading, actualImages, renderImages }) {
   const [activeTab, setActiveTab] = useState("actual");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const projectRef = useRef();
+
+
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -28,7 +30,10 @@ function ProjectGallery({ actualImages, renderImages }) {
     document.body.classList.remove("lightbox-open");
   };
 
-  const imageData = activeTab === "actual" ? actualImages : renderImages;
+  const imageData = activeTab === "actual" ? galleryData?.data : renderImages;
+
+  // console.log(imageData);
+
 
   console.log(actualImages);
 
@@ -42,13 +47,13 @@ function ProjectGallery({ actualImages, renderImages }) {
       <div className="w-full">
         <div className="project_gallery_content">
           <FadeIn duration={2} delay={0.5}>
-            <CommonHeading HeadingText="Project Gallery" />
+            <CommonHeading HeadingText={sectionHeading || "Project Gallery"} />
           </FadeIn>
         </div>
 
         <div className="slider mt-10">
           <SlideIn duration={2} delay={0.3}>
-            {Array.from({ length: Math.ceil(imageData.length / 3) }).map((_, slideIndex) => (
+            {Array.from({ length: Math.ceil(imageData?.length / 3) })?.map((_, slideIndex) => (
               <div key={slideIndex} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {imageData
                   .slice(slideIndex * 3, slideIndex * 3 + 3)
@@ -56,7 +61,7 @@ function ProjectGallery({ actualImages, renderImages }) {
                     <img
                       key={index}
                       src={item.image}
-                      alt={item.alt}
+                      alt={`slide ${slideIndex * 3 + index + 1}`}
                       className="w-[400px] h-[250px] my-3 object-cover"
                       onClick={() => openLightbox(slideIndex * 4 + index)}
                     />
@@ -71,7 +76,7 @@ function ProjectGallery({ actualImages, renderImages }) {
             open={open}
             close={closeLightbox}
             index={currentIndex}
-            slides={imageData.map((src) => ({ src }))}
+            slides={imageData.map((src) => ({ src: src.image }))}
             plugins={[Fullscreen, Zoom]}
           />
         )}

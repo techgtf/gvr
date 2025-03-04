@@ -3,6 +3,7 @@ import HeroSectionAboutUs from '../components/aboutUs/HeroSectionAboutUs'
 import CommonHeading from '../components/commonHeading'
 import WorkCulture from '../components/Gallery/WorkCulture'
 import ProjectImages from '../components/Gallery/ProjectImages'
+import * as CONFIG from "../../../config";
 import project1 from "/assets/frontend/images/microsite/gallery/gallery1.webp";
 import project2 from "/assets/frontend/images/microsite/gallery/gallery2.webp";
 import project3 from "/assets/frontend/images/microsite/gallery/gallery3.webp";
@@ -25,8 +26,35 @@ import project19 from "/assets/frontend/images/microsite/sanctuary/gallery/galle
 import project20 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery2.webp"
 import project21 from "/assets/frontend/images/microsite/sanctuary/gallery/gallery3.webp"
 import { Helmet } from 'react-helmet'
+import useFetchData from '../apiHooks/useFetchData'
+import Loader from '../../common/Loader/loader'
 
 function Gallery() {
+  const { data: pageData, loading: pageDataLoading, error: pageDataError } = useFetchData("page-sections", "19");
+
+  // 🔹 Extract Banner Data Safely
+  const extractPageData = (pageData) => {
+      if (!pageData) return { banner: { image: "", heading: "Default Heading" }, overview: {} };
+  
+      const pageValues = Object.values(pageData); 
+      debugger
+
+      return {
+          banner: {
+              image: `${pageValues[0]?.image || ""}`,
+              heading: pageValues[0]?.heading || "Default Heading"
+          },
+          overview: pageValues[1] || {} 
+      };
+  };
+  
+  const { banner, overview } = extractPageData(pageData);
+  // Handle Loading and Errors
+  if (pageDataLoading) return <Loader />;
+  if (pageDataError) return <p className="text-red-500">Error loading Gallery Banner: {pageDataError}</p>;
+
+
+  console.log(banner, overview,"banner, overview");
 
   const projectImagesData = [
     {
@@ -151,16 +179,13 @@ function Gallery() {
 
       </Helmet>
       <HeroSectionAboutUs
-        img={
-          "assets/frontend/images/gallery/hero.webp"
-        }
+        img={banner?.image}
+        alt={banner?.heading || "Banner Image"}
       />
       <div className="overview_section py-20">
         <div className="headingWrap max-w-[85%] max-w-[100%] m-auto text-center">
           <CommonHeading
-            HeadingText={
-              "Moments Captured, Excellence Framed, Legacies in Focus"
-            }
+            HeadingText={overview?.heading || "Overview Heading"}
           />
         </div>
 

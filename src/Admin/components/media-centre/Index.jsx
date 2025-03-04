@@ -178,7 +178,7 @@ const MediaCentre = () => {
     );
     if (response.status && response.statusCode === 200) {
       setData(response.data.data);
-      // setLastPage(response.data.last_page);
+      setLastPage(response.data.last_page);
     }
     setIsLoadingTableData(false);
   };

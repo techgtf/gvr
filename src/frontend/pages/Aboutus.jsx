@@ -61,8 +61,7 @@ const Aboutus = () => {
       </Helmet>
       {banner && (
         <HeroSectionAboutUs
-          img={`${CONFIG.VITE_APP_STORAGE}${banner.image}`}
-          // img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/aboutus/about_us.webp`}
+          img={`${banner.image}`}
           heading={"ABOUT US"}
           extraClassesImg={"objectRight"}
         />
@@ -73,6 +72,19 @@ const Aboutus = () => {
             <CommonHeading
               HeadingText={overview.heading}
               HeadingClass="xl:text-center text-left xl:pb-[0px] pb-[35px]"
+            />
+          </div>
+
+          <div
+            style={{
+              borderTop: "1px solid #b1b1b1",
+              borderBottom: "1px solid #b1b1b1",
+            }}
+            className="content !px-0 !py-[35px] lg:max-w-[85%] w-[100%] m-auto lg:mt-[50px] lg:mb-[50px] mb-[20px] text-center"
+          >
+            <CommonPera
+              PeraClass="text-justify xl:text-center !p-[0px]"
+              PeraText={overviewDescription}
             />
           </div>
           <SlideIn duration={2} delay={0.5}>
