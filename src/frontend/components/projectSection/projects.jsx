@@ -38,6 +38,7 @@ export default function Projects({ heading, apiName }) {
     useImageReveal(".reveal", data)
 
 
+
     return (
         <div className={`projectSection ${window.innerWidth > 767 ? 'reveal_cut_effect' : 'reveal_fade'} 2xl:pt-[120px] lg:pt-[80px] text-center`}>
             <AnimatedHeading
@@ -57,21 +58,21 @@ export default function Projects({ heading, apiName }) {
                             key={index}
                         >
                             <Link
-                                to={item.Link || '#'}
+                                to={item?.Link || '#'}
                                 className="block absolute cursor-pointer left-0 right-0 top-0 bottom-0 z-[2]"
-                                aria-label={`Go to ${item.name || 'project'}`}
+                                aria-label={`Go to ${item?.name || 'project'}`}
                             />
                             <img
                                 className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
-                                src={`${item.image}`}
-                                alt={item.slug}
+                                src={item?.image}
+                                alt={item?.slug}
                             />
 
                             <figcaption
                                 // data-speed="clamp(0.9)"
                                 className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[20px] left-0 right-0 z-[1] px-2"
                             >
-                                {item.name}
+                                {item?.name}
                             </figcaption>
                         </div>
                     )
@@ -107,21 +108,21 @@ export default function Projects({ heading, apiName }) {
                             key={index}
                         >
                             <Link
-                                to={item.Link || '#'}
+                                to={item?.Link || '#'}
                                 className="block absolute cursor-pointer left-0 right-0 top-0 bottom-0 z-[2]"
-                                aria-label={`Go to ${item.name || 'project'}`}
+                                aria-label={`Go to ${item?.name || 'project'}`}
                             />
                             <img
                                 className="img w-full xl:h-[470px] 2xl:h-[520px] h-[300px] object-cover"
-                                src={`${item.image}`}
-                                alt={item.slug}
+                                src={item?.image}
+                                alt={item?.slug}
                             />
 
                             <figcaption
                                 // data-speed="clamp(0.9)"
                                 className="uppercase type tracking-[4px] text-white text-center absolute lg:bottom-[52px] bottom-[20px] left-0 right-0 z-[1] px-2"
                             >
-                                {item.name}
+                                {item?.name}
                             </figcaption>
                         </div>
                     )
