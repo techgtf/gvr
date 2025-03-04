@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } fro
 import axios from "axios";
 import { data, useLocation, useParams } from "react-router-dom";
 import { API_URL, VITE_APP_STORAGE } from "../../../config";
+<<<<<<< HEAD
+import { Helmet } from "react-helmet";
+=======
 import { Helmet } from 'react-helmet'
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,6 +14,7 @@ import drive from "/assets/frontend/images/microsite/location/drive.webp";
 import driveActive from "/assets/frontend/images/microsite/location/driveActive.webp";
 import walk from "/assets/frontend/images/microsite/location/walk.webp";
 import walkActive from "/assets/frontend/images/microsite/location/walkActive.webp";
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 import HeroSection from "../components/microsite/HeroSection";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import About from "../components/microsite/About";
@@ -21,7 +25,10 @@ import Plans from "../components/microsite/Plans";
 import LocationAdvantage from "../components/microsite/LocationAdvantage";
 import ProjectGallery from "../components/microsite/ProjectGallery/ProjectGallery";
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 function Microsite() {
   const location = useLocation();
   const { slug } = useParams();
@@ -39,9 +46,14 @@ function Microsite() {
   const sectionOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   useEffect(() => {
+<<<<<<< HEAD
+    axios
+      .get(`${API_URL}project`)
+=======
     let isMounted = true;
 
     axios.get(`${API_URL}project`)
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
       .then((r) => {
         if (isMounted) {
           setMainData(r.data?.data.data || []);
@@ -58,20 +70,37 @@ function Microsite() {
     return () => { isMounted = false };
   }, [location.pathname]);
 
+<<<<<<< HEAD
+  const basicDetails = mainData?.find((item) => item.slug === slug);
+=======
 
   const basicDetails = mainData?.find((item) => item.slug === slug) || null;
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 
   useEffect(() => {
     if (basicDetails?.id) {
       axios
         .get(`${API_URL}project/${basicDetails.id}/project-sections`)
+<<<<<<< HEAD
+        .then((r) => setSectionData(r.data.data))
+=======
         .then((r) => setSectionData(r.data.data || []))
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
         .catch((err) => console.error("Error fetching sections:", err));
     } else {
       setSectionData([]);
     }
   }, [basicDetails?.id]);
 
+<<<<<<< HEAD
+  // function for get specific section data
+  const fetchSectionData = (endpoint, setter) => {
+    axios
+      .get(`${API_URL}project/${basicDetails.id}/${endpoint}`)
+      .then((r) => setter(r.data.data))
+      .catch((err) => console.error(`Error fetching ${endpoint}:`, err));
+  };
+=======
   const fetchSectionData = useMemo(() => (endpoint, setter) => {
     if (!basicDetails?.id) return;
     axios
@@ -79,8 +108,33 @@ function Microsite() {
       .then((r) => setter(r.data.data || null))
       .catch((err) => console.error(`Error fetching ${endpoint}:`, err));
   }, [basicDetails?.id]);
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 
   useEffect(() => {
+<<<<<<< HEAD
+    if (!sectionData || !basicDetails.id) return;
+    if (sectionData?.some((item) => item.section_type === "2")) {
+      // get amenities data
+      fetchSectionData("amenities", setAmenitiesData);
+    }
+    if (sectionData.some((item) => item.section_type === "3")) {
+      // get priceing
+      fetchSectionData("price", setPriceData);
+    }
+    if (sectionData.some((item) => item.section_type === "4")) {
+      // get highlights
+      fetchSectionData("highlights", setHighlightsData);
+    }
+    if (sectionData.some((item) => item.section_type === "5")) {
+      // get specifications
+      fetchSectionData("specifications", setSpecificationsData);
+    }
+    if (sectionData.some((item) => item.section_type === "7")) {
+      // get floor-pans
+      fetchSectionData("floor-plan", setUnitData);
+    }
+  }, [sectionData, basicDetails?.id]);
+=======
     if (!sectionData.length || !basicDetails?.id) return;
     fetchSectionData("amenities", setAmenitiesData);
     fetchSectionData("price", setPriceData);
@@ -113,12 +167,19 @@ function Microsite() {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, [location.pathname]);
-
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong: {error.message}</div>;
   if (!basicDetails) return <PageNotFound />;
+<<<<<<< HEAD
+
+  return (
+    <>
+      <HeroSection
+        desktopBg={basicDetails.thumbnail}
+=======
 
 
   return (
@@ -177,6 +238,7 @@ function Microsite() {
       </Helmet>
       <HeroSection
         desktopBg={basicDetails.feature_image}
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
         mobileBg={basicDetails.thumbnail}
         scrollText="SCROLL DOWN"
         sectionId="overview"
@@ -199,7 +261,11 @@ function Microsite() {
                   imageSrc={dataItem.image}
                   alt={`${basicDetails.name} ${basicDetails?.location?.address}`}
                   headingText={dataItem.heading}
-                  descriptionText={<div dangerouslySetInnerHTML={{ __html: dataItem.description }} />}
+                  descriptionText={
+                    <div
+                      dangerouslySetInnerHTML={{ __html: dataItem.description }}
+                    />
+                  }
                   reverseWatermark={true}
                 />
               );
@@ -218,9 +284,26 @@ function Microsite() {
               return (
                 <PriceList
                   priceListData={priceData}
-                  headingText={dataItem.heading} />
+                  headingText={dataItem.heading}
+                />
               );
 
+<<<<<<< HEAD
+            case "4": // **************** section_type: '4', heading: 'Highlights', || section_type: '5', heading: 'Specifications',
+              return (
+                <HighlightsSpecifications
+                  highlightsData={highlightsData}
+                  specificationsData={specificationsData}
+                />
+              );
+            case "5": // ****************   section_type: '6', heading: 'Master Plan', || section_type: '7', heading: 'Floor Plans',
+              return (
+                <Plans masterPlanData={sectionData[5]} unitData={unitData} />
+              );
+            case "6": //  section_type: '8', heading: 'Location Advantage',
+              return <LocationAdvantage />;
+            case "7": // section_type: '9', heading: 'Project Gallery',
+=======
 
             case "4": // **************** section_type: '4', Highlights', || section_type: '5', Specifications,
               return (
@@ -262,12 +345,52 @@ function Microsite() {
                   />
                 </React.Fragment>
               )
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
 
             default:
               return null;
           }
         })}
+<<<<<<< HEAD
+
+      {/*
+      <LocationAdvantage
+        locationImage={loaction}
+        driveData={[
+          { image: store, text: 'Sector 104 Market', time: '4 min' },
+          { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '4 min' },
+          { image: school, text: 'Pathways School Noida', time: '5 min' },
+          { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '5 min' },
+          { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '6 min' },
+          { image: college, text: 'Chet Ram Sharma College Of Education', time: '12 min' },
+          { image: mall, text: 'DLF Mall of India', time: '15 min' },
+          { image: hospital, text: 'Jaypee Hospital', time: '16 min' },
+          { image: railway, text: 'Hazrat Nizamuddin Railway Station', time: '37 min' },
+          { image: airport, text: 'Indira Gandhi International Airport', time: '1 hour' },
+        ]}
+        walkData={[
+          { image: mall, text: 'Starling Mall, Plot no 1A, Hazipur, Sector 104, Noida, Uttar Pradesh 201301', time: '8 min' },
+          { image: stadium, text: 'Stadeum, Sector 100, Noida, Uttar Pradesh 201303', time: '10 min' },
+          { image: cafe, text: 'Spezia Bistro, GT 01/02 2nd Floor, Sector 104, Noida, Uttar Pradesh 201301', time: '12 min' },
+          { image: school, text: 'Pathways School Noida', time: '14 min' },
+          { image: store, text: 'Sector 104 Market', time: '15 min' },
+          { image: store, text: 'Serene Clothing, Suman Enclave, Sector 107, Noida, Uttar Pradesh 201303', time: '16 min' },
+        ]}
+        driveTabIcon={drive}
+        driveTabActiveIcon={driveActive}
+        walkTabIcon={walk}
+        walkTabActiveIcon={walkActive}
+        lightboxImages={[{ image: loaction, alt: 'Location Map' }]}
+        description="  Discover homes strategically placed in thriving neighborhoods, offering seamless access to key hubs, schools, and lifestyle conveniences."
+      />
+
+      <ProjectGallery
+        actualImages={[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]}
+      /> */}
+    </>
+=======
     </React.Fragment>
+>>>>>>> a4e3d52cc0a8cbe9294faf4d9760cec7f12272b0
   );
 }
 

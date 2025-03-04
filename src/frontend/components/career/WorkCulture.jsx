@@ -11,14 +11,14 @@ import workPlaceImg4 from "../../../../public/assets/frontend/images/career/work
 import workPlaceImg5 from "../../../../public/assets/frontend/images/career/work-place-img-5.jpg";
 import workPlaceImg6 from "../../../../public/assets/frontend/images/career/work-place-img-6.jpg";
 
-const WorkCulture = ({data}) => {
+const WorkCulture = ({ data }) => {
   const images = [
-    { img: workPlaceImg1, alt: 'Work culture' },
-    { img: workPlaceImg2, alt: 'Work culture' },
-    { img: workPlaceImg3, alt: 'Inclusive work culture' },
-    { img: workPlaceImg4, alt: 'Work culture' },
-    { img: workPlaceImg5, alt: 'Work culture' },
-    { img: workPlaceImg6, alt: 'Work culture' },
+    { img: workPlaceImg1, alt: "Work culture" },
+    { img: workPlaceImg2, alt: "Work culture" },
+    { img: workPlaceImg3, alt: "Inclusive work culture" },
+    { img: workPlaceImg4, alt: "Work culture" },
+    { img: workPlaceImg5, alt: "Work culture" },
+    { img: workPlaceImg6, alt: "Work culture" },
   ];
   const [imageScreen, setImageScreen] = useState(true);
   const containerRef = useRef(null);
@@ -48,16 +48,18 @@ const WorkCulture = ({data}) => {
     <section className="lg:max-w-[79%] max-w-[85%] py-[50px] mb-[40px] max-w-[100%] m-auto">
       {data.heading && (
         <h3 className="sectionHeading uppercase border-b-[1px] pb-[30px] xl:mb-[60px] mb-[30px]  tracking-[5px] text-black midlandfontmedium">
-        {data.heading}
-      </h3>
+          {data.heading}
+        </h3>
       )}
       <div className="flex  flex-wrap justify-between ">
         <div className="text-justify text-[#333333AB] xl:basis-[29%] basis-[100%] text-[15px] font-[500]">
-         {data.description && (
-          <p className="text-justify">
-          {data.description}
-         </p>
-         )} 
+          {data.description && (
+            // <p  >{data.description}</p>
+            <div
+              className="text-justify"
+              dangerouslySetInnerHTML={{ __html: data.description }}
+            />
+          )}
         </div>
         <div
           className="flex flex-wrap xl:basis-[68%] basis-[100%] mt-[20px] xl:mt-[0px]  xl:justify-between justify-start flex-col xl:flex-row"

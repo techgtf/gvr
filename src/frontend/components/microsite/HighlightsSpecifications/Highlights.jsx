@@ -20,7 +20,7 @@ function Highlights({ title = "Highlights", highlightsData = [] }) {
         <FadeIn duration={2} delay={0.2}>
           <CommonHeading HeadingText={title} />
         </FadeIn>
-        <ol className="pt-8" >
+        <ol className="pt-8">
           {highlightsData?.map((highlight, index) => (
             <React.Fragment key={index}>
               <SlideIn duration={2} delay={0.5}>

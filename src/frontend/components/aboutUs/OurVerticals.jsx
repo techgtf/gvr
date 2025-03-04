@@ -54,18 +54,19 @@ const OurVerticals = ({ data: pageData }) => {
                     {singleData.description ? singleData.description : null}
                   </p>
                   <div>
-                
-                <div className="flex justify-between items-center flex-wrap ">
-                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
-                <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">Asset Under Management</span>
-                {singleData.price || "NA"}
-                </h3>
-                <div className="basis-[65%]">
-                  <p className="common_pera text-justify">
-                  {singleData?.short_description}
-                  </p>
-                  </div>
-                  </div>
+                    <div className="flex justify-between items-center flex-wrap ">
+                      <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                        <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">
+                          Asset Under Management
+                        </span>
+                        {singleData.price || "NA"}
+                      </h3>
+                      <div className="basis-[65%]">
+                        <p className="common_pera text-justify">
+                          {singleData?.short_description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex justify-center mt-[1rem] w-[92%]">
@@ -86,7 +87,7 @@ const OurVerticals = ({ data: pageData }) => {
                     className="h-[100%]"
                   />
                 </div>
-                </div>
+              </div>
             ) : (
               <div className="flex items-center justify-between xl:mt-[4rem] mt-[3rem] flex-wrap">
                 <div className="xl:basis-[32%] reveal h-[480px] w-[100%]">
@@ -104,16 +105,18 @@ const OurVerticals = ({ data: pageData }) => {
                   <p className="my-[1rem] text-justify !mt-[2.7rem] common_pera">
                     {singleData.description}
                   </p>
-             <div className="flex justify-between items-center flex-wrap ">
-                <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
-                <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">Asset Under Management</span>
-                {singleData.price || "NA"}
-                </h3>
-                <div className="basis-[65%]">
-                  <p className="common_pera text-justify">
-                  {singleData?.short_description}
-                  </p>
-                  </div>
+                  <div className="flex justify-between items-center flex-wrap ">
+                    <h3 className="sectionHeading flex flex-col justify-center h-[112px] border-r-[1px] border-opacity-[0.5] basis-[29%] border-r-[#00000080] text-center tracking-[4px] !text-[14px] midlandfontmedium text-primary">
+                      <span className="midlandfontmedium text-primary text-[6px] mb-2 mx-2">
+                        Asset Under Management
+                      </span>
+                      {singleData.price || "NA"}
+                    </h3>
+                    <div className="basis-[65%]">
+                      <p className="common_pera text-justify">
+                        {singleData?.short_description}
+                      </p>
+                    </div>
                   </div>
                   <div className="flex justify-center mt-[1rem] w-[92%]">
                     {" "}

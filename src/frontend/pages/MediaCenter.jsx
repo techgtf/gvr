@@ -41,7 +41,8 @@ function MediaCenter() {
     };
   };
 
-  const { mediaBanner, mediaOverview, mediaCentre } = extractBannerData(pageData);
+  const { mediaBanner, mediaOverview, mediaCentre } =
+    extractBannerData(pageData);
 
   return (
     <>
@@ -50,7 +51,7 @@ function MediaCenter() {
       </Helmet>
 
       <HeroSectionAboutUs
-        img={mediaBanner?.image }
+        img={mediaBanner?.image}
         heading={mediaBanner?.heading}
         extraClassesImg={"objectRight"}
       />

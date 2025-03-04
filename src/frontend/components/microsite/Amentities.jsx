@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Amentities({
   AmentitiesData = null,
   images = [],
-  headingText = "Amentities"
+  headingText = "Amentities",
 }) {
   const sectionRef = useRef(null);
   const location = useLocation();
@@ -39,12 +39,16 @@ function Amentities({
 
     return () => {
       animation.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // ✅ Proper cleanup
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // ✅ Proper cleanup
     };
   }, [location.pathname]); // ✅ Ensures animation resets when route changes
 
   return (
-    <section className="amentities relative py-10 md:py-14" id="amenities" ref={sectionRef}>
+    <section
+      className="amentities relative py-10 md:py-14"
+      id="amentities"
+      ref={sectionRef}
+    >
       <div className="grid grid-cols-12 gap-5 md:gap-20 px-5 md:px-12">
         <div className="sm:col-span-3 col-span-12">
           <div className="about_heading text-center md:text-start">
@@ -55,21 +59,26 @@ function Amentities({
         </div>
         <div className="sm:col-span-9 col-span-12">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-4">
-            {AmentitiesData && AmentitiesData.amenities_icons.map((item, i) => (
-              <>
-                <div
-                  key={i}
-                  className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
-                >
-                  <div className="icon">
-                    <img src={item['amenities'].icons} alt={`${item['amenities'].title} Icon`} className="w-[2.5rem]" />
+            {AmentitiesData &&
+              AmentitiesData.amenities_icons.map((item, i) => (
+                <>
+                  <div
+                    key={i}
+                    className="amentity py-3 flex flex-col md:flex-row justify-center md:justify-start gap-5 items-center"
+                  >
+                    <div className="icon">
+                      <img
+                        src={item["amenities"].icons}
+                        alt={`${item["amenities"].title} Icon`}
+                        className="w-[2.5rem]"
+                      />
+                    </div>
+                    <div className="text uppercase text-center md:text-start">
+                      <p>{item["amenities"].title} ffff</p>
+                    </div>
                   </div>
-                  <div className="text uppercase text-center md:text-start">
-                    <p>{item['amenities'].title} ffff</p>
-                  </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
           </div>
         </div>
       </div>

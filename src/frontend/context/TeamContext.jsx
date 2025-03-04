@@ -7,11 +7,12 @@ export const TeamContext = createContext();
 
 export const TeamProvider = ({ children }) => {
   const [allProfile, setAllProfile] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     axios
-      .get(`${DATA_ASSET_URL}team`) 
+      .get(`${DATA_ASSET_URL}team`)
       .then((response) => {
         setAllProfile(response.data.data); // Set the blog data
         setLoading(false);
@@ -67,7 +68,7 @@ export const TeamProvider = ({ children }) => {
     );
   };
 
-  console.log(allProfile,"allProfile")
+  console.log(allProfile, "allProfile");
   return (
     <TeamContext.Provider
       value={{
