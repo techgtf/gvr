@@ -173,7 +173,7 @@ const Projects = () => {
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 p-2 text-left">Project</th>
-              <th className="border border-gray-300 p-2 text-left">Status</th>
+              {/* <th className="border border-gray-300 p-2 text-left">Status</th> */}
               {/* <th className="border border-gray-300 p-2 text-left">Featured</th> */}
               <th className="border border-gray-300 p-2 text-left">Actions</th>
             </tr>
@@ -182,7 +182,7 @@ const Projects = () => {
           <tbody>
             {isLoading && (
               <tr className="border-b border-gray-200">
-                <td colSpan={3}>
+                <td colSpan={2}>
                 <div className="text-center py-4">
                   <ScaleLoader color="#ddd" className="w-full" />
                 </div>
@@ -213,14 +213,14 @@ const Projects = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="py-2 px-4">
+                  {/* <td className="py-2 px-4">
                     <CustomDropdown
                       className="border rounded px-3 py-2 w-full"
                       defaultVal="Select --"
                       options={statusOptions}
                       onSelect={handleStatusSelect}
                     />
-                  </td>
+                  </td> */}
                   {/* <td className="py-2 px-4">
                     <CustomSwitch
                       className="w-full"
