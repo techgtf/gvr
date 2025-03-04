@@ -228,7 +228,7 @@ function AnandamMicrosite() {
                 <meta name="keywords" content="Great Value realty, Anandam Sector 107 Noida, Great Value Anandam, Sector 107 Noida,Great Value Anandam Noida, Best Great Value Anandam" />
                 <meta name="description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
                 <meta name="google-site-verification" content="Ma-arPYmEe7u20NJ-jsuiHjD1p2HSShiEPD4m8s3bL8" />
-                <link rel="canonical" href="https://greatvaluerealty.com/anandam" />
+                <link rel="canonical" href="https://greatvaluerealty.com/anandam-apartments-noida" />
                 <meta name="distribution" content="Global" />
                 <meta name="Language" content="English" />
                 <meta name="doc-type" content="Public" />
@@ -244,7 +244,7 @@ function AnandamMicrosite() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Explore Anandam Noida – Luxury Residences by Great Value" />
                 <meta property="og:description" content="Own a home at Anandam by Great Value Realty in Noida Sector 107. Spacious, well-designed, and perfect for your modern lifestyle." />
-                <meta property="og:url" content="https://greatvaluerealty.com/anandam" />
+                <meta property="og:url" content="https://greatvaluerealty.com/anandam-apartments-noida" />
                 <meta property="og:site_name" content="Great Value Anandam" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />

@@ -33,7 +33,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 function CharityInitiatives() {
     const location = useLocation();
-    const images = [charity, charity2, charity3, charity4, charity5, charity6, charity7, charity8];
+    const images = [
+        {
+            src: charity,
+            alt: "Children’s welfare"
+        },
+        {
+            src: charity2,
+            alt: "Charity education and support"
+        },
+        {
+            src: charity3,
+            alt: "Healthcare and community Support"
+        },
+        {
+            src: charity4,
+            alt: "Charity healthcare services"
+        },
+        {
+            src: charity5,
+            alt: "Charity healthcare services"
+        },
+        {
+            src: charity6,
+            alt: "Healthcare services"
+        },
+        {
+            src: charity7,
+            alt: "Education and support"
+        },
+        {
+            src: charity8,
+            alt: "Charity-focused education"
+        },
+    ];
 
     const prevRef = useRef(null);
     const nextRef = useRef(null);
@@ -126,8 +159,8 @@ function CharityInitiatives() {
                             {images.map((item, i) => (
                                 <SwiperSlide key={i}>
                                     <img
-                                        src={item}
-                                        alt={`Charity Image ${i + 1}`}
+                                        src={item?.src}
+                                        alt={item?.alt}
                                         className="w-full md:w-[350px] h-[250px] object-cover cursor-pointer"
                                         onClick={() => openLightbox(i)}
                                     />

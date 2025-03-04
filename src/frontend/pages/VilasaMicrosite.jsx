@@ -170,7 +170,7 @@ function VilasaMicrosite() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Explore Vilasa | Premium 2 & 3 BHK Homes in Sohna" />
                 <meta property="og:description" content="Find your ideal home at Vilasa by Great Value in Sector 6, Sohna. Modern design, spacious layouts & premium facilities for your lifestyle." />
-                <meta property="og:url" content="https://greatvaluerealty.com/vilasa" />
+                <meta property="og:url" content="https://greatvaluerealty.com/vilasa-sector-6-sohna" />
                 <meta property="og:site_name" content="Great Value Realty Vilasa" />
                 <meta property="og:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.webp" />
                 <meta name="twitter:card" content="summary" />

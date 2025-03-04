@@ -7,7 +7,8 @@ function MicrositeMenu() {
   const sectionRefs = useRef({});
 
   const menu = [
-    { name: "OVERVIEW", id: "overview" },
+    { name: "DETAILS", id: "overview" },
+    { name: "OVERVIEW", id: "about" },
     { name: "AMENITIES", id: "amenities" },
     { name: "PRICE LIST", id: "pricelist" },
     { name: "HIGHLIGHTS & SPECIFICATIONS", id: "highlightsSpecifications" },
@@ -75,7 +76,7 @@ function MicrositeMenu() {
               active === item.id ? "text-primary font-semibold" : ""
             }`}
           >
-            <Link to={item.id} spy={true} smooth={true} duration={500} offset={-120}>
+            <Link to={item.id} spy={true} smooth={true} duration={500} offset={100}>
               {item.name}
             </Link>
           </li>

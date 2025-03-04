@@ -19,23 +19,31 @@ import icon10 from "/assets/frontend/images/career/coreValues/10.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const CoreValues = () => {
-    useEffect(() => {
-        const sections = gsap.utils.toArray('.value');
-        if (sections.length) {
-          gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '.corevalues',
-              pin: true,
-              scrub: 1,
-              snap: 1 / (sections.length - 1),
-              start: "top 10%",
-              end: () => `+=${document.querySelector('.values').scrollWidth}`,
-            },
-          });
-        }
-      }, []);
+ useEffect(() => {
+  const sections = gsap.utils.toArray('.value');
+  const scrollFactor = 0.6; // Custom Scroll Width Factor
+
+  if (sections.length) {
+    const sectionWidth = sections[0].offsetWidth; // Single card width
+    const reducedWidth = sectionWidth * (sections.length * scrollFactor); // Final scrollable width based on scrollFactor
+
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.corevalues',
+        pin: true,
+        scrub: 1,
+        snap: 1 / (sections.length - 1),
+        start: "top 10%",
+        end: `+=${reducedWidth}`, // Accurate scroll width without extra gap
+        invalidateOnRefresh: true, // Important for responsiveness
+      },
+    });
+  }
+}, []);
+
+  
 
   return (
     <section className="bg-[#EFF5FA] py-[50px] corevalues h-screen pb-0 relative overflow-hidden">

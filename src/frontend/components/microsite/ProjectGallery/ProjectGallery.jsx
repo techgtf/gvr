@@ -71,7 +71,7 @@ function ProjectGallery({ actualImages, renderImages }) {
             open={open}
             close={closeLightbox}
             index={currentIndex}
-            slides={imageData.map((src) => ({ src }))}
+            slides={imageData.map((img) => ({ src: img.image }))}
             plugins={[Fullscreen, Zoom]}
           />
         )}
