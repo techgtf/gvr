@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('csr_communities', function (Blueprint $table) {
+        Schema::create('esg_social', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('short_description')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('csr_communities');
+        Schema::dropIfExists('esg_social');
     }
 };

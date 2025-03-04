@@ -16,9 +16,7 @@ use App\Http\Controllers\Admin\Project\PriceController;
 
 Route::group(['prefix'=>'admin'],function(){
     Route::group(['middleware' => ['admin.auth']], function () {
-        Route::apiResource('projectdata/price', PriceController::class)->except(['update']);
+        Route::resource('projectdata/price', PriceController::class)->except(['update']);
         Route::post('projectdata/price/{id}/update', [PriceController::class,'update']);
     });
 });
-    
-

@@ -181,152 +181,176 @@ const SubTypologies = () => {
 
   return (
     <>
-  <div className="flex title_col justify-between items-center">
-    <h4 className="page_title">{typologydata.typology}</h4>
-  </div>
+      <div className="flex title_col justify-between items-center">
+        <h4 className="page_title">{typologydata.typology}</h4>
+      </div>
 
-  <div className="flex flex-wrap -mx-4">
-    <div className="px-4 w-full md:w-1/2">
-      <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
-        <div className="flex items-center justify-between">
-          <h5 className="mb-0">All Sub Typologies</h5>
-          <div className="searchInput ml-auto">
-            <input
-              type="text"
-              className="border rounded px-3 py-2 w-full"
-              placeholder="Search by name"
-              onChange={findHandler}
-            />
+      <div className="flex flex-wrap -mx-4">
+        <div className="px-4 w-full md:w-1/2">
+          <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
+            <div className="flex items-center justify-between">
+              <h5 className="mb-0">All Sub Typologies</h5>
+              <div className="searchInput ml-auto">
+                <input
+                  type="text"
+                  className="border rounded px-3 py-2 w-full"
+                  placeholder="Search by name"
+                  onChange={findHandler}
+                />
+              </div>
+            </div>
+
+            <table className="mt_40 w-full border-collapse border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-3 border border-gray-300">Name</th>
+                  <th className="p-3 border border-gray-300">Transfer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {isLoadingTableData ? (
+                  <tr>
+                    <td colSpan={2} className="text-center p-4">
+                      <div className="text-center">
+                        <ScaleLoader color="#ddd" className="w-full" />
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  <>
+                    {data?.length > 0 ? (
+                      data.map((item, index) => (
+                        <tr key={index} className="border border-gray-300">
+                          <td className="p-3">{item.typology}</td>
+                          <td className="p-3">
+                            <button
+                              className="bg-blue-500 text-white px-4 py-2 rounded"
+                              onClick={() => addInTypology(item.id)}
+                            >
+                              {isTargeting === item.id
+                                ? "loading"
+                                : `Click to Add in ${typologydata.typology}`}
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td
+                          colSpan={2}
+                          className="text-center p-4 font-semibold"
+                        >
+                          No Record Found!
+                        </td>
+                      </tr>
+                    )}
+                  </>
+                )}
+              </tbody>
+            </table>
+
+            {!isLoadingTableData && totalPage > 0 ? (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={lastPage}
+                onPageChange={handlePageChange}
+              />
+            ) : null}
           </div>
         </div>
 
-        <table className="mt_40 w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-3 border border-gray-300">Name</th>
-              <th className="p-3 border border-gray-300">Transfer</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoadingTableData ? (
-              <tr>
-                <td colSpan={2} className="text-center p-4">
-                  <ScaleLoader color="#ddd" className="w-full" />
-                </td>
-              </tr>
-            ) : (
-              <>
-                {data?.length > 0 ? (
-                  data.map((item, index) => (
+        <div className="px-4 w-full md:w-1/2">
+          <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
+            <div className="flex items-center justify-between">
+              <h5>{typologydata.typology} Typology</h5>
+              <div className="searchInput ml-auto">
+                <input
+                  type="text"
+                  className="border rounded px-3 py-2 w-full"
+                  placeholder="Search by name"
+                  onChange={findHandler2}
+                />
+              </div>
+            </div>
+
+            <table className="mt_40 w-full border-collapse border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-3 border border-gray-300">Name</th>
+                  <th className="p-3 border border-gray-300">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {isLoadingTableData2 ? (
+                  <tr>
+                    <td colSpan={2} className="text-center p-4">
+                      <div className="text-center">
+                        <ScaleLoader color="#ddd" className="w-full" />
+                      </div>
+                    </td>
+                  </tr>
+                ) : typologySubTypologiesList?.length > 0 ? (
+                  typologySubTypologiesList.map((item, index) => (
                     <tr key={index} className="border border-gray-300">
-                      <td className="p-3">{item.typology}</td>
+                      <td className="p-3">{item.sub_typology}</td>
                       <td className="p-3">
                         <button
-                          className="bg-blue-500 text-white px-4 py-2 rounded"
-                          onClick={() => addInTypology(item.id)}
+                          className="bg-red-500 text-white px-4 py-2 rounded"
+                          onClick={() => deleteHandler(item.id)}
                         >
-                          {isTargeting === item.id
-                            ? "loading"
-                            : `Click to Add in ${typologydata.typology}`}
+                          {isTargeting === item.id ? "loading" : `Remove`}
                         </button>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={2} className="text-center p-4 font-semibold">No Record Found!</td>
+                    <td colSpan={2} className="text-center p-4 font-semibold">
+                      No Record Found!
+                    </td>
                   </tr>
                 )}
-              </>
-            )}
-          </tbody>
-        </table>
+              </tbody>
+            </table>
 
-        {!isLoadingTableData && totalPage > 0 ? (
-          <Pagination currentPage={currentPage} totalPages={lastPage} onPageChange={handlePageChange} />
-        ) : null}
-      </div>
-    </div>
-
-    <div className="px-4 w-full md:w-1/2">
-      <div className="card mt-4 card_style1 p-4 bg-white shadow rounded-lg">
-        <div className="flex items-center justify-between">
-          <h5>{typologydata.typology} Typology</h5>
-          <div className="searchInput ml-auto">
-            <input
-              type="text"
-              className="border rounded px-3 py-2 w-full"
-              placeholder="Search by name"
-              onChange={findHandler2}
-            />
+            {!isLoadingTableData2 && totalPage2 > 0 ? (
+              <Pagination
+                currentPage={currentPage2}
+                totalPages={lastPage2}
+                onPageChange={handlePageChange2}
+              />
+            ) : null}
           </div>
         </div>
-
-        <table className="mt_40 w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-3 border border-gray-300">Name</th>
-              <th className="p-3 border border-gray-300">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoadingTableData2 ? (
-              <tr>
-                <td colSpan={2} className="text-center p-4">
-                  <ScaleLoader color="#ddd" className="w-full" />
-                </td>
-              </tr>
-            ) : typologySubTypologiesList?.length > 0 ? (
-              typologySubTypologiesList.map((item, index) => (
-                <tr key={index} className="border border-gray-300">
-                  <td className="p-3">{item.sub_typology}</td>
-                  <td className="p-3">
-                    <button
-                      className="bg-red-500 text-white px-4 py-2 rounded"
-                      onClick={() => deleteHandler(item.id)}
-                    >
-                      {isTargeting === item.id ? "loading" : `Remove ${typologydata.typology}`}
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={2} className="text-center p-4 font-semibold">No Record Found!</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-
-        {!isLoadingTableData2 && totalPage2 > 0 ? (
-          <Pagination currentPage={currentPage2} totalPages={lastPage2} onPageChange={handlePageChange2} />
-        ) : null}
       </div>
-    </div>
-  </div>
-  {showSidebar && (
-    <>
-      <SidebarPortal className="portal">
-        <SideModal onCancel={cancelHandler} onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}>
-          <div>
-            <label className="block mb-2 font-medium">Sub Typology Name*</label>
-            <input
-              ref={typologyRef}
-              className="border rounded px-3 py-2 w-full"
-              placeholder="Enter sub typology name"
-              required
-              type="text"
-            />
-            {errors.typology && <div className="text-red-500 mt-1">{errors.typology}</div>}
-          </div>
-        </SideModal>
-      </SidebarPortal>
-      <BackdropPortal />
+      {showSidebar && (
+        <>
+          <SidebarPortal className="portal">
+            <SideModal
+              onCancel={cancelHandler}
+              onSubmit={enableEdit ? updateAmenityHandler : addSubmitHandler}
+            >
+              <div>
+                <label className="block mb-2 font-medium">
+                  Sub Typology Name*
+                </label>
+                <input
+                  ref={typologyRef}
+                  className="border rounded px-3 py-2 w-full"
+                  placeholder="Enter sub typology name"
+                  required
+                  type="text"
+                />
+                {errors.typology && (
+                  <div className="text-red-500 mt-1">{errors.typology}</div>
+                )}
+              </div>
+            </SideModal>
+          </SidebarPortal>
+          <BackdropPortal />
+        </>
+      )}
     </>
-  )}
-</>
-
-
   );
 };
 

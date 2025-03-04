@@ -7,8 +7,14 @@ import SlideIn from "../../Animations/SlideIn";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Specifications({ title = "Specifications", specifications = [], altImage }) {
+function Specifications({
+  title = "Specifications",
+  specifications = [],
+  altImage,
+}) {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+
+  // console.log(specifications);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,23 +34,29 @@ function Specifications({ title = "Specifications", specifications = [], altImag
         <div
           className="grid grid-cols-12 mt-8 pr-5 specifications-scroll-container"
           style={{
-            backgroundImage: specifications.length > 0 ? "none" : `url(${altImage})`,
+            backgroundImage:
+              specifications?.length > 0 ? "none" : `url(${altImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         >
-          {specifications.map((spec, index) => (
+          {specifications?.map((spec, index) => (
             <div key={index} className="col-span-12 lg:col-span-6">
               {isDesktop ? (
-                <SlideIn delay={0.2}>
-                  <h4 className="font-semibold">{spec.title}</h4>
-                  {spec.items?.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex gap-3 py-5">
+                <SlideIn delay={0.5} key={index}>
+                  {/* {console.log('here',spec.project_specification_list)} */}
+                  <h4 className="font-semibold">{spec.heading}</h4>
+                  {spec.project_specification_list?.map((item, itemIndex) => (
+                    <div className="flex gap-3 py-5" key={item.id}>
                       <div className="icon">
-                        <img src={item.image} alt={item.description || "Specification image"} className="w-[50px] h-[50px] object-contain" />
+                        <img
+                          src={item.icons}
+                          alt={item.alt || "Specification image"}
+                          className="h-[80%]"
+                        />
                       </div>
-                      <p className="w-60">{item.description}</p>
+                      <p className="w-60">{item.short_description}</p>
                     </div>
                   ))}
                 </SlideIn>
@@ -54,7 +66,11 @@ function Specifications({ title = "Specifications", specifications = [], altImag
                   {spec.items?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex gap-3 py-5">
                       <div className="icon">
-                        <img src={item.image} alt={item.description || "Specification image"} className="w-[50px] h-[50px] object-contain" />
+                        <img
+                          src={item.image}
+                          alt={item.description || "Specification image"}
+                          className="w-[50px] h-[50px] object-contain"
+                        />
                       </div>
                       <p className="w-60">{item.description}</p>
                     </div>

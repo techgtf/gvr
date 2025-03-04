@@ -3,7 +3,7 @@ import CommonAccordion from '../commonAccordion'
 import './styles.css'
 
 
-export default function Index() {
+export default function Index({data}) {
     const accData = [
         {
             title: "Q1: Do Non-Resident Indian nationals need The Reserve Bank of India's permission to acquire property in India?",
@@ -48,7 +48,7 @@ export default function Index() {
     ];
     return (
         <div className='nri_corner_in lg:py-[80px] py-[20px]'>
-            <CommonAccordion data={accData} />
+            <CommonAccordion data={data} />
         </div>
     )
 }

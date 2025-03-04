@@ -5,7 +5,7 @@
 }
 
 .pagination .page-item{
-    margin:0 7px;
+    margin:0 7px!important;
 }
 
 .pagination .page-item .page-link{
@@ -32,6 +32,7 @@
 .pagination .page-item:last-child .page-link{
     padding:6px;
     background:var(--theme_secondary_color);
+    color:#fff;
     border-radius: 100px;
 }
 
@@ -40,12 +41,13 @@
     filter:invert(1)
 }
 
-.pagination .page-item .page-link.disabled{
+.pagination .page-item .page-link[disabled]{
     background:transparent;
     border-color:#333;
+    color:#333;
     opacity:0.3;
 }
 
-.pagination .page-item .page-link.disabled img{
+.pagination .page-item .page-link[disabled] img{
     filter:unset;
 }

@@ -55,7 +55,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}sharanam`,
+        path: `${BASE_ROOT}:slug`,
         element: (
           <ErrorBoundary>
             {/* <Suspense fallback={<Loader />}> */}
@@ -103,42 +103,7 @@ export const UserRoutes = [
           </ErrorBoundary>
         ),
       },
-      {
-        path: `${BASE_ROOT}anandam`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              <Layout>
-                <AnandamMicrosite />
-              </Layout>
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
-      {
-        path: `${BASE_ROOT}sanctuary`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              <Layout>
-                <SanctuaryMicrosite />
-              </Layout>
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
-      {
-        path: `${BASE_ROOT}vilasa`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              <Layout>
-                <VilasaMicrosite />
-              </Layout>
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
+      
       {
         path: `${BASE_ROOT}media`,
         element: (
@@ -146,18 +111,6 @@ export const UserRoutes = [
             {/* <Suspense fallback={<Loader />}> */}
               <Layout>
                 <MediaCenter />
-              </Layout>
-            {/* </Suspense> */}
-          </ErrorBoundary>
-        ),
-      },
-      {
-        path: `${BASE_ROOT}casa-uday`,
-        element: (
-          <ErrorBoundary>
-            {/* <Suspense fallback={<Loader />}> */}
-              <Layout>
-                <GvHomesMicrosite />
               </Layout>
             {/* </Suspense> */}
           </ErrorBoundary>
@@ -246,7 +199,7 @@ export const UserRoutes = [
         ),
       },
       {
-        path: `${BASE_ROOT}blog/:id`,
+        path: `${BASE_ROOT}blog/:slug`,
         element: (
           // <Suspense fallback={<Loader />}>
             <Layout>

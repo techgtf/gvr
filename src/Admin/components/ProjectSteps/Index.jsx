@@ -79,14 +79,14 @@ const ProjectSteps = (props)=>{
 
               <div className="step" key="10">
                 <NavLink
-                  to={`${CONFIG.ADMIN_ROOT}project/${props.projectid}/banner`}
+                  to={`${CONFIG.ADMIN_ROOT}project/${props.projectid}/location`}
                   className="step-trigger"
                 >
                   <span className="circle">
                     <i className="mdi mdi-check"></i>
                   </span>
                   <span className="content">
-                    <span className="title">Banner</span>
+                    <span className="title">Location</span>
                     {/* <span className="subtitle">Step 1</span> */}
                   </span>
                 </NavLink>

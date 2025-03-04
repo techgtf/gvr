@@ -13,10 +13,10 @@ use  App\Http\Controllers\Admin\TeamController;
 |
 */
 
-Route::group(['prefix'=>'admin'],function(){
-    Route::group(['middleware' => ['admin.auth']], function () {
+Route::group(['prefix'=>'admin','middleware'=>'admin.auth'],function(){
+    // Route::group(['middleware' => ['admin.auth']], function () {
         Route::apiResource('team', TeamController::class)->except(['update']);
         Route::post('team/{id}/update', [TeamController::class,'update']);
         Route::post('team/{id}/status', [TeamController::class,'status']);
-    });
+    // });
 });

@@ -8,8 +8,9 @@ import { BASE_ROOT } from '../../../../config'
 import { LatestBlogContext } from '../../context/LatestBlogContext'
 
 
-export default function BlogSection() {
+export default function BlogSection({heading}) {
     const { latestBlog } = useContext(LatestBlogContext);
+    
 
     return (
         <div className='blogSection 2xl:py-16 xl:py-8 py-[50px]'>
@@ -18,7 +19,7 @@ export default function BlogSection() {
                     <div className='left-side lg:w-[42%] w-full lg:pr-[25px] lg:mb-0 mb-10'>
                         <WaterMarkHeading
                             // sectionHeading='Insights That Inspire, Innovate, and Elevate'
-                            sectionHeading='Discover Insights'
+                            sectionHeading={heading}
                         />
                         <div className='links_div lg:mt-14 lg:mb-16 mt-7 mb-12'>
                             <InSightLinks blogData={latestBlog} />

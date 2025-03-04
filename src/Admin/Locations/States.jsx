@@ -109,7 +109,7 @@ const States =  ()=>{
                                         {item.state}
                                     </td>
                                     <td>
-                                        <NavLink to={`${CONFIG.BASE_URL}admin/cities/${item.id}`} className="btn btn_primary btn_sm action_btn">
+                                        <NavLink to={`${CONFIG.ADMIN_ROOT}cities/${item.id}`} className="btn btn_primary btn_sm action_btn">
                                             Cities
                                         </NavLink>
                                     </td>

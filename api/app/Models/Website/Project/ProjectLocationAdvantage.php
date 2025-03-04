@@ -12,13 +12,12 @@ class ProjectLocationAdvantage extends Model
     use HasFactory;
 
 
-    public function getTypeAttribute()
-    {
-  
-    
-        return locationType($this->attributes['type']);
+    // public function getTypeAttribute()
+    // {
+   
+    //     return locationType($this->attributes['type']);
 
-    }
+    // }
 
    
 }

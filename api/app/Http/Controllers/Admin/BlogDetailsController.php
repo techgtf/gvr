@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Admin\CsrCommunities;
+use App\Models\Admin\BlogsDetails;
 
-class CsrCommunitiesController extends Controller
+class BlogDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,12 +22,12 @@ class CsrCommunitiesController extends Controller
         }
         $perPage = $request->input('per_page', 10);
         $page = $request->input('page', 1);
-        $record = CsrCommunities::search($search)->paginate($perPage, ['*'], 'page', $page);
+        $record = BlogsDetails::paginate($perPage, ['*'], 'page', $page);
              
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
-            'message'=>"Success",
+            'message'=>"Success ",
             'data'=>$record
         ]);
     }
@@ -52,15 +52,14 @@ class CsrCommunitiesController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'name' => 'required',
-            'image' => 'required|nullable|mimes:png,jpg,jpeg,webp|max:2048',
-            'short_description' => 'required',
+            'blog_id' => 'required',
+            'heading' => 'required',
+            'description' => 'required',
+            
         ],[
-            'name.required' => 'The Name field is required.',
-            'image.required' => 'The Image field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'short_description.required' => 'This Field is required.',
+            'blog_id.required' => 'This Blog Id field is required',
+            'heading.required' => 'The Name field is required.',
+            'description.required' => 'This Field is required',
         ]);
 
         if($validator->fails()){
@@ -68,49 +67,43 @@ class CsrCommunitiesController extends Controller
             return response()->json([
                 'status' => true,
                 'statusCode' => 403,
-                'message' => 'Fill Mandatory Fields',
+                'message' => 'success',
                 'errors' => $validator->errors(),
             ]); 
 
         }else{
             try{
+                                    
+                $blogDetailsData = new BlogsDetails();
+                $blogDetailsData->blog_id = $request->blog_id;
+                $blogDetailsData->heading = $request->heading;
+                $blogDetailsData->description = $request->description;
                 
-                $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('communities', $name, 'public');
-                
-                $communities = new CsrCommunities();
-                $communities->name = $request->name;
-                $communities->image = $path;
-                $communities->short_description = $request->short_description;
-
-
-                if($communities->save()){
+                if($blogDetailsData->save()){
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
-                        'message'=>"Add Communities Sucessfully ",
-                        'data'=>$communities
+                        'message'=>"Add Blog Details Sucessfully ",
+                        'data'=>$blogDetailsData
                     ]);
-
                 }else{
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>400,
-                        'message'=>"Failed to add Communities"
+                        'message'=>"Failde to Add Blog Details"
                     ]);
-
                 }
     
             }catch(\Exception $e){
+
                 return response()->json([
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
                     'error' => $e
                 ]);
-                
-            }
 
+            }
         }
     }
 
@@ -122,20 +115,24 @@ class CsrCommunitiesController extends Controller
      */
     public function show($id)
     {
-        $result = CsrCommunities::find($id);
+        $result = BlogsDetails::find($id);
         if(!empty($result)){
+
             return response()->json([
                 'status' => true,
                 'statusCode' => 200,
-                'messageg' => 'Get Single Record',                
+                'message' => "Get Single Record",
                 'data' => $result,
             ]);
-        } else {
+
+        }else{
+
             return response()->json([
                 'status' => true,
                 'statusCode' => 200,
-                'message' => 'Matching Record not found',
+                'message' => "Matching record not found",
             ]);
+
         }
     }
 
@@ -161,16 +158,12 @@ class CsrCommunitiesController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'name' => 'required',
-            'image' => 'mimes:png,jpg,jpeg,webp|max:2048',
-            'short_description' => 'required',
-
+            'heading' => 'required',
+            'description' => 'required',
+            
         ],[
-            'name.required' => 'The Name field is required.',
-            'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg, webp)',
-            'image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'short_description.required' => 'This Field is required.',
-
+            'heading.required' => 'The Name field is required.',
+            'description.required' => 'This Field is required',
         ]);
 
         if($validator->fails()){
@@ -180,11 +173,11 @@ class CsrCommunitiesController extends Controller
                 'statusCode' => 403,
                 'message' => 'success',
                 'errors' => $validator->errors(),
-            ]); 
+            ]);
 
         }else{
 
-            $getrecord = CsrCommunities::find($id);
+            $getrecord = BlogsDetails::find($id);
             
             if(!$getrecord){
                 return response()->json([
@@ -195,32 +188,23 @@ class CsrCommunitiesController extends Controller
             }
 
             try{
+                
 
-                if($request->file('image')){
-          
-                    $imagesurl = $getrecord->image;
-                    dltSingleImgFile($imagesurl);
-                    
-                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                    $path = $request->file('image')->storeAs('communities', $name, 'public');
-                    $getrecord->image = $path;
-                }
-
-                $getrecord->name = $request->name;
-                $getrecord->short_description = $request->short_description;
-
-                if($getrecord->save()){              
+                $getrecord->heading = $request->heading;
+                $getrecord->description = $request->description;
+                
+                if($getrecord->save()){
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
-                        'message'=>"Update Communities Sucessfully ",
+                        'message'=>"Updated Blog Sucessfully ",
                         'data'=>$getrecord
                     ]);
                 }else{
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>400,
-                        'message'=>"Failed to update Communities"
+                        'message'=>"Failde to Update Blog"
                     ]);
                 }
     
@@ -229,7 +213,7 @@ class CsrCommunitiesController extends Controller
                     'status'=>false,
                     'statusCode'=>500,
                     'message'=>"Something went wrong",
-                    'error' => $e
+                    // 'error' => $e
                 ]);
             }
         }
@@ -243,18 +227,17 @@ class CsrCommunitiesController extends Controller
      */
     public function destroy($id)
     {
-        $result = CsrCommunities::find($id);
+        $result = BlogsDetails::find($id);
 
         if(!empty($result)){
 
-            dltSingleImgFile($result->image);
             if($result->delete()){
                 return response()->json([
                     'status' => true,
                     'statusCode' => 200,
                     'message' => "Record Deleted",
                     'data' => $result,
-                ]);
+                ]);     
             }
 
             return response()->json([
@@ -262,6 +245,7 @@ class CsrCommunitiesController extends Controller
                 'statusCode' => 500,
                 'message' => "faild to delete records",
             ]);
+
 
         }else{
 
@@ -273,21 +257,4 @@ class CsrCommunitiesController extends Controller
 
         }
     }
-
-
-    public function status(Request $request, $id)
-    {
-        $table = [
-            'tableName' => 'csr_communities',
-            'keyColumnName' => 'id',
-            'keyColumnId' => $id,
-            'updateColumnName' => 'status',
-            'updatecolumnVal' => $request->status
-        ];
-        
-        $result = updateSingleRecord($table);
-        return $result;
-    }
-
-
 }

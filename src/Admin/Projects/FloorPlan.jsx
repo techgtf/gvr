@@ -17,10 +17,20 @@ import Sections from "../components/Project/Sections";
 import { getSubtypology } from "../../config/Function";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AiOutlineEdit } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const statusOptions = [
   { label: "Active", value: "1" },
   { label: "Hide", value: "0" },
+];
+
+const planTypeOptions = [
+  { label: "Unit 1", value: "unit1" },
+  { label: "Unit 2", value: "unit2" },
+  { label: "Unit 3", value: "unit3" },
+  { label: "Unit 4", value: "unit4" },
+  { label: "Unit 5", value: "unit5" },
 ];
 
 const FloorPlan = React.memo(() => {
@@ -55,6 +65,11 @@ const FloorPlan = React.memo(() => {
     image_preview: null,
     image: null,
     price: null,
+    type:null,
+    carpet_area:null,
+    balcony_area:null,
+    super_area:null,
+    more_typology:null
   });
 
   const resetfields = () => {
@@ -64,7 +79,7 @@ const FloorPlan = React.memo(() => {
       size_type: null,
       image: null,
       image_preview: null,
-
+      more_typology:null,
       project_id: null,
     });
   };
@@ -72,7 +87,7 @@ const FloorPlan = React.memo(() => {
   const handleSectionChange = (e) => {
     setSectionFormdata({ ...sectionFormdata, [e.target.name]: e.target.value });
     if (e.target.name == "sub_typology") {
-      setCheckedCategory(e.target.value);
+      // setCheckedCategory(e.target.value);
     }
   };
 
@@ -115,8 +130,15 @@ const FloorPlan = React.memo(() => {
   const addSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
+
     const formData = new FormData();
     formData.append("sub_typology", sectionFormdata.sub_typology);
+    formData.append("type", sectionFormdata.type);
+    formData.append("carpet_area", sectionFormdata.carpet_area);
+    formData.append("balcony_area", sectionFormdata.balcony_area);
+    formData.append("super_area", sectionFormdata.super_area);
+    formData.append("more_typology", sectionFormdata.more_typology);
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
     }
@@ -155,9 +177,16 @@ const FloorPlan = React.memo(() => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
     setIsSitebarFormButtonLoading(true);
+    debugger
 
     const formData = new FormData();
     formData.append("sub_typology", sectionFormdata.sub_typology);
+    formData.append("type", sectionFormdata.type);
+    formData.append("carpet_area", sectionFormdata.carpet_area);
+    formData.append("balcony_area", sectionFormdata.balcony_area);
+    formData.append("super_area", sectionFormdata.super_area);
+    formData.append("more_typology", sectionFormdata.more_typology);
+
     if (sectionFormdata.size) {
       formData.append("size", sectionFormdata.size);
     }
@@ -167,9 +196,9 @@ const FloorPlan = React.memo(() => {
     if (sectionFormdata.price) {
       formData.append("price", sectionFormdata.price);
     }
-    if (image.current.files[0]) {
-      formData.append("image", image.current.files[0]);
-    }
+    // if (image.current.files[0]) {
+    //   formData.append("image", image.current.files[0]);
+    // }
     var response = await Request(
       "admin/projectdata/floor-plan/" + editId + "/update",
       "POST",
@@ -205,9 +234,14 @@ const FloorPlan = React.memo(() => {
         size_type: result.size_type,
         image_preview: CONFIG.VITE_APP_STORAGE + result.image,
         price: result.price,
+        type:result.type,
+        carpet_area: result.carpet_area,
+        balcony_area: result.balcony_area,
+        super_area: result.super_area,
+        more_typology: result.more_typology,
       });
 
-      setCheckedCategory(result.size_type);
+      // setCheckedCategory(result.size_type);
     }
   };
 
@@ -276,35 +310,33 @@ const FloorPlan = React.memo(() => {
         <Sections
           projectid={projectid}
           section_type={section_id}
-          sub_heading
           title="Floor Plans"
         />
-        <div className="card card_style1 mt_40">
-          <button
-            className="btn ms-auto btn_primary btn-sm"
-            onClick={addAmenityHandler}
-          >
-            Add Floor Plans
-          </button>
-          <div className="d-flex">
-            <h5>All Floor Plans</h5>
+        <div className="card bg-white mt-6 card_style1">
+          <div className="flex items-center">
+            <h5 className="mb-0">All Floor Plans</h5>
+            <button
+              className="btn ml-auto btn_primary btn-sm"
+              onClick={addAmenityHandler}
+            >
+              Add Floor Plans
+            </button>
           </div>
 
-          <table className="w-full mt_30">
+          <table className="mt_40 w-full border-collapse border border-gray-200">
             <thead>
-              <tr>
-                <th>Name</th>
-                <th>Icons</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Actions</th>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2 text-left">Floor Plan Image</th>
+                <th className="border border-gray-300 p-2 text-left">Total Super Area</th>
+                <th className="border border-gray-300 p-2 text-left">Price</th>
+                <th className="border border-gray-300 p-2 text-left">Status</th>
+                <th className="border border-gray-300 p-2 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
               {isLoadingTableData && (
                 <tr>
-                  <td colSpan={4}>
+                  <td colSpan={5}>
                     <div className="text-center">
                       <ScaleLoader color="#ddd" className="w-full" />
                     </div>
@@ -315,7 +347,6 @@ const FloorPlan = React.memo(() => {
               {list ? (
                 list.map((item) => (
                   <tr key={item.id}>
-                    <td>{item.sub_typology?.typology}</td>
                     <td>
                       <div className="thumb icon">
                         {item.image ? (
@@ -329,11 +360,11 @@ const FloorPlan = React.memo(() => {
                         )}
                       </div>
                     </td>
-                    <td>{item.size ? item.size : "On Request"}</td>
+                    <td>{item.super_area ? item.super_area : "On Request"}</td>
                     <td>{item.price ? item.price : "On Request"}</td>
                     <td>
                       <CustomDropdown
-                        className="form-control"
+                        className="border rounded px-3 py-2 w-full"
                         defaultVal={item.status}
                         options={statusOptions}
                         onSelect={(selectedValue) =>
@@ -346,21 +377,13 @@ const FloorPlan = React.memo(() => {
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/edit.svg"}
-                          alt="edit icon"
-                          className="img-fluid icon"
-                        />
+                        <AiOutlineEdit size={22} />
                       </button>
                       <button
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >
-                        <img
-                          src={CONFIG.ADMIN_IMG_URL + "icons/delete_color.svg"}
-                          alt="delete icon"
-                          className="img-fluid icon delete"
-                        />
+                        <RiDeleteBin6Line size={18} className="text-red-500" />
                       </button>
                     </td>
                   </tr>
@@ -407,40 +430,106 @@ const FloorPlan = React.memo(() => {
                   {errors.sub_typology}
                 </div>
 
-                <div className="grid grid-cols-1 gap-5">
-                  <div className="mb_20">
-                    <label className="block font-medium">Floor Size</label>
+                <div className="mb-2">
+                  <label className="block font-medium">Floor Plan Image*</label>
+                  <input
+                    type="file"
+                    className="border rounded px-3 py-2 w-full"
+                    name="image"
+                    ref={image}
+                    onChange={handleSectionChange}
+                  />
+                  {errors.image}
+                  {sectionFormdata.image_preview ? (
+                    <img width="100" src={`${sectionFormdata.image_preview}`} />
+                  ) : null}
+                </div>
+
+                <div className="mb-2">
+                    <label className="block font-medium">Title*</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter Title"
+                        value={sectionFormdata.more_typology}
+                        name="more_typology"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.size}
+                  </div>
+
+                <div className="mb-2">
+                    <label className="block font-medium">Plan Type</label>
+                    
+                    <select
+                        className="border rounded px-3 py-2 w-full"
+                        name="type"
+                        onChange={handleSectionChange}
+                      >
+                        <option value="">Select Type</option>
+                        {planTypeOptions.map((item, index) => (
+                          <option
+                            value={item.value}
+                            key={index}
+                            selected={sectionFormdata.type == item.value}
+                          >
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                    {errors.size}
+                    {errors.type}
+                  </div>
+
+                <div className="grid grid-cols-1 gap-2">
+                  <div className="mb-2">
+                    <label className="block font-medium">Carpet Area</label>
                     <div className="flex items-center space-x-2">
                       <input
                         type="text"
                         placeholder="Enter floor size"
-                        value={sectionFormdata.size}
-                        name="size"
+                        value={sectionFormdata.carpet_area}
+                        name="carpet_area"
                         onChange={handleSectionChange}
-                        className="form-control"
+                        className="border rounded px-3 py-2 w-full"
                       />
-                      <select
-                        className="form-control"
-                        name="size_type"
-                        onChange={handleSectionChange}
-                      >
-                        <option value="">Price Type</option>
-                        {Object.entries(sizeListType).map(([key, value]) => (
-                          <option
-                            value={key}
-                            key={key}
-                            selected={sectionFormdata.size_type == key}
-                          >
-                            {value}
-                          </option>
-                        ))}
-                      </select>
                     </div>
-                    {errors.size}
-                    {errors.size_type}
+                    {errors.carpet_area}
                   </div>
 
-                  <div className="mb_20">
+                  <div className="mb-2">
+                    <label className="block font-medium">Balcony Area</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter floor size"
+                        value={sectionFormdata.balcony_area}
+                        name="balcony_area"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.balcony_area}
+                  </div>
+
+                  <div className="mb-2">
+                    <label className="block font-medium">Total Super Area</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        placeholder="Enter floor size"
+                        value={sectionFormdata.super_area}
+                        name="super_area"
+                        onChange={handleSectionChange}
+                        className="border rounded px-3 py-2 w-full"
+                      />
+                    </div>
+                    {errors.super_area}
+                  </div>
+
+                  <div className="mb-2">
                     <label className="block font-medium">Floor Price</label>
                     <input
                       type="number"
@@ -448,32 +537,12 @@ const FloorPlan = React.memo(() => {
                       name="price"
                       value={sectionFormdata.price}
                       onChange={handleSectionChange}
-                      className="form-control"
+                      className="border rounded px-3 py-2 w-full"
                     />
                     {errors.price}
                     {sectionFormdata.price
                       ? numDifferentiation(sectionFormdata.price)
                       : null}
-                  </div>
-
-                  <div className="mb_20">
-                    <label className="block font-medium">
-                      Floor Plan Image*
-                    </label>
-                    <input
-                      type="file"
-                      className="form-control"
-                      name="image"
-                      ref={image}
-                      onChange={handleSectionChange}
-                    />
-                    {errors.image}
-                    {sectionFormdata.image_preview ? (
-                      <img
-                        width="100"
-                        src={`${sectionFormdata.image_preview}`}
-                      />
-                    ) : null}
                   </div>
                 </div>
               </form>

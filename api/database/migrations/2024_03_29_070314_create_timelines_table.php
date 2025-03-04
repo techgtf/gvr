@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('timelines', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
             $table->string('year')->nullable();
             $table->string('title');
             $table->string('location');

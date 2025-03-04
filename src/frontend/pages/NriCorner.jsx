@@ -1,11 +1,34 @@
-import React from 'react'
-import NriCornerIndex from '../components/NriCorner'
-import HeroSectionAboutUs from "../components/aboutUs/HeroSectionAboutUs"
-import * as CONFIG from "../../../config"
-import { Helmet } from 'react-helmet'
-
+import React from 'react';
+import NriCornerIndex from '../components/NriCorner';
+import HeroSectionAboutUs from "../components/aboutUs/HeroSectionAboutUs";
+import * as CONFIG from "../../../config";
+import Loader from "../../common/Loader/loader";
+import { Helmet } from 'react-helmet';
+import useFetchData from '../apiHooks/useFetchData';
 
 export default function NriCorner() {
+    // Fetch FAQs & Banner Data
+    const { data: faqs, loading: faqLoading, error: faqError } = useFetchData("faqs", "nri-corner");
+    const { data: banner, loading: bannerLoading, error: bannerError } = useFetchData("page-sections", "11");
+
+    // Handle Loading and Errors
+    if (faqLoading || bannerLoading) return <Loader />;
+    if (faqError) return <p className="text-red-500">Error loading FAQs: {faqError}</p>;
+    if (bannerError) return <p className="text-red-500">Error loading Banner: {bannerError}</p>;
+
+    // 🔹 Extract Banner Data Safely
+    const extractBannerData = (banner) => {
+        if (!banner) return { image: "", heading: "Default Heading" };
+        const bannerData = Object.values(banner)?.[0] || {}; 
+        return {
+            image: `${CONFIG.VITE_APP_STORAGE}${bannerData.image || ""}`,
+            heading: bannerData.heading || "Default Heading"
+        };
+    };
+
+    const { image: bannerImage, heading: bannerHeading } = extractBannerData(banner);
+
+
     return (
         <>
             <Helmet>
@@ -39,14 +62,14 @@ export default function NriCorner() {
                 <meta name="twitter:image" content="https://greatvaluerealty.com/assets/frontend/images/logo.png" />
 
             </Helmet>
-            <div className='nri_corner bg-[#EFF5FA]'>
+            <div className="nri_corner bg-[#EFF5FA]">
                 <HeroSectionAboutUs
-                    img={`${CONFIG.ASSET_IMAGE_URL}frontend/images/nri-corner/nri-banner.webp`}
-                    heading={"NRI Corner"}
-                    extraClassesImg={"objectRight"}
+                    img={bannerImage}
+                    heading={bannerHeading}
+                    extraClassesImg="objectRight"
                 />
-                <NriCornerIndex />
+                <NriCornerIndex data={faqs} />
             </div>
         </>
-    )
+    );
 }

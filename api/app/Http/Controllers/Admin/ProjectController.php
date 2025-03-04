@@ -61,24 +61,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), 
             [
                 'categorie_id' => 'required|exists:categories,id',
                 'typologie_id' => 'required|exists:typologies,id',
-                // 'developer_id' => 'required|exists:developers,id',
+                'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
+                'thumbnail' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
                 'name' => [
                     'required',
                     Rule::unique('projects')
-                        ->where(function ($query) use ($request) {
-                            $query->where('categorie_id', $request->categorie_id)
-                                ->WhereNull('deleted_at'); // Include soft-deleted records
-                        })
+                    ->where(function ($query) use ($request) {
+                        $query->where('categorie_id', $request->categorie_id)
+                        ->WhereNull('deleted_at'); // Include soft-deleted records
+                    })
                 ],
-
-                'ivr_no' => 'nullable|integer',
+                
+                // 'developer_id' => 'required|exists:developers,id',
+                // 'brochure' => 'nullable|mimes:pdf|max:4096',
+                // 'ivr_no' => 'nullable|integer',
                 // 'project_status' => 'required|integer',            
-                'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
-                'brochure' => 'nullable|mimes:pdf|max:4096',
 
 
             ],
@@ -87,20 +89,23 @@ class ProjectController extends Controller
                     'image.required' => 'Feature Image is required',
                     'image.mimes' => 'only Allowed png,jpg,jpeg,webp',
                     'image.max' => 'Max 2 Mb is Allowed',
-                    'developer_id.required' => 'Developer is required.',
-                    'developer_id.exists' => 'The selected developer does not exist.',
+                    'thumbnail.required' => 'Thumbnail is required',
+                    'thumbnail.mimes' => 'only Allowed png,jpg,jpeg,webp',
+                    'thumbnail.max' => 'Max 2 Mb is Allowed',
                     'categorie_id.exists' => 'The selected category does not exist.',
                     'typologie_id.required' => 'This field is required.',
                     'typologie_id.exists' => 'The selected typology does not exist.',
                     'typologie_id.unique' => 'Record Already exists.',
-                    'ivr_no.required' => 'Ivr no is required',
                     'name.required' => 'Project name is required',
                     'name.unique' => 'Project name Alrady Exists',
+                    
 
+                    // 'developer_id.required' => 'Developer is required.',
+                    // 'developer_id.exists' => 'The selected developer does not exist.',
+                    // 'ivr_no.required' => 'Ivr no is required',
                     // 'project_status.required' => 'Project Status is required',
-                    'brochure.mimes'=>'Only PDF is Aloowed',
-                    'brochure.max'=>'PDF Should be Less than 4MB',
-
+                    // 'brochure.mimes'=>'Only PDF is Aloowed',
+                    // 'brochure.max'=>'PDF Should be Less than 4MB',
                 ]
             );
 
@@ -123,7 +128,7 @@ class ProjectController extends Controller
             'ivr_no'=>$request->ivr_no,
             'slug'=>$request->name,
         ];
-        if(!!empty($request->project_statu)){
+        if(!empty($request->project_status)){
            $data['project_status']=$request->project_status;
         }
         if($request->sub_typologie_id){
@@ -145,10 +150,18 @@ class ProjectController extends Controller
 
         if($request->hasFile('image')){
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('feature-image', $name, 'public');
+            $path = $request->file('image')->storeAs('project/feature-image', $name, 'public');
             $data['feature_image']=$path;
         }
+
         
+        if($request->hasFile('thumbnail')){
+            $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
+            $path = $request->file('thumbnail')->storeAs('project/feature-thumbnail', $name, 'public');
+            $data['thumbnail'] = $path;
+        }
+
+
         if($request->hasFile('logo')){
             $name = now()->timestamp.".{$request->logo->getClientOriginalName()}";
             $path = $request->file('logo')->storeAs('project-logo', $name, 'public');
@@ -161,11 +174,9 @@ class ProjectController extends Controller
             $path = $request->file('brochure')->storeAs('project-brochure', $name, 'public');
             $data['brochure']=$path;
         }
+        
 
-    
-
-
-        $saverecord=Projects::create($data);
+        $saverecord = Projects::create($data);
         return response()->json([
             'status' => true,
             'statusCode' => 200,
@@ -221,7 +232,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-   
+
         $validator = Validator::make($request->all(), 
         [
             'categorie_id' => 'required|exists:categories,id',
@@ -241,7 +252,7 @@ class ProjectController extends Controller
             ],
 
             // 'ivr_no' => 'required|integer',
-            'project_status' => 'required|integer',            
+            // 'project_status' => 'required|integer',            
         ],
             [
                 'categorie_id.required' => 'This field is required.',
@@ -289,7 +300,7 @@ class ProjectController extends Controller
 
         if($request->hasFile('image')){
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('feature-image', $name, 'public');
+            $path = $request->file('image')->storeAs('project/feature-image', $name, 'public');
             $saverecord->feature_image = $path;
         }
 
@@ -298,9 +309,14 @@ class ProjectController extends Controller
             $path = $request->file('logo')->storeAs('project-logo', $name, 'public');
             dltSingleImgFile($saverecord->logo);
             $saverecord->logo=$path;
-
         }
-    
+
+        if($request->hasFile('thumbnail')){
+            $name = now()->timestamp.".{$request->thumbnail->getClientOriginalName()}";
+            $path = $request->file('thumbnail')->storeAs('project/feature-thumbnail', $name, 'public');
+            dltSingleImgFile($saverecord->thumbnail);
+            $saverecord->thumbnails=$path;
+        }
 
         if($request->hasFile('brochure')){
             $name = now()->timestamp.".{$request->brochure->getClientOriginalName()}";
