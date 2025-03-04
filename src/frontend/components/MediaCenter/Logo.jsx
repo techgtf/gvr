@@ -43,7 +43,7 @@ const MediaCentreLogo = () => {
 
         <div className="logo items-center pt-5 mt-10 flex justify-between">
           <img
-            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.png`}
+            src={`${CONFIG.ASSET_IMAGE_URL}frontend/images/logo-colored.webp`}
             alt="Great Value Realty Logo"
             className="w-[40%]"
           />
@@ -59,7 +59,7 @@ const MediaCentreLogo = () => {
                       // download={item.heading && `logo.${item?.heading?.toLowerCase()}`}
                       className="text-[16px]"
                     >
-                      {item.heading}
+                      {item?.heading}
                     </Link>
                   </span>{" "}
                   |

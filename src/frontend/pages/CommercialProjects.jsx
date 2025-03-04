@@ -114,10 +114,10 @@ const projects = [
       },
 
       {
-        name: "JHARKHAND BHAWAN",
+        name: "WORLI MUMBAI",
         link: "",
         address: "Vasant Vihar, New Delhi",
-        address: "Vasant Vihar, New Delhi",
+        address: "",
         landArea: '',
       },
       {
@@ -221,7 +221,7 @@ const CommercialProjects = () => {
           ? "commercial_banner_mb.jpg"
           : "commercial_banner.jpg"
           }`}
-          alt={"Great Value Commercial Project"}
+          alt={"Great value commercial project"}
         heading={"COMMERCIAL  PROJECTS"}
         breadCrumb={"HOME - COMMERCIAL  PROJECTS"}
         extraClassesImg={"xl:object-custom object-customMb xl:!h-[70vh]"}
@@ -258,13 +258,13 @@ const CommercialProjects = () => {
         <div className="text-center">
         <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Existing Area   </h3>
         <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]  mb-[2rem] xl:mb-[0px]">
-        2,000,000 sq ft
+        2 million sq ft
         </h3>
         </div>
         <div className="text-center">
         <h3 className="uppercase midlandfontmedium  tracking-[2px] mb-5 text-[8px]">Planned Expansion  </h3>
         <h3 className="uppercase midlandfontmedium mx-auto tracking-[2px]">
-        5,000,000 sq ft
+        5 million sq ft
         </h3>
         </div>
       </div>
@@ -463,12 +463,12 @@ const CommercialProjectSection = forwardRef(({ project }, ref) => {
 
                     {[
                       "COMPLEX MADANGIR",
-                      "JHARKHAND BHAWAN",
+                      "WORLI MUMBAI",
                       "GAP",
                       "PERNIA",
                       "PERNIA'S POP-UP STUDIO",
                     ].includes(proj.name) ? (
-                      proj.name === "COMPLEX MADANGIR" ? (
+                      proj.name === "COMPLEX MADANGIR" || proj.name === "WORLI MUMBAI" ? (
                         <p className="lg:basis-[25%]">High Street Retail</p>
                       ) : proj.name === "PERNIA'S POP-UP STUDIO" ? (
                         <p className="lg:basis-[25%]">Retail Store</p>

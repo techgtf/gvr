@@ -58,7 +58,7 @@ const OurTeam = ({data}) => {
         <h3 className="sectionHeading tracking-[5px] text-black midlandfontmedium">
           {data.heading}
         </h3>
-        <p className="common_pera xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px] xl:left-[27%] xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
+        <p className="common_pera xl:absolute mt-[0.8rem] xl:top-[100%] text-[12px]  xl:w-[250px] w-[100%] text-justify xl:text-left poppins-regular">
           {description}
         </p>
       </div>
@@ -69,7 +69,7 @@ const OurTeam = ({data}) => {
         className="inner-team-swiper-button-prev !cursor-pointer !block absolute z-[99] xl:top-[56%] top-[59%] left-[1%]"
       >
         <img
-          src="assets/frontend/images/icons/left_arrow.png"
+          src="assets/frontend/images/icons/left_arrow.webp"
           alt="Previous"
           className="w-[15px] h-[15px]"
         />
@@ -80,7 +80,7 @@ const OurTeam = ({data}) => {
         className="inner-team-swiper-button-next !cursor-pointer !block z-[99] absolute xl:top-[56%] top-[59%] right-[1%]"
       >
         <img
-          src="assets/frontend/images/icons/right_arrow.png"
+          src="assets/frontend/images/icons/right_arrow.webp  "
           alt="Next"
           className="w-[15px] h-[15px]"
         />

@@ -42,7 +42,6 @@ function News() {
         return `${day}/${month}/${year}`;
     }
 
-
     return (
         <section className="news_sec bg-[#EFF5FA] px-5 md:px-12 py-10 md:py-14">
             {/* Grid container with 12 columns */}
@@ -92,33 +91,43 @@ function News() {
                 </div> */}
 
                 {/* Right section (8 columns) */}
-                <div className="col-span-12 md:col-span-8">
-                    <div className="mb-5">
-                        <FadeIn duration={2} delay={0.5}>
-                            <CommonHeading HeadingText="Online News" />
-                        </FadeIn>
-                    </div>
-                    <div className="online bg-white px-[34px] ">
-                       {newsData && newsData.length > 0 ? newsData.map((item, i)=> <div key={i} className="news grid grid-cols-12 lg:gap-8  py-[34px] border-b border-gray-300">
-                            {/* Image */}
-                            <div className="newsImg col-span-12 lg:col-span-4 px-4 flex items-center justify-center bg-[#EFF5FA]">
-                                <img src={CONFIG.VITE_APP_STORAGE + item?.file} alt={item?.alt_tag} className="w-[150px] " />
+                <div className="col-span-12 md:col-span-12">
+    <div className="mb-5">
+        <FadeIn duration={2} delay={0.5}>
+            <CommonHeading HeadingText="Online News" />
+        </FadeIn>
+    </div>
+    <div className="online bg-white px-[34px]">
+        {newsData && newsData.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {newsData.map((item, i) => (
+                    <div key={i} className="news py-[34px] grid grid-cols-12 gap-5 border-b border-gray-300">
+                        {/* Image */}
+                        <div className="newsImg flex h-[100px] my-auto col-span-4 items-center justify-center bg-[#EFF5FA] p-6">
+                            <img src={item?.file} alt={item?.alt_tag} className="w-[150px]" />
+                        </div>
+                        
+                        {/* Text Content */}
+                        <div className="details mt-4 col-span-8">
+                            <div className={`heading py-2 text-[10px] leading-[3] uppercase ${item?.lang === 'hindi' ? 'hind-regular tracking-[2.5px]' : 'midlandfontmedium tracking-[3.5px]'}`}>
+                                {item?.heading}
                             </div>
-                            {/* Text Content */}
-                            {/*  */}
-                            {/*  */}
-                            <div className="details col-span-12 lg:col-span-8 mt-4 lg:mt-0">
-                                <div className={`heading   py-2 text-[10px] leading-[3]  uppercase ${item?.lang === 'hindi' ? 'hind-regular tracking-[2.5px]' : 'midlandfontmedium tracking-[3.5px]'}`}>{item?.heading}</div>
-
-                                <div className="date  pb-3 text-primary">{formatDate(item?.created_at)}</div>
-                               <Link to={item?.cdn} target="_blank"> <button className="common_btn uppercase cursor-pointer focus-visible:outline-none focus-visible:ring-0" >
+                            <div className="date pb-3 text-primary">{item?.created_at}</div>
+                            <Link to={item?.cdn} target="_blank">
+                                <button className="common_btn uppercase cursor-pointer focus-visible:outline-none">
                                     Know More <BsArrowUpRight />
-                                </button></Link>
-                            </div>
-                        </div>) : ""}
-                      
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                ))}
+            </div>
+        ) : (
+            <p>No News Available</p>
+        )}
+    </div>
+</div>
+
 
             </div>
         </section>

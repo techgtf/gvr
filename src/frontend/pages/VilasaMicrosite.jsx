@@ -216,6 +216,7 @@ function VilasaMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Investors and Home Owners"}
                 headingText="ABOUT US"
                 descriptionText="Vilasa offers a rare opportunity to own premium residential plots in Sector 6, Sohna. Designed for investors and homeowners alike, it provides the freedom to create a personalized living space while promising high returns in a rapidly growing location."
                 reverseWatermark={true}
@@ -240,24 +241,24 @@ function VilasaMicrosite() {
             <LocationAdvantage
                 locationImage={loaction}
                 driveData={[
-                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '4 min' },
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon', time: '4 min' },
                     { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '4 min' },
-                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '5 min' },
-                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '8 min' },
+                    { image: college, text: 'GD Goenka University, Sohna', time: '5 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon', time: '8 min' },
                     { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '8 min' },
                     { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '8 min' },
-                    { image: resort, text: 'Botanix Nature Resort, Damdama Village, Sohna Road, Gurugram, Haryana', time: '19 min' },
-                    { image: metro, text: 'Rapid Metro, Sikanderpur, Platina Tower 2 Metro Station Sikanderpur, 55, Mehrauli-Gurgaon Rd, Block H, DLF Phase 1, Sector 26, Gurugram, Haryana 122002', time: '21 min' },
+                    { image: resort, text: 'Botanix Nature Resort, Sohna Road, Gurugram', time: '19 min' },
+                    { image: metro, text: 'Rapid Metro, Sector 26, Gurugram', time: '21 min' },
                     { image: resort, text: 'Damdama Lake, Sohna', time: '22 min' },
                     { image: landmark, text: 'Kingdom of Dreams, Sector 29, Gurugram', time: '33 min' },
                     { image: airport, text: 'Indira Gandhi International Airport, New Delhi', time: '45 min' },
                 ]}
                 walkData={[
                     { image: hospital, text: 'Civil Hospital, Baluda, Sohna', time: '14 min' },
-                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon Road, Ward Number 15, Sohna', time: '15 min' },
-                    { image: college, text: 'GD Goenka University, Gurugram, Gate No 3:, GD Goenka Educational City, Sohna - Gurgaon Rd, Sohna, Sohna Rural', time: '18 min' },
-                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon Road, Gurugram', time: '22 min' },
-                    { image: landmark, text: 'Sohna Sulphur Springs, Sohna', time: '24 min' },
+                    { image: hospital, text: 'Vardaan Hospital, Sohna-Gurgaon', time: '15 min' },
+                    { image: college, text: 'GD Goenka University, Sohna', time: '18 min' },
+                    { image: school, text: 'GD Goenka Signature School, Sohna-Gurgaon', time: '22 min' },
+                    { image: landmark, text: 'Sohna Sulphur, Sohna', time: '24 min' },
                     { image: college, text: 'KR Mangalam University, Sohna Road, Gurugram', time: '26 min' },
                 ]}
                 driveTabIcon={drive}

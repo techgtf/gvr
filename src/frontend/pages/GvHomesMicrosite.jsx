@@ -276,6 +276,7 @@ function GvHomesMicrosite() {
 
             <About
                 imageSrc={aboutImg}
+                alt={"Stylish living and dining area"}
                 headingText="ABOUT US"
                 descriptionText="CASA UDAY, an initiative by the Great Value Group, presents luxury modern builder floors at 31 Uday Park, New Delhi. Emphasizing eco-friendly designs, these residences offer abundant natural light and contemporary living spaces, ensuring a harmonious blend of comfort and sustainability."
                 reverseWatermark={true}
@@ -302,25 +303,25 @@ function GvHomesMicrosite() {
                 locationImage={loaction}
                 driveData={[
                     { image: school, text: 'Fr. Agnel School', time: '3 min' },
-                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '5 min' },
-                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '5 min' },
+                    { image: school, text: 'Bal Vikas Vidyalaya, New Delhi', time: '5 min' },
+                    { image: college, text: 'Gargi College, New Delhi', time: '5 min' },
                     { image: park, text: 'Gulmohar Park', time: '5 min' },
                     { image: auditorium, text: 'Siri Fort Auditorium', time: '5 min' },
-                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '11 min' },
+                    { image: institution, text: 'AIIMS, Delhi', time: '11 min' },
                     { image: hospital, text: 'Safdarjung Hospital', time: '11 min' },
                     { image: metro, text: 'Green Park Metro Station', time: '11 min' },
                     { image: shopping, text: 'Green Park Market', time: '13 min' },
                     { image: hauzkhas, text: 'Hauz Khas Village', time: '14 min' },
                     { image: park, text: 'Deer Park', time: '16 min' },
-                    { image: flights, text: 'IGI airport', time: '55 min' },
+                    { image: flights, text: 'Indira Gandhi International Airport, New Delhi', time: '55 min' },
                 ]}
                 walkData={[
-                    { image: school, text: 'Bal Vikas Vidyalaya, m -376 masjid moth behind NDSE part 2, New Delhi, Delhi 110049', time: '9 min' },
+                    { image: school, text: 'Bal Vikas Vidyalaya, New Delhi', time: '9 min' },
                     { image: school, text: 'Fr. Agnel School', time: '11 min' },
-                    { image: college, text: 'Gargi College, Siri Fort Rd, Siri Fort Institutional Area, Siri Fort, New Delhi, Delhi 110049', time: '14 min' },
+                    { image: college, text: 'Gargi College, New Delhi', time: '14 min' },
                     { image: park, text: 'Gulmohar Park', time: '15 min' },
                     { image: auditorium, text: 'Siri Fort Auditorium', time: '15 min' },
-                    { image: institution, text: 'All India Institute Of Medical Sciences Delhi', time: '24 min' },
+                    { image: institution, text: 'AIIMS, Delhi', time: '24 min' },
                     { image: hospital, text: 'Safdarjung Hospital', time: '35 min' },
 
                 ]}
