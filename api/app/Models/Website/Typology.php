@@ -57,11 +57,7 @@ class Typology extends Model
         return $this->hasMany(CategoryTypology::class,'typologies_id');
     }
 
-    public function TypologyOfGalleries () 
-    {
-        return $this->hasMany(TypologyTypoGallery::class, 'typologies_id')->with('getTypologiesImages');
-
-    }
+    
 
     public function getImageAttribute()
     {

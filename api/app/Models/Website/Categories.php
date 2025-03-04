@@ -12,11 +12,11 @@ class Categories extends Model
 {
     use HasFactory, SoftDeletes;
     
-    public function getImageAttribute()
+    public function getThumbnailAttribute()
     {
-        if(!empty($this->attributes['image'])){
-            if(File::exists(public_path('storage/'.$this->attributes['image']))){
-                return asset('storage/'.$this->attributes['image']);
+        if(!empty($this->attributes['thumbnail'])){
+            if(File::exists(public_path('storage/'.$this->attributes['thumbnail']))){
+                return asset('storage/'.$this->attributes['thumbnail']);
             }else{
                 return  asset('images/default_icon.png');
             }

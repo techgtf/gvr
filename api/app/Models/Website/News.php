@@ -15,11 +15,11 @@ class News extends Model
     protected $hidden = ['updated_at', 'deleted_at'];
  
     
-    public function getImageAttribute()
+    public function getFileAttribute()
     {
-        if(!empty($this->attributes['icons'])){
-            if(File::exists(public_path('storage/'.$this->attributes['icons']))){
-                return asset('storage/'.$this->attributes['icons']);
+        if(!empty($this->attributes['file'])){
+            if(File::exists(public_path('storage/'.$this->attributes['file']))){
+                return asset('storage/'.$this->attributes['file']);
             }else{
                 return  asset('default/default_project.jpg');
             }

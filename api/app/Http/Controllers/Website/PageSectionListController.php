@@ -36,7 +36,7 @@ class PageSectionListController extends Controller
     public function pagesListingSection ($pageId) {
         try {
             
-            $records = PageSectionList::where('page_id', $pageId)->get();
+            $records = \App\Models\Website\PageSectionList::where('page_id', $pageId)->get();
 
             $formattedData = [];
             foreach ($records as $record) {

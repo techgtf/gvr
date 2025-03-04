@@ -37,6 +37,7 @@ Route::group(['prefix'=>'admin'],function(){
 
         Route::get('getSubTypologyDistinct/{id}', [CategoryTypologyController::class,'getSubTypologyDistinct']);
         Route::get('getTypologyDistinctByCategory/{id}', [CategoryTypologyController::class,'getTypologyDistinct']);
+
         Route::get('get-all-subtyplogy-by-typology/{id}', [TypologySubTypologyController::class,'getAllSubtyplogyByTypology']);
 
         
@@ -49,8 +50,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::apiResource('typology-sub-gallery', TypologyTypoGalleriesController::class)->except(['update']);
         Route::post('typology-sub-gallery/{id}/update', [TypologyTypoGalleriesController::class,'update']);
         Route::get('all-typology-galleries-typology', [TypologyTypoGalleriesController::class,'allindex']);
-        
-        
+         
+
+        Route::get('getSubGalleryDistinct/{id}', [TypologyTypoGalleriesController::class,'getSubTypologyDistinct']);
         Route::get('get-all-galleries-by-typology/{id}', [TypologyTypoGalleriesController::class,'getAllgalleriesByTypology']);
 
     });

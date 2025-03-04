@@ -158,6 +158,10 @@ class ProjectController extends Controller
             $data['cdn']=$request->cdn;
         }
         
+        if($request->size){
+            $data['size']=$request->size;
+        }
+
 
         if($request->hasFile('image')){
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
@@ -258,7 +262,7 @@ class ProjectController extends Controller
                         $query->where('categorie_id', $request->categorie_id)
                         ->where('id', '<>',$id)
 
-                            ->WhereNull('deleted_at'); // Include soft-deleted records
+                        ->WhereNull('deleted_at'); // Include soft-deleted records
                     })
             ],
 
@@ -366,7 +370,10 @@ class ProjectController extends Controller
             if($request->cdn){
                 $saverecord->cdn=$request->cdn;
             }
- 
+            
+            if($request->size){
+                $saverecord->size=$request->size;
+            }
 
         $saverecord->short_description=$request->short_description;
         $saverecord->sub_typologie_id=$request->sub_typologie_id;

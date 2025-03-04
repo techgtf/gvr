@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\SocialLinks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Admin\MediaLogo;
 use Illuminate\Validation\Rule;
 
-class MediaLogoController extends Controller
+class SocialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,33 +16,23 @@ class MediaLogoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
     public function __construct()
     {
         $this->middleware('admin.auth');
     }
 
 
-    public function index(Request $request)
+    public function index()
     {
-
-        $search="";
-        if(!empty($request->search)){
-            $search = $request->search; 
-        }
-        
-        $perPage = $request->input('per_page', 10); // Number of products per page
-        $page = $request->input('page', 1); // Current page number
- 
-        $media = MediaLogo::search($search)->paginate($perPage, ['*'], 'page', $page);
+         
+        $socialLinks = SocialLinks::all();
              
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
             'message'=>"Success ",
-            'data'=>$media
+            'data'=>$socialLinks
         ]);
-
     }
 
     /**
@@ -63,15 +53,15 @@ class MediaLogoController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
-            'name' => 'required|unique:media_logos,name'
+            'name' => 'required|unique:social_links,name,NULL,id,deleted_at,NULL', // Checks only active records
         ],
         [
             'image.required' => 'The image field is required.',
             'image.mimes' => 'Invalid Image type only aloowed (png,jpg,jpeg)',
             'name.required' => 'This name field is required.',
-            'name.unique' => 'Media Already Exists.',
+            'name.unique' => 'Social Already Exists.',
         ]);
 
         if($validator->fails()){
@@ -81,34 +71,47 @@ class MediaLogoController extends Controller
                 'message' => "success",
                 'errors'=>$validator->errors()->toArray()
             ]);
-
-
-        
-
+ 
         }else{
 
             try{
                 
+                $existingRecord = SocialLinks::withTrashed()->where('name', $request->name)->first();
+                if ($existingRecord) {
+                    if ($existingRecord->trashed()) {
+                       
+                        $existingRecord->restore();
+                        return response()->json([
+                            'status' => true,
+                            'statusCode' => 200,
+                            'message' => "Record Added successfully",
+                            'data' => $existingRecord
+                        ]);
+                    } 
+                }
+
                 $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-                $path = $request->file('image')->storeAs('media', $name, 'public');
-                $mediadata = new MediaLogo();
-                $mediadata->icons = $path;
-                $mediadata->name=$request->name;
-                $mediadata->alt=$request->alt;
+                $path = $request->file('image')->storeAs('social-links', $name, 'public');
+
+                $sociallinks = new SocialLinks();
+                $sociallinks->image = $path;
+                $sociallinks->name = $request->name;
+                $sociallinks->alt = $request->alt;
+                $sociallinks->links = $request->links;
                 
-                if($mediadata->save()){              
+                if($sociallinks->save()){        
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>200,
                         'message'=>"Media Added Sucessfully ",
-                        'data'=>$mediadata
-                ]);
+                        'data'=>$sociallinks
+                    ]);
                 }else{
                     return response()->json([
                         'status'=>true,
                         'statusCode'=>400,
                         'message'=>"Failde to add Media "
-                ]);
+                    ]);
                 }
     
             }catch(\Exception $e){
@@ -120,7 +123,6 @@ class MediaLogoController extends Controller
                 ]);
             }
         }
-        
     }
 
     /**
@@ -131,68 +133,15 @@ class MediaLogoController extends Controller
      */
     public function show($id)
     {
-        //
-        $amities = MediaLogo::find($id);
-          return response()->json([
+        $sociallinks = SocialLinks::find($id);
+        return response()->json([
             'status'=>true,
             'statusCode'=>200,
             'message'=>"success",
-            'data'=>$amities
-            ]);
+            'data'=>$sociallinks
+        ]);
     }
 
-
-    public function statusUpdate(Request $request)
-    {
-        //
-
-        $validator = Validator::make($request->all(),[
-            'status' => 'required|integer',
-            'project_id' => 'required|integer'
-
-        ],
-            [
-                'status.required' => 'Status field is required.',
-                'project_id.required' => 'The project field is required.',
-            ]
-        );
-
-        if($validator->fails()){
-            return response()->json([
-                'status'=>true,
-                'statusCode'=>403,
-               'message' => $validator->errors()->toArray(),
-            ]);
-        }
-
-
-
-        $amities = MediaLogo::find($request->project_id);
-        if($amities){
-            $amities->status = $request->status;
-            if($amities->save()){
-                return response()->json([
-                    'status'=>true,
-                    'statusCode'=>200,
-                    'message'=>"success",
-                    'data'=>$amities
-                    ]);
-            }
-            return response()->json([
-                'status'=>true,
-                'statusCode'=>400,
-                'message'=>"failed",
-                ]);
-
-
-        }
-        return response()->json([
-            'status'=>false,
-            'statusCode'=>404,
-            'message'=>"server error",
-            ]);
-         
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -215,13 +164,14 @@ class MediaLogoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
-            'name' => ['required',Rule::unique('media_logos')->ignore($request->id)]
+            'name' => ['required',Rule::unique('social_links')->ignore($request->id)]
         ], [
             'image.mimes' => 'Invalid Image type only allowed (png, jpg, jpeg)',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
             'name.required' => 'The name field is required.',
-            'name.unique' => 'media_logos Already Exists.',
+            'name.unique' => 'Social Links Already Exists.',
         ]);
+
         if($validator->fails()){
             return response()->json([
                 'status'=>true,
@@ -230,8 +180,8 @@ class MediaLogoController extends Controller
                 'errors'=>$validator->errors()->toArray()
             ]);
         }
-        $getrecord = MediaLogo::select('*')->where('id',$id)->first();
-        
+
+        $getrecord = SocialLinks::select('*')->where('id',$id)->first();
         if(!$getrecord){
             return response()->json([
                 'status'=>false,
@@ -247,12 +197,13 @@ class MediaLogoController extends Controller
             dltSingleImgFile($imagesurl);
             
             $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
-            $path = $request->file('image')->storeAs('media', $name, 'public');
-            $getrecord->icons=$path;
+            $path = $request->file('image')->storeAs('social-links', $name, 'public');
+            $getrecord->image = $path;
         }
 
         $getrecord->name = $request->name;
         $getrecord->alt = $request->alt;
+        $getrecord->links = $request->links;
 
         if($getrecord->save()){
             return response()->json([
@@ -268,7 +219,6 @@ class MediaLogoController extends Controller
             'statusCode'=>500,
            'message' =>"Invalid Request/ Not Found ",
         ]);
-        // return $getrecord;
     }
 
     /**
@@ -279,8 +229,7 @@ class MediaLogoController extends Controller
      */
     public function destroy($id)
     {
-       
-        $getrecord = MediaLogo::select('*')->where('id',$id)->first();
+        $getrecord = SocialLinks::select('*')->where('id',$id)->first();
         
         if(!$getrecord){
             return response()->json([
@@ -290,39 +239,21 @@ class MediaLogoController extends Controller
             ]);
         }
 
-        //  dltSingleImgFile($getrecord->icons);
-
-         if($getrecord->delete()){
+        
+        if($getrecord->delete()){
             return response()->json([
                 'status'=>true,
                 'statusCode'=>200,
                 'message'=>"Deleted Sucessfully ",
                 'data'=>$getrecord
-
             ]);
-         }
-         return response()->json([
+        }
+
+
+        return response()->json([
             'status'=>false,
             'statusCode'=>500,
            'message' =>"Invalid Request/ Not Found ",
         ]);
-        
     }
-
-
-    public function status(Request $request, $id)
-    {
-        $table = [
-            'tableName' => 'media_logos',
-            'keyColumnName' => 'id',
-            'keyColumnId' => $id,
-            'updateColumnName' => 'status',
-            'updatecolumnVal' => $request->status
-        ];
-        
-        $result = updateSingleRecord($table);
-        return $result;
-    }
-
-
 }

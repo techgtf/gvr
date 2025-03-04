@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Typology;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Admin\Typology\SubTypology;
 use App\Models\Admin\Typology\TypologyTypoGallery;
+use App\Models\Website\TypologiesGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -403,4 +405,28 @@ class TypologyTypoGalleriesController extends Controller
         ]);
     
     }
+
+    public function getSubTypologyDistinct(Request $request,$typology_id){
+ 
+        $perPage = $request->input('per_page', 10);
+        $page = $request->input('page', 1); 
+
+        $search="";
+        if(!empty($request->search)){
+            $search = $request->search;
+        }
+
+        $subTypologiesNotInTypology = \App\Models\Admin\Typology\TypologiesGallery::whereDoesntHave('subGalleryOfTypology', function ($query) use ($typology_id) {
+            $query->where('typologies_id'   ,$typology_id);
+        })->paginate($perPage, ['*'], 'page', $page);
+
+        return response()->json([
+            'status'=>true,
+            'statusCode'=>200,
+            'message'=>"Success ",
+            'data'=>$subTypologiesNotInTypology
+        ]);
+
+    }
+
 }

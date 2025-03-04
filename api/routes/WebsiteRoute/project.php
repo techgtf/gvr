@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('/project/commercial-project', [ProjectController::class, 'getCommercialPlatter']);
 
 Route::get('/project',[ProjectController::class,'index']);
 Route::get('/project/{slug}',[ProjectController::class,'details']);
@@ -49,5 +50,3 @@ Route::get('/get-all-projectImages', [ProjectController::class, 'ProjectImages']
 Route::get('/project/{project_id}/project-sections',[ProjectController::class,'projectSections']);
 Route::get('/project/{section_id}/section',[ProjectController::class,'projectSectionsData']);
 
-
- 

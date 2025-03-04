@@ -38,5 +38,5 @@ Route::get('location-advantage-type', [HelperController::class,'getTypesLocation
 Route::get('/getAllCity',[HelperController::class,'getAllCity']);
 
 
-
+Route::get('/social-links', [HelperController::class, 'getSocialLinks']);
 

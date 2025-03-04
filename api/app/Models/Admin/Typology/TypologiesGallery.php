@@ -13,4 +13,10 @@ class TypologiesGallery extends Model
 
     protected $fillable = ['type', 'file'];
 
+
+    public function subGalleryOfTypology()
+    {
+        return $this->hasMany(TypologyTypoGallery::class,'galleries_id');
+
+    }
 }

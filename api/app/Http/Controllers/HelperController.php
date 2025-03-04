@@ -6,6 +6,8 @@ use App\Models\Admin\City;
 use App\Models\Admin\PageMeta;
 use App\Models\Admin\ProjectCategory;
 use App\Models\Admin\Typology\Typology;
+use App\Models\Website\Categories;
+use App\Models\Website\SocialLinks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +21,7 @@ class HelperController extends Controller
         return sizeType();
     }
     public function getCategory(){
-        $data=ProjectCategory::get();
+        $data=Categories::get();
         return response()->json([
             'status'=>true,
             'statusCode'=>200,
@@ -171,7 +173,15 @@ class HelperController extends Controller
 
 
    
-    
+    public function getSocialLinks () {
+        $data = SocialLinks::get();
+        return response()->json([
+            'status'=>true,
+            'statusCode'=>200,
+            'message'=>"Success ",
+            'data'=>$data,
+        ]);
+    }
 
 
 }

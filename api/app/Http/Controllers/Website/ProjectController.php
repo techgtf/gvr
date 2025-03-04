@@ -27,9 +27,9 @@ class ProjectController extends Controller
     
     public function index(Request $request){
 
-        if($request->category == 'commercial'){
-            return $this->getCommercialPlatter($request);
-        }
+        // if($request->category == 'commercial'){
+        //     return $this->getCommercialPlatter($request);
+        // }
         
         $perPage = $request->input('per_page', 4); // Number of products per page
         $page = $request->input('page', 1); // Current page number
@@ -398,7 +398,7 @@ class ProjectController extends Controller
     }
 
 
-    public function getCommercialPlatter ($request) {
+    public function getCommercialPlatter (Request $request) {
         $records = "";
 
         // $category = \App\Models\Website\Categories::with('typologies.galleries')->find(2);
@@ -412,6 +412,7 @@ class ProjectController extends Controller
         $typologiesWithGroupedGalleries = $category->typologies->map(function ($typology) {
             return [
                 'typologies' => [
+                    'id' => $typology->id,
                     'name' => $typology->typology,
                     'description' => $typology->description,
                 ],
