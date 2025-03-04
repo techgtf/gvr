@@ -143,9 +143,9 @@ const Specifications = () => {
     var response = await Request(
       "admin/projectdata/specification?search=" +
         search,
-        //  +
-        // "&page=" +
-        // currentPage,
+         +
+        "&page=" +
+        currentPage,
       "GET"
     );
     if (response.status && response.statusCode === 200) {

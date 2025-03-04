@@ -856,4 +856,15 @@ export const AdminRoutes = [
       </AdminLayout>
     ),
   },
+  {
+    path: `${ADMIN_ROOT}contact-query`,
+    // element:<AdminLayout />,
+    element: (
+      <AdminLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Enquiry />
+        </Suspense>
+      </AdminLayout>
+    ),
+  },
 ];
