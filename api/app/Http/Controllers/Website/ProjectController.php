@@ -36,8 +36,8 @@ class ProjectController extends Controller
          
         $category = $request->input('category');
   
-        $project = Projects::with(['location','typologie','developer','category','subtypologie','startingSize'=>function($query){
-                $query->min('size');
+        $project = Projects::with(['location','typologie','developer','category','subtypologie'=>function($query){
+                // $query->min('size');
             }
         ]);
         
@@ -144,12 +144,12 @@ class ProjectController extends Controller
 
     public function details($slug,Request $request){
         $categoryUrl=$request->category;
-        $project = Projects::with(['category','location','typologie.TypologyOfGalleries.getTypologiesImages','subtypologie','developer','startingPrice'=>function($query){
+        $project = Projects::with(['category','location','subtypologie','developer','startingPrice'=>function($query){
             $query->min('price');
         }        
-        ,'startingSize'=>function($query){
-            $query->min('size');
-        }
+        // ,'startingSize'=>function($query){
+        //     $query->min('size');
+        // }
         ])
         ->whereHas('category', function ($query) use ($categoryUrl) {
             $query->where('slug', $categoryUrl);

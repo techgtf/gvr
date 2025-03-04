@@ -122,79 +122,46 @@ class FloorPlanController extends Controller
         }else{
             try{
                 $floorplans = new ProjectFloorPlan();
-                if($request->hasFile('image')){
-                    $name = now()->timestamp.".{$request->image->getClientOriginalName()}";
+
+                if ($request->hasFile('image')) {
+                    $name = now()->timestamp . ".{$request->image->getClientOriginalName()}";
                     $path = $request->file('image')->storeAs('project/floor-plans', $name, 'public');
                     $floorplans->image = $path;
                 }
-            
                 
-                $floorplans->project_id = $request->project_id;
-
+                $floorplans->project_id = (int) $request->project_id;
                 $floorplans->type = $request->type;
-
-                $floorplans->sub_typology = $request->sub_typology ?: 0;
-                
-                
-                
+                $floorplans->sub_typology = is_numeric($request->sub_typology) ? (int) $request->sub_typology : null;
                 $floorplans->more_typology = $request->more_typology;
-
-                $floorplans->price = $request->price;
-
-        
-                if($request->carpet_area){
-                    $floorplans->carpet_area = $request->carpet_area;
-                }
+                $floorplans->price = is_numeric($request->price) ? (float) $request->price : null;
+                $floorplans->carpet_area = is_numeric($request->carpet_area) ? (float) $request->carpet_area : null;
+                $floorplans->balcony_area = is_numeric($request->balcony_area) ? (float) $request->balcony_area : null;
+                $floorplans->super_area = is_numeric($request->super_area) ? (float) $request->super_area : null;
+                $floorplans->sizes_type = $request->sizes_type ?? null;
+                $floorplans->build_up_area = is_numeric($request->build_up_area) ? (float) $request->build_up_area : null;
                 
-
-                if($request->balcony_area){
-                    $floorplans->balcony_area = $request->balcony_area;
-                }
-                
-
-                if($request->super_area){
-                    $floorplans->super_area = $request->super_area;
-                }
-                
-
-
-                if($request->sizes_type){
-                    $floorplans->sizes_type = $request->sizes_type;
-                }
-               
-
-
-                if($request->build_up_area){
-                    $floorplans->build_up_area = $request->build_up_area;
-                }
-             
-                
-                
-                
-          
-                if($floorplans->save()){              
+                if ($floorplans->save()) {
                     return response()->json([
-                        'status'=>true,
-                        'statusCode'=>200,
-                        'message'=>"Added Sucessfully ",
-                        'data'=>$floorplans
+                        'status' => true,
+                        'statusCode' => 200,
+                        'message' => "Added Successfully",
+                        'data' => $floorplans
                     ]);
-                }else{
+                } else {
                     return response()->json([
-                        'status'=>true,
-                        'statusCode'=>400,
-                        'message'=>"Failed to Floor Plans"
+                        'status' => false,
+                        'statusCode' => 400,
+                        'message' => "Failed to save Floor Plans"
                     ]);
                 }
-    
-            }catch(\Exception $e){
-                return response()->json([
-                    'status'=>false,
-                    'statusCode'=>500,
-                    'message'=>"Something went wrong",
-                    'error' => $e->getMessage()
-                ]);
-            }
+                }catch(\Exception $e){
+                    return response()->json([
+                        'status'=>false,
+                        'statusCode'=>500,
+                        'message'=>"Something went wrong",
+                        'error' => $e->getMessage()
+                    ]);
+                }
         }
     }
 
@@ -306,43 +273,21 @@ class FloorPlanController extends Controller
                     $floorplans->image = $path;
                 }
             
-                    if($request->sub_typology){
+                   
+                if($request->sizes_type){
+                    $floorplans->carpet_area = is_numeric($request->carpet_area) ? (float) $request->carpet_area : null;
+                    $floorplans->balcony_area = is_numeric($request->balcony_area) ? (float) $request->balcony_area : null;
+                    $floorplans->super_area = is_numeric($request->super_area) ? (float) $request->super_area : null;
+                    $floorplans->sizes_type = $request->sizes_type ?? null;
+                    $floorplans->build_up_area = is_numeric($request->build_up_area) ? (float) $request->build_up_area : null;
+                }
 
-                        $floorplans->sub_typology = $request->sub_typology;
-                    }
-
-                    if($request->size_type){
-
-                        $floorplans->sizes_type = $request->size_type;
-                      
-                        $floorplans->carpet_area = $request->carpet_area;                               
-                        if($request->carpet_area){
-                        }
-
-                        $floorplans->balcony_area = $request->balcony_area; 
-                        if($request->balcony_area){
-                        }
-
-                        $floorplans->super_area = $request->super_area;
-                        if($request->super_area){
-                        }
-                        
-                        $floorplans->build_up_area = $request->build_up_area;
-                        if($request->build_up_area){
-                        }
-                    }
-
-                    if($request->price){
-                        $floorplans->price = $request->price;
-                    }
-                    
-                    if($request->more_typology) {
-                        $floorplans->more_typology = $request->more_typology;
-                    }
-
-                    if($request->type){
-                        $floorplans->type = $request->type;
-                    }
+                
+                $floorplans->type = $request->type;
+                $floorplans->sub_typology = is_numeric($request->sub_typology) ? (int) $request->sub_typology : null;
+                $floorplans->more_typology = $request->more_typology;
+                $floorplans->price = is_numeric($request->price) ? (float) $request->price : null;
+                
 
                     
 
